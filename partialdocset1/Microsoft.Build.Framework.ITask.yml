@@ -1,0 +1,144 @@
+### YamlMime:ManagedReference
+items:
+- uid: Microsoft.Build.Framework.ITask
+  id: ITask
+  children:
+  - Microsoft.Build.Framework.ITask.BuildEngine
+  - Microsoft.Build.Framework.ITask.Execute
+  - Microsoft.Build.Framework.ITask.HostObject
+  langs:
+  - csharp
+  name: ITask
+  nameWithType: ITask
+  fullName: Microsoft.Build.Framework.ITask
+  type: Interface
+  summary: "Definerer en oppgave som er en enhet med kjørbar kode som brukes av [!INCLUDE[vstecmsbuild](~/add/includes/vstecmsbuild-md.md)] til å utføre kompilering operasjoner."
+  remarks: "Alle oppgaven klasser må implementere dette grensesnittet føres av build-motoren. I stedet for implenting dette grensesnitt direkte, kan du også avledet klassen fra hjelperklasse, <xref:Microsoft.Build.Utilities.Task>, som leverer standard implementering av noen ITask medlemmer.</xref:Microsoft.Build.Utilities.Task>"
+  example:
+  - "The following example shows the code from a complete task implementation.  \n  \n [!code-cs[msbuild_MakeDirTask#1](~/add/codesnippet/csharp/msbuild_MakeDirTask/msbuild_MakeDirTask.cs#1)]"
+  syntax:
+    content: public interface ITask
+  implements: []
+  platform:
+  - net462
+- uid: Microsoft.Build.Framework.ITask.BuildEngine
+  id: BuildEngine
+  parent: Microsoft.Build.Framework.ITask
+  langs:
+  - csharp
+  name: BuildEngine
+  nameWithType: ITask.BuildEngine
+  fullName: Microsoft.Build.Framework.ITask.BuildEngine
+  type: Property
+  assemblies:
+  - Microsoft.Build.Framework
+  namespace: Microsoft.Build.Framework
+  summary: "Henter eller angir build-motoren som er knyttet til oppgaven."
+  syntax:
+    content: public Microsoft.Build.Framework.IBuildEngine BuildEngine { get; set; }
+    return:
+      type: Microsoft.Build.Framework.IBuildEngine
+      description: "Build-motoren som er knyttet til oppgaven."
+  overload: Microsoft.Build.Framework.ITask.BuildEngine*
+  exceptions: []
+  platform:
+  - net462
+- uid: Microsoft.Build.Framework.ITask.Execute
+  id: Execute
+  parent: Microsoft.Build.Framework.ITask
+  langs:
+  - csharp
+  name: Execute()
+  nameWithType: ITask.Execute()
+  fullName: Microsoft.Build.Framework.ITask.Execute()
+  type: Method
+  assemblies:
+  - Microsoft.Build.Framework
+  namespace: Microsoft.Build.Framework
+  summary: "Utfører en oppgave."
+  remarks: "Denne metoden kalles av build-motoren til å kjøre en oppgave. Ved avslutning av denne metoden, må en oppgave angi Hvis kjøringen ble fullført. Hvis en oppgave oppstår det et unntak fra denne metoden, tolket motoren oppgaven mislyktes."
+  syntax:
+    content: public bool Execute ();
+    parameters: []
+    return:
+      type: System.Boolean
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis oppgaven vellykkede; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
+  overload: Microsoft.Build.Framework.ITask.Execute*
+  exceptions: []
+  platform:
+  - net462
+- uid: Microsoft.Build.Framework.ITask.HostObject
+  id: HostObject
+  parent: Microsoft.Build.Framework.ITask
+  langs:
+  - csharp
+  name: HostObject
+  nameWithType: ITask.HostObject
+  fullName: Microsoft.Build.Framework.ITask.HostObject
+  type: Property
+  assemblies:
+  - Microsoft.Build.Framework
+  namespace: Microsoft.Build.Framework
+  summary: "Henter eller angir verten objekter som er knyttet til aktiviteten."
+  remarks: "Denne egenskapen kan være en nullreferanse (`Nothing` i [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)])."
+  syntax:
+    content: public Microsoft.Build.Framework.ITaskHost HostObject { get; set; }
+    return:
+      type: Microsoft.Build.Framework.ITaskHost
+      description: "Vertsobjektet som er knyttet til oppgaven."
+  overload: Microsoft.Build.Framework.ITask.HostObject*
+  exceptions: []
+  platform:
+  - net462
+references:
+- uid: Microsoft.Build.Framework.ITask.BuildEngine
+  parent: Microsoft.Build.Framework.ITask
+  isExternal: false
+  name: BuildEngine
+  nameWithType: ITask.BuildEngine
+  fullName: Microsoft.Build.Framework.ITask.BuildEngine
+- uid: Microsoft.Build.Framework.IBuildEngine
+  parent: Microsoft.Build.Framework
+  isExternal: false
+  name: IBuildEngine
+  nameWithType: IBuildEngine
+  fullName: Microsoft.Build.Framework.IBuildEngine
+- uid: Microsoft.Build.Framework.ITask.Execute
+  parent: Microsoft.Build.Framework.ITask
+  isExternal: false
+  name: Execute()
+  nameWithType: ITask.Execute()
+  fullName: Microsoft.Build.Framework.ITask.Execute()
+- uid: System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: Microsoft.Build.Framework.ITask.HostObject
+  parent: Microsoft.Build.Framework.ITask
+  isExternal: false
+  name: HostObject
+  nameWithType: ITask.HostObject
+  fullName: Microsoft.Build.Framework.ITask.HostObject
+- uid: Microsoft.Build.Framework.ITaskHost
+  parent: Microsoft.Build.Framework
+  isExternal: false
+  name: ITaskHost
+  nameWithType: ITaskHost
+  fullName: Microsoft.Build.Framework.ITaskHost
+- uid: Microsoft.Build.Framework.ITask.BuildEngine*
+  parent: Microsoft.Build.Framework.ITask
+  isExternal: false
+  name: BuildEngine
+  nameWithType: ITask.BuildEngine
+- uid: Microsoft.Build.Framework.ITask.Execute*
+  parent: Microsoft.Build.Framework.ITask
+  isExternal: false
+  name: Execute
+  nameWithType: ITask.Execute
+- uid: Microsoft.Build.Framework.ITask.HostObject*
+  parent: Microsoft.Build.Framework.ITask
+  isExternal: false
+  name: HostObject
+  nameWithType: ITask.HostObject

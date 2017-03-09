@@ -1,0 +1,209 @@
+### YamlMime:ManagedReference
+items:
+- uid: Microsoft.Build.Framework.IBuildEngine2
+  id: IBuildEngine2
+  children:
+  - Microsoft.Build.Framework.IBuildEngine2.BuildProjectFile(System.String,System.String[],System.Collections.IDictionary,System.Collections.IDictionary,System.String)
+  - Microsoft.Build.Framework.IBuildEngine2.BuildProjectFilesInParallel(System.String[],System.String[],System.Collections.IDictionary[],System.Collections.IDictionary[],System.String[],System.Boolean,System.Boolean)
+  - Microsoft.Build.Framework.IBuildEngine2.IsRunningMultipleNodes
+  langs:
+  - csharp
+  name: IBuildEngine2
+  nameWithType: IBuildEngine2
+  fullName: Microsoft.Build.Framework.IBuildEngine2
+  type: Interface
+  summary: "Inneholder en metode for oppgaven forfattere et delsett av funksjonaliteten til de [!INCLUDE[vstecmsbuild](~/add/includes/vstecmsbuild-md.md)] motoren."
+  remarks: "IBuildEngine2 utvider <xref:Microsoft.Build.Framework.IBuildEngine>, slik at du kan bygge flere prosjektfiler parallelt i systemet som inneholder flere prosessorer eller prosessorer med flere kjerner.</xref:Microsoft.Build.Framework.IBuildEngine>"
+  syntax:
+    content: 'public interface IBuildEngine2 : Microsoft.Build.Framework.IBuildEngine'
+  implements:
+  - Microsoft.Build.Framework.IBuildEngine
+  platform:
+  - net462
+- uid: Microsoft.Build.Framework.IBuildEngine2.BuildProjectFile(System.String,System.String[],System.Collections.IDictionary,System.Collections.IDictionary,System.String)
+  id: BuildProjectFile(System.String,System.String[],System.Collections.IDictionary,System.Collections.IDictionary,System.String)
+  parent: Microsoft.Build.Framework.IBuildEngine2
+  langs:
+  - csharp
+  name: BuildProjectFile(String,String[],IDictionary,IDictionary,String)
+  nameWithType: IBuildEngine2.BuildProjectFile(String,String[],IDictionary,IDictionary,String)
+  fullName: Microsoft.Build.Framework.IBuildEngine2.BuildProjectFile(String,String[],IDictionary,IDictionary,String)
+  type: Method
+  assemblies:
+  - Microsoft.Build.Framework
+  namespace: Microsoft.Build.Framework
+  summary: "Starter bygging av en prosjektfilen. Hvis byggingen er fullført, utdataene av de angitte målene som returneres hvis noen finnes."
+  remarks: "Hvis ingen mål er angitt, [!INCLUDE[vstecmsbuild](~/add/includes/vstecmsbuild-md.md)] bygger standardmål av prosjektet.       Target-utdataene returneres som <xref:Microsoft.Build.Framework.ITaskItem>matriser indekseres av målnavn.</xref:Microsoft.Build.Framework.ITaskItem>"
+  syntax:
+    content: public bool BuildProjectFile (string projectFileName, string[] targetNames, System.Collections.IDictionary globalProperties, System.Collections.IDictionary targetOutputs, string toolsVersion);
+    parameters:
+    - id: projectFileName
+      type: System.String
+      description: "Navnet på prosjektfilen å bygge."
+    - id: targetNames
+      type: System.String[]
+      description: "Navn på målet i å bygge prosjektet. Skill flere mål med et semikolon (;). <xref uid=&quot;langword_csharp_Null&quot; name=&quot;Null&quot; href=&quot;&quot;></xref>verdier er godkjent."
+    - id: globalProperties
+      type: System.Collections.IDictionary
+      description: "En <xref:System.Collections.IDictionary>med flere globale egenskaper som gjelder for prosjektet.</xref:System.Collections.IDictionary> Nøkkel og verdi må være <xref uid=&quot;langword_csharp_String&quot; name=&quot;String&quot; href=&quot;&quot;> </xref> datatyper."
+    - id: targetOutputs
+      type: System.Collections.IDictionary
+      description: "Utdataene til hver angitt mål. <xref uid=&quot;langword_csharp_Null&quot; name=&quot;Null&quot; href=&quot;&quot;></xref>verdier er godkjent."
+    - id: toolsVersion
+      type: System.String
+      description: "Standardverdi = &quot;3.5.&quot; Angir verktøysettet versjonen for kompilering skal brukes. <xref uid=&quot;langword_csharp_Null&quot; name=&quot;Null&quot; href=&quot;&quot;></xref>verdier er godkjent."
+    return:
+      type: System.Boolean
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis byggingen var vellykket. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
+  overload: Microsoft.Build.Framework.IBuildEngine2.BuildProjectFile*
+  exceptions: []
+  platform:
+  - net462
+- uid: Microsoft.Build.Framework.IBuildEngine2.BuildProjectFilesInParallel(System.String[],System.String[],System.Collections.IDictionary[],System.Collections.IDictionary[],System.String[],System.Boolean,System.Boolean)
+  id: BuildProjectFilesInParallel(System.String[],System.String[],System.Collections.IDictionary[],System.Collections.IDictionary[],System.String[],System.Boolean,System.Boolean)
+  parent: Microsoft.Build.Framework.IBuildEngine2
+  langs:
+  - csharp
+  name: BuildProjectFilesInParallel(String[],String[],IDictionary[],IDictionary[],String[],Boolean,Boolean)
+  nameWithType: IBuildEngine2.BuildProjectFilesInParallel(String[],String[],IDictionary[],IDictionary[],String[],Boolean,Boolean)
+  fullName: Microsoft.Build.Framework.IBuildEngine2.BuildProjectFilesInParallel(String[],String[],IDictionary[],IDictionary[],String[],Boolean,Boolean)
+  type: Method
+  assemblies:
+  - Microsoft.Build.Framework
+  namespace: Microsoft.Build.Framework
+  summary: "Tillater oppgaver til å starte parallell versjoner av de angitte filene på systemer med flere prosessorer eller flere prosessorer. Hvis delversjoner er fullført, utdataene av de angitte målene som returneres hvis noen finnes."
+  remarks: "Begge `targetNames` og `targetOutputs` godta `null` verdier. Hvis ingen mål er angitt, bygges standardmål. Target-utdataene returneres som <xref:Microsoft.Build.Framework.ITaskItem>matriser indekseres av målnavn.</xref:Microsoft.Build.Framework.ITaskItem>"
+  syntax:
+    content: public bool BuildProjectFilesInParallel (string[] projectFileNames, string[] targetNames, System.Collections.IDictionary[] globalProperties, System.Collections.IDictionary[] targetOutputsPerProject, string[] toolsVersion, bool useResultsCache, bool unloadProjectsOnCompletion);
+    parameters:
+    - id: projectFileNames
+      type: System.String[]
+      description: "Navnet på prosjektfilene å bygge."
+    - id: targetNames
+      type: System.String[]
+      description: "Navnene på målene i å bygge prosjektet. Skill flere mål med et semikolon (;). <xref uid=&quot;langword_csharp_Null&quot; name=&quot;Null&quot; href=&quot;&quot;></xref>verdier er godkjent."
+    - id: globalProperties
+      type: System.Collections.IDictionary[]
+      description: "En <xref:System.Collections.IDictionary>med flere globale egenskaper som gjelder for prosjektet.</xref:System.Collections.IDictionary> Nøkkel og verdi må være <xref uid=&quot;langword_csharp_String&quot; name=&quot;String&quot; href=&quot;&quot;> </xref> datatyper. Datatabellen kan være <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
+    - id: targetOutputsPerProject
+      type: System.Collections.IDictionary[]
+      description: "Utdataene til hver angitt mål. <xref uid=&quot;langword_csharp_Null&quot; name=&quot;Null&quot; href=&quot;&quot;></xref>verdier er godkjent."
+    - id: toolsVersion
+      type: System.String[]
+      description: "Standardverdi = &quot;3.5.&quot; Angir verktøysettet versjonen for kompilering skal brukes. <xref uid=&quot;langword_csharp_Null&quot; name=&quot;Null&quot; href=&quot;&quot;></xref>verdier er godkjent."
+    - id: useResultsCache
+      type: System.Boolean
+      description: "Hvis <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>, kjører operasjonen hvis hurtigbufferen allerede inneholder resultatet. Resultatet er lagret i hurtigbufferen etter operasjonen."
+    - id: unloadProjectsOnCompletion
+      type: System.Boolean
+      description: "Hvis <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> prosjektet lastes når operasjonen er fullført."
+    return:
+      type: System.Boolean
+      description: "<xref uid=&quot;langword_csharp_True&quot; name=&quot;True&quot; href=&quot;&quot;></xref>Hvis byggingen var vellykket, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> Hvis ellers."
+  overload: Microsoft.Build.Framework.IBuildEngine2.BuildProjectFilesInParallel*
+  exceptions: []
+  platform:
+  - net462
+- uid: Microsoft.Build.Framework.IBuildEngine2.IsRunningMultipleNodes
+  id: IsRunningMultipleNodes
+  parent: Microsoft.Build.Framework.IBuildEngine2
+  langs:
+  - csharp
+  name: IsRunningMultipleNodes
+  nameWithType: IBuildEngine2.IsRunningMultipleNodes
+  fullName: Microsoft.Build.Framework.IBuildEngine2.IsRunningMultipleNodes
+  type: Property
+  assemblies:
+  - Microsoft.Build.Framework
+  namespace: Microsoft.Build.Framework
+  summary: "Returnerer om systemet kjører i én - eller flere - processor modus."
+  remarks: "Build-motoren er i modus for én prosessor (`IsRunningMultipleNodes` = `false`) når den er initialisert med antall CPUer som er lik 1 og build-motoren er ikke en underordnet-motor. Build-motoren er i modus for flere prosessorer (`IsRunningMultipleNodes` = `true`) når den er initialisert med et antall CPUer som er større enn 1, eller når build-motoren er en underordnet-motor."
+  syntax:
+    content: public bool IsRunningMultipleNodes { get; }
+    return:
+      type: System.Boolean
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis systemet kjører i modus for flere prosessorer <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> ellers."
+  overload: Microsoft.Build.Framework.IBuildEngine2.IsRunningMultipleNodes*
+  exceptions: []
+  platform:
+  - net462
+references:
+- uid: Microsoft.Build.Framework.IBuildEngine2.BuildProjectFile(System.String,System.String[],System.Collections.IDictionary,System.Collections.IDictionary,System.String)
+  parent: Microsoft.Build.Framework.IBuildEngine2
+  isExternal: false
+  name: BuildProjectFile(String,String[],IDictionary,IDictionary,String)
+  nameWithType: IBuildEngine2.BuildProjectFile(String,String[],IDictionary,IDictionary,String)
+  fullName: Microsoft.Build.Framework.IBuildEngine2.BuildProjectFile(String,String[],IDictionary,IDictionary,String)
+- uid: System.Boolean
+  parent: System
+  isExternal: true
+  name: Boolean
+  nameWithType: Boolean
+  fullName: System.Boolean
+- uid: System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.String[]
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String[]
+  spec.csharp:
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: String[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: System.Collections.IDictionary
+  parent: System.Collections
+  isExternal: true
+  name: IDictionary
+  nameWithType: IDictionary
+  fullName: System.Collections.IDictionary
+- uid: Microsoft.Build.Framework.IBuildEngine2.BuildProjectFilesInParallel(System.String[],System.String[],System.Collections.IDictionary[],System.Collections.IDictionary[],System.String[],System.Boolean,System.Boolean)
+  parent: Microsoft.Build.Framework.IBuildEngine2
+  isExternal: false
+  name: BuildProjectFilesInParallel(String[],String[],IDictionary[],IDictionary[],String[],Boolean,Boolean)
+  nameWithType: IBuildEngine2.BuildProjectFilesInParallel(String[],String[],IDictionary[],IDictionary[],String[],Boolean,Boolean)
+  fullName: Microsoft.Build.Framework.IBuildEngine2.BuildProjectFilesInParallel(String[],String[],IDictionary[],IDictionary[],String[],Boolean,Boolean)
+- uid: System.Collections.IDictionary[]
+  parent: System.Collections
+  isExternal: true
+  name: IDictionary
+  nameWithType: IDictionary
+  fullName: System.Collections.IDictionary[]
+  spec.csharp:
+  - uid: System.Collections.IDictionary
+    name: IDictionary
+    nameWithType: IDictionary
+    fullName: IDictionary[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: Microsoft.Build.Framework.IBuildEngine2.IsRunningMultipleNodes
+  parent: Microsoft.Build.Framework.IBuildEngine2
+  isExternal: false
+  name: IsRunningMultipleNodes
+  nameWithType: IBuildEngine2.IsRunningMultipleNodes
+  fullName: Microsoft.Build.Framework.IBuildEngine2.IsRunningMultipleNodes
+- uid: Microsoft.Build.Framework.IBuildEngine2.BuildProjectFile*
+  parent: Microsoft.Build.Framework.IBuildEngine2
+  isExternal: false
+  name: BuildProjectFile
+  nameWithType: IBuildEngine2.BuildProjectFile
+- uid: Microsoft.Build.Framework.IBuildEngine2.BuildProjectFilesInParallel*
+  parent: Microsoft.Build.Framework.IBuildEngine2
+  isExternal: false
+  name: BuildProjectFilesInParallel
+  nameWithType: IBuildEngine2.BuildProjectFilesInParallel
+- uid: Microsoft.Build.Framework.IBuildEngine2.IsRunningMultipleNodes*
+  parent: Microsoft.Build.Framework.IBuildEngine2
+  isExternal: false
+  name: IsRunningMultipleNodes
+  nameWithType: IBuildEngine2.IsRunningMultipleNodes
