@@ -1,0 +1,355 @@
+### YamlMime:ManagedReference
+items:
+- uid: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities
+  id: SecurityUtilities
+  children:
+  - Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.ComputeZonePermissionSet(System.String,System.Security.PermissionSet,System.String[])
+  - Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.IdentityListToPermissionSet(System.String[])
+  - Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.PermissionSetToIdentityList(System.Security.PermissionSet)
+  - Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.SignFile(System.Security.Cryptography.X509Certificates.X509Certificate2,System.Uri,System.String)
+  - Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.SignFile(System.String,System.Uri,System.String)
+  - Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.SignFile(System.String,System.Security.SecureString,System.Uri,System.String)
+  - Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.XmlToPermissionSet(System.Xml.XmlElement)
+  langs:
+  - csharp
+  name: SecurityUtilities
+  nameWithType: SecurityUtilities
+  fullName: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities
+  type: Class
+  summary: "Inneholder et sett med verktøyfunksjoner for å endre sikkerhet permision sett og logger."
+  syntax:
+    content: >-
+      [System.Runtime.InteropServices.ComVisible(false)]
+
+      public static class SecurityUtilities
+  inheritance:
+  - System.Object
+  implements: []
+  inheritedMembers: []
+  platform:
+  - net462
+- uid: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.ComputeZonePermissionSet(System.String,System.Security.PermissionSet,System.String[])
+  id: ComputeZonePermissionSet(System.String,System.Security.PermissionSet,System.String[])
+  parent: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities
+  langs:
+  - csharp
+  name: ComputeZonePermissionSet(String,PermissionSet,String[])
+  nameWithType: SecurityUtilities.ComputeZonePermissionSet(String,PermissionSet,String[])
+  fullName: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.ComputeZonePermissionSet(String,PermissionSet,String[])
+  type: Method
+  assemblies:
+  - Microsoft.Build.Tasks.v4.0
+  namespace: Microsoft.Build.Tasks.Deployment.ManifestUtilities
+  summary: "Genererer en tillatelse som er angitt av databehandling sone standard tillatelsessettet fjerner utelatte tillatelser og legger til alle tillatelser som er inkludert."
+  syntax:
+    content: public static System.Security.PermissionSet ComputeZonePermissionSet (string targetZone, System.Security.PermissionSet includedPermissionSet, string[] excludedPermissions);
+    parameters:
+    - id: targetZone
+      type: System.String
+      description: "Angir et sone standard tillatelsessett, som er hentet fra maskinpolicy. Valid values are <xref uid=&quot;langword_csharp_Internet&quot; name=&quot;Internet&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_LocalIntranet&quot; name=&quot;LocalIntranet&quot; href=&quot;&quot;></xref>, or <xref uid=&quot;langword_csharp_Custom&quot; name=&quot;Custom&quot; href=&quot;&quot;></xref>. Hvis <xref uid=&quot;langword_csharp_Custom&quot; name=&quot;Custom&quot; href=&quot;&quot;> </xref> angis, genererte tillatelsene baseres bare på den `includedPermissionSet` parameteren."
+    - id: includedPermissionSet
+      type: System.Security.PermissionSet
+      description: "En <xref:Microsoft.Build.Tasks.Deployment.ManifestUtilities.TrustInfo.PermissionSet*>objektet som inneholder settet med tillatelser inkluderes eksplisitt i genererte tillatelsene.</xref:Microsoft.Build.Tasks.Deployment.ManifestUtilities.TrustInfo.PermissionSet*> Tillatelsene som er angitt i parameteren inkluderes verbatim i tillatelsessettet genererte uavhengig av `targetZone` eller `excludedPermissions` parametere."
+    - id: excludedPermissions
+      type: System.String[]
+      description: "Angi en matrise av tillatelse identitet strenger som skal utelates fra tillatelsen sone-standard. ID-strenger for tillatelse kan beregnes ved hjelp av den <xref:Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.PermissionSetToIdentityList*>metoden.</xref:Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.PermissionSetToIdentityList*> Denne parameteren ignoreres hvis `targetZone` er ikke <xref uid=&quot;langword_csharp_Internet&quot; name=&quot;Internet&quot; href=&quot;&quot;> </xref> eller <xref uid=&quot;langword_csharp_LocalIntranet&quot; name=&quot;LocalIntranet&quot; href=&quot;&quot;> </xref>."
+    return:
+      type: System.Security.PermissionSet
+      description: "Returnerer det genererte tillatelse."
+  overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.ComputeZonePermissionSet*
+  exceptions: []
+  platform:
+  - net462
+- uid: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.IdentityListToPermissionSet(System.String[])
+  id: IdentityListToPermissionSet(System.String[])
+  parent: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities
+  langs:
+  - csharp
+  name: IdentityListToPermissionSet(String[])
+  nameWithType: SecurityUtilities.IdentityListToPermissionSet(String[])
+  fullName: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.IdentityListToPermissionSet(String[])
+  type: Method
+  assemblies:
+  - Microsoft.Build.Tasks.v4.0
+  namespace: Microsoft.Build.Tasks.Deployment.ManifestUtilities
+  summary: "Konverterer en matrise av strenger for tillatelse identiteten til en tillatelse angitte objekter."
+  syntax:
+    content: public static System.Security.PermissionSet IdentityListToPermissionSet (string[] ids);
+    parameters:
+    - id: ids
+      type: System.String[]
+      description: "En matrise med tillatelse identitet strenger."
+    return:
+      type: System.Security.PermissionSet
+      description: "Returnerer det konverterte tillatelse."
+  overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.IdentityListToPermissionSet*
+  exceptions: []
+  platform:
+  - net462
+- uid: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.PermissionSetToIdentityList(System.Security.PermissionSet)
+  id: PermissionSetToIdentityList(System.Security.PermissionSet)
+  parent: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities
+  langs:
+  - csharp
+  name: PermissionSetToIdentityList(PermissionSet)
+  nameWithType: SecurityUtilities.PermissionSetToIdentityList(PermissionSet)
+  fullName: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.PermissionSetToIdentityList(PermissionSet)
+  type: Method
+  assemblies:
+  - Microsoft.Build.Tasks.v4.0
+  namespace: Microsoft.Build.Tasks.Deployment.ManifestUtilities
+  summary: "Konverterer en tillatelse angitt objekt til en matrise av tillatelse identitet strenger."
+  syntax:
+    content: public static string[] PermissionSetToIdentityList (System.Security.PermissionSet permissionSet);
+    parameters:
+    - id: permissionSet
+      type: System.Security.PermissionSet
+      description: "Tillatelse til å inndata angitt som skal konverteres."
+    return:
+      type: System.String[]
+      description: "Returnerer en matrise av tillatelse identitet strenger."
+  overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.PermissionSetToIdentityList*
+  exceptions: []
+  platform:
+  - net462
+- uid: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.SignFile(System.Security.Cryptography.X509Certificates.X509Certificate2,System.Uri,System.String)
+  id: SignFile(System.Security.Cryptography.X509Certificates.X509Certificate2,System.Uri,System.String)
+  parent: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities
+  langs:
+  - csharp
+  name: SignFile(X509Certificate2,Uri,String)
+  nameWithType: SecurityUtilities.SignFile(X509Certificate2,Uri,String)
+  fullName: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.SignFile(X509Certificate2,Uri,String)
+  type: Method
+  assemblies:
+  - Microsoft.Build.Tasks.v4.0
+  namespace: Microsoft.Build.Tasks.Deployment.ManifestUtilities
+  summary: "Logger ClickOnce manifest eller PE-fil."
+  remarks: "Denne funksjonen kan bare logge en PE-fil hvis parameteren X509Certificate2 representerer et sertifikat i den gjeldende brukerens personlige sertifikatlager.       Denne overlasten for metoden kaller SignTool.exe, og derfor krever den [!INCLUDE[dnprdnlong](~/add/includes/dnprdnlong-md.md)] til å bli installert."
+  syntax:
+    content: public static void SignFile (System.Security.Cryptography.X509Certificates.X509Certificate2 cert, Uri timestampUrl, string path);
+    parameters:
+    - id: cert
+      type: System.Security.Cryptography.X509Certificates.X509Certificate2
+      description: "Sertifikatet brukes til å signere filen."
+    - id: timestampUrl
+      type: System.Uri
+      description: "Angir at filen er ikke tidsstemplet timestamp-serveren på den angitte HTTP-adressen. Denne parameteren kan være NULL hvis du ikke vil et tidsstempel."
+    - id: path
+      type: System.String
+      description: "Navnet på filen du vil logge."
+  overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.SignFile*
+  exceptions: []
+  platform:
+  - net462
+- uid: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.SignFile(System.String,System.Uri,System.String)
+  id: SignFile(System.String,System.Uri,System.String)
+  parent: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities
+  langs:
+  - csharp
+  name: SignFile(String,Uri,String)
+  nameWithType: SecurityUtilities.SignFile(String,Uri,String)
+  fullName: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.SignFile(String,Uri,String)
+  type: Method
+  assemblies:
+  - Microsoft.Build.Tasks.v4.0
+  namespace: Microsoft.Build.Tasks.Deployment.ManifestUtilities
+  summary: "Logger ClickOnce manifest eller PE-fil."
+  remarks: "Denne overlasten for metoden kaller SignTool.exe, og derfor krever den [!INCLUDE[dnprdnlong](~/add/includes/dnprdnlong-md.md)] til å bli installert."
+  syntax:
+    content: public static void SignFile (string certThumbprint, Uri timestampUrl, string path);
+    parameters:
+    - id: certThumbprint
+      type: System.String
+      description: "Angir avtrykket, SHA1-nummeret signeringssertifikatet som beholdes i det personlige sertifikatlageret."
+    - id: timestampUrl
+      type: System.Uri
+      description: "Angir at filen er ikke tidsstemplet timestamp-serveren på den angitte HTTP-adressen. Denne parameteren kan være NULL hvis du ikke vil et tidsstempel."
+    - id: path
+      type: System.String
+      description: "Navnet på filen du vil logge."
+  overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.SignFile*
+  exceptions: []
+  platform:
+  - net462
+- uid: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.SignFile(System.String,System.Security.SecureString,System.Uri,System.String)
+  id: SignFile(System.String,System.Security.SecureString,System.Uri,System.String)
+  parent: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities
+  langs:
+  - csharp
+  name: SignFile(String,SecureString,Uri,String)
+  nameWithType: SecurityUtilities.SignFile(String,SecureString,Uri,String)
+  fullName: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.SignFile(String,SecureString,Uri,String)
+  type: Method
+  assemblies:
+  - Microsoft.Build.Tasks.v4.0
+  namespace: Microsoft.Build.Tasks.Deployment.ManifestUtilities
+  summary: "Logger en ClickOnce-manifestet."
+  remarks: "Denne funksjonen er bare for signering noe manifest, ikke en PE-fil."
+  syntax:
+    content: public static void SignFile (string certPath, System.Security.SecureString certPassword, Uri timestampUrl, string path);
+    parameters:
+    - id: certPath
+      type: System.String
+      description: "Sertifikatet brukes til å signere filen. Sertifikatet må inneholde en privatnøkkel. Den <xref uid=&quot;langword_csharp_KeyUsage&quot; name=&quot;KeyUsage&quot; href=&quot;&quot;> </xref> filtypen er valgfritt, men hvis den er til stede, <xref uid=&quot;langword_csharp_DigitalSignature&quot; name=&quot;DigitalSignature&quot; href=&quot;&quot;> </xref> må settes til <xref uid=&quot;langword_csharp_True&quot; name=&quot;True&quot; href=&quot;&quot;> </xref>. Den <xref uid=&quot;langword_csharp_EnhancedKeyUsage&quot; name=&quot;EnhancedKeyUsage&quot; href=&quot;&quot;> </xref> utvidelsen også er valgfritt, men hvis den finnes, sertifikatet må inneholde støtte for objekt-ID (objekt-ID)."
+    - id: certPassword
+      type: System.Security.SecureString
+      description: "Passordet for sertifikatet."
+    - id: timestampUrl
+      type: System.Uri
+      description: "Angir at filen er ikke tidsstemplet timestamp-serveren på den angitte HTTP-adressen. Denne parameteren kan være NULL hvis du ikke vil et tidsstempel."
+    - id: path
+      type: System.String
+      description: "Navnet på filen du vil logge."
+  overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.SignFile*
+  exceptions: []
+  platform:
+  - net462
+- uid: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.XmlToPermissionSet(System.Xml.XmlElement)
+  id: XmlToPermissionSet(System.Xml.XmlElement)
+  parent: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities
+  langs:
+  - csharp
+  name: XmlToPermissionSet(XmlElement)
+  nameWithType: SecurityUtilities.XmlToPermissionSet(XmlElement)
+  fullName: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.XmlToPermissionSet(XmlElement)
+  type: Method
+  assemblies:
+  - Microsoft.Build.Tasks.v4.0
+  namespace: Microsoft.Build.Tasks.Deployment.ManifestUtilities
+  summary: "Konverterer en XML-elementet til en tillatelse settes til objektet."
+  remarks: "Konverterer en <xref:System.Xml.XmlElement>objekt en <xref:System.Security.PermissionSet>objektet.</xref:System.Security.PermissionSet> </xref:System.Xml.XmlElement>"
+  syntax:
+    content: public static System.Security.PermissionSet XmlToPermissionSet (System.Xml.XmlElement element);
+    parameters:
+    - id: element
+      type: System.Xml.XmlElement
+      description: "En XML-representasjon av tillatelsene."
+    return:
+      type: System.Security.PermissionSet
+      description: "Tillatelsen konverterte angitte objekter."
+  overload: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.XmlToPermissionSet*
+  exceptions: []
+  platform:
+  - net462
+references:
+- uid: System.Object
+  isExternal: false
+  name: System.Object
+- uid: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.ComputeZonePermissionSet(System.String,System.Security.PermissionSet,System.String[])
+  parent: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities
+  isExternal: false
+  name: ComputeZonePermissionSet(String,PermissionSet,String[])
+  nameWithType: SecurityUtilities.ComputeZonePermissionSet(String,PermissionSet,String[])
+  fullName: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.ComputeZonePermissionSet(String,PermissionSet,String[])
+- uid: System.Security.PermissionSet
+  parent: System.Security
+  isExternal: false
+  name: PermissionSet
+  nameWithType: PermissionSet
+  fullName: System.Security.PermissionSet
+- uid: System.String
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String
+- uid: System.String[]
+  parent: System
+  isExternal: true
+  name: String
+  nameWithType: String
+  fullName: System.String[]
+  spec.csharp:
+  - uid: System.String
+    name: String
+    nameWithType: String
+    fullName: String[]
+  - name: '[]'
+    nameWithType: '[]'
+    fullName: '[]'
+- uid: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.IdentityListToPermissionSet(System.String[])
+  parent: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities
+  isExternal: false
+  name: IdentityListToPermissionSet(String[])
+  nameWithType: SecurityUtilities.IdentityListToPermissionSet(String[])
+  fullName: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.IdentityListToPermissionSet(String[])
+- uid: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.PermissionSetToIdentityList(System.Security.PermissionSet)
+  parent: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities
+  isExternal: false
+  name: PermissionSetToIdentityList(PermissionSet)
+  nameWithType: SecurityUtilities.PermissionSetToIdentityList(PermissionSet)
+  fullName: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.PermissionSetToIdentityList(PermissionSet)
+- uid: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.SignFile(System.Security.Cryptography.X509Certificates.X509Certificate2,System.Uri,System.String)
+  parent: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities
+  isExternal: false
+  name: SignFile(X509Certificate2,Uri,String)
+  nameWithType: SecurityUtilities.SignFile(X509Certificate2,Uri,String)
+  fullName: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.SignFile(X509Certificate2,Uri,String)
+- uid: System.Security.Cryptography.X509Certificates.X509Certificate2
+  parent: System.Security.Cryptography.X509Certificates
+  isExternal: false
+  name: X509Certificate2
+  nameWithType: X509Certificate2
+  fullName: System.Security.Cryptography.X509Certificates.X509Certificate2
+- uid: System.Uri
+  parent: System
+  isExternal: true
+  name: Uri
+  nameWithType: Uri
+  fullName: System.Uri
+- uid: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.SignFile(System.String,System.Uri,System.String)
+  parent: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities
+  isExternal: false
+  name: SignFile(String,Uri,String)
+  nameWithType: SecurityUtilities.SignFile(String,Uri,String)
+  fullName: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.SignFile(String,Uri,String)
+- uid: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.SignFile(System.String,System.Security.SecureString,System.Uri,System.String)
+  parent: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities
+  isExternal: false
+  name: SignFile(String,SecureString,Uri,String)
+  nameWithType: SecurityUtilities.SignFile(String,SecureString,Uri,String)
+  fullName: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.SignFile(String,SecureString,Uri,String)
+- uid: System.Security.SecureString
+  parent: System.Security
+  isExternal: false
+  name: SecureString
+  nameWithType: SecureString
+  fullName: System.Security.SecureString
+- uid: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.XmlToPermissionSet(System.Xml.XmlElement)
+  parent: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities
+  isExternal: false
+  name: XmlToPermissionSet(XmlElement)
+  nameWithType: SecurityUtilities.XmlToPermissionSet(XmlElement)
+  fullName: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.XmlToPermissionSet(XmlElement)
+- uid: System.Xml.XmlElement
+  parent: System.Xml
+  isExternal: false
+  name: XmlElement
+  nameWithType: XmlElement
+  fullName: System.Xml.XmlElement
+- uid: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.ComputeZonePermissionSet*
+  parent: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities
+  isExternal: false
+  name: ComputeZonePermissionSet
+  nameWithType: SecurityUtilities.ComputeZonePermissionSet
+- uid: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.IdentityListToPermissionSet*
+  parent: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities
+  isExternal: false
+  name: IdentityListToPermissionSet
+  nameWithType: SecurityUtilities.IdentityListToPermissionSet
+- uid: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.PermissionSetToIdentityList*
+  parent: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities
+  isExternal: false
+  name: PermissionSetToIdentityList
+  nameWithType: SecurityUtilities.PermissionSetToIdentityList
+- uid: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.SignFile*
+  parent: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities
+  isExternal: false
+  name: SignFile
+  nameWithType: SecurityUtilities.SignFile
+- uid: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities.XmlToPermissionSet*
+  parent: Microsoft.Build.Tasks.Deployment.ManifestUtilities.SecurityUtilities
+  isExternal: false
+  name: XmlToPermissionSet
+  nameWithType: SecurityUtilities.XmlToPermissionSet
