@@ -16,8 +16,8 @@ items:
   nameWithType: SqlUserDefinedTypeAttribute
   fullName: Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute
   type: Class
-  summary: "Used to mark a type definition in an assembly as a user-defined type (UDT) in SQL Server. The properties on the attribute reflect the physical characteristics used when the type is registered with SQL Server. This class cannot be inherited."
-  remarks: "SQL Server creates a user-defined type that is bound to the type definition that has the SqlUserDefinedTypeAttribute custom attribute. Every UDT must be annotated with this attribute. See [CLR User-Defined Types](http://go.microsoft.com/fwlink/?LinkId=128028) for more information about UDTs, including an example of a UDT."
+  summary: "Brukes til å merke en typedefinisjon i en samling som en brukerdefinert type (UDT) i SQL Server. Med egenskapene i attributtet gjenspeiler kjennetegn brukes når typen er registrert med SQL Server. Denne klassen kan ikke arves."
+  remarks: "SQL Server oppretter en brukerdefinert type som er bundet til typedefinisjonen som har det egendefinerte attributtet SqlUserDefinedTypeAttribute. Hver UDT må være kommentert med attributtet. Se [CLR User-Defined typer](http://go.microsoft.com/fwlink/?LinkId=128028) for mer informasjon om UDTs, inkludert et eksempel på en UDT."
   example:
   - "The following example shows the `UserDefinedType` attribute of the Point UDT.  The UDT is byte-ordered, is named \"Point\", has a validation method named \"ValidatePoint\", and uses the native serialization format.  \n  \n [!code-cs[DataWorks SqlUserDefinedTypeAttribute Example#1](~/add/codesnippet/csharp/t-microsoft.sqlserver.se_4_1.cs)]\n [!code-vb[DataWorks SqlUserDefinedTypeAttribute Example#1](~/add/codesnippet/visualbasic/t-microsoft.sqlserver.se_4_1.vb)]"
   syntax:
@@ -43,8 +43,8 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "A required attribute on a user-defined type (UDT), used to confirm that the given type is a UDT and to indicate the storage format of the UDT."
-  remarks: "The following example specifies that the `Format` of the user-defined type is `SerializedDataWithMetadata`and the`MaxByteSize` is 8000 bytes."
+  summary: "Et nødvendig attributt for en brukerdefinert type (UDT), som brukes til å bekrefte at den angitte typen er en UDT og angi lagringsformat for UDT."
+  remarks: "Eksemplet nedenfor, angir dette at det `Format` brukerdefinert type er `SerializedDataWithMetadata`og`MaxByteSize` er 8000-byte."
   example:
   - >-
     [!code-cs[VbRaddataSQLObjects#12](~/add/codesnippet/csharp/CS/Type1.cs#12)]
@@ -54,7 +54,7 @@ items:
     parameters:
     - id: format
       type: Microsoft.SqlServer.Server.Format
-      description: "One of the <xref href=&quot;Microsoft.SqlServer.Server.Format&quot;></xref> values representing the serialization format of the type."
+      description: "Én av de <xref href=&quot;Microsoft.SqlServer.Server.Format&quot;> </xref> verdiene som representerer serialiseringsformatet for typen."
   overload: Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute.#ctor*
   exceptions: []
   platform:
@@ -71,12 +71,12 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "The serialization format as a <xref href=&quot;Microsoft.SqlServer.Server.Format&quot;></xref>."
+  summary: "Serialiseringsformatet som en <xref href=&quot;Microsoft.SqlServer.Server.Format&quot;> </xref>."
   syntax:
     content: public Microsoft.SqlServer.Server.Format Format { get; }
     return:
       type: Microsoft.SqlServer.Server.Format
-      description: "A <xref href=&quot;Microsoft.SqlServer.Server.Format&quot;></xref> value representing the serialization format."
+      description: "En <xref href=&quot;Microsoft.SqlServer.Server.Format&quot;> </xref> verdien som representerer serialiseringsformatet."
   overload: Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute.Format*
   exceptions: []
   platform:
@@ -93,13 +93,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Indicates whether the user-defined type is byte ordered."
+  summary: "Angir om en brukerdefinert type er byte som er ordnet i rekkefølge."
   remarks: "When set to `true`, the IsByteOrdered property in effect guarantees that the serialized binary data can be used for semantic ordering of the information. Thus, each instance of a byte-ordered UDT object can only have one serialized representation. When a comparison operation is performed in SQL Server on the serialized bytes, its results should be the same as if the same comparison operation had taken place in managed code..  \n  \n The following features are supported when IsByteOrdered is set to `true`:  \n  \n-   The ability to create indexes on columns of this type.  \n  \n-   The ability to create primary and foreign keys as well as CHECK and UNIQUE constraints on columns of this type.  \n  \n-   The ability to use Transact-SQL ORDER BY, GROUP BY, and PARTITION BY clauses. In these cases, the binary representation of the type is used to determine the order.  \n  \n-   The ability to use comparison operators in Transact-SQL statements.  \n  \n-   The ability to persist computed columns of this type.  \n  \n Note that both the `Native` and `UserDefined` serialization formats support the following comparison operators when IsByteOrdered is set to `true`:  \n  \n-   Equal to (=)  \n  \n-   Not equal to (!=)  \n  \n-   Greater than (>)  \n  \n-   Less than (\\<)  \n  \n-   Greater than or equal to (>=)  \n  \n-   Less than or equal to (<=)"
   syntax:
     content: public bool IsByteOrdered { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the user-defined type is byte ordered; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis en brukerdefinert typen byte som er ordnet; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute.IsByteOrdered*
   exceptions: []
   platform:
@@ -116,13 +116,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "Indicates whether all instances of this user-defined type are the same length."
-  remarks: "If set to `true`, all instances of UDTs corresponding to this common language runtime (CLR) type must have a length in bytes exactly equal to <xref:Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute.MaxByteSize%2A>. This attribute is only relevant for UDTs with `UserDefined` serialization <xref:Microsoft.SqlServer.Server.Format>."
+  summary: "Angir om alle forekomster av denne brukerdefinert type har samme lengde."
+  remarks: "Hvis satt til `true`, alle forekomster av UDTs som tilsvarer denne common language runtime (CLR) typen må ha en lengde i byte nøyaktig lik <xref:Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute.MaxByteSize%2A>.</xref:Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute.MaxByteSize%2A> Dette attributtet gjelder bare for UDTs med `UserDefined` serialisering <xref:Microsoft.SqlServer.Server.Format>.</xref:Microsoft.SqlServer.Server.Format>"
   syntax:
     content: public bool IsFixedLength { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if all instances of this type are the same length; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis alle forekomster av denne typen har samme lengde; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute.IsFixedLength*
   exceptions: []
   platform:
@@ -139,13 +139,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "The maximum size of the instance, in bytes."
-  remarks: "You must specify the MaxByteSize property with the `UserDefined` serialization <xref:Microsoft.SqlServer.Server.Format>.       When connecting to SQL Server 2005 or earlier, MaxByteSize must be between 1 and 8000.       When connecting to SQL Server 2008 or later, set MaxByteSize between 1 and 8000, for a type whose instances are always 8,000 bytes or less. For types that can have instances larger than 8000, specify -1.       For a UDT with user-defined serialization specified, MaxByteSize refers to the total size of the UDT in its serialized form as defined by the user. Consider a UDT with a property of a string of 10 characters (<xref:System.Char>). When the UDT is serialized using a <xref:System.IO.BinaryWriter>, the total size of the serialized string is 22 bytes: 2 bytes per Unicode UTF-16 character, multiplied by the maximum number of characters, plus 2 control bytes of overhead incurred from serializing a binary stream. So, when determining the value of MaxByteSize, the total size of the serialized UDT must be considered: the size of the data serialized in binary form plus the overhead incurred by serialization.       This property should not be used with `Native` serialization <xref:Microsoft.SqlServer.Server.Format>."
+  summary: "Den maksimale størrelsen på forekomsten, i byte."
+  remarks: "Du må angi egenskapen maxbytesize med den `UserDefined` serialisering <xref:Microsoft.SqlServer.Server.Format>.</xref:Microsoft.SqlServer.Server.Format>       Når du kobler til SQL Server 2005 eller tidligere, må MaxByteSize være mellom 1 og 8000.       Når du kobler til SQL Server 2008 eller senere, kan du angi MaxByteSize mellom 1 og 8000, for en type der forekomstene er alltid 8 000 byte eller mindre. For typer som kan ha forekomster som er større enn 8000, kan du angi -1.       En UDT med brukerdefinert serialisering angitt refererer MaxByteSize til den totale størrelsen på UDT i sin serialiserte form som er angitt av brukeren. Vurder UDT med en egenskap for en 10 tegnstreng (<xref:System.Char>).</xref:System.Char> Når UDT serialiseres ved hjelp av en <xref:System.IO.BinaryWriter>, er den totale størrelsen på den serialiserte strengen 22 byte: 2-byte per Unicode UTF-16 tegn, multiplisert maksimalt antall tegn, pluss 2 kontrollen byte overhead påløper fra serialisering av en binærstrøm.</xref:System.IO.BinaryWriter> Dette er tilfellet, når verdien for MaxByteSize, den totale størrelsen på den serialiserte UDT må anses: størrelsen på dataene serialisert i binær form og overhead påløper serialisering.       Denne egenskapen må ikke brukes med `Native` serialisering <xref:Microsoft.SqlServer.Server.Format>.</xref:Microsoft.SqlServer.Server.Format>"
   syntax:
     content: public int MaxByteSize { get; set; }
     return:
       type: System.Int32
-      description: "An <xref:System.Int32> value representing the maximum size of the instance."
+      description: "En <xref:System.Int32>verdien som representerer den maksimale størrelsen på forekomsten.</xref:System.Int32>"
   overload: Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute.MaxByteSize*
   exceptions: []
   platform:
@@ -162,13 +162,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "The SQL Server name of the user-defined type."
-  remarks: "The Name property is not used within SQL Server, but is used by the Microsoft Visual Studio .NET Integrated Development Environment (IDE)."
+  summary: "SQL Server-navnet på en brukerdefinert type."
+  remarks: "Egenskapen Name er ikke brukt i SQL Server, men brukes av Microsoft Visual Studio .NET integrert utvikling miljø (-Grensesnittet)."
   syntax:
     content: public string Name { get; set; }
     return:
       type: System.String
-      description: "A <xref:System.String> value representing the SQL Server name of the user-defined type."
+      description: "En <xref:System.String>verdien som representerer SQL Server-navnet på en brukerdefinert type.</xref:System.String>"
   overload: Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute.Name*
   exceptions: []
   platform:
@@ -185,13 +185,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "The name of the method used to validate instances of the user-defined type."
-  remarks: "The method specified by this attribute validates instances of the UDT when the UDT has been deserialized from a binary value that is not trusted."
+  summary: "Navnet på metoden som brukes til å validere forekomster av en brukerdefinert."
+  remarks: "Metoden angitt av dette attributtet validerer forekomster av UDT når UDT er deserialiseres fra en binær verdi som ikke er klarert."
   syntax:
     content: public string ValidationMethodName { get; set; }
     return:
       type: System.String
-      description: "A <xref:System.String> representing the name of the method used to validate instances of the user-defined type."
+      description: "En <xref:System.String>representerer navnet på metoden som brukes til å validere forekomster av en brukerdefinert.</xref:System.String>"
   overload: Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute.ValidationMethodName*
   exceptions: []
   platform:

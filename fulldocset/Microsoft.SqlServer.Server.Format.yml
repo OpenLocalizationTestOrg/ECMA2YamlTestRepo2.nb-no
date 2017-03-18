@@ -12,8 +12,8 @@ items:
   nameWithType: Format
   fullName: Microsoft.SqlServer.Server.Format
   type: Enum
-  summary: "Used by <xref href=&quot;Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute&quot;></xref> and <xref href=&quot;Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute&quot;></xref> to indicate the serialization format of a user-defined type (UDT) or aggregate."
-  remarks: "Used by <xref:Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute> and <xref:Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute> to indicate the serialization format of a user-defined type (UDT) or aggregate."
+  summary: "Bruk av <xref href=&quot;Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute&quot;> </xref> og <xref href=&quot;Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute&quot;> </xref> til å angi serialiseringsformatet for en brukerdefinert type (UDT) eller mengde."
+  remarks: "Bruk av <xref:Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute>og <xref:Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute>til å angi serialiseringsformatet for en brukerdefinert type (UDT) eller mengde.</xref:Microsoft.SqlServer.Server.SqlUserDefinedAggregateAttribute> </xref:Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute>"
   example:
   - "The following example shows the `UserDefinedType` attribute of the Point UDT.  The UDT is byte-ordered, is named \"Point\", has a validation method named \"ValidatePoint\", and uses the native serialization format.  \n  \n [!code-cs[DataWorks SqlUserDefinedTypeAttribute Example#1](~/add/codesnippet/csharp/t-microsoft.sqlserver.se_6_1.cs)]\n [!code-vb[DataWorks SqlUserDefinedTypeAttribute Example#1](~/add/codesnippet/visualbasic/t-microsoft.sqlserver.se_6_1.vb)]"
   syntax:
@@ -34,13 +34,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "The <xref uid=&quot;langword_csharp_Native&quot; name=&quot;Native&quot; href=&quot;&quot;></xref> serialization format uses a very simple algorithm that enables SQL Server to store an efficient representation of the UDT on disk. Types marked for <xref uid=&quot;langword_csharp_Native&quot; name=&quot;Native&quot; href=&quot;&quot;></xref> serialization can only have value types (structs in Microsoft Visual C# and structures in Microsoft Visual Basic .NET) as members. Members of reference types (such as classes in Visual C# and Visual Basic), either user-defined or those existing in the framework (such as <xref:System.String>), are not supported."
-  remarks: "The requirements for this format are:      -   The `StructLayout.LayoutKindSequential` attribute must be applied to the aggregate or UDT if it is defined in a class and not a structure. This controls the physical layout of the data fields, and is used to force the members to be laid out sequentially in the order they appear. SQL Server uses this attribute to determine the field order for UDTs with multiple fields.      -   The type must contain at least one member (serialized values cannot be zero bytes in size).      -   All the fields of the aggregate must be *blittable*, that is, they must have a common representation in both managed and unmanaged memory and not require special handling by the interop marshaler.      -   All the fields of the UDT should be of one of the following types that can be serialized: `bool`, `byte`,`sbyte`,`short`,`ushort`, `int`, `uint`, `long`, `ulong`, `float`, `double`, <xref:System.Data.SqlTypes.SqlByte>, <xref:System.Data.SqlTypes.SqlInt16>, <xref:System.Data.SqlTypes.SqlInt32>, <xref:System.Data.SqlTypes.SqlInt64>, <xref:System.Data.SqlTypes.SqlDateTime>, <xref:System.Data.SqlTypes.SqlSingle>, <xref:System.Data.SqlTypes.SqlDouble>, <xref:System.Data.SqlTypes.SqlMoney>, or other value types defined by the user that contain fields of one of these types.      -   The aggregate must not specify a value for `MaxByteSize`.      -   The aggregate must not have any [NonSerialized] fields.      -   Fields must not be marked as an explicit layout (<xref:System.Runtime.InteropServices.StructLayoutAttribute>)."
+  summary: "Den <xref uid=&quot;langword_csharp_Native&quot; name=&quot;Native&quot; href=&quot;&quot;> </xref> serialiseringsformat bruker en veldig enkelt algoritme som gjør det mulig for SQL Server til å lagre en effektiv gjengivelse av UDT på disken. Typene som er merket for <xref uid=&quot;langword_csharp_Native&quot; name=&quot;Native&quot; href=&quot;&quot;> </xref> serialisering kan bare ha verdityper (strukturer i Microsoft Visual C#) og strukturer i Visual Basic Microsoft.NET som medlemmer. Medlemmer av referanse datatyper (for eksempel klasser i Visual C# og Visual Basic), enten en brukerdefinert eller de eksisterende i framework (eksempel <xref:System.String>), støttes ikke.</xref:System.String>"
+  remarks: "Kravene for dette formatet er: - `StructLayout.LayoutKindSequential` attributtet må brukes på aggregatfunksjonen eller UDT hvis den er definert i en klasse og ikke en struktur. Dette kontrollerer det fysiske oppsettet av datafeltene og brukes til å fremtvinge hvilke medlemmer som skal ordnes sekvensielt rekkefølgen de vises. SQL Server bruker dette attributtet ikke fastsette feltrekkefølgen for UDTs med flere felt.      -Typen må inneholde minst ett medlem (serialiserte verdiene kan ikke være null størrelse på byte).      -Alle feltene for aggregatfunksjonen må være *blokkoverførbare*, som er de må ha en vanlig representasjon i både administrerte og uforvaltede minnet og krever ikke spesiell behandling av interop formidler.      -Alle feltene for UDT må være én av følgende typer som kan serialiseres: `bool`, `byte`,`sbyte`,`short`,`ushort`, `int`, `uint`, `long`, `ulong`, `float`, `double`, <xref:System.Data.SqlTypes.SqlByte>, <xref:System.Data.SqlTypes.SqlInt16>, <xref:System.Data.SqlTypes.SqlInt32>, <xref:System.Data.SqlTypes.SqlInt64>, <xref:System.Data.SqlTypes.SqlDateTime>, <xref:System.Data.SqlTypes.SqlSingle>, <xref:System.Data.SqlTypes.SqlDouble>, <xref:System.Data.SqlTypes.SqlMoney>, eller andre verdityper som er definert av brukeren som inneholder felt av en av disse typene.</xref:System.Data.SqlTypes.SqlMoney> </xref:System.Data.SqlTypes.SqlDouble> </xref:System.Data.SqlTypes.SqlSingle> </xref:System.Data.SqlTypes.SqlDateTime> </xref:System.Data.SqlTypes.SqlInt64> </xref:System.Data.SqlTypes.SqlInt32> </xref:System.Data.SqlTypes.SqlInt16> </xref:System.Data.SqlTypes.SqlByte>      -Mengde kan ikke angi en verdi for `MaxByteSize`.      -Mengde kan ikke ha noen [NonSerialized] felt.      -Felt må ikke være markert som en eksplisitt oppsett (<xref:System.Runtime.InteropServices.StructLayoutAttribute>).</xref:System.Runtime.InteropServices.StructLayoutAttribute>"
   syntax:
     content: Native
     return:
       type: Microsoft.SqlServer.Server.Format
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -56,12 +56,12 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "The serialization format is unknown."
+  summary: "Serialiseringsformatet er ukjent."
   syntax:
     content: Unknown
     return:
       type: Microsoft.SqlServer.Server.Format
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -77,13 +77,13 @@ items:
   assemblies:
   - System.Data
   namespace: Microsoft.SqlServer.Server
-  summary: "The <xref uid=&quot;langword_csharp_UserDefined&quot; name=&quot;UserDefined&quot; href=&quot;&quot;></xref> serialization format gives the developer full control over the binary format through the <xref href=&quot;Microsoft.SqlServer.Server.IBinarySerialize&quot;></xref><xref uid=&quot;langword_csharp_.Write&quot; name=&quot;.Write&quot; href=&quot;&quot;></xref> and <xref href=&quot;Microsoft.SqlServer.Server.IBinarySerialize&quot;></xref><xref uid=&quot;langword_csharp_.Read&quot; name=&quot;.Read&quot; href=&quot;&quot;></xref> methods."
-  remarks: "The aggregate must specify a value for `MaxByteSize`.       Specify the <xref:Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute.IsByteOrdered%2A> attribute property. The default value is false.       If you omit any field in the <xref:Microsoft.SqlServer.Server.IBinarySerialize.Read%2A> or <xref:Microsoft.SqlServer.Server.IBinarySerialize.Write%2A> methods, the state of that field is not serialized."
+  summary: "Den <xref uid=&quot;langword_csharp_UserDefined&quot; name=&quot;UserDefined&quot; href=&quot;&quot;> </xref> serialisering format gir utvikleren full kontroll over det binære formatet via den <xref href=&quot;Microsoft.SqlServer.Server.IBinarySerialize&quot;> </xref> <xref uid=&quot;langword_csharp_.Write&quot; name=&quot;.Write&quot; href=&quot;&quot;> </xref> og <xref href=&quot;Microsoft.SqlServer.Server.IBinarySerialize&quot;> </xref> <xref uid=&quot;langword_csharp_.Read&quot; name=&quot;.Read&quot; href=&quot;&quot;> </xref> metoder."
+  remarks: "Aggregatfunksjonen må angi en verdi for `MaxByteSize`.       Angi den <xref:Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute.IsByteOrdered%2A>attributt egenskapen.</xref:Microsoft.SqlServer.Server.SqlUserDefinedTypeAttribute.IsByteOrdered%2A> Standardverdien er false.       Hvis du utelater alle felt i den <xref:Microsoft.SqlServer.Server.IBinarySerialize.Read%2A>eller <xref:Microsoft.SqlServer.Server.IBinarySerialize.Write%2A>metoder, statusen for dette feltet ikke serialiseres.</xref:Microsoft.SqlServer.Server.IBinarySerialize.Write%2A> </xref:Microsoft.SqlServer.Server.IBinarySerialize.Read%2A>"
   syntax:
     content: UserDefined
     return:
       type: Microsoft.SqlServer.Server.Format
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
