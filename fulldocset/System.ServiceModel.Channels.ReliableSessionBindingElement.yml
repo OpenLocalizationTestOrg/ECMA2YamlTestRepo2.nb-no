@@ -26,8 +26,8 @@ items:
   nameWithType: ReliableSessionBindingElement
   fullName: System.ServiceModel.Channels.ReliableSessionBindingElement
   type: Class
-  summary: "Represents the binding element that can produce the sending and receiving channels required for a reliable session between endpoints."
-  remarks: "Provides sessions and optionally provides ordered message delivery. This implemented session can cross SOAP and transport intermediaries.       Each binding element represents a processing step when sending or receiving messages. At runtime, binding elements create the channel factories and listeners that are necessary to build outgoing and incoming channel stacks required to send and receive messages. The ReliableSessionBindingElement provides an optional layer in the stack that can establish a reliable session between endpoints and configure the behavior of this session.       The ReliableSessionBindingElement is provided on the standard bindings in the following table.      |Binding|Default|   |-------------|-------------|   |<xref:System.ServiceModel.NetTcpBinding>|Off|   |<xref:System.ServiceModel.WSHttpBinding>|Off|   |<xref:System.ServiceModel.WSDualHttpBinding>|On (required)|"
+  summary: "Representerer bindingselementet som kan produsere det sending og mottak av kanaler kreves for en pålitelig økt mellom endepunkt."
+  remarks: "Kan økter, og eventuelt i meldingslevering. Denne implementert økten kan cross SOAP og transport mellomledd.       Hvert Bindingselement representerer et behandlingstrinn under sending og mottak av meldinger. Ved kjøring opprette binding elementer kanal fabrikker og lyttere som kreves for å bygge innkommende og utgående kanal bunker som kreves for å sende og motta meldinger. ReliableSessionBindingElement gir et valgfritt lag som kan opprette en pålitelig økt mellom endepunkt og konfigurere virkemåten for denne økten.       ReliableSessionBindingElement er angitt i standard bindingene i følgende tabell.      | Bindingen | Standard |   |-------------|-------------|   | <xref:System.ServiceModel.NetTcpBinding>| Av |   | <xref:System.ServiceModel.WSHttpBinding>| Av |   | <xref:System.ServiceModel.WSDualHttpBinding>| På (obligatorisk) |</xref:System.ServiceModel.WSDualHttpBinding> </xref:System.ServiceModel.WSHttpBinding> </xref:System.ServiceModel.NetTcpBinding>"
   example:
   - "The ReliableSessionBindingElement can be added to any custom binding. This is done using the following configuration elements.  \n  \n```  \n<bindings>  \n    <customBinding>  \n        <binding configurationName=”ReliabilityHTTP”>  \n            <reliableSession/>  \n        </binding>  \n    </customBinding>  \n</bindings>  \n```  \n  \n The following sample code demonstrates how to use ReliableSessionBindingElement in code.  \n  \n [!code-vb[S_Imperative#1](~/add/codesnippet/visualbasic/t-system.servicemodel.ch_0_1.vb)]\n [!code-cs[S_Imperative#1](~/add/codesnippet/csharp/t-system.servicemodel.ch_0_1.cs)]"
   syntax:
@@ -51,7 +51,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Channels.ReliableSessionBindingElement&quot;></xref> class."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.ServiceModel.Channels.ReliableSessionBindingElement&quot;> </xref> klasse."
   syntax:
     content: public ReliableSessionBindingElement ();
     parameters: []
@@ -71,13 +71,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Channels.ReliableSessionBindingElement&quot;></xref> class that specifies whether message delivery must preserve the order in which messages are sent."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.ServiceModel.Channels.ReliableSessionBindingElement&quot;> </xref> klassen som angir om meldingslevering må beholde rekkefølgen-meldinger sendes."
   syntax:
     content: public ReliableSessionBindingElement (bool ordered);
     parameters:
     - id: ordered
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if messages must be delivered in the order in which they are sent; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default value is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis meldinger må leveres i rekkefølgen som de sendes; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Standardverdien er <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.#ctor*
   exceptions: []
   platform:
@@ -94,18 +94,18 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets or sets the interval of time that a destination waits before sending an acknowledgment to the message source on reliable channels that are created by the factory."
-  remarks: "The destination that receives messages on a reliable channel groups the acknowledgments for these messages together into a single message to reduce network traffic and to increase information density on messages. Grouping scales better as traffic increases. It does not attempt to send an acknowledgment for every message it receives as soon as possible, but rather waits for an interval of time, groups together the acknowledgments that have arrived during that interval, and then sends them all together. The first message that is received is the exception; it is acknowledged as soon as it is delivered. Also, if reliable sessions are used with single HTTP connections, as is the case for example with the <xref:System.ServiceModel.WSHttpBinding> but not <xref:System.ServiceModel.WSDualHttpBinding>, then this setting is not used.       The value that is set with the AcknowledgementInterval property is a recommendation to the infrastructure and not a hard limit."
+  summary: "Henter eller angir hvor lang tid et mål skal vente før du sender bekreftelse til meldingskilde på pålitelig kanaler som er opprettet av fabrikken."
+  remarks: "Målet som skal motta meldinger på en pålitelig kanal grupperer bekreftelser for disse meldinger sammen til én enkelt melding å redusere nettverkstrafikk og øke informasjon tetthet på meldinger. Grupperingen skaleres bedre når trafikk øker. Den ikke forsøk på å sende en bekreftelse for alle meldinger den mottar så snart som mulig, men i stedet venter på en tidsintervallet, grupperer sammen bekreftelser er mottatt under dette intervallet, og sender dem alle sammen. Den første meldingen som mottas er unntaket; Det er bekreftet så snart den er levert. Også hvis pålitelig økter brukes med én HTTP-tilkoblinger, som gjelder for eksempel den <xref:System.ServiceModel.WSHttpBinding>, men ikke <xref:System.ServiceModel.WSDualHttpBinding>, og deretter denne innstillingen ikke brukes.</xref:System.ServiceModel.WSDualHttpBinding> </xref:System.ServiceModel.WSHttpBinding>       Verdien som er angitt med egenskapen AcknowledgementInterval anbefales infrastrukturen og ikke grensen."
   syntax:
     content: public TimeSpan AcknowledgementInterval { get; set; }
     return:
       type: System.TimeSpan
-      description: "The <xref:System.TimeSpan> that specifies the interval of time that a service waits until sending an acknowledgment to the message source. The default value is 2 seconds."
+      description: "Den <xref:System.TimeSpan>som angir tidsintervallet som en tjeneste skal vente før sending av en bekreftelse til meldingskilden.</xref:System.TimeSpan> Standardverdien er 2 sekunder."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.AcknowledgementInterval*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The value set is less than or equal to zero."
+    description: "Verdien er mindre enn eller lik null."
   platform:
   - net462
 - uid: System.ServiceModel.Channels.ReliableSessionBindingElement.BuildChannelFactory``1(System.ServiceModel.Channels.BindingContext)
@@ -125,10 +125,10 @@ items:
     parameters:
     - id: context
       type: System.ServiceModel.Channels.BindingContext
-      description: "To be added."
+      description: "Som skal legges til."
     return:
       type: System.ServiceModel.Channels.IChannelFactory{TChannel}
-      description: "To be added."
+      description: "Som skal legges til."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.BuildChannelFactory<TChannel>*
   exceptions: []
   platform:
@@ -150,10 +150,10 @@ items:
     parameters:
     - id: context
       type: System.ServiceModel.Channels.BindingContext
-      description: "To be added."
+      description: "Som skal legges til."
     return:
       type: System.ServiceModel.Channels.IChannelListener`1
-      description: "To be added."
+      description: "Som skal legges til."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.BuildChannelListener<TChannel>*
   exceptions: []
   platform:
@@ -175,10 +175,10 @@ items:
     parameters:
     - id: context
       type: System.ServiceModel.Channels.BindingContext
-      description: "To be added."
+      description: "Som skal legges til."
     return:
       type: System.Boolean
-      description: "To be added."
+      description: "Som skal legges til."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.CanBuildChannelFactory<TChannel>*
   exceptions: []
   platform:
@@ -200,10 +200,10 @@ items:
     parameters:
     - id: context
       type: System.ServiceModel.Channels.BindingContext
-      description: "To be added."
+      description: "Som skal legges til."
     return:
       type: System.Boolean
-      description: "To be added."
+      description: "Som skal legges til."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.CanBuildChannelListener<TChannel>*
   exceptions: []
   platform:
@@ -220,13 +220,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Creates a copy of the current reliable session binding element."
+  summary: "Oppretter en kopi av elementet pålitelig økten binding."
   syntax:
     content: public override System.ServiceModel.Channels.BindingElement Clone ();
     parameters: []
     return:
       type: System.ServiceModel.Channels.BindingElement
-      description: "A <xref:System.ServiceModel.Channels.BindingElement> that is a clone of the current binding element."
+      description: "En <xref:System.ServiceModel.Channels.BindingElement>som en kopi av det gjeldende bindingselementet.</xref:System.ServiceModel.Channels.BindingElement>"
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.Clone*
   exceptions: []
   platform:
@@ -243,13 +243,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets or sets a value that indicates whether the reliable session has flow control enabled."
-  remarks: "Flow control is a mechanism that reliable sessions implement to ensure that senders do not send more messages than a receiver can handle. Receivers have a buffer of messages that is used to accommodate message bursts and out-of-order messages. Receivers advertise to senders the amount of space that remains in this buffer in each of their acknowledgements. Senders can use this information to stop sending new messages whenever the receiver has no buffer space left."
+  summary: "Henter eller angir en verdi som angir om den pålitelige økten har flytkontroll aktivert."
+  remarks: "Flytkontroll er en metode som implementerer pålitelig økter for å sikre at avsendere ikke sende flere meldinger enn en mottaker kan behandle. Mottakere har en buffer for meldinger som brukes til å tilpasse meldingen burst og feil rekkefølge meldinger. Mottakere annonser til avsendere diskplass som blir værende i denne bufferen i hver av bekreftelser. Avsendere kan bruke denne informasjonen til å slutte å sende nye meldinger når mottakeren har ingen bufferplass til venstre."
   syntax:
     content: public bool FlowControlEnabled { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the reliable session has flow control enabled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis den pålitelige økten har flytkontroll aktivert. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Standard <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.FlowControlEnabled*
   exceptions: []
   platform:
@@ -271,10 +271,10 @@ items:
     parameters:
     - id: context
       type: System.ServiceModel.Channels.BindingContext
-      description: "To be added."
+      description: "Som skal legges til."
     return:
       type: T
-      description: "To be added."
+      description: "Som skal legges til."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.GetProperty<T>*
   exceptions: []
   platform:
@@ -291,18 +291,18 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets or sets an interval of time that a service remains inactive before closing."
-  remarks: "Activity on a channel is defined as receiving an application or infrastructure message. The inactivity timeout parameter controls the maximum amount of time to keep an inactive session alive. If more than InactivityTimeout time interval passes with no activity, the session is aborted by the infrastructure and the channel faults. The reliable session is torn down unilaterally.       If the sending application has no messages to send then the reliable session is normally not faulted because of inactivity; instead a keep-alive mechanism keeps the session active indefinitely. Note that the dispatcher can independently abort the reliable session if no application messages are sent or received. Thus, the inactivity timeout typically expires if network conditions are such that no messages are received or if there is a failure on the sender."
+  summary: "Henter eller angir en tidsintervallet som en tjeneste forblir inaktiv før du lukker."
+  remarks: "Aktiviteten på en kanal er definert som mottak av et program eller infrastruktur melding. Parameteren for tidsavbrudd for inaktivitet kontrollerer maksimal tid til å gjøre en inaktiv økt aktiv. Hvis mer enn InactivityTimeout tidsintervallet sender uten aktivitet ble økten avbrutt av infrastrukturen og kanal-feil. Den pålitelige økten er brutt ned Ensidig.       Hvis avsenderprogrammet har ingen meldinger for å sende deretter pålitelig mislyktes vanligvis ikke på grunn av inaktivitet; i stedet holder en Behold aktiv-mekanisme økten aktiv på ubestemt tid. Vær oppmerksom på at dispatcher uavhengig kan avbryte pålitelig økt Hvis ingen programmet-meldinger sendes eller mottas. Tidsavbrudd for inaktivitet utløper derfor vanligvis hvis nettverksbetingelser er slik at ingen meldinger mottas, eller hvis det oppstår en feil på avsenderen."
   syntax:
     content: public TimeSpan InactivityTimeout { get; set; }
     return:
       type: System.TimeSpan
-      description: "The <xref:System.TimeSpan> that specifies the interval of time that a service remains inactive before closing. The default value is 10 minutes."
+      description: "Den <xref:System.TimeSpan>som angir hvor lang tid en tjeneste forblir inaktiv før du lukker.</xref:System.TimeSpan> Standardverdien er 10 minutter."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.InactivityTimeout*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The value set is less than or equal to zero or greater than either <xref:System.Int32.MaxValue> or <xref:System.TimeSpan.MaxValue>."
+    description: "Verdien er mindre enn eller lik null eller større enn enten <xref:System.Int32.MaxValue>eller <xref:System.TimeSpan.MaxValue>.</xref:System.TimeSpan.MaxValue> </xref:System.Int32.MaxValue>"
   platform:
   - net462
 - uid: System.ServiceModel.Channels.ReliableSessionBindingElement.MaxPendingChannels
@@ -317,18 +317,18 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets or sets the largest number of channels that can be pending during the reliable session."
-  remarks: "Channels are pending when they are waiting to be accepted. Once that limit is reached, no channels are created and put in pending mode until this number goes down (by accepting pending channels). This is a limit for each listener.       When the threshold is reached and a remote application tries to establish a new reliable session, the request is denied and the open operation that prompted this faults."
+  summary: "Henter eller angir det største antallet kanaler som kan være ventende under pålitelig økten."
+  remarks: "Kanaler venter når de venter på godtas. Når denne grensen er nådd, ingen kanaler opprettes og Plasser i ventende modus før tallet når (ved å godta ventende kanaler). Dette er en grense for hver lytteren.       Når terskelen er nådd, og et eksternt program prøver å opprette en ny pålitelig økt, forespørselen avslås og åpne operasjonen som du blir bedt om dette feil."
   syntax:
     content: public int MaxPendingChannels { get; set; }
     return:
       type: System.Int32
-      description: "The largest number of channels that can be pending. The default value is 4."
+      description: "Det største antallet kanaler som kan være venter. Standardverdien er 4."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.MaxPendingChannels*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The value set is less than or equal to zero or greater than 16384."
+    description: "Verdien er mindre enn eller lik null eller større enn 16384."
   platform:
   - net462
 - uid: System.ServiceModel.Channels.ReliableSessionBindingElement.MaxRetryCount
@@ -343,18 +343,18 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets or sets the maximum number of times that a message attempts to be transferred during the reliable session."
-  remarks: "A message is considered to be transferred if its delivery at the recipient has been acknowledged by the recipient.       If an acknowledgment has not been received within a certain amount of time for a message that has been transmitted, the infrastructure automatically retransmits the message. The infrastructure tries to send the message for, at most, a MaxRetryCount number of times. Not receiving an acknowledgment before this limit is reached is considered a fatal communication failure and causes the channel faulted event to be raised.       The infrastructure uses an exponential back-off algorithm to determine when to retransmit, based on a computed average round-trip time. The initial retry time is computed based on the measured roundtrip time of establishing the session. The retransmission algorithm doubles the delay with every attempt, which results in approximately 8.5 minutes passing between the first transmission attempt and the last retransmission attempt. The time for the first retransmission attempt is adjusted according to the calculated round-trip time and the resulting stretch of time that those attempts take varies accordingly. This allows the retransmission time to dynamically adapt to varying network conditions."
+  summary: "Henter eller angir maksimalt antall ganger som en melding som prøver å overføres i pålitelig økten."
+  remarks: "En melding regnes som skal overføres hvis leveringen av mottakeren er godkjent av mottakeren.       Hvis en bekreftelse ikke har mottatt i en viss tid for en melding som er overført, sender infrastrukturen automatisk meldingen. Infrastrukturen prøver å sende meldingen for maksimalt MaxRetryCount flere ganger. Ikke motta bekreftelse før denne grensen er nådd regnes en kritisk kommunikasjonsfeil og fører til at mislykkes kanal-hendelse.       Infrastrukturen bruker en algoritme for eksponentiell tilbaketrekking av bestemme når skal sende, basert på et beregnet gå i retur Gjennomsnittstid for. Første prøv på nytt nå beregnes basert på målt tur returtiden for å opprette økten. Algoritmen tidsavbruddet dobbelt så forsinkelsen med alle forsøk på, som fører til omtrent 8,5 minutter sende mellom første overføring forsøk og det siste forsøket på tidsavbruddet. Tiden for det første forsøket tidsavbruddet justeres i henhold til den beregnede gå i retur tiden og resulterende stretch tid som disse forsøk tar varierer tilsvarende. Dette gjør at tidsavbruddet tid til å tilpasse dynamisk å variere nettverksbetingelser."
   syntax:
     content: public int MaxRetryCount { get; set; }
     return:
       type: System.Int32
-      description: "The maximum number of times that a message attempts to be re-sent. The minimum value is 1; the maximum is <xref:System.Int32>; and the default value is 8."
+      description: "Maksimalt antall ganger en melding som prøver å sendes på nytt. Minimumsverdien er 1. Det maksimale antallet er <xref:System.Int32>; og standardverdien er 8.</xref:System.Int32>"
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.MaxRetryCount*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The value set is less than or equal to zero."
+    description: "Verdien er mindre enn eller lik null."
   platform:
   - net462
 - uid: System.ServiceModel.Channels.ReliableSessionBindingElement.MaxTransferWindowSize
@@ -369,18 +369,18 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets or sets the largest number of messages that can exist in either the send buffer or the receive buffer."
-  remarks: "The value of the MaxTransferWindowSize property can be set on both the sender and the receiver. This value is included in the binding policy of the WSDL, so if you use the [ServiceModel Metadata Utility Tool (Svcutil.exe)](~/add/includes/ajax-current-ext-md.md) to construct your client, it has the same value. Otherwise this value is whatever you set it to be on the client.       When this limit is reached on the sender, additional calls to send are blocked. When this limit is reached on the receiver, new messages that arrive on the underlying channel are not accepted.       A reliable session uses a windowing protocol to help improve network utilization. The amount of buffering required is directly derived from the size of the transmission window. When tuning this value, note that the optimal transmission window is related to the bandwidth and the latency in a straight-forward way. The ideal maximum window size is the bandwidth times the latency. Anything smaller yields less than 100% network utilization; anything larger is just wasted space."
+  summary: "Henter eller angir det største antallet meldinger som kan finnes i sendebufferen eller mottaksbufferen."
+  remarks: "Verdien for egenskapen MaxTransferWindowSize kan angis for både avsenderen og mottakeren. Denne verdien er inkludert i policyen for binding av WSDL, slik at hvis du bruker den [ServiceModel Metadata verktøyet verktøyet (Svcutil.exe)](~/add/includes/ajax-current-ext-md.md) for å lage klienten, har den samme verdi. Hvis er denne verdien hva du sette den til på klienten.       Når denne grensen er nådd på avsenderen, blokkeres flere kall til å sende. Når denne grensen er nådd på mottakeren, godtas ikke nye meldinger som ankommer i den underliggende kanalen.       En pålitelig økt bruker en vindusbasert protokoll for å forbedre nettverksbruk. Mengden bufring kreves hentes direkte fra størrelsen på overføringsvinduet. Legg merke til at overføringsvinduet optimale er knyttet til båndbredden og ventetiden på en vanlig videresending måte når justering denne verdien. Ideelle maksimal vindusstørrelse er båndbredde tidsavbrytes ventetiden. Noe mindre gir mindre enn 100% nettverksbruk; noe større er bare bortkastet plass."
   syntax:
     content: public int MaxTransferWindowSize { get; set; }
     return:
       type: System.Int32
-      description: "The largest number of messages that can be buffered. The minimum value is 1; the maximum value is 4096; and the default value is 32."
+      description: "Det største antallet meldinger som kan bufres. Minimumsverdien er 1. Maksimumsverdien er 4096; og standardverdien er 32."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.MaxTransferWindowSize*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The value set is less than or equal to one or greater than 4096."
+    description: "Verdien er mindre enn eller lik til en større enn eller 4096."
   platform:
   - net462
 - uid: System.ServiceModel.Channels.ReliableSessionBindingElement.Ordered
@@ -395,13 +395,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets or sets a value that indicates whether message delivery must preserve the order in which messages are sent."
-  remarks: "To get messages dispatched in order, you also must set the <xref:System.ServiceModel.ConcurrencyMode> to <xref:System.ServiceModel.ConcurrencyMode>."
+  summary: "Henter eller angir en verdi som angir om meldingslevering må beholde rekkefølgen-meldinger sendes."
+  remarks: "Hvis du vil hente meldinger fordele i rekkefølge, må også du sette den <xref:System.ServiceModel.ConcurrencyMode>til <xref:System.ServiceModel.ConcurrencyMode>.</xref:System.ServiceModel.ConcurrencyMode> </xref:System.ServiceModel.ConcurrencyMode>"
   syntax:
     content: public bool Ordered { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if messages must be delivered in the order in which they are sent; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis meldinger må leveres i rekkefølgen som de sendes; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Standard <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.Ordered*
   exceptions: []
   platform:
@@ -418,13 +418,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets or sets the version of WS-ReliableMessaging specified by the binding element."
-  remarks: 'There are currently two versions of the WS-ReliableMessaging protocol supported by [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)]: WS-ReliableMessaging1.1 and WS-ReliableMessagingFebruary2005. The default version is WS-ReliableMessagingFebruary2005.'
+  summary: "Henter eller angir versjonen av WS-ReliableMessaging angitt av bindingselementet."
+  remarks: 'Det er to versjoner av WS-ReliableMessaging protokollen [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)]: WS ReliableMessaging1.1 og WS ReliableMessagingFebruary2005. Standardversjonen er WS ReliableMessagingFebruary2005.'
   syntax:
     content: public System.ServiceModel.ReliableMessagingVersion ReliableMessagingVersion { get; set; }
     return:
       type: System.ServiceModel.ReliableMessagingVersion
-      description: "An instance derived from <xref href=&quot;System.ServiceModel.ReliableMessagingVersion&quot;></xref> that represents the version of the WS-ReliableMessaging protocol used by the configuration element."
+      description: "En forekomst som er avledet fra <xref href=&quot;System.ServiceModel.ReliableMessagingVersion&quot;> </xref> som representerer versjonen av WS-ReliableMessaging protokollen som brukes av konfigurasjonselementet."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.ReliableMessagingVersion*
   exceptions: []
   platform:
@@ -442,16 +442,16 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Maps the information contained in the reliable session binding element into the WSDL elements that enable a remote endpoint to access the service with a reliable session."
+  summary: "Tilordner informasjonen i elementet pålitelig økt binding til WSDL-elementer som gjør at endepunktet til en ekstern tilgang til tjenesten med en pålitelig økt."
   syntax:
     content: void IPolicyExportExtension.ExportPolicy (System.ServiceModel.Description.MetadataExporter exporter, System.ServiceModel.Description.PolicyConversionContext context);
     parameters:
     - id: exporter
       type: System.ServiceModel.Description.MetadataExporter
-      description: "The <xref href=&quot;System.ServiceModel.Description.MetadataExporter&quot;></xref> that exports the binding information in the reliable session binding element to the WSDL elements."
+      description: "Den <xref href=&quot;System.ServiceModel.Description.MetadataExporter&quot;> </xref> som eksporterer bindingsinformasjonen i elementet pålitelig økt binding til WSDL-elementer."
     - id: context
       type: System.ServiceModel.Description.PolicyConversionContext
-      description: "The <xref href=&quot;System.ServiceModel.Description.PolicyConversionContext&quot;></xref> that provides the mapping from exported WSDL elements to the endpoint description."
+      description: "Den <xref href=&quot;System.ServiceModel.Description.PolicyConversionContext&quot;> </xref> som gir tilordning fra eksporterte WSDL-elementer i sluttpunktet beskrivelsen."
   overload: System.ServiceModel.Channels.ReliableSessionBindingElement.System#ServiceModel#Description#IPolicyExportExtension#ExportPolicy*
   exceptions: []
   platform:
