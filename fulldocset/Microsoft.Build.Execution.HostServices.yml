@@ -16,8 +16,8 @@ items:
   nameWithType: HostServices
   fullName: Microsoft.Build.Execution.HostServices
   type: Class
-  summary: "Implementation of a host service that mediates access from the build to the host."
-  remarks: "See also <xref:Microsoft.Build.Utilities.Task.HostObject%2A>."
+  summary: "Implementering av vertstjenesten som danner et mellomledd tilgang fra byggingen til verten."
+  remarks: "Se også <xref:Microsoft.Build.Utilities.Task.HostObject%2A>.</xref:Microsoft.Build.Utilities.Task.HostObject%2A>"
   syntax:
     content: >-
       [System.Diagnostics.DebuggerDisplay("#Entries={hostObjectMap.Count}")]
@@ -41,7 +41,7 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Creates a host service."
+  summary: "Oppretter en vertstjenesten."
   syntax:
     content: public HostServices ();
     parameters: []
@@ -61,22 +61,22 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Gets the host service for the given task where the task appears within a target and project with the given names."
+  summary: "Henter vertstjenesten for den angitte oppgaven der oppgaven skal vises i et mål og prosjektet med navnet som er gitt."
   syntax:
     content: public Microsoft.Build.Framework.ITaskHost GetHostObject (string projectFile, string targetName, string taskName);
     parameters:
     - id: projectFile
       type: System.String
-      description: "The name of the project file."
+      description: "Navnet på prosjektfilen."
     - id: targetName
       type: System.String
-      description: "The name of the target."
+      description: "Navnet på målet."
     - id: taskName
       type: System.String
-      description: "The task name associated with the host service."
+      description: "Oppgavenavn som er knyttet til vertstjenesten."
     return:
       type: Microsoft.Build.Framework.ITaskHost
-      description: "Returns the host service for the given task where the task appears within a target and project with the given names. If no host service exists, returns null."
+      description: "Returnerer vertstjenesten for den angitte oppgaven der oppgaven skal vises i et mål og prosjektet med navnet som er gitt. Hvis det finnes ingen vertstjenesten, returnerer null."
   overload: Microsoft.Build.Execution.HostServices.GetHostObject*
   exceptions: []
   platform:
@@ -93,16 +93,16 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Gets the node affinity for the given project file."
+  summary: "Henter node-affinitet for den angitte prosjektfilen."
   syntax:
     content: public Microsoft.Build.Execution.NodeAffinity GetNodeAffinity (string projectFile);
     parameters:
     - id: projectFile
       type: System.String
-      description: "The project file associated with the node."
+      description: "Prosjektfilen tilknyttet noden."
     return:
       type: Microsoft.Build.Execution.NodeAffinity
-      description: "Returns the node affinity for the given project file."
+      description: "Returnerer node-affinitet for den angitte prosjektfilen."
   overload: Microsoft.Build.Execution.HostServices.GetNodeAffinity*
   exceptions: []
   platform:
@@ -119,17 +119,17 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Updates the host services table when a project is named or renamed."
-  remarks: "A project is named when it is given a new full path and the old path is null."
+  summary: "Oppdaterer tabellen vert services når et prosjekt navn eller gis nytt navn."
+  remarks: "Et prosjekt kalles når det er angitt en ny fullstendig bane, og den gamle banen er null."
   syntax:
     content: public void OnRenameProject (string oldFullPath, string newFullPath);
     parameters:
     - id: oldFullPath
       type: System.String
-      description: "The current path to the project file."
+      description: "Gjeldende banen til prosjektfilen."
     - id: newFullPath
       type: System.String
-      description: "The new path to the project file."
+      description: "Den nye banen til prosjektfilen."
   overload: Microsoft.Build.Execution.HostServices.OnRenameProject*
   exceptions: []
   platform:
@@ -146,23 +146,23 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Register a host service for the given task/target pair."
-  remarks: "Overwrites any existing host service."
+  summary: "Registrer en vertstjenesten for den angitte oppgaven/target-par."
+  remarks: "Overskriver eventuelle eksisterende vertstjenesten."
   syntax:
     content: public void RegisterHostObject (string projectFile, string targetName, string taskName, Microsoft.Build.Framework.ITaskHost hostObject);
     parameters:
     - id: projectFile
       type: System.String
-      description: "The project file containing the task/target pair."
+      description: "Prosjektfilen som inneholder oppgaven/target-paret."
     - id: targetName
       type: System.String
-      description: "The name of the target."
+      description: "Navnet på målet."
     - id: taskName
       type: System.String
-      description: "The name of the task."
+      description: "Navnet på oppgaven."
     - id: hostObject
       type: Microsoft.Build.Framework.ITaskHost
-      description: "The host service."
+      description: "Vertstjenesten."
   overload: Microsoft.Build.Execution.HostServices.RegisterHostObject*
   exceptions: []
   platform:
@@ -179,16 +179,16 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Sets the node affinity for the given project file."
+  summary: "Angir node-affinitet for den angitte prosjektfilen."
   syntax:
     content: public void SetNodeAffinity (string projectFile, Microsoft.Build.Execution.NodeAffinity nodeAffinity);
     parameters:
     - id: projectFile
       type: System.String
-      description: "The project file. If set to String.Empty, all projects will use the given node affinity. If set to null, all node affinities will be cleared."
+      description: "Prosjektfilen. Hvis satt til String.Empty, alle prosjekter vil bruke det angitte noden affinitet. Hvis satt til null, alle noden vektlegge blir fjernet."
     - id: nodeAffinity
       type: Microsoft.Build.Execution.NodeAffinity
-      description: "The node affinity."
+      description: "Node-affinitet."
   overload: Microsoft.Build.Execution.HostServices.SetNodeAffinity*
   exceptions: []
   platform:
@@ -205,13 +205,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Unregister the project&quot;s host objects, if any and remove any node affinities associated with it."
+  summary: "Avregistrer prosjektets vert objekter, hvis noen, og Fjern noen node vektlegge knyttet til den."
   syntax:
     content: public void UnregisterProject (string projectFullPath);
     parameters:
     - id: projectFullPath
       type: System.String
-      description: "The path to the project to unregister."
+      description: "Banen til prosjektet for å avregistrere."
   overload: Microsoft.Build.Execution.HostServices.UnregisterProject*
   exceptions: []
   platform:

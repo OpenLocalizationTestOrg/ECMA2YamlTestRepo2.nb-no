@@ -17,8 +17,8 @@ items:
   nameWithType: BuildSubmission
   fullName: Microsoft.Build.Execution.BuildSubmission
   type: Class
-  summary: "Represents a build request that has been submitted to the build manager for processing. The methods of this class may be used to execute synchronous or asynchronous build requests and to provide access to the results upon completion."
-  remarks: "This class is thread-safe."
+  summary: "Representerer en build-forespørsel som er sendt til bygge lederen for behandling. Metodene for denne klassen kan brukes til synkron eller asynkron kompilering skriveforespørsler og gi tilgang til resultatene når er fullført."
+  remarks: "Denne klassen er sikker."
   syntax:
     content: public class BuildSubmission
   inheritance:
@@ -39,12 +39,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Gets or sets the asynchronous context provided to <xref:Microsoft.Build.Execution.BuildSubmission.ExecuteAsync*>, if any."
+  summary: "Henter eller angir asynkrone konteksten for <xref:Microsoft.Build.Execution.BuildSubmission.ExecuteAsync*>, eventuell.</xref:Microsoft.Build.Execution.BuildSubmission.ExecuteAsync*>"
   syntax:
     content: public object AsyncContext { get; }
     return:
       type: System.Object
-      description: "Returns the asynchronous context provided to <xref:Microsoft.Build.Execution.BuildSubmission.ExecuteAsync*>. Returns null if no context is provided."
+      description: "Returnerer asynkrone konteksten for <xref:Microsoft.Build.Execution.BuildSubmission.ExecuteAsync*>.</xref:Microsoft.Build.Execution.BuildSubmission.ExecuteAsync*> Returnerer null hvis ingen kontekst er angitt."
   overload: Microsoft.Build.Execution.BuildSubmission.AsyncContext*
   exceptions: []
   platform:
@@ -61,12 +61,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Gets or sets the build manager this build submission is associated with."
+  summary: "Henter eller angir build-manager denne kompilering innsending av er knyttet til."
   syntax:
     content: public Microsoft.Build.Execution.BuildManager BuildManager { get; }
     return:
       type: Microsoft.Build.Execution.BuildManager
-      description: "Returns the build manager this build submission is associated with."
+      description: "Returnerer build-manager denne kompilering innsending av er knyttet til."
   overload: Microsoft.Build.Execution.BuildSubmission.BuildManager*
   exceptions: []
   platform:
@@ -83,13 +83,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Gets or sets the result of the build."
-  remarks: "The result is not valid until <xref:Microsoft.Build.Execution.BuildSubmission.WaitHandle%2A> is signalled."
+  summary: "Henter eller angir resultatet av."
+  remarks: "Resultatet er ikke gyldig før <xref:Microsoft.Build.Execution.BuildSubmission.WaitHandle%2A>er signalled.</xref:Microsoft.Build.Execution.BuildSubmission.WaitHandle%2A>"
   syntax:
     content: public Microsoft.Build.Execution.BuildResult BuildResult { get; set; }
     return:
       type: Microsoft.Build.Execution.BuildResult
-      description: "Returns the result of the build."
+      description: "Returnerer resultatet av."
   overload: Microsoft.Build.Execution.BuildSubmission.BuildResult*
   exceptions: []
   platform:
@@ -106,18 +106,18 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Starts a build request synchronously and waits until results are available."
+  summary: "Starter en build-forespørsel synkront og venter til resultater er tilgjengelige."
   syntax:
     content: public Microsoft.Build.Execution.BuildResult Execute ();
     parameters: []
     return:
       type: Microsoft.Build.Execution.BuildResult
-      description: "Returns the build request."
+      description: "Returnerer build-forespørselen."
   overload: Microsoft.Build.Execution.BuildSubmission.Execute*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The request has already been started or is already complete."
+    description: "Forespørselen er allerede startet eller er allerede fullført."
   platform:
   - net462
 - uid: Microsoft.Build.Execution.BuildSubmission.ExecuteAsync(Microsoft.Build.Execution.BuildSubmissionCompleteCallback,System.Object)
@@ -132,21 +132,21 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Starts a build request asynchronously and within the given context. Immediately returns control to the caller."
+  summary: "Starter en build-forespørsel asynkront og gitt kontekst. Returnerer umiddelbart kontrollen til oppkalleren."
   syntax:
     content: public void ExecuteAsync (Microsoft.Build.Execution.BuildSubmissionCompleteCallback callback, object context);
     parameters:
     - id: callback
       type: Microsoft.Build.Execution.BuildSubmissionCompleteCallback
-      description: "The callback method to call when the build submission is complete."
+      description: "Metoden tilbakeringing å kalle når innsending av kompilering er fullført."
     - id: context
       type: System.Object
-      description: "The context in which the build submission occurs."
+      description: "Konteksten der innsending av kompilering forekommer."
   overload: Microsoft.Build.Execution.BuildSubmission.ExecuteAsync*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The request has already been started or is already complete."
+    description: "Forespørselen er allerede startet eller er allerede fullført."
   platform:
   - net462
 - uid: Microsoft.Build.Execution.BuildSubmission.IsCompleted
@@ -161,12 +161,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Determines whether this build submission is complete."
+  summary: "Bestemmer om denne kompilering innsending av er fullført."
   syntax:
     content: public bool IsCompleted { get; }
     return:
       type: System.Boolean
-      description: "Returns true if this build submission is complete; false otherwise."
+      description: "Returnerer true hvis kompilering innsending er ferdig. False ellers."
   overload: Microsoft.Build.Execution.BuildSubmission.IsCompleted*
   exceptions: []
   platform:
@@ -183,13 +183,13 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Gets or sets an ID uniquely identifying this build submission."
-  remarks: "This ID is used to distinguish this build submission from other build submissions within the same build."
+  summary: "Henter eller angir en ID som identifiserer unikt denne innsending av kompilering."
+  remarks: "Denne IDen brukes til å skille denne kompilering innsending fra andre tilbakemeldinger fra kompilering i samme kompilering."
   syntax:
     content: public int SubmissionId { get; }
     return:
       type: System.Int32
-      description: "Returns an ID uniquely identifying this build submission."
+      description: "Returnerer en ID som identifiserer unikt denne innsending av kompilering."
   overload: Microsoft.Build.Execution.BuildSubmission.SubmissionId*
   exceptions: []
   platform:
@@ -206,12 +206,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Gets a <xref:System.Threading.WaitHandle> object that will be signalled when the build is complete."
+  summary: "Henter en <xref:System.Threading.WaitHandle>objektet signalled når byggingen er fullført.</xref:System.Threading.WaitHandle>"
   syntax:
     content: public System.Threading.WaitHandle WaitHandle { get; }
     return:
       type: System.Threading.WaitHandle
-      description: "Returns null until <xref:Microsoft.Build.Execution.BuildSubmission.Execute*> or <xref:Microsoft.Build.Execution.BuildSubmission.ExecuteAsync*> returns, then returns the WaitHandle object."
+      description: "Returnerer null før <> </> *> eller <> </> *> returnerer, og returnerer WaitHandle-objektet."
   overload: Microsoft.Build.Execution.BuildSubmission.WaitHandle*
   exceptions: []
   platform:
