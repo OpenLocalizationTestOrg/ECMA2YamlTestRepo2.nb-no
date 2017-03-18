@@ -15,8 +15,8 @@ items:
   nameWithType: IExpressionEditorService
   fullName: System.Activities.Presentation.View.IExpressionEditorService
   type: Interface
-  summary: "Creates or closes expression editors."
-  remarks: "An expression editor is a Visual Basic control used to edit expressions inside Visual Studio. This control provides a full-fledged IDE editing experience, including IntelliSense, colorization, ParamInfo, error squiggles, among other features.       The IExpressionEditorService can also be used to manage instances of custom expression editors. To register a custom expression editor, you must publish the IExpressionEditorService using the following code :       `this.expressionEditorService = new ExpressionEditorService();`       `this.workflowDesigner.Context.Services.Publish<IExpressionEditorService>(this.expressionEditorService);`       An expression editor is created when an <xref:System.Activities.Presentation.View.ExpressionTextBox> instance gains focus and is destroyed on losing focus of a valid expression, or on reloading of the designer.       The default expression editor is not available for use in rehosted applications. If the default expression editor is used in a rehosted application, a text box is available for editing. However, custom expression editors can be used in a rehosted application by publishing the IExpressionEditorService in the application.       If you are using an <xref:System.Activities.Presentation.View.ExpressionTextBox> control in a custom activity designer, it is not necessary to create and destroy expression editors using this interface. The <xref:System.Activities.Presentation.View.ExpressionTextBox> class manages this for you."
+  summary: "Oppretter eller lukker uttrykk som inndata."
+  remarks: "Et redigeringsprogram for uttrykket er en Visual Basic kontroll brukes til å redigere uttrykk i Visual Studio. Denne kontrollen gir en fullstendige IDE redigering opplevelse, inkludert IntelliSense fargelegging ParamInfo, feil bølgede linjer, blant andre funksjoner.       IExpressionEditorService kan også brukes til å administrere forekomster av egendefinert uttrykk inndata. For å registrere et redigeringsprogram for egendefinert uttrykk, må du publisere IExpressionEditorService ved hjelp av følgende kode: `this.expressionEditorService = new ExpressionEditorService();` `this.workflowDesigner.Context.Services.Publish<IExpressionEditorService>(this.expressionEditorService);` et redigeringsprogram for uttrykket opprettes når en <xref:System.Activities.Presentation.View.ExpressionTextBox>forekomsten får fokus og er ødelagt på å miste fokuset til et gyldig uttrykk, eller laste av designer.</xref:System.Activities.Presentation.View.ExpressionTextBox>              Redigeringsprogrammet uttrykk er ikke tilgjengelig for bruk i rehosted programmer. Hvis redigeringsprogrammet uttrykk som brukes i et rehosted program, er en tekstboks tilgjengelig for redigering. Imidlertid kan egendefinert uttrykk inndata brukes i et rehosted program ved å publisere IExpressionEditorService i applikasjonen.       Hvis du bruker en <xref:System.Activities.Presentation.View.ExpressionTextBox>kontroll i en egendefinert Aktivitetsdesigner er det ikke nødvendig for å opprette og fjerne uttrykket inndata i dette grensesnittet.</xref:System.Activities.Presentation.View.ExpressionTextBox> Den <xref:System.Activities.Presentation.View.ExpressionTextBox>klassen behandler dette du.</xref:System.Activities.Presentation.View.ExpressionTextBox>"
   example:
   - '[!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]'
   syntax:
@@ -36,7 +36,7 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Closes all the active expression editors."
+  summary: "Lukker alle aktive uttrykket utgiverne."
   syntax:
     content: public void CloseExpressionEditors ();
     parameters: []
@@ -56,25 +56,25 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Creates a new expression editor."
+  summary: "Oppretter et nytt uttrykk redigeringsprogrammet."
   syntax:
     content: public System.Activities.Presentation.View.IExpressionEditorInstance CreateExpressionEditor (System.Activities.Presentation.Hosting.AssemblyContextControlItem assemblies, System.Activities.Presentation.Hosting.ImportedNamespaceContextItem importedNamespaces, System.Collections.Generic.List<System.Activities.Presentation.Model.ModelItem> variables, string text);
     parameters:
     - id: assemblies
       type: System.Activities.Presentation.Hosting.AssemblyContextControlItem
-      description: "Used to set the context for the editor session."
+      description: "Brukes til å angi konteksten for redigeringsprogrammet-økt."
     - id: importedNamespaces
       type: System.Activities.Presentation.Hosting.ImportedNamespaceContextItem
-      description: "The imported namespaces to be used by the expression editor."
+      description: "Importerte navneområdene som skal brukes av redigeringsprogrammet uttrykk."
     - id: variables
       type: System.Collections.Generic.List{System.Activities.Presentation.Model.ModelItem}
-      description: "Local variables for the expression editor."
+      description: "Lokale variabler for redigeringsprogrammet for uttrykket."
     - id: text
       type: System.String
-      description: "A string used to populate the expression editor."
+      description: "En streng som brukes til å fylle redigeringsprogrammet uttrykk."
     return:
       type: System.Activities.Presentation.View.IExpressionEditorInstance
-      description: "Returns a<xref href=&quot;System.Activities.Presentation.View.IExpressionEditorInstance&quot;></xref>."
+      description: "Returnerer en<xref href=&quot;System.Activities.Presentation.View.IExpressionEditorInstance&quot;></xref>."
   overload: System.Activities.Presentation.View.IExpressionEditorService.CreateExpressionEditor*
   exceptions: []
   platform:
@@ -91,28 +91,28 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Creates a new expression editor using the specified assemblies, imported namespaces, variables, expression text, and expression type."
+  summary: "Oppretter et nytt uttrykk redigeringsprogrammet ved hjelp av den angitte samlingene viktige navneområder, variabler, uttrykket tekst og uttrykkstypen."
   syntax:
     content: public System.Activities.Presentation.View.IExpressionEditorInstance CreateExpressionEditor (System.Activities.Presentation.Hosting.AssemblyContextControlItem assemblies, System.Activities.Presentation.Hosting.ImportedNamespaceContextItem importedNamespaces, System.Collections.Generic.List<System.Activities.Presentation.Model.ModelItem> variables, string text, Type expressionType);
     parameters:
     - id: assemblies
       type: System.Activities.Presentation.Hosting.AssemblyContextControlItem
-      description: "The local and referenced assemblies in the environment."
+      description: "De lokale og refererte samlingene i miljøet."
     - id: importedNamespaces
       type: System.Activities.Presentation.Hosting.ImportedNamespaceContextItem
-      description: "The imported namespaces used by the expression editor."
+      description: "Importerte navneområdene brukes av redigeringsprogrammet uttrykk."
     - id: variables
       type: System.Collections.Generic.List{System.Activities.Presentation.Model.ModelItem}
-      description: "Local variables for the expression editor."
+      description: "Lokale variabler for redigeringsprogrammet for uttrykket."
     - id: text
       type: System.String
-      description: "A string used to populate the expression editor."
+      description: "En streng som brukes til å fylle redigeringsprogrammet uttrykk."
     - id: expressionType
       type: System.Type
-      description: "The type of the expression."
+      description: "Typen for uttrykket."
     return:
       type: System.Activities.Presentation.View.IExpressionEditorInstance
-      description: "A new instance of the <xref href=&quot;System.Activities.Presentation.View.IExpressionEditorInstance&quot;></xref>."
+      description: "En ny forekomst av den <xref href=&quot;System.Activities.Presentation.View.IExpressionEditorInstance&quot;> </xref>."
   overload: System.Activities.Presentation.View.IExpressionEditorService.CreateExpressionEditor*
   exceptions: []
   platform:
@@ -129,28 +129,28 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Creates a new expression editor using the specified assemblies, imported namespaces, variables, expression text, and the initial size."
+  summary: "Oppretter et nytt uttrykk redigeringsprogrammet ved hjelp av de angitte samlingene viktige navneområder, variabler, uttrykket tekst og den opprinnelige størrelsen."
   syntax:
     content: public System.Activities.Presentation.View.IExpressionEditorInstance CreateExpressionEditor (System.Activities.Presentation.Hosting.AssemblyContextControlItem assemblies, System.Activities.Presentation.Hosting.ImportedNamespaceContextItem importedNamespaces, System.Collections.Generic.List<System.Activities.Presentation.Model.ModelItem> variables, string text, System.Windows.Size initialSize);
     parameters:
     - id: assemblies
       type: System.Activities.Presentation.Hosting.AssemblyContextControlItem
-      description: "The local and referenced assemblies in the environment."
+      description: "De lokale og refererte samlingene i miljøet."
     - id: importedNamespaces
       type: System.Activities.Presentation.Hosting.ImportedNamespaceContextItem
-      description: "The imported namespaces used by the expression editor."
+      description: "Importerte navneområdene brukes av redigeringsprogrammet uttrykk."
     - id: variables
       type: System.Collections.Generic.List{System.Activities.Presentation.Model.ModelItem}
-      description: "Local variables for the expression editor."
+      description: "Lokale variabler for redigeringsprogrammet for uttrykket."
     - id: text
       type: System.String
-      description: "A string used to populate the expression editor."
+      description: "En streng som brukes til å fylle redigeringsprogrammet uttrykk."
     - id: initialSize
       type: System.Windows.Size
-      description: "The initial height and width of the expression editor control."
+      description: "Første høyden og bredden kontrollens uttrykket redigeringsprogrammet."
     return:
       type: System.Activities.Presentation.View.IExpressionEditorInstance
-      description: "A new instance of the <xref href=&quot;System.Activities.Presentation.View.IExpressionEditorInstance&quot;></xref>."
+      description: "En ny forekomst av den <xref href=&quot;System.Activities.Presentation.View.IExpressionEditorInstance&quot;> </xref>."
   overload: System.Activities.Presentation.View.IExpressionEditorService.CreateExpressionEditor*
   exceptions: []
   platform:
@@ -167,31 +167,31 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Creates a new expression editor using the specified assemblies, imported namespaces, variables, expression text, expression type, and the initial size."
+  summary: "Oppretter et nytt uttrykk redigeringsprogrammet med de angitte samlingene, viktige navneområder, variabler, uttrykket tekst, Uttrykkstypen og den opprinnelige størrelsen."
   syntax:
     content: public System.Activities.Presentation.View.IExpressionEditorInstance CreateExpressionEditor (System.Activities.Presentation.Hosting.AssemblyContextControlItem assemblies, System.Activities.Presentation.Hosting.ImportedNamespaceContextItem importedNamespaces, System.Collections.Generic.List<System.Activities.Presentation.Model.ModelItem> variables, string text, Type expressionType, System.Windows.Size initialSize);
     parameters:
     - id: assemblies
       type: System.Activities.Presentation.Hosting.AssemblyContextControlItem
-      description: "The local and referenced assemblies in the environment."
+      description: "De lokale og refererte samlingene i miljøet."
     - id: importedNamespaces
       type: System.Activities.Presentation.Hosting.ImportedNamespaceContextItem
-      description: "The imported namespaces used by the expression editor."
+      description: "Importerte navneområdene brukes av redigeringsprogrammet uttrykk."
     - id: variables
       type: System.Collections.Generic.List{System.Activities.Presentation.Model.ModelItem}
-      description: "Local variables for the expression editor."
+      description: "Lokale variabler for redigeringsprogrammet for uttrykket."
     - id: text
       type: System.String
-      description: "A string used to populate the expression editor."
+      description: "En streng som brukes til å fylle redigeringsprogrammet uttrykk."
     - id: expressionType
       type: System.Type
-      description: "The type of the expression."
+      description: "Typen for uttrykket."
     - id: initialSize
       type: System.Windows.Size
-      description: "The initial height and width of the expression editor control."
+      description: "Første høyden og bredden kontrollens uttrykket redigeringsprogrammet."
     return:
       type: System.Activities.Presentation.View.IExpressionEditorInstance
-      description: "A new instance of the <xref href=&quot;System.Activities.Presentation.View.IExpressionEditorInstance&quot;></xref>."
+      description: "En ny forekomst av den <xref href=&quot;System.Activities.Presentation.View.IExpressionEditorInstance&quot;> </xref>."
   overload: System.Activities.Presentation.View.IExpressionEditorService.CreateExpressionEditor*
   exceptions: []
   platform:
@@ -208,16 +208,16 @@ items:
   assemblies:
   - System.Activities.Presentation
   namespace: System.Activities.Presentation.View
-  summary: "Updates the context for the editing session."
+  summary: "Oppdaterer konteksten for gjeldende redigeringsøkten."
   syntax:
     content: public void UpdateContext (System.Activities.Presentation.Hosting.AssemblyContextControlItem assemblies, System.Activities.Presentation.Hosting.ImportedNamespaceContextItem importedNamespaces);
     parameters:
     - id: assemblies
       type: System.Activities.Presentation.Hosting.AssemblyContextControlItem
-      description: "Used to set the context for the editor session."
+      description: "Brukes til å angi konteksten for redigeringsprogrammet-økt."
     - id: importedNamespaces
       type: System.Activities.Presentation.Hosting.ImportedNamespaceContextItem
-      description: "The imported namespaces used by the expression editor."
+      description: "Importerte navneområdene brukes av redigeringsprogrammet uttrykk."
   overload: System.Activities.Presentation.View.IExpressionEditorService.UpdateContext*
   exceptions: []
   platform:

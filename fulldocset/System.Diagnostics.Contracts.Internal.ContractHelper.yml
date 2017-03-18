@@ -11,7 +11,7 @@ items:
   nameWithType: ContractHelper
   fullName: System.Diagnostics.Contracts.Internal.ContractHelper
   type: Class
-  summary: "Provides methods that the binary rewriter uses to handle contract failures."
+  summary: "Inneholder metoder som binær Omskrevet bruker til å håndtere kontrakten feil."
   syntax:
     content: >-
       [System.Obsolete("Use the ContractHelper class in the System.Runtime.CompilerServices namespace instead.")]
@@ -35,31 +35,31 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.Contracts.Internal
-  summary: "Used by the binary rewriter to activate the default failure behavior."
-  remarks: "The binary rewriter calls this method to notify listeners about a contract failure. The RaiseContractFailedEvent method does not perform the failure behavior (an assert or throw) itself. If the failure is handled by the listeners, the method returns `null`. If the failure is not handled by the listeners, a localized failure message is returned."
+  summary: "Brukes av den binære Omskrevet aktivere standardvirkemåten for feil."
+  remarks: "Binær Omskrevet kaller opp denne metoden for å varsle lyttere om en kontrakten-feil. Metoden RaiseContractFailedEvent utfører ikke feil virkemåten (en deklarering eller throw) seg selv. Hvis feilen håndtert av lyttere, returneres `null`. Hvis feilen ikke håndteres av lyttere, returneres en lokalisert feilmelding."
   syntax:
     content: public static string RaiseContractFailedEvent (System.Diagnostics.Contracts.ContractFailureKind failureKind, string userMessage, string conditionText, Exception innerException);
     parameters:
     - id: failureKind
       type: System.Diagnostics.Contracts.ContractFailureKind
-      description: "The type of failure."
+      description: "Typen for feil."
     - id: userMessage
       type: System.String
-      description: "Additional user information."
+      description: "Ekstra brukerinformasjon."
     - id: conditionText
       type: System.String
-      description: "The description of the condition that caused the failure."
+      description: "Beskrivelsen av feilen som forårsaket feilen."
     - id: innerException
       type: System.Exception
-      description: "The inner exception that caused the current exception."
+      description: "Det interne unntaket som førte til den gjeldende unntaket."
     return:
       type: System.String
-      description: "A null reference (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;></xref> in Visual Basic) if the event was handled and should not trigger a failure; otherwise, returns the localized failure message."
+      description: "En nullreferanse (<xref uid=&quot;langword_csharp_Nothing&quot; name=&quot;Nothing&quot; href=&quot;&quot;> </xref> i Visual Basic) Hvis hendelsen ble håndtert og skal ikke aktivere en feil, hvis ikke, returnerer den lokaliserte feilmeldingen."
   overload: System.Diagnostics.Contracts.Internal.ContractHelper.RaiseContractFailedEvent*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>failureKind</code> is not a valid <xref:System.Diagnostics.Contracts.ContractFailureKind> value."
+    description: "<code>failureKind</code>er ikke et gyldig <xref:System.Diagnostics.Contracts.ContractFailureKind> verdi."
   platform:
   - net462
 - uid: System.Diagnostics.Contracts.Internal.ContractHelper.TriggerFailure(System.Diagnostics.Contracts.ContractFailureKind,System.String,System.String,System.String,System.Exception)
@@ -74,26 +74,26 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.Contracts.Internal
-  summary: "Triggers the default failure behavior."
-  remarks: "The default failure behavior is to raise an <xref:System.Diagnostics.Debug.Assert%2A>, which causes the **Assert** dialog box to be displayed. You can change that behavior to throw an <xref:System.Exception> instead of displaying the dialog box."
+  summary: "Utløser standardvirkemåten for feil."
+  remarks: "Standardvirkemåten for feil er opphøye en <xref:System.Diagnostics.Debug.Assert%2A>, som identifiserer den **deklarering** dialogboksen som skal vises.</xref:System.Diagnostics.Debug.Assert%2A> Du kan endre denne virkemåten en <xref:System.Exception>i stedet for å vise dialogboksen.</xref:System.Exception>"
   syntax:
     content: public static void TriggerFailure (System.Diagnostics.Contracts.ContractFailureKind kind, string displayMessage, string userMessage, string conditionText, Exception innerException);
     parameters:
     - id: kind
       type: System.Diagnostics.Contracts.ContractFailureKind
-      description: "The type of failure."
+      description: "Typen for feil."
     - id: displayMessage
       type: System.String
-      description: "The message to display."
+      description: "Meldingen som skal vises."
     - id: userMessage
       type: System.String
-      description: "Additional user information."
+      description: "Ekstra brukerinformasjon."
     - id: conditionText
       type: System.String
-      description: "The description of the condition that caused the failure."
+      description: "Beskrivelsen av feilen som forårsaket feilen."
     - id: innerException
       type: System.Exception
-      description: "The inner exception that caused the current exception."
+      description: "Det interne unntaket som førte til den gjeldende unntaket."
   overload: System.Diagnostics.Contracts.Internal.ContractHelper.TriggerFailure*
   exceptions: []
   platform:

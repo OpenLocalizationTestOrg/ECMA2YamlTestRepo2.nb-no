@@ -36,8 +36,8 @@ items:
   nameWithType: OracleDataAdapter
   fullName: System.Data.OracleClient.OracleDataAdapter
   type: Class
-  summary: "Represents a set of data commands and a connection to a database that are used to fill the <xref href=&quot;System.Data.DataSet&quot;></xref> and update the database. This class cannot be inherited."
-  remarks: "This type is deprecated and will be removed in a future version of the .NET Framework. For more information, see [Oracle and ADO.NET](~/add/includes/ajax-current-ext-md.md).       The OracleDataAdapter serves as a bridge between a **DataSet** and database for retrieving and saving data. The OracleDataAdapter provides this bridge by using <xref:System.Data.Common.DbDataAdapter.Fill%2A> to load data from the database into the <xref:System.Data.DataSet>, and using <xref:System.Data.Common.DbDataAdapter.Update%2A> to send changes made in the <xref:System.Data.DataSet> back to the data source.       When the OracleDataAdapter fills a <xref:System.Data.DataSet>, it creates the necessary tables and columns for the returned data if they do not already exist. However, primary key information is not included in the implicitly created schema unless the <xref:System.Data.Common.DataAdapter.MissingSchemaAction%2A> property is set to <xref:System.Data.MissingSchemaAction>. You may also have the OracleDataAdapter create the schema of the <xref:System.Data.DataSet>, including primary key information, before filling it with data using <xref:System.Data.Common.DbDataAdapter.FillSchema%2A>. For more information, see [Adding Existing Constraints to a DataSet](~/add/includes/ajax-current-ext-md.md).      > [!NOTE] >  By default, numeric fields imported to a <xref:System.Data.DataTable> with <xref:System.Data.Common.DbDataAdapter.Fill%2A> are mapped to <xref:System.Data.OracleClient.OracleNumber> objects. It is possible to overflow the <xref:System.Data.OracleClient.OracleNumber>, and throw an Oracle exception, by importing a non-integral numeric value that is either too large or too high precision for the <xref:System.Data.OracleClient.OracleNumber>&quot;s precision limitations. Refer to the description of <xref:System.Data.OracleClient.OracleNumber> for more information.       The OracleDataAdapter also includes the <xref:System.Data.OracleClient.OracleDataAdapter.SelectCommand%2A>, <xref:System.Data.OracleClient.OracleDataAdapter.InsertCommand%2A>, <xref:System.Data.OracleClient.OracleDataAdapter.DeleteCommand%2A>, <xref:System.Data.OracleClient.OracleDataAdapter.UpdateCommand%2A>, and `TableMappings` properties to facilitate loading and updating of data.       The .NET Framework Data Provider for Oracle does not support batched SQL statements. However, it does allow you to use multiple `REF CURSOR` output parameters to fill a **DataSet**, each in its own <xref:System.Data.DataTable>. You must define the parameters, mark them as output parameters, and indicate that they are `REF CURSOR` data types. Note that you cannot use the <xref:System.Data.Common.DbDataAdapter.Update%2A> method when the OracleDataAdapter is filled using `REF CURSOR` parameters returned by a stored procedure, because Oracle does not provide the information necessary to determine what the table name and column names are when the SQL statement is executed. The following C# example assumes that you have created this stored procedure.       Create the following Oracle package on the Oracle server.      ```   CREATE OR REPLACE PACKAGE CURSPKG AS       TYPE T_CURSOR IS REF CURSOR;       PROCEDURE OPEN_ONE_CURSOR (N_EMPNO IN NUMBER,          IO_CURSOR OUT T_CURSOR);       PROCEDURE OPEN_TWO_CURSORS (EMPCURSOR OUT T_CURSOR,          DEPTCURSOR OUT T_CURSOR);   END CURSPKG;   /   ```       Create the following Oracle package body on the Oracle server.      ```   CREATE OR REPLACE PACKAGE BODY CURSPKG AS        PROCEDURE OPEN_ONE_CURSOR (N_EMPNO IN NUMBER,                                   IO_CURSOR OUT T_CURSOR)        IS            V_CURSOR T_CURSOR;        BEGIN            IF N_EMPNO <> 0 THEN                 OPEN V_CURSOR FOR                 SELECT EMP.EMPNO, EMP.ENAME, DEPT.DEPTNO, DEPT.DNAME                      FROM EMP, DEPT                      WHERE EMP.DEPTNO = DEPT.DEPTNO                            AND EMP.EMPNO = N_EMPNO;            ELSE                 OPEN V_CURSOR FOR                 SELECT EMP.EMPNO, EMP.ENAME, DEPT.DEPTNO, DEPT.DNAME                      FROM EMP, DEPT                      WHERE EMP.DEPTNO = DEPT.DEPTNO;            END IF;            IO_CURSOR := V_CURSOR;        END OPEN_ONE_CURSOR;        PROCEDURE OPEN_TWO_CURSORS (EMPCURSOR OUT T_CURSOR,                                    DEPTCURSOR OUT T_CURSOR)        IS            V_CURSOR1 T_CURSOR;            V_CURSOR2 T_CURSOR;        BEGIN            OPEN V_CURSOR1 FOR SELECT * FROM EMP;            OPEN V_CURSOR2 FOR SELECT * FROM DEPT;            EMPCURSOR  := V_CURSOR1;            DEPTCURSOR := V_CURSOR2;        END OPEN_TWO_CURSORS;    END CURSPKG;    /   ```       The following C# example demonstrates how you might obtain table and column information using the stored procedure.      ```c#   // GetConnectionString() returns a connection string for   // the data source.      string connString = GetConnectionString();   DataSet ds = new DataSet();   OracleConnection conn = new OracleConnection(connString);   OracleCommand cmd = conn.CreateCommand();      cmd.CommandText = &quot;CURSPKG.OPEN_TWO_CURSORS&quot;;   cmd.CommandType = CommandType.StoredProcedure;   cmd.Parameters.Add(&quot;EMPCURSOR&quot;, OracleType.Cursor).Direction =           ParameterDirection.Output;   cmd.Parameters.Add(&quot;DEPTCURSOR&quot;, OracleType.Cursor).Direction =           ParameterDirection.Output;      OracleDataAdapter da = new OracleDataAdapter(cmd);   da.TableMappings.Add(&quot;Table&quot;, &quot;Emp&quot;);   da.TableMappings.Add(&quot;Table1&quot;, &quot;Dept&quot;);   da.Fill(ds);      ds.Relations.Add(&quot;EmpDept&quot;, ds.Tables[&quot;Dept&quot;].Columns[&quot;Deptno&quot;],          ds.Tables[&quot;Emp&quot;].Columns[&quot;Deptno&quot;], false);   ```       The following Visual Basic example demonstrates how to use an OracleDataAdapter to fill a <xref:System.Data.DataSet> using an Oracle `REF CURSOR`. These examples use tables that are defined in the Oracle Scott/Tiger schema, and require the following PL/SQL package and package body. You must create these on your server to use the examples.       Create the following Oracle package on the Oracle server.      ```   CREATE OR REPLACE PACKAGE CURSPKG AS       TYPE T_CURSOR IS REF CURSOR;       PROCEDURE OPEN_ONE_CURSOR (N_EMPNO IN NUMBER,          IO_CURSOR OUT T_CURSOR);       PROCEDURE OPEN_TWO_CURSORS (EMPCURSOR OUT T_CURSOR,          DEPTCURSOR OUT T_CURSOR);   END CURSPKG;   /   ```       Create the following Oracle package body on the Oracle server.      ```   CREATE OR REPLACE PACKAGE BODY CURSPKG AS        PROCEDURE OPEN_ONE_CURSOR (N_EMPNO IN NUMBER,                                   IO_CURSOR OUT T_CURSOR)        IS            V_CURSOR T_CURSOR;        BEGIN            IF N_EMPNO <> 0 THEN                 OPEN V_CURSOR FOR                 SELECT EMP.EMPNO, EMP.ENAME, DEPT.DEPTNO, DEPT.DNAME                      FROM EMP, DEPT                      WHERE EMP.DEPTNO = DEPT.DEPTNO                            AND EMP.EMPNO = N_EMPNO;            ELSE                 OPEN V_CURSOR FOR                 SELECT EMP.EMPNO, EMP.ENAME, DEPT.DEPTNO, DEPT.DNAME                      FROM EMP, DEPT                      WHERE EMP.DEPTNO = DEPT.DEPTNO;            END IF;            IO_CURSOR := V_CURSOR;        END OPEN_ONE_CURSOR;        PROCEDURE OPEN_TWO_CURSORS (EMPCURSOR OUT T_CURSOR,                                    DEPTCURSOR OUT T_CURSOR)        IS            V_CURSOR1 T_CURSOR;            V_CURSOR2 T_CURSOR;        BEGIN            OPEN V_CURSOR1 FOR SELECT * FROM EMP;            OPEN V_CURSOR2 FOR SELECT * FROM DEPT;            EMPCURSOR  := V_CURSOR1;            DEPTCURSOR := V_CURSOR2;        END OPEN_TWO_CURSORS;    END CURSPKG;    /   ```       This Visual Basic example executes a PL/SQL stored procedure that returns two `REF CURSOR` parameters, and fills a <xref:System.Data.DataSet> with the rows that are returned.      ```vb#      &quot; GetConnectionString() returns a connection string for   &quot; the data source.          Dim connString As New String(GetConnectionString())       Dim ds As New DataSet()       Dim conn As New OracleConnection(connString)       Dim cmd As OracleCommand = conn.CreateCommand()          cmd.CommandText = &quot;CURSPKG.OPEN_TWO_CURSORS&quot;       cmd.CommandType = CommandType.StoredProcedure       cmd.Parameters.Add(&quot;EMPCURSOR&quot;, OracleType.Cursor).Direction = _          ParameterDirection.Output       cmd.Parameters.Add(&quot;DEPTCURSOR&quot;, OracleType.Cursor).Direction = _          ParameterDirection.Output          Dim da As New OracleDataAdapter(cmd)       da.TableMappings.Add(&quot;Table&quot;, &quot;Emp&quot;)       da.TableMappings.Add(&quot;Table1&quot;, &quot;Dept&quot;)       da.Fill(ds)          ds.Relations.Add(&quot;EmpDept&quot;, ds.Tables(&quot;Dept&quot;).Columns(&quot;Deptno&quot;), _         ds.Tables(&quot;Emp&quot;).Columns(&quot;Deptno&quot;), False)   ```       After using the OracleDataAdapter to perform a `Fill` or `FillSchema` operation, the `DataColumn.ReadOnly` property always returns false, regardless of whether a column can be updated or not, because the Oracle server does not return this information."
+  summary: "Representerer et sett med datakommandoer og en tilkobling til en database som brukes til å fylle den <xref href=&quot;System.Data.DataSet&quot;> </xref> og oppdatere databasen. Denne klassen kan ikke arves."
+  remarks: "Denne typen er avskrevet og vil bli fjernet i en fremtidig versjon av .NET Framework. Hvis du vil ha mer informasjon, se [Oracle og ADO.NET](~/add/includes/ajax-current-ext-md.md).       OracleDataAdapter fungerer som en bro mellom en **datasettet** og -databasenavn for å hente og lagring av data. OracleDataAdapter gir denne broen ved å bruke <xref:System.Data.Common.DbDataAdapter.Fill%2A>å laste inn data fra databasen til den <xref:System.Data.DataSet>, og bruker <xref:System.Data.Common.DbDataAdapter.Update%2A>til å sende endringene i den <xref:System.Data.DataSet>tilbake til datakilden.</xref:System.Data.DataSet> </xref:System.Data.Common.DbDataAdapter.Update%2A> </xref:System.Data.DataSet> </xref:System.Data.Common.DbDataAdapter.Fill%2A>       Når OracleDataAdapter fyller en <xref:System.Data.DataSet>, opprettes det nødvendige tabellene og kolonnene for de returnerte dataene hvis de ikke allerede finnes.</xref:System.Data.DataSet> Imidlertid primære nøkkelinformasjon er ikke inkludert i implisitt opprettet skjemaet med mindre <xref:System.Data.Common.DataAdapter.MissingSchemaAction%2A>egenskapen er satt til <xref:System.Data.MissingSchemaAction>.</xref:System.Data.MissingSchemaAction> </xref:System.Data.Common.DataAdapter.MissingSchemaAction%2A> Du kan også ha OracleDataAdapter opprette skjemaet <xref:System.Data.DataSet>inkludert primære nøkkelinformasjon, før du fyller den med dataene ved hjelp av <xref:System.Data.Common.DbDataAdapter.FillSchema%2A>.</xref:System.Data.Common.DbDataAdapter.FillSchema%2A> </xref:System.Data.DataSet> Hvis du vil ha mer informasjon, se [eksisterende begrensninger for å legge til et datasett](~/add/includes/ajax-current-ext-md.md).      > [!NOTE] > Som standard numeriske felt som er importert til en <xref:System.Data.DataTable>med <xref:System.Data.Common.DbDataAdapter.Fill%2A>er tilordnet til <xref:System.Data.OracleClient.OracleNumber>objekter.</xref:System.Data.OracleClient.OracleNumber> </xref:System.Data.Common.DbDataAdapter.Fill%2A> </xref:System.Data.DataTable> Det er mulig å overflyt i <xref:System.Data.OracleClient.OracleNumber>, og Iverksett et Oracle-unntak ved å importere en ikke-integral numerisk verdi som er for stort eller for høy presisjonen for den <xref:System.Data.OracleClient.OracleNumber>&quot;s precision begrensningene.</xref:System.Data.OracleClient.OracleNumber> </xref:System.Data.OracleClient.OracleNumber> Se beskrivelsen av <xref:System.Data.OracleClient.OracleNumber>for mer informasjon.</xref:System.Data.OracleClient.OracleNumber>       OracleDataAdapter også den <xref:System.Data.OracleClient.OracleDataAdapter.SelectCommand%2A>, <xref:System.Data.OracleClient.OracleDataAdapter.InsertCommand%2A>, <xref:System.Data.OracleClient.OracleDataAdapter.DeleteCommand%2A>, <xref:System.Data.OracleClient.OracleDataAdapter.UpdateCommand%2A>, og `TableMappings` egenskaper for å forenkle lasting og oppdatering av data.</xref:System.Data.OracleClient.OracleDataAdapter.UpdateCommand%2A> </xref:System.Data.OracleClient.OracleDataAdapter.DeleteCommand%2A> </xref:System.Data.OracleClient.OracleDataAdapter.InsertCommand%2A> </xref:System.Data.OracleClient.OracleDataAdapter.SelectCommand%2A>       .NET Framework-dataleverandør for Oracle støtter ikke satsvise SQL-setninger. Kan du bruke flere `REF CURSOR` sender parameterne til å fylle en **datasettet**hver i sin eier <xref:System.Data.DataTable>.</xref:System.Data.DataTable> Du må definere parameterne, merke dem som utdataparametere og angi at de `REF CURSOR` datatyper. Vær oppmerksom på at du ikke kan bruke den <xref:System.Data.Common.DbDataAdapter.Update%2A>metoden når OracleDataAdapter er fylt med `REF CURSOR` parametere som ble returnert av en lagret prosedyre, fordi Oracle ikke leverer informasjonen som kreves for å finne ut hva tabellnavn og kolonnenavn er når SQL-setningen utføres.</xref:System.Data.Common.DbDataAdapter.Update%2A> C# eksemplet antar at du har opprettet denne lagrede prosedyren.       Opprett følgende Oracle-pakke for Oracle-serveren.      ```   CREATE OR REPLACE PACKAGE CURSPKG AS       TYPE T_CURSOR IS REF CURSOR;       PROCEDURE OPEN_ONE_CURSOR (N_EMPNO IN NUMBER,          IO_CURSOR OUT T_CURSOR);       PROCEDURE OPEN_TWO_CURSORS (EMPCURSOR OUT T_CURSOR,          DEPTCURSOR OUT T_CURSOR);   END CURSPKG;   /   ```Opprette følgende Oracle pakken meldingsteksten i Oracle-serveren.      ```   CREATE OR REPLACE PACKAGE BODY CURSPKG AS        PROCEDURE OPEN_ONE_CURSOR (N_EMPNO IN NUMBER,                                   IO_CURSOR OUT T_CURSOR)        IS            V_CURSOR T_CURSOR;        BEGIN            IF N_EMPNO <> 0 THEN                 OPEN V_CURSOR FOR                 SELECT EMP.EMPNO, EMP.ENAME, DEPT.DEPTNO, DEPT.DNAME                      FROM EMP, DEPT                      WHERE EMP.DEPTNO = DEPT.DEPTNO                            AND EMP.EMPNO = N_EMPNO;            ELSE                 OPEN V_CURSOR FOR                 SELECT EMP.EMPNO, EMP.ENAME, DEPT.DEPTNO, DEPT.DNAME                      FROM EMP, DEPT                      WHERE EMP.DEPTNO = DEPT.DEPTNO;            END IF;            IO_CURSOR := V_CURSOR;        END OPEN_ONE_CURSOR;        PROCEDURE OPEN_TWO_CURSORS (EMPCURSOR OUT T_CURSOR,                                    DEPTCURSOR OUT T_CURSOR)        IS            V_CURSOR1 T_CURSOR;            V_CURSOR2 T_CURSOR;        BEGIN            OPEN V_CURSOR1 FOR SELECT * FROM EMP;            OPEN V_CURSOR2 FOR SELECT * FROM DEPT;            EMPCURSOR  := V_CURSOR1;            DEPTCURSOR := V_CURSOR2;        END OPEN_TWO_CURSORS;    END CURSPKG;    /   ```C# eksemplet nedenfor viser hvordan du kan få tabell- og informasjon ved hjelp av den lagrede prosedyren.      ```c#   // GetConnectionString() returns a connection string for   // the data source.      string connString = GetConnectionString();   DataSet ds = new DataSet();   OracleConnection conn = new OracleConnection(connString);   OracleCommand cmd = conn.CreateCommand();      cmd.CommandText = &quot;CURSPKG.OPEN_TWO_CURSORS&quot;;   cmd.CommandType = CommandType.StoredProcedure;   cmd.Parameters.Add(&quot;EMPCURSOR&quot;, OracleType.Cursor).Direction =           ParameterDirection.Output;   cmd.Parameters.Add(&quot;DEPTCURSOR&quot;, OracleType.Cursor).Direction =           ParameterDirection.Output;      OracleDataAdapter da = new OracleDataAdapter(cmd);   da.TableMappings.Add(&quot;Table&quot;, &quot;Emp&quot;);   da.TableMappings.Add(&quot;Table1&quot;, &quot;Dept&quot;);   da.Fill(ds);      ds.Relations.Add(&quot;EmpDept&quot;, ds.Tables[&quot;Dept&quot;].Columns[&quot;Deptno&quot;],          ds.Tables[&quot;Emp&quot;].Columns[&quot;Deptno&quot;], false);   ```Visual Basic i eksemplet viser hvordan du bruker en OracleDataAdapter til å fylle en <xref:System.Data.DataSet>ved hjelp av en Oracle `REF CURSOR`.</xref:System.Data.DataSet> Disse eksemplene bruker tabeller som er definert i skjemaet Oracle Scott/Tiger, og krever at følgende PL/SQL-pakken og pakken meldingsteksten. Du må opprette disse på serveren til å bruke eksempler.       Opprett følgende Oracle-pakke for Oracle-serveren.      ```   CREATE OR REPLACE PACKAGE CURSPKG AS       TYPE T_CURSOR IS REF CURSOR;       PROCEDURE OPEN_ONE_CURSOR (N_EMPNO IN NUMBER,          IO_CURSOR OUT T_CURSOR);       PROCEDURE OPEN_TWO_CURSORS (EMPCURSOR OUT T_CURSOR,          DEPTCURSOR OUT T_CURSOR);   END CURSPKG;   /   ```Opprette følgende Oracle pakken meldingsteksten i Oracle-serveren.      ```   CREATE OR REPLACE PACKAGE BODY CURSPKG AS        PROCEDURE OPEN_ONE_CURSOR (N_EMPNO IN NUMBER,                                   IO_CURSOR OUT T_CURSOR)        IS            V_CURSOR T_CURSOR;        BEGIN            IF N_EMPNO <> 0 THEN                 OPEN V_CURSOR FOR                 SELECT EMP.EMPNO, EMP.ENAME, DEPT.DEPTNO, DEPT.DNAME                      FROM EMP, DEPT                      WHERE EMP.DEPTNO = DEPT.DEPTNO                            AND EMP.EMPNO = N_EMPNO;            ELSE                 OPEN V_CURSOR FOR                 SELECT EMP.EMPNO, EMP.ENAME, DEPT.DEPTNO, DEPT.DNAME                      FROM EMP, DEPT                      WHERE EMP.DEPTNO = DEPT.DEPTNO;            END IF;            IO_CURSOR := V_CURSOR;        END OPEN_ONE_CURSOR;        PROCEDURE OPEN_TWO_CURSORS (EMPCURSOR OUT T_CURSOR,                                    DEPTCURSOR OUT T_CURSOR)        IS            V_CURSOR1 T_CURSOR;            V_CURSOR2 T_CURSOR;        BEGIN            OPEN V_CURSOR1 FOR SELECT * FROM EMP;            OPEN V_CURSOR2 FOR SELECT * FROM DEPT;            EMPCURSOR  := V_CURSOR1;            DEPTCURSOR := V_CURSOR2;        END OPEN_TWO_CURSORS;    END CURSPKG;    /   ```Dette eksemplet i Visual Basic utfører en PL/SQL-lagret prosedyre som returnerer to `REF CURSOR` parametere og fyll en <xref:System.Data.DataSet>med rader som returneres.</xref:System.Data.DataSet>      ```vb#      &quot; GetConnectionString() returns a connection string for   &quot; the data source.          Dim connString As New String(GetConnectionString())       Dim ds As New DataSet()       Dim conn As New OracleConnection(connString)       Dim cmd As OracleCommand = conn.CreateCommand()          cmd.CommandText = &quot;CURSPKG.OPEN_TWO_CURSORS&quot;       cmd.CommandType = CommandType.StoredProcedure       cmd.Parameters.Add(&quot;EMPCURSOR&quot;, OracleType.Cursor).Direction = _          ParameterDirection.Output       cmd.Parameters.Add(&quot;DEPTCURSOR&quot;, OracleType.Cursor).Direction = _          ParameterDirection.Output          Dim da As New OracleDataAdapter(cmd)       da.TableMappings.Add(&quot;Table&quot;, &quot;Emp&quot;)       da.TableMappings.Add(&quot;Table1&quot;, &quot;Dept&quot;)       da.Fill(ds)          ds.Relations.Add(&quot;EmpDept&quot;, ds.Tables(&quot;Dept&quot;).Columns(&quot;Deptno&quot;), _         ds.Tables(&quot;Emp&quot;).Columns(&quot;Deptno&quot;), False)   ```Når du har brukt OracleDataAdapter til å utføre en `Fill` eller `FillSchema` operasjonen i `DataColumn.ReadOnly` egenskapen returnerer alltid USANN, uavhengig om en kolonne kan oppdateres eller ikke, fordi Oracle-serveren ikke returnerer denne informasjonen."
   syntax:
     content: >-
       [System.ComponentModel.DefaultEvent("RowUpdated")]
@@ -130,8 +130,8 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Initializes a new instance of the <xref href=&quot;System.Data.OracleClient.OracleDataAdapter&quot;></xref> class."
-  remarks: "When you create an instance of <xref:System.Data.OracleClient.OracleDataAdapter>, the following read/write properties are set to their default values, as shown in the table.      |Properties|Default value|   |----------------|-------------------|   |<xref:System.Data.Common.DataAdapter.MissingMappingAction%2A>|`MissingMappingAction.Passthrough`|   |<xref:System.Data.Common.DataAdapter.MissingSchemaAction%2A>|`MissingSchemaAction.Add`|       You can change the value of any of these properties through a separate call to the property."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Data.OracleClient.OracleDataAdapter&quot;> </xref> klasse."
+  remarks: "Når du oppretter en forekomst av <xref:System.Data.OracleClient.OracleDataAdapter>, følgende egenskaper for lese-og skrivetilgang er satt til standardverdiene, som vist i tabellen.</xref:System.Data.OracleClient.OracleDataAdapter>      | Egenskaper | Standardverdien |   |----------------|-------------------|   | <xref:System.Data.Common.DataAdapter.MissingMappingAction%2A>| `MissingMappingAction.Passthrough`|   | <xref:System.Data.Common.DataAdapter.MissingSchemaAction%2A>| `MissingSchemaAction.Add`|       Du kan endre verdien for disse egenskapene via en egen kall til egenskapen.</xref:System.Data.Common.DataAdapter.MissingSchemaAction%2A> </xref:System.Data.Common.DataAdapter.MissingMappingAction%2A>"
   example:
   - "The following example creates an <xref:System.Data.OracleClient.OracleDataAdapter> and sets some of its properties.  \n  \n [Visual Basic]  \n  \n```  \nPublic Sub CreateOracleDataAdapter()  \n    Dim myOracleConnection As OracleConnection = New OracleConnection(\"Data Source=Oracle8i;Integrated Security=yes\")  \n    Dim custDA As OracleDataAdapter = New OracleDataAdapter  \n    custDA.MissingSchemaAction = MissingSchemaAction.AddWithKey  \n  \n    custDA.SelectCommand = New OracleCommand(\"SELECT DeptNo, DName FROM Dept\", myOracleConnection)  \n    custDA.InsertCommand = New OracleCommand(\"INSERT INTO Dept (DeptNo, DName) \" & _  \n                                            \"VALUES (:pDeptNo, :pDName)\", myOracleConnection)  \n    custDA.UpdateCommand = New OracleCommand(\"UPDATE Dept SET DeptNo = :pDeptNo, DName = :pDName \" & _  \n                                            \"WHERE DeptNo = :pDeptNo\", myOracleConnection)  \n    custDA.DeleteCommand = New OracleCommand(\"DELETE FROM Dept WHERE DeptNo = :pDeptNo\", myOracleConnection)  \n  \n    custDA.InsertCommand.Parameters.Add(\"pDeptNo\", OracleType.Number, 2, \"DeptNo\")  \n    custDA.InsertCommand.Parameters.Add(\"pDName\", OracleType.VarChar, 14, \"DName\")  \n  \n    custDA.UpdateCommand.Parameters.Add(\"pDeptNo\", OracleType.Number, 2, \"DeptNo\")  \n    custDA.UpdateCommand.Parameters.Add(\"pDName\", OracleType.VarChar, 14, \"DName\")  \n    custDA.UpdateCommand.Parameters.Add(\"poldDeptNo\", OracleType.Number, 2, \"DeptNo\").SourceVersion = DataRowVersion.Original  \n  \n    custDA.DeleteCommand.Parameters.Add(\"pDeptNo\", OracleType.Number, 2, \"DeptNo\").SourceVersion = DataRowVersion.Original  \nEnd Sub  \n```  \n  \n [C#]  \n  \n```  \npublic static void CreateOracleDataAdapter()   \n{  \n    OracleConnection myOracleConnection = new OracleConnection(\"Data Source=Oracle8i;Integrated Security=yes\");  \n    OracleDataAdapter custDA = new OracleDataAdapter();  \n    custDA.MissingSchemaAction = MissingSchemaAction.AddWithKey;  \n  \n    custDA.SelectCommand = new OracleCommand(\"SELECT DeptNo, CompanyName FROM Dept\", myOracleConnection);  \n    custDA.InsertCommand = new OracleCommand(\"INSERT INTO Dept (DeptNo, CompanyName) \" +  \n                                            \"VALUES (:pDeptNo, :pCompanyName)\", myOracleConnection);  \n    custDA.UpdateCommand = new OracleCommand(\"UPDATE Dept SET DeptNo = :pDeptNo, CompanyName = :pCompanyName \" +  \n                                            \"WHERE DeptNo = :pDeptNo\", myOracleConnection);  \n    custDA.DeleteCommand = new OracleCommand(\"DELETE FROM Dept WHERE DeptNo = :pDeptNo\", myOracleConnection);  \n  \n    custDA.InsertCommand.Parameters.Add(\"pDeptNo\", OracleType.Number, 2, \"DeptNo\");  \n    custDA.InsertCommand.Parameters.Add(\"pCompanyName\", OracleType.VarChar, 14, \"CompanyName\");  \n  \n    custDA.UpdateCommand.Parameters.Add(\"pDeptNo\", OracleType.Number, 2, \"DeptNo\");  \n    custDA.UpdateCommand.Parameters.Add(\"pCompanyName\", OracleType.VarChar, 14, \"CompanyName\");  \n    custDA.UpdateCommand.Parameters.Add(\"poldDeptNo\", OracleType.Number, 2, \"DeptNo\").SourceVersion = DataRowVersion.Original;  \n  \n    custDA.DeleteCommand.Parameters.Add(\"pDeptNo\", OracleType.Number, 2, \"DeptNo\").SourceVersion = DataRowVersion.Original;  \n}  \n```"
   syntax:
@@ -153,8 +153,8 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Initializes a new instance of the <xref href=&quot;System.Data.OracleClient.OracleDataAdapter&quot;></xref> class with the specified SQL SELECT statement."
-  remarks: "This implementation of the <xref:System.Data.OracleClient.OracleDataAdapter> constructor sets the <xref:System.Data.OracleClient.OracleDataAdapter.SelectCommand%2A> property to the value specified in the `selectCommand` parameter.       When you create an instance of <xref:System.Data.OracleClient.OracleDataAdapter>, the following read/write properties are set to their default values, as shown in the table.      |Properties|Initial value|   |----------------|-------------------|   |<xref:System.Data.Common.DataAdapter.MissingMappingAction%2A>|`MissingMappingAction.Passthrough`|   |<xref:System.Data.Common.DataAdapter.MissingSchemaAction%2A>|`MissingSchemaAction.Add`|       You can change the value of any of these properties through a separate call to the property."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Data.OracleClient.OracleDataAdapter&quot;> </xref> klassen med den angitte SQL SELECT-setningen."
+  remarks: "Denne implementeringen av den <xref:System.Data.OracleClient.OracleDataAdapter>konstruktøren angir den <xref:System.Data.OracleClient.OracleDataAdapter.SelectCommand%2A>egenskapen til verdien angitt i den `selectCommand` parameteren.</xref:System.Data.OracleClient.OracleDataAdapter.SelectCommand%2A> </xref:System.Data.OracleClient.OracleDataAdapter>       Når du oppretter en forekomst av <xref:System.Data.OracleClient.OracleDataAdapter>, følgende egenskaper for lese-og skrivetilgang er satt til standardverdiene, som vist i tabellen.</xref:System.Data.OracleClient.OracleDataAdapter>      | Egenskaper | Standardverdi |   |----------------|-------------------|   | <xref:System.Data.Common.DataAdapter.MissingMappingAction%2A>| `MissingMappingAction.Passthrough`|   | <xref:System.Data.Common.DataAdapter.MissingSchemaAction%2A>| `MissingSchemaAction.Add`|       Du kan endre verdien for disse egenskapene via en egen kall til egenskapen.</xref:System.Data.Common.DataAdapter.MissingSchemaAction%2A> </xref:System.Data.Common.DataAdapter.MissingMappingAction%2A>"
   example:
   - "The following example creates an <xref:System.Data.OracleClient.OracleDataAdapter> and sets some of its properties.  \n  \n [Visual Basic]  \n  \n```  \nPublic Sub CreateOracleDataAdapter()  \n    Dim myOracleConnection As OracleConnection = New OracleConnection(\"Data Source=Oracle8i;Integrated Security=yes\")  \n    Dim myOracleCommand As OracleCommand = New OracleCommand(\"SELECT DeptNo, DName FROM Dept\", myOracleConnection)  \n    Dim custDA As OracleDataAdapter = New OracleDataAdapter(myOracleCommand)  \n    custDA.MissingSchemaAction = MissingSchemaAction.AddWithKey  \n  \n    custDA.InsertCommand = New OracleCommand(\"INSERT INTO Dept (DeptNo, DName) \" & _  \n                                            \"VALUES (:pDeptNo, :pDName)\", myOracleConnection)  \n    custDA.UpdateCommand = New OracleCommand(\"UPDATE Dept SET DeptNo = :pDeptNo, DName = :pDName \" & _  \n                                            \"WHERE DeptNo = :pDeptNo\", myOracleConnection)  \n    custDA.DeleteCommand = New OracleCommand(\"DELETE FROM Dept WHERE DeptNo = :pDeptNo\", myOracleConnection)  \n  \n    custDA.InsertCommand.Parameters.Add(\"pDeptNo\", OracleType.Number, 2, \"DeptNo\")  \n    custDA.InsertCommand.Parameters.Add(\"pDName\", OracleType.VarChar, 14, \"DName\")  \n  \n    custDA.UpdateCommand.Parameters.Add(\"pDeptNo\", OracleType.Number, 2, \"DeptNo\")  \n    custDA.UpdateCommand.Parameters.Add(\"pDName\", OracleType.VarChar, 14, \"DName\")  \n    custDA.UpdateCommand.Parameters.Add(\"poldDeptNo\", OracleType.Number, 2, \"DeptNo\").SourceVersion = DataRowVersion.Original  \n  \n    custDA.DeleteCommand.Parameters.Add(\"pDeptNo\", OracleType.Number, 2, \"DeptNo\").SourceVersion = DataRowVersion.Original  \nEnd Sub  \n```  \n  \n [C#]  \n  \n```  \npublic static void CreateOracleDataAdapter()   \n{  \n    OracleConnection myOracleConnection = new OracleConnection(\"Data Source=Oracle8i;Integrated Security=yes\");  \n    OracleCommand myOracleCommand = new OracleCommand(\"SELECT DeptNo, DName FROM Dept\", myOracleConnection);  \n    OracleDataAdapter custDA = new OracleDataAdapter(myOracleCommand);  \n    custDA.MissingSchemaAction = MissingSchemaAction.AddWithKey;  \n  \n    custDA.InsertCommand = new OracleCommand(\"INSERT INTO Dept (DeptNo, DName) \" +  \n                                            \"VALUES (:pDeptNo, :pDName)\", myOracleConnection);  \n    custDA.UpdateCommand = new OracleCommand(\"UPDATE Dept SET DeptNo = :pDeptNo, DName = :pDName \" +  \n                                            \"WHERE DeptNo = :pDeptNo\", myOracleConnection);  \n    custDA.DeleteCommand = new OracleCommand(\"DELETE FROM Dept WHERE DeptNo = :pDeptNo\", myOracleConnection);  \n  \n    custDA.InsertCommand.Parameters.Add(\"pDeptNo\", OracleType.Number, 2, \"DeptNo\");  \n    custDA.InsertCommand.Parameters.Add(\"pDName\", OracleType.VarChar, 14, \"DName\");  \n  \n    custDA.UpdateCommand.Parameters.Add(\"pDeptNo\", OracleType.Number, 2, \"DeptNo\");  \n    custDA.UpdateCommand.Parameters.Add(\"pDName\", OracleType.VarChar, 14, \"DName\");  \n    custDA.UpdateCommand.Parameters.Add(\"poldDeptNo\", OracleType.Number, 2, \"DeptNo\").SourceVersion = DataRowVersion.Original;  \n  \n    custDA.DeleteCommand.Parameters.Add(\"pDeptNo\", OracleType.Number, 2, \"DeptNo\").SourceVersion = DataRowVersion.Original;  \n}  \n```"
   syntax:
@@ -162,7 +162,7 @@ items:
     parameters:
     - id: selectCommand
       type: System.Data.OracleClient.OracleCommand
-      description: "An <xref href=&quot;System.Data.OracleClient.OracleCommand&quot;></xref> that is an SQL SELECT statement or stored procedure, and is set as the <xref:System.Data.OracleClient.OracleDataAdapter.SelectCommand*> property of the <xref href=&quot;System.Data.OracleClient.OracleDataAdapter&quot;></xref>."
+      description: "En <xref href=&quot;System.Data.OracleClient.OracleCommand&quot;> </xref> som er en SQL SELECT-setning eller lagret prosedyre, og er angitt som den <xref:System.Data.OracleClient.OracleDataAdapter.SelectCommand*>for den <xref href=&quot;System.Data.OracleClient.OracleDataAdapter&quot;> </xref>.</xref:System.Data.OracleClient.OracleDataAdapter.SelectCommand*>"
   overload: System.Data.OracleClient.OracleDataAdapter.#ctor*
   exceptions: []
   platform:
@@ -179,8 +179,8 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Initializes a new instance of the <xref href=&quot;System.Data.OracleClient.OracleDataAdapter&quot;></xref> class with an SQL SELECT statement and an <xref href=&quot;System.Data.OracleClient.OracleConnection&quot;></xref>."
-  remarks: "This implementation of the <xref:System.Data.OracleClient.OracleDataAdapter> can be useful in an application that must call the `Fill` method for two or more <xref:System.Data.OracleClient.OracleDataAdapter> objects."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Data.OracleClient.OracleDataAdapter&quot;> </xref> klasse SQL SELECT-setninger og en <xref href=&quot;System.Data.OracleClient.OracleConnection&quot;> </xref>."
+  remarks: "Denne implementeringen av den <xref:System.Data.OracleClient.OracleDataAdapter>kan være nyttig når et program som må kalle den `Fill` metode for to eller flere <xref:System.Data.OracleClient.OracleDataAdapter>objekter.</xref:System.Data.OracleClient.OracleDataAdapter> </xref:System.Data.OracleClient.OracleDataAdapter>"
   example:
   - "The following example creates an <xref:System.Data.OracleClient.OracleDataAdapter> and sets some of its properties.  \n  \n [Visual Basic]  \n  \n```  \nPublic Sub CreateOracleDataAdapter()  \n    Dim myOracleConnection As OracleConnection = New OracleConnection(\"Data Source=Oracle8i;Integrated Security=yes\")  \n    Dim mySelectText As String = \"SELECT DeptNo, DName FROM Dept\"  \n    Dim custDA As OracleDataAdapter = New OracleDataAdapter(mySelectText, myOracleConnection)   \n    custDA.MissingSchemaAction = MissingSchemaAction.AddWithKey  \n  \n    custDA.InsertCommand = New OracleCommand(\"INSERT INTO Dept (DeptNo, DName) \" & _  \n                                            \"VALUES (:pDeptNo, :pDName)\", myOracleConnection)  \n    custDA.UpdateCommand = New OracleCommand(\"UPDATE Dept SET DeptNo = :pDeptNo, DName = :pDName \" & _  \n                                            \"WHERE DeptNo = :pDeptNo\", myOracleConnection)  \n    custDA.DeleteCommand = New OracleCommand(\"DELETE FROM Dept WHERE DeptNo = :pDeptNo\", myOracleConnection)  \n  \n    custDA.InsertCommand.Parameters.Add(\"pDeptNo\", OracleType.Number, 2, \"DeptNo\")  \n    custDA.InsertCommand.Parameters.Add(\"pDName\", OracleType.VarChar, 14, \"DName\")  \n  \n    custDA.UpdateCommand.Parameters.Add(\"pDeptNo\", OracleType.Number, 2, \"DeptNo\")  \n    custDA.UpdateCommand.Parameters.Add(\"pDName\", OracleType.VarChar, 14, \"DName\")  \n    custDA.UpdateCommand.Parameters.Add(\"poldDeptNo\", OracleType.Number, 2, \"DeptNo\").SourceVersion = DataRowVersion.Original  \n  \n    custDA.DeleteCommand.Parameters.Add(\"pDeptNo\", OracleType.Number, 2, \"DeptNo\").SourceVersion = DataRowVersion.Original  \nEnd Sub  \n```  \n  \n [C#]  \n  \n```  \npublic static void CreateOracleDataAdapter()   \n{  \n    OracleConnection myOracleConnection = new OracleConnection(\"Data Source=Oracle8i;Integrated Security=yes\");  \n  \n    string mySelectText = \"SELECT DeptNo, DName FROM Dept\";  \n  \n    OracleDataAdapter custDA = new OracleDataAdapter(mySelectText, myOracleConnection );  \n    custDA.MissingSchemaAction = MissingSchemaAction.AddWithKey;  \n  \n    custDA.InsertCommand = new OracleCommand(\"INSERT INTO Dept (DeptNo, DName) \" +  \n                                            \"VALUES (:pDeptNo, :pDName)\", myOracleConnection);  \n    custDA.UpdateCommand = new OracleCommand(\"UPDATE Dept SET DeptNo = :pDeptNo, DName = :pDName \" +  \n                                            \"WHERE DeptNo = :pDeptNo\", myOracleConnection);  \n    custDA.DeleteCommand = new OracleCommand(\"DELETE FROM Dept WHERE DeptNo = :pDeptNo\", myOracleConnection);  \n  \n    custDA.InsertCommand.Parameters.Add(\"pDeptNo\", OracleType.Number, 2, \"DeptNo\");  \n    custDA.InsertCommand.Parameters.Add(\"pDName\", OracleType.VarChar, 14, \"DName\");  \n  \n    custDA.UpdateCommand.Parameters.Add(\"pDeptNo\", OracleType.Number, 2, \"DeptNo\");  \n    custDA.UpdateCommand.Parameters.Add(\"pDName\", OracleType.VarChar, 14, \"DName\");  \n    custDA.UpdateCommand.Parameters.Add(\"poldDeptNo\", OracleType.Number, 2, \"DeptNo\").SourceVersion = DataRowVersion.Original;  \n  \n    custDA.DeleteCommand.Parameters.Add(\"pDeptNo\", OracleType.Number, 2, \"DeptNo\").SourceVersion = DataRowVersion.Original;  \n}  \n```"
   syntax:
@@ -188,10 +188,10 @@ items:
     parameters:
     - id: selectCommandText
       type: System.String
-      description: "A string that is an SQL SELECT statement or stored procedure to be used by the <xref:System.Data.OracleClient.OracleDataAdapter.SelectCommand*> property of the <xref href=&quot;System.Data.OracleClient.OracleDataAdapter&quot;></xref>."
+      description: "En streng som en SQL SELECT-setning eller lagret prosedyre som skal brukes av den <xref:System.Data.OracleClient.OracleDataAdapter.SelectCommand*>for den <xref href=&quot;System.Data.OracleClient.OracleDataAdapter&quot;> </xref>.</xref:System.Data.OracleClient.OracleDataAdapter.SelectCommand*>"
     - id: selectConnection
       type: System.Data.OracleClient.OracleConnection
-      description: "An <xref href=&quot;System.Data.OracleClient.OracleConnection&quot;></xref> that represents the connection."
+      description: "En <xref href=&quot;System.Data.OracleClient.OracleConnection&quot;> </xref> som representerer tilkoblingen."
   overload: System.Data.OracleClient.OracleDataAdapter.#ctor*
   exceptions: []
   platform:
@@ -208,7 +208,7 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Initializes a new instance of the <xref href=&quot;System.Data.OracleClient.OracleDataAdapter&quot;></xref> class with an SQL SELECT statement and a connection string."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Data.OracleClient.OracleDataAdapter&quot;> </xref> klassen med SQL SELECT-setninger og en tilkoblingsstreng."
   remarks: ''
   example:
   - "The following example creates an <xref:System.Data.OracleClient.OracleDataAdapter> and sets some of its properties.  \n  \n [Visual Basic]  \n  \n```  \nPublic Sub CreateOracleDataAdapter()  \n    Dim myConnectionText As String = \"Data Source=Oracle8i;Integrated Security=yes\"  \n    Dim mySelectText As String = \"SELECT DeptNo, DName FROM Dept\"  \n    Dim custDA As OracleDataAdapter = New OracleDataAdapter(mySelectText, myConnectionText )   \n    Dim myOracleConnection As OracleConnection = custDA.SelectCommand.Connection  \n  \n    custDA.MissingSchemaAction = MissingSchemaAction.AddWithKey     \n  \n    custDA.InsertCommand = New OracleCommand(\"INSERT INTO Dept (DeptNo, DName) \" & _  \n                                            \"VALUES (:pDeptNo, :pDName)\", myOracleConnection)  \n    custDA.UpdateCommand = New OracleCommand(\"UPDATE Dept SET DeptNo = :pDeptNo, DName = :pDName \" & _  \n                                            \"WHERE DeptNo = :pDeptNo\", myOracleConnection)  \n    custDA.DeleteCommand = New OracleCommand(\"DELETE FROM Dept WHERE DeptNo = :pDeptNo\", myOracleConnection)  \n  \n    custDA.InsertCommand.Parameters.Add(\"pDeptNo\", OracleType.Number, 2, \"DeptNo\")  \n    custDA.InsertCommand.Parameters.Add(\"pDName\", OracleType.VarChar, 14, \"DName\")  \n  \n    custDA.UpdateCommand.Parameters.Add(\"pDeptNo\", OracleType.Number, 2, \"DeptNo\")  \n    custDA.UpdateCommand.Parameters.Add(\"pDName\", OracleType.VarChar, 14, \"DName\")  \n    custDA.UpdateCommand.Parameters.Add(\"poldDeptNo\", OracleType.Number, 2, \"DeptNo\").SourceVersion = DataRowVersion.Original  \n  \n    custDA.DeleteCommand.Parameters.Add(\"pDeptNo\", OracleType.Number, 2, \"DeptNo\").SourceVersion = DataRowVersion.Original  \nEnd Sub  \n```  \n  \n [C#]  \n  \n```  \npublic static void CreateOracleDataAdapter()   \n{  \n    string myConnectionText = \"Data Source=Oracle8i;Integrated Security=yes\";  \n  \n    string mySelectText = \"SELECT DeptNo, DName FROM Dept\";  \n  \n    OracleDataAdapter custDA = new OracleDataAdapter(mySelectText, myConnectionText );  \n   OracleConnection myOracleConnection = custDA.SelectCommand.Connection;  \n  \n    custDA.MissingSchemaAction = MissingSchemaAction.AddWithKey;  \n  \n    custDA.InsertCommand = new OracleCommand(\"INSERT INTO Dept (DeptNo, DName) \" +  \n                                            \"VALUES (:pDeptNo, :pDName)\", myOracleConnection);  \n    custDA.UpdateCommand = new OracleCommand(\"UPDATE Dept SET DeptNo = :pDeptNo, DName = :pDName \" +  \n                                            \"WHERE DeptNo = :pDeptNo\", myOracleConnection);  \n    custDA.DeleteCommand = new OracleCommand(\"DELETE FROM Dept WHERE DeptNo = :pDeptNo\", myOracleConnection);  \n  \n    custDA.InsertCommand.Parameters.Add(\"pDeptNo\", OracleType.Number, 2, \"DeptNo\");  \n    custDA.InsertCommand.Parameters.Add(\"pDName\", OracleType.VarChar, 14, \"DName\");  \n  \n    custDA.UpdateCommand.Parameters.Add(\"pDeptNo\", OracleType.Number, 2, \"DeptNo\");  \n    custDA.UpdateCommand.Parameters.Add(\"pDName\", OracleType.VarChar, 14, \"DName\");  \n    custDA.UpdateCommand.Parameters.Add(\"poldDeptNo\", OracleType.Number, 2, \"DeptNo\").SourceVersion = DataRowVersion.Original;  \n  \n    custDA.DeleteCommand.Parameters.Add(\"pDeptNo\", OracleType.Number, 2, \"DeptNo\").SourceVersion = DataRowVersion.Original;  \n}  \n```"
@@ -217,10 +217,10 @@ items:
     parameters:
     - id: selectCommandText
       type: System.String
-      description: "A string that is an SQL SELECT statement or stored procedure to be used by the <xref:System.Data.OracleClient.OracleDataAdapter.SelectCommand*> property of the <xref href=&quot;System.Data.OracleClient.OracleDataAdapter&quot;></xref>."
+      description: "En streng som en SQL SELECT-setning eller lagret prosedyre som skal brukes av den <xref:System.Data.OracleClient.OracleDataAdapter.SelectCommand*>for den <xref href=&quot;System.Data.OracleClient.OracleDataAdapter&quot;> </xref>.</xref:System.Data.OracleClient.OracleDataAdapter.SelectCommand*>"
     - id: selectConnectionString
       type: System.String
-      description: "The connection string."
+      description: "Tilkoblingsstrengen."
   overload: System.Data.OracleClient.OracleDataAdapter.#ctor*
   exceptions: []
   platform:
@@ -242,10 +242,10 @@ items:
     parameters:
     - id: command
       type: System.Data.IDbCommand
-      description: "To be added."
+      description: "Som skal legges til."
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   overload: System.Data.OracleClient.OracleDataAdapter.AddToBatch*
   exceptions: []
   platform:
@@ -286,19 +286,19 @@ items:
     parameters:
     - id: dataRow
       type: System.Data.DataRow
-      description: "To be added."
+      description: "Som skal legges til."
     - id: command
       type: System.Data.IDbCommand
-      description: "To be added."
+      description: "Som skal legges til."
     - id: statementType
       type: System.Data.StatementType
-      description: "To be added."
+      description: "Som skal legges til."
     - id: tableMapping
       type: System.Data.Common.DataTableMapping
-      description: "To be added."
+      description: "Som skal legges til."
     return:
       type: System.Data.Common.RowUpdatedEventArgs
-      description: "To be added."
+      description: "Som skal legges til."
   overload: System.Data.OracleClient.OracleDataAdapter.CreateRowUpdatedEvent*
   exceptions: []
   platform:
@@ -320,19 +320,19 @@ items:
     parameters:
     - id: dataRow
       type: System.Data.DataRow
-      description: "To be added."
+      description: "Som skal legges til."
     - id: command
       type: System.Data.IDbCommand
-      description: "To be added."
+      description: "Som skal legges til."
     - id: statementType
       type: System.Data.StatementType
-      description: "To be added."
+      description: "Som skal legges til."
     - id: tableMapping
       type: System.Data.Common.DataTableMapping
-      description: "To be added."
+      description: "Som skal legges til."
     return:
       type: System.Data.Common.RowUpdatingEventArgs
-      description: "To be added."
+      description: "Som skal legges til."
   overload: System.Data.OracleClient.OracleDataAdapter.CreateRowUpdatingEvent*
   exceptions: []
   platform:
@@ -349,15 +349,15 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Gets or sets an SQL statement or stored procedure used to delete records in the database."
-  remarks: "When the DeleteCommand property is assigned to a previously created <xref:System.Data.OracleClient.OracleCommand>, the <xref:System.Data.OracleClient.OracleCommand> is not cloned. Instead, the DeleteCommand maintains a reference to the previously created <xref:System.Data.OracleClient.OracleCommand>.       During an update operation, if DeleteCommand is not set and primary key information is present in the <xref:System.Data.DataSet>, you can use the <xref:System.Data.OracleClient.OracleCommandBuilder> class to automatically generate the DeleteCommand, and additional commands needed to reconcile the <xref:System.Data.DataSet> to the database. To do this, set the <xref:System.Data.OracleClient.OracleDataAdapter.SelectCommand%2A> property of the <xref:System.Data.OracleClient.OracleDataAdapter>. The generation logic also requires key column information to be present in the <xref:System.Data.DataSet>. For more information see [Generating Commands with CommandBuilders](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Henter eller angir en SQL-setningen eller lagret prosedyre som brukes til å slette poster i databasen."
+  remarks: "Når egenskapen DeleteCommand er tilordnet til en tidligere opprettet <xref:System.Data.OracleClient.OracleCommand>, <xref:System.Data.OracleClient.OracleCommand>ikke klones.</xref:System.Data.OracleClient.OracleCommand> </xref:System.Data.OracleClient.OracleCommand> I stedet beholder DeleteCommand en referanse til det tidligere opprettet <xref:System.Data.OracleClient.OracleCommand>.</xref:System.Data.OracleClient.OracleCommand>       Under en oppdateringsoperasjon Hvis DeleteCommand ikke er angitt og primære nøkkelinformasjon finnes i den <xref:System.Data.DataSet>, kan du bruke den <xref:System.Data.OracleClient.OracleCommandBuilder>klasse som automatisk genererer DeleteCommand og flere kommandoer kreves for å avstemme den <xref:System.Data.DataSet>til databasen.</xref:System.Data.DataSet> </xref:System.Data.OracleClient.OracleCommandBuilder> </xref:System.Data.DataSet> Hvis du vil gjøre dette, kan du angi <xref:System.Data.OracleClient.OracleDataAdapter.SelectCommand%2A>egenskapen for <xref:System.Data.OracleClient.OracleDataAdapter>.</xref:System.Data.OracleClient.OracleDataAdapter> </xref:System.Data.OracleClient.OracleDataAdapter.SelectCommand%2A> Generering logikken krever også informasjon om nøkkelkolonner i <xref:System.Data.DataSet>.</xref:System.Data.DataSet> Hvis du vil ha mer informasjon se [generering kommandoer med CommandBuilders](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following example creates an <xref:System.Data.OracleClient.OracleDataAdapter> and sets the <xref:System.Data.OracleClient.OracleDataAdapter.SelectCommand%2A> and DeleteCommand properties. It assumes you have already created an <xref:System.Data.OracleClient.OracleConnection> object.  \n  \n [Visual Basic]  \n  \n```  \nPublic Shared Function CreateCustomerAdapter(conn As OracleConnection) As OracleDataAdapter   \n  \n  Dim da As OracleDataAdapter = New OracleDataAdapter()  \n  Dim cmd As OracleCommand  \n  Dim parm As OracleParameter  \n  \n  ' Create the SelectCommand.  \n  \n  cmd = New OracleCommand(\"SELECT * FROM Dept \" & _  \n                       \"WHERE DName = :pDName AND Loc = :pLoc\", conn)  \n  \n  cmd.Parameters.Add(\"pDName\", OracleType.NVarChar, 14)  \n  cmd.Parameters.Add(\"pLoc\", OracleType.NVarChar, 13)  \n  \n  da.SelectCommand = cmd  \n  \n  ' Create the DeleteCommand.  \n  \n  cmd = New OracleCommand(\"DELETE FROM Dept WHERE DeptNo = :pDeptNo\", conn)  \n  \n  parm = cmd.Parameters.Add(\"pDeptNo\", OracleType.Number, 2, \"DeptNo\")  \n  parm.SourceVersion = DataRowVersion.Original  \n  \n  da.DeleteCommand = cmd  \n  \n  Return da  \nEnd Function  \n```  \n  \n [C#]  \n  \n```  \npublic static OracleDataAdapter CreateCustomerAdapter(OracleConnection conn)  \n{  \n  OracleDataAdapter da = new OracleDataAdapter();  \n  OracleCommand cmd;  \n  OracleParameter parm;  \n  \n  // Create the SelectCommand.  \n  \n  cmd = new OracleCommand(\"SELECT * FROM Dept \" +  \n                       \"WHERE DName = :pDName AND Loc = :pLoc\", conn);  \n  \n  cmd.Parameters.Add(\"pDName\", OracleType.NVarChar, 14);  \n  cmd.Parameters.Add(\"pLoc\", OracleType.NVarChar, 13);  \n  \n  da.SelectCommand = cmd;  \n  \n  // Create the DeleteCommand.  \n  \n  cmd = new OracleCommand(\"DELETE FROM Dept WHERE DeptNo = :pDeptNo\", conn);  \n  \n  parm = cmd.Parameters.Add(\"pDeptNo\", OracleType.Number, 2, \"DeptNo\");  \n  parm.SourceVersion = DataRowVersion.Original;  \n  \n  da.DeleteCommand = cmd;  \n  \n  return da;  \n}  \n```"
   syntax:
     content: public System.Data.OracleClient.OracleCommand DeleteCommand { get; set; }
     return:
       type: System.Data.OracleClient.OracleCommand
-      description: "An <xref href=&quot;System.Data.OracleClient.OracleCommand&quot;></xref> used during an update operation to delete records in the database that correspond to deleted rows in the <xref uid=&quot;langword_csharp_DataSet&quot; name=&quot;DataSet&quot; href=&quot;&quot;></xref>."
+      description: "En <xref href=&quot;System.Data.OracleClient.OracleCommand&quot;> </xref> brukes under en oppdateringsoperasjon for å slette poster i databasen som svarer til slettede radene i den <xref uid=&quot;langword_csharp_DataSet&quot; name=&quot;DataSet&quot; href=&quot;&quot;> </xref>."
   overload: System.Data.OracleClient.OracleDataAdapter.DeleteCommand*
   exceptions: []
   platform:
@@ -379,7 +379,7 @@ items:
     parameters: []
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   overload: System.Data.OracleClient.OracleDataAdapter.ExecuteBatch*
   exceptions: []
   platform:
@@ -401,13 +401,13 @@ items:
     parameters:
     - id: commandIdentifier
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
     - id: parameterIndex
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
     return:
       type: System.Data.IDataParameter
-      description: "To be added."
+      description: "Som skal legges til."
   overload: System.Data.OracleClient.OracleDataAdapter.GetBatchedParameter*
   exceptions: []
   platform:
@@ -429,16 +429,16 @@ items:
     parameters:
     - id: commandIdentifier
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
     - id: recordsAffected
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
     - id: error
       type: System.Exception
-      description: "To be added."
+      description: "Som skal legges til."
     return:
       type: System.Boolean
-      description: "To be added."
+      description: "Som skal legges til."
   overload: System.Data.OracleClient.OracleDataAdapter.GetBatchedRecordsAffected*
   exceptions: []
   platform:
@@ -474,15 +474,15 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Gets or sets an SQL statement or stored procedure used to insert new records into the database."
-  remarks: "When the InsertCommand property is assigned to a previously created <xref:System.Data.OracleClient.OracleCommand> object, the <xref:System.Data.OracleClient.OracleCommand> is not cloned. Instead, InsertCommand maintains a reference to the previously created <xref:System.Data.OracleClient.OracleCommand>.       During an update operation, if InsertCommand is not set and primary key information is present in the <xref:System.Data.DataSet>, you can use the <xref:System.Data.OracleClient.OracleCommandBuilder> class to automatically generate InsertCommand, and additional commands needed to reconcile the <xref:System.Data.DataSet> to the database. To do this, set the <xref:System.Data.OracleClient.OracleDataAdapter.SelectCommand%2A> property of the <xref:System.Data.OracleClient.OracleDataAdapter>. The generation logic also requires key column information to be present in the <xref:System.Data.DataSet>. For more information see [Generating Commands with CommandBuilders](~/add/includes/ajax-current-ext-md.md).      > [!NOTE] >  If execution of this command returns rows, these rows may be added to the <xref:System.Data.DataSet> depending upon how you set the <xref:System.Data.OracleClient.OracleCommand.UpdatedRowSource%2A> property of the <xref:System.Data.OracleClient.OracleCommand> object.       When you update a column with the `LONG RAW` data type, an exception is thrown when you enter a value of `NULL` in the column. The Oracle `LONG RAW` data type is a deprecated type in Oracle version 8.0. To avoid this error, use the `BLOB` data type instead of `LONG RAW`."
+  summary: "Henter eller angir en SQL-setningen eller lagret prosedyre som brukes til å sette inn nye poster i databasen."
+  remarks: "Når egenskapen InsertCommand er tilordnet til en tidligere opprettet <xref:System.Data.OracleClient.OracleCommand>objektet i <xref:System.Data.OracleClient.OracleCommand>ikke klones.</xref:System.Data.OracleClient.OracleCommand> </xref:System.Data.OracleClient.OracleCommand> I stedet beholder InsertCommand en referanse til det tidligere opprettet <xref:System.Data.OracleClient.OracleCommand>.</xref:System.Data.OracleClient.OracleCommand>       Under en oppdateringsoperasjon Hvis InsertCommand ikke er angitt og primære nøkkelinformasjon finnes i den <xref:System.Data.DataSet>, kan du bruke den <xref:System.Data.OracleClient.OracleCommandBuilder>klasse som automatisk genererer InsertCommand og flere kommandoer kreves for å avstemme den <xref:System.Data.DataSet>til databasen.</xref:System.Data.DataSet> </xref:System.Data.OracleClient.OracleCommandBuilder> </xref:System.Data.DataSet> Hvis du vil gjøre dette, kan du angi <xref:System.Data.OracleClient.OracleDataAdapter.SelectCommand%2A>egenskapen for <xref:System.Data.OracleClient.OracleDataAdapter>.</xref:System.Data.OracleClient.OracleDataAdapter> </xref:System.Data.OracleClient.OracleDataAdapter.SelectCommand%2A> Generering logikken krever også informasjon om nøkkelkolonner i <xref:System.Data.DataSet>.</xref:System.Data.DataSet> Hvis du vil ha mer informasjon se [generering kommandoer med CommandBuilders](~/add/includes/ajax-current-ext-md.md).      > [!NOTE] > Hvis utførelse av kommandoen returnerer rader, disse radene kan legges til i <xref:System.Data.DataSet>avhengig av hvordan du angir den <xref:System.Data.OracleClient.OracleCommand.UpdatedRowSource%2A>for den <xref:System.Data.OracleClient.OracleCommand>objektet.</xref:System.Data.OracleClient.OracleCommand> </xref:System.Data.OracleClient.OracleCommand.UpdatedRowSource%2A> </xref:System.Data.DataSet>       Når du oppdaterer en kolonne med det `LONG RAW` datatypen et unntak når du angir en verdi for `NULL` i kolonnen. Oracle `LONG RAW` datatypen er en avskrevet type i Oracle versjon 8.0. For å unngå problemet, kan du bruke den `BLOB` datatypen i stedet for `LONG RAW`."
   example:
   - "The following example creates an <xref:System.Data.OracleClient.OracleDataAdapter> and sets the <xref:System.Data.OracleClient.OracleDataAdapter.SelectCommand%2A> and InsertCommand properties. It assumes you have already created an <xref:System.Data.OracleClient.OracleConnection> object.  \n  \n [Visual Basic]  \n  \n```  \nPublic Shared Function CreateCustomerAdapter(conn As OracleConnection) As OracleDataAdapter   \n  \n  Dim da As OracleDataAdapter = New OracleDataAdapter()  \n  Dim cmd As OracleCommand  \n  \n  ' Create the SelectCommand.  \n  \n  cmd = New OracleCommand(\"SELECT * FROM Dept \" & _  \n                       \"WHERE DName = :pDName AND Loc = :pLoc\", conn)  \n  \n  cmd.Parameters.Add(\"pDName\", OracleType.NVarChar, 14)  \n  cmd.Parameters.Add(\"pLoc\", OracleType.NVarChar, 13)  \n  \n  da.SelectCommand = cmd  \n  \n  ' Create the InsertCommand.  \n  \n  cmd = New OracleCommand(\"INSERT INTO Dept (DeptNo, DName) \" & _  \n                       \"VALUES (:pDeptNo, :pDName)\", conn)  \n  \n  cmd.Parameters.Add(\"pDeptNo\", OracleType.Number, 2, \"DeptNo\")  \n  cmd.Parameters.Add(\"pDName\", OracleType.NVarChar, 14, \"DName\")  \n  \n  da.InsertCommand = cmd  \n  \n  Return da  \nEnd Function  \n```  \n  \n [C#]  \n  \n```  \npublic static OracleDataAdapter CreateCustomerAdapter(OracleConnection conn)  \n{  \n  OracleDataAdapter da = new OracleDataAdapter();  \n  OracleCommand cmd;  \n  \n  // Create the SelectCommand.  \n  \n  cmd = new OracleCommand(\"SELECT * FROM Dept \" +  \n                       \"WHERE DName = :pDName AND Loc = :pLoc\", conn);  \n  \n  cmd.Parameters.Add(\"pDName\", OracleType.NVarChar, 14);  \n  cmd.Parameters.Add(\"pLoc\", OracleType.NVarChar, 13);  \n  \n  da.SelectCommand = cmd;  \n  \n  // Create the InsertCommand.  \n  \n  cmd = new OracleCommand(\"INSERT INTO Dept (DeptNo, DName) \" +  \n                       \"VALUES (:pDeptNo, :pDName)\", conn);  \n  \n  cmd.Parameters.Add(\"pDeptNo\", OracleType.Number, 2, \"DeptNo\");  \n  cmd.Parameters.Add(\"pDName\", OracleType.NVarChar, 14, \"DName\");  \n  \n  da.InsertCommand = cmd;  \n  \n  return da;  \n}  \n```"
   syntax:
     content: public System.Data.OracleClient.OracleCommand InsertCommand { get; set; }
     return:
       type: System.Data.OracleClient.OracleCommand
-      description: "An <xref href=&quot;System.Data.OracleClient.OracleCommand&quot;></xref> used during an update operation to insert records in the database that correspond to new rows in the <xref href=&quot;System.Data.DataSet&quot;></xref>."
+      description: "En <xref href=&quot;System.Data.OracleClient.OracleCommand&quot;> </xref> brukes under en oppdateringsoperasjon for å sette inn poster i databasen som samsvarer med nye rader i den <xref href=&quot;System.Data.DataSet&quot;> </xref>."
   overload: System.Data.OracleClient.OracleDataAdapter.InsertCommand*
   exceptions: []
   platform:
@@ -504,7 +504,7 @@ items:
     parameters:
     - id: value
       type: System.Data.Common.RowUpdatedEventArgs
-      description: "To be added."
+      description: "Som skal legges til."
   overload: System.Data.OracleClient.OracleDataAdapter.OnRowUpdated*
   exceptions: []
   platform:
@@ -526,7 +526,7 @@ items:
     parameters:
     - id: value
       type: System.Data.Common.RowUpdatingEventArgs
-      description: "To be added."
+      description: "Som skal legges til."
   overload: System.Data.OracleClient.OracleDataAdapter.OnRowUpdating*
   exceptions: []
   platform:
@@ -543,13 +543,13 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Occurs during an update operation after a command is executed against the database."
-  remarks: "When using the `Update` method, there are two events that occur per data row updated. The order of execution is as follows:      1.  The values in the <xref:System.Data.DataRow> are moved to the parameter values.      2.  The `OnRowUpdating` event is raised.      3.  The command executes.      4.  If the `UpdateRowSource` enumeration is set to `FirstReturnedRecord`, the first returned result is placed in the **DataRow**.      5.  If there are output parameters, they are placed in the **DataRow**.      6.  The `OnRowUpdated` event is raised.      7.  `AcceptChanges` is called."
+  summary: "Forekommer i løpet av en oppdateringsoperasjon når en kommando kjøres mot databasen."
+  remarks: "Når du bruker den `Update` metoden, to hendelser som inntreffer per dataraden oppdatert. Rekkefølgen på utføringen er som følger: 1.  Verdiene i den <xref:System.Data.DataRow>flyttes til parameterverdiene.</xref:System.Data.DataRow>      2.  Den `OnRowUpdating` hendelsen skjer.      3.  Utfører.      4.  Hvis den `UpdateRowSource` opplisting er satt til `FirstReturnedRecord`, først returnerte resultatet er plassert i den **DataRow**.      5.  Hvis det er utdataparametere, de er plassert i den **DataRow**.      6.  Den `OnRowUpdated` hendelsen skjer.      7.  `AcceptChanges`kalles."
   syntax:
     content: public event System.Data.OracleClient.OracleRowUpdatedEventHandler RowUpdated;
     return:
       type: System.Data.OracleClient.OracleRowUpdatedEventHandler
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -565,13 +565,13 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Occurs during <xref:System.Data.Common.DbDataAdapter.Update*> before a command is executed against the data source."
-  remarks: "When using the `Update` method, there are two events that occur per data row updated. The order of execution is as follows:      1.  The values in the <xref:System.Data.DataRow> are moved to the parameter values.      2.  The `OnRowUpdating` event is raised.      3.  The command executes.      4.  If the `UpdateRowSource` enumeration is set to `FirstReturnedRecord`, the first returned result is placed in the **DataRow**.      5.  If there are output parameters, they are placed in the **DataRow**.      6.  The `OnRowUpdated` event is raised.      7.  `AcceptChanges` is called."
+  summary: "Forekommer i løpet av <xref:System.Data.Common.DbDataAdapter.Update*>før en kommando kjøres mot datakilden.</xref:System.Data.Common.DbDataAdapter.Update*>"
+  remarks: "Når du bruker den `Update` metoden, to hendelser som inntreffer per dataraden oppdatert. Rekkefølgen på utføringen er som følger: 1.  Verdiene i den <xref:System.Data.DataRow>flyttes til parameterverdiene.</xref:System.Data.DataRow>      2.  Den `OnRowUpdating` hendelsen skjer.      3.  Utfører.      4.  Hvis den `UpdateRowSource` opplisting er satt til `FirstReturnedRecord`, først returnerte resultatet er plassert i den **DataRow**.      5.  Hvis det er utdataparametere, de er plassert i den **DataRow**.      6.  Den `OnRowUpdated` hendelsen skjer.      7.  `AcceptChanges`kalles."
   syntax:
     content: public event System.Data.OracleClient.OracleRowUpdatingEventHandler RowUpdating;
     return:
       type: System.Data.OracleClient.OracleRowUpdatingEventHandler
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -587,15 +587,15 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Gets or sets an SQL statement or stored procedure used to select records in the database."
-  remarks: "When SelectCommand is assigned to a previously created <xref:System.Data.OracleClient.OracleCommand>, the <xref:System.Data.OracleClient.OracleCommand> is not cloned. Instead, the SelectCommand maintains a reference to the previously created <xref:System.Data.OracleClient.OracleCommand> object.       If SelectCommand does not return any rows, no tables are added to the **DataSet**, and no exception is raised."
+  summary: "Henter eller angir en SQL-setningen eller lagret prosedyre som brukes til å velge poster i databasen."
+  remarks: "Når SelectCommand er tilordnet til en tidligere opprettet <xref:System.Data.OracleClient.OracleCommand>, <xref:System.Data.OracleClient.OracleCommand>ikke klones.</xref:System.Data.OracleClient.OracleCommand> </xref:System.Data.OracleClient.OracleCommand> I stedet SelectCommand opprettholder en referanse til det tidligere opprettet <xref:System.Data.OracleClient.OracleCommand>objektet.</xref:System.Data.OracleClient.OracleCommand>       Hvis SelectCommand ikke returnerer alle rader, ingen tabeller er lagt til i **datasettet**, og ingen unntak er startet."
   example:
   - "The following example creates an <xref:System.Data.OracleClient.OracleDataAdapter> and sets the SelectCommand and <xref:System.Data.OracleClient.OracleDataAdapter.InsertCommand%2A> properties. It assumes you have already created an <xref:System.Data.OracleClient.OracleConnection> object.  \n  \n [Visual Basic]  \n  \n```  \nPublic Shared Function CreateCustomerAdapter(conn As OracleConnection) As OracleDataAdapter   \n  \n  Dim da As OracleDataAdapter = New OracleDataAdapter()  \n  Dim cmd As OracleCommand  \n  \n  ' Create the SelectCommand.  \n  \n  cmd = New OracleCommand(\"SELECT * FROM Dept \" & _  \n                       \"WHERE DName = :pDName AND Loc = :pLoc\", conn)  \n  \n  cmd.Parameters.Add(\"pDName\", OracleType.NVarChar, 14)  \n  cmd.Parameters.Add(\"pLoc\", OracleType.NVarChar, 13)  \n  \n  da.SelectCommand = cmd  \n  \n  ' Create the InsertCommand.  \n  \n  cmd = New OracleCommand(\"INSERT INTO Dept (DeptNo, DName) \" & _  \n                       \"VALUES (pDeptNo, pDName)\", conn)  \n  \n  cmd.Parameters.Add(\"pDeptNo\", OracleType.Number, 2, \"DeptNo\")  \n  cmd.Parameters.Add(\"pDName\", OracleType.NVarChar, 14, \"DName\")  \n  \n  da.InsertCommand = cmd  \n  \n  Return da  \nEnd Function  \n```  \n  \n [C#]  \n  \n```  \npublic static OracleDataAdapter CreateCustomerAdapter(OracleConnection conn)  \n{  \n  OracleDataAdapter da = new OracleDataAdapter();  \n  OracleCommand cmd;  \n  \n  // Create the SelectCommand.  \n  \n  cmd = new OracleCommand(\"SELECT * FROM Dept \" +  \n                       \"WHERE DName = :pDName AND Loc = :pLoc\", conn);  \n  \n  cmd.Parameters.Add(\"pDName\", OracleType.NVarChar, 14);  \n  cmd.Parameters.Add(\"pLoc\", OracleType.NVarChar, 13);  \n  \n  da.SelectCommand = cmd;  \n  \n  // Create the InsertCommand.  \n  \n  cmd = new OracleCommand(\"INSERT INTO Dept (DeptNo, DName) \" +  \n                       \"VALUES (:pDeptNo, :pDName)\", conn);  \n  \n  cmd.Parameters.Add(\"pDeptNo\", OracleType.Number, 2, \"DeptNo\");  \n  cmd.Parameters.Add(\"pDName\", OracleType.NVarChar, 14, \"DName\");  \n  \n  da.InsertCommand = cmd;  \n  \n  return da;  \n}  \n```"
   syntax:
     content: public System.Data.OracleClient.OracleCommand SelectCommand { get; set; }
     return:
       type: System.Data.OracleClient.OracleCommand
-      description: "An <xref href=&quot;System.Data.OracleClient.OracleCommand&quot;></xref> that is used during a fill operation to select records from database for placement in the <xref href=&quot;System.Data.DataSet&quot;></xref>."
+      description: "En <xref href=&quot;System.Data.OracleClient.OracleCommand&quot;> </xref> som brukes under en Fylloperasjonen til å velge poster fra databasen for plassering i den <xref href=&quot;System.Data.DataSet&quot;> </xref>."
   overload: System.Data.OracleClient.OracleDataAdapter.SelectCommand*
   exceptions: []
   platform:
@@ -613,13 +613,13 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "For a description of this member, see <xref:System.Data.IDbDataAdapter.DeleteCommand*>."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.OracleClient.OracleDataAdapter> instance is cast to an <xref:System.Data.IDbDataAdapter> interface."
+  summary: "Hvis du vil ha en beskrivelse for dette medlemmet kan du se <xref:System.Data.IDbDataAdapter.DeleteCommand*>.</xref:System.Data.IDbDataAdapter.DeleteCommand*>"
+  remarks: "Dette medlemmet er implementering eksplisitt grensesnitt medlem. Den kan brukes bare når den <xref:System.Data.OracleClient.OracleDataAdapter>forekomsten endres til en <xref:System.Data.IDbDataAdapter>grensesnittet.</xref:System.Data.IDbDataAdapter> </xref:System.Data.OracleClient.OracleDataAdapter>"
   syntax:
     content: System.Data.IDbCommand System.Data.IDbDataAdapter.DeleteCommand { get; set; }
     return:
       type: System.Data.IDbCommand
-      description: "A string representing the command."
+      description: "En streng som representerer kommandoen."
   overload: System.Data.OracleClient.OracleDataAdapter.System#Data#IDbDataAdapter#DeleteCommand*
   exceptions: []
   platform:
@@ -637,13 +637,13 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "For a description of this member, see <xref:System.Data.IDbDataAdapter.InsertCommand*>."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.OracleClient.OracleDataAdapter> instance is cast to an <xref:System.Data.IDbDataAdapter> interface."
+  summary: "Hvis du vil ha en beskrivelse for dette medlemmet kan du se <xref:System.Data.IDbDataAdapter.InsertCommand*>.</xref:System.Data.IDbDataAdapter.InsertCommand*>"
+  remarks: "Dette medlemmet er implementering eksplisitt grensesnitt medlem. Den kan brukes bare når den <xref:System.Data.OracleClient.OracleDataAdapter>forekomsten endres til en <xref:System.Data.IDbDataAdapter>grensesnittet.</xref:System.Data.IDbDataAdapter> </xref:System.Data.OracleClient.OracleDataAdapter>"
   syntax:
     content: System.Data.IDbCommand System.Data.IDbDataAdapter.InsertCommand { get; set; }
     return:
       type: System.Data.IDbCommand
-      description: "A string representing the command."
+      description: "En streng som representerer kommandoen."
   overload: System.Data.OracleClient.OracleDataAdapter.System#Data#IDbDataAdapter#InsertCommand*
   exceptions: []
   platform:
@@ -661,13 +661,13 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "For a description of this member, see <xref:System.Data.IDbDataAdapter.SelectCommand*>."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.OracleClient.OracleDataAdapter> instance is cast to an <xref:System.Data.IDbDataAdapter> interface."
+  summary: "Hvis du vil ha en beskrivelse for dette medlemmet kan du se <xref:System.Data.IDbDataAdapter.SelectCommand*>.</xref:System.Data.IDbDataAdapter.SelectCommand*>"
+  remarks: "Dette medlemmet er implementering eksplisitt grensesnitt medlem. Den kan brukes bare når den <xref:System.Data.OracleClient.OracleDataAdapter>forekomsten endres til en <xref:System.Data.IDbDataAdapter>grensesnittet.</xref:System.Data.IDbDataAdapter> </xref:System.Data.OracleClient.OracleDataAdapter>"
   syntax:
     content: System.Data.IDbCommand System.Data.IDbDataAdapter.SelectCommand { get; set; }
     return:
       type: System.Data.IDbCommand
-      description: "A string representing the command."
+      description: "En streng som representerer kommandoen."
   overload: System.Data.OracleClient.OracleDataAdapter.System#Data#IDbDataAdapter#SelectCommand*
   exceptions: []
   platform:
@@ -685,13 +685,13 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "For a description of this member, see <xref:System.Data.IDbDataAdapter.UpdateCommand*>."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.OracleClient.OracleDataAdapter> instance is cast to an <xref:System.Data.IDbDataAdapter> interface."
+  summary: "Hvis du vil ha en beskrivelse for dette medlemmet kan du se <xref:System.Data.IDbDataAdapter.UpdateCommand*>.</xref:System.Data.IDbDataAdapter.UpdateCommand*>"
+  remarks: "Dette medlemmet er implementering eksplisitt grensesnitt medlem. Den kan brukes bare når den <xref:System.Data.OracleClient.OracleDataAdapter>forekomsten endres til en <xref:System.Data.IDbDataAdapter>grensesnittet.</xref:System.Data.IDbDataAdapter> </xref:System.Data.OracleClient.OracleDataAdapter>"
   syntax:
     content: System.Data.IDbCommand System.Data.IDbDataAdapter.UpdateCommand { get; set; }
     return:
       type: System.Data.IDbCommand
-      description: "A string representing the command."
+      description: "En streng som representerer kommandoen."
   overload: System.Data.OracleClient.OracleDataAdapter.System#Data#IDbDataAdapter#UpdateCommand*
   exceptions: []
   platform:
@@ -709,14 +709,14 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "For a description of this member, see &lt;xref:System.ICloneable.Clone%2A?displayProperty=fullName&gt;."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Data.OracleClient.OracleDataAdapter> instance is cast to an <xref:System.ICloneable> interface."
+  summary: "En beskrivelse for dette medlemmet under &lt;xref:System.ICloneable.Clone%2A?displayProperty=fullName&gt;."
+  remarks: "Dette medlemmet er implementering eksplisitt grensesnitt medlem. Den kan brukes bare når den <xref:System.Data.OracleClient.OracleDataAdapter>forekomsten endres til en <xref:System.ICloneable>grensesnittet.</xref:System.ICloneable> </xref:System.Data.OracleClient.OracleDataAdapter>"
   syntax:
     content: object ICloneable.Clone ();
     parameters: []
     return:
       type: System.Object
-      description: "A new object that is a copy of this instance."
+      description: "Et nytt objekt som er en kopi av denne forekomsten."
   overload: System.Data.OracleClient.OracleDataAdapter.System#ICloneable#Clone*
   exceptions: []
   platform:
@@ -752,13 +752,13 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Gets or sets a value that enables or disables batch processing support, and specifies the number of commands that can be executed in a batch."
-  remarks: "Use the UpdateBatchSize property to update a data source with changes from a <xref:System.Data.DataSet>. This can increase application performance by reducing the number of round-trips to the server.       Executing an extremely large batch could decrease performance. Therefore, you should test for the optimum batch size setting before you implement your application.       An <xref:System.ArgumentOutOfRangeException> is thrown if the value is set to a number less than zero."
+  summary: "Henter eller angir en verdi som aktiverer eller deaktiverer satsvis behandling kundestøtte, og angir antall kommandoer som kan utføres i en bunke."
+  remarks: "Bruk UpdateBatchSize-egenskapen for å oppdatere en datakilde med endringer fra <xref:System.Data.DataSet>.</xref:System.Data.DataSet> Dette kan øke ytelsen ved å redusere antallet gå veien om til serveren.       Kjøring av en svært bunken kan redusere ytelsen. Du bør derfor teste for den ideelle bunke størrelse innstillingen før du tar programmet.       En <xref:System.ArgumentOutOfRangeException>oppstår hvis verdien er satt til et tall er mindre enn null.</xref:System.ArgumentOutOfRangeException>"
   syntax:
     content: public override int UpdateBatchSize { get; set; }
     return:
       type: System.Int32
-      description: "The number of rows to process per batch.       <table><thead><tr><th> Value:       </th><th> Effect:       </th></tr></thead><tbody><tr><td> 0       </td><td> There is no limit on the batch size.       </td></tr><tr><td> 1       </td><td> Disables batch updating.       </td></tr><tr><td> &gt; 1       </td><td> Changes are sent using batches of UpdateBatchSize operations at a time.       </td></tr></tbody></table>       When setting this to a value other than 1 all the commands associated with the <xref href=&quot;System.Data.OracleClient.OracleDataAdapter&quot;></xref> have to have their <xref:System.Data.IDbCommand.UpdatedRowSource*> property set to <xref uid=&quot;langword_csharp_None&quot; name=&quot;None&quot; href=&quot;&quot;></xref> or <xref uid=&quot;langword_csharp_OutputParameters&quot; name=&quot;OutputParameters&quot; href=&quot;&quot;></xref>. An exception is thrown otherwise."
+      description: "Antall rader som skal behandles per bunke.       <table><thead><tr><th> Verdi:       </th><th> Effekt:       </th></tr></thead><tbody><tr><td> 0       </td><td> Det er ingen grense på bunkestørrelsen.       </td></tr><tr><td> 1       </td><td> Deaktiverer oppdatering av bunken.       </td></tr><tr><td> &gt; 1       </td><td> Endringene er sendt ved hjelp av bunker UpdateBatchSize operasjoner om gangen.       </td></tr></tbody></table>       Når du angir dette til en annen verdi enn 1 alle kommandoer som er knyttet til den <xref href=&quot;System.Data.OracleClient.OracleDataAdapter&quot;> </xref> må ha deres <xref:System.Data.IDbCommand.UpdatedRowSource*>-egenskapen satt til <xref uid=&quot;langword_csharp_None&quot; name=&quot;None&quot; href=&quot;&quot;> </xref> eller <xref uid=&quot;langword_csharp_OutputParameters&quot; name=&quot;OutputParameters&quot; href=&quot;&quot;> </xref>.</xref:System.Data.IDbCommand.UpdatedRowSource*> Et unntak ellers."
   overload: System.Data.OracleClient.OracleDataAdapter.UpdateBatchSize*
   exceptions: []
   platform:
@@ -775,15 +775,15 @@ items:
   assemblies:
   - System.Data.OracleClient
   namespace: System.Data.OracleClient
-  summary: "Gets or sets an SQL statement or stored procedure used to update records in the database."
-  remarks: "When UpdateCommand is assigned to a previously created <xref:System.Data.OracleClient.OracleCommand>, the <xref:System.Data.OracleClient.OracleCommand> is not cloned. Instead, the UpdateCommand maintains a reference to the previously created <xref:System.Data.OracleClient.OracleCommand> object.       During an update operation, if <xref:System.Data.OracleClient.OracleDataAdapter.InsertCommand%2A> is not set and primary key information is present in the **DataSet**, you can use the <xref:System.Data.OracleClient.OracleCommandBuilder> class to automatically generate <xref:System.Data.OracleClient.OracleDataAdapter.InsertCommand%2A>, and additional commands needed to reconcile the <xref:System.Data.DataSet> to the database. To do this, set the <xref:System.Data.OracleClient.OracleDataAdapter.SelectCommand%2A> property of the <xref:System.Data.OracleClient.OracleDataAdapter>. The generation logic also requires key column information to be present in the <xref:System.Data.DataSet>. For more information see [Generating Commands with CommandBuilders](~/add/includes/ajax-current-ext-md.md).      > [!NOTE] >  If execution of this command returns rows, these rows may be merged with the <xref:System.Data.DataSet> depending upon how you set the <xref:System.Data.OracleClient.OracleCommand.UpdatedRowSource%2A> property of the <xref:System.Data.OracleClient.OracleCommand> object.       When you update a column with the `LONG RAW` data type, an exception is thrown when you enter a value of `NULL` in the column. The Oracle `LONG RAW` data type is a deprecated type in Oracle version 8.0. To avoid this error, use the `BLOB` data type instead of `LONG RAW`."
+  summary: "Henter eller angir en SQL-setningen eller lagret prosedyre som brukes til å oppdatere poster i databasen."
+  remarks: "Når UpdateCommand er tilordnet til en tidligere opprettet <xref:System.Data.OracleClient.OracleCommand>, <xref:System.Data.OracleClient.OracleCommand>ikke klones.</xref:System.Data.OracleClient.OracleCommand> </xref:System.Data.OracleClient.OracleCommand> I stedet UpdateCommand opprettholder en referanse til det tidligere opprettet <xref:System.Data.OracleClient.OracleCommand>objektet.</xref:System.Data.OracleClient.OracleCommand>       Under en oppdateringsoperasjon Hvis <xref:System.Data.OracleClient.OracleDataAdapter.InsertCommand%2A>er ikke angitt og primærnøkkel informasjon finnes i den **datasettet**, kan du bruke den <xref:System.Data.OracleClient.OracleCommandBuilder>klassen for å generere automatisk <xref:System.Data.OracleClient.OracleDataAdapter.InsertCommand%2A>, og flere kommandoer som trengs for å avstemme den <xref:System.Data.DataSet>til databasen.</xref:System.Data.DataSet> </xref:System.Data.OracleClient.OracleDataAdapter.InsertCommand%2A> </xref:System.Data.OracleClient.OracleCommandBuilder> </xref:System.Data.OracleClient.OracleDataAdapter.InsertCommand%2A> Hvis du vil gjøre dette, kan du angi <xref:System.Data.OracleClient.OracleDataAdapter.SelectCommand%2A>egenskapen for <xref:System.Data.OracleClient.OracleDataAdapter>.</xref:System.Data.OracleClient.OracleDataAdapter> </xref:System.Data.OracleClient.OracleDataAdapter.SelectCommand%2A> Generering logikken krever også informasjon om nøkkelkolonner i <xref:System.Data.DataSet>.</xref:System.Data.DataSet> Hvis du vil ha mer informasjon se [generering kommandoer med CommandBuilders](~/add/includes/ajax-current-ext-md.md).      > [!NOTE] > Hvis utførelse av kommandoen returnerer rader, disse radene kan slås sammen med den <xref:System.Data.DataSet>avhengig av hvordan du angir den <xref:System.Data.OracleClient.OracleCommand.UpdatedRowSource%2A>-egenskapen til det <xref:System.Data.OracleClient.OracleCommand>objektet.</xref:System.Data.OracleClient.OracleCommand> </xref:System.Data.OracleClient.OracleCommand.UpdatedRowSource%2A> </xref:System.Data.DataSet>       Når du oppdaterer en kolonne med det `LONG RAW` datatypen et unntak når du angir en verdi for `NULL` i kolonnen. Oracle `LONG RAW` datatypen er en avskrevet type i Oracle versjon 8.0. For å unngå problemet, kan du bruke den `BLOB` datatypen i stedet for `LONG RAW`."
   example:
   - "The following example creates an <xref:System.Data.OracleClient.OracleDataAdapter> and sets the <xref:System.Data.OracleClient.OracleDataAdapter.SelectCommand%2A> and UpdateCommand properties. It assumes you have already created an <xref:System.Data.OracleClient.OracleConnection> object.  \n  \n [Visual Basic]  \n  \n```  \nPublic Shared Function CreateCustomerAdapter(conn As OracleConnection) As OracleDataAdapter   \n  \n  Dim da As OracleDataAdapter = New OracleDataAdapter()  \n  Dim cmd As OracleCommand  \n  Dim parm As OracleParameter  \n  \n  ' Create the SelectCommand.  \n  \n  cmd = New OracleCommand(\"SELECT * FROM Dept \" & _  \n                       \"WHERE DName = pDName AND Loc = pLoc\", conn)  \n  \n  cmd.Parameters.Add(\"pDName\", OracleType.NVarChar, 14)  \n  cmd.Parameters.Add(\"pLoc\", OracleType.NVarChar, 13)  \n  \n  da.SelectCommand = cmd  \n  \n  ' Create the UpdateCommand.  \n  \n  cmd = New OracleCommand(\"UPDATE Dept SET DeptNo = pDeptNo, DName = pDName \" & _  \n                       \"WHERE DeptNo = poldDeptNo\", conn)  \n  \n  cmd.Parameters.Add(\"pDeptNo\", OracleType.Number, 2, \"DeptNo\")  \n  cmd.Parameters.Add(\"pDName\", OracleType.NVarChar, 14, \"DName\")  \n  \n  parm = cmd.Parameters.Add(\"poldDeptNo\", OracleType.Number, 2, \"DeptNo\")  \n  parm.SourceVersion = DataRowVersion.Original  \n  \n  da.UpdateCommand = cmd  \n  \n  Return da  \nEnd Function  \n```  \n  \n [C#]  \n  \n```  \npublic static OracleDataAdapter CreateCustomerAdapter(OracleConnection conn)  \n{  \n  OracleDataAdapter da = new OracleDataAdapter();  \n  OracleCommand cmd;  \n  OracleParameter parm;  \n  \n  // Create the SelectCommand.  \n  \n  cmd = new OracleCommand(\"SELECT * FROM Dept \" +  \n                       \"WHERE DName = pDName AND Loc = pLoc\", conn);  \n  \n  cmd.Parameters.Add(\"pDName\", OracleType.NVarChar, 14);  \n  cmd.Parameters.Add(\"pLoc\", OracleType.NVarChar, 13);  \n  \n  da.SelectCommand = cmd;  \n  \n  // Create the UpdateCommand.  \n  \n  cmd = new OracleCommand(\"UPDATE Dept SET DeptNo = pDeptNo, DName = pDName \" +  \n                       \"WHERE DeptNo = poldDeptNo\", conn);  \n  \n  cmd.Parameters.Add(\"pDeptNo\", OracleType.Number, 2, \"DeptNo\");  \n  cmd.Parameters.Add(\"pDName\", OracleType.NVarChar, 14, \"DName\");  \n  \n  parm = cmd.Parameters.Add(\"poldDeptNo\", OracleType.Number, 2, \"DeptNo\");  \n  parm.SourceVersion = DataRowVersion.Original;  \n  \n  da.UpdateCommand = cmd;  \n  \n  return da;  \n}  \n```"
   syntax:
     content: public System.Data.OracleClient.OracleCommand UpdateCommand { get; set; }
     return:
       type: System.Data.OracleClient.OracleCommand
-      description: "An <xref href=&quot;System.Data.OracleClient.OracleCommand&quot;></xref> used during an update operation to update records in the database that correspond to modified rows in the <xref href=&quot;System.Data.DataSet&quot;></xref>."
+      description: "En <xref href=&quot;System.Data.OracleClient.OracleCommand&quot;> </xref> brukes under en oppdateringsoperasjon til å oppdatere poster i databasen som svarer til endrede radene i den <xref href=&quot;System.Data.DataSet&quot;> </xref>."
   overload: System.Data.OracleClient.OracleDataAdapter.UpdateCommand*
   exceptions: []
   platform:

@@ -18,8 +18,8 @@ items:
   nameWithType: ActivationContext
   fullName: System.ActivationContext
   type: Class
-  summary: "Identifies the activation context for the current application. This class cannot be inherited."
-  remarks: "The ActivationContext class contains an <xref:System.ApplicationIdentity> and provides internal-only access to the application manifest. The activation context is used during manifest-based activation to set up the domain policy and provide an application-based security model. For more information, see the <xref:System.Security.Policy.ApplicationSecurityManager> class.      > [!IMPORTANT] >  This type implements the <xref:System.IDisposable> interface. When you have finished using the type, you should dispose of it either directly or indirectly. To dispose of the type directly, call its <xref:System.IDisposable.Dispose%2A> method in a `try`/`catch` block. To dispose of it indirectly, use a language construct such as `using` (in C#) or `Using` (in Visual Basic). For more information, see the “Using an Object that Implements IDisposable” section in the <xref:System.IDisposable> interface topic."
+  summary: "Identifiserer Aktiveringskonteksten for dette programmet. Denne klassen kan ikke arves."
+  remarks: "Klassen ActivationContext inneholder en <xref:System.ApplicationIdentity>og gir bare intern tilgang til programmanifestet.</xref:System.ApplicationIdentity> Aktiveringskonteksten brukes under manifest-basert aktivering konfigurere domenepolicyen og angi en applikasjon kodebasert sikkerhet-modell. Hvis du vil ha mer informasjon, kan du se <xref:System.Security.Policy.ApplicationSecurityManager>klasse.</xref:System.Security.Policy.ApplicationSecurityManager>      > [!IMPORTANT] > Denne typen implementerer den <xref:System.IDisposable>grensesnittet.</xref:System.IDisposable> Når du er ferdig ved hjelp av typen, må du fjerne den direkte eller indirekte. Hvis du vil fjerne av typen direkte, kan du kalle den <xref:System.IDisposable.Dispose%2A>metoden i en `try` / `catch` block.</xref:System.IDisposable.Dispose%2A> Hvis du vil fjerne den indirekte, bruke et språk som `using` (i C#) eller `Using` (i Visual Basic). For mer informasjon, se &quot;Ved hjelp av et objekt som implementerer IDisposable&quot; i den <xref:System.IDisposable>grensesnittet emnet.</xref:System.IDisposable>"
   example:
   - "The following code example demonstrates the use of an ActivationContext object to obtain the <xref:System.ApplicationIdentity> for a manifest-based application. For correct results, execute this code example as a manifest-based application.  \n  \n [!code-vb[System.ActivationContext#1](~/add/codesnippet/visualbasic/t-system.activationcontext_1.vb)]\n [!code-cs[System.ActivationContext#1](~/add/codesnippet/csharp/t-system.activationcontext_1.cs)]"
   syntax:
@@ -47,13 +47,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: "Gets the ClickOnce application manifest for the current application."
-  remarks: "If the activation context is <xref:System.ActivationContext.ContextForm>, meaning that the application is not installed in the ClickOnce store, the deployment manifest is read from the temporary download folder. If the activation context is <xref:System.ActivationContext.ContextForm>, meaning that the application is installed in the ClickOnce store, the deployment manifest is read from the ClickOnce store. For more information about deployment manifests, see [ClickOnce Deployment Manifest](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Henter ClickOnce-programmanifest for dette programmet."
+  remarks: "Hvis Aktiveringskonteksten <xref:System.ActivationContext.ContextForm>, noe som betyr at programmet ikke er installert i ClickOnce-butikken distribusjon manifestet blir lest fra nedlastingsmappen midlertidig.</xref:System.ActivationContext.ContextForm> Hvis Aktiveringskonteksten <xref:System.ActivationContext.ContextForm>, noe som betyr at programmet er installert i ClickOnce store, distribusjon manifestet blir lest fra ClickOnce-butikken.</xref:System.ActivationContext.ContextForm> Du finner mer informasjon om distribusjonen programmanifest [ClickOnce distribusjon Manifest](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public byte[] ApplicationManifestBytes { get; }
     return:
       type: System.Byte[]
-      description: "A byte array that contains the ClickOnce application manifest for the application that is associated with this <xref href=&quot;System.ActivationContext&quot;></xref>."
+      description: "En bytematrise som inneholder ClickOnce programmanifest for applikasjonen som er forbundet med denne <xref href=&quot;System.ActivationContext&quot;> </xref>."
   overload: System.ActivationContext.ApplicationManifestBytes*
   exceptions: []
   platform:
@@ -70,25 +70,25 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: "Initializes a new instance of the <xref href=&quot;System.ActivationContext&quot;></xref> class using the specified application identity."
-  remarks: "The CreatePartialActivationContext method calls an internal constructor to create a new activation context. The implementation of the <xref:System.ActivationContext> class in the .NET Framework version 2.0 is designed for applications that are neither fully installed in a store nor fully contained in a folder. This method provides backward compatibility for later releases in which public constructors provide full activation contexts."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.ActivationContext&quot;> </xref> klasse ved hjelp av den angitte tjenesteprogramidentiteten."
+  remarks: "Metoden CreatePartialActivationContext kaller en intern konstruktør for å opprette en ny Aktiveringskonteksten. Implementeringen av den <xref:System.ActivationContext>klassen i .NET Framework, versjon 2.0 er utformet for programmer som verken er fullstendig installert i en butikk eller fullstendig finnes i en mappe.</xref:System.ActivationContext> Denne metoden gir bakoverkompatibilitet for nyere versjoner som gir offentlige konstruktører fullstendig aktiveringskontekster."
   syntax:
     content: public static ActivationContext CreatePartialActivationContext (ApplicationIdentity identity);
     parameters:
     - id: identity
       type: System.ApplicationIdentity
-      description: "An object that identifies an application."
+      description: "Et objekt som identifiserer en applikasjon."
     return:
       type: System.ActivationContext
-      description: "An object with the specified application identity."
+      description: "Et objekt med den angitte tjenesteprogramidentiteten."
   overload: System.ActivationContext.CreatePartialActivationContext*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>identity</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>identity</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "No deployment or application identity is specified in <code>identity</code>."
+    description: "Ingen distribusjon eller program-ID er angitt i <code> identity </code>."
   platform:
   - net462
 - uid: System.ActivationContext.CreatePartialActivationContext(System.ApplicationIdentity,System.String[])
@@ -103,28 +103,28 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: "Initializes a new instance of the <xref href=&quot;System.ActivationContext&quot;></xref> class using the specified application identity and array of manifest paths."
-  remarks: "The CreatePartialActivationContext method calls an internal constructor to create a new activation context. The implementation of the <xref:System.ActivationContext> class in the .NET Framework version 2.0 is designed for applications that are neither fully installed in a store nor fully contained in a folder. This method provides backward compatibility for later releases in which public constructors provide full activation contexts."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.ActivationContext&quot;> </xref> klasse ved hjelp av angitte tjenesteprogramidentiteten og en rekke manifest baner."
+  remarks: "Metoden CreatePartialActivationContext kaller en intern konstruktør for å opprette en ny Aktiveringskonteksten. Implementeringen av den <xref:System.ActivationContext>klassen i .NET Framework, versjon 2.0 er utformet for programmer som verken er fullstendig installert i en butikk eller fullstendig finnes i en mappe.</xref:System.ActivationContext> Denne metoden gir bakoverkompatibilitet for nyere versjoner som gir offentlige konstruktører fullstendig aktiveringskontekster."
   syntax:
     content: public static ActivationContext CreatePartialActivationContext (ApplicationIdentity identity, string[] manifestPaths);
     parameters:
     - id: identity
       type: System.ApplicationIdentity
-      description: "An object that identifies an application."
+      description: "Et objekt som identifiserer en applikasjon."
     - id: manifestPaths
       type: System.String[]
-      description: "A string array of manifest paths for the application."
+      description: "En strengmatrise manifest baner for programmet."
     return:
       type: System.ActivationContext
-      description: "An object with the specified application identity and array of manifest paths."
+      description: "Et objekt med angitt tjenesteprogramidentiteten og matrisen til manifest baner."
   overload: System.ActivationContext.CreatePartialActivationContext*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>identity</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>manifestPaths</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>identity</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>manifestPaths</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "No deployment or application identity is specified in <code>identity</code>.       -or-       <code>identity</code> does not match the identity in the manifests.       -or-       <code>identity</code> does not have the same number of components as the manifest paths."
+    description: "Ingen distribusjon eller program-ID er angitt i <code> identity </code>.       - eller - <code> identity </code> samsvarer ikke med identiteten i programmanifest.       - eller - <code> identity </code> ikke har samme antall komponenter som manifest baner."
   platform:
   - net462
 - uid: System.ActivationContext.DeploymentManifestBytes
@@ -139,13 +139,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: "Gets the ClickOnce deployment manifest for the current application."
-  remarks: "If the activation context is <xref:System.ActivationContext.ContextForm>, meaning that the application is not installed in the ClickOnce store, the deployment manifest is read from the temporary download folder. If the activation context is <xref:System.ActivationContext.ContextForm>, meaning that the application is installed in the ClickOnce store, the deployment manifest is read from the ClickOnce store. For more information about deployment manifests, see [ClickOnce Deployment Manifest](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Henter ClickOnce distribusjon manifestet for dette programmet."
+  remarks: "Hvis Aktiveringskonteksten <xref:System.ActivationContext.ContextForm>, noe som betyr at programmet ikke er installert i ClickOnce-butikken distribusjon manifestet blir lest fra nedlastingsmappen midlertidig.</xref:System.ActivationContext.ContextForm> Hvis Aktiveringskonteksten <xref:System.ActivationContext.ContextForm>, noe som betyr at programmet er installert i ClickOnce store, distribusjon manifestet blir lest fra ClickOnce-butikken.</xref:System.ActivationContext.ContextForm> Du finner mer informasjon om distribusjonen programmanifest [ClickOnce distribusjon Manifest](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public byte[] DeploymentManifestBytes { get; }
     return:
       type: System.Byte[]
-      description: "A byte array that contains the ClickOnce deployment manifest for the application that is associated with this <xref href=&quot;System.ActivationContext&quot;></xref>."
+      description: "En bytematrise som inneholder ClickOnce distribusjon manifestet for applikasjonen som er forbundet med denne <xref href=&quot;System.ActivationContext&quot;> </xref>."
   overload: System.ActivationContext.DeploymentManifestBytes*
   exceptions: []
   platform:
@@ -162,8 +162,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: "Releases all resources used by the <xref href=&quot;System.ActivationContext&quot;></xref>."
-  remarks: "Call Dispose when you are finished using the <xref:System.ActivationContext>. The Dispose method leaves the <xref:System.ActivationContext> in an unusable state. After calling Dispose, you must release all references to the <xref:System.ActivationContext> so the garbage collector can reclaim the memory that the <xref:System.ActivationContext> was occupying. For more information, see [Cleaning Up Unmanaged Resources](~/add/includes/ajax-current-ext-md.md) and [Implementing a Dispose Method](~/add/includes/ajax-current-ext-md.md).      > [!NOTE] >  Always call Dispose before you release your last reference to the <xref:System.ActivationContext>. Otherwise, the resources it is using will not be freed until the garbage collector calls the <xref:System.ActivationContext> object&quot;s `Finalize` method."
+  summary: "Frigir alle ressursene som brukes av den <xref href=&quot;System.ActivationContext&quot;> </xref>."
+  remarks: "Kall avhending når du er ferdig med <xref:System.ActivationContext>.</xref:System.ActivationContext> Fjerningsmetoden forlater den <xref:System.ActivationContext>i en ubrukelig tilstand.</xref:System.ActivationContext> Etter å avhending, må du frigi alle referanser til den <xref:System.ActivationContext>Slik saneringsoppsamlingen kan gjenvinne minnet som den <xref:System.ActivationContext>ble bruker.</xref:System.ActivationContext> </xref:System.ActivationContext> Hvis du vil ha mer informasjon, se [Rydder opp uforvaltede ressurser](~/add/includes/ajax-current-ext-md.md) og [implementere metoden fjerne](~/add/includes/ajax-current-ext-md.md).      > [!NOTE] > Alltid kall fjerne før du slipper siste referanse til <xref:System.ActivationContext>.</xref:System.ActivationContext> Ellers ressurser den bruker vil ikke bli frigjort før saneringsoppsamling kall av <xref:System.ActivationContext>objektets `Finalize` metode.</xref:System.ActivationContext>"
   syntax:
     content: public void Dispose ();
     parameters: []
@@ -183,7 +183,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: "Enables an <xref href=&quot;System.ActivationContext&quot;></xref> object to attempt to free resources and perform other cleanup operations before the <xref href=&quot;System.ActivationContext&quot;></xref> is reclaimed by garbage collection."
+  summary: "Aktiverer en <xref href=&quot;System.ActivationContext&quot;> </xref> objekt under forsøk på å frigjøre ressurser og rydde andre før den <xref href=&quot;System.ActivationContext&quot;> </xref> gode av datasanering."
   syntax:
     content: ~ActivationContext ();
     parameters: []
@@ -203,13 +203,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: "Gets the form, or store context, for the current application."
-  remarks: "A manifest-based application might not be installed in the ClickOnce store. An application that is not in the store, such as a manifest-activated application executing in [!INCLUDE[vsprvs](~/add/includes/vsprvs-md.md)], is classified as <xref:System.ActivationContext.ContextForm>. An application that is contained in the store is classified as <xref:System.ActivationContext.ContextForm>."
+  summary: "Henter skjemaet eller store konteksten for gjeldende program."
+  remarks: "Et manifest-basert program er kanskje ikke installert i ClickOnce-butikken. En applikasjon som ikke er i butikken, for eksempel et manifest-aktivert program kjøres i [!INCLUDE[vsprvs](~/add/includes/vsprvs-md.md)], er klassifisert som <xref:System.ActivationContext.ContextForm>.</xref:System.ActivationContext.ContextForm> Et program som ligger i butikken er klassifisert som <xref:System.ActivationContext.ContextForm>.</xref:System.ActivationContext.ContextForm>"
   syntax:
     content: public ActivationContext.ContextForm Form { get; }
     return:
       type: System.ActivationContext.ContextForm
-      description: "One of the enumeration values."
+      description: "En av verdiene for enumeration."
   overload: System.ActivationContext.Form*
   exceptions: []
   platform:
@@ -226,15 +226,15 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: "Gets the application identity for the current application."
-  remarks: "An <xref:System.ApplicationIdentity> uniquely identifies an application by its full name and location."
+  summary: "Henter tjenesteprogramidentiteten for dette programmet."
+  remarks: "En <xref:System.ApplicationIdentity>identifiserer et program av fullstendig navn og plassering.</xref:System.ApplicationIdentity>"
   example:
   - "The following code example demonstrates the use of an <xref:System.ActivationContext> object to obtain the <xref:System.ApplicationIdentity> for a manifest-based application. This code example is part of a larger example provided for the <xref:System.ActivationContext> class.  \n  \n [!code-vb[System.ActivationContext#2](~/add/codesnippet/visualbasic/p-system.activationconte_1.vb)]\n [!code-cs[System.ActivationContext#2](~/add/codesnippet/csharp/p-system.activationconte_1.cs)]"
   syntax:
     content: public ApplicationIdentity Identity { get; }
     return:
       type: System.ApplicationIdentity
-      description: "An <xref href=&quot;System.ApplicationIdentity&quot;></xref> object that identifies the current application."
+      description: "En <xref href=&quot;System.ApplicationIdentity&quot;> </xref> -objekt som identifiserer gjeldende program."
   overload: System.ActivationContext.Identity*
   exceptions: []
   platform:
@@ -252,16 +252,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System
-  summary: "Populates a <xref href=&quot;System.Runtime.Serialization.SerializationInfo&quot;></xref> with the data needed to serialize the target object."
+  summary: "Fyller ut en <xref href=&quot;System.Runtime.Serialization.SerializationInfo&quot;> </xref> med data som kreves for å serialisere målobjektet."
   syntax:
     content: void ISerializable.GetObjectData (System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
     parameters:
     - id: info
       type: System.Runtime.Serialization.SerializationInfo
-      description: "The object to populate with data."
+      description: "Objektet til å fylle ut med data."
     - id: context
       type: System.Runtime.Serialization.StreamingContext
-      description: "The structure for this serialization."
+      description: "Strukturen for denne serialisering."
   overload: System.ActivationContext.System#Runtime#Serialization#ISerializable#GetObjectData*
   exceptions: []
   platform:
