@@ -11,8 +11,8 @@ items:
   nameWithType: QueryInterceptorAttribute
   fullName: System.Data.Services.QueryInterceptorAttribute
   type: Class
-  summary: "The QueryInterceptorAttribute on a method annotates it as a query interceptor on the specified entity set."
-  remarks: "Entity set-level authorization and validation is implemented by methods annotated with the QueryInterceptorAttribute. [!INCLUDE[ssAstoria](~/add/includes/ssastoria-md.md)]s do not implement security policies but instead provide the infrastructure required for service developers to write their own security rules and business validation.       Entity set access control and validation is enabled through query operations by using query composition. To control entity-based access, implement a method-per-entity set according to the following rules:       The method must have public scope and be annotated with the QueryInterceptorAttribute, taking the name of a entity set as a parameter.       The method must accept no parameters.       The method must return an expression of type `Expression<Func<T, bool>>` that is the filter to be composed for the entity set."
+  summary: "QueryInterceptorAttribute for en metode annotates den som en spørring interceptor på det angitte enheten settet."
+  remarks: "Enheten Sett nivå godkjenning og validering implementeres av metodene som er angitt med QueryInterceptorAttribute. [!INCLUDE[ssAstoria](~/add/includes/ssastoria-md.md)]s har ikke implementere sikkerhetspolicyer, men i stedet gir infrastruktur kreves for tjenesten utviklere å skrive sine egne regler og business validering.       Enheten angitt tilgangskontroll og validering er aktivert via spørringsoperasjoner ved hjelp av spørringen sammensetningen. For å styre enheten kodebasert tilgang, implementere en metode-per-enhet angitt i henhold til følgende regler: metoden må ha et offentlig omfang og være kommentert med QueryInterceptorAttribute, tar navnet på en enhet som er angitt som en parameter.       Metoden må godta uten parametere.       Metoden må returnere et uttrykk av typen `Expression<Func<T, bool>>` som filteret som skal bestå for settet med enheten."
   example:
   - "The following example controls access to the `Customers` entity set. Each `Customer` can only see `Orders` associated with that `Customer`.  \n  \n```  \n[QueryInterceptor(\"Orders\")]  \npublic Expression<Func<Order, bool>> FilterOrders()   \n{  \n    return o => o.Customer.Name == /* Current principal name. */;  \n}   \n  \n// Insures that the user accessing the customer(s) has the appropriate  \n// rights as defined in the QueryRules object to access the customer  \n// resource(s).  \n  \n[QueryInterceptor (\"Customers\")]  \npublic Expression<Func<Customer, bool>> FilterCustomers()   \n{  \n  return c => c.Name == /* Current principal name. */ &&  \n              this.CurrentDataSource.QueryRules.Contains(  \n                rule => rule.Name == c.Name &&  \n                        rule.CustomerAllowedToQuery == true  \n              );  \n}  \n  \n```"
   syntax:
@@ -38,13 +38,13 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Initializes a new instance of the <xref href=&quot;System.Data.Services.QueryInterceptorAttribute&quot;></xref> class for the entity set specified by the <code>entitySetName</code> parameter."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Data.Services.QueryInterceptorAttribute&quot;> </xref> klasse for enheten angitt angitt av den <code> entitySetName </code> parameteren."
   syntax:
     content: public QueryInterceptorAttribute (string entitySetName);
     parameters:
     - id: entitySetName
       type: System.String
-      description: "The name of the entity set that contains the entity to which the interceptor applies."
+      description: "Navnet på enheten settet som inneholder enheten som interceptor gjelder."
   overload: System.Data.Services.QueryInterceptorAttribute.#ctor*
   exceptions: []
   platform:
@@ -61,12 +61,12 @@ items:
   assemblies:
   - System.Data.Services
   namespace: System.Data.Services
-  summary: "Gets the name of the entity set that contains the entity to which the interceptor applies."
+  summary: "Henter navnet på enheten sett som inneholder enheten som interceptor gjelder."
   syntax:
     content: public string EntitySetName { get; }
     return:
       type: System.String
-      description: "A string that indicates the name of the entity set that contains the entity to which the interceptor applies."
+      description: "En tekststreng som angir navnet på enheten sett som inneholder enheten som interceptor gjelder."
   overload: System.Data.Services.QueryInterceptorAttribute.EntitySetName*
   exceptions: []
   platform:

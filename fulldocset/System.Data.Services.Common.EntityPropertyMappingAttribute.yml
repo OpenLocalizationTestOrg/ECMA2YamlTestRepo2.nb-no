@@ -18,8 +18,8 @@ items:
   nameWithType: EntityPropertyMappingAttribute
   fullName: System.Data.Services.Common.EntityPropertyMappingAttribute
   type: Class
-  summary: "Attribute that specifies a custom mapping between properties of an entity type and elements of an entry in a feed returned by [!INCLUDE[ssAstoria](~/add/includes/ssastoria-md.md)]."
-  remarks: "The EntityPropertyMappingAttribute is used to define custom feed mapping in the data model of a reflection provider. This attribute is also applied to generated client data service classes when the metadata used to generate the classes indicates that custom feed mappings are defined in the data model. This information is necessary to make sure that the client can create and consume messages that support custom feeds. For more information, see [Feed Customization](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Attributtet som angir en egendefinert tilordning mellom egenskaper for en enhetstype og elementer i en oppføring i en feed som ble returnert av [!INCLUDE[ssAstoria](~/add/includes/ssastoria-md.md)]."
+  remarks: "EntityPropertyMappingAttribute brukes til å definere egendefinerte feed tilordning i datamodellen for en gjenspeiling-leverandør. Dette attributtet brukes også til genererte klienten data service-klasser når metadataene brukes til å generere klassene indikerer at egendefinert feed tilordninger er definert i datamodellen. Denne informasjonen er nødvendig for å kontrollere at klienten kan opprette og bruke meldinger som støtter egendefinert feeder. Hvis du vil ha mer informasjon, se [feeden Customization](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "In the following example, both properties of the `Order` type are mapped to existing feed elements. The `Product` property of the `Item` type is mapped to a custom feed attribute in a separate namespace.  \n  \n [!code-cs[Astoria Custom Feeds#CustomIQueryableFeeds](~/add/codesnippet/csharp/astoria custom feeds/orderitems.svc.cs#customiqueryablefeeds)]\n [!code-vb[Astoria Custom Feeds#CustomIQueryableFeeds](~/add/codesnippet/visualbasic/astoria custom feeds vb/orderitems.svc.vb#customiqueryablefeeds)]  \n  \n The previous example returns the following result for the URI `http://myservice/OrderItems.svc/Orders(0)?$expand=Items`.  \n  \n [!code-xml[Astoria Custom Feeds#IQueryableFeedResultInline](~/add/codesnippet/xml/t-system.data.services.c_1_2.xml)]"
   syntax:
@@ -45,22 +45,22 @@ items:
   assemblies:
   - System.Data.Services.Client
   namespace: System.Data.Services.Common
-  summary: "Creates a new instance of the <xref href=&quot;System.Data.Services.Common.EntityPropertyMappingAttribute&quot;></xref>."
+  summary: "Oppretter en ny forekomst av den <xref href=&quot;System.Data.Services.Common.EntityPropertyMappingAttribute&quot;> </xref>."
   syntax:
     content: public EntityPropertyMappingAttribute (string sourcePath, System.Data.Services.Common.SyndicationItemProperty targetSyndicationItem, System.Data.Services.Common.SyndicationTextContentKind targetTextContentKind, bool keepInContent);
     parameters:
     - id: sourcePath
       type: System.String
-      description: "The name of the property, as string, of the entity type that is mapped to the specified property of the feed item."
+      description: "Navnet på egenskapen som streng, med enhetstypen som er tilordnet til den angitte egenskapen for feed elementet."
     - id: targetSyndicationItem
       type: System.Data.Services.Common.SyndicationItemProperty
-      description: "A <xref href=&quot;System.Data.Services.Common.SyndicationItemProperty&quot;></xref> value that represents the element in the feed to which to map the property. This value must be set to `None` if the <xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetPath*> is not <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "En <xref href=&quot;System.Data.Services.Common.SyndicationItemProperty&quot;> </xref> verdi som representerer elementet i feeden du vil tilordne egenskapen. Denne verdien må være satt til `None` hvis den <xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetPath*>er ikke <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>.</xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetPath*>"
     - id: targetTextContentKind
       type: System.Data.Services.Common.SyndicationTextContentKind
-      description: "A <xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetTextContentKind*> value that identifies the format of the content to display in the feed."
+      description: "En <xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetTextContentKind*>verdi som identifiserer formatet for innhold som skal vises i feeden.</xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetTextContentKind*>"
     - id: keepInContent
       type: System.Boolean
-      description: "Boolean value that is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> when the property being mapped should appear both in its mapped-to location and in the content section of the feed."
+      description: "Boolsk verdi som er <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> når egenskapen blir tilordnet skal vises i tilordnet til plassering og i delen innhold i feeden."
   overload: System.Data.Services.Common.EntityPropertyMappingAttribute.#ctor*
   exceptions: []
   platform:
@@ -77,26 +77,26 @@ items:
   assemblies:
   - System.Data.Services.Client
   namespace: System.Data.Services.Common
-  summary: "Creates an instance of the <xref href=&quot;System.Data.Services.Common.EntityPropertyMappingAttribute&quot;></xref> to map a property to a custom feed element."
-  remarks: "If neither `targetNamespacePrefix` nor `targetNamespaceUri` are specified, the `targetName` will be put in the default namespace. If `targetNamespacePrefix` is not specified, a prefix is autogenerated. If `targetNamespacePrefix` is specified, but `targetNamespaceUri` is not specified, an exception is thrown at construction time."
+  summary: "Oppretter en forekomst av den <xref href=&quot;System.Data.Services.Common.EntityPropertyMappingAttribute&quot;> </xref> ikke tilordne en egenskap til et egendefinert feed-element."
+  remarks: "Hvis verken `targetNamespacePrefix` eller `targetNamespaceUri` er angitt i `targetName` skal plasseres i standard navneområde. Hvis `targetNamespacePrefix` ikke er angitt, genereres for prefiks. Hvis `targetNamespacePrefix` er angitt, men `targetNamespaceUri` ikke er angitt, et unntak under bygging."
   syntax:
     content: public EntityPropertyMappingAttribute (string sourcePath, string targetPath, string targetNamespacePrefix, string targetNamespaceUri, bool keepInContent);
     parameters:
     - id: sourcePath
       type: System.String
-      description: "The name of the property of the entity type, as string, that is mapped to the specified property in the feed."
+      description: "Navnet på egenskapen for enhetstypen som streng, som er tilordnet til den angitte egenskapen i feeden."
     - id: targetPath
       type: System.String
-      description: "The name of the target, as string, in the resulting feed to which the property is mapped."
+      description: "Navnet på målet, som streng i den resulterende feeden til egenskapen er tilordnet."
     - id: targetNamespacePrefix
       type: System.String
-      description: "This parameter, together with `targetNamespaceUri`, specifies the namespace in which the `targetPath` element exists."
+      description: "Denne parameteren, sammen med `targetNamespaceUri`, angir navneområdet der den `targetPath` element finnes."
     - id: targetNamespaceUri
       type: System.String
-      description: "Specifies the namespace URI of the element, as string, specified by the `targetName` property."
+      description: "Angir navneområde-URI for elementet som strengen som er angitt av den `targetName` egenskapen."
     - id: keepInContent
       type: System.Boolean
-      description: "Boolean value that is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> when the property being mapped should appear both in its mapped-to location and in the content section of the feed."
+      description: "Boolsk verdi som er <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> når egenskapen blir tilordnet skal vises i tilordnet til plassering og i delen innhold i feeden."
   overload: System.Data.Services.Common.EntityPropertyMappingAttribute.#ctor*
   exceptions: []
   platform:
@@ -113,13 +113,13 @@ items:
   assemblies:
   - System.Data.Services.Client
   namespace: System.Data.Services.Common
-  summary: "Gets a Boolean value that indicates whether a property value should be repeated both in the content section of the feed and in the mapped location."
-  remarks: "Whenthe value of KeepInContentis `true`, the feed is backward compatible with [!INCLUDE[ssAstoria](~/add/includes/ssastoria-md.md)] client applications that use protocol version 1.0. When the value of KeepInContent``is `false`, the protocol version used by the data service must be 2.0 or later versions. For more information, see [Data Service Versioning](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Henter en boolsk verdi som angir om en egenskapsverdi skal gjentas både i innhold-delen av feeden og tilordnede plasseringen."
+  remarks: "Whenthe verdien KeepInContentis `true`, feeden er bakoverkompatibel med [!INCLUDE[ssAstoria](~/add/includes/ssastoria-md.md)] klientprogrammer som bruker protokollen versjon 1.0. Når verdien for KeepInContent&quot;&quot; er `false`, protokollversjonen som brukes av datatjenesten må være 2.0 eller senere versjoner. Hvis du vil ha mer informasjon, se [Data Service versjonskontroll](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public bool KeepInContent { get; }
     return:
       type: System.Boolean
-      description: "A <xref:System.Boolean> value that is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> when the property is mapped into both locations in the feed; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "En <xref:System.Boolean>verdi som <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> når egenskapen er tilordnet i begge steder i feeden; ellers, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>.</xref:System.Boolean>"
   overload: System.Data.Services.Common.EntityPropertyMappingAttribute.KeepInContent*
   exceptions: []
   platform:
@@ -136,13 +136,13 @@ items:
   assemblies:
   - System.Data.Services.Client
   namespace: System.Data.Services.Common
-  summary: "Gets the name of the property of the syndication item that will be mapped to the specified element of the feed."
-  remarks: "The SourcePath property cannot directly reference a complex type. For complex types, you must use a path expression where property names are separated by a backslash (`/`) character. For example, the following values are permitted for an entity type `Person` with an integer property `Age` and a complex property `Address`:      -   `Age`      -   `Address/Street`       The SourcePath property cannot be set to a value that contains a space or any other character that is not valid in a property name."
+  summary: "Henter navnet på egenskapen for syndication-elementet som skal tilordnes til det angitte elementet til feeden."
+  remarks: "Egenskapen kildebane kan ikke direkte referere til en kompleks type. For sammensatte typer, må du bruke et baneuttrykk der egenskapsnavn skilles med en omvendt skråstrek (`/`) tegn. For eksempel følgende verdier er tillatt for en enhetstype `Person` med en heltallsegenskap `Age` og en kompleks egenskap `Address`:- `Age`       -    `Address/Street` for kildebane-egenskapen kan ikke angis til en verdi som inneholder et mellomrom eller andre tegn som ikke er gyldig i et egenskapsnavn."
   syntax:
     content: public string SourcePath { get; }
     return:
       type: System.String
-      description: "String value that contains property name."
+      description: "En strengverdi som inneholder egenskapsnavn."
   overload: System.Data.Services.Common.EntityPropertyMappingAttribute.SourcePath*
   exceptions: []
   platform:
@@ -159,13 +159,13 @@ items:
   assemblies:
   - System.Data.Services.Client
   namespace: System.Data.Services.Common
-  summary: "Gets a string value that, together with <xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetNamespaceUri*>, specifies the namespace in which the <xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetPath*> element exists."
-  remarks: "If neither TargetNamespacePrefix nor <xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetNamespaceUri%2A> are specified, the <xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetPath%2A> will be put in the default namespace. If TargetNamespacePrefix is not specified, a prefix is autogenerated. If TargetNamespacePrefix is specified, but <xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetNamespaceUri%2A> is not specified, an exception is thrown at construction time."
+  summary: "Henter en strengverdi som sammen med <> </> *>, angir navneområdet der den <> </> *> element finnes."
+  remarks: "Hvis verken TargetNamespacePrefix eller <xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetNamespaceUri%2A>er angitt i <xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetPath%2A>skal plasseres i standard navneområde.</xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetPath%2A> </xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetNamespaceUri%2A> Hvis TargetNamespacePrefix ikke er angitt, har et prefiks genereres. Hvis TargetNamespacePrefix er angitt, men <xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetNamespaceUri%2A>ikke er angitt, et unntak under bygging.</xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetNamespaceUri%2A>"
   syntax:
     content: public string TargetNamespacePrefix { get; }
     return:
       type: System.String
-      description: "String value that contains the target namespace prefix."
+      description: "En strengverdi som inneholder målet navneområdeprefikset."
   overload: System.Data.Services.Common.EntityPropertyMappingAttribute.TargetNamespacePrefix*
   exceptions: []
   platform:
@@ -182,13 +182,13 @@ items:
   assemblies:
   - System.Data.Services.Client
   namespace: System.Data.Services.Common
-  summary: "Gets a string value that specifies the namespace URI of the element specified by the <xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetPath*> property."
-  remarks: "If mapping to non-syndication element/attribute, this property is the namespace for the target element/attribute.       If neither <xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetNamespacePrefix%2A> nor TargetNamespaceUri are specified, the <xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetPath%2A> will be put in the default namespace. If <xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetNamespacePrefix%2A> is not specified, a prefix is autogenerated. If <xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetNamespacePrefix%2A> is specified, but TargetNamespaceUri is not specified, an exception is thrown at construction time."
+  summary: "Henter en strengverdi som angir navneområde-URI for elementet som er angitt av den <xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetPath*>egenskapen.</xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetPath*>"
+  remarks: "Hvis tilordning til ikke-syndikering dataelementet/attributtet, er denne egenskapen navneområde for elementet/Målattributtet.       Hvis verken <xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetNamespacePrefix%2A>eller TargetNamespaceUri er angitt, <xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetPath%2A>skal plasseres i standard navneområde.</xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetPath%2A> </xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetNamespacePrefix%2A> Hvis <xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetNamespacePrefix%2A>ikke er angitt, genereres for prefiks.</xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetNamespacePrefix%2A> Hvis <xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetNamespacePrefix%2A>er angitt, men TargetNamespaceUri er ikke angitt, et unntak under bygging.</xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetNamespacePrefix%2A>"
   syntax:
     content: public string TargetNamespaceUri { get; }
     return:
       type: System.String
-      description: "String that contains the namespace URI."
+      description: "Streng som inneholder navneområde-URI."
   overload: System.Data.Services.Common.EntityPropertyMappingAttribute.TargetNamespaceUri*
   exceptions: []
   platform:
@@ -205,13 +205,13 @@ items:
   assemblies:
   - System.Data.Services.Client
   namespace: System.Data.Services.Common
-  summary: "Gets the name of the custom target in the feed to which the property is mapped."
-  remarks: "When the TargetPath property is set, the <xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetNamespaceUri%2A> and <xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetNamespacePrefix%2A> properties must also be set.       The value of TargetPath must be `null` (`Nothing` in Visual Basic) when the value of the <xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetSyndicationItem%2A> property is anything other than <xref:System.Data.Services.Common.SyndicationItemProperty>.       TargetPath must be a path expression in which nested elements are separated by a backslash (`/`) and attributes are specified by an ampersand (`@`). In the following example, the string `UnitsInStock/@ReorderLevel` maps a property value to an attribute named `ReorderLevel` on a child element named `UnitsInStock` of the root entry element.       [!code-xml[Astoria Custom Feeds#EdmFeedMappedToAttributeSpecific](~/add/codesnippet/xml/p-system.data.services.c_1.csdl)]       The TargetPath property cannot contain whitespace.       The TargetPath property is not expressed as a true XPath expression, but the specified element and attribute names must represent well-formed XML elements and attributes. An invalid value will cause an exception to occur when the data service is initialized."
+  summary: "Henter navnet på det egendefinerte målet i feeden til egenskapen er tilordnet."
+  remarks: "Når egenskapen målbane angis, den <xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetNamespaceUri%2A>og <xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetNamespacePrefix%2A>Egenskaper må også angis.</xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetNamespacePrefix%2A> </xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetNamespaceUri%2A>       Verdien for målbane må være `null` (`Nothing` i Visual Basic) når verdien for <xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetSyndicationItem%2A>egenskapen er noe annet enn <xref:System.Data.Services.Common.SyndicationItemProperty>.</xref:System.Data.Services.Common.SyndicationItemProperty> </xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetSyndicationItem%2A>       Målbane må være et baneuttrykk nestede elementer skilles med en omvendt skråstrek (`/`) og attributter er angitt av et &-tegn (`@`). I følgende eksempel strengen `UnitsInStock/@ReorderLevel` tilordner en egenskapsverdi til et attributt med navnet `ReorderLevel` på en underordnet element med navnet `UnitsInStock` for oppføring rotelement.       [!code-xml[Astoria egendefinert feeder #EdmFeedMappedToAttributeSpecific](~/add/codesnippet/xml/p-system.data.services.c_1.csdl) ] for målbane-egenskapen kan ikke inneholde mellomrom.       Egenskapen målbane som ikke er angitt som true XPath-uttrykk, men det angitte elementet og attributtnavn må representere velformet XML-elementer og attributter. En ugyldig verdi vil føre til at et unntak oppstår når data-tjenesten er initialisert."
   syntax:
     content: public string TargetPath { get; }
     return:
       type: System.String
-      description: "String value with target XML element or attribute."
+      description: "Strengverdi med mål XML-elementet eller attributtet."
   overload: System.Data.Services.Common.EntityPropertyMappingAttribute.TargetPath*
   exceptions: []
   platform:
@@ -228,13 +228,13 @@ items:
   assemblies:
   - System.Data.Services.Client
   namespace: System.Data.Services.Common
-  summary: "Gets a property on the <xref:System.ServiceModel.Syndication.SyndicationItem> class."
-  remarks: "If mapping to syndication element, this property is the name of the syndication item.       This value must be set to `None` if the <xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetPath%2A> is not null."
+  summary: "Henter en egenskap i <xref:System.ServiceModel.Syndication.SyndicationItem>klasse.</xref:System.ServiceModel.Syndication.SyndicationItem>"
+  remarks: "Hvis tilordning til syndication-element, er denne egenskapen navnet på syndication-elementet.       Denne verdien må være satt til `None` hvis den <xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetPath%2A>ikke er null.</xref:System.Data.Services.Common.EntityPropertyMappingAttribute.TargetPath%2A>"
   syntax:
     content: public System.Data.Services.Common.SyndicationItemProperty TargetSyndicationItem { get; }
     return:
       type: System.Data.Services.Common.SyndicationItemProperty
-      description: "A <xref:System.ServiceModel.Syndication.SyndicationItem> object."
+      description: "En <xref:System.ServiceModel.Syndication.SyndicationItem>objektet.</xref:System.ServiceModel.Syndication.SyndicationItem>"
   overload: System.Data.Services.Common.EntityPropertyMappingAttribute.TargetSyndicationItem*
   exceptions: []
   platform:
@@ -251,13 +251,13 @@ items:
   assemblies:
   - System.Data.Services.Client
   namespace: System.Data.Services.Common
-  summary: "Gets the type of content of the property mapped by <xref href=&quot;System.Data.Services.Common.EntityPropertyMappingAttribute&quot;></xref>."
-  remarks: "If mapping to syndication content, this property is the content type of syndication item.       When you specify a value of <xref:System.Data.Services.Common.SyndicationTextContentKind> for the TargetTextContentKind attribute, you must ensure that the property value contains properly formatted XML. The data service returns the value without performing any transformations. You must also ensure that any XML element prefixes in the returned XML have a namespace URI and prefix defined in the mapped feed."
+  summary: "Henter innholdstypen for egenskapen er tilordnet til <xref href=&quot;System.Data.Services.Common.EntityPropertyMappingAttribute&quot;> </xref>."
+  remarks: "Hvis tilordning til syndication innhold, er denne egenskapen innholdstypen for syndication-element.       Når du angir en verdi for <xref:System.Data.Services.Common.SyndicationTextContentKind>for attributtet TargetTextContentKind må du kontrollere at egenskapsverdien inneholder riktig formatert XML.</xref:System.Data.Services.Common.SyndicationTextContentKind> Vertstjenesten returnerer verdien uten å utføre noen transformasjoner. Du må også kontrollere at alle XML-elementet prefikser i returnerte XMLEN har et navneområde-URI og prefikset som er definert i feeden tilordnet."
   syntax:
     content: public System.Data.Services.Common.SyndicationTextContentKind TargetTextContentKind { get; }
     return:
       type: System.Data.Services.Common.SyndicationTextContentKind
-      description: "A string that identifies the type of content in the feed element."
+      description: "En streng som identifiserer innholdstypen i feed-elementet."
   overload: System.Data.Services.Common.EntityPropertyMappingAttribute.TargetTextContentKind*
   exceptions: []
   platform:
