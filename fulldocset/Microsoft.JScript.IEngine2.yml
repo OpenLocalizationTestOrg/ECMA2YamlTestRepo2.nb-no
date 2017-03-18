@@ -22,7 +22,7 @@ items:
   nameWithType: IEngine2
   fullName: Microsoft.JScript.IEngine2
   type: Interface
-  summary: "Defines extra functionality that is needed by an IActiveScript host. Implemented by the <xref href=&quot;Microsoft.JScript.Vsa.VsaEngine&quot;></xref> engine."
+  summary: "Definerer ekstra funksjonaliteten som kreves av en IActiveScript vert. Implementert av den <xref href=&quot;Microsoft.JScript.Vsa.VsaEngine&quot;> </xref> motoren."
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -45,16 +45,16 @@ items:
   assemblies:
   - Microsoft.JScript
   namespace: Microsoft.JScript
-  summary: "When implemented in a class, creates a new identical engine that runs in a new application domain, with the same compiled state and named items. This is not implemented in JScript."
+  summary: "Når implementert i en klasse, oppretter du en ny identiske motoren som kjører i en ny programdomenet med samme kompilert tilstand og navngitte elementer. Dette er ikke implementert i JScript."
   syntax:
     content: public Microsoft.JScript.Vsa.IJSVsaEngine Clone (AppDomain domain);
     parameters:
     - id: domain
       type: System.AppDomain
-      description: "The application domain in which to create the new engine."
+      description: "Programdomenet du skal opprette ny-motor."
     return:
       type: Microsoft.JScript.Vsa.IJSVsaEngine
-      description: "The new engine."
+      description: "Ny-motor."
   overload: Microsoft.JScript.IEngine2.Clone*
   exceptions: []
   platform:
@@ -71,13 +71,13 @@ items:
   assemblies:
   - Microsoft.JScript
   namespace: Microsoft.JScript
-  summary: "When implemented in a class, triggers compilation of all the state currently in the engine. All references, code items, host items, and resources are run through the compiler."
+  summary: "Når implementert i en klasse, utløser kompilering av alle tilstanden for øyeblikket i motoren. Alle referanser kodeelementer, host elementer og ressurser kjøres via kompilatoren."
   syntax:
     content: public bool CompileEmpty ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the compilation was successful, otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis kompileringen var vellykket, ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: Microsoft.JScript.IEngine2.CompileEmpty*
   exceptions: []
   platform:
@@ -94,7 +94,7 @@ items:
   assemblies:
   - Microsoft.JScript
   namespace: Microsoft.JScript
-  summary: "When implemented in a class, communicates to the engine that it can connect any registered event sources that have events to any global event handlers. This is not implemented in JScript."
+  summary: "Når implementert i en klasse, kommuniserer til motoren at den kan koble noen registrerte hendelseskilder som har hendelser til at globale hendelsesbehandling. Dette er ikke implementert i JScript."
   syntax:
     content: public void ConnectEvents ();
     parameters: []
@@ -114,7 +114,7 @@ items:
   assemblies:
   - Microsoft.JScript
   namespace: Microsoft.JScript
-  summary: "When implemented in a class, directs the engine to unhook event sources from event handlers. This is not implemented in JScript."
+  summary: "Angir at motoren skal unhook hendelsen datakilder fra hendelsesbehandling når implementert i en klasse. Dette er ikke implementert i JScript."
   syntax:
     content: public void DisconnectEvents ();
     parameters: []
@@ -134,13 +134,13 @@ items:
   assemblies:
   - Microsoft.JScript
   namespace: Microsoft.JScript
-  summary: "When implemented in a class, gets the compiled assembly that is produced by the compilation step."
+  summary: "Henter den kompilerte samlingen som produseres ved kompilering trinn når implementert i en klasse."
   syntax:
     content: public System.Reflection.Assembly GetAssembly ();
     parameters: []
     return:
       type: System.Reflection.Assembly
-      description: "The compiled assembly."
+      description: "Den kompilerte samlingen."
   overload: Microsoft.JScript.IEngine2.GetAssembly*
   exceptions: []
   platform:
@@ -157,13 +157,13 @@ items:
   assemblies:
   - Microsoft.JScript
   namespace: Microsoft.JScript
-  summary: "When implemented in a class, gets the global scope object."
+  summary: "Når implementert i en klasse, henter globale omfang-objektet."
   syntax:
     content: public Microsoft.JScript.IVsaScriptScope GetGlobalScope ();
     parameters: []
     return:
       type: Microsoft.JScript.IVsaScriptScope
-      description: "The global scope object."
+      description: "Objektet som globale omfang."
   overload: Microsoft.JScript.IEngine2.GetGlobalScope*
   exceptions: []
   platform:
@@ -180,13 +180,13 @@ items:
   assemblies:
   - Microsoft.JScript
   namespace: Microsoft.JScript
-  summary: "When implemented in a class, gets the code module from the compiled assembly."
+  summary: "Når implementert i en klasse, henter kodemodulen fra kompilerte samlingen."
   syntax:
     content: public System.Reflection.Module GetModule ();
     parameters: []
     return:
       type: System.Reflection.Module
-      description: "The code module from the compiled assembly."
+      description: "Kodemodulen fra kompilerte samlingen."
   overload: Microsoft.JScript.IEngine2.GetModule*
   exceptions: []
   platform:
@@ -203,16 +203,16 @@ items:
   assemblies:
   - Microsoft.JScript
   namespace: Microsoft.JScript
-  summary: "When implemented in a class, initializes the <xref href=&quot;Microsoft.JScript.Vsa.VsaEngine&quot;></xref>."
+  summary: "Når implementert i en klasse, initialiserer i <xref href=&quot;Microsoft.JScript.Vsa.VsaEngine&quot;> </xref>."
   syntax:
     content: public void InitVsaEngine (string rootMoniker, Microsoft.JScript.Vsa.IJSVsaSite site);
     parameters:
     - id: rootMoniker
       type: System.String
-      description: "The root moniker of the script engine. For more information, see <xref:Microsoft.Vsa.IVsaEngine.RootMoniker*>."
+      description: "Root kallenavn til skriptmotoren. Hvis du vil ha mer informasjon, kan du se <xref:Microsoft.Vsa.IVsaEngine.RootMoniker*>.</xref:Microsoft.Vsa.IVsaEngine.RootMoniker*>"
     - id: site
       type: Microsoft.JScript.Vsa.IJSVsaSite
-      description: "The host-implemented <xref:Microsoft.Vsa.IVsaSite> object that is used by the script engine to communicate with the host. For more information, see <xref:Microsoft.Vsa.IVsaEngine.Site*>."
+      description: "Vert-implementert <xref:Microsoft.Vsa.IVsaSite>objekt som brukes av skriptmotoren til å kommunisere med verten.</xref:Microsoft.Vsa.IVsaSite> Hvis du vil ha mer informasjon, kan du se <xref:Microsoft.Vsa.IVsaEngine.Site*>.</xref:Microsoft.Vsa.IVsaEngine.Site*>"
   overload: Microsoft.JScript.IEngine2.InitVsaEngine*
   exceptions: []
   platform:
@@ -229,8 +229,8 @@ items:
   assemblies:
   - Microsoft.JScript
   namespace: Microsoft.JScript
-  summary: "When implemented in a class, calls <xref:System.Threading.Thread.Abort*> on the thread that is running the script code."
-  remarks: "This method should not be called on the thread that is used to run code. If you do this, you stop your own thread."
+  summary: "Når implementert i en klasse, kaller <xref:System.Threading.Thread.Abort*>på tråd som kjører skriptkoden.</xref:System.Threading.Thread.Abort*>"
+  remarks: "Denne metoden kan ikke kalles på tråd som brukes til å kjøre kode. Hvis du gjør dette, kan du stoppe din egen tråd."
   syntax:
     content: public void Interrupt ();
     parameters: []
@@ -250,13 +250,13 @@ items:
   assemblies:
   - Microsoft.JScript
   namespace: Microsoft.JScript
-  summary: "When implemented in a class, specifies the name of an item that is marked as an event source, so that the <xref:Microsoft.JScript.IEngine2.ConnectEvents*> method can determine which events to connect. This is not implemented in JScript."
+  summary: "Når implementert i en klasse, angir du navnet på et element som er merket som en hendelseskilden slik at den <xref:Microsoft.JScript.IEngine2.ConnectEvents*>metoden kan finne ut hvilke hendelser som skal koble.</xref:Microsoft.JScript.IEngine2.ConnectEvents*> Dette er ikke implementert i JScript."
   syntax:
     content: public void RegisterEventSource (string name);
     parameters:
     - id: name
       type: System.String
-      description: "The name of an added item that provides events."
+      description: "Navnet på et tillagt element som inneholder hendelser."
   overload: Microsoft.JScript.IEngine2.RegisterEventSource*
   exceptions: []
   platform:
@@ -273,7 +273,7 @@ items:
   assemblies:
   - Microsoft.JScript
   namespace: Microsoft.JScript
-  summary: "When implemented in a class, this method is called by the debugger when it has to reset the engine to a clean state before evaluating a new expression. The method resets the added items and the global scope back to their original state."
+  summary: "Når implementert i en klasse, kalles denne metoden av feilsøkingsprogrammet når den har tilbakestille motoren til en ren tilstand før evaluering av et nytt uttrykk. Metoden tilbakestiller tillagte elementer og globale omfang til sin opprinnelige tilstand."
   syntax:
     content: public void Restart ();
     parameters: []
@@ -293,13 +293,13 @@ items:
   assemblies:
   - Microsoft.JScript
   namespace: Microsoft.JScript
-  summary: "When implemented in a class, runs the compiled code in the specified application domain. This is not implemented in JScript because managed engines do not support running code in user-provided application domains."
+  summary: "Når implementert i en klasse, kjører du kompileringskoden i det angitte domenet. Dette er ikke implementert i JScript forvaltet motorer støtter ikke kjører kode i gitt programdomener."
   syntax:
     content: public void Run (AppDomain domain);
     parameters:
     - id: domain
       type: System.AppDomain
-      description: "The application domain in which to run the compiled code."
+      description: "Programdomenet der du vil kjøre kompileringskoden."
   overload: Microsoft.JScript.IEngine2.Run*
   exceptions: []
   platform:
@@ -316,7 +316,7 @@ items:
   assemblies:
   - Microsoft.JScript
   namespace: Microsoft.JScript
-  summary: "When implemented in a class, runs the compiled code in the current <xref href=&quot;System.AppDomain&quot;></xref>."
+  summary: "Når implementert i en klasse, kjører du kompileringskoden i gjeldende <xref href=&quot;System.AppDomain&quot;> </xref>."
   syntax:
     content: public void RunEmpty ();
     parameters: []

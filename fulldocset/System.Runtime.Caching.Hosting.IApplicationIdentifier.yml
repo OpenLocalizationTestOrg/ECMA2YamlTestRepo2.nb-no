@@ -10,8 +10,8 @@ items:
   nameWithType: IApplicationIdentifier
   fullName: System.Runtime.Caching.Hosting.IApplicationIdentifier
   type: Interface
-  summary: "Defines an identifier for application domains that a cache implementation can use to interact with a host environment."
-  remarks: "A [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] host environment such as ASP.NET can use the IApplicationIdentifier interface to define strings that identify individual application domains. The host environment implements the IApplicationIdentifier interface. This interface is then available to <xref:System.Runtime.Caching.ObjectCache> implementations through the <xref:System.Runtime.Caching.ObjectCache.Host%2A> property.       A cache implementation uses this reference to obtain an identifier for the application domain. In ASP.NET, cache implementations use the application identifier to construct identifiers for cache performance counters. This provides names for performance counter instances that can be distinguished between application domains when multiple application domains are running."
+  summary: "Definerer en ID for programdomener en hurtigbuffer implementering kan bruke til å kommunisere med en vertsmiljøet."
+  remarks: "En [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] vertsmiljøet som ASP.NET kan bruke grensesnittet IApplicationIdentifier til å definere strenger som identifiserer individuelle programdomener. Vertsmiljøet implementerer grensesnittet IApplicationIdentifier. Dette grensesnittet deretter er tilgjengelig for <xref:System.Runtime.Caching.ObjectCache>implementeringer via den <xref:System.Runtime.Caching.ObjectCache.Host%2A>egenskapen.</xref:System.Runtime.Caching.ObjectCache.Host%2A> </xref:System.Runtime.Caching.ObjectCache>       En hurtigbuffer implementering bruker denne referansen til å hente en identifikator for programdomenet. I ASP.NET Bruk hurtigbufferen implementeringer programidentifikatoren ikke konstruere identifikatorer for hurtigbufferen ytelsestellere. Dette gir navn for ytelse tellerforekomster som kan skilles mellom programdomener når flere programdomener kjører."
   syntax:
     content: public interface IApplicationIdentifier
   implements: []
@@ -29,14 +29,14 @@ items:
   assemblies:
   - System.Runtime.Caching
   namespace: System.Runtime.Caching.Hosting
-  summary: "Gets an identifier for an application domain."
-  remarks: "The GetApplicationId method is typically implemented by a [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] host environment in order to construct an application identifier for an <xref:System.Runtime.Caching.ObjectCache> implementation. A <xref:System.Runtime.Caching.ObjectCache> implementation uses this information to identify the application domain that is currently running.       For example, in ASP.NET, the cache uses an application identifier to construct identifiers for cache performance counters. The cache calls the GetApplicationId method that is implemented by the host environment and the host returns the identifier. This provides names for performance counter instances that can be distinguished between application domains when multiple application domains are running."
+  summary: "Henter en identifikator for et programdomene."
+  remarks: "Metoden GetApplicationId implementeres vanligvis av en [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] vertsmiljøet for å lage et program-ID for en <xref:System.Runtime.Caching.ObjectCache>implementering.</xref:System.Runtime.Caching.ObjectCache> En <xref:System.Runtime.Caching.ObjectCache>implementering bruker denne informasjonen til å identifisere programdomenet som kjører.</xref:System.Runtime.Caching.ObjectCache>       For eksempel i ASP.NET bruker hurtigbufferen en program-ID ikke konstruere identifikatorer for hurtigbufferen ytelsestellere. Hurtigbufferen kaller metoden GetApplicationId som implementeres av vertsmiljøet og verten returnerer IDen. Dette gir navn for ytelse tellerforekomster som kan skilles mellom programdomener når flere programdomener kjører."
   syntax:
     content: public string GetApplicationId ();
     parameters: []
     return:
       type: System.String
-      description: "A unique identifier for the current application domain."
+      description: "En unik ID for gjeldende programdomenet."
   overload: System.Runtime.Caching.Hosting.IApplicationIdentifier.GetApplicationId*
   exceptions: []
   platform:

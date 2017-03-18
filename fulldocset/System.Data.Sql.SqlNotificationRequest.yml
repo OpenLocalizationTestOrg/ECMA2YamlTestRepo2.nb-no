@@ -14,8 +14,8 @@ items:
   nameWithType: SqlNotificationRequest
   fullName: System.Data.Sql.SqlNotificationRequest
   type: Class
-  summary: "Represents a request for notification for a given command."
-  remarks: "This class provides low-level access to the query notification services exposed by SQL Server 2005. For most applications the <xref:System.Data.SqlClient.SqlDependency> class provides a simpler way of using query notifications. However, if you need fine control over when notifications occur, or you need to customize the message data returned as part of a notification, the SqlNotificationRequest class is the one to use."
+  summary: "Representerer en forespørsel om varsling for en gitt kommando."
+  remarks: "Denne klassen gir lavt nivå tilgang til spørringen notification-tjenester som vises av SQL Server 2005. For de fleste programmer den <xref:System.Data.SqlClient.SqlDependency>klassen gir enklere ved bruk av spørringsvarsler.</xref:System.Data.SqlClient.SqlDependency> Hvis du trenger bedre kontroll når varsler oppstå, eller du trenger å tilpasse meldingsdataene som ble returnert som en del av en varsling, er imidlertid klassen SqlNotificationRequest det som kan brukes."
   syntax:
     content: public sealed class SqlNotificationRequest
   inheritance:
@@ -36,8 +36,8 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Sql
-  summary: "Creates a new instance of the <xref href=&quot;System.Data.Sql.SqlNotificationRequest&quot;></xref> class with default values."
-  remarks: "If the default constructor is used to create a <xref:System.Data.Sql.SqlNotificationRequest> object, that instance must have its <xref:System.Data.Sql.SqlNotificationRequest.UserData%2A> and <xref:System.Data.Sql.SqlNotificationRequest.Options%2A> properties initialized before assigning the object to a <xref:System.Data.SqlClient.SqlCommand> object&quot;s <xref:System.Data.SqlClient.SqlCommand.Notification%2A> property. The default values used by the constructor are NULL (`Nothing` in Visual Basic) for the <xref:System.Data.Sql.SqlNotificationRequest.UserData%2A>, an empty string for the <xref:System.Data.Sql.SqlNotificationRequest.Options%2A>, and zero for the <xref:System.Data.Sql.SqlNotificationRequest.Timeout%2A>."
+  summary: "Oppretter en ny forekomst av den <xref href=&quot;System.Data.Sql.SqlNotificationRequest&quot;> </xref> klasse standardverdier."
+  remarks: "Hvis Standardkonstruktøren brukes til å opprette en <xref:System.Data.Sql.SqlNotificationRequest>objektet, den forekomsten må ha den <xref:System.Data.Sql.SqlNotificationRequest.UserData%2A>og <xref:System.Data.Sql.SqlNotificationRequest.Options%2A>Egenskaper initialisert før du tilordner objektet som en <xref:System.Data.SqlClient.SqlCommand>objektets <xref:System.Data.SqlClient.SqlCommand.Notification%2A>egenskapen.</xref:System.Data.SqlClient.SqlCommand.Notification%2A> </xref:System.Data.SqlClient.SqlCommand> </xref:System.Data.Sql.SqlNotificationRequest.Options%2A> </xref:System.Data.Sql.SqlNotificationRequest.UserData%2A> </xref:System.Data.Sql.SqlNotificationRequest> Standardverdiene for konstruktøren er NULL (`Nothing` i Visual Basic) for den <xref:System.Data.Sql.SqlNotificationRequest.UserData%2A>, en tom streng for den <xref:System.Data.Sql.SqlNotificationRequest.Options%2A>, og null for <xref:System.Data.Sql.SqlNotificationRequest.Timeout%2A>.</xref:System.Data.Sql.SqlNotificationRequest.Timeout%2A> </xref:System.Data.Sql.SqlNotificationRequest.Options%2A> </xref:System.Data.Sql.SqlNotificationRequest.UserData%2A>"
   syntax:
     content: public SqlNotificationRequest ();
     parameters: []
@@ -57,28 +57,28 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Sql
-  summary: "Creates a new instance of the <xref href=&quot;System.Data.Sql.SqlNotificationRequest&quot;></xref> class with a user-defined string that identifies a particular notification request, the name of a predefined SQL Server 2005 Service Broker service name, and the time-out period, measured in seconds."
-  remarks: "This constructor allows you to initialize a new <xref:System.Data.Sql.SqlNotificationRequest> instance, providing your own identifier, the SQL Server 2005 Service Broker service name, and a time-out value."
+  summary: "Oppretter en ny forekomst av den <xref href=&quot;System.Data.Sql.SqlNotificationRequest&quot;> </xref> klassen med en brukerdefinert streng som identifiserer en bestemt varsling forespørsel om navnet på en forhåndsdefinert SQL Server 2005 Service Broker-servicenavnet og tidsavbruddsperioden, målt i sekunder."
+  remarks: "Denne konstruktøren gjør det mulig å initialisere en ny <xref:System.Data.Sql.SqlNotificationRequest>forekomsten gir en identifikator, SQL Server 2005 Service Broker-servicenavnet og verdien for tidsavbrudd.</xref:System.Data.Sql.SqlNotificationRequest>"
   syntax:
     content: public SqlNotificationRequest (string userData, string options, int timeout);
     parameters:
     - id: userData
       type: System.String
-      description: "A string that contains an application-specific identifier for this notification. It is not used by the notifications infrastructure, but it allows you to associate notifications with the application state. The value indicated in this parameter is included in the Service Broker queue message."
+      description: "En streng som inneholder en programspesifikk identifikator for dette varselet. Det brukes ikke av varslinger-infrastruktur, men du kan knytte varsler tilstanden programmet. Verdien som er angitt i denne parameteren er inkludert i Service Broker køen meldingen."
     - id: options
       type: System.String
-      description: "A string that contains the Service Broker service name where notification messages are posted, and it must include a database name or a Service Broker instance GUID that restricts the scope of the service name lookup to a particular database.       For more information about the format of the `options` parameter, see <xref:System.Data.Sql.SqlNotificationRequest.Options*>."
+      description: "En streng som inneholder Service Broker tjenestenavnet der varslingsmeldinger posteres, og det må inneholde et databasenavn eller en forekomst av Service Broker GUIDEN som begrenser omfanget av tjenesten navnet lookup til en bestemt database.       For mer informasjon om formatet på den `options` parameteren se <xref:System.Data.Sql.SqlNotificationRequest.Options*>.</xref:System.Data.Sql.SqlNotificationRequest.Options*>"
     - id: timeout
       type: System.Int32
-      description: "The time, in seconds, to wait for a notification message."
+      description: "Tid i sekunder å vente på en melding."
   overload: System.Data.Sql.SqlNotificationRequest.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The value of the <code>options</code> parameter is NULL."
+    description: "Verdien for den <code> options </code> parameteren er NULL."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The <code>options</code> or <code>userData</code> parameter is longer than <xref uid=&quot;langword_csharp_uint16.MaxValue&quot; name=&quot;uint16.MaxValue&quot; href=&quot;&quot;></xref> or the value in the <code>timeout</code> parameter is less than zero."
+    description: "Den <code> options </code> eller <code> userData </code> parameteren er lengre enn <xref uid=&quot;langword_csharp_uint16.MaxValue&quot; name=&quot;uint16.MaxValue&quot; href=&quot;&quot;> </xref> eller -verdi i den <code> timeout </code> parameteren er mindre enn null."
   platform:
   - net462
 - uid: System.Data.Sql.SqlNotificationRequest.Options
@@ -93,21 +93,21 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Sql
-  summary: "Gets or sets the SQL Server Service Broker service name where notification messages are posted."
-  remarks: "The value of the Options property has the following format:       `service=<service-name>{;(local database=<database>|broker instance=<broker instance>)}`       For example, if you use the service &quot;myservice&quot; in the database &quot;AdventureWorks&quot; the format is:       `service=myservice;local database=AdventureWorks`       The SQL Server Service Broker service must be previously configured on the server. In addition, a Service Broker service and queue must be defined and security access granted as needed. See the SQL Server 2005 documentation for more information."
+  summary: "Henter eller angir navnet på SQL Server Service Broker tjenesten der varslingsmeldinger posteres."
+  remarks: "Verdien for egenskapen alternativer har følgende format: `service=<service-name>{;(local database=<database>|broker instance=<broker instance>)}` er For eksempel hvis du bruker tjenesten &quot;myservice&quot; i databasen &quot;AdventureWorks&quot; formatet: `service=myservice;local database=AdventureWorks` for SQL Server Service Broker-tjenesten må konfigureres tidligere på serveren. I tillegg en Service Broker-tjenesten og køen må være definert og sikkerheten for tilgang gitt som kreves. Se SQL Server 2005-dokumentasjonen for mer informasjon."
   syntax:
     content: public string Options { get; set; }
     return:
       type: System.String
-      description: "<xref uid=&quot;langword_csharp_string&quot; name=&quot;string&quot; href=&quot;&quot;></xref> that contains the SQL Server 2005 Service Broker service name where notification messages are posted and the database or service broker instance GUID to scope the server name lookup."
+      description: "<xref uid=&quot;langword_csharp_string&quot; name=&quot;string&quot; href=&quot;&quot;></xref>som inneholder SQL Server 2005 Service Broker tjenestenavnet hvor varslingsmeldinger posteres og databasen eller service broker forekomsten GUID skal være omfang oppslag for server-navnet."
   overload: System.Data.Sql.SqlNotificationRequest.Options*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The value is NULL."
+    description: "Verdien er NULL."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The value is longer than <xref uid=&quot;langword_csharp_uint16.MaxValue&quot; name=&quot;uint16.MaxValue&quot; href=&quot;&quot;></xref>."
+    description: "Verdien er lengre enn <xref uid=&quot;langword_csharp_uint16.MaxValue&quot; name=&quot;uint16.MaxValue&quot; href=&quot;&quot;> </xref>."
   platform:
   - net462
 - uid: System.Data.Sql.SqlNotificationRequest.Timeout
@@ -122,18 +122,18 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Sql
-  summary: "Gets or sets a value that specifies how long SQL Server waits for a change to occur before the operation times out."
-  remarks: "After the time-out period expires, the notification is sent even if no change takes place. The Timeout property defaults to the value set on the server."
+  summary: "Henter eller angir en verdi som angir hvor lenge SQL Server venter på en endring i forekomme innen før operasjonen blir tidsavbrutt."
+  remarks: "Når tidsavbruddsperioden utløper, sendes meldingen selv om ingen endring finner sted. Som standard Timeout-egenskapen til verdien som er angitt på serveren."
   syntax:
     content: public int Timeout { get; set; }
     return:
       type: System.Int32
-      description: "A signed integer value that specifies, in seconds, how long SQL Server waits for a change to occur before the operation times out."
+      description: "Et heltall med fortegn-verdi som angir hvor lenge SQL Server venter på en endring i forekomme innen før operasjonen blir tidsavbrutt, i sekunder."
   overload: System.Data.Sql.SqlNotificationRequest.Timeout*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The value is less than zero."
+    description: "Verdien er mindre enn null."
   platform:
   - net462
 - uid: System.Data.Sql.SqlNotificationRequest.UserData
@@ -148,18 +148,18 @@ items:
   assemblies:
   - System.Data
   namespace: System.Data.Sql
-  summary: "Gets or sets an application-specific identifier for this notification."
-  remarks: "This value is not used by the notifications infrastructure. Instead, it is a mechanism that allows an application to associate notifications with application state. The value specified in the UserData property is included in the SQL Server 2005 queue message."
+  summary: "Henter eller angir en programspesifikk identifikator for dette varselet."
+  remarks: "Denne verdien brukes ikke av varslinger-infrastruktur. Det er bare en mekanisme som tillater at et program knytte varsler programtilstanden. Verdien som er angitt i egenskapen vedvarende er inkludert i SQL Server 2005 køen meldingen."
   syntax:
     content: public string UserData { get; set; }
     return:
       type: System.String
-      description: "A <xref uid=&quot;langword_csharp_string&quot; name=&quot;string&quot; href=&quot;&quot;></xref> value of the application-specific identifier for this notification."
+      description: "En <xref uid=&quot;langword_csharp_string&quot; name=&quot;string&quot; href=&quot;&quot;> </xref> verdien for programspesifikk identifikatoren for dette varselet."
   overload: System.Data.Sql.SqlNotificationRequest.UserData*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The value is longer than <xref uid=&quot;langword_csharp_uint16.MaxValue&quot; name=&quot;uint16.MaxValue&quot; href=&quot;&quot;></xref>."
+    description: "Verdien er lengre enn <xref uid=&quot;langword_csharp_uint16.MaxValue&quot; name=&quot;uint16.MaxValue&quot; href=&quot;&quot;> </xref>."
   platform:
   - net462
 references:

@@ -13,8 +13,8 @@ items:
   nameWithType: DispatcherObject
   fullName: System.Windows.Threading.DispatcherObject
   type: Class
-  summary: "Represents an object that is associated with a <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref>."
-  remarks: "Only the thread that the <xref:System.Windows.Threading.DispatcherObject.Dispatcher%2A> was created on may access the DispatcherObject directly.  To access a DispatcherObject from a thread other than the thread the DispatcherObject was created on, call <xref:System.Windows.Threading.Dispatcher.Invoke%2A> or <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> on the <xref:System.Windows.Threading.Dispatcher> the DispatcherObject is associated with.       Subclasses of DispatcherObject that need to enforce thread safety can do so by calling <xref:System.Windows.Threading.DispatcherObject.VerifyAccess%2A> on all public methods.  This guarantees the calling thread is the thread that the DispatcherObject was created on.       A DispatcherObject cannot be independently instantiated; that is, all constructors are protected.       Objects that derive from DispatcherObject have thread affinity.       Objects that derive from <xref:System.Windows.Freezable> are free-threaded when they are frozen.  For more information, see the [Freezable Objects Overview](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Representerer et objekt som er knyttet til en <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref>."
+  remarks: "Bare tråden som den <xref:System.Windows.Threading.DispatcherObject.Dispatcher%2A>ble opprettet på kan få tilgang til DispatcherObject direkte.</xref:System.Windows.Threading.DispatcherObject.Dispatcher%2A>  Du kan åpne en DispatcherObject fra en annen tråd enn tråden av DispatcherObject ble opprettet på, kan du kalle <xref:System.Windows.Threading.Dispatcher.Invoke%2A>eller <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>på den <xref:System.Windows.Threading.Dispatcher>DispatcherObject er knyttet til.</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> </xref:System.Windows.Threading.Dispatcher.Invoke%2A>       Underklasser av DispatcherObject som må håndheve tråd sikkerhetsnivået kan gjøre dette ved å kalle <xref:System.Windows.Threading.DispatcherObject.VerifyAccess%2A>av alle offentlige.</xref:System.Windows.Threading.DispatcherObject.VerifyAccess%2A>  Dette garanterer kall tråden er tråden som DispatcherObject ble opprettet på.       En DispatcherObject kan ikke startes uavhengig; Det vil si er alle konstruktører beskyttet.       Objekter som er avledet fra DispatcherObject har tråd affinitet.       Objekter som er avledet fra <xref:System.Windows.Freezable>er gratis-threaded når de er låst.</xref:System.Windows.Freezable>  Hvis du vil ha mer informasjon, se den [oversikt over Freezable](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public abstract class DispatcherObject
   inheritance:
@@ -35,7 +35,7 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Threading.DispatcherObject&quot;></xref> class."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Windows.Threading.DispatcherObject&quot;> </xref> klasse."
   syntax:
     content: protected DispatcherObject ();
     parameters: []
@@ -55,8 +55,8 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Determines whether the calling thread has access to this <xref href=&quot;System.Windows.Threading.DispatcherObject&quot;></xref>."
-  remarks: "Only the thread the <xref:System.Windows.Threading.DispatcherObject.Dispatcher%2A> was created on may access the <xref:System.Windows.Threading.DispatcherObject>.       Any thread can check to see whether it has access to this <xref:System.Windows.Threading.DispatcherObject>.       The difference between CheckAccess and <xref:System.Windows.Threading.DispatcherObject.VerifyAccess%2A> is that CheckAccess returns a Boolean that specifies whether the calling thread has access to this <xref:System.Windows.Threading.DispatcherObject> and <xref:System.Windows.Threading.DispatcherObject.VerifyAccess%2A> throws an exception if the calling thread does not have access to the this <xref:System.Windows.Threading.DispatcherObject>.       Calling this method is identical to calling <xref:System.Windows.Threading.Dispatcher.CheckAccess%2A> on the associated <xref:System.Windows.Threading.Dispatcher> object."
+  summary: "Bestemmer om kall tråden har tilgang til dette <xref href=&quot;System.Windows.Threading.DispatcherObject&quot;> </xref>."
+  remarks: "Bare tråden av <xref:System.Windows.Threading.DispatcherObject.Dispatcher%2A>ble opprettet på kan få tilgang til <xref:System.Windows.Threading.DispatcherObject>.</xref:System.Windows.Threading.DispatcherObject> </xref:System.Windows.Threading.DispatcherObject.Dispatcher%2A>       En tråd kan kontrollere om den har tilgang til denne <xref:System.Windows.Threading.DispatcherObject>.</xref:System.Windows.Threading.DispatcherObject>       Forskjellen mellom CheckAccess og <xref:System.Windows.Threading.DispatcherObject.VerifyAccess%2A>CheckAccess returnerer en boolsk verdi som angir om kall tråden har tilgang til dette <xref:System.Windows.Threading.DispatcherObject>og <xref:System.Windows.Threading.DispatcherObject.VerifyAccess%2A>oppstår et unntak hvis kall tråden ikke har tilgang til denne <xref:System.Windows.Threading.DispatcherObject>.</xref:System.Windows.Threading.DispatcherObject> </xref:System.Windows.Threading.DispatcherObject.VerifyAccess%2A> </xref:System.Windows.Threading.DispatcherObject> </xref:System.Windows.Threading.DispatcherObject.VerifyAccess%2A>       Kaller denne metoden er identisk med kaller <xref:System.Windows.Threading.Dispatcher.CheckAccess%2A>for den tilknyttede <xref:System.Windows.Threading.Dispatcher>objektet.</xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Threading.Dispatcher.CheckAccess%2A>"
   example:
   - "The following example uses CheckAccess to determine whether a thread has access to the thread that a <xref:System.Windows.Controls.Button> was created on.  The CheckAccess method on the <xref:System.Windows.Controls.Button> is called to verify access to the thread.  If the calling thread has access, the <xref:System.Windows.Controls.Button> is updated by just accessing the members of the <xref:System.Windows.Controls.Button>; otherwise, a delegate, which accepts a <xref:System.Windows.Controls.Button> as an argument, is posted onto the <xref:System.Windows.Threading.Dispatcher> of the <xref:System.Windows.Controls.Button>.  \n  \n [!code-vb[DispatcherObjectAccessSample#DispatcherObjectAccessCheckAccess](~/add/codesnippet/visualbasic/dispatcherobjectaccesssample/window1.xaml.vb#dispatcherobjectaccesscheckaccess)]\n [!code-cs[DispatcherObjectAccessSample#DispatcherObjectAccessCheckAccess](~/add/codesnippet/csharp/DispatcherObjectAccessSample/Window1.xaml.cs#dispatcherobjectaccesscheckaccess)]"
   syntax:
@@ -64,7 +64,7 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the calling thread has access to this object; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis kall tråden har tilgang til dette objektet. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Threading.DispatcherObject.CheckAccess*
   exceptions: []
   platform:
@@ -81,13 +81,13 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Gets the <xref href=&quot;System.Windows.Threading.Dispatcher&quot;></xref> this <xref href=&quot;System.Windows.Threading.DispatcherObject&quot;></xref> is associated with."
-  remarks: "Only the thread that the Dispatcher was created on may access the <xref:System.Windows.Threading.DispatcherObject> directly.  To access a <xref:System.Windows.Threading.DispatcherObject> from a thread other than the thread the <xref:System.Windows.Threading.DispatcherObject> was created on, call <xref:System.Windows.Threading.Dispatcher.Invoke%2A> and <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> on the <xref:System.Windows.Threading.Dispatcher> the <xref:System.Windows.Threading.DispatcherObject> is associated with."
+  summary: "Henter den <xref href=&quot;System.Windows.Threading.Dispatcher&quot;> </xref> dette <xref href=&quot;System.Windows.Threading.DispatcherObject&quot;> </xref> er knyttet til."
+  remarks: "Bare tråd i Meldingsfordeleren ble opprettet på kan få tilgang til den <xref:System.Windows.Threading.DispatcherObject>direkte.</xref:System.Windows.Threading.DispatcherObject>  Access en <xref:System.Windows.Threading.DispatcherObject>fra en annen tråd enn tråden den <xref:System.Windows.Threading.DispatcherObject>ble opprettet av kall <xref:System.Windows.Threading.Dispatcher.Invoke%2A>og <xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A>på den <xref:System.Windows.Threading.Dispatcher>den <xref:System.Windows.Threading.DispatcherObject>er knyttet til.</xref:System.Windows.Threading.DispatcherObject> </xref:System.Windows.Threading.Dispatcher> </xref:System.Windows.Threading.Dispatcher.BeginInvoke%2A> </xref:System.Windows.Threading.Dispatcher.Invoke%2A> </xref:System.Windows.Threading.DispatcherObject> </xref:System.Windows.Threading.DispatcherObject>"
   syntax:
     content: public System.Windows.Threading.Dispatcher Dispatcher { get; }
     return:
       type: System.Windows.Threading.Dispatcher
-      description: "The dispatcher."
+      description: "Dispatcher."
   overload: System.Windows.Threading.DispatcherObject.Dispatcher*
   exceptions: []
   platform:
@@ -104,8 +104,8 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Threading
-  summary: "Enforces that the calling thread has access to this <xref href=&quot;System.Windows.Threading.DispatcherObject&quot;></xref>."
-  remarks: "Only the thread the <xref:System.Windows.Threading.DispatcherObject.Dispatcher%2A> was created on may access the <xref:System.Windows.Threading.DispatcherObject>.       Any thread can check to see whether it has access to this <xref:System.Windows.Threading.DispatcherObject>.       The difference between <xref:System.Windows.Threading.DispatcherObject.CheckAccess%2A> and VerifyAccess is that <xref:System.Windows.Threading.DispatcherObject.CheckAccess%2A> returns a Boolean that specifies whether the calling thread has access to this <xref:System.Windows.Threading.DispatcherObject> and VerifyAccess throws an exception if the calling thread does not have access to the this <xref:System.Windows.Threading.DispatcherObject>."
+  summary: "Fremtvinger kall tråden har tilgang til dette <xref href=&quot;System.Windows.Threading.DispatcherObject&quot;> </xref>."
+  remarks: "Bare tråden av <xref:System.Windows.Threading.DispatcherObject.Dispatcher%2A>ble opprettet på kan få tilgang til <xref:System.Windows.Threading.DispatcherObject>.</xref:System.Windows.Threading.DispatcherObject> </xref:System.Windows.Threading.DispatcherObject.Dispatcher%2A>       En tråd kan kontrollere om den har tilgang til denne <xref:System.Windows.Threading.DispatcherObject>.</xref:System.Windows.Threading.DispatcherObject>       Forskjellen mellom <xref:System.Windows.Threading.DispatcherObject.CheckAccess%2A>og VerifyAccess som <xref:System.Windows.Threading.DispatcherObject.CheckAccess%2A>returnerer en boolsk verdi som angir om kall tråden har tilgang til dette <xref:System.Windows.Threading.DispatcherObject>og VerifyAccess oppstår det et unntak hvis kall tråden ikke har tilgang til denne <xref:System.Windows.Threading.DispatcherObject>.</xref:System.Windows.Threading.DispatcherObject> </xref:System.Windows.Threading.DispatcherObject> </xref:System.Windows.Threading.DispatcherObject.CheckAccess%2A> </xref:System.Windows.Threading.DispatcherObject.CheckAccess%2A>"
   example:
   - "The following example uses VerifyAccess to determine whether a thread has access to the thread that a <xref:System.Windows.Controls.Button> was created on.  If the calling thread does not have access, an <xref:System.InvalidOperationException> is thrown.  \n  \n [!code-vb[DispatcherObjectAccessSample#DispatcherObjectAccessVerifyAccess](~/add/codesnippet/visualbasic/dispatcherobjectaccesssample/window1.xaml.vb#dispatcherobjectaccessverifyaccess)]\n [!code-cs[DispatcherObjectAccessSample#DispatcherObjectAccessVerifyAccess](~/add/codesnippet/csharp/DispatcherObjectAccessSample/Window1.xaml.cs#dispatcherobjectaccessverifyaccess)]"
   syntax:
@@ -115,7 +115,7 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "the calling thread does not have access to this <xref href=&quot;System.Windows.Threading.DispatcherObject&quot;></xref>."
+    description: "kall tråden har ikke tilgang til dette <xref href=&quot;System.Windows.Threading.DispatcherObject&quot;> </xref>."
   platform:
   - net462
 references:
