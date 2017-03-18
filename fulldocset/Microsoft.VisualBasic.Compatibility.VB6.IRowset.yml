@@ -14,7 +14,7 @@ items:
   nameWithType: IRowset
   fullName: Microsoft.VisualBasic.Compatibility.VB6.IRowset
   type: Interface
-  summary: "Provides an implementation of the OLE DB <xref uid=&quot;langword_csharp_IRowset&quot; name=&quot;IRowset&quot; href=&quot;&quot;></xref> interface for use by applications upgraded from Visual Basic 6.0."
+  summary: "Gir implementering av OLE DB <xref uid=&quot;langword_csharp_IRowset&quot; name=&quot;IRowset&quot; href=&quot;&quot;> </xref> grensesnitt for bruk av oppgradert fra Visual Basic 6.0."
   remarks: '[!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]'
   syntax:
     content: >-
@@ -40,23 +40,23 @@ items:
   assemblies:
   - Microsoft.VisualBasic.Compatibility.Data
   namespace: Microsoft.VisualBasic.Compatibility.VB6
-  summary: "Adds a reference count to an existing row handle."
+  summary: "Legger til referanseantallet i en eksisterende rad-referanse."
   remarks: '[!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]'
   syntax:
     content: public void AddRefRows (int cRows, int[] hRows, out int[] refCounts, out int[] rowStatus);
     parameters:
     - id: cRows
       type: System.Int32
-      description: "The number of rows for which to increment the reference count."
+      description: "Antall rader som skal økes referanseantallet."
     - id: hRows
       type: System.Int32[]
-      description: "An array of row handles for which to increment the reference count. The reference count of row handles is incremented by one for each time they appear in the array."
+      description: "En matrise med radhåndtak er frigjort som skal økes referanseantallet. Referanseantallet radhåndtak er frigjort økes med én for hver gang de vises i matrisen."
     - id: refCounts
       type: System.Int32[]
-      description: "An array with `cRows` elements in which to return the new reference count for each row handle. The consumer allocates memory for this array. If `refCounts` is a null pointer, no reference counts are returned."
+      description: "En matrise med `cRows` elementene som skal returneres nye referanseantallet for hver rad-referanse. Forbrukeren tildeler minne for denne matrisen. Hvis `refCounts` er en null-peker, ingen referanse antall returneres."
     - id: rowStatus
       type: System.Int32[]
-      description: "An array with `cRows` elements in which to return values indicating the status of each row specified in `hRows`."
+      description: "En matrise med `cRows` elementer som returnerer verdier som angir statusen for hver rad som er angitt i `hRows`."
   overload: Microsoft.VisualBasic.Compatibility.VB6.IRowset.AddRefRows*
   exceptions: []
   platform:
@@ -73,20 +73,20 @@ items:
   assemblies:
   - Microsoft.VisualBasic.Compatibility.Data
   namespace: Microsoft.VisualBasic.Compatibility.VB6
-  summary: "Retrieves data from the rowset&quot;s copy of the row."
+  summary: "Henter data fra den Radsettet kopi av raden."
   remarks: '[!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]'
   syntax:
     content: public void GetData (int hRow, int hAccessor, IntPtr pData);
     parameters:
     - id: hRow
       type: System.Int32
-      description: "The handle of the row from which to get the data."
+      description: "Behandlingen av raden som skal hente data fra."
     - id: hAccessor
       type: System.Int32
-      description: "The handle of the accessor to use."
+      description: "Behandlingen av aksessor skal brukes."
     - id: pData
       type: System.IntPtr
-      description: "A pointer to a buffer in which to return the data."
+      description: "En peker til en buffer som skal returneres dataene."
   overload: Microsoft.VisualBasic.Compatibility.VB6.IRowset.GetData*
   exceptions: []
   platform:
@@ -103,26 +103,26 @@ items:
   assemblies:
   - Microsoft.VisualBasic.Compatibility.Data
   namespace: Microsoft.VisualBasic.Compatibility.VB6
-  summary: "Fetches rows sequentially, remembering the previous position."
+  summary: "Henter rader sekvensielt, husker den forrige posisjonen."
   remarks: '[!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]'
   syntax:
     content: public void GetNextRows (int hChapter, int lRowsOffset, int cRows, out int cRowsObtained, out int[] hRows);
     parameters:
     - id: hChapter
       type: System.Int32
-      description: "The chapter handle designating the rows to fetch."
+      description: "Fant håndtaket angir radene du vil hente."
     - id: lRowsOffset
       type: System.Int32
-      description: "The signed count of rows to skip before fetching rows. Deleted rows that the provider has removed from the rowset are not counted in the skip."
+      description: "Signerte antall rader som skal hoppes over før henting av rader. Slettede radene som leverandøren har fjernet fra Radsettet telles ikke i skip."
     - id: cRows
       type: System.Int32
-      description: "The number of rows to fetch. A negative number means to fetch backward."
+      description: "Antall rader som skal hente. Et negativt tall betyr å hente bakover."
     - id: cRowsObtained
       type: System.Int32
-      description: "A pointer to memory in which to return the actual number of fetched rows."
+      description: "En peker til minne som skal returneres faktisk antall hentede rader."
     - id: hRows
       type: System.Int32[]
-      description: "A pointer to memory in which to return an array of handles of the fetched rows."
+      description: "En peker til minne som returnerer en matrise med håndtak hentede radene."
   overload: Microsoft.VisualBasic.Compatibility.VB6.IRowset.GetNextRows*
   exceptions: []
   platform:
@@ -139,29 +139,29 @@ items:
   assemblies:
   - Microsoft.VisualBasic.Compatibility.Data
   namespace: Microsoft.VisualBasic.Compatibility.VB6
-  summary: "Releases rows."
+  summary: "Frigir rader."
   remarks: '[!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]'
   syntax:
     content: public int ReleaseRows (int cRows, int[] hRows, IntPtr rowOptions, IntPtr rowRefCounts, IntPtr rgRowStatus);
     parameters:
     - id: cRows
       type: System.Int32
-      description: "The number of rows to release."
+      description: "Antall rader som skal frigis."
     - id: hRows
       type: System.Int32[]
-      description: "An array of handles of the rows to be released. The row handles do not need to form a logical cluster; they may have been obtained at separate times and need not be for contiguous underlying rows. Row handles are decremented by one reference count for each time they appear in the array."
+      description: "En matrise med håndtak med rader som skal frigis. Raden håndtakene trenger ikke å utgjøre en logisk klynge; de kan ha fått på egen tidspunkter og må ikke for sammenhengende underliggende rader. Radhåndtak er frigjort er hoppgrensen senkes av én referanseantallet for hver gang de vises i matrisen."
     - id: rowOptions
       type: System.IntPtr
-      description: "An array of `cRows` elements containing bitmasks indicating additional options to be specified when a row is released."
+      description: "En matrise av `cRows` elementer som inneholder bitmasker som angir flere alternativer være angitt når en rad frigis."
     - id: rowRefCounts
       type: System.IntPtr
-      description: "An array with `cRows` elements in which to return the new reference count of each row."
+      description: "En matrise med `cRows` elementene som skal returneres nye referanseantallet for hver rad."
     - id: rgRowStatus
       type: System.IntPtr
-      description: "An array with `cRows` elements in which to return values indicating the status of each row specified in `hRows`."
+      description: "En matrise med `cRows` elementer som returnerer verdier som angir statusen for hver rad som er angitt i `hRows`."
     return:
       type: System.Int32
-      description: "An <xref uid=&quot;langword_csharp_Integer&quot; name=&quot;Integer&quot; href=&quot;&quot;></xref> representing the result."
+      description: "En <xref uid=&quot;langword_csharp_Integer&quot; name=&quot;Integer&quot; href=&quot;&quot;> </xref> som representerer resultatet."
   overload: Microsoft.VisualBasic.Compatibility.VB6.IRowset.ReleaseRows*
   exceptions: []
   platform:
@@ -178,17 +178,17 @@ items:
   assemblies:
   - Microsoft.VisualBasic.Compatibility.Data
   namespace: Microsoft.VisualBasic.Compatibility.VB6
-  summary: "Repositions the next fetch position to its initial position."
+  summary: "Plasseres når den neste henteposisjonen til den opprinnelige plasseringen."
   remarks: '[!INCLUDE[Note_compatibility](~/add/includes/ajax-current-ext-md.md)]'
   syntax:
     content: public int RestartPosition (int hChapter);
     parameters:
     - id: hChapter
       type: System.Int32
-      description: "The chapter handle designating the rows on which to reposition."
+      description: "Fant håndtaket angir radene som du vil endre plasseringen."
     return:
       type: System.Int32
-      description: "An <xref uid=&quot;langword_csharp_Integer&quot; name=&quot;Integer&quot; href=&quot;&quot;></xref> representing the result."
+      description: "En <xref uid=&quot;langword_csharp_Integer&quot; name=&quot;Integer&quot; href=&quot;&quot;> </xref> som representerer resultatet."
   overload: Microsoft.VisualBasic.Compatibility.VB6.IRowset.RestartPosition*
   exceptions: []
   platform:

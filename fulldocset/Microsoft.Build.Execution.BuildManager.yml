@@ -22,7 +22,7 @@ items:
   nameWithType: BuildManager
   fullName: Microsoft.Build.Execution.BuildManager
   type: Class
-  summary: "This class is the public entry point for executing builds."
+  summary: "Denne klassen er offentlige inngangspunktet for kjøring delversjoner."
   syntax:
     content: 'public class BuildManager : IDisposable'
   inheritance:
@@ -44,7 +44,7 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Gets a new build manager without specifying a name."
+  summary: "Henter en ny kompilering leder uten å angi et navn."
   syntax:
     content: public BuildManager ();
     parameters: []
@@ -64,14 +64,14 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Creates a new unnamed build manager."
-  remarks: "Create a new BuildManager. Creating multiple multi-processor aware build managers is not supported due to conflicts in the NodeManager."
+  summary: "Oppretter et nytt uten navn Bygg manager."
+  remarks: "Opprett en ny BuildManager. Opprette flere med flere prosessorer bruker kompilering ledere støttes ikke på grunn av konflikter i NodeManager."
   syntax:
     content: public BuildManager (string hostName);
     parameters:
     - id: hostName
       type: System.String
-      description: "The host for the build manager."
+      description: "Verten for build-behandling."
   overload: Microsoft.Build.Execution.BuildManager.#ctor*
   exceptions: []
   platform:
@@ -88,18 +88,18 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Prepares the BuildManager to receive build requests."
+  summary: "Forbereder BuildManager til å motta build-forespørsler."
   syntax:
     content: public void BeginBuild (Microsoft.Build.Execution.BuildParameters parameters);
     parameters:
     - id: parameters
       type: Microsoft.Build.Execution.BuildParameters
-      description: "The build parameters. May be null."
+      description: "Build-parametere. Kan være null."
   overload: Microsoft.Build.Execution.BuildManager.BeginBuild*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "Thrown if a build is already in progress."
+    description: "Oppstår hvis en build pågår allerede."
   platform:
   - net462
 - uid: Microsoft.Build.Execution.BuildManager.Build(Microsoft.Build.Execution.BuildParameters,Microsoft.Build.Execution.BuildRequestData)
@@ -114,25 +114,25 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Submits a lone build request and blocks until results are available."
-  remarks: "Convenience method."
+  summary: "Sender en forespørsel om lone bygge og blokker til resultater er tilgjengelige."
+  remarks: "Foretrekker-metoden."
   syntax:
     content: public Microsoft.Build.Execution.BuildResult Build (Microsoft.Build.Execution.BuildParameters parameters, Microsoft.Build.Execution.BuildRequestData requestData);
     parameters:
     - id: parameters
       type: Microsoft.Build.Execution.BuildParameters
-      description: "Build parameters."
+      description: "Bygg parametere."
     - id: requestData
       type: Microsoft.Build.Execution.BuildRequestData
-      description: "Build request data."
+      description: "Bygg forespørselsdata."
     return:
       type: Microsoft.Build.Execution.BuildResult
-      description: "Returns the build result."
+      description: "Returnerer build-resultatet."
   overload: Microsoft.Build.Execution.BuildManager.Build*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "Thrown if a build is already in progress."
+    description: "Oppstår hvis en build pågår allerede."
   platform:
   - net462
 - uid: Microsoft.Build.Execution.BuildManager.BuildRequest(Microsoft.Build.Execution.BuildRequestData)
@@ -147,22 +147,22 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Submits a build request and blocks until the results are available."
-  remarks: "Convenience method."
+  summary: "Sender en forespørsel om bygge og blokker til resultatene er tilgjengelige."
+  remarks: "Foretrekker-metoden."
   syntax:
     content: public Microsoft.Build.Execution.BuildResult BuildRequest (Microsoft.Build.Execution.BuildRequestData requestData);
     parameters:
     - id: requestData
       type: Microsoft.Build.Execution.BuildRequestData
-      description: "Build request."
+      description: "Bygg forespørselen."
     return:
       type: Microsoft.Build.Execution.BuildResult
-      description: "Returns the build result."
+      description: "Returnerer build-resultatet."
   overload: Microsoft.Build.Execution.BuildManager.BuildRequest*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "Thrown if StartBuild has not been called or if EndBuild has been called."
+    description: "Et Hvis StartBuild ikke er kalt eller EndBuild er blitt kalt."
   platform:
   - net462
 - uid: Microsoft.Build.Execution.BuildManager.CancelAllSubmissions
@@ -177,7 +177,7 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Cancels all outstanding submissions asynchronously."
+  summary: "Avbryter alle utestående bidrag asynkront."
   syntax:
     content: public void CancelAllSubmissions ();
     parameters: []
@@ -197,12 +197,12 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Gets the singleton instance of the Build Manager."
+  summary: "Henter singleton-forekomsten av bygge-behandling."
   syntax:
     content: public static Microsoft.Build.Execution.BuildManager DefaultBuildManager { get; }
     return:
       type: Microsoft.Build.Execution.BuildManager
-      description: "Returns the singleton instance of the Build Manager."
+      description: "Returnerer singleton-forekomsten av bygge-behandling."
   overload: Microsoft.Build.Execution.BuildManager.DefaultBuildManager*
   exceptions: []
   platform:
@@ -219,7 +219,7 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Dispose of the build manager."
+  summary: "Fjerne build-behandling."
   syntax:
     content: public void Dispose ();
     parameters: []
@@ -239,8 +239,8 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Signals that no more build requests are expected (or allowed) and that the BuildManager may clean up."
-  remarks: "This call blocks until all currently pending requests are complete."
+  summary: "Signaliserer at er ingen flere build-forespørsler forventet (eller tillatt) og BuildManager kan rydde."
+  remarks: "Dette kallet blokker før alle ventende forespørsler er fullført."
   syntax:
     content: public void EndBuild ();
     parameters: []
@@ -248,7 +248,7 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "Thrown if there is no build in progress."
+    description: "Oppstår hvis det er ingen kompilering pågår."
   platform:
   - net462
 - uid: Microsoft.Build.Execution.BuildManager.Finalize
@@ -263,7 +263,7 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Finalize the building manager."
+  summary: "Fullfør bygging manager."
   syntax:
     content: ~BuildManager ();
     parameters: []
@@ -283,16 +283,16 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Gets a matching ProjectInstance from the BuildManager cache of previously built projects."
+  summary: "Henter en samsvarende ProjectInstance fra hurtigbufferen BuildManager tidligere bygd prosjekter."
   syntax:
     content: public Microsoft.Build.Execution.ProjectInstance GetProjectInstanceForBuild (Microsoft.Build.Evaluation.Project project);
     parameters:
     - id: project
       type: Microsoft.Build.Evaluation.Project
-      description: "The project for which an instance should be retrieved."
+      description: "Prosjektet som en forekomst skal hentes."
     return:
       type: Microsoft.Build.Execution.ProjectInstance
-      description: "Returns a matching ProjectInstance from the BuildManager cache of previously built projects. If none exist, a new project instance will be created from the specified project."
+      description: "Returnerer en samsvarende ProjectInstance fra hurtigbufferen BuildManager tidligere bygd prosjekter. Hvis ingen finnes, opprettes en ny forekomst av prosjektet fra det angitte prosjektet."
   overload: Microsoft.Build.Execution.BuildManager.GetProjectInstanceForBuild*
   exceptions: []
   platform:
@@ -309,21 +309,21 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Submits a build request to the current build but does not start it immediately. Allows the user to perform asynchronous execution or access the submission ID prior to executing the request."
+  summary: "Sender en build-forespørsel til den gjeldende versjonen, men ikke den umiddelbart. Tillater brukeren å utføre asynkron kjøring eller tilgang til innsending av ID før forespørselen kjøres."
   syntax:
     content: public Microsoft.Build.Execution.BuildSubmission PendBuildRequest (Microsoft.Build.Execution.BuildRequestData requestData);
     parameters:
     - id: requestData
       type: Microsoft.Build.Execution.BuildRequestData
-      description: "Build request data."
+      description: "Bygg forespørselsdata."
     return:
       type: Microsoft.Build.Execution.BuildSubmission
-      description: "Returns the submission that will be built."
+      description: "Returnerer innsending av som vil bli bygget."
   overload: Microsoft.Build.Execution.BuildManager.PendBuildRequest*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "Thrown if StartBuild has not been called or if EndBuild has been called."
+    description: "Et Hvis StartBuild ikke er kalt eller EndBuild er blitt kalt."
   platform:
   - net462
 - uid: Microsoft.Build.Execution.BuildManager.ResetCaches
@@ -338,7 +338,7 @@ items:
   assemblies:
   - Microsoft.Build
   namespace: Microsoft.Build.Execution
-  summary: "Clears out all of the build manager cached information."
+  summary: "Tømmer ut alle build-manager bufret informasjon."
   syntax:
     content: public void ResetCaches ();
     parameters: []

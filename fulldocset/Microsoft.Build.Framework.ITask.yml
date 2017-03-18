@@ -12,8 +12,8 @@ items:
   nameWithType: ITask
   fullName: Microsoft.Build.Framework.ITask
   type: Interface
-  summary: "Defines a task, which is a unit of executable code used by [!INCLUDE[vstecmsbuild](~/add/includes/vstecmsbuild-md.md)] to perform build operations."
-  remarks: "All task classes must implement this interface to be recognized by the build engine. Instead of implenting this interface directly, you can also derive your class from the helper class, <xref:Microsoft.Build.Utilities.Task>, which provides default implementations of some ITask members."
+  summary: "Definerer en oppgave som er en enhet med kjørbar kode som brukes av [!INCLUDE[vstecmsbuild](~/add/includes/vstecmsbuild-md.md)] til å utføre kompilering operasjoner."
+  remarks: "Alle oppgaven klasser må implementere dette grensesnittet føres av build-motoren. I stedet for implenting dette grensesnittet direkte, kan du også avledet klassen fra hjelperklasse, <xref:Microsoft.Build.Utilities.Task>, som leverer standard implementering av noen ITask medlemmer.</xref:Microsoft.Build.Utilities.Task>"
   example:
   - "The following example shows the code from a complete task implementation.  \n  \n [!code-cs[msbuild_MakeDirTask#1](~/add/codesnippet/csharp/msbuild_MakeDirTask/msbuild_MakeDirTask.cs#1)]"
   syntax:
@@ -33,12 +33,12 @@ items:
   assemblies:
   - Microsoft.Build.Framework
   namespace: Microsoft.Build.Framework
-  summary: "Gets or sets the build engine associated with the task."
+  summary: "Henter eller angir build-motoren som er knyttet til oppgaven."
   syntax:
     content: public Microsoft.Build.Framework.IBuildEngine BuildEngine { get; set; }
     return:
       type: Microsoft.Build.Framework.IBuildEngine
-      description: "The build engine associated with the task."
+      description: "Build-motoren som er knyttet til oppgaven."
   overload: Microsoft.Build.Framework.ITask.BuildEngine*
   exceptions: []
   platform:
@@ -55,14 +55,14 @@ items:
   assemblies:
   - Microsoft.Build.Framework
   namespace: Microsoft.Build.Framework
-  summary: "Executes a task."
-  remarks: "This method is called by the build engine to execute a task. Upon termination of this method, a task should indicate if the execution was successful. If a task throws an exception from this method, the engine assumes that the task has failed."
+  summary: "Utfører en oppgave."
+  remarks: "Denne metoden kalles av build-motoren til å kjøre en oppgave. Ved avslutning av denne metoden, må en oppgave angi Hvis kjøringen ble fullført. Hvis en oppgave oppstår det et unntak fra denne metoden, tolket motoren oppgaven mislyktes."
   syntax:
     content: public bool Execute ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the task executed successfully; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis oppgaven vellykkede; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: Microsoft.Build.Framework.ITask.Execute*
   exceptions: []
   platform:
@@ -79,13 +79,13 @@ items:
   assemblies:
   - Microsoft.Build.Framework
   namespace: Microsoft.Build.Framework
-  summary: "Gets or sets any host object that is associated with the task."
-  remarks: "This property can be a null reference (`Nothing` in [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)])."
+  summary: "Henter eller angir verten objekter som er knyttet til aktiviteten."
+  remarks: "Denne egenskapen kan være en nullreferanse (`Nothing` i [!INCLUDE[vbprvb](~/add/includes/vbprvb-md.md)])."
   syntax:
     content: public Microsoft.Build.Framework.ITaskHost HostObject { get; set; }
     return:
       type: Microsoft.Build.Framework.ITaskHost
-      description: "The host object associated with the task."
+      description: "Vertsobjektet som er knyttet til oppgaven."
   overload: Microsoft.Build.Framework.ITask.HostObject*
   exceptions: []
   platform:
