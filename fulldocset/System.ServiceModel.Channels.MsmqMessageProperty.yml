@@ -15,8 +15,8 @@ items:
   nameWithType: MsmqMessageProperty
   fullName: System.ServiceModel.Channels.MsmqMessageProperty
   type: Class
-  summary: "The MsmqMessageProperty class encapsulates the properties of a message that has been read from a queue."
-  remarks: "The MsmqMessageProperty class is obtained from the channel context and is used primarily for error processing. For example, if an application reads a message from the dead-letter queue, the application should examine properties like <xref:System.ServiceModel.Channels.MsmqMessageProperty.DeliveryFailure%2A> and <xref:System.ServiceModel.Channels.MsmqMessageProperty.DeliveryStatus%2A>. If an application is performing its own poison-message handling, it should examine properties like <xref:System.ServiceModel.Channels.MsmqMessageProperty.AbortCount%2A>."
+  summary: "Klassen MsmqMessageProperty innkapsler egenskaper for en melding som er lest fra en kø."
+  remarks: "MsmqMessageProperty klassen hentes fra konteksten kanal og brukes først og fremst for feil under behandling. For eksempel hvis et program som leser en melding fra blindkøen, skal programmet undersøke egenskaper som <xref:System.ServiceModel.Channels.MsmqMessageProperty.DeliveryFailure%2A>og <xref:System.ServiceModel.Channels.MsmqMessageProperty.DeliveryStatus%2A>.</xref:System.ServiceModel.Channels.MsmqMessageProperty.DeliveryStatus%2A> </xref:System.ServiceModel.Channels.MsmqMessageProperty.DeliveryFailure%2A> Hvis et program som utfører sin egen gift-Meldingsbehandling, må den undersøke egenskaper som <xref:System.ServiceModel.Channels.MsmqMessageProperty.AbortCount%2A>.</xref:System.ServiceModel.Channels.MsmqMessageProperty.AbortCount%2A>"
   syntax:
     content: public sealed class MsmqMessageProperty
   inheritance:
@@ -37,13 +37,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets an <xref:System.Int32> value that indicates the number of times the message participated in the transaction that was aborted, that is, channel attempts - 1."
-  remarks: "This property is used in poison-message handling. For more information about poison-message handling, see [Poison Message Handling](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Henter en <xref:System.Int32>verdi som angir hvor mange ganger deltok meldingen i transaksjonen ble avbrutt av det vil si kanalen forsøk - 1.</xref:System.Int32>"
+  remarks: "Denne egenskapen brukes i gift meldingsbehandling. Du finner mer informasjon om gift Meldingsbehandling [Poison Meldingsbehandling](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public int AbortCount { get; }
     return:
       type: System.Int32
-      description: "An <xref:System.Int32> value that indicates the number of times that the channel attempted to read this message."
+      description: "En <xref:System.Int32>verdi som angir hvor mange ganger kanalen forsøkte å lese meldingen.</xref:System.Int32>"
   overload: System.ServiceModel.Channels.MsmqMessageProperty.AbortCount*
   exceptions: []
   platform:
@@ -60,13 +60,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets a value from the <xref href=&quot;System.ServiceModel.Channels.DeliveryFailure&quot;></xref> enumeration that indicates why the message failed delivery."
-  remarks: "Use this property together with <xref:System.ServiceModel.Channels.MsmqMessageProperty.DeliveryStatus%2A> when reading a message from a dead-letter queue to determine why the message failed delivery."
+  summary: "Henter en verdi fra den <xref href=&quot;System.ServiceModel.Channels.DeliveryFailure&quot;> </xref> opplisting som angir hvorfor levering mislyktes i meldingen."
+  remarks: "Bruk denne egenskapen sammen med <xref:System.ServiceModel.Channels.MsmqMessageProperty.DeliveryStatus%2A>når leser en melding fra en blindkø å finne ut hvorfor meldingen ble levering.</xref:System.ServiceModel.Channels.MsmqMessageProperty.DeliveryStatus%2A>"
   syntax:
     content: public Nullable<System.ServiceModel.Channels.DeliveryFailure> DeliveryFailure { get; }
     return:
       type: System.Nullable{System.ServiceModel.Channels.DeliveryFailure}
-      description: "A value from the <xref href=&quot;System.ServiceModel.Channels.DeliveryFailure&quot;></xref> enumeration that indicates why the message failed delivery. May be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "En verdi fra den <xref href=&quot;System.ServiceModel.Channels.DeliveryFailure&quot;> </xref> opplisting som angir hvorfor levering mislyktes i meldingen. May be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   overload: System.ServiceModel.Channels.MsmqMessageProperty.DeliveryFailure*
   exceptions: []
   platform:
@@ -83,13 +83,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets a value from the <xref href=&quot;System.ServiceModel.Channels.DeliveryStatus&quot;></xref> enumeration that indicates the delivery status of the message."
-  remarks: "A message may have a delivery status of <xref:System.ServiceModel.Channels.DeliveryStatus> or <xref:System.ServiceModel.Channels.DeliveryStatus>. A message has a delivery status of <xref:System.ServiceModel.Channels.DeliveryStatus> unless Message Queuing (MSMQ) can determine that it was not delivered, in which case its delivery status becomes <xref:System.ServiceModel.Channels.DeliveryStatus>.       An example of an in-doubt message is a message that has expired. Message Queuing cannot determine whether the message was delivered to the application after it expired.       Use this property together with <xref:System.ServiceModel.Channels.MsmqMessageProperty.DeliveryFailure%2A> when reading a message from a dead-letter queue to determine why the message failed delivery."
+  summary: "Henter en verdi fra den <xref href=&quot;System.ServiceModel.Channels.DeliveryStatus&quot;> </xref> opplisting som angir leveringsstatusen av meldingen."
+  remarks: "En melding kan ha leveringsstatusen <xref:System.ServiceModel.Channels.DeliveryStatus>eller <xref:System.ServiceModel.Channels.DeliveryStatus>.</xref:System.ServiceModel.Channels.DeliveryStatus> </xref:System.ServiceModel.Channels.DeliveryStatus> En melding med leveringsstatusen <xref:System.ServiceModel.Channels.DeliveryStatus>Hvis Message Queuing (MSMQ) kan fastsette at den ikke ble levert, da er levering statusen <xref:System.ServiceModel.Channels.DeliveryStatus>.</xref:System.ServiceModel.Channels.DeliveryStatus> </xref:System.ServiceModel.Channels.DeliveryStatus>       Et eksempel på meldingen tvilsomme er en melding som er utløpt. Message Queuing kan ikke fastslå om meldingen ble levert til programmet når den har utløpt.       Bruk denne egenskapen sammen med <xref:System.ServiceModel.Channels.MsmqMessageProperty.DeliveryFailure%2A>når leser en melding fra en blindkø å finne ut hvorfor meldingen ble levering.</xref:System.ServiceModel.Channels.MsmqMessageProperty.DeliveryFailure%2A>"
   syntax:
     content: public Nullable<System.ServiceModel.Channels.DeliveryStatus> DeliveryStatus { get; }
     return:
       type: System.Nullable{System.ServiceModel.Channels.DeliveryStatus}
-      description: "A value from the <xref href=&quot;System.ServiceModel.Channels.DeliveryStatus&quot;></xref> enumeration that indicates the delivery status of the message. May be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "En verdi fra den <xref href=&quot;System.ServiceModel.Channels.DeliveryStatus&quot;> </xref> opplisting som angir leveringsstatusen av meldingen. May be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   overload: System.ServiceModel.Channels.MsmqMessageProperty.DeliveryStatus*
   exceptions: []
   platform:
@@ -106,21 +106,21 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets the <xref href=&quot;System.ServiceModel.Channels.MsmqMessageProperty&quot;></xref> for the specified <xref:System.ServiceModel.Channels.Message>."
+  summary: "Henter den <xref href=&quot;System.ServiceModel.Channels.MsmqMessageProperty&quot;> </xref> for den angitte <xref:System.ServiceModel.Channels.Message>.</xref:System.ServiceModel.Channels.Message>"
   syntax:
     content: public static System.ServiceModel.Channels.MsmqMessageProperty Get (System.ServiceModel.Channels.Message message);
     parameters:
     - id: message
       type: System.ServiceModel.Channels.Message
-      description: "The <xref:System.ServiceModel.Channels.Message> whose properties are to be retrieved."
+      description: "Den <xref:System.ServiceModel.Channels.Message>egenskapene som skal hentes.</xref:System.ServiceModel.Channels.Message>"
     return:
       type: System.ServiceModel.Channels.MsmqMessageProperty
-      description: "The <xref href=&quot;System.ServiceModel.Channels.MsmqMessageProperty&quot;></xref> for the specified <xref:System.ServiceModel.Channels.Message>."
+      description: "Den <xref href=&quot;System.ServiceModel.Channels.MsmqMessageProperty&quot;> </xref> for den angitte <xref:System.ServiceModel.Channels.Message>.</xref:System.ServiceModel.Channels.Message>"
   overload: System.ServiceModel.Channels.MsmqMessageProperty.Get*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The value is null or if property collection on the message is null."
+    description: "Verdien er null, eller hvis egenskapsutvalg på meldingen er null."
   platform:
   - net462
 - uid: System.ServiceModel.Channels.MsmqMessageProperty.MoveCount
@@ -135,12 +135,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets an <xref:System.Int32> value that indicates the number of times the message has moved from the main queue to the subqueue or the other way."
+  summary: "Henter en <xref:System.Int32>verdi som angir hvor mange ganger meldingen har flyttet fra den primære køen underkøen eller annen måte.</xref:System.Int32>"
   syntax:
     content: public int MoveCount { get; }
     return:
       type: System.Int32
-      description: "An <xref:System.Int32> value that indicates the count of the number of times this message has been moved."
+      description: "En <xref:System.Int32>verdi som angir antall hvor mange ganger denne meldingen er flyttet.</xref:System.Int32>"
   overload: System.ServiceModel.Channels.MsmqMessageProperty.MoveCount*
   exceptions: []
   platform:
@@ -157,13 +157,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets a <xref:System.String> that contains the string &quot;MsmqMessageProperty&quot;."
-  remarks: "A <xref:System.String> that contains the string &quot;MsmqMessageProperty&quot;."
+  summary: "Henter en <xref:System.String>som inneholder strengen &quot;MsmqMessageProperty&quot;.</xref:System.String>"
+  remarks: "En <xref:System.String>som inneholder strengen &quot;MsmqMessageProperty&quot;.</xref:System.String>"
   syntax:
     content: public const string Name;
     return:
       type: System.String
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462

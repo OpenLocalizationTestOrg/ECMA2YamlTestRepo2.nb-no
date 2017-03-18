@@ -14,7 +14,7 @@ items:
   nameWithType: ServiceAuthorizationManager
   fullName: System.ServiceModel.ServiceAuthorizationManager
   type: Class
-  summary: "Provides authorization access checking for service operations."
+  summary: "Gir godkjenning tilgang Søk etter operasjoner."
   remarks: "This class is responsible for evaluating all policies (rules that define what a user is allowed to do), comparing the policies to claims made by a client, setting the resulting <xref:System.IdentityModel.Policy.AuthorizationContext> to the <xref:System.ServiceModel.ServiceSecurityContext>, and providing the authorization decision whether to allow or deny access for a given service operation for a caller.  \n  \n The <xref:System.ServiceModel.ServiceAuthorizationManager.CheckAccessCore%2A> method is called by the [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] infrastructure each time an attempt to access a resource is made. The method returns `true` or `false` to allow or deny access, respectively.  \n  \n The ServiceAuthorizationManager is part of the [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)]*Identity Model* infrastructure. The Identity Model enables you to create custom authorization policies and custom authorization schemes. [!INCLUDE[crabout](~/add/includes/ajax-current-ext-md.md)] how the Identity Model works, see [Managing Claims and Authorization with the Identity Model](~/add/includes/ajax-current-ext-md.md).  \n  \n## Custom Authorization  \n This class does not perform any authorization and allows users to access all service operations. To provide more restrictive authorization, you must create a custom authorization manager that checks custom policies. To do this, inherit from this class and override the <xref:System.ServiceModel.ServiceAuthorizationManager.CheckAccessCore%2A> method. Specify the instance of the derived class through the <xref:System.ServiceModel.Dispatcher.DispatchRuntime.ServiceAuthorizationManager%2A> property.  \n  \n In <xref:System.ServiceModel.ServiceAuthorizationManager.CheckAccessCore%2A>, the application can use the <xref:System.ServiceModel.OperationContext> object to access the caller identity (<xref:System.ServiceModel.OperationContext.ServiceSecurityContext%2A>).  \n  \n By getting the <xref:System.ServiceModel.OperationContext.IncomingMessageHeaders%2A> property, which returns a <xref:System.ServiceModel.Channels.MessageHeaders> object, the application can access the service (<xref:System.ServiceModel.Channels.MessageHeaders.To%2A>), and the operation (<xref:System.ServiceModel.Channels.MessageHeaders.Action%2A>).  \n  \n By getting the <xref:System.ServiceModel.OperationContext.RequestContext%2A> property, which returns a <xref:System.ServiceModel.Channels.RequestContext> object, the application can access the entire request message (<xref:System.ServiceModel.Channels.RequestContext.RequestMessage%2A>) and perform the authorization decision accordingly.  \n  \n For an example, see [How to: Create a Custom Authorization Manager for a Service](~/add/includes/ajax-current-ext-md.md).  \n  \n To create custom authorization policies, implement the <xref:System.IdentityModel.Policy.IAuthorizationPolicy> class.  For an example, see [How to: Create a Custom Authorization Policy](~/add/includes/ajax-current-ext-md.md).  \n  \n To create a custom claim, use the <xref:System.IdentityModel.Claims.Claim> class.  For an example, see [How to: Create a Custom Claim](~/add/includes/ajax-current-ext-md.md). To compare custom claims, you must compare claims, as shown in [How to: Compare Claims](~/add/includes/ajax-current-ext-md.md).  \n  \n [!INCLUDE[crdefault](~/add/includes/ajax-current-ext-md.md)] [Custom Authorization](~/add/includes/ajax-current-ext-md.md).  \n  \n You can set the type of a custom authorization manager using the [\\&lt;serviceAuthorization\\&gt;](../Topic/%3CserviceAuthorization%3E%20element.md) in a client application configuration file."
   example:
   - "The following example shows a class named `MyServiceAuthorizationManager` that inherits from the ServiceAuthorizationManager and overrides the <xref:System.ServiceModel.ServiceAuthorizationManager.CheckAccessCore%2A> method.  \n  \n [!code-cs[c_CustomAuthMgr#2](~/add/codesnippet/csharp/t-system.servicemodel.se_16_1.cs)]\n [!code-vb[c_CustomAuthMgr#2](~/add/codesnippet/visualbasic/t-system.servicemodel.se_16_1.vb)]"
@@ -38,7 +38,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.ServiceAuthorizationManager&quot;></xref> class."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.ServiceModel.ServiceAuthorizationManager&quot;> </xref> klasse."
   syntax:
     content: public ServiceAuthorizationManager ();
     parameters: []
@@ -58,8 +58,8 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Checks authorization for the given operation context."
-  remarks: "In general, applications should override <xref:System.ServiceModel.ServiceAuthorizationManager.CheckAccessCore%2A> instead of this method.       Override CheckAccess if the application associates or introduces a different set of policies for the resulting <xref:System.ServiceModel.ServiceSecurityContext> or provide a different policy evaluation (chaining) model.       This method is responsible for calling <xref:System.ServiceModel.ServiceAuthorizationManager.CheckAccessCore%2A>."
+  summary: "Kontrollerer godkjenning for den angitte operasjon konteksten."
+  remarks: "Vanligvis programmer må overstyre <xref:System.ServiceModel.ServiceAuthorizationManager.CheckAccessCore%2A>i stedet for denne metoden.</xref:System.ServiceModel.ServiceAuthorizationManager.CheckAccessCore%2A>       Overstyre CheckAccess Hvis programmet knytter eller introduserer et annet sett med policyer for den resulterende <xref:System.ServiceModel.ServiceSecurityContext>eller oppgi en annen policy evalueringen (chaining) modell.</xref:System.ServiceModel.ServiceSecurityContext>       Denne metoden er ansvarlig for å kalle <xref:System.ServiceModel.ServiceAuthorizationManager.CheckAccessCore%2A>.</xref:System.ServiceModel.ServiceAuthorizationManager.CheckAccessCore%2A>"
   example:
   - "The following code shows how to override this method to enforce custom access control requirements.  \n  \n [!code-vb[c_Federation#1](~/add/codesnippet/visualbasic/c7a50227-d4bd-484e-89da-_1.vb)]\n [!code-cs[c_Federation#1](~/add/codesnippet/csharp/c7a50227-d4bd-484e-89da-_1.cs)]"
   syntax:
@@ -67,10 +67,10 @@ items:
     parameters:
     - id: operationContext
       type: System.ServiceModel.OperationContext
-      description: "The <xref:System.ServiceModel.OperationContext>."
+      description: "<xref:System.ServiceModel.OperationContext>.</xref:System.ServiceModel.OperationContext>"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if access is granted; otherwise; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis brukeren tilgang; Ellers; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Standard <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.ServiceAuthorizationManager.CheckAccess*
   exceptions: []
   platform:
@@ -87,8 +87,8 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Checks authorization for the given operation context when access to a message is required."
-  remarks: "In general, applications should override <xref:System.ServiceModel.ServiceAuthorizationManager.CheckAccessCore%2A> instead of this method, which should only be used if the authorization decision depends on the message body. Because of performance issues, if possible you should redesign your application so that the authorization decision does not require access to the message body.       Override this method if the application associates or introduces a different set of policies for the resulting <xref:System.ServiceModel.ServiceSecurityContext> and <xref:System.ServiceModel.Channels.Message> or provide a different policy evaluation (chaining) model.       This method is responsible for calling <xref:System.ServiceModel.ServiceAuthorizationManager.CheckAccessCore%2A>."
+  summary: "Kontrollerer godkjenning for den angitte operasjon konteksten når tilgang til en melding kreves."
+  remarks: "Vanligvis programmer må overstyre <xref:System.ServiceModel.ServiceAuthorizationManager.CheckAccessCore%2A>i stedet for denne metoden som skal bare brukes hvis godkjenning avhenger beslutningen av meldingsteksten.</xref:System.ServiceModel.ServiceAuthorizationManager.CheckAccessCore%2A> På grunn av ytelsesproblemer må Hvis det er mulig du utforme programmet slik at godkjenning beslutningstreet ikke krever tilgang til meldingsteksten.       Overstyre denne metoden hvis programmet knytter eller introduserer et annet sett med policyer for den resulterende <xref:System.ServiceModel.ServiceSecurityContext>og <xref:System.ServiceModel.Channels.Message>eller oppgi en annen policy evalueringen (chaining) modell.</xref:System.ServiceModel.Channels.Message> </xref:System.ServiceModel.ServiceSecurityContext>       Denne metoden er ansvarlig for å kalle <xref:System.ServiceModel.ServiceAuthorizationManager.CheckAccessCore%2A>.</xref:System.ServiceModel.ServiceAuthorizationManager.CheckAccessCore%2A>"
   example:
   - "The following code shows how to override this method to enforce custom access control requirements that require access to the message body.  \n  \n [!code-vb[c_Federation#6](~/add/codesnippet/visualbasic/97d69923-0462-4e77-9c7c-_1.vb)]\n [!code-cs[c_Federation#6](~/add/codesnippet/csharp/97d69923-0462-4e77-9c7c-_1.cs)]"
   syntax:
@@ -96,13 +96,13 @@ items:
     parameters:
     - id: operationContext
       type: System.ServiceModel.OperationContext
-      description: "The <xref:System.ServiceModel.OperationContext>."
+      description: "<xref:System.ServiceModel.OperationContext>.</xref:System.ServiceModel.OperationContext>"
     - id: message
       type: System.ServiceModel.Channels.Message
-      description: "The <xref:System.ServiceModel.Channels.Message> to be examined to determine authorization."
+      description: "Den <xref:System.ServiceModel.Channels.Message>å undersøkes for å finne ut godkjenning.</xref:System.ServiceModel.Channels.Message>"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if access is granted; otherwise; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis brukeren tilgang; Ellers; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Standard <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.ServiceAuthorizationManager.CheckAccess*
   exceptions: []
   platform:
@@ -119,8 +119,8 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Checks authorization for the given operation context based on default policy evaluation."
-  remarks: "<xref:System.ServiceModel.OperationContext.ServiceSecurityContext%2A> is generally the result from the default policy evaluation.       Override this method to provide custom authorization decisions.       This method can be used to make authorization decisions based on claim sets that are inferred based on incoming tokens, or added through external authorization policies. It can also make authorization decisions based on properties of the incoming message: for example, the action header.       In this method, the application can use the `operationContext` parameter to access the caller identity (<xref:System.ServiceModel.OperationContext.ServiceSecurityContext%2A>). By returning the <xref:System.ServiceModel.Channels.RequestContext> object from the <xref:System.ServiceModel.OperationContext.RequestContext%2A> property, the application can access the entire request message (<xref:System.ServiceModel.Channels.RequestContext.RequestMessage%2A>). By returning the <xref:System.ServiceModel.Channels.MessageHeaders> object from the <xref:System.ServiceModel.OperationContext.IncomingMessageHeaders%2A> property, the application can access the service URL (<xref:System.ServiceModel.Channels.MessageHeaders.To%2A>) and the operation (<xref:System.ServiceModel.Channels.MessageHeaders.Action%2A>). With this information, the application can perform the authorization decision accordingly.       The claims made by a user are found in the <xref:System.IdentityModel.Claims.ClaimSet> returned by the <xref:System.IdentityModel.Policy.AuthorizationContext.ClaimSets%2A> property of the `AuthorizationContext`. The current `AuthorizationContext` is returned by the <xref:System.ServiceModel.OperationContext.ServiceSecurityContext%2A> property of the <xref:System.ServiceModel.OperationContext> class."
+  summary: "Kontrollerer godkjenning for den angitte operasjon konteksten basert på standard policyevaluering."
+  remarks: "<xref:System.ServiceModel.OperationContext.ServiceSecurityContext%2A>skyldes vanligvis fra standard policy evalueringen.</xref:System.ServiceModel.OperationContext.ServiceSecurityContext%2A>       Overstyre denne metoden for å angi egendefinert godkjenning avgjørelsene.       Denne metoden kan brukes til å gjøre godkjenning avgjørelsene som er basert på krav angir som er utledes basert på innkommende tokener eller lagt til med ekstern godkjenning policyer. Det kan også få godkjenning avgjørelsene som er basert på egenskapene for den innkommende meldingen: for eksempel action-hode.       I denne metoden programmet kan bruke den `operationContext` parameter for å få tilgang til oppkalleren identiteten (<xref:System.ServiceModel.OperationContext.ServiceSecurityContext%2A>).</xref:System.ServiceModel.OperationContext.ServiceSecurityContext%2A> Ved å returnere den <xref:System.ServiceModel.Channels.RequestContext>objektet fra den <xref:System.ServiceModel.OperationContext.RequestContext%2A>egenskapen programmet kan få tilgang til hele forespørselsmeldingen (<xref:System.ServiceModel.Channels.RequestContext.RequestMessage%2A>).</xref:System.ServiceModel.Channels.RequestContext.RequestMessage%2A> </xref:System.ServiceModel.OperationContext.RequestContext%2A> </xref:System.ServiceModel.Channels.RequestContext> Ved å returnere den <xref:System.ServiceModel.Channels.MessageHeaders>objektet fra den <xref:System.ServiceModel.OperationContext.IncomingMessageHeaders%2A>egenskapen programmet kan få tilgang til tjenesten URL-adressen (<xref:System.ServiceModel.Channels.MessageHeaders.To%2A>), og operasjonen (<xref:System.ServiceModel.Channels.MessageHeaders.Action%2A>).</xref:System.ServiceModel.Channels.MessageHeaders.Action%2A> </xref:System.ServiceModel.Channels.MessageHeaders.To%2A> </xref:System.ServiceModel.OperationContext.IncomingMessageHeaders%2A> </xref:System.ServiceModel.Channels.MessageHeaders> Med denne informasjonen kan programmet utføre godkjenning beslutningstreet tilsvarende.       Krav utføres av en bruker som finnes i den <xref:System.IdentityModel.Claims.ClaimSet>returnert av den <xref:System.IdentityModel.Policy.AuthorizationContext.ClaimSets%2A>for den `AuthorizationContext`.</xref:System.IdentityModel.Policy.AuthorizationContext.ClaimSets%2A> </xref:System.IdentityModel.Claims.ClaimSet> Gjeldende `AuthorizationContext` returneres av <xref:System.ServiceModel.OperationContext.ServiceSecurityContext%2A>egenskapen for <xref:System.ServiceModel.OperationContext>klassen.</xref:System.ServiceModel.OperationContext> </xref:System.ServiceModel.OperationContext.ServiceSecurityContext%2A>"
   example:
   - "The following example shows an override of the CheckAccessCore method.  \n  \n [!code-cs[c_CustomAuthMgr#6](~/add/codesnippet/csharp/63a6c8ce-190f-4cc1-a5b3-_1.cs)]\n [!code-vb[c_CustomAuthMgr#6](~/add/codesnippet/visualbasic/63a6c8ce-190f-4cc1-a5b3-_1.vb)]  \n  \n For another example, see [How to: Create a Custom Authorization Manager for a Service](~/add/includes/ajax-current-ext-md.md)."
   syntax:
@@ -128,10 +128,10 @@ items:
     parameters:
     - id: operationContext
       type: System.ServiceModel.OperationContext
-      description: "The <xref:System.ServiceModel.OperationContext> for the current authorization request."
+      description: "Den <xref:System.ServiceModel.OperationContext>for den gjeldende authorization-forespørselen.</xref:System.ServiceModel.OperationContext>"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if access is granted; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis brukeren tilgang; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Standard <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.ServiceAuthorizationManager.CheckAccessCore*
   exceptions: []
   platform:
@@ -148,17 +148,17 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets the set of policies that participate in policy evaluation."
-  remarks: "The [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] implementation provides a default set of authorization policies. These include the primary token that contains the credentials of the requester and all supporting tokens, transport tokens, and external policies if specified.       You can override this implementation and provide a different set of policies."
+  summary: "Henter sett med policyer som deltar i policyevaluering."
+  remarks: "Den [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] implementering gir et standardsett med godkjenning policyer. Disse omfatter den primære token som inneholder legitimasjonen for søker og alle støttet tokener transport tokener og eksterne policyer hvis angitt.       Du kan overstyre denne implementeringen og angi et annet sett med policyer."
   syntax:
     content: protected virtual System.Collections.ObjectModel.ReadOnlyCollection<System.IdentityModel.Policy.IAuthorizationPolicy> GetAuthorizationPolicies (System.ServiceModel.OperationContext operationContext);
     parameters:
     - id: operationContext
       type: System.ServiceModel.OperationContext
-      description: "The <xref:System.ServiceModel.OperationContext> of the current authorization request."
+      description: "Den <xref:System.ServiceModel.OperationContext>til gjeldende forespørsel for godkjenning.</xref:System.ServiceModel.OperationContext>"
     return:
       type: System.Collections.ObjectModel.ReadOnlyCollection{System.IdentityModel.Policy.IAuthorizationPolicy}
-      description: "A &lt;xref:System.Collections.ObjectModel.ReadOnlyCollection%601&gt; of type <xref href=&quot;System.IdentityModel.Policy.IAuthorizationPolicy&quot;></xref>."
+      description: "En &lt;xref:System.Collections.ObjectModel.ReadOnlyCollection%601&gt; av typen <xref href=&quot;System.IdentityModel.Policy.IAuthorizationPolicy&quot;> </xref>."
   overload: System.ServiceModel.ServiceAuthorizationManager.GetAuthorizationPolicies*
   exceptions: []
   platform:

@@ -15,8 +15,8 @@ items:
   nameWithType: TokenReplayCache
   fullName: System.IdentityModel.Tokens.TokenReplayCache
   type: Class
-  summary: "The abstract base class that defines methods for a cache used to detect replayed tokens."
-  remarks: "When implemented, the cache should purge tokens on a scheduled time interval. The <xref:System.IdentityModel.Tokens.TokenReplayCache.AddOrUpdate%2A> method associates a security token with a key and an expiration time. The can be used to search the cache for the token or to remove the token from the cache. The expiration time indicates the time at which the token should be purged from the cache."
+  summary: "Abstrakte basisklassen som definerer metoder for en buffer som brukes til å oppdage gjentas tokener."
+  remarks: "Når implementert, må hurtigbufferen tømme tokener på et intervall på planlagt tidspunkt. Den <xref:System.IdentityModel.Tokens.TokenReplayCache.AddOrUpdate%2A>metoden knytter en sikkerhetskode til en nøkkel og en utløpsdato.</xref:System.IdentityModel.Tokens.TokenReplayCache.AddOrUpdate%2A> Det kan brukes til å søke i hurtigbufferen for tokenet eller fjerne tokenet fra hurtigbufferen. Tidspunktet for utløp angir tidspunktet da tokenet må slettes fra hurtigbufferen."
   syntax:
     content: 'public abstract class TokenReplayCache : System.IdentityModel.Configuration.ICustomIdentityConfiguration'
   inheritance:
@@ -38,7 +38,7 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Called from constructors in derived classes to initialize the <xref href=&quot;System.IdentityModel.Tokens.TokenReplayCache&quot;></xref>class."
+  summary: "Kalles fra konstruktører i avledede klasser initialisere den <xref href=&quot;System.IdentityModel.Tokens.TokenReplayCache&quot;> </xref>klasse."
   syntax:
     content: protected TokenReplayCache ();
     parameters: []
@@ -58,19 +58,19 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "When overridden in a derived class, attempts to add a new entry or update and existing entry."
+  summary: "Når overstyrt i en avledet klasse, prøver du å legge til en ny oppføring eller oppdatering eller eksisterende oppføring."
   syntax:
     content: public abstract void AddOrUpdate (string key, System.IdentityModel.Tokens.SecurityToken securityToken, DateTime expirationTime);
     parameters:
     - id: key
       type: System.String
-      description: "The key to use when adding the item."
+      description: "Nøkkelen som brukes når du legger til elementet."
     - id: securityToken
       type: System.IdentityModel.Tokens.SecurityToken
-      description: "The token to add to the cache, can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "Tokenet, for å legge til hurtigbufferen, kan være <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
     - id: expirationTime
       type: System.DateTime
-      description: "The time at which the entry expires."
+      description: "Tidspunktet posten løper ut."
   overload: System.IdentityModel.Tokens.TokenReplayCache.AddOrUpdate*
   exceptions: []
   platform:
@@ -87,16 +87,16 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "When overridden in a derived class, returns a value that indicates whether a matching entry exists in the cache."
+  summary: "Returnerer en verdi som angir om det finnes en tilsvarende oppføring i hurtigbufferen når overstyres i en avledet klasse."
   syntax:
     content: public abstract bool Contains (string key);
     parameters:
     - id: key
       type: System.String
-      description: "The key for which to search."
+      description: "Nøkkelen for det skal søkes etter."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a matching entry is is found in the cache; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis en samsvarende oppføring er funnet i hurtigbufferen; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.IdentityModel.Tokens.TokenReplayCache.Contains*
   exceptions: []
   platform:
@@ -113,16 +113,16 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "When overridden in a derived class, attempts to get the specified entry."
+  summary: "Når overstyrt i en avledet klasse, kan du prøve å hente den angitte oppføringen."
   syntax:
     content: public abstract System.IdentityModel.Tokens.SecurityToken Get (string key);
     parameters:
     - id: key
       type: System.String
-      description: "The key for which to search."
+      description: "Nøkkelen for det skal søkes etter."
     return:
       type: System.IdentityModel.Tokens.SecurityToken
-      description: "The token that matches the key or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if no token is found."
+      description: "Tokenet som samsvarer med nøkkelen eller <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Hvis det finnes ingen token."
   overload: System.IdentityModel.Tokens.TokenReplayCache.Get*
   exceptions: []
   platform:
@@ -139,14 +139,14 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "When overridden in a derived class, loads custom configuration from the specified XML."
-  remarks: "By default, this method throws a <xref:System.NotImplementedException>"
+  summary: "Når overstyrt i en avledet klasse, laster du Egendefinert konfigurasjon fra den angitte XML."
+  remarks: "Denne metoden oppstår som standard en<xref:System.NotImplementedException></xref:System.NotImplementedException>"
   syntax:
     content: public virtual void LoadCustomConfiguration (System.Xml.XmlNodeList nodelist);
     parameters:
     - id: nodelist
       type: System.Xml.XmlNodeList
-      description: "The custom configuration XML elements."
+      description: "Egendefinert XML-elementene."
   overload: System.IdentityModel.Tokens.TokenReplayCache.LoadCustomConfiguration*
   exceptions: []
   platform:
@@ -163,13 +163,13 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "When overridden in a derived class, attempts to remove an entry from the cache."
+  summary: "Når overstyrt i en avledet klasse, kan du prøve å fjerne en oppføring fra hurtigbufferen."
   syntax:
     content: public abstract void Remove (string key);
     parameters:
     - id: key
       type: System.String
-      description: "The key that identifies the entry to remove."
+      description: "Nøkkelen som identifiserer oppføringen for å fjerne."
   overload: System.IdentityModel.Tokens.TokenReplayCache.Remove*
   exceptions: []
   platform:

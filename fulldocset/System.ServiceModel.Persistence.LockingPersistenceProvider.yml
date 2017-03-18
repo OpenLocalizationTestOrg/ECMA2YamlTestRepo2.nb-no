@@ -29,8 +29,8 @@ items:
   nameWithType: LockingPersistenceProvider
   fullName: System.ServiceModel.Persistence.LockingPersistenceProvider
   type: Class
-  summary: "The abstract base class from which all durable service persistence providers that implement locking are derived."
-  remarks: "In addition to persistence, the LockingPersistenceProvider class implements locking of service state data records. Methods that interact with persisted data (such as the `Load` method) have an optional parameter (`lockInstance`) that defines whether locks on the data in question are released or maintained."
+  summary: "Den abstrakt basisklassen som alle robust utholdenhet tjenesteleverandører som implementerer låsing er avledet fra."
+  remarks: "I tillegg til vedvarende implementerer klassen LockingPersistenceProvider låsing av tjenesten tilstand dataposter. Metoder som fungerer sammen med faste data (slik som den `Load` metoden) har en valgfri parameter (`lockInstance`) som definerer om låser på de aktuelle dataene er utgitt eller beholdes."
   syntax:
     content: >-
       [System.Obsolete("The WF3 types are deprecated.  Instead, please use the new WF4 types from System.Activities.*")]
@@ -63,13 +63,13 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, creates a new instance of the <xref href=&quot;System.ServiceModel.Persistence.LockingPersistenceProvider&quot;></xref> class, configured with the specified identity value."
+  summary: "Når implementert i en avledet klasse, oppretter du en ny forekomst av den <xref href=&quot;System.ServiceModel.Persistence.LockingPersistenceProvider&quot;> </xref> klasse, konfigurert med den angitte ID-verdien."
   syntax:
     content: protected LockingPersistenceProvider (Guid id);
     parameters:
     - id: id
       type: System.Guid
-      description: "The unique identifier to be associated with this persistence provider instance."
+      description: "Den unike identifikatoren som skal knyttes til denne forekomsten av utholdenhet leverandøren."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.#ctor*
   exceptions: []
   platform:
@@ -86,26 +86,26 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Begins an asynchronous operation to create instance state information in the persistence store using the parameters. This method does not unlock the instance after saving the state information."
-  remarks: "This method calls into the <xref:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginCreate%2A> method, which takes an additional parameter to determine whether the instance is unlocked. This method passes `false` as a value for this parameter to the calling method."
+  summary: "Starter en asynkron operasjon for å opprette forekomster statusinformasjon i det vedvarende lageret ved hjelp av parameterne. Denne metoden ikke låse opp forekomsten etter statusinformasjon er lagret."
+  remarks: "Denne metoden kall til den <xref:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginCreate%2A>metoden som tar en ekstra parameter for å fastsette om forekomsten er låst.</xref:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginCreate%2A> Denne metoden sender `false` som en verdi for denne parameteren til kall-metoden."
   syntax:
     content: public override IAsyncResult BeginCreate (object instance, TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: instance
       type: System.Object
-      description: "The instance whose state information is saved into the persistence store."
+      description: "Forekomsten der statusinformasjon er lagret i vedvarende lager."
     - id: timeout
       type: System.TimeSpan
-      description: "The interval in which the operation must be completed without timing out."
+      description: "Intervallet operasjonen må fullføres uten tidsavbrudd."
     - id: callback
       type: System.AsyncCallback
-      description: "The delegate that receives the notification when the operation completes."
+      description: "Representanten som varsles når operasjonen er fullført."
     - id: state
       type: System.Object
-      description: "The state information associated with the asynchronous operation."
+      description: "Tilstandsinformasjon som er knyttet til den asynkrone operasjonen."
     return:
       type: System.IAsyncResult
-      description: "The status of an asynchronous operation."
+      description: "Statusen for en asynkron operasjon."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginCreate*
   exceptions: []
   platform:
@@ -122,28 +122,28 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Begins an asynchronous operation to create instance state information in the persistence store using the parameters. This method unlocks the instance after saving the instance state if the value of the <code>unlockInstance</code> parameter is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+  summary: "Starter en asynkron operasjon for å opprette forekomster statusinformasjon i det vedvarende lageret ved hjelp av parameterne. Denne metoden låses forekomsten når du har lagret tilstanden forekomst Hvis verdien for den <code> unlockInstance </code> parameteren er <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   syntax:
     content: public abstract IAsyncResult BeginCreate (object instance, TimeSpan timeout, bool unlockInstance, AsyncCallback callback, object state);
     parameters:
     - id: instance
       type: System.Object
-      description: "The instance whose state information is saved into the persistence store."
+      description: "Forekomsten der statusinformasjon er lagret i vedvarende lager."
     - id: timeout
       type: System.TimeSpan
-      description: "The interval in which the operation must be completed without timing out."
+      description: "Intervallet operasjonen må fullføres uten tidsavbrudd."
     - id: unlockInstance
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the instance must be unlocked in the persistence store; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis forekomsten må være låst i vedvarende lager; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     - id: callback
       type: System.AsyncCallback
-      description: "The delegate that receives the notification when the operation completes."
+      description: "Representanten som varsles når operasjonen er fullført."
     - id: state
       type: System.Object
-      description: "The state information associated with the asynchronous operation."
+      description: "Tilstandsinformasjon som er knyttet til den asynkrone operasjonen."
     return:
       type: System.IAsyncResult
-      description: "The status of an asynchronous operation."
+      description: "Statusen for en asynkron operasjon."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginCreate*
   exceptions: []
   platform:
@@ -160,23 +160,23 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Begins an asynchronous operation to load an instance based on state information in the persistence store using the parameters. This method does not lock the instance."
-  remarks: "This method calls into the <xref:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginLoad%2A>, which takes an additional parameter that specifies whether the instance must be locked in the persistence store. This method passes `false` as a value for this parameter to the calling method."
+  summary: "Starter en asynkron operasjon for å laste inn en forekomst basert på statusinformasjon i vedvarende lager ved hjelp av parameterne. Denne metoden låser ikke forekomsten."
+  remarks: "Denne metoden kall til den <xref:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginLoad%2A>, som bruker den andre parameteren som angir om forekomsten må være låst i vedvarende lager.</xref:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginLoad%2A> Denne metoden sender `false` som en verdi for denne parameteren til kall-metoden."
   syntax:
     content: public override IAsyncResult BeginLoad (TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The interval in which the operation must be completed without timing out."
+      description: "Intervallet operasjonen må fullføres uten tidsavbrudd."
     - id: callback
       type: System.AsyncCallback
-      description: "The delegate that receives the notification when the operation completes."
+      description: "Representanten som varsles når operasjonen er fullført."
     - id: state
       type: System.Object
-      description: "The state information associated with the asynchronous operation."
+      description: "Tilstandsinformasjon som er knyttet til den asynkrone operasjonen."
     return:
       type: System.IAsyncResult
-      description: "The status of an asynchronous operation."
+      description: "Statusen for en asynkron operasjon."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginLoad*
   exceptions: []
   platform:
@@ -193,25 +193,25 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Begins an asynchronous operation to load an instance based on state information in the persistence store using the parameters. This method locks the instance after loading the instance state if the value of the <code>lockInstance</code> parameter is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+  summary: "Starter en asynkron operasjon for å laste inn en forekomst basert på statusinformasjon i vedvarende lager ved hjelp av parameterne. Denne metoden låser forekomsten etter innlasting av tilstanden forekomst Hvis verdien for den <code> lockInstance </code> parameteren er <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   syntax:
     content: public abstract IAsyncResult BeginLoad (TimeSpan timeout, bool lockInstance, AsyncCallback callback, object state);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "An interval in which the operation must be completed before timing out."
+      description: "Et intervall operasjonen må fullføres før tidsavbrudd."
     - id: lockInstance
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the instance must be locked; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis forekomsten må være låst; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     - id: callback
       type: System.AsyncCallback
-      description: "The delegate that receives the notification when the operation completes."
+      description: "Representanten som varsles når operasjonen er fullført."
     - id: state
       type: System.Object
-      description: "The state information associated with the asynchronous operation."
+      description: "Tilstandsinformasjon som er knyttet til den asynkrone operasjonen."
     return:
       type: System.IAsyncResult
-      description: "The status of an asynchronous operation."
+      description: "Statusen for en asynkron operasjon."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginLoad*
   exceptions: []
   platform:
@@ -228,25 +228,25 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, represents the beginning of the LoadIfChanged phase. The LoadIfChanged phase occurs when state data is loaded into the persistence provider from the persistence store and the state data in the persistence store has been changed. This method call does not lock the instance in the persistence store."
+  summary: "Representerer begynnelsen av LoadIfChanged fase når implementert i en avledet klasse. LoadIfChanged fase oppstår når dataene er lastet inn i utholdenhet leverandøren fra vedvarende lager og Tilstandsdataene i vedvarende lager er endret. Metodekallet låser ikke forekomst i vedvarende lager."
   syntax:
     content: public override IAsyncResult BeginLoadIfChanged (TimeSpan timeout, object instanceToken, AsyncCallback callback, object state);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts this operation."
+      description: "Hvor lang tid før utholdenhet leverandøren avbryter denne operasjonen."
     - id: instanceToken
       type: System.Object
-      description: "The token returned by a previous <xref uid=&quot;langword_csharp_Create&quot; name=&quot;Create&quot; href=&quot;&quot;></xref> or <xref uid=&quot;langword_csharp_Update&quot; name=&quot;Update&quot; href=&quot;&quot;></xref> method that represents the current state held by the caller."
+      description: "Token ble returnert av en tidligere <xref uid=&quot;langword_csharp_Create&quot; name=&quot;Create&quot; href=&quot;&quot;> </xref> eller <xref uid=&quot;langword_csharp_Update&quot; name=&quot;Update&quot; href=&quot;&quot;> </xref> metode som representerer den gjeldende tilstanden holdes av oppkalleren."
     - id: callback
       type: System.AsyncCallback
-      description: "The method to be called when the operation is completed."
+      description: "Metoden som skal kalles når operasjonen er fullført."
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous operation from other operations."
+      description: "Et gitt objekt som skiller denne bestemt asynkrone operasjonen av andre operasjoner."
     return:
       type: System.IAsyncResult
-      description: "The status of an asynchronous operation."
+      description: "Statusen for en asynkron operasjon."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginLoadIfChanged*
   exceptions: []
   platform:
@@ -263,28 +263,28 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, represents the beginning of the LoadIfChanged phase. The LoadIfChanged phase occurs when state data is loaded into the persistence provider from the persistence store and the state data in the persistence store has been changed. This method call lets you specify whether you want to lock the instance in the persistence store."
+  summary: "Representerer begynnelsen av LoadIfChanged fase når implementert i en avledet klasse. LoadIfChanged fase oppstår når dataene er lastet inn i utholdenhet leverandøren fra vedvarende lager og Tilstandsdataene i vedvarende lager er endret. Metodekallet lar deg angi om du vil låse forekomst i vedvarende lager."
   syntax:
     content: public virtual IAsyncResult BeginLoadIfChanged (TimeSpan timeout, object instanceToken, bool lockInstance, AsyncCallback callback, object state);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts this operation."
+      description: "Hvor lang tid før utholdenhet leverandøren avbryter denne operasjonen."
     - id: instanceToken
       type: System.Object
-      description: "The token returned by a previous <xref uid=&quot;langword_csharp_Create&quot; name=&quot;Create&quot; href=&quot;&quot;></xref> or <xref uid=&quot;langword_csharp_Update&quot; name=&quot;Update&quot; href=&quot;&quot;></xref> method that represents the current state held by the caller."
+      description: "Token ble returnert av en tidligere <xref uid=&quot;langword_csharp_Create&quot; name=&quot;Create&quot; href=&quot;&quot;> </xref> eller <xref uid=&quot;langword_csharp_Update&quot; name=&quot;Update&quot; href=&quot;&quot;> </xref> metode som representerer den gjeldende tilstanden holdes av oppkalleren."
     - id: lockInstance
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the instance is locked in the persistence store; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis forekomsten er låst i vedvarende lager; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     - id: callback
       type: System.AsyncCallback
-      description: "The method to be called when the operation is completed."
+      description: "Metoden som skal kalles når operasjonen er fullført."
     - id: state
       type: System.Object
-      description: "A user-provided object that distinguishes this particular asynchronous operation from other operations."
+      description: "Et gitt objekt som skiller denne bestemt asynkrone operasjonen av andre operasjoner."
     return:
       type: System.IAsyncResult
-      description: "The status of an asynchronous operation."
+      description: "Statusen for en asynkron operasjon."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginLoadIfChanged*
   exceptions: []
   platform:
@@ -301,22 +301,22 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Begins an asynchronous operation to unlock an instance in the persistence store."
+  summary: "Starter en asynkron operasjon for å låse opp en forekomst i vedvarende lager."
   syntax:
     content: public abstract IAsyncResult BeginUnlock (TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "An interval in which the operation must be completed before timing out."
+      description: "Et intervall operasjonen må fullføres før tidsavbrudd."
     - id: callback
       type: System.AsyncCallback
-      description: "The delegate that receives the notification when the operation completes."
+      description: "Representanten som varsles når operasjonen er fullført."
     - id: state
       type: System.Object
-      description: "The state information associated with the asynchronous operation."
+      description: "Tilstandsinformasjon som er knyttet til den asynkrone operasjonen."
     return:
       type: System.IAsyncResult
-      description: "The status of an asynchronous operation."
+      description: "Statusen for en asynkron operasjon."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginUnlock*
   exceptions: []
   platform:
@@ -333,26 +333,26 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Begins an asynchronous operation to update instance state information in the persistence store using the parameters passed. This operation does not unlock the instance in the instance store."
-  remarks: "This method calls into the <xref:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginUpdate%2A> method and passes a `false` value for the `unlockInstance` parameter."
+  summary: "Starter en asynkron operasjon for å oppdatere informasjon om forekomsten i vedvarende lager ved hjelp av parameterne som ble sendt. Denne operasjonen Lås ikke forekomst i forekomst-butikken."
+  remarks: "Denne metoden kall til den <xref:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginUpdate%2A>metoden og formidler en `false` verdi den `unlockInstance` parameteren.</xref:System.ServiceModel.Persistence.LockingPersistenceProvider.BeginUpdate%2A>"
   syntax:
     content: public override IAsyncResult BeginUpdate (object instance, TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: instance
       type: System.Object
-      description: "The instance whose state information is being updated in the persistence store."
+      description: "Forekomsten der statusinformasjon oppdateres i vedvarende lager."
     - id: timeout
       type: System.TimeSpan
-      description: "The interval in which the operation must complete without timing out."
+      description: "Intervallet som Utfør operasjonen uten å bli tidsavbrutt."
     - id: callback
       type: System.AsyncCallback
-      description: "The delegate that receives the notification when the operation is completed."
+      description: "Representanten som varsles når operasjonen er fullført."
     - id: state
       type: System.Object
-      description: "The state information about the asynchronous operation."
+      description: "Tilstandsinformasjon om den asynkrone operasjonen."
     return:
       type: System.IAsyncResult
-      description: "The status of an asynchronous operation."
+      description: "Statusen for en asynkron operasjon."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginUpdate*
   exceptions: []
   platform:
@@ -369,28 +369,28 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Begins an asynchronous operation to update instance state information in the persistence store using the parameters passed. This operation locks the instance in the persistence store if the value of the <code>unlockInstance</code> parameter is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+  summary: "Starter en asynkron operasjon for å oppdatere informasjon om forekomsten i vedvarende lager ved hjelp av parameterne som ble sendt. Denne operasjonen låser forekomst i vedvarende lager hvis verdien for den <code> unlockInstance </code> parameteren er <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   syntax:
     content: public abstract IAsyncResult BeginUpdate (object instance, TimeSpan timeout, bool unlockInstance, AsyncCallback callback, object state);
     parameters:
     - id: instance
       type: System.Object
-      description: "The instance whose state information is being updated in the persistence store."
+      description: "Forekomsten der statusinformasjon oppdateres i vedvarende lager."
     - id: timeout
       type: System.TimeSpan
-      description: "The interval in which the operation must complete without timing out."
+      description: "Intervallet som Utfør operasjonen uten å bli tidsavbrutt."
     - id: unlockInstance
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the instance must be locked after the instance state is updated in the persistence store; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis forekomsten må være låst når tilstanden forekomsten oppdateres i vedvarende lager; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     - id: callback
       type: System.AsyncCallback
-      description: "The delegate that receives the notification when the operation completes."
+      description: "Representanten som varsles når operasjonen er fullført."
     - id: state
       type: System.Object
-      description: "The state information about the asynchronous operation."
+      description: "Tilstandsinformasjon om den asynkrone operasjonen."
     return:
       type: System.IAsyncResult
-      description: "The status of an asynchronous operation."
+      description: "Statusen for en asynkron operasjon."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.BeginUpdate*
   exceptions: []
   platform:
@@ -407,19 +407,19 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Creates instance state information in the persistence store using parameters passed into the method. This method does not unlock the instance in the persistence store after saving the instance state."
+  summary: "Oppretter forekomst statusinformasjon i vedvarende lager med parametere som overføres til metoden. Denne metoden ikke låse opp forekomst i vedvarende lager når du har lagret tilstanden forekomst."
   syntax:
     content: public override object Create (object instance, TimeSpan timeout);
     parameters:
     - id: instance
       type: System.Object
-      description: "The instance object whose state information must be saved into the persistence store."
+      description: "Objekt forekomst der statusinformasjon må lagres i vedvarende lager."
     - id: timeout
       type: System.TimeSpan
-      description: "The interval in which the operation must complete before timing out."
+      description: "Intervallet som operasjonen må fullføres før tidsavbrudd."
     return:
       type: System.Object
-      description: "The state information."
+      description: "Tilstandsinformasjon."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.Create*
   exceptions: []
   platform:
@@ -436,22 +436,22 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "This method creates instance state information in the persistence store using parameters passed into the method. The method unlocks the instance in the instance store if the value of the <code>unlockInstance</code> parameter is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+  summary: "Denne metoden oppretter forekomsten statusinformasjon i vedvarende lager med parametere som overføres til metoden. Metoden låses forekomst i forekomsten store Hvis verdien for den <code> unlockInstance </code> parameteren er <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   syntax:
     content: public abstract object Create (object instance, TimeSpan timeout, bool unlockInstance);
     parameters:
     - id: instance
       type: System.Object
-      description: "The instance object whose state information is saved into the persistence store."
+      description: "Objekt forekomst der statusinformasjon er lagret i vedvarende lager."
     - id: timeout
       type: System.TimeSpan
-      description: "The interval within which the operation must complete before timing out."
+      description: "Intervallet som operasjonen må fullføres før tidsavbrudd."
     - id: unlockInstance
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the instance must be unlocked in the persistence store; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis forekomsten må være låst i vedvarende lager; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     return:
       type: System.Object
-      description: "The state information."
+      description: "Tilstandsinformasjon."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.Create*
   exceptions: []
   platform:
@@ -468,13 +468,13 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Ends the asynchronous operation to unlock an instance in the persistence store."
+  summary: "Avsluttes den asynkrone operasjonen for å låse opp en forekomst i vedvarende lager."
   syntax:
     content: public abstract void EndUnlock (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The result returned by the unlock operation."
+      description: "Resultatet som returneres av unlock-operasjonen."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.EndUnlock*
   exceptions: []
   platform:
@@ -491,17 +491,17 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Loads service state information from the persistence store without locking the instance."
-  remarks: "This method invokes the <xref:System.ServiceModel.Persistence.LockingPersistenceProvider.Load%2A> method with `lockInstance` parameter set to `false`."
+  summary: "Laster behandle statusinformasjon fra vedvarende lager uten å låse forekomsten."
+  remarks: "Denne metoden starter den <xref:System.ServiceModel.Persistence.LockingPersistenceProvider.Load%2A>metode med `lockInstance` parameteren satt til `false`.</xref:System.ServiceModel.Persistence.LockingPersistenceProvider.Load%2A>"
   syntax:
     content: public override object Load (TimeSpan timeout);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts this attempt."
+      description: "Hvor lang tid før utholdenhet leverandøren avbryter forsøket."
     return:
       type: System.Object
-      description: "The service state information."
+      description: "Tilstandsinformasjon for tjenesten."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.Load*
   exceptions: []
   platform:
@@ -518,19 +518,19 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Loads state information from the persistence store after locking the instance."
+  summary: "Laster tilstandsinformasjon fra vedvarende lager etter låsing forekomsten."
   syntax:
     content: public abstract object Load (TimeSpan timeout, bool lockInstance);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The period after which the persistence provider aborts this operation."
+      description: "Perioden utholdenhet leverandøren avbryter før denne operasjonen."
     - id: lockInstance
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the instance should be locked; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis forekomsten skal låses; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     return:
       type: System.Object
-      description: "The state information."
+      description: "Tilstandsinformasjon."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.Load*
   exceptions: []
   platform:
@@ -547,22 +547,22 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Loads the instance state information from the persistence store if the state information has been changed since the last time the information was loaded by the caller. This method does not lock the instance in the persistence store."
+  summary: "Laster inn forekomsten statusinformasjon fra vedvarende lager hvis statusinformasjon er endret siden sist informasjonen som ble lastet inn av oppkalleren. Denne metoden låser ikke forekomst i vedvarende lager."
   syntax:
     content: public override bool LoadIfChanged (TimeSpan timeout, object instanceToken, out object instance);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts this operation."
+      description: "Hvor lang tid før utholdenhet leverandøren avbryter denne operasjonen."
     - id: instanceToken
       type: System.Object
-      description: "The token returned by the previous <xref uid=&quot;langword_csharp_Create&quot; name=&quot;Create&quot; href=&quot;&quot;></xref> or <xref uid=&quot;langword_csharp_Update&quot; name=&quot;Update&quot; href=&quot;&quot;></xref> method calls, which represents the current state held by the caller."
+      description: "Token ble returnert av forrige <xref uid=&quot;langword_csharp_Create&quot; name=&quot;Create&quot; href=&quot;&quot;> </xref> eller <xref uid=&quot;langword_csharp_Update&quot; name=&quot;Update&quot; href=&quot;&quot;> </xref> metodekall som representerer den gjeldende tilstanden holdes av oppkalleren."
     - id: instance
       type: System.Object
-      description: "The actual instance state information."
+      description: "Den faktiske forekomsten informasjon om."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the instance should be locked in the persistence store at the end of this operation; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis forekomsten skal låses i vedvarende lager på slutten av denne operasjonen. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.LoadIfChanged*
   exceptions: []
   platform:
@@ -579,25 +579,25 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Loads the instance state information from the persistence store if the state information has been changed since the last time the information was loaded by the caller. This method also lets the caller specify whether to lock the instance in the persistence store."
+  summary: "Laster inn forekomsten statusinformasjon fra vedvarende lager hvis statusinformasjon er endret siden sist informasjonen som ble lastet inn av oppkalleren. Denne metoden kan også oppkalleren angi om du vil låse forekomst i vedvarende lager."
   syntax:
     content: public virtual bool LoadIfChanged (TimeSpan timeout, object instanceToken, bool lockInstance, out object instance);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts this operation."
+      description: "Hvor lang tid før utholdenhet leverandøren avbryter denne operasjonen."
     - id: instanceToken
       type: System.Object
-      description: "The token returned by the previous Create or Update method calls, which represents the current state held by the caller."
+      description: "Tokenet returnert av de forrige metodekall oppretting eller oppdatering som representerer den gjeldende tilstanden holdes av oppkalleren."
     - id: lockInstance
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the instance should be locked in the persistence store at the end of this operation; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis forekomsten skal låses i vedvarende lager på slutten av denne operasjonen. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     - id: instance
       type: System.Object
-      description: "The instance state information."
+      description: "Tilstandsinformasjon for forekomsten."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the instance should be locked in the persistence store at the end of this operation; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis forekomsten skal låses i vedvarende lager på slutten av denne operasjonen. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.LoadIfChanged*
   exceptions: []
   platform:
@@ -614,13 +614,13 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "Unlocks the instance whose ID is specified when constructing the <xref href=&quot;System.ServiceModel.Persistence.LockingPersistenceProvider&quot;></xref> object in the persistence store."
+  summary: "Låses forekomsten med IDen angis når den <xref href=&quot;System.ServiceModel.Persistence.LockingPersistenceProvider&quot;> </xref> objektet i vedvarende lager."
   syntax:
     content: public abstract void Unlock (TimeSpan timeout);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts the operation."
+      description: "Hvor lang tid før utholdenhet leverandøren avbryter operasjonen."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.Unlock*
   exceptions: []
   platform:
@@ -637,19 +637,19 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, updates the instance state information in the persistence store. This method does not unlock the instance after updating the instance state information in the persistence store."
+  summary: "Når implementert i en avledet klasse, oppdaterer du forekomsten statusinformasjon i vedvarende lager. Denne metoden ikke låse opp forekomsten når du har oppdatert forekomsten statusinformasjon i vedvarende lager."
   syntax:
     content: public override object Update (object instance, TimeSpan timeout);
     parameters:
     - id: instance
       type: System.Object
-      description: "The instance state information."
+      description: "Tilstandsinformasjon for forekomsten."
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts the operation."
+      description: "Hvor lang tid før utholdenhet leverandøren avbryter operasjonen."
     return:
       type: System.Object
-      description: "The instance state information."
+      description: "Tilstandsinformasjon for forekomsten."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.Update*
   exceptions: []
   platform:
@@ -666,22 +666,22 @@ items:
   assemblies:
   - System.WorkflowServices
   namespace: System.ServiceModel.Persistence
-  summary: "When implemented in a derived class, updates the instance state information in the persistence store. This method does not unlock the instance after updating the instance state information in the persistence store."
+  summary: "Når implementert i en avledet klasse, oppdaterer du forekomsten statusinformasjon i vedvarende lager. Denne metoden ikke låse opp forekomsten når du har oppdatert forekomsten statusinformasjon i vedvarende lager."
   syntax:
     content: public abstract object Update (object instance, TimeSpan timeout, bool unlockInstance);
     parameters:
     - id: instance
       type: System.Object
-      description: "The instance state information."
+      description: "Tilstandsinformasjon for forekomsten."
     - id: timeout
       type: System.TimeSpan
-      description: "The time period after which the persistence provider aborts the operation."
+      description: "Hvor lang tid før utholdenhet leverandøren avbryter operasjonen."
     - id: unlockInstance
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the instance is unlocked after the instance state information is updated; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis forekomsten er låst etter at forekomsten statusinformasjon er oppdatert; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     return:
       type: System.Object
-      description: "The instance state information."
+      description: "Tilstandsinformasjon for forekomsten."
   overload: System.ServiceModel.Persistence.LockingPersistenceProvider.Update*
   exceptions: []
   platform:

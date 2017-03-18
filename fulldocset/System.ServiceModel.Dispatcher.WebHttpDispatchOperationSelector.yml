@@ -16,8 +16,8 @@ items:
   nameWithType: WebHttpDispatchOperationSelector
   fullName: System.ServiceModel.Dispatcher.WebHttpDispatchOperationSelector
   type: Class
-  summary: "The operation selector that supports the Web programming model."
-  remarks: "The WebHttpDispatchOperationSelector dispatches method calls based on matching the Uniform Resource Identifier (URI) to a <xref:System.UriTemplateTable>. If multiple matches are found in the <xref:System.UriTemplateTable>, dispatch is done by the HTTP method."
+  summary: "Operasjonen velgeren som støtter Web programming modellen."
+  remarks: "WebHttpDispatchOperationSelector sender metodekall basert på samsvarende Uniform Resource Identifier (URI) til <xref:System.UriTemplateTable>.</xref:System.UriTemplateTable> Hvis flere forekomster er funnet i den <xref:System.UriTemplateTable>, utføres sending av HTTP-metode.</xref:System.UriTemplateTable>"
   syntax:
     content: 'public class WebHttpDispatchOperationSelector : System.ServiceModel.Dispatcher.IDispatchOperationSelector'
   inheritance:
@@ -39,7 +39,7 @@ items:
   assemblies:
   - System.ServiceModel.Web
   namespace: System.ServiceModel.Dispatcher
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Dispatcher.WebHttpDispatchOperationSelector&quot;></xref>."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.ServiceModel.Dispatcher.WebHttpDispatchOperationSelector&quot;> </xref>."
   syntax:
     content: protected WebHttpDispatchOperationSelector ();
     parameters: []
@@ -59,13 +59,13 @@ items:
   assemblies:
   - System.ServiceModel.Web
   namespace: System.ServiceModel.Dispatcher
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Dispatcher.WebHttpDispatchOperationSelector&quot;></xref> with the specified endpoint."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.ServiceModel.Dispatcher.WebHttpDispatchOperationSelector&quot;> </xref> med det angitte sluttpunktet."
   syntax:
     content: public WebHttpDispatchOperationSelector (System.ServiceModel.Description.ServiceEndpoint endpoint);
     parameters:
     - id: endpoint
       type: System.ServiceModel.Description.ServiceEndpoint
-      description: "The service endpoint."
+      description: "Endepunktet for tjenesten."
   overload: System.ServiceModel.Dispatcher.WebHttpDispatchOperationSelector.#ctor*
   exceptions: []
   platform:
@@ -82,16 +82,16 @@ items:
   assemblies:
   - System.ServiceModel.Web
   namespace: System.ServiceModel.Dispatcher
-  summary: "Gets the <xref:System.UriTemplate> associated with the specified operation name."
+  summary: "Henter den <xref:System.UriTemplate>knyttet til det angitte operasjonsnavnet.</xref:System.UriTemplate>"
   syntax:
     content: public virtual UriTemplate GetUriTemplate (string operationName);
     parameters:
     - id: operationName
       type: System.String
-      description: "The operation."
+      description: "Operasjonen."
     return:
       type: System.UriTemplate
-      description: "The <xref:System.UriTemplate> for the specified operation."
+      description: "Den <xref:System.UriTemplate>for den angitte operasjonen.</xref:System.UriTemplate>"
   overload: System.ServiceModel.Dispatcher.WebHttpDispatchOperationSelector.GetUriTemplate*
   exceptions: []
   platform:
@@ -108,12 +108,12 @@ items:
   assemblies:
   - System.ServiceModel.Web
   namespace: System.ServiceModel.Dispatcher
-  summary: "The name of the message property on the request message that provides the name of the selected operation for the request."
+  summary: "Navnet på meldingsegenskapen forespørselsmeldingen som inneholder navnet på den valgte operasjonen for forespørselen."
   syntax:
     content: public const string HttpOperationNamePropertyName;
     return:
       type: System.String
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -129,13 +129,13 @@ items:
   assemblies:
   - System.ServiceModel.Web
   namespace: System.ServiceModel.Dispatcher
-  summary: "A string used as a key for storing the value that indicates whether a call to a service operation was matched by the URI but not by the HTTP method."
-  remarks: 'Two different errors can occur when calling a service operation: &quot;404 Endpoint/URI not found&quot; and &quot;405 Method Not Allowed.&quot; This string and its associated Boolean value allow the service model to differentiate between these two errors. The &quot;404 Endpoint/URI&quot; error occurs when an invalid URI is used. The &quot;405 Method Not Allowed&quot; error occurs when a valid URI is used but the HTTP method was not valid for the URI.'
+  summary: "En streng som brukes som en nøkkel for lagring av verdi som angir om et kall til en tjenesteoperasjon ble sammenlignet med URI, men ikke med HTTP-metoden."
+  remarks: 'To forskjellige feil kan forekomme når du kaller en tjenesteoperasjon: &quot;404 Endpoint/URI ble ikke funnet&quot; og &quot;405 metoden ikke tillatt.&quot; Tillat tjenestemodellen til å skille mellom disse to feilene denne strengen og den tilknyttede boolske verdien. &quot;404 Endpoint/URI&quot;-feilen oppstår når det brukes en ugyldig URI. &quot;405 metoden er ikke tillatt&quot;-feilen oppstår når en gyldig URI brukes, men HTTP-metoden er ikke gyldig for URI.'
   syntax:
     content: public const string HttpOperationSelectorUriMatchedPropertyName;
     return:
       type: System.String
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -151,16 +151,16 @@ items:
   assemblies:
   - System.ServiceModel.Web
   namespace: System.ServiceModel.Dispatcher
-  summary: "Selects the service operation to call."
+  summary: "Velg tjenesteoperasjon å kalle."
   syntax:
     content: public string SelectOperation (ref System.ServiceModel.Channels.Message message);
     parameters:
     - id: message
       type: System.ServiceModel.Channels.Message
-      description: "The <xref:System.ServiceModel.Channels.Message> object sent to invoke a service operation."
+      description: "Den <xref:System.ServiceModel.Channels.Message>objektet som er sendt til å starte en tjenesteoperasjon.</xref:System.ServiceModel.Channels.Message>"
     return:
       type: System.String
-      description: "The name of the service operation to call."
+      description: "Navnet på tjenesteoperasjon å kalle."
   overload: System.ServiceModel.Dispatcher.WebHttpDispatchOperationSelector.SelectOperation*
   exceptions: []
   platform:
@@ -177,20 +177,20 @@ items:
   assemblies:
   - System.ServiceModel.Web
   namespace: System.ServiceModel.Dispatcher
-  summary: "Selects the service operation to call."
-  remarks: "It is possible that an incoming URI matches an operation, but the HTTP method is not allowed by the operation. In such cases, the [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] runtime returns 404 (Not Found) when `uriMatched` is `false`, and returns 405 (Method Not Allowed) when `uriMatched` is `true`."
+  summary: "Velg tjenesteoperasjon å kalle."
+  remarks: "Det er mulig at en innkommende URI samsvarer med en operasjon, men HTTP-metoden er ikke tillatt av operasjonen. I slike tilfeller i [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] runtime returnerer 404 (finner ikke) når `uriMatched` er `false`, og returnerer 405 (metoden er ikke tillatt) når `uriMatched` er `true`."
   syntax:
     content: protected virtual string SelectOperation (ref System.ServiceModel.Channels.Message message, out bool uriMatched);
     parameters:
     - id: message
       type: System.ServiceModel.Channels.Message
-      description: "The <xref:System.ServiceModel.Channels.Message> object sent to invoke a service operation."
+      description: "Den <xref:System.ServiceModel.Channels.Message>objektet som er sendt til å starte en tjenesteoperasjon.</xref:System.ServiceModel.Channels.Message>"
     - id: uriMatched
       type: System.Boolean
-      description: "A value that specifies whether the URI matched a specific service operation."
+      description: "En verdi som angir om URIEN samsvarte med en bestemt tjenesteoperasjon."
     return:
       type: System.String
-      description: "The name of the service operation to call."
+      description: "Navnet på tjenesteoperasjon å kalle."
   overload: System.ServiceModel.Dispatcher.WebHttpDispatchOperationSelector.SelectOperation*
   exceptions: []
   platform:

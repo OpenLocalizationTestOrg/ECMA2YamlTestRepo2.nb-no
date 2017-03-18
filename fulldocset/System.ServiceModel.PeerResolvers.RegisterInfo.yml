@@ -15,8 +15,8 @@ items:
   nameWithType: RegisterInfo
   fullName: System.ServiceModel.PeerResolvers.RegisterInfo
   type: Class
-  summary: "Defines the  peer registration information to be supplied to a peer resolver service."
-  remarks: "This class defines the information used to register the tuple of a peer node and a mesh ID with a peer resolver service. This information is inserted as an entry in the registration lookup table of the resolver service, which can be queried by other peers for the endpoint addresses of the inserted peer.       Instances of this class are created when <xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.Register%2A> (or an implementation of  <xref:System.ServiceModel.PeerResolvers.IPeerResolverContract.Register%2A>) is called to register with a peer resolver service. They are primarily used to pass registration request information to a peer resolver service from a network client of that service."
+  summary: "Definerer node registreringsinformasjonen oppgis til en node Løsningsprogrammet tjeneste."
+  remarks: "Denne klassen definerer informasjonen brukes til å registrere tuppelen av en node-node og en ID som nett med en node Løsningsprogrammet tjeneste. Denne informasjonen inn som en oppføring i oppslagstabellen registrering av Løsningsprogrammet-tjenesten, som kan spørres ved andre noder for endepunktsadresser for innsatte node.       Forekomster av denne klassen opprettes når <xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.Register%2A>(eller en implementering av <xref:System.ServiceModel.PeerResolvers.IPeerResolverContract.Register%2A>) kalles for å registrere en node Løsningsprogrammet-tjenesten.</xref:System.ServiceModel.PeerResolvers.IPeerResolverContract.Register%2A> </xref:System.ServiceModel.PeerResolvers.CustomPeerResolverService.Register%2A> De brukes primært til å sende informasjon for registrering av forespørselen til en node Løsningsprogrammet tjeneste fra en nettverksklient til denne tjenesten."
   syntax:
     content: >-
       [System.ServiceModel.MessageContract(IsWrapped=false)]
@@ -40,7 +40,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.PeerResolvers
-  summary: "Initializes a new default instance of the <xref href=&quot;System.ServiceModel.PeerResolvers.RegisterInfo&quot;></xref> class."
+  summary: "Initialiserer en ny standardforekomst av den <xref href=&quot;System.ServiceModel.PeerResolvers.RegisterInfo&quot;> </xref> klasse."
   syntax:
     content: public RegisterInfo ();
     parameters: []
@@ -60,19 +60,19 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.PeerResolvers
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.PeerResolvers.RegisterInfo&quot;></xref> class with the supplied client ID, mesh ID, and endpoint address(es)."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.ServiceModel.PeerResolvers.RegisterInfo&quot;> </xref> klassen med den angitte klient-IDen nett ID og endpoint adressen(e)."
   syntax:
     content: public RegisterInfo (Guid client, string meshId, System.ServiceModel.PeerNodeAddress address);
     parameters:
     - id: client
       type: System.Guid
-      description: "<xref:System.Guid> that uniquely identifies the peer node to be registered."
+      description: "<xref:System.Guid>som identifiserer noden node som skal registreres.</xref:System.Guid>"
     - id: meshId
       type: System.String
-      description: "<xref:System.String> that specifies the ID of the mesh in which the peer node participates."
+      description: "<xref:System.String>som angir IDen for nettet som noden node brukes til å utføre.</xref:System.String>"
     - id: address
       type: System.ServiceModel.PeerNodeAddress
-      description: "<xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;></xref> that specifies the endpoint address(es) of the peer node to be registered."
+      description: "<xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;></xref>som angir endpoint adressen(e) for node-node som skal registreres."
   overload: System.ServiceModel.PeerResolvers.RegisterInfo.#ctor*
   exceptions: []
   platform:
@@ -89,12 +89,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.PeerResolvers
-  summary: "Gets a <xref:System.Guid> that uniquely identifies the registration entry for a peer node."
+  summary: "Henter en <xref:System.Guid>som identifiserer oppføringen registrering for en node-node.</xref:System.Guid>"
   syntax:
     content: public Guid ClientId { get; }
     return:
       type: System.Guid
-      description: "<xref:System.Guid> that uniquely identifies the registration entry of a peer node."
+      description: "<xref:System.Guid>som identifiserer oppføringen for registrering av en node-node.</xref:System.Guid>"
   overload: System.ServiceModel.PeerResolvers.RegisterInfo.ClientId*
   exceptions: []
   platform:
@@ -111,13 +111,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.PeerResolvers
-  summary: "Indicates whether the body of the message containing a serialized instance of this type is correctly formed."
+  summary: "Angir om meldingsteksten som inneholder en serialisert forekomst av denne typen er riktig utformet."
   syntax:
     content: public bool HasBody ();
     parameters: []
     return:
       type: System.Boolean
-      description: "True if the registration information body is correctly-formed by the sender; false if it is not."
+      description: "SANN hvis selve registrering informasjonen er riktig utformet av avsenderen; FALSE hvis den ikke."
   overload: System.ServiceModel.PeerResolvers.RegisterInfo.HasBody*
   exceptions: []
   platform:
@@ -134,12 +134,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.PeerResolvers
-  summary: "Gets a mesh ID associated with the registration entry."
+  summary: "Henter en nett-ID som er knyttet til registrering-posten."
   syntax:
     content: public string MeshId { get; }
     return:
       type: System.String
-      description: "<xref:System.String> that contains the mesh ID (or mesh name) associated with the registration entry."
+      description: "<xref:System.String>som inneholder nettet ID (eller navnet på nettet) knyttet til registrering-posten.</xref:System.String>"
   overload: System.ServiceModel.PeerResolvers.RegisterInfo.MeshId*
   exceptions: []
   platform:
@@ -156,12 +156,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.PeerResolvers
-  summary: "Gets the endpoint address(es) to associate with the node that is registering with the resolver service."
+  summary: "Henter endpoint adressen(e) å knytte til noden som er registrere artikkelløseren-tjenesten."
   syntax:
     content: public System.ServiceModel.PeerNodeAddress NodeAddress { get; }
     return:
       type: System.ServiceModel.PeerNodeAddress
-      description: "<xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;></xref> that contains the endpoint address(es) to associate with the node that is registering with the resolver service. The address or addresses contained in this instance can be used to connect with the peer node within the mesh."
+      description: "<xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;></xref>som inneholder sluttpunktet adressen(e) å knytte til noden som er registrere artikkelløseren-tjenesten. Adressen eller adresser som finnes i denne forekomsten kan brukes til å kommunisere med node-noden i nettet."
   overload: System.ServiceModel.PeerResolvers.RegisterInfo.NodeAddress*
   exceptions: []
   platform:

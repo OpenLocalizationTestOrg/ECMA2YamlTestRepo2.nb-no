@@ -15,8 +15,8 @@ items:
   nameWithType: IBindingListView
   fullName: System.ComponentModel.IBindingListView
   type: Interface
-  summary: "Extends the <xref href=&quot;System.ComponentModel.IBindingList&quot;></xref> interface by providing advanced sorting and filtering capabilities."
-  remarks: "With the IBindingListView interface, you implement advanced sorting as a set of property descriptor-direction pairs. You implement filtering as a string to be interpreted by the data source implementation. The IBindingListView interface is implemented by the <xref:System.Windows.Forms.BindingSource> class."
+  summary: "Utvider den <xref href=&quot;System.ComponentModel.IBindingList&quot;> </xref> grensesnittet ved å formidle Avansert sortering og filtrering."
+  remarks: "Med grensesnittet IBindingListView implementere avansert sortering som et sett med egenskapen sikkerhetsbeskrivelse retningen par. Du implementere filtrering som en streng til tolkes av datakilde implementeringen. Grensesnittet IBindingListView implementeres av <xref:System.Windows.Forms.BindingSource>klasse.</xref:System.Windows.Forms.BindingSource>"
   syntax:
     content: 'public interface IBindingListView : System.Collections.IList, System.ComponentModel.IBindingList'
   implements:
@@ -36,14 +36,14 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Sorts the data source based on the given <xref href=&quot;System.ComponentModel.ListSortDescriptionCollection&quot;></xref>."
-  remarks: "The <xref:System.ComponentModel.ListSortDescriptionCollection> is a read-only collection, once constructed."
+  summary: "Sorterer datakilden basert på den angitte <xref href=&quot;System.ComponentModel.ListSortDescriptionCollection&quot;> </xref>."
+  remarks: "Den <xref:System.ComponentModel.ListSortDescriptionCollection>er en skrivebeskyttet samling konstruert én gang.</xref:System.ComponentModel.ListSortDescriptionCollection>"
   syntax:
     content: public void ApplySort (System.ComponentModel.ListSortDescriptionCollection sorts);
     parameters:
     - id: sorts
       type: System.ComponentModel.ListSortDescriptionCollection
-      description: "The <xref href=&quot;System.ComponentModel.ListSortDescriptionCollection&quot;></xref> containing the sorts to apply to the data source."
+      description: "Den <xref href=&quot;System.ComponentModel.ListSortDescriptionCollection&quot;> </xref> som inneholder sorteringene skal brukes til datakilden."
   overload: System.ComponentModel.IBindingListView.ApplySort*
   exceptions: []
   platform:
@@ -60,13 +60,13 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Gets or sets the filter to be used to exclude items from the collection of items returned by the data source"
-  remarks: 'Your implementation of the Filter property should exhibit the following behavior when the Filter property is set: The data source returns only the items that meet the filter criteria when the list is accessed by item index or when the list is enumerated. The definition of the filter string is dependent on the data-source implementation, but the behavior associated with setting the filter should be modeled on <xref:System.Data.DataColumn.Expression%2A?displayProperty=fullName>.'
+  summary: "Henter eller angir filteret som skal brukes til å utelate elementer fra samlingen av elementer som er returnert av datakilden"
+  remarks: 'Implementeringen din av egenskapen Filter må ha følgende virkemåte når Filter-egenskapen er angitt: datakilden returnerer bare elementer som oppfyller filtervilkårene når listen etter element indeks eller listen telles. Definisjonen av Filterstrengen er avhengig av implementeringen av datakilden, men virkemåten knyttet til innstillingen filteret må være basert på <xref:System.Data.DataColumn.Expression%2A?displayProperty=fullName>.</xref:System.Data.DataColumn.Expression%2A?displayProperty=fullName>'
   syntax:
     content: public string Filter { get; set; }
     return:
       type: System.String
-      description: "The string used to filter items out in the item collection returned by the data source."
+      description: "Formatstrengen som brukes til å filtrere elementer ut i elementsamlingen som er returnert av datakilden."
   overload: System.ComponentModel.IBindingListView.Filter*
   exceptions: []
   platform:
@@ -83,8 +83,8 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Removes the current filter applied to the data source."
-  remarks: "With the <xref:System.ComponentModel.IBindingListView> type, you implement filtering as a string to be interpreted by the data source implementation."
+  summary: "Fjerner gjeldende filter for datakilden."
+  remarks: "Med den <xref:System.ComponentModel.IBindingListView>typen du implementere filtrering som en streng til tolkes av datakilde implementeringen.</xref:System.ComponentModel.IBindingListView>"
   syntax:
     content: public void RemoveFilter ();
     parameters: []
@@ -104,13 +104,13 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Gets the collection of sort descriptions currently applied to the data source."
-  remarks: "The <xref:System.ComponentModel.ListSortDescriptionCollection> is a read-only collection, once constructed."
+  summary: "Henter samlingen av sortering beskrivelser aktivert for datakilden."
+  remarks: "Den <xref:System.ComponentModel.ListSortDescriptionCollection>er en skrivebeskyttet samling konstruert én gang.</xref:System.ComponentModel.ListSortDescriptionCollection>"
   syntax:
     content: public System.ComponentModel.ListSortDescriptionCollection SortDescriptions { get; }
     return:
       type: System.ComponentModel.ListSortDescriptionCollection
-      description: "The <xref href=&quot;System.ComponentModel.ListSortDescriptionCollection&quot;></xref> currently applied to the data source."
+      description: "Den <xref href=&quot;System.ComponentModel.ListSortDescriptionCollection&quot;> </xref> aktivert for datakilden."
   overload: System.ComponentModel.IBindingListView.SortDescriptions*
   exceptions: []
   platform:
@@ -127,13 +127,13 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Gets a value indicating whether the data source supports advanced sorting."
-  remarks: "Advanced sorting refers to the ability to sort by multiple columns."
+  summary: "Henter en verdi som angir om datakilden støtter avansert sortering."
+  remarks: "Avanserte sortering refererer til muligheten til å sortere etter flere kolonner."
   syntax:
     content: public bool SupportsAdvancedSorting { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the data source supports advanced sorting; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis datakilden støtter avansert sortering; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ComponentModel.IBindingListView.SupportsAdvancedSorting*
   exceptions: []
   platform:
@@ -150,13 +150,13 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Gets a value indicating whether the data source supports filtering."
-  remarks: "With the SupportsFiltering property, you implement filtering as a string to be interpreted by the data source implementation."
+  summary: "Henter en verdi som angir om datakilden støtter filtrering."
+  remarks: "Med egenskapen SupportsFiltering implementere filtrering som en streng til tolkes av datakilde implementeringen."
   syntax:
     content: public bool SupportsFiltering { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the data source supports filtering; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis datakilden støtter filtrering; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ComponentModel.IBindingListView.SupportsFiltering*
   exceptions: []
   platform:

@@ -12,8 +12,8 @@ items:
   nameWithType: ConcurrencyMode
   fullName: System.ServiceModel.ConcurrencyMode
   type: Enum
-  summary: "Specifies whether a service class supports single-threaded or multi-threaded modes of operation."
-  remarks: "ConcurrencyMode is used in conjunction with the <xref:System.ServiceModel.ServiceBehaviorAttribute.ConcurrencyMode%2A> property to specify whether a service class supports single-threaded or multi-threaded modes of operation. A single-threaded operation can be either reentrant or non-reentrant.       The following table shows when [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] permits an operation to be invoked while another one is in progress, depending upon the ConcurrencyMode.      |ConcurrencyMode Value|Can a new operation be invoked?|   |---------------------------|-------------------------------------|   |Single|Never.|   |Reentrant|Only while invoking another service or a callback.|   |Multiple|Always.|"
+  summary: "Angir om en tjenesteklasse støtter enkelttrådet eller flere tråder modusene for operasjonen."
+  remarks: "ConcurrencyMode brukes sammen med den <xref:System.ServiceModel.ServiceBehaviorAttribute.ConcurrencyMode%2A>til å angi om en tjenesteklasse støtter enkelttrådet eller flere tråder modusene for operasjonen.</xref:System.ServiceModel.ServiceBehaviorAttribute.ConcurrencyMode%2A> En operasjon for enkelttrådet kan være innkommende eller ikke reentrant.       Tabellen nedenfor viser når [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] gjør det mulig for en operasjon som skal aktiveres mens en annen pågår, avhengig av ConcurrencyMode.      | Verdien for ConcurrencyMode | En ny operasjon utløses? |   |---------------------------|-------------------------------------|   | Én | Aldri. |   | Innkommende | Bare under aktivering av en annen tjeneste eller et tilbakekall. |   | Flere | Alltid. |"
   example:
   - "The following code example demonstrates the different between using Single, Reentrant, and Multiple. This sample does not compile without a real implementation behind it, but does demonstrate the kind of threading guarantees that [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] makes and what that means for your operation code.  \n  \n [!code-cs[C_BestPractices-Concurrency#1](~/add/codesnippet/csharp/reentrantandmultiple/reentrantandmultiple.cs#1)]"
   syntax:
@@ -34,12 +34,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "The service instance is multi-threaded. No synchronization guarantees are made. Because other threads can change your service object at any time, you must handle synchronization and state consistency at all times."
+  summary: "Tjenesteforekomsten har flere tråder. Ingen garantier synkronisering utføres. Andre tråder kan endre-tjenesteobjektet når som helst, og du må behandle synkronisering og tilstanden konsekvens kontinuerlig."
   syntax:
     content: Multiple
     return:
       type: System.ServiceModel.ConcurrencyMode
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -55,12 +55,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "The service instance is single-threaded and accepts reentrant calls. The reentrant service accepts calls when you call another service; it is therefore your responsibility to leave your object state consistent before callouts and you must confirm that operation-local data is valid after callouts. Note that the service instance is unlocked only by calling another service over a [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] channel. In this case, the called service can reenter the first service via a callback. If the first service is not reentrant, the sequence of calls results in a deadlock. For details, see <xref:System.ServiceModel.ServiceBehaviorAttribute.ConcurrencyMode*>."
+  summary: "Tjenesteforekomsten er enkelttrådet og godtar innkommende kall. Innkommende tjenesten godtar samtaler når du kaller en annen tjeneste; Det er derfor din ansvaret for å forlate objekt tilstand konsekvent før Bildeforklaring, og du må bekrefte at operasjonen lokale data er gyldig etter bildeforklaring. Legg merke til at tjenesteforekomsten låses bare ved å kalle en annen tjeneste en [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] kanal. I dette tilfellet kan tjenesten kall angi den første tjenesten via en tilbakeringing. Hvis den første tjenesten ikke er innkommende, fører rekkefølge for kall til en vranglås. For mer informasjon, kan du se <xref:System.ServiceModel.ServiceBehaviorAttribute.ConcurrencyMode*>.</xref:System.ServiceModel.ServiceBehaviorAttribute.ConcurrencyMode*>"
   syntax:
     content: Reentrant
     return:
       type: System.ServiceModel.ConcurrencyMode
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -76,12 +76,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "The service instance is single-threaded and does not accept reentrant calls. If the <xref:System.ServiceModel.ServiceBehaviorAttribute.InstanceContextMode*> property is <xref href=&quot;System.ServiceModel.InstanceContextMode&quot;></xref>, and additional messages arrive while the instance services a call, these messages must wait until the service is available or until the messages time out."
+  summary: "Tjenesteforekomsten er enkelttrådet og godtar ikke innkommende kall. Hvis den <xref:System.ServiceModel.ServiceBehaviorAttribute.InstanceContextMode*>egenskapen <xref href=&quot;System.ServiceModel.InstanceContextMode&quot;> </xref>, og flere meldinger mottas under et kall services-forekomsten, disse meldingene må vente før tjenesten er tilgjengelig, eller til tidsavbrudd for meldinger.</xref:System.ServiceModel.ServiceBehaviorAttribute.InstanceContextMode*>"
   syntax:
     content: Single
     return:
       type: System.ServiceModel.ConcurrencyMode
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462

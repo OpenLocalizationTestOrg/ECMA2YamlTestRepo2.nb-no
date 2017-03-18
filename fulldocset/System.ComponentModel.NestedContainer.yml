@@ -15,8 +15,8 @@ items:
   nameWithType: NestedContainer
   fullName: System.ComponentModel.NestedContainer
   type: Class
-  summary: "Provides the base implementation for the <xref href=&quot;System.ComponentModel.INestedContainer&quot;></xref> interface, which enables containers to have an owning component."
-  remarks: "The NestedContainer class is a simple implementation of the <xref:System.ComponentModel.INestedContainer> interface, which defines a component that logically contains zero or more other components and is owned by a parent component. The behavior of nested containers differs from a standard <xref:System.ComponentModel.Container> in a number of ways, including the following:      -   Site characteristics such as <xref:System.ComponentModel.Component.DesignMode%2A> and <xref:System.ComponentModel.Component.GetService%2A> are routed through the owning component’s site.      -   The site’s <xref:System.ComponentModel.ISite.Name%2A> property is a qualified name that includes the owning component’s name followed by a period (.) and the child component’s name.      -   <xref:System.ComponentModel.NestedContainer.GetService%2A> provides support for the <xref:System.ComponentModel.INestedContainer> as a service.      -   When the owning component is disposed, the container is disposed as well.       In addition, designers treat nested containers differently. A designer host is only interested in one container—the one associated with the host. Therefore, component add and remove events are not raised when a component is added to or removed from a nested container. However, because services flow through to the nested container, component change events are raised when a component in a nested container is changed.       This disparity in event tracking also impacts undo functionality, which is closely tied to serialization. The standard undo engine uses <xref:System.ComponentModel.Design.IReferenceService> to track changes made to components. If the undo engine cannot identify a name for a component through the reference service, the engine will ignore any changes for that component. This service automatically recognizes changes to contained components only if they are exposed as public read-only properties of the same name in their owners. Otherwise, the developer must pass component change events up to the owner. For example, if a nested component’s `Text` property is resurfaced on its owning component as an `Address` property, when the `Text` property is changed, a property change must be programmatically made for the corresponding `Address` property or else that change will not be tracked by undo."
+  summary: "Gir base implementering for den <xref href=&quot;System.ComponentModel.INestedContainer&quot;> </xref> grensesnittet som aktiverer beholdere har en eier komponent."
+  remarks: "Klassen NestedContainer er en enkel implementering av den <xref:System.ComponentModel.INestedContainer>grensesnittet som definerer en komponent som inneholder null eller flere komponenter logisk og eies av en overordnet komponent.</xref:System.ComponentModel.INestedContainer> Virkemåten for nestede beholdere er forskjellig fra en standard <xref:System.ComponentModel.Container>på en rekke måter, inkludert følgende:-område egenskaper som <xref:System.ComponentModel.Component.DesignMode%2A>og <xref:System.ComponentModel.Component.GetService%2A>rutes gjennom eier komponentens området.</xref:System.ComponentModel.Component.GetService%2A> </xref:System.ComponentModel.Component.DesignMode%2A> </xref:System.ComponentModel.Container>      -Området <xref:System.ComponentModel.ISite.Name%2A>egenskapen er et kvalifisert navn som inkluderer eier komponentens navnet etterfulgt av et punktum (.) og underordnede Komponentnavn.</xref:System.ComponentModel.ISite.Name%2A>      - <xref:System.ComponentModel.NestedContainer.GetService%2A>gir støtte for den <xref:System.ComponentModel.INestedContainer>som en tjeneste.</xref:System.ComponentModel.INestedContainer> </xref:System.ComponentModel.NestedContainer.GetService%2A>      -Når eier komponenten er fjernet, er fjernet samt i beholderen.       I tillegg behandle utviklere nestede beholdere på en annen måte. Spørringsutformer vert bare er interessert i én beholder – det som er forbundet med verten. Derfor komponent legge til og fjerne hendelser, ikke aktiveres når en komponent er lagt til eller fjernes fra en nestet beholder. Imidlertid fordi services flyte gjennom nestede beholderen, komponenten endre hendelser registreres når en komponent i en nestet beholder er endret.       Denne disparity i hendelsessporing påvirker også Angre funksjonalitet, noe som er nært knyttet til serialisering. Standard Angre motoren bruker <xref:System.ComponentModel.Design.IReferenceService>for sporing av endringer i komponenter.</xref:System.ComponentModel.Design.IReferenceService> Hvis Angre motoren ikke kan identifisere et navn for en komponent gjennom tjenesten referanse, ignorere motoren endringer for denne komponenten. Denne tjenesten gjenkjenner automatisk endringer av inneholder komponenter bare hvis de vises som offentlig skrivebeskyttede egenskaper med samme navn i sine eiere. Utvikleren må ellers sendes komponent endre hendelser opptil eieren. Hvis en nestet komponent for eksempel `Text` egenskapen resurfaced på den eier komponenten som en `Address` egenskapen, når den `Text` -egenskapen, endring av en må gjøres programmatisk for den tilsvarende `Address` egenskapen, ellers endringen ikke vil spores av Angre."
   syntax:
     content: 'public class NestedContainer : System.ComponentModel.Container, IDisposable, System.ComponentModel.INestedContainer'
   inheritance:
@@ -47,19 +47,19 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Initializes a new instance of the <xref href=&quot;System.ComponentModel.NestedContainer&quot;></xref> class."
-  remarks: "This constructor enlists in its owner&quot;s <xref:System.ComponentModel.IComponent.Disposed> event so that the nested container&quot;s <xref:System.ComponentModel.NestedContainer.Dispose%2A> method will automatically be called."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.ComponentModel.NestedContainer&quot;> </xref> klasse."
+  remarks: "Denne konstruktøren innrullerer i eieren <xref:System.ComponentModel.IComponent.Disposed>hendelsen slik at den nestede beholderen <xref:System.ComponentModel.NestedContainer.Dispose%2A>metoden vil automatisk bli kalt.</xref:System.ComponentModel.NestedContainer.Dispose%2A> </xref:System.ComponentModel.IComponent.Disposed>"
   syntax:
     content: public NestedContainer (System.ComponentModel.IComponent owner);
     parameters:
     - id: owner
       type: System.ComponentModel.IComponent
-      description: "The <xref href=&quot;System.ComponentModel.IComponent&quot;></xref> that owns this nested container."
+      description: "Den <xref href=&quot;System.ComponentModel.IComponent&quot;> </xref> som eier denne nestede beholderen."
   overload: System.ComponentModel.NestedContainer.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>owner</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>owner</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.ComponentModel.NestedContainer.CreateSite(System.ComponentModel.IComponent,System.String)
@@ -74,25 +74,25 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Creates a site for the component within the container."
-  remarks: "If the `name` parameter is `null`, the <xref:System.ComponentModel.IComponent> is added to the nested container without an identifying name."
+  summary: "Oppretter et område for komponenten i beholderen."
+  remarks: "Hvis den `name` parameteren er `null`, <xref:System.ComponentModel.IComponent>legges til i beholderen nestede uten et identifiserende navn.</xref:System.ComponentModel.IComponent>"
   syntax:
     content: protected override System.ComponentModel.ISite CreateSite (System.ComponentModel.IComponent component, string name);
     parameters:
     - id: component
       type: System.ComponentModel.IComponent
-      description: "The <xref href=&quot;System.ComponentModel.IComponent&quot;></xref> to create a site for."
+      description: "Den <xref href=&quot;System.ComponentModel.IComponent&quot;> </xref> du oppretter et område for."
     - id: name
       type: System.String
-      description: "The name to assign to `component`, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> to skip the name assignment."
+      description: "Navnet skal tilordnes `component`, eller <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> å hoppe over tilordningen navn."
     return:
       type: System.ComponentModel.ISite
-      description: "The newly created <xref href=&quot;System.ComponentModel.ISite&quot;></xref>."
+      description: "Den nyopprettede <xref href=&quot;System.ComponentModel.ISite&quot;> </xref>."
   overload: System.ComponentModel.NestedContainer.CreateSite*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>component</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>component</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.ComponentModel.NestedContainer.Dispose(System.Boolean)
@@ -107,14 +107,14 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Releases the resources used by the nested container."
-  remarks: "This method is called by the public `Dispose()` method and the <xref:System.Object.Finalize%2A> method. `Dispose()` invokes the protected `Dispose(Boolean)` method with the `disposing` parameter set to `true`. <xref:System.Object.Finalize%2A> invokes `Dispose` with `disposing` set to `false`.       When the `disposing` parameter is true, this method releases all resources held by any managed objects that this <xref:System.ComponentModel.NestedContainer> references. This method invokes the `Dispose()` method of each referenced object."
+  summary: "Frigir ressursene som brukes av nestede beholderen."
+  remarks: "Denne metoden kalles av offentlig `Dispose()` metoden og <xref:System.Object.Finalize%2A>metode.</xref:System.Object.Finalize%2A> `Dispose()`Aktiverer den beskyttede `Dispose(Boolean)` metoden med den `disposing` parameteren satt til `true`. <xref:System.Object.Finalize%2A>aktiverer `Dispose` med `disposing` satt til `false`.</xref:System.Object.Finalize%2A>       Når den `disposing` -parameteren er SANN, denne metoden Frigjør alle ressurser holdes av administrerte objekter som denne <xref:System.ComponentModel.NestedContainer>referanser.</xref:System.ComponentModel.NestedContainer> Denne metoden starter den `Dispose()` metode for hver referert objekt."
   syntax:
     content: protected override void Dispose (bool disposing);
     parameters:
     - id: disposing
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to release both managed and unmanaged resources; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to release only unmanaged resources."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>å frigjøre både administrerte og uforvaltede ressurser. <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> frigi bare uforvaltede ressurser."
   overload: System.ComponentModel.NestedContainer.Dispose*
   exceptions: []
   platform:
@@ -131,17 +131,17 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Gets the service object of the specified type, if it is available."
-  remarks: "This method overrides the <xref:System.ComponentModel.Container.GetService%2A?displayProperty=fullName> method. This implementation only resolves requests for the <xref:System.ComponentModel.INestedContainer> and <xref:System.ComponentModel.IContainer> services."
+  summary: "Henter serviceobjekt av den angitte typen hvis den er tilgjengelig."
+  remarks: "Denne metoden overstyrer den <xref:System.ComponentModel.Container.GetService%2A?displayProperty=fullName>metoden.</xref:System.ComponentModel.Container.GetService%2A?displayProperty=fullName> Denne implementeringen løser bare forespørsler for den <xref:System.ComponentModel.INestedContainer>og <xref:System.ComponentModel.IContainer>services.</xref:System.ComponentModel.IContainer> </xref:System.ComponentModel.INestedContainer>"
   syntax:
     content: protected override object GetService (Type service);
     parameters:
     - id: service
       type: System.Type
-      description: "The <xref:System.Type> of the service to retrieve."
+      description: "Den <xref:System.Type>på tjenesten som skal hente.</xref:System.Type>"
     return:
       type: System.Object
-      description: "An <xref:System.Object> that implements the requested service, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the service cannot be resolved."
+      description: "En <xref:System.Object>som implementerer tjenesten, eller <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Hvis tjenesten kan ikke løses.</xref:System.Object>"
   overload: System.ComponentModel.NestedContainer.GetService*
   exceptions: []
   platform:
@@ -158,13 +158,13 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Gets the owning component for this nested container."
-  remarks: "The owning component is the characteristic that differentiates nested containers from ordinary containers."
+  summary: "Henter eier komponenten for denne nestede beholderen."
+  remarks: "Eier komponenten er kjennetegn som skiller nestede beholdere fra vanlige beholdere."
   syntax:
     content: public System.ComponentModel.IComponent Owner { get; }
     return:
       type: System.ComponentModel.IComponent
-      description: "The <xref href=&quot;System.ComponentModel.IComponent&quot;></xref> that owns this nested container."
+      description: "Den <xref href=&quot;System.ComponentModel.IComponent&quot;> </xref> som eier denne nestede beholderen."
   overload: System.ComponentModel.NestedContainer.Owner*
   exceptions: []
   platform:
@@ -181,13 +181,13 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Gets the name of the owning component."
-  remarks: "This property may be overridden to provide a custom owner name. The default implementation searches the owner&quot;s site for <xref:System.ComponentModel.INestedSite> and calls <xref:System.ComponentModel.INestedSite.FullName%2A>, or <xref:System.ComponentModel.ISite.Name%2A> if there is no nested site. If neither is available, this property returns `null`."
+  summary: "Henter navnet på komponenten eier."
+  remarks: "Denne egenskapen kan overstyres for å angi et eiernavn på egendefinerte. Standard implementering søker eieren av området for <xref:System.ComponentModel.INestedSite>og samtaler <xref:System.ComponentModel.INestedSite.FullName%2A>, eller <xref:System.ComponentModel.ISite.Name%2A>Hvis det er ingen nestede områder.</xref:System.ComponentModel.ISite.Name%2A> </xref:System.ComponentModel.INestedSite.FullName%2A> </xref:System.ComponentModel.INestedSite> Hvis ingen er tilgjengelig, denne egenskapen returnerer `null`."
   syntax:
     content: protected virtual string OwnerName { get; }
     return:
       type: System.String
-      description: "The name of the owning component."
+      description: "Navnet på komponenten eier."
   overload: System.ComponentModel.NestedContainer.OwnerName*
   exceptions: []
   platform:

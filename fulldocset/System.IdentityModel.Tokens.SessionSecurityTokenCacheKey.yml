@@ -19,8 +19,8 @@ items:
   nameWithType: SessionSecurityTokenCacheKey
   fullName: System.IdentityModel.Tokens.SessionSecurityTokenCacheKey
   type: Class
-  summary: "Represents the key for an entry in a <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityTokenCache&quot;></xref>."
-  remarks: "When caching a <xref:System.IdentityModel.Tokens.SessionSecurityToken> there are two indexes required. One is the context ID, represented by the <xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A?displayProperty=fullName> property, that is unique across all session tokens. The other is the key generation, represented by the <xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration%2A?displayProperty=fullName> property, which is unique within a session token. When a session token is issued it has only a context ID. When the session token is renewed, the key generation is added. After renewal, the renewed session token is uniquely identifiable via the context ID and key generation.       Objects of type SessionSecurityTokenCacheKey are used as the indexes to the session token cache. An index will always have a valid <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.ContextId%2A> property specified, but the <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.KeyGeneration%2A> property may be `null`, depending on whether the token has been renewed. There is also an optional <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.EndpointId%2A> which gives the endpoint to which the token is scoped."
+  summary: "Representerer nøkkel for en oppføring i en <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityTokenCache&quot;> </xref>."
+  remarks: "Når du skal bufre en <xref:System.IdentityModel.Tokens.SessionSecurityToken>det er to indekser kreves.</xref:System.IdentityModel.Tokens.SessionSecurityToken> En er Hjelp-IDen, som representerer den <xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A?displayProperty=fullName>egenskap som er unike på tvers av alle økt-token.</xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A?displayProperty=fullName> Den andre er key generasjon, som representerer den <xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration%2A?displayProperty=fullName>egenskapen som er unikt innenfor et session-token.</xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration%2A?displayProperty=fullName> Når et session-token er utstedt det er bare en context-ID. Når økten tokenet fornyes, legges genereringen av nøkkel. Etter fornyelsen er fornyet økten tokenet identifiseres via Hjelp-IDen og generering av nøkkel.       Objekter av typen SessionSecurityTokenCacheKey som brukes som indekser i hurtigbufferen for økt-token. En indeks vil alltid være en gyldig <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.ContextId%2A>egenskapen er angitt, men <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.KeyGeneration%2A>egenskapen kan være `null`, avhengig av om tokenet er fornyet.</xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.KeyGeneration%2A> </xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.ContextId%2A> Det er også en valgfri <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.EndpointId%2A>som gir endepunktet tokenet omfattes.</xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.EndpointId%2A>"
   syntax:
     content: public class SessionSecurityTokenCacheKey
   inheritance:
@@ -41,19 +41,19 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Initializes a new instance of the <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityTokenCacheKey&quot;></xref> class."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityTokenCacheKey&quot;> </xref> klasse."
   syntax:
     content: public SessionSecurityTokenCacheKey (string endpointId, System.Xml.UniqueId contextId, System.Xml.UniqueId keyGeneration);
     parameters:
     - id: endpointId
       type: System.String
-      description: "The endpoint ID to which the cache entry is scoped. This is should be the value of the &lt;xref:System.IdentityModel.Tokens.SessionSecurityToken.EndpointId%2A?displayProperty=fullName&gt; property of the cached token."
+      description: "ID for sluttpunktet hurtigbufferoppføringen omfattes. Dette er må være verdien for den &lt;xref:System.IdentityModel.Tokens.SessionSecurityToken.EndpointId%2A?displayProperty=fullName&gt; for hurtigbufret token."
     - id: contextId
       type: System.Xml.UniqueId
-      description: "The context ID of the cache entry. This is should be the value of the &lt;xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A?displayProperty=fullName&gt; property of the cached token."
+      description: "Hjelp-IDen for hurtigbufferoppføringen. Dette er må være verdien for den &lt;xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A?displayProperty=fullName&gt; for hurtigbufret token."
     - id: keyGeneration
       type: System.Xml.UniqueId
-      description: "The key generation of the cache entry. This is should be the value of the &lt;xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration%2A?displayProperty=fullName&gt; property of the cached token. This value is available when the token is renewed. It will be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> when caching a new token."
+      description: "Nøkkelen generering av hurtigbufferoppføringen. Dette er må være verdien for den &lt;xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration%2A?displayProperty=fullName&gt; for hurtigbufret token. Denne verdien er tilgjengelig når tokenet fornyes. Det blir <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> når hurtigbufring et nytt token."
   overload: System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.#ctor*
   exceptions: []
   platform:
@@ -70,13 +70,13 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Gets the context ID for the cache key."
-  remarks: "This corresponds to the <xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A> property of the cached token."
+  summary: "Henter hjelp-IDen for Hurtigbuffernøkkelen for."
+  remarks: "Samsvarer med den <xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A>for hurtigbufret token.</xref:System.IdentityModel.Tokens.SessionSecurityToken.ContextId%2A>"
   syntax:
     content: public System.Xml.UniqueId ContextId { get; }
     return:
       type: System.Xml.UniqueId
-      description: "The context ID for the cache key."
+      description: "IDen for Hurtigbuffernøkkelen for."
   overload: System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.ContextId*
   exceptions: []
   platform:
@@ -93,13 +93,13 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Gets the Endpoint ID to which this cache entry is scoped."
-  remarks: "This corresponds to the <xref:System.IdentityModel.Tokens.SessionSecurityToken.EndpointId%2A> property of the cached token."
+  summary: "Henter en ID for det sluttpunktet hurtigbufferoppføringen omfattes."
+  remarks: "Samsvarer med den <xref:System.IdentityModel.Tokens.SessionSecurityToken.EndpointId%2A>for hurtigbufret token.</xref:System.IdentityModel.Tokens.SessionSecurityToken.EndpointId%2A>"
   syntax:
     content: public string EndpointId { get; }
     return:
       type: System.String
-      description: "The Endpoint ID to which this cache entry is scoped."
+      description: "ID for det sluttpunktet hurtigbufferoppføringen omfattes."
   overload: System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.EndpointId*
   exceptions: []
   platform:
@@ -116,17 +116,17 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Determines whether the specified object is the same as the current cache key."
-  remarks: "If the <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.IgnoreKeyGeneration%2A> is `true`, the <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.KeyGeneration%2A> property is not used in the comparison."
+  summary: "Bestemmer om det angitte objektet er den samme som gjeldende Hurtigbuffernøkkel."
+  remarks: "Hvis den <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.IgnoreKeyGeneration%2A>er `true`, <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.KeyGeneration%2A>egenskapen brukes ikke i sammenligningen.</xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.KeyGeneration%2A> </xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.IgnoreKeyGeneration%2A>"
   syntax:
     content: public override bool Equals (object obj);
     parameters:
     - id: obj
       type: System.Object
-      description: "The object to be compared to the current cache key. Should be assignable from <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityTokenCacheKey&quot;></xref>."
+      description: "Objektet som skal sammenlignes gjeldende Hurtigbuffernøkkel. Må være kan tilordnes fra <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityTokenCacheKey&quot;> </xref>."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the specified object is the same as the current cache key; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis det angitte objektet er den samme som gjeldende Hurtigbuffernøkkel; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.Equals*
   exceptions: []
   platform:
@@ -143,14 +143,14 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Returns a hash code for the current cache key."
-  remarks: "If the <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.IgnoreKeyGeneration%2A> is `true`, the <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.KeyGeneration%2A> property is not used in generating the hash code."
+  summary: "Returnerer en hash-kode for gjeldende Hurtigbuffernøkkel."
+  remarks: "Hvis den <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.IgnoreKeyGeneration%2A>er `true`, <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.KeyGeneration%2A>egenskapen er ikke brukt under generering av hash-kode.</xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.KeyGeneration%2A> </xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.IgnoreKeyGeneration%2A>"
   syntax:
     content: public override int GetHashCode ();
     parameters: []
     return:
       type: System.Int32
-      description: "The hash code for the current cache key."
+      description: "Hashkoden for gjeldende Hurtigbuffernøkkel."
   overload: System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.GetHashCode*
   exceptions: []
   platform:
@@ -167,13 +167,13 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Gets or sets a value that indicates whether key generation can be ignored when doing index comparison."
-  remarks: 'This property affects the manner in which the <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.KeyGeneration%2A> property is treated by the following methods and operators: <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.Equals%2A>, <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.GetHashCode%2A>, <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.op_Equality%2A>, <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.op_Inequality%2A>, and <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.ToString%2A>.'
+  summary: "Henter eller angir en verdi som angir om generering av nøkkel kan ignoreres ved å gjøre indeksen sammenligningen."
+  remarks: 'Denne egenskapen påvirker måte som den <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.KeyGeneration%2A>egenskapen behandles av følgende metoder og operatorer: <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.Equals%2A>, <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.GetHashCode%2A>, <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.op_Equality%2A>, <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.op_Inequality%2A>, og <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.ToString%2A>.</xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.ToString%2A> </xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.op_Inequality%2A> </xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.op_Equality%2A> </xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.GetHashCode%2A> </xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.Equals%2A> </xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.KeyGeneration%2A>'
   syntax:
     content: public bool IgnoreKeyGeneration { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to ignore key generation; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>ignorerer generering av nøkkel; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.IgnoreKeyGeneration*
   exceptions: []
   platform:
@@ -190,13 +190,13 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Gets the key generation for the cache key"
-  remarks: "This corresponds to the <xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration%2A> property of the cached token."
+  summary: "Henter genereringen av nøkkel for Hurtigbuffernøkkelen"
+  remarks: "Samsvarer med den <xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration%2A>for hurtigbufret token.</xref:System.IdentityModel.Tokens.SessionSecurityToken.KeyGeneration%2A>"
   syntax:
     content: public System.Xml.UniqueId KeyGeneration { get; }
     return:
       type: System.Xml.UniqueId
-      description: "The key generation for the cache key"
+      description: "Nøkkel-generering for Hurtigbuffernøkkelen for"
   overload: System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.KeyGeneration*
   exceptions: []
   platform:
@@ -213,20 +213,20 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Implements the equality operator for the <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityTokenCacheKey&quot;></xref> class."
-  remarks: "If the <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.IgnoreKeyGeneration%2A> is `true`, the <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.KeyGeneration%2A> property is not used in the comparison."
+  summary: "Implementerer likhetsoperatoren for den <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityTokenCacheKey&quot;> </xref> klasse."
+  remarks: "Hvis den <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.IgnoreKeyGeneration%2A>er `true`, <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.KeyGeneration%2A>egenskapen brukes ikke i sammenligningen.</xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.KeyGeneration%2A> </xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.IgnoreKeyGeneration%2A>"
   syntax:
     content: public static bool op_Equality (System.IdentityModel.Tokens.SessionSecurityTokenCacheKey first, System.IdentityModel.Tokens.SessionSecurityTokenCacheKey second);
     parameters:
     - id: first
       type: System.IdentityModel.Tokens.SessionSecurityTokenCacheKey
-      description: "The first cache key to compare."
+      description: "Den første Hurtigbuffernøkkel skal sammenlignes."
     - id: second
       type: System.IdentityModel.Tokens.SessionSecurityTokenCacheKey
-      description: "The second cache key to compare."
+      description: "Andre Hurtigbuffernøkkel skal sammenlignes."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the cache keys are equal; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis nøklene hurtigbufferen er like. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.op_Equality*
   exceptions: []
   platform:
@@ -243,20 +243,20 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Implements the equality operator for the <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityTokenCacheKey&quot;></xref> class."
-  remarks: "If the <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.IgnoreKeyGeneration%2A> is `true`, the <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.KeyGeneration%2A> property is not used in the comparison."
+  summary: "Implementerer likhetsoperatoren for den <xref href=&quot;System.IdentityModel.Tokens.SessionSecurityTokenCacheKey&quot;> </xref> klasse."
+  remarks: "Hvis den <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.IgnoreKeyGeneration%2A>er `true`, <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.KeyGeneration%2A>egenskapen brukes ikke i sammenligningen.</xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.KeyGeneration%2A> </xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.IgnoreKeyGeneration%2A>"
   syntax:
     content: public static bool op_Inequality (System.IdentityModel.Tokens.SessionSecurityTokenCacheKey first, System.IdentityModel.Tokens.SessionSecurityTokenCacheKey second);
     parameters:
     - id: first
       type: System.IdentityModel.Tokens.SessionSecurityTokenCacheKey
-      description: "The first cache key to compare."
+      description: "Den første Hurtigbuffernøkkel skal sammenlignes."
     - id: second
       type: System.IdentityModel.Tokens.SessionSecurityTokenCacheKey
-      description: "The second cache key to compare."
+      description: "Andre Hurtigbuffernøkkel skal sammenlignes."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the cache keys are not equal; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis nøklene hurtigbufferen ikke er like. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.op_Inequality*
   exceptions: []
   platform:
@@ -273,14 +273,14 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Overrides <xref:System.Object.ToString*> to provide a unique identifier."
-  remarks: "If the <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.IgnoreKeyGeneration%2A> is `true`, the <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.KeyGeneration%2A> property is not used."
+  summary: "Overstyrer <xref:System.Object.ToString*>å gi en unik identifikator.</xref:System.Object.ToString*>"
+  remarks: "Hvis den <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.IgnoreKeyGeneration%2A>er `true`, <xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.KeyGeneration%2A>egenskapen brukes ikke.</xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.KeyGeneration%2A> </xref:System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.IgnoreKeyGeneration%2A>"
   syntax:
     content: public override string ToString ();
     parameters: []
     return:
       type: System.String
-      description: "The key in string form."
+      description: "Nøkkelen i strengen skjemaet."
   overload: System.IdentityModel.Tokens.SessionSecurityTokenCacheKey.ToString*
   exceptions: []
   platform:

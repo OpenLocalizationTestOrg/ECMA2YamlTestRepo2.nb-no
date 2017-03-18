@@ -17,8 +17,8 @@ items:
   nameWithType: LocalFileSettingsProvider
   fullName: System.Configuration.LocalFileSettingsProvider
   type: Class
-  summary: "Provides persistence for application settings classes."
-  remarks: "Setting providers define a mechanism for storing configuration data used in the application settings architecture. The [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] contains a single default settings provider, LocalFileSettingsProvider, which stores configuration data to the local file system. An application settings property or group of properties are associated to a specific settings provider through the use of the <xref:System.Configuration.SettingsProviderAttribute>.       Typically, the client program does not explicitly access this class; rather, the application settings architecture automatically invokes the appropriate settings provider when its services are required. For example, many of the members of <xref:System.Configuration.ApplicationSettingsBase> delegate their work to the associated settings provider.       LocalFileSettingsProvider persists settings to configuration files that have the extension `.config`. The contents of configuration files are structured as XML documents. Depending on whether the setting is scoped at either the application-level or user-level, the configuration data is stored as elements within an `<applicationSettings>` or a `<userSettings>` section group, respectively. Each of these section groups is represented by a corresponding <xref:System.Configuration.AppSettingsSection> or <xref:System.Configuration.ClientSettingsSection>, respectively. Each section object is owned and administered by a configuration section handler, which is an object of type <xref:System.Configuration.IConfigurationSectionHandler>.       Application-scoped settings and the default user-scoped settings are stored in a file named `application.exe.config`, which is created in the same directory as the executable file. Application configuration settings are read-only. Specific user data is stored in a file named `user.config`, stored under the user&quot;s home directory. If roaming profiles are enabled, two versions of the user configuration file could exist. In such a case, the entries in the roaming version take precedence over duplicated entries in the local user configuration file.       For more information about application settings, see [Application Settings for Windows Forms](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Gir utholdenhet for programmet innstillinger klasser."
+  remarks: "Innstillingen leverandører definerer en metode for lagring av konfigurasjonsdata brukt i appen innstillinger arkitekturen. Den [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] inneholder en enkelt innstillinger standardleverandøren, LocalFileSettingsProvider som lagrer konfigurasjonsdata til det lokale filsystemet. En programmet innstillinger egenskap eller gruppe med egenskaper som er knyttet til en bestemt Innstillingsleverandør ved å bruke <xref:System.Configuration.SettingsProviderAttribute>.</xref:System.Configuration.SettingsProviderAttribute>       Vanligvis åpner klientprogrammet eksplisitt ikke denne klassen. Programmet innstillinger arkitekturen aktiverer i stedet automatisk aktuelle innstillingene leverandøren når tjenestene kreves. For eksempel mange av medlemmer av <xref:System.Configuration.ApplicationSettingsBase>delegere arbeid for den tilknyttede innstillinger leverandøren.</xref:System.Configuration.ApplicationSettingsBase>       LocalFileSettingsProvider vedvarer innstillinger som konfigurasjonsfiler som har filtypen `.config`. Innholdet i konfigurasjonsfiler er strukturert som XML-dokumenter. Avhengig av om innstillingen er begrenset på programnivå eller når du bruker, konfigurasjonsdataene er lagret som elementer i en `<applicationSettings>` eller `<userSettings>` delen gruppen henholdsvis. Hver av disse gruppene delen er representert av en tilsvarende <xref:System.Configuration.AppSettingsSection>eller <xref:System.Configuration.ClientSettingsSection>henholdsvis.</xref:System.Configuration.ClientSettingsSection> </xref:System.Configuration.AppSettingsSection> Hvert delen objekt eies og administreres av en konfigurasjonsdelen som er et objekt av typen <xref:System.Configuration.IConfigurationSectionHandler>.</xref:System.Configuration.IConfigurationSectionHandler>       Programdefinert innstillinger og standardinnstillingene bruker-område er lagret i en fil med navnet `application.exe.config`, som er opprettet i samme mappe som den kjørbare filen. Programmet konfigurasjonsinnstillingene er skrivebeskyttet. Bestemt brukerdata lagres i en fil med navnet `user.config`, lagret under brukerens startmappen. Hvis sentrale profiler er aktivert, kan det finnes to versjoner i konfigurasjonsfilen for brukeren. I slike tilfeller overstyrer oppføringene i den sentrale versjonen dupliserte oppføringer i konfigurasjonsfilen for lokal bruker.       Du finner mer informasjon om programinnstillinger [programmet innstillinger for Windows Forms](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: 'public class LocalFileSettingsProvider : System.Configuration.SettingsProvider, System.Configuration.IApplicationSettingsProvider'
   inheritance:
@@ -44,8 +44,8 @@ items:
   assemblies:
   - System
   namespace: System.Configuration
-  summary: "Initializes a new instance of the <xref href=&quot;System.Configuration.LocalFileSettingsProvider&quot;></xref> class."
-  remarks: "The default constructor sets the <xref:System.Configuration.LocalFileSettingsProvider.ApplicationName%2A> property to <xref:System.String.Empty>."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Configuration.LocalFileSettingsProvider&quot;> </xref> klasse."
+  remarks: "Standardkonstruktøren, settes <xref:System.Configuration.LocalFileSettingsProvider.ApplicationName%2A>egenskapen til <xref:System.String.Empty>.</xref:System.String.Empty> </xref:System.Configuration.LocalFileSettingsProvider.ApplicationName%2A>"
   syntax:
     content: public LocalFileSettingsProvider ();
     parameters: []
@@ -65,13 +65,13 @@ items:
   assemblies:
   - System
   namespace: System.Configuration
-  summary: "Gets or sets the name of the currently running application."
-  remarks: "The ApplicationName and <xref:System.Configuration.Provider.ProviderBase.Name%2A> properties help to disambiguate similarly named setting properties in different applications."
+  summary: "Henter eller angir navnet på programmet som for øyeblikket kjører."
+  remarks: "ApplicationName og <xref:System.Configuration.Provider.ProviderBase.Name%2A>Egenskaper bidra til å oppheve tvetydigheten på samme måte navngitt angi egenskaper i ulike applikasjoner.</xref:System.Configuration.Provider.ProviderBase.Name%2A>"
   syntax:
     content: public override string ApplicationName { get; set; }
     return:
       type: System.String
-      description: "A string that contains the application&quot;s display name."
+      description: "En streng som inneholder programmets visningsnavn."
   overload: System.Configuration.LocalFileSettingsProvider.ApplicationName*
   exceptions: []
   platform:
@@ -88,20 +88,20 @@ items:
   assemblies:
   - System
   namespace: System.Configuration
-  summary: "Returns the value of the named settings property for the previous version of the same application."
-  remarks: "The GetPreviousVersion method is often used in conjunction with the <xref:System.Configuration.LocalFileSettingsProvider.Upgrade%2A> method when migrating application settings during the installation of a new version of an application. For more information, see the <xref:System.Configuration.LocalFileSettingsProvider.Upgrade%2A> method."
+  summary: "Returnerer verdien for egenskapen navngitt innstillingene for den forrige versjonen av samme program."
+  remarks: "Metoden GetPreviousVersion ofte brukes sammen med den <xref:System.Configuration.LocalFileSettingsProvider.Upgrade%2A>metoden når du migrerer programinnstillinger under installasjonen av en ny versjon av en applikasjon.</xref:System.Configuration.LocalFileSettingsProvider.Upgrade%2A> Hvis du vil ha mer informasjon, se den <xref:System.Configuration.LocalFileSettingsProvider.Upgrade%2A>metoden.</xref:System.Configuration.LocalFileSettingsProvider.Upgrade%2A>"
   syntax:
     content: public System.Configuration.SettingsPropertyValue GetPreviousVersion (System.Configuration.SettingsContext context, System.Configuration.SettingsProperty property);
     parameters:
     - id: context
       type: System.Configuration.SettingsContext
-      description: "A <xref href=&quot;System.Configuration.SettingsContext&quot;></xref> that describes where the application settings property is used."
+      description: "En <xref href=&quot;System.Configuration.SettingsContext&quot;> </xref> som beskriver der egenskapen programmet innstillinger brukes."
     - id: property
       type: System.Configuration.SettingsProperty
-      description: "The <xref href=&quot;System.Configuration.SettingsProperty&quot;></xref> whose value is to be returned."
+      description: "Den <xref href=&quot;System.Configuration.SettingsProperty&quot;> </xref> skal returneres."
     return:
       type: System.Configuration.SettingsPropertyValue
-      description: "A <xref href=&quot;System.Configuration.SettingsPropertyValue&quot;></xref> representing the application setting if found; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "En <xref href=&quot;System.Configuration.SettingsPropertyValue&quot;> </xref> som representerer applikasjonsinnstilling Hvis fant; ellers, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.Configuration.LocalFileSettingsProvider.GetPreviousVersion*
   exceptions: []
   platform:
@@ -118,25 +118,25 @@ items:
   assemblies:
   - System
   namespace: System.Configuration
-  summary: "Returns the collection of setting property values for the specified application instance and settings property group."
-  remarks: "The GetPropertyValues method also manages the special application settings type <xref:System.Configuration.SpecialSetting>. Connection strings are stored in a special section of the configuration file delimited by the element `<connectionstrings>`.      > [!CAUTION] >  <xref:System.Configuration.LocalFileSettingsProvider> does not use encryption to persist any settings. Therefore, do not store plain text passwords or other sensitive information using this provider without taking additional precautions, such as separately encrypting the information within the configuration file. For more information, see [Encrypting Configuration Information Using Protected Configuration](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Returnerer samling av innstillingen egenskapsverdier for den angitte forekomsten og innstillinger egenskapen programproxygruppen."
+  remarks: "Metoden GetPropertyValues administrerer også spesielle innstillinger programtypen <xref:System.Configuration.SpecialSetting>.</xref:System.Configuration.SpecialSetting> Tilkoblingsstrenger, lagret i en bestemt delen av konfigurasjonsfilen avgrenset elementet `<connectionstrings>`.      > [!CAUTION] > <xref:System.Configuration.LocalFileSettingsProvider>bruker ikke kryptering for å beholde innstillinger.</xref:System.Configuration.LocalFileSettingsProvider> Derfor ikke lagre enkel godkjenning eller andre sensitive opplysninger ved hjelp av denne leverandøren uten å ta forholdsregler, for eksempel kryptering separat informasjonen i konfigurasjonsfilen. Hvis du vil ha mer informasjon, se [kryptering konfigurasjonen informasjon ved hjelp av beskyttet konfigurasjonen](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public override System.Configuration.SettingsPropertyValueCollection GetPropertyValues (System.Configuration.SettingsContext context, System.Configuration.SettingsPropertyCollection properties);
     parameters:
     - id: context
       type: System.Configuration.SettingsContext
-      description: "A <xref href=&quot;System.Configuration.SettingsContext&quot;></xref> describing the current application usage."
+      description: "En <xref href=&quot;System.Configuration.SettingsContext&quot;> </xref> som beskriver gjeldende programmet."
     - id: properties
       type: System.Configuration.SettingsPropertyCollection
-      description: "A <xref href=&quot;System.Configuration.SettingsPropertyCollection&quot;></xref> containing the settings property group whose values are to be retrieved."
+      description: "En <xref href=&quot;System.Configuration.SettingsPropertyCollection&quot;> </xref> som inneholder innstillinger for egenskapsgruppe som inneholder verdiene som skal hentes."
     return:
       type: System.Configuration.SettingsPropertyValueCollection
-      description: "A <xref href=&quot;System.Configuration.SettingsPropertyValueCollection&quot;></xref> containing the values for the specified settings property group."
+      description: "En <xref href=&quot;System.Configuration.SettingsPropertyValueCollection&quot;> </xref> som inneholder verdier for egenskapsgruppen angitte innstillingene."
   overload: System.Configuration.LocalFileSettingsProvider.GetPropertyValues*
   exceptions:
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
-    description: "A user-scoped setting was encountered but the current configuration only supports application-scoped settings."
+    description: "Det oppstod et område bruker innstillingen, men gjeldende konfigurasjon støtter bare Programdefinert innstillinger."
   platform:
   - net462
 - uid: System.Configuration.LocalFileSettingsProvider.Initialize(System.String,System.Collections.Specialized.NameValueCollection)
@@ -151,16 +151,16 @@ items:
   assemblies:
   - System
   namespace: System.Configuration
-  summary: "Initializes the provider."
+  summary: "Initialiserer leverandøren."
   syntax:
     content: public override void Initialize (string name, System.Collections.Specialized.NameValueCollection values);
     parameters:
     - id: name
       type: System.String
-      description: "The friendly name of the provider."
+      description: "Egendefinert navn for leverandøren."
     - id: values
       type: System.Collections.Specialized.NameValueCollection
-      description: "A collection of the name/value pairs representing the provider-specific attributes specified in the configuration for this provider."
+      description: "En samling av navn/verdi-par som representerer leverandørspesifikk attributtene som er angitt i konfigurasjonen for denne leverandøren."
   overload: System.Configuration.LocalFileSettingsProvider.Initialize*
   exceptions: []
   platform:
@@ -177,19 +177,19 @@ items:
   assemblies:
   - System
   namespace: System.Configuration
-  summary: "Resets all application settings properties associated with the specified application to their default values."
-  remarks: "The Reset method restores the stored values of the specified application settings group. The action of Reset depends on the scope of the application settings property:      -   Application-scoped settings are not affected.      -   User-scoped settings are reset to the default values that are stored as read-only entries in the application configuration file, `application.exe.config`. If roaming profiles are being used, any application settings values in the roaming profile take precedence over duplicates found in the local profile.       Notice that if roaming profiles are used, there can be two `user.config` files, one for the local settings and one for the roaming profile."
+  summary: "Tilbakestiller alle egenskapene for applikasjonen innstillinger knyttet til den angitte applikasjonen til standardverdiene."
+  remarks: "Metoden tilbakestilling gjenoppretter lagrede verdiene i den angitte applikasjon innstillinger gruppen. Handlingen for tilbakestilling av avhenger av området for egenskapen programmet innstillinger:-Programdefinert innstillinger, påvirkes ikke.      -Bruker-område tilbakestilt til standardverdien som er lagret som skrivebeskyttet oppføringer i programmets konfigurasjonsfil `application.exe.config`. Hvis sentrale profiler brukes, overstyrer programmet innstillinger verdier i profilen duplikater som ble funnet i den lokale profilen.       Legg merke til at hvis sentrale profiler brukes, kan det være to `user.config` filer, én for de lokale innstillingene og én profilen."
   syntax:
     content: public void Reset (System.Configuration.SettingsContext context);
     parameters:
     - id: context
       type: System.Configuration.SettingsContext
-      description: "A <xref href=&quot;System.Configuration.SettingsContext&quot;></xref> describing the current application usage."
+      description: "En <xref href=&quot;System.Configuration.SettingsContext&quot;> </xref> som beskriver gjeldende programmet."
   overload: System.Configuration.LocalFileSettingsProvider.Reset*
   exceptions:
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
-    description: "A user-scoped setting was encountered but the current configuration only supports application-scoped settings."
+    description: "Det oppstod et område bruker innstillingen, men gjeldende konfigurasjon støtter bare Programdefinert innstillinger."
   platform:
   - net462
 - uid: System.Configuration.LocalFileSettingsProvider.SetPropertyValues(System.Configuration.SettingsContext,System.Configuration.SettingsPropertyValueCollection)
@@ -204,22 +204,22 @@ items:
   assemblies:
   - System
   namespace: System.Configuration
-  summary: "Sets the values of the specified group of property settings."
-  remarks: "A settings wrapper class, derived from <xref:System.Configuration.ApplicationSettingsBase>, contains the <xref:System.Configuration.ApplicationSettingsBase.Save%2A> method, which is called to persist the values of all of its settings properties. This method enumerates through all the settings providers associated with its settings properties, and calls the <xref:System.Configuration.SettingsProvider.SetPropertyValues%2A> method for each <xref:System.Configuration.SettingsProvider> to perform the actual serialization operation.       SetPropertyValues individually serializes each user-scoped application settings property to its corresponding application setting in the appropriate `user.config` configuration file.       By default, the SetPropertyValues method uses the following logical sequence to determine the serialization scheme, depending on type of the settings property:      1.  If the type has an associated <xref:System.ComponentModel.TypeConverter> with a <xref:System.ComponentModel.TypeConverter.ConvertToString%2A> method implementation, this conversion is used.      2.  XML serialization is used.       However, you can specify a preferred serialization mechanism by using the <xref:System.Configuration.SettingsSerializeAsAttribute>. <xref:System.Configuration.LocalFileSettingsProvider> does not support binary serialization in [!INCLUDE[vsprvslong](~/add/includes/ajax-current-ext-md.md)].       If a user-scoped settings property is set back to its default value explicitly, then the local file settings provider will remove the entry for the associated setting from the user configuration file. The next read access for this property will simply use the default value.      > [!CAUTION] >  <xref:System.Configuration.LocalFileSettingsProvider> does not use encryption to persist any settings. Therefore, do not store plain text passwords or other sensitive information using this provider without taking additional precautions, such as separately encrypting the information within the configuration file. For more information, see [Encrypting Configuration Information Using Protected Configuration](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Angir verdiene i den angitte gruppen på innstillinger for."
+  remarks: "En klasse med innstillingene-wrapperen som er hentet fra <xref:System.Configuration.ApplicationSettingsBase>, inneholder den <xref:System.Configuration.ApplicationSettingsBase.Save%2A>metoden blir bedt om å beholde verdiene for alle egenskapene innstillinger.</xref:System.Configuration.ApplicationSettingsBase.Save%2A> </xref:System.Configuration.ApplicationSettingsBase> Denne metoden nummererer gjennom alle innstillingene leverandører som er forbundet med innstillinger og kall av <xref:System.Configuration.SettingsProvider.SetPropertyValues%2A>metode for hver <xref:System.Configuration.SettingsProvider>til å utføre operasjonen faktiske serialisering.</xref:System.Configuration.SettingsProvider> </xref:System.Configuration.SettingsProvider.SetPropertyValues%2A>       SetPropertyValues serializes individuelt hver område bruker programmet innstillinger-egenskapen til det aktuelle programmet innstillingen i riktig `user.config` konfigurasjonsfilen.       Som standard bruker metoden SetPropertyValues følgende logiske rekkefølge til å bestemme serialisering skjemaet, avhengig av egenskapen innstillinger: 1.  Hvis typen har en tilknyttet <xref:System.ComponentModel.TypeConverter>med en <xref:System.ComponentModel.TypeConverter.ConvertToString%2A>metodeimplementering, denne konverteringen brukes.</xref:System.ComponentModel.TypeConverter.ConvertToString%2A> </xref:System.ComponentModel.TypeConverter>      2.  XML-serialisering brukes.       Du kan imidlertid angi en foretrukket serialisering mekanisme ved hjelp av <xref:System.Configuration.SettingsSerializeAsAttribute>.</xref:System.Configuration.SettingsSerializeAsAttribute> <xref:System.Configuration.LocalFileSettingsProvider>støtter ikke binær serialisering i [!INCLUDE[vsprvslong](~/add/includes/ajax-current-ext-md.md)].</xref:System.Configuration.LocalFileSettingsProvider>       Hvis en bruker-område innstillinger-egenskapen settes til standardverdien eksplisitt, Fjern den lokale fil innstillinger leverandøren oppføring for den tilknyttede innstillingen i konfigurasjonsfilen for brukeren. Neste lesetilgang for denne egenskapen vil ganske enkelt å bruke standardverdien.      > [!CAUTION] > <xref:System.Configuration.LocalFileSettingsProvider>bruker ikke kryptering for å beholde innstillinger.</xref:System.Configuration.LocalFileSettingsProvider> Derfor ikke lagre enkel godkjenning eller andre sensitive opplysninger ved hjelp av denne leverandøren uten å ta forholdsregler, for eksempel kryptering separat informasjonen i konfigurasjonsfilen. Hvis du vil ha mer informasjon, se [kryptering konfigurasjonen informasjon ved hjelp av beskyttet konfigurasjonen](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public override void SetPropertyValues (System.Configuration.SettingsContext context, System.Configuration.SettingsPropertyValueCollection values);
     parameters:
     - id: context
       type: System.Configuration.SettingsContext
-      description: "A <xref href=&quot;System.Configuration.SettingsContext&quot;></xref> describing the current application usage."
+      description: "En <xref href=&quot;System.Configuration.SettingsContext&quot;> </xref> som beskriver gjeldende programmet."
     - id: values
       type: System.Configuration.SettingsPropertyValueCollection
-      description: "A <xref href=&quot;System.Configuration.SettingsPropertyValueCollection&quot;></xref> representing the group of property settings to set."
+      description: "En <xref href=&quot;System.Configuration.SettingsPropertyValueCollection&quot;> </xref> som representerer gruppen skal angis."
   overload: System.Configuration.LocalFileSettingsProvider.SetPropertyValues*
   exceptions:
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
-    description: "A user-scoped setting was encountered but the current configuration only supports application-scoped settings.       -or-       There was a general failure saving the settings to the configuration file."
+    description: "Det oppstod et område bruker innstillingen, men gjeldende konfigurasjon støtter bare Programdefinert innstillinger.       - eller - det oppstod en generell feil under lagring av innstillingene i konfigurasjonsfilen."
   platform:
   - net462
 - uid: System.Configuration.LocalFileSettingsProvider.Upgrade(System.Configuration.SettingsContext,System.Configuration.SettingsPropertyCollection)
@@ -234,22 +234,22 @@ items:
   assemblies:
   - System
   namespace: System.Configuration
-  summary: "Attempts to migrate previous user-scoped settings from a previous version of the same application."
-  remarks: "<xref:System.Configuration.LocalFileSettingsProvider> migrates the local and roaming settings in separate operations.       The Upgrade method is suppressed for every application setting that has the <xref:System.Configuration.NoSettingsVersionUpgradeAttribute> applied to it, or to the entire settings wrapper class, derived from <xref:System.Configuration.ApplicationSettingsBase>.       This way this method is called depends on the type of application that is being upgraded:      -   Each version of a [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] application is stored in its own isolated installation directory. After a new version of a [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] application is installed, and when the new version is first run, internal logic will automatically call Upgrade to migrate all common application settings to the new version. For more information, see [ClickOnce and Application Settings](~/add/includes/ajax-current-ext-md.md).      -   Standard Windows Forms and console applications must manually call Upgrade, because there is not a general, automatic way to determine when such an application is first run. The two common ways to do this are either from the installation program or using from the application itself, using a persisted property, often named something like `IsFirstRun`.       Note that for the newer version to migrate application settings, it must be able to also load and read the older version of the application settings. Therefore, it must contain wrapper classes compatible with both the new and previous versions of the application."
+  summary: "Forsøk på å overføre tidligere innstillingene for bruker-område fra en tidligere versjon av samme program."
+  remarks: "<xref:System.Configuration.LocalFileSettingsProvider>overfører lokale og sentrale innstillingene i ulike operasjoner.</xref:System.Configuration.LocalFileSettingsProvider>       Metoden oppgradering utelatt for hver applikasjonsinnstilling som har <xref:System.Configuration.NoSettingsVersionUpgradeAttribute>brukt, eller hele innstillinger wrapper klassen, som er avledet fra <xref:System.Configuration.ApplicationSettingsBase>.</xref:System.Configuration.ApplicationSettingsBase> </xref:System.Configuration.NoSettingsVersionUpgradeAttribute>       Dermed denne metoden, avhenger av appen blir oppgradert:-hver versjon av en [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] programmet er lagret i sin egen isolerte installasjonsmappen. Etter en ny versjon av en [!INCLUDE[ndptecclick](~/add/includes/ndptecclick-md.md)] programmet er installert, og den nye versjonen er første gang kjører, kalle intern logisk automatisk oppgradering til å migrere alle felles programinnstillinger til den nye versjonen. Hvis du vil ha mer informasjon, se [ClickOnce og programinnstillinger](~/add/includes/ajax-current-ext-md.md).      – Standard Windows Forms og konsollen programmer kall manuelt oppgradering fordi det ikke er en generell og automatisk måte å finne ut når et slikt program kjøres først. To vanlige måter å gjøre dette er enten fra installasjonsprogrammet eller bruker fra programmet seg selv, ved hjelp av en fast egenskap ofte navn som `IsFirstRun`.       Merk at for den nyeste versjonen å overføre programinnstillinger den må være kan også laste inn og lese den eldre versjonen av applikasjonsinnstillingene. Derfor må den inneholde wrapperklasser som er kompatibel med både nye og tidligere versjoner av programmet."
   syntax:
     content: public void Upgrade (System.Configuration.SettingsContext context, System.Configuration.SettingsPropertyCollection properties);
     parameters:
     - id: context
       type: System.Configuration.SettingsContext
-      description: "A <xref href=&quot;System.Configuration.SettingsContext&quot;></xref> describing the current application usage."
+      description: "En <xref href=&quot;System.Configuration.SettingsContext&quot;> </xref> som beskriver gjeldende programmet."
     - id: properties
       type: System.Configuration.SettingsPropertyCollection
-      description: "A <xref href=&quot;System.Configuration.SettingsPropertyCollection&quot;></xref> containing the settings property group whose values are to be retrieved."
+      description: "En <xref href=&quot;System.Configuration.SettingsPropertyCollection&quot;> </xref> som inneholder innstillinger for egenskapsgruppe som inneholder verdiene som skal hentes."
   overload: System.Configuration.LocalFileSettingsProvider.Upgrade*
   exceptions:
   - type: System.Configuration.ConfigurationErrorsException
     commentId: T:System.Configuration.ConfigurationErrorsException
-    description: "A user-scoped setting was encountered but the current configuration only supports application-scoped settings.       -or-       The previous version of the configuration file could not be accessed."
+    description: "Det oppstod et område bruker innstillingen, men gjeldende konfigurasjon støtter bare Programdefinert innstillinger.       - eller - får ikke tilgang til den forrige versjonen av konfigurasjonsfilen."
   platform:
   - net462
 references:

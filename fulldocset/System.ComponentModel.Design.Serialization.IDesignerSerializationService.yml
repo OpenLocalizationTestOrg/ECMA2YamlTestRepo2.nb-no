@@ -11,8 +11,8 @@ items:
   nameWithType: IDesignerSerializationService
   fullName: System.ComponentModel.Design.Serialization.IDesignerSerializationService
   type: Interface
-  summary: "Provides an interface that can invoke serialization and deserialization."
-  remarks: "This service provides methods to convert a collection of objects to a serializable object that represents them, and to convert serialization data to the object or objects that it represents.       All components that support a designer must support serialization of each component&quot;s type. This occurs when the designer scans the public properties, methods, and events of each type and represents these within a type descriptor.       This interface uses the technique of scanning members to convert a collection of components into a single object that supports run-time serialization. This does not necessarily provide for the serialization of custom types that belong to the class. Many objects require a custom serializer to have their values serialized at run time. To specify a serializer for a custom type, use a <xref:System.ComponentModel.Design.Serialization.DesignerSerializerAttribute> attribute or implement an <xref:System.ComponentModel.Design.Serialization.IDesignerSerializationProvider>."
+  summary: "Gir et grensesnitt som kan aktivere serialisering og deserialisering."
+  remarks: "Denne tjenesten inneholder metoder for å konvertere en samling av objekter til en serialiserbar objektet som representerer dem, og til å konvertere serialiseringsdataene til objektet eller objektene den representerer.       Alle komponentene som støtter en designer må støtte serialisering av hver Komponenttype. Dette skjer når designer skanner offentlige egenskaper, metoder og hendelser for hver type og representerer disse i en typebeskrivelse.       Dette grensesnittet bruker den for å skanne medlemmer til å konvertere en samling av komponentene til ett enkelt objekt som støtter kjøretid serialisering. Dette gir nødvendigvis ikke for serialisering av egendefinerte typer som tilhører klassen. Mange objekter krever en egendefinert serialisereren ha verdiene serialisert på kjøretidspunktet. Hvis du vil angi en serialisering for en egendefinert type, kan du bruke et <xref:System.ComponentModel.Design.Serialization.DesignerSerializerAttribute>attributt eller implementere <xref:System.ComponentModel.Design.Serialization.IDesignerSerializationProvider>.</xref:System.ComponentModel.Design.Serialization.IDesignerSerializationProvider> </xref:System.ComponentModel.Design.Serialization.DesignerSerializerAttribute>"
   syntax:
     content: public interface IDesignerSerializationService
   implements: []
@@ -30,16 +30,16 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Deserializes the specified serialization data object and returns a collection of objects represented by that data."
+  summary: "Deserializes angitte serialisering data-objekt, og returnerer en samling som representeres av dataene."
   syntax:
     content: public System.Collections.ICollection Deserialize (object serializationData);
     parameters:
     - id: serializationData
       type: System.Object
-      description: "An object consisting of serialized data."
+      description: "Et objekt som består av serialiserte dataene."
     return:
       type: System.Collections.ICollection
-      description: "An <xref:System.Collections.ICollection> of objects rebuilt from the specified serialization data object."
+      description: "En <xref:System.Collections.ICollection>objekter som er bygd på nytt fra angitte serialisering dataobjektet.</xref:System.Collections.ICollection>"
   overload: System.ComponentModel.Design.Serialization.IDesignerSerializationService.Deserialize*
   exceptions: []
   platform:
@@ -56,17 +56,17 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel.Design.Serialization
-  summary: "Serializes the specified collection of objects and stores them in a serialization data object."
-  remarks: "The returned object fully supports run-time serialization.       The object returned from this method contains live references to objects in the collection. This object can then be passed to any run-time serialization mechanism. The object itself serializes components the same way designers write source for them, by storing their state, property by property."
+  summary: "Serializes den angitte objektsamlingen og lagrer dem i et data-objekt for serialisering."
+  remarks: "Det returnerte objektet støtter fullstendig kjøretid serialisering.       Objektet som ble returnert fra denne metoden inneholder live referanser til objekter i samlingen. Dette objektet kan deretter sendes til en kjøretid serialisering mekanisme. Selve objektet serializes komponenter på samme måte utviklere skrive kilde for dem, ved å lagre deres tilstand, egenskap av egenskap."
   syntax:
     content: public object Serialize (System.Collections.ICollection objects);
     parameters:
     - id: objects
       type: System.Collections.ICollection
-      description: "A collection of objects to serialize."
+      description: "En samling av objekter til å serialisere."
     return:
       type: System.Object
-      description: "An object that contains the serialized state of the specified collection of objects."
+      description: "Et objekt som inneholder den serialiserte tilstanden til den angitte samlingen av objekter."
   overload: System.ComponentModel.Design.Serialization.IDesignerSerializationService.Serialize*
   exceptions: []
   platform:

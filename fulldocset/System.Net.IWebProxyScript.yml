@@ -12,7 +12,7 @@ items:
   nameWithType: IWebProxyScript
   fullName: System.Net.IWebProxyScript
   type: Interface
-  summary: "Provides the base interface to load and execute scripts for automatic proxy detection."
+  summary: "Gir base grensesnittet for å laste inn og kjøre skript for automatisk gjenkjenning."
   syntax:
     content: public interface IWebProxyScript
   implements: []
@@ -30,7 +30,7 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Closes a script."
+  summary: "Lukker et skript."
   syntax:
     content: public void Close ();
     parameters: []
@@ -50,22 +50,22 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Loads a script."
+  summary: "Laster inn et skript."
   syntax:
     content: public bool Load (Uri scriptLocation, string script, Type helperType);
     parameters:
     - id: scriptLocation
       type: System.Uri
-      description: "Internal only."
+      description: "Bare internt."
     - id: script
       type: System.String
-      description: "Internal only."
+      description: "Bare internt."
     - id: helperType
       type: System.Type
-      description: "Internal only."
+      description: "Bare internt."
     return:
       type: System.Boolean
-      description: "A <xref:System.Boolean> indicating whether the script was successfully loaded."
+      description: "En <xref:System.Boolean>som angir om skriptet ble lastet inn.</xref:System.Boolean>"
   overload: System.Net.IWebProxyScript.Load*
   exceptions: []
   platform:
@@ -82,20 +82,20 @@ items:
   assemblies:
   - System
   namespace: System.Net
-  summary: "Runs a script."
-  remarks: "When the <xref:System.Net.HttpWebRequest> object is run, it may need to run the WPAD (Web Proxy Automatic Detection) protocol to detect whether a proxy is required for reaching the destination URL. During this process, the system downloads and compiles the PAC (Proxy Auto-Configuration) script in memory and tries to execute the FindProxyForURL function as per the PAC specification.       When doing so, the system creates an internal application domain inside the application which runs with mimimal permissions and most importantly, it does not grant the UI permission to this new application domain. The evaluation of a proxy and running the FindProxyForURL javascript function happens in the context of this new application domain and during this process the system may need to run several helper functions as per the PAC specification."
+  summary: "Kjører et skript."
+  remarks: "Når den <xref:System.Net.HttpWebRequest>objektet kjøres, må den kanskje kjøre WPAD (Web-Proxy automatisk gjenkjenning)-protokoll for å finne ut om en proxy-server kreves for nådde URL-adressen for målet.</xref:System.Net.HttpWebRequest> Under denne prosessen systemet ned kompilerer skriptet PAC (Proxy automatisk-konfigurasjonen) i minnet og prøver å utføre FindProxyForURL-funksjonen i henhold til spesifikasjonen PAC.       Når du gjør dette, oppretter en intern programdomenet i programmet som kjører med mimimal tillatelser og viktigste ikke gi tillatelsen Brukergrensesnittet til denne nye programdomenet i systemet. Evalueringen av en proxy og kjører funksjonen FindProxyForURL javascript skjer i konteksten for denne nye programdomenet og under denne prosessen systemet må kanskje kjøre flere hjelpefunksjoner i henhold til spesifikasjonen PAC."
   syntax:
     content: public string Run (string url, string host);
     parameters:
     - id: url
       type: System.String
-      description: "Internal only."
+      description: "Bare internt."
     - id: host
       type: System.String
-      description: "Internal only."
+      description: "Bare internt."
     return:
       type: System.String
-      description: "A <xref:System.String>.       An internal-only value returned."
+      description: "A <xref:System.String>.</xref:System.String>       En intern bare-verdien som ble returnert."
   overload: System.Net.IWebProxyScript.Run*
   exceptions: []
   platform:

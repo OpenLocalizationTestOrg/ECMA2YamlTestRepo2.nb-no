@@ -12,8 +12,8 @@ items:
   nameWithType: IMessageFormatter
   fullName: System.Messaging.IMessageFormatter
   type: Interface
-  summary: "Serializes or deserializes objects from the body of a Message Queuing message."
-  remarks: "When an application sends a message to the queue using an instance of the <xref:System.Messaging.MessageQueue> class, the formatter serializes the object (which can be an instance of any class) into a stream and inserts it into the message body. When reading from a queue using a <xref:System.Messaging.MessageQueue>, the formatter deserializes the message data into the <xref:System.Messaging.Message.Body%2A> property of a <xref:System.Messaging.Message>.       <xref:System.Messaging.BinaryMessageFormatter> and <xref:System.Messaging.ActiveXMessageFormatter> provide faster throughput than the <xref:System.Messaging.XmlMessageFormatter>. The <xref:System.Messaging.ActiveXMessageFormatter> allows interoperability with Visual Basic 6.0 Message Queuing applications. The <xref:System.Messaging.XmlMessageFormatter> is loosely coupled, which means that the server and client can version the type that is sent and received independently."
+  summary: "Serializes eller deserializes objekter fra brødteksten i en Message Queuing-melding."
+  remarks: "Når et program sender meldingen til køen med en forekomst av den <xref:System.Messaging.MessageQueue>klassen formateringen serializes objektet (som kan være en forekomst av en klasse) til en dataflyt og setter den inn meldingsteksten.</xref:System.Messaging.MessageQueue> Ved lesing fra en kø ved hjelp av en <xref:System.Messaging.MessageQueue>formateringen deserializes meldingsdataene i <xref:System.Messaging.Message.Body%2A>egenskapen for <xref:System.Messaging.Message>.</xref:System.Messaging.Message> </xref:System.Messaging.Message.Body%2A> </xref:System.Messaging.MessageQueue>       <xref:System.Messaging.BinaryMessageFormatter>og <xref:System.Messaging.ActiveXMessageFormatter>gi raskere ytelse enn <xref:System.Messaging.XmlMessageFormatter>.</xref:System.Messaging.XmlMessageFormatter> </xref:System.Messaging.ActiveXMessageFormatter></xref:System.Messaging.BinaryMessageFormatter> Den <xref:System.Messaging.ActiveXMessageFormatter>tillater samhandling med Visual Basic 6.0 Message Queuing-programmer.</xref:System.Messaging.ActiveXMessageFormatter> Den <xref:System.Messaging.XmlMessageFormatter>er løst kombinert, noe som betyr at serveren og klientprogrammene kan versjon typen som er sendt og mottatt uavhengig.</xref:System.Messaging.XmlMessageFormatter>"
   syntax:
     content: >-
       [System.ComponentModel.TypeConverter(typeof(System.Messaging.Design.MessageFormatterConverter))]
@@ -35,16 +35,16 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "When implemented in a class, determines whether the formatter can deserialize the contents of the message."
+  summary: "Når implementert i en klasse, bestemmer om formateringen kan deserialisere innholdet i meldingen."
   syntax:
     content: public bool CanRead (System.Messaging.Message message);
     parameters:
     - id: message
       type: System.Messaging.Message
-      description: "The <xref href=&quot;System.Messaging.Message&quot;></xref> to inspect."
+      description: "Den <xref href=&quot;System.Messaging.Message&quot;> </xref> skal undersøkes."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the formatter can deserialize the message; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis formateringen kan deserialisere meldingen. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Messaging.IMessageFormatter.CanRead*
   exceptions: []
   platform:
@@ -61,16 +61,16 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "When implemented in a class, reads the contents from the given message and creates an object that contains data from the message."
+  summary: "Når implementert i en klasse, leser innholdet fra den gitte meldingen og oppretter et objekt som inneholder data fra meldingen."
   syntax:
     content: public object Read (System.Messaging.Message message);
     parameters:
     - id: message
       type: System.Messaging.Message
-      description: "The <xref href=&quot;System.Messaging.Message&quot;></xref> to deserialize."
+      description: "Den <xref href=&quot;System.Messaging.Message&quot;> </xref> deserialisering."
     return:
       type: System.Object
-      description: "The deserialized message."
+      description: "Deserialisert meldingen."
   overload: System.Messaging.IMessageFormatter.Read*
   exceptions: []
   platform:
@@ -87,16 +87,16 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "When implemented in a class, serializes an object into the body of the message."
+  summary: "Når implementert i en klasse, serializes et objekt i meldingsteksten i meldingen."
   syntax:
     content: public void Write (System.Messaging.Message message, object obj);
     parameters:
     - id: message
       type: System.Messaging.Message
-      description: "The <xref href=&quot;System.Messaging.Message&quot;></xref> that will contain the serialized object."
+      description: "Den <xref href=&quot;System.Messaging.Message&quot;> </xref> som inneholder det serialiserte objektet."
     - id: obj
       type: System.Object
-      description: "The object to be serialized into the message."
+      description: "Objektet som skal serialiseres til meldingen."
   overload: System.Messaging.IMessageFormatter.Write*
   exceptions: []
   platform:

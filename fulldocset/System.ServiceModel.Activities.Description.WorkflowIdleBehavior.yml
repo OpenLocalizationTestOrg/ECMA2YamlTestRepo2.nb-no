@@ -15,8 +15,8 @@ items:
   nameWithType: WorkflowIdleBehavior
   fullName: System.ServiceModel.Activities.Description.WorkflowIdleBehavior
   type: Class
-  summary: "A service behavior that controls when idle workflow instances are unloaded and persisted."
-  remarks: "> [!IMPORTANT] >  When <xref:System.ServiceModel.Activities.Description.WorkflowIdleBehavior.TimeToUnload%2A> is set to a value greater than the value of <xref:System.ServiceModel.Activities.Description.WorkflowIdleBehavior.TimeToPersist%2A> and the workflow then goes idle (because of a Delay activity) if the workflow instance has not changed it will be removed from memory by calling Abort, rather than going through the normal unloading process.. This is a runtime optimization and no data is lost, but a developer looking at trace log may see an Abort trace when expecting an Unload trace.       For an example of how to use this behavior see [Workflow Service Host Extensibility](~/add/includes/ajax-current-ext-md.md)"
+  summary: "Et problem med tjenesten som styrer når inaktive arbeidsflytforekomster ble lastet ut og fast."
+  remarks: "> [!IMPORTANT]> Når <xref:System.ServiceModel.Activities.Description.WorkflowIdleBehavior.TimeToUnload%2A>er satt til en verdi større enn verdien av <xref:System.ServiceModel.Activities.Description.WorkflowIdleBehavior.TimeToPersist%2A>og deretter arbeidsflyten går inaktiv (på grunn av en forsinkelse aktivitet) Hvis arbeidsflytforekomsten ikke ble endret den fjernes fra minne ved å kalle Abort, i stedet for å gå gjennom normal utlasting av prosessen.</xref:System.ServiceModel.Activities.Description.WorkflowIdleBehavior.TimeToPersist%2A> </xref:System.ServiceModel.Activities.Description.WorkflowIdleBehavior.TimeToUnload%2A> Dette er en runtime optimalisering og ingen data går tapt, men utvikler ser på sporingsloggen kan se en Abort sporingen når forventer en fjerning sporingen.       Se et eksempel på hvordan du bruker dette [arbeidsflyten Service databehandling utvidelse](~/add/includes/ajax-current-ext-md.md)"
   syntax:
     content: 'public class WorkflowIdleBehavior : System.ServiceModel.Description.IServiceBehavior'
   inheritance:
@@ -38,7 +38,7 @@ items:
   assemblies:
   - System.ServiceModel.Activities
   namespace: System.ServiceModel.Activities.Description
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Activities.Description.WorkflowIdleBehavior&quot;></xref>."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.ServiceModel.Activities.Description.WorkflowIdleBehavior&quot;> </xref>."
   syntax:
     content: public WorkflowIdleBehavior ();
     parameters: []
@@ -58,22 +58,22 @@ items:
   assemblies:
   - System.ServiceModel.Activities
   namespace: System.ServiceModel.Activities.Description
-  summary: "Implements the &lt;xref:System.ServiceModel.Description.IServiceBehavior.AddBindingParameters%2A?displayProperty=fullName&gt; method."
+  summary: "Implementerer den &lt;xref:System.ServiceModel.Description.IServiceBehavior.AddBindingParameters%2A?displayProperty=fullName&gt; metoden."
   syntax:
     content: public void AddBindingParameters (System.ServiceModel.Description.ServiceDescription serviceDescription, System.ServiceModel.ServiceHostBase serviceHostBase, System.Collections.ObjectModel.Collection<System.ServiceModel.Description.ServiceEndpoint> endpoints, System.ServiceModel.Channels.BindingParameterCollection bindingParameters);
     parameters:
     - id: serviceDescription
       type: System.ServiceModel.Description.ServiceDescription
-      description: "The service description."
+      description: "Tjenestebeskrivelsen."
     - id: serviceHostBase
       type: System.ServiceModel.ServiceHostBase
-      description: "The service host."
+      description: "Tjenesteverten."
     - id: endpoints
       type: System.Collections.ObjectModel.Collection{System.ServiceModel.Description.ServiceEndpoint}
-      description: "The endpoints exposed by the service."
+      description: "Endepunkt eksponert av tjenesten."
     - id: bindingParameters
       type: System.ServiceModel.Channels.BindingParameterCollection
-      description: "The binding parameters required to implement the behavior."
+      description: "Bindingen-parametere som kreves for å implementere virkemåten."
   overload: System.ServiceModel.Activities.Description.WorkflowIdleBehavior.AddBindingParameters*
   exceptions: []
   platform:
@@ -90,16 +90,16 @@ items:
   assemblies:
   - System.ServiceModel.Activities
   namespace: System.ServiceModel.Activities.Description
-  summary: "Implements the &lt;xref:System.ServiceModel.Description.IServiceBehavior.ApplyDispatchBehavior%2A?displayProperty=fullName&gt; method."
+  summary: "Implementerer den &lt;xref:System.ServiceModel.Description.IServiceBehavior.ApplyDispatchBehavior%2A?displayProperty=fullName&gt; metoden."
   syntax:
     content: public void ApplyDispatchBehavior (System.ServiceModel.Description.ServiceDescription serviceDescription, System.ServiceModel.ServiceHostBase serviceHostBase);
     parameters:
     - id: serviceDescription
       type: System.ServiceModel.Description.ServiceDescription
-      description: "The service description."
+      description: "Tjenestebeskrivelsen."
     - id: serviceHostBase
       type: System.ServiceModel.ServiceHostBase
-      description: "The service host."
+      description: "Tjenesteverten."
   overload: System.ServiceModel.Activities.Description.WorkflowIdleBehavior.ApplyDispatchBehavior*
   exceptions: []
   platform:
@@ -116,13 +116,13 @@ items:
   assemblies:
   - System.ServiceModel.Activities
   namespace: System.ServiceModel.Activities.Description
-  summary: "Gets or sets a value that specifies the <xref:System.TimeSpan> that occurs between the time the workflow becomes idle and is persisted."
-  remarks: "The <xref:System.TimeSpan> begins to elapse when the workflow instance becomes idle. This property is useful if you want to persist a workflow instance more aggressively while still keeping the instance in memory for as long as possible. The default value for this property is <xref:System.TimeSpan>. The TimeToPersist property is only valid if its value is less than <xref:System.ServiceModel.Activities.Description.WorkflowIdleBehavior.TimeToUnload%2A>. If it is greater, it is ignored. If the <xref:System.TimeSpan> specified by TimeToPersist elapses before the <xref:System.TimeSpan> specified by <xref:System.ServiceModel.Activities.Description.WorkflowIdleBehavior.TimeToUnload%2A>, persistence must complete before the workflow is unloaded. This implies that the unload operation may be delayed until the workflow is persisted. The persistence layer is responsible for handling any retries for transient errors and only throws exceptions on non-recoverable errors. Therefore, any exceptions thrown during persistence are treated as fatal and the workflow instance is aborted."
+  summary: "Henter eller angir en verdi som angir den <xref:System.TimeSpan>som forekommer mellom tidspunktet arbeidsflyten er inaktiv og er fast.</xref:System.TimeSpan>"
+  remarks: "Den <xref:System.TimeSpan>begynner å gå når arbeidsflytforekomsten blir inaktive.</xref:System.TimeSpan> Dette er nyttig hvis du vil beholde en arbeidsflytforekomst flere støttealternativer mens forekomsten i minnet for så lenge som mulig. Standardverdien for denne egenskapen er <xref:System.TimeSpan>.</xref:System.TimeSpan> Egenskapen TimeToPersist er bare gyldig hvis verdien er mindre enn <xref:System.ServiceModel.Activities.Description.WorkflowIdleBehavior.TimeToUnload%2A>.</xref:System.ServiceModel.Activities.Description.WorkflowIdleBehavior.TimeToUnload%2A> Hvis den er større, blir ignorert. Hvis den <xref:System.TimeSpan>angitt av TimeToPersist går før den <xref:System.TimeSpan>angitt av <xref:System.ServiceModel.Activities.Description.WorkflowIdleBehavior.TimeToUnload%2A>, utholdenhet må fullføres før arbeidsflyten er fjernet.</xref:System.ServiceModel.Activities.Description.WorkflowIdleBehavior.TimeToUnload%2A> </xref:System.TimeSpan> </xref:System.TimeSpan> Dette innebærer Fjern-operasjonen kan utsettes til arbeidsflyten skal opprettholdes. Bare oppstår unntak på ikke-ugjenopprettbar feil utholdenhet laget er ansvarlig for behandling av en forsøk for midlertidig feil. Derfor unntak under utholdenhet behandles som uopprettelig og arbeidsflytforekomsten ble avbrutt."
   syntax:
     content: public TimeSpan TimeToPersist { get; set; }
     return:
       type: System.TimeSpan
-      description: "The time span used to determine when a workflow is persisted."
+      description: "Tidsrommet brukes til å bestemme når en arbeidsflyt er fast."
   overload: System.ServiceModel.Activities.Description.WorkflowIdleBehavior.TimeToPersist*
   exceptions: []
   platform:
@@ -139,13 +139,13 @@ items:
   assemblies:
   - System.ServiceModel.Activities
   namespace: System.ServiceModel.Activities.Description
-  summary: "Gets or sets a value that specifies the <xref:System.TimeSpan> that occurs between the time workflow becomes idle and is unloaded."
-  remarks: "The default value is 1 minute. Unloading a workflow implies that it is also persisted. If TimeToUnload is set to zero the workflow instance is persisted and unloaded immediately after the workflow becomes idle. Setting TimeToUnload to <xref:System.TimeSpan> effectively disables the unload operation. Idle workflow instances are never unloaded."
+  summary: "Henter eller angir en verdi som angir den <xref:System.TimeSpan>som forekommer mellom tidspunktet arbeidsflyten er inaktiv og er fjernet.</xref:System.TimeSpan>"
+  remarks: "Standardverdien er 1 minutt. Hvis du fjerner en arbeidsflyt antyder at det er også er fast. Hvis TimeToUnload er satt til null arbeidsflytforekomsten er fast og ut rett etter er arbeidsflyten inaktiv. Angi TimeToUnload til <xref:System.TimeSpan>effektivt deaktiverer Fjern-operasjonen.</xref:System.TimeSpan> Inaktive arbeidsflytforekomster lastes aldri ut."
   syntax:
     content: public TimeSpan TimeToUnload { get; set; }
     return:
       type: System.TimeSpan
-      description: "The time span used to determine when a workflow is unloaded."
+      description: "Tidsrommet brukes til å bestemme når en arbeidsflyt er fjernet."
   overload: System.ServiceModel.Activities.Description.WorkflowIdleBehavior.TimeToUnload*
   exceptions: []
   platform:
@@ -162,16 +162,16 @@ items:
   assemblies:
   - System.ServiceModel.Activities
   namespace: System.ServiceModel.Activities.Description
-  summary: "Implements the &lt;xref:System.ServiceModel.Description.IServiceBehavior.Validate%2A?displayProperty=fullName&gt; method."
+  summary: "Implementerer den &lt;xref:System.ServiceModel.Description.IServiceBehavior.Validate%2A?displayProperty=fullName&gt; metoden."
   syntax:
     content: public void Validate (System.ServiceModel.Description.ServiceDescription serviceDescription, System.ServiceModel.ServiceHostBase serviceHostBase);
     parameters:
     - id: serviceDescription
       type: System.ServiceModel.Description.ServiceDescription
-      description: "The service description."
+      description: "Tjenestebeskrivelsen."
     - id: serviceHostBase
       type: System.ServiceModel.ServiceHostBase
-      description: "The service host."
+      description: "Tjenesteverten."
   overload: System.ServiceModel.Activities.Description.WorkflowIdleBehavior.Validate*
   exceptions: []
   platform:
