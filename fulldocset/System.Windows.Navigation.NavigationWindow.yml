@@ -50,8 +50,8 @@ items:
   nameWithType: NavigationWindow
   fullName: System.Windows.Navigation.NavigationWindow
   type: Class
-  summary: "Represents a window that supports content navigation."
-  remarks: "NavigationWindow derives from <xref:System.Windows.Window> and extends it with the ability to navigate to and display content.       Content can be any [!INCLUDE[TLA2#tla_winfx](~/add/includes/tla2sharptla-winfx-md.md)] object or [!INCLUDE[TLA#tla_html](~/add/includes/tlasharptla-html-md.md)] file. In general, however, a <xref:System.Windows.Controls.Page> object is the preferred way to package content for navigation.       Content can be navigated to by setting the <xref:System.Windows.Navigation.NavigationWindow.Source%2A> property with the [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] for the desired content. Additionally, content can be navigated to by using one of the following overloads of the <xref:System.Windows.Navigation.NavigationWindow.Navigate%2A> method:      -   <xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Uri%29>      -   <xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Uri%2CSystem.Object%29>       When content is navigated to by [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)], NavigationWindow will return an object that contains the content.      > [!NOTE] >  Navigation by [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] also supports navigation to a content fragment. See <xref:System.Windows.Navigation.NavigationWindow.FragmentNavigation>.       Alternatively, content can be navigated to by using one of the <xref:System.Windows.Navigation.NavigationWindow.Navigate%2A> method overloads that accepts an object:      -   <xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Object%29>      -   <xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Object%2CSystem.Object%29>       The lifetime of a navigation can be tracked through the following events:      -   <xref:System.Windows.Navigation.NavigationWindow.Navigating>      -   <xref:System.Windows.Navigation.NavigationWindow.Navigated>      -   <xref:System.Windows.Navigation.NavigationWindow.NavigationProgress>      -   <xref:System.Windows.Navigation.NavigationWindow.NavigationFailed>      -   <xref:System.Windows.Navigation.NavigationWindow.NavigationStopped>      -   <xref:System.Windows.Navigation.NavigationWindow.LoadCompleted>      -   <xref:System.Windows.Navigation.NavigationWindow.FragmentNavigation>.       Not all events are raised each time that a navigation occurs; the set of events that are raised is determined by the type of navigation that occurs (content or content fragment) and how the navigation completes (canceled, stopped, or failed).       The following figure illustrates the sequence in which these events will fire:       ![Page navigation flow chart](~/add/media/navigationoverviewfigure11.png &quot;Page navigation flow chart&quot;)       During or after a navigation, NavigationWindow provides information about the content that is being navigated to, including the [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] of the content being navigated to (<xref:System.Windows.Navigation.NavigationWindow.Source%2A>), the [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] of the current content (<xref:System.Windows.Navigation.NavigationWindow.CurrentSource%2A>), and an object that contains the content that was navigated to (<xref:System.Windows.Controls.ContentControl.Content%2A>).       When content is navigated to, NavigationWindow records the navigation as an entry in navigation history. An entry is added to back navigation history when either a new navigation occurs, by calling the <xref:System.Windows.Navigation.NavigationWindow.Navigate%2A> method, or by navigating to an entry in forward navigation history, by calling <xref:System.Windows.Navigation.NavigationWindow.GoForward%2A>. An entry is added to forward navigation history by navigating to an entry in back navigation history, by calling <xref:System.Windows.Navigation.NavigationWindow.GoBack%2A>. <xref:System.Windows.Navigation.NavigationWindow.CanGoBack%2A> and <xref:System.Windows.Navigation.NavigationWindow.CanGoForward%2A> report whether there are entries in back and forward navigation history, respectively.       The first time that one piece of content is navigated to from another piece of content, NavigationWindow automatically displays a navigation [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)] that allows users to navigate back and forwards through navigation history. You can configure when the navigation [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)] is shown by setting the <xref:System.Windows.Navigation.NavigationWindow.ShowsNavigationUI%2A> property.       The most recent entry in back navigation history can be removed by calling <xref:System.Windows.Navigation.NavigationWindow.RemoveBackEntry%2A>.       NavigationWindow does not store an instance of a content object in navigation history. Instead, NavigationWindow creates a new instance of the content object each time it is navigated to by using navigation history. This behavior is designed to avoid excessive memory consumption when large numbers and large pieces of content are being navigated to. Consequently, the state of the content is not remembered from one navigation to the next. However, [!INCLUDE[TLA2#tla_wpf](~/add/includes/ajax-current-ext-md.md)] provides several techniques by which you can store a piece of state for a piece of content in navigation history.       Using <xref:System.Windows.Navigation.NavigationWindow.AddBackEntry%2A>, you can also remember multiple sets of state for a single page instance.       NavigationWindow is one of two navigators in [!INCLUDE[TLA2#tla_wpf](~/add/includes/ajax-current-ext-md.md)], the other being <xref:System.Windows.Controls.Frame>. Essentially, navigator is a class supports navigation and navigation history. Visually, [!INCLUDE[TLA2#tla_xbap#plural](~/add/includes/tla2sharptla-xbapsharpplural-md.md)] use [!INCLUDE[TLA2#tla_ie7](~/add/includes/tla2sharptla-ie7-md.md)] as a navigator, to provide an integrated user experience. However, [!INCLUDE[TLA2#tla_xbap#plural](~/add/includes/tla2sharptla-xbapsharpplural-md.md)] actually use NavigationWindow as the navigator; the <xref:System.Windows.Application.MainWindow%2A> property of an [!INCLUDE[TLA2#tla_xbap](~/add/includes/ajax-current-ext-md.md)] running in [!INCLUDE[TLA2#tla_ie7](~/add/includes/tla2sharptla-ie7-md.md)] will return a reference to the NavigationWindow, and the navigation history that is managed by the NavigationWindow is integrated with the navigation history that is managed by [!INCLUDE[TLA2#tla_ie7](~/add/includes/tla2sharptla-ie7-md.md)].       **Content Model:**  NavigationWindow is a <xref:System.Windows.Controls.ContentControl>, which means that NavigationWindow can contain content such as text, images, or panels. Also, NavigationWindow is a root element and, consequently, cannot be part of another element&quot;s content. For more information about the content model for <xref:System.Windows.Controls.Button>, see [WPF Content Model](~/add/includes/ajax-current-ext-md.md).      ## Customizing the NavigationWindow Control    To apply the same property settings to multiple NavigationWindow controls, use the <xref:System.Windows.FrameworkElement.Style%2A> property. You can modify the default <xref:System.Windows.Controls.ControlTemplate> to give the control a unique appearance. For more information about creating a <xref:System.Windows.Controls.ControlTemplate>, see [Customizing the Appearance of an Existing Control by Creating a ControlTemplate](~/add/includes/ajax-current-ext-md.md).  To see the parts and states that are specific to the NavigationWindow, see [NavigationWindow Styles and Templates](~/add/includes/ajax-current-ext-md.md).       Dependency properties for this control might be set by the control’s default style.  If a property is set by a default style, the property might change from its default value when the control appears in the application. The default style is determined by which desktop theme is used when the application is running.  For more information, see [Default WPF Themes](http://go.microsoft.com/fwlink/?LinkID=158252).      > [!NOTE] >  Setting a visual property will only have an effect if that property is both present in NavigationWindow control&quot;s default template and is set by using a . You can find a list of visual properties in the &quot;Changing the Visual Structure of a Control&quot; section in [Customizing the Appearance of an Existing Control by Creating a ControlTemplate](../Topic/Customizing%20the%20Appearance%20of%20an%20Existing%20Control%20by%20Creating%20a%20ControlTemplate.md)."
+  summary: "Representerer et vindu som støtter innhold navigeringen."
+  remarks: "NavigationWindow er avledet fra <xref:System.Windows.Window>og utvider muligheten til å navigere til, og Vis innhold.</xref:System.Windows.Window>       Innhold kan være [!INCLUDE[TLA2#tla_winfx](~/add/includes/tla2sharptla-winfx-md.md)] objektet eller [!INCLUDE[TLA#tla_html](~/add/includes/tlasharptla-html-md.md)] filen. Generelt imidlertid en <xref:System.Windows.Controls.Page>objektet er den foretrukne måten å pakkens innhold for navigasjon.</xref:System.Windows.Controls.Page>       Innhold kan bli sendt til ved å angi den <xref:System.Windows.Navigation.NavigationWindow.Source%2A>egenskapen med den [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] for ønsket innhold.</xref:System.Windows.Navigation.NavigationWindow.Source%2A> I tillegg innholdet kan navigeres til ved hjelp av følgende overlastingene av den <xref:System.Windows.Navigation.NavigationWindow.Navigate%2A>metoden:- <xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Uri%29>- <xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Uri%2CSystem.Object%29>når innholdet navigeres til av [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)], NavigationWindow kommer til å returnere et objekt som inneholder innholdet.</xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Uri%2CSystem.Object%29> </xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Uri%29> </xref:System.Windows.Navigation.NavigationWindow.Navigate%2A>      > [!NOTE] > Navigering etter [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] støtter også navigering til et innhold fragment. Se <xref:System.Windows.Navigation.NavigationWindow.FragmentNavigation>.</xref:System.Windows.Navigation.NavigationWindow.FragmentNavigation>       Du kan også innholdet kan navigeres til ved hjelp av den <xref:System.Windows.Navigation.NavigationWindow.Navigate%2A>metoden overlastingene som godtar et objekt:- <xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Object%29>- <xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Object%2CSystem.Object%29>levetiden for navigering kan spores gjennom følgende hendelser:- <xref:System.Windows.Navigation.NavigationWindow.Navigating>- <xref:System.Windows.Navigation.NavigationWindow.Navigated>- <xref:System.Windows.Navigation.NavigationWindow.NavigationProgress>- <xref:System.Windows.Navigation.NavigationWindow.NavigationFailed>- <xref:System.Windows.Navigation.NavigationWindow.NavigationStopped>- <xref:System.Windows.Navigation.NavigationWindow.LoadCompleted>- <xref:System.Windows.Navigation.NavigationWindow.FragmentNavigation>.</xref:System.Windows.Navigation.NavigationWindow.FragmentNavigation> </xref:System.Windows.Navigation.NavigationWindow.LoadCompleted> </xref:System.Windows.Navigation.NavigationWindow.NavigationStopped> </xref:System.Windows.Navigation.NavigationWindow.NavigationFailed> </xref:System.Windows.Navigation.NavigationWindow.NavigationProgress> </xref:System.Windows.Navigation.NavigationWindow.Navigated> </xref:System.Windows.Navigation.NavigationWindow.Navigating> </xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Object%2CSystem.Object%29> </xref:System.Windows.Navigation.NavigationWindow.Navigate%28System.Object%29> </xref:System.Windows.Navigation.NavigationWindow.Navigate%2A>       Ikke alle hendelser aktiveres hver gang en navigering; Sett med hendelser som aktiveres er avhengig av hva slags navigering som forekommer (innhold eller innhold fragment) og hvordan navigeringen er fullført (avbrutt stoppet eller mislyktes).       Illustrasjonen nedenfor viser rekkefølgen som disse hendelser skal aktiveres: ![siden navigasjon flyten diagrammet](~/add/media/navigationoverviewfigure11.png &quot;siden navigasjon flyten diagrammet&quot;) under eller etter navigering NavigationWindow gir informasjon om innholdet som blir navigeres til, inkludert i [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] på innholdet som navigeres til (<xref:System.Windows.Navigation.NavigationWindow.Source%2A>), [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] for gjeldende innhold (<xref:System.Windows.Navigation.NavigationWindow.CurrentSource%2A>), og et objekt som har innhold som er mulig å navigere til (<xref:System.Windows.Controls.ContentControl.Content%2A>).</xref:System.Windows.Controls.ContentControl.Content%2A> </xref:System.Windows.Navigation.NavigationWindow.CurrentSource%2A> </xref:System.Windows.Navigation.NavigationWindow.Source%2A>       Når innholdet navigeres til, registrerer NavigationWindow navigasjon som en oppføring i loggen for navigasjon. En oppføring er lagt til tilbake historikk for navigasjon når enten en ny navigering, ved å ringe det <xref:System.Windows.Navigation.NavigationWindow.Navigate%2A>metode, eller ved å navigere til en oppføring i Videresend navigasjon loggen ved å kalle <xref:System.Windows.Navigation.NavigationWindow.GoForward%2A>.</xref:System.Windows.Navigation.NavigationWindow.GoForward%2A> </xref:System.Windows.Navigation.NavigationWindow.Navigate%2A> En oppføring legges til Videresend navigasjon historikk ved å navigere til en oppføring i tilbake navigasjon loggen ved å kalle <xref:System.Windows.Navigation.NavigationWindow.GoBack%2A>.</xref:System.Windows.Navigation.NavigationWindow.GoBack%2A> <xref:System.Windows.Navigation.NavigationWindow.CanGoBack%2A>og <xref:System.Windows.Navigation.NavigationWindow.CanGoForward%2A>rapportere om det er oppføringer i tilbake og fremover navigasjon historikk henholdsvis.</xref:System.Windows.Navigation.NavigationWindow.CanGoForward%2A></xref:System.Windows.Navigation.NavigationWindow.CanGoBack%2A>       Første gang som en del av innholdet navigeres til fra en annen type innhold, NavigationWindow viser automatisk navigering [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)] som gjør at brukere kan gå tilbake og videresender via navigasjon historikk. Du kan konfigurere når navigeringen [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)] vises ved å angi den <xref:System.Windows.Navigation.NavigationWindow.ShowsNavigationUI%2A>egenskapen.</xref:System.Windows.Navigation.NavigationWindow.ShowsNavigationUI%2A>       Den siste oppføringen i tilbake navigasjon loggen kan fjernes ved å kalle <xref:System.Windows.Navigation.NavigationWindow.RemoveBackEntry%2A>.</xref:System.Windows.Navigation.NavigationWindow.RemoveBackEntry%2A>       NavigationWindow lagres ikke en forekomst av en innholdspakke objektet i loggen for navigasjon. I stedet oppretter NavigationWindow en ny forekomst av innhold objektet hver gang det navigeres til ved hjelp av navigasjon historikk. Dette er utformet for å unngå mye minneforbruk under store tall og store typer innhold som hendelsene til. Derfor er ikke tilstanden på innholdet husker fra én navigering til neste. Imidlertid [!INCLUDE[TLA2#tla_wpf](~/add/includes/ajax-current-ext-md.md)] inneholder flere metoder som du kan lagre en del av tilstand for innhold i loggen for navigasjon.       Ved hjelp av <xref:System.Windows.Navigation.NavigationWindow.AddBackEntry%2A>, du kan også huske flere sett med tilstanden for en enkelt side-forekomst.</xref:System.Windows.Navigation.NavigationWindow.AddBackEntry%2A>       NavigationWindow er en av to navigatorer i [!INCLUDE[TLA2#tla_wpf](~/add/includes/ajax-current-ext-md.md)], den andre som <xref:System.Windows.Controls.Frame>.</xref:System.Windows.Controls.Frame> Navigatoren er, en klasse støtter navigering og navigasjon historikk. Visuelt, [!INCLUDE[TLA2#tla_xbap#plural](~/add/includes/tla2sharptla-xbapsharpplural-md.md)] Bruk [!INCLUDE[TLA2#tla_ie7](~/add/includes/tla2sharptla-ie7-md.md)] som en navigatoren til en integrert brukeropplevelsen. Imidlertid [!INCLUDE[TLA2#tla_xbap#plural](~/add/includes/tla2sharptla-xbapsharpplural-md.md)] faktisk bruker NavigationWindow som navigatoren; den <xref:System.Windows.Application.MainWindow%2A>for en [!INCLUDE[TLA2#tla_xbap](~/add/includes/ajax-current-ext-md.md)] kjører i [!INCLUDE[TLA2#tla_ie7](~/add/includes/tla2sharptla-ie7-md.md)] vil returnere en referanse til NavigationWindow og navigasjon loggen som administreres av NavigationWindow er integrert med navigasjon loggen som administreres av [!INCLUDE[TLA2#tla_ie7](~/add/includes/tla2sharptla-ie7-md.md)].</xref:System.Windows.Application.MainWindow%2A>       **Innholdsmodellen:** NavigationWindow er en <xref:System.Windows.Controls.ContentControl>, noe som betyr at NavigationWindow kan inneholde innhold som tekst, bilder eller paneler.</xref:System.Windows.Controls.ContentControl> Også NavigationWindow er et rotelement, og derfor kan ikke være en del av en annen elementinnhold. For mer informasjon om innholdsmodellen for <xref:System.Windows.Controls.Button>, se [WPF innhold modellen](~/add/includes/ajax-current-ext-md.md).</xref:System.Windows.Controls.Button>      ## Tilpasse den NavigationWindow kontrollen til gjelder samme egenskapsinnstillingene flere NavigationWindow kontroller, bruk av <xref:System.Windows.FrameworkElement.Style%2A>egenskapen.</xref:System.Windows.FrameworkElement.Style%2A> Du kan endre standard <xref:System.Windows.Controls.ControlTemplate>Gi kontrollen unikt utseende.</xref:System.Windows.Controls.ControlTemplate> For mer informasjon om hvordan du oppretter en <xref:System.Windows.Controls.ControlTemplate>, se [tilpasse utseendet til en eksisterende kontroll ved å opprette en ControlTemplate](~/add/includes/ajax-current-ext-md.md).</xref:System.Windows.Controls.ControlTemplate>  Hvis du vil se delene og statusene som er spesifikke for NavigationWindow, kan du se [NavigationWindow stiler og maler](~/add/includes/ajax-current-ext-md.md).       Avhengighet egenskapene for denne kontrollen, kan angis ved kontrollens standardstilen.  Hvis en egenskap er satt av en standardstilen, kan endre egenskapen standardverdi når kontrollen vises i applikasjonen. Standardstilen er avhengig av hvilken stasjonær tema brukes når programmet kjører.  Hvis du vil ha mer informasjon, se [standard WPF oppsett](http://go.microsoft.com/fwlink/?LinkID=158252).      > [!NOTE] > Angi en visual egenskap trenger bare en effekt hvis egenskapen er begge finnes i NavigationWindow kontrollens standardmalen og angis ved hjelp av en. Du finner en liste over visual egenskaper i delen &quot;Endring i Visual strukturen av et kontroll&quot; [tilpasse utseendet til en eksisterende kontroll ved å opprette en ControlTemplate](../Topic/Customizing%20the%20Appearance%20of%20an%20Existing%20Control%20by%20Creating%20a%20ControlTemplate.md)."
   example:
   - "The following example shows how to create a NavigationWindow.  \n  \n [!code-xml[NavigationWindowSnippets#NavigationWindowAndSource](~/add/codesnippet/xaml/t-system.windows.navigat_3_1.xaml)]\n [!code-xml[NavigationWindowSnippets#NavigationWindowAndSource](~/add/codesnippet/xaml/csharp/mainwindow.xaml#navigationwindowandsource)]"
   syntax:
@@ -767,7 +767,7 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref> class."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;> </xref> klasse."
   syntax:
     content: public NavigationWindow ();
     parameters: []
@@ -787,19 +787,19 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Adds an entry to back navigation history that contains a <xref href=&quot;System.Windows.Navigation.CustomContentState&quot;></xref> object."
-  remarks: "See <xref:System.Windows.Navigation.NavigationService.AddBackEntry%2A?displayProperty=fullName>."
+  summary: "Legger til en oppføring for å ta navigasjon loggen som inneholder en <xref href=&quot;System.Windows.Navigation.CustomContentState&quot;> </xref> objektet."
+  remarks: "Se <xref:System.Windows.Navigation.NavigationService.AddBackEntry%2A?displayProperty=fullName>.</xref:System.Windows.Navigation.NavigationService.AddBackEntry%2A?displayProperty=fullName>"
   syntax:
     content: public void AddBackEntry (System.Windows.Navigation.CustomContentState state);
     parameters:
     - id: state
       type: System.Windows.Navigation.CustomContentState
-      description: "A <xref href=&quot;System.Windows.Navigation.CustomContentState&quot;></xref> object that represents application-defined state that is associated with a specific piece of content."
+      description: "En <xref href=&quot;System.Windows.Navigation.CustomContentState&quot;> </xref> objektet som representerer Programdefinert tilstand som er knyttet til en bestemt type innhold."
   overload: System.Windows.Navigation.NavigationWindow.AddBackEntry*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "<code>state</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, and a <xref href=&quot;System.Windows.Navigation.CustomContentState&quot;></xref> object isn&quot;t returned from <xref:System.Windows.Navigation.IProvideCustomContentState.GetContentState*>."
+    description: "<code>state</code>er <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>, og en <xref href=&quot;System.Windows.Navigation.CustomContentState&quot;> </xref> objektet er ikke returnert fra <xref:System.Windows.Navigation.IProvideCustomContentState.GetContentState*>."
   platform:
   - net462
 - uid: System.Windows.Navigation.NavigationWindow.AddChild(System.Object)
@@ -814,18 +814,18 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Adds a child object."
+  summary: "Legger til et underordnet objekt."
   syntax:
     content: protected override void AddChild (object value);
     parameters:
     - id: value
       type: System.Object
-      description: "The child object to add."
+      description: "Det underordnede objektet til å legge til."
   overload: System.Windows.Navigation.NavigationWindow.AddChild*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "when this method is called. This prevents content from being added to <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref> using [!INCLUDE[TLA2#tla_xaml](~/add/includes/tla2sharptla-xaml-md.md)]."
+    description: "Når denne metoden kalles. Dette hindrer at innholdet som legges til <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;> </xref> ved hjelp av [!INCLUDE[TLA2#tla_xaml](~/add/includes/tla2sharptla-xaml-md.md)]."
   platform:
   - net462
 - uid: System.Windows.Navigation.NavigationWindow.AddText(System.String)
@@ -840,18 +840,18 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Adds text to the object."
+  summary: "Legger til tekst i objektet."
   syntax:
     content: protected override void AddText (string text);
     parameters:
     - id: text
       type: System.String
-      description: "The text to add to the object."
+      description: "Teksten du vil legge til objektet."
   overload: System.Windows.Navigation.NavigationWindow.AddText*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "if the text parameter value contains non-whitespace characters."
+    description: "Hvis parameteren tekstverdien inneholder tegn som ikke er mellomromstegn."
   platform:
   - net462
 - uid: System.Windows.Navigation.NavigationWindow.BackStack
@@ -866,13 +866,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Gets an <xref:System.Collections.IEnumerable> that you use to enumerate the entries in back navigation history for a <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref>."
-  remarks: "The entries that are returned by BackStack include whole content, fragment navigations, and custom state.      <a name=&quot;dependencyPropertyInfo_NavigationWindowBackStack&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|BackStack|   |Metadata properties set to `true`|None|"
+  summary: "Henter en <xref:System.Collections.IEnumerable>du bruker for å liste opp oppføringene i tilbake navigasjon loggen for en <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;> </xref>.</xref:System.Collections.IEnumerable>"
+  remarks: "Oppføringer som returneres av BackStack inkludere hele innholdet, fragment navigasjon og egendefinerte tilstand.      <a name=&quot;dependencyPropertyInfo_NavigationWindowBackStack&quot;></a>## Egenskapen avhengighetsinformasjon |||   |-|-|   | ID-feltet | BackStack |   | Metadata egenskapene til `true`| Ingen |"
   syntax:
     content: public System.Collections.IEnumerable BackStack { get; }
     return:
       type: System.Collections.IEnumerable
-      description: "<xref:System.Collections.IEnumerable> if at least one entry has been added to back navigation history, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if there are not entries or the <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref> does not own its own navigation history."
+      description: "<xref:System.Collections.IEnumerable>Hvis minst én oppføring er lagt til tilbake navigasjon loggen eller <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Hvis det ikke er oppføringer eller <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;> </xref> ikke eier sin egen navigering historikk.</xref:System.Collections.IEnumerable>"
   overload: System.Windows.Navigation.NavigationWindow.BackStack*
   exceptions: []
   platform:
@@ -889,12 +889,12 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Identifies the <xref:System.Windows.Navigation.NavigationWindow.BackStack*> dependency property."
+  summary: "Identifiserer den <xref:System.Windows.Navigation.NavigationWindow.BackStack*>avhengighetsegenskapen.</xref:System.Windows.Navigation.NavigationWindow.BackStack*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty BackStackProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -910,13 +910,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Gets a value that indicates whether there is at least one entry in back navigation history."
-  remarks: "See <xref:System.Windows.Navigation.NavigationService.CanGoBack%2A?displayProperty=fullName>.      <a name=&quot;dependencyPropertyInfo_NavigationWindowCanGoBack&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|CanGoBack|   |Metadata properties set to `true`|None|"
+  summary: "Henter en verdi som angir om det finnes minst én oppføring i tilbake navigasjon historikk."
+  remarks: "Se <xref:System.Windows.Navigation.NavigationService.CanGoBack%2A?displayProperty=fullName>.</xref:System.Windows.Navigation.NavigationService.CanGoBack%2A?displayProperty=fullName>      <a name=&quot;dependencyPropertyInfo_NavigationWindowCanGoBack&quot;></a>## Egenskapen avhengighetsinformasjon |||   |-|-|   | ID-feltet | CanGoBack |   | Metadata egenskapene til `true`| Ingen |"
   syntax:
     content: public bool CanGoBack { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if there is at least one entry in back navigation history; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if there are no entries in back navigation history or the <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref> does not own its own navigation history."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis det finnes minst én oppføring i tilbake navigasjonslogg. <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> Hvis det finnes ingen oppføringer i tilbake navigasjon loggen eller <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;> </xref> ikke eier sin egen navigering historikk."
   overload: System.Windows.Navigation.NavigationWindow.CanGoBack*
   exceptions: []
   platform:
@@ -933,12 +933,12 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Identifies the <xref:System.Windows.Navigation.NavigationWindow.CanGoBack*> dependency property."
+  summary: "Identifiserer den <xref:System.Windows.Navigation.NavigationWindow.CanGoBack*>avhengighetsegenskapen.</xref:System.Windows.Navigation.NavigationWindow.CanGoBack*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty CanGoBackProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -954,13 +954,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Gets a value that indicates whether there is at least one entry in forward navigation history."
-  remarks: "<a name=&quot;dependencyPropertyInfo_NavigationWindowCanGoForward&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|CanGoForward|   |Metadata properties set to `true`|None|"
+  summary: "Henter en verdi som angir om det finnes minst én oppføring i Videresend navigasjon historikk."
+  remarks: "<a name=&quot;dependencyPropertyInfo_NavigationWindowCanGoForward&quot;></a>## Egenskapen avhengighetsinformasjon |||   |-|-|   | ID-feltet | CanGoForward |   | Metadata egenskapene til `true`| Ingen |"
   syntax:
     content: public bool CanGoForward { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if there is at least one entry in forward navigation history; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if there are no entries in forward navigation history, or the <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref> does not own its own navigation history."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis det finnes minst én oppføring i Videresend navigasjonslogg. <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> Hvis det finnes ingen oppføringer i Videresend navigasjon loggen eller <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;> </xref> ikke eier sin egen navigering historikk."
   overload: System.Windows.Navigation.NavigationWindow.CanGoForward*
   exceptions: []
   platform:
@@ -977,12 +977,12 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Identifies the <xref:System.Windows.Navigation.NavigationWindow.CanGoForward*> dependency property."
+  summary: "Identifiserer den <xref:System.Windows.Navigation.NavigationWindow.CanGoForward*>avhengighetsegenskapen.</xref:System.Windows.Navigation.NavigationWindow.CanGoForward*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty CanGoForwardProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -998,13 +998,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Gets the [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] of the content that was last navigated to."
-  remarks: "See CurrentSource."
+  summary: "Henter den [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] innhold som ble sist navigeres til."
+  remarks: "Se CurrentSource."
   syntax:
     content: public Uri CurrentSource { get; }
     return:
       type: System.Uri
-      description: "The [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] for the content that was last navigated to, if navigated to by using a [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)]; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "Den [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] for innhold som sist ble navigeres til Hvis navigeres til ved hjelp av en [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)]; ellers <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Navigation.NavigationWindow.CurrentSource*
   exceptions: []
   platform:
@@ -1021,13 +1021,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Gets an <xref:System.Collections.IEnumerable> that you use to enumerate the entries in back navigation history for a <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref>."
-  remarks: "The entries that are returned by ForwardStack include whole content, fragment navigations, and custom state.      <a name=&quot;dependencyPropertyInfo_NavigationWindowForwardStack&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|ForwardStack|   |Metadata properties set to `true`|None|"
+  summary: "Henter en <xref:System.Collections.IEnumerable>du bruker for å liste opp oppføringene i tilbake navigasjon loggen for en <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;> </xref>.</xref:System.Collections.IEnumerable>"
+  remarks: "Oppføringer som returneres av ForwardStack inkludere hele innholdet, fragment navigasjon og egendefinerte tilstand.      <a name=&quot;dependencyPropertyInfo_NavigationWindowForwardStack&quot;></a>## Egenskapen avhengighetsinformasjon |||   |-|-|   | ID-feltet | ForwardStack |   | Metadata egenskapene til `true`| Ingen |"
   syntax:
     content: public System.Collections.IEnumerable ForwardStack { get; }
     return:
       type: System.Collections.IEnumerable
-      description: "<xref:System.Collections.IEnumerable> if at least one entry has been added to forward navigation history, or null if there are no entries or the <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref> does not own its own navigation history."
+      description: "<xref:System.Collections.IEnumerable>Hvis minst én oppføring er lagt til Videresend navigasjon loggen eller null hvis det finnes ingen oppføringer eller <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;> </xref> ikke eier sin egen navigering historikk.</xref:System.Collections.IEnumerable>"
   overload: System.Windows.Navigation.NavigationWindow.ForwardStack*
   exceptions: []
   platform:
@@ -1044,12 +1044,12 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Identifies the <xref:System.Windows.Navigation.NavigationWindow.ForwardStack*> dependency property."
+  summary: "Identifiserer den <xref:System.Windows.Navigation.NavigationWindow.ForwardStack*>avhengighetsegenskapen.</xref:System.Windows.Navigation.NavigationWindow.ForwardStack*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty ForwardStackProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -1065,13 +1065,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Occurs when navigation to a content fragment begins, which occurs immediately, if the desired fragment is in the current content, or after the source [!INCLUDE[TLA2#tla_titlexaml](~/add/includes/tla2sharptla-titlexaml-md.md)] content has been loaded, if the desired fragment is in different content."
-  remarks: "See <xref:System.Windows.Navigation.NavigationService.FragmentNavigation?displayProperty=fullName>."
+  summary: "Forekommer når navigering til et innhold fragment er startet, som skjer umiddelbart, hvis ønsket fragmentet i gjeldende innhold, eller etter kilden [!INCLUDE[TLA2#tla_titlexaml](~/add/includes/tla2sharptla-titlexaml-md.md)] innhold er lastet inn, hvis ønsket fragmentet i forskjellige innhold."
+  remarks: "Se <xref:System.Windows.Navigation.NavigationService.FragmentNavigation?displayProperty=fullName>.</xref:System.Windows.Navigation.NavigationService.FragmentNavigation?displayProperty=fullName>"
   syntax:
     content: public event System.Windows.Navigation.FragmentNavigationEventHandler FragmentNavigation;
     return:
       type: System.Windows.Navigation.FragmentNavigationEventHandler
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -1087,7 +1087,7 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Navigates to the most recent item in back navigation history."
+  summary: "Går til det siste elementet i tilbake navigasjon historikk."
   syntax:
     content: public void GoBack ();
     parameters: []
@@ -1095,7 +1095,7 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "GoBack is called when there are no entries in back navigation history."
+    description: "GoBack kalles når det er ingen oppføringer i tilbake navigasjon historikk."
   platform:
   - net462
 - uid: System.Windows.Navigation.NavigationWindow.GoForward
@@ -1110,7 +1110,7 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Navigates to the most recent item in forward navigation history."
+  summary: "Går til det siste elementet i Videresend navigasjon historikk."
   syntax:
     content: public void GoForward ();
     parameters: []
@@ -1118,7 +1118,7 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "GoForward is called when there are no entries in forward navigation history."
+    description: "GoForward kalles når det er ingen oppføringer i Videresend navigasjon historikk."
   platform:
   - net462
 - uid: System.Windows.Navigation.NavigationWindow.LoadCompleted
@@ -1133,13 +1133,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Occurs when content that was navigated to has been loaded, parsed, and has begun rendering."
-  remarks: "See <xref:System.Windows.Navigation.NavigationService.LoadCompleted?displayProperty=fullName>."
+  summary: "Oppstår når innholdet som er mulig å navigere til er lastet inn, analysert, og har begynt gjengivelse."
+  remarks: "Se <xref:System.Windows.Navigation.NavigationService.LoadCompleted?displayProperty=fullName>.</xref:System.Windows.Navigation.NavigationService.LoadCompleted?displayProperty=fullName>"
   syntax:
     content: public event System.Windows.Navigation.LoadCompletedEventHandler LoadCompleted;
     return:
       type: System.Windows.Navigation.LoadCompletedEventHandler
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -1155,8 +1155,8 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Navigates asynchronously to content that is contained by an object."
-  remarks: "See <xref:System.Windows.Navigation.NavigationService.Navigate%28System.Object%29?displayProperty=fullName>."
+  summary: "Navigerer asynkront til innhold som befinner seg i et objekt."
+  remarks: "Se <xref:System.Windows.Navigation.NavigationService.Navigate%28System.Object%29?displayProperty=fullName>.</xref:System.Windows.Navigation.NavigationService.Navigate%28System.Object%29?displayProperty=fullName>"
   example:
   - "The following example shows how to navigate to content that is contained by an object.  \n  \n [!code-cs[HOWTONavigationSnippets#NavigateToPageObjCODE](~/add/codesnippet/csharp/HOWTONavigationSnippets/MainWindow.xaml.cs#navigatetopageobjcode)]\n [!code-vb[HOWTONavigationSnippets#NavigateToPageObjCODE](~/add/codesnippet/visualbasic/howtonavigationsnippets/mainwindow.xaml.vb#navigatetopageobjcode)]"
   syntax:
@@ -1164,10 +1164,10 @@ items:
     parameters:
     - id: content
       type: System.Object
-      description: "An <xref:System.Object> that contains the content to navigate to."
+      description: "En <xref:System.Object>som inneholder innholdet til å navigere til.</xref:System.Object>"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a navigation is not canceled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis navigering ikke avbrytes; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Navigation.NavigationWindow.Navigate*
   exceptions: []
   platform:
@@ -1184,8 +1184,8 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Navigates asynchronously to content that is specified by a [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)]."
-  remarks: "See <xref:System.Windows.Navigation.NavigationService.Navigate%28System.Uri%29?displayProperty=fullName>.      > [!NOTE] >  [!INCLUDE[TLA#tla_uri#initcap#plural](~/add/includes/tlasharptla-urisharpinitcapsharpplural-md.md)] can be either relative or absolute. For more information, see [Pack URIs in WPF](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Navigerer asynkront til innhold som er angitt i en [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)]."
+  remarks: "Se <xref:System.Windows.Navigation.NavigationService.Navigate%28System.Uri%29?displayProperty=fullName>.</xref:System.Windows.Navigation.NavigationService.Navigate%28System.Uri%29?displayProperty=fullName>      > [!NOTE]  >   [!INCLUDE[TLA#tla_uri#initcap#plural](~/add/includes/tlasharptla-urisharpinitcapsharpplural-md.md)] kan være relativ eller absolutt. Hvis du vil ha mer informasjon, se [Pack URIer i WPF](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following example shows how to use the Navigate method to navigate to a [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)].  \n  \n [!code-cs[HOWTONavigationSnippets#NavigateToPageNavCODE](~/add/codesnippet/csharp/HOWTONavigationSnippets/MainWindow.xaml.cs#navigatetopagenavcode)]\n [!code-vb[HOWTONavigationSnippets#NavigateToPageNavCODE](~/add/codesnippet/visualbasic/howtonavigationsnippets/mainwindow.xaml.vb#navigatetopagenavcode)]"
   syntax:
@@ -1193,10 +1193,10 @@ items:
     parameters:
     - id: source
       type: System.Uri
-      description: "A <xref:System.Uri> object initialized with the [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] for the desired content."
+      description: "En <xref:System.Uri>objektet initialisert med den [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] for ønsket innhold.</xref:System.Uri>"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a navigation is not canceled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis navigering ikke avbrytes; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Navigation.NavigationWindow.Navigate*
   exceptions: []
   platform:
@@ -1213,20 +1213,20 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Navigates asynchronously to content that is contained by an object, and passes an object that contains data to be used for processing during navigation."
-  remarks: "See <xref:System.Windows.Navigation.NavigationService.Navigate%28System.Object%2CSystem.Object%29?displayProperty=fullName>."
+  summary: "Navigerer asynkront til innhold som befinner seg i et objekt, og sender et objekt som inneholder data som skal brukes for behandling under navigering."
+  remarks: "Se <xref:System.Windows.Navigation.NavigationService.Navigate%28System.Object%2CSystem.Object%29?displayProperty=fullName>.</xref:System.Windows.Navigation.NavigationService.Navigate%28System.Object%2CSystem.Object%29?displayProperty=fullName>"
   syntax:
     content: public bool Navigate (object content, object extraData);
     parameters:
     - id: content
       type: System.Object
-      description: "An <xref:System.Object> that contains the content to navigate to."
+      description: "En <xref:System.Object>som inneholder innholdet til å navigere til.</xref:System.Object>"
     - id: extraData
       type: System.Object
-      description: "A <xref:System.Object> that contains data to be used for processing during navigation."
+      description: "En <xref:System.Object>som inneholder data som skal brukes for behandling under navigering.</xref:System.Object>"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a navigation is not canceled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis navigering ikke avbrytes; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Navigation.NavigationWindow.Navigate*
   exceptions: []
   platform:
@@ -1243,20 +1243,20 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Navigates asynchronously to source content located at a [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)], and pass an object that contains data to be used for processing during navigation."
-  remarks: "See <xref:System.Windows.Navigation.NavigationService.Navigate%28System.Uri%2CSystem.Object%29?displayProperty=fullName>."
+  summary: "Navigerer asynkront til kilden på en [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)], og sende et objekt som inneholder data som skal brukes for behandling under navigering."
+  remarks: "Se <xref:System.Windows.Navigation.NavigationService.Navigate%28System.Uri%2CSystem.Object%29?displayProperty=fullName>.</xref:System.Windows.Navigation.NavigationService.Navigate%28System.Uri%2CSystem.Object%29?displayProperty=fullName>"
   syntax:
     content: public bool Navigate (Uri source, object extraData);
     parameters:
     - id: source
       type: System.Uri
-      description: "A <xref:System.Uri> object initialized with the [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] for the desired content."
+      description: "En <xref:System.Uri>objektet initialisert med den [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] for ønsket innhold.</xref:System.Uri>"
     - id: extraData
       type: System.Object
-      description: "A <xref:System.Object> that contains data to be used for processing during navigation."
+      description: "En <xref:System.Object>som inneholder data som skal brukes for behandling under navigering.</xref:System.Object>"
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a navigation is not canceled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis navigering ikke avbrytes; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Navigation.NavigationWindow.Navigate*
   exceptions: []
   platform:
@@ -1273,13 +1273,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Occurs when the content that is being navigated to has been found, and is available from the <xref:System.Windows.Controls.ContentControl.Content*> property, although it may not have completed loading."
-  remarks: "See <xref:System.Windows.Navigation.NavigationService.Navigated?displayProperty=fullName>."
+  summary: "Forekommer når innholdet i navigeres til er funnet og ikke tilgjengelig fra den <xref:System.Windows.Controls.ContentControl.Content*>-egenskapen, selv om det er ikke kanskje fullført innlasting.</xref:System.Windows.Controls.ContentControl.Content*>"
+  remarks: "Se <xref:System.Windows.Navigation.NavigationService.Navigated?displayProperty=fullName>.</xref:System.Windows.Navigation.NavigationService.Navigated?displayProperty=fullName>"
   syntax:
     content: public event System.Windows.Navigation.NavigatedEventHandler Navigated;
     return:
       type: System.Windows.Navigation.NavigatedEventHandler
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -1295,13 +1295,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Occurs when a new navigation is requested."
-  remarks: "See <xref:System.Windows.Navigation.NavigationService.Navigating?displayProperty=fullName>."
+  summary: "Forekommer når en ny navigasjon forespørres."
+  remarks: "Se <xref:System.Windows.Navigation.NavigationService.Navigating?displayProperty=fullName>.</xref:System.Windows.Navigation.NavigationService.Navigating?displayProperty=fullName>"
   syntax:
     content: public event System.Windows.Navigation.NavigatingCancelEventHandler Navigating;
     return:
       type: System.Windows.Navigation.NavigatingCancelEventHandler
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -1317,13 +1317,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Occurs when an error is raised while navigating to the requested content."
-  remarks: "See <xref:System.Windows.Navigation.NavigationService.NavigationFailed?displayProperty=fullName>."
+  summary: "Forekommer når det oppstår en feil under navigering til det forespurte innholdet."
+  remarks: "Se <xref:System.Windows.Navigation.NavigationService.NavigationFailed?displayProperty=fullName>.</xref:System.Windows.Navigation.NavigationService.NavigationFailed?displayProperty=fullName>"
   syntax:
     content: public event System.Windows.Navigation.NavigationFailedEventHandler NavigationFailed;
     return:
       type: System.Windows.Navigation.NavigationFailedEventHandler
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -1339,13 +1339,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Occurs periodically during a download to provide navigation progress information."
-  remarks: "See <xref:System.Windows.Navigation.NavigationService.NavigationProgress?displayProperty=fullName>."
+  summary: "Forekommer regelmessig under nedlastingen gir informasjon om fremdrift for navigasjon."
+  remarks: "Se <xref:System.Windows.Navigation.NavigationService.NavigationProgress?displayProperty=fullName>.</xref:System.Windows.Navigation.NavigationService.NavigationProgress?displayProperty=fullName>"
   syntax:
     content: public event System.Windows.Navigation.NavigationProgressEventHandler NavigationProgress;
     return:
       type: System.Windows.Navigation.NavigationProgressEventHandler
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -1361,13 +1361,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Gets the <xref href=&quot;System.Windows.Navigation.NavigationService&quot;></xref> that is used by this <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref> to provide navigation services to its content."
-  remarks: "<xref:System.Windows.Navigation.NavigationWindow> uses a <xref:System.Windows.Navigation.NavigationService> to provide navigation services to content that is hosted by <xref:System.Windows.Navigation.NavigationWindow>. The NavigationService property is useful for code in a custom <xref:System.Windows.Navigation.NavigationWindow> to get a reference to the <xref:System.Windows.Navigation.NavigationService>, to handle navigation events, for example.       Content that is hosted by a <xref:System.Windows.Navigation.NavigationWindow>, such as <xref:System.Windows.Controls.Page>, should use the <xref:System.Windows.Navigation.NavigationService.GetNavigationService%2A?displayProperty=fullName> method or <xref:System.Windows.Controls.Page.NavigationService%2A?displayProperty=fullName> property to get a reference to the <xref:System.Windows.Navigation.NavigationService>."
+  summary: "Henter den <xref href=&quot;System.Windows.Navigation.NavigationService&quot;> </xref> som brukes av dette <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;> </xref> for navigasjon tjenester til innholdet."
+  remarks: "<xref:System.Windows.Navigation.NavigationWindow>bruker en <xref:System.Windows.Navigation.NavigationService>for navigasjon tjenester til innhold som er vert for <xref:System.Windows.Navigation.NavigationWindow>.</xref:System.Windows.Navigation.NavigationWindow> </xref:System.Windows.Navigation.NavigationService></xref:System.Windows.Navigation.NavigationWindow> Egenskapen NavigationService er nyttig for kode i en egendefinert <xref:System.Windows.Navigation.NavigationWindow>å hente en referanse til det <xref:System.Windows.Navigation.NavigationService>, til å håndtere navigasjon, for eksempel.</xref:System.Windows.Navigation.NavigationService> </xref:System.Windows.Navigation.NavigationWindow>       Innhold som er vert for en <xref:System.Windows.Navigation.NavigationWindow>, for eksempel <xref:System.Windows.Controls.Page>skal bruke <xref:System.Windows.Navigation.NavigationService.GetNavigationService%2A?displayProperty=fullName>metoden eller <xref:System.Windows.Controls.Page.NavigationService%2A?displayProperty=fullName>egenskapen for å hente en referanse til <xref:System.Windows.Navigation.NavigationService>.</xref:System.Windows.Navigation.NavigationService> </xref:System.Windows.Controls.Page.NavigationService%2A?displayProperty=fullName> </xref:System.Windows.Navigation.NavigationService.GetNavigationService%2A?displayProperty=fullName> </xref:System.Windows.Controls.Page> </xref:System.Windows.Navigation.NavigationWindow>"
   syntax:
     content: public System.Windows.Navigation.NavigationService NavigationService { get; }
     return:
       type: System.Windows.Navigation.NavigationService
-      description: "The navigation service used by this <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref>."
+      description: "Navigasjon tjenesten som brukes av dette <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;> </xref>."
   overload: System.Windows.Navigation.NavigationWindow.NavigationService*
   exceptions: []
   platform:
@@ -1384,13 +1384,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Occurs when the <xref:System.Windows.Navigation.NavigationWindow.StopLoading*> method is called, or when a new navigation is requested while a current navigation is in progress."
-  remarks: "See <xref:System.Windows.Navigation.NavigationService.NavigationStopped?displayProperty=fullName>."
+  summary: "Forekommer når den <xref:System.Windows.Navigation.NavigationWindow.StopLoading*>-metoden, eller når en ny navigasjon forespørres mens gjeldende navigering pågår.</xref:System.Windows.Navigation.NavigationWindow.StopLoading*>"
+  remarks: "Se <xref:System.Windows.Navigation.NavigationService.NavigationStopped?displayProperty=fullName>.</xref:System.Windows.Navigation.NavigationService.NavigationStopped?displayProperty=fullName>"
   syntax:
     content: public event System.Windows.Navigation.NavigationStoppedEventHandler NavigationStopped;
     return:
       type: System.Windows.Navigation.NavigationStoppedEventHandler
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -1406,7 +1406,7 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Called when the template generation for the visual tree is created."
+  summary: "Kalles når malen generering for visual treet er opprettet."
   syntax:
     content: public override void OnApplyTemplate ();
     parameters: []
@@ -1426,14 +1426,14 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Raises the <xref href=&quot;System.Windows.Window.Closed&quot;></xref> event."
-  remarks: "OnClosed releases the <xref:System.Windows.Navigation.NavigationService> object that it is using to manage navigation, before raising <xref:System.Windows.Window.Closed> event."
+  summary: "Hever den <xref href=&quot;System.Windows.Window.Closed&quot;> </xref> hendelsen."
+  remarks: "OnClosed frigir den <xref:System.Windows.Navigation.NavigationService>objekt som bruker den til å administrere navigasjonsruten, før du opprettet <xref:System.Windows.Window.Closed>hendelsen.</xref:System.Windows.Window.Closed> </xref:System.Windows.Navigation.NavigationService>"
   syntax:
     content: protected override void OnClosed (EventArgs args);
     parameters:
     - id: args
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "En <xref:System.EventArgs>som inneholder Hendelsesdata.</xref:System.EventArgs>"
   overload: System.Windows.Navigation.NavigationWindow.OnClosed*
   exceptions: []
   platform:
@@ -1450,8 +1450,8 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Creates and returns a <xref href=&quot;System.Windows.Automation.Peers.NavigationWindowAutomationPeer&quot;></xref> object for this <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref>."
-  remarks: "This method overrides <xref:System.Windows.ContentElement.OnCreateAutomationPeer%2A>."
+  summary: "Oppretter og returnerer en <xref href=&quot;System.Windows.Automation.Peers.NavigationWindowAutomationPeer&quot;> </xref> objekt for dette <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;> </xref>."
+  remarks: "Denne metoden overstyrer <xref:System.Windows.ContentElement.OnCreateAutomationPeer%2A>.</xref:System.Windows.ContentElement.OnCreateAutomationPeer%2A>"
   syntax:
     content: protected override System.Windows.Automation.Peers.AutomationPeer OnCreateAutomationPeer ();
     parameters: []
@@ -1474,8 +1474,8 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Reloads the current content."
-  remarks: "See <xref:System.Windows.Navigation.NavigationService.Refresh%2A?displayProperty=fullName>."
+  summary: "Laster inn på nytt gjeldende innhold."
+  remarks: "Se <xref:System.Windows.Navigation.NavigationService.Refresh%2A?displayProperty=fullName>.</xref:System.Windows.Navigation.NavigationService.Refresh%2A?displayProperty=fullName>"
   example:
   - "The following example shows how to call the Refresh method to reload the content in a <xref:System.Windows.Navigation.NavigationWindow>.  \n  \n [!code-cs[HOWTONavigationSnippets#NavigateRefreshCODE](~/add/codesnippet/csharp/HOWTONavigationSnippets/MainWindow.xaml.cs#navigaterefreshcode)]\n [!code-vb[HOWTONavigationSnippets#NavigateRefreshCODE](~/add/codesnippet/visualbasic/howtonavigationsnippets/mainwindow.xaml.vb#navigaterefreshcode)]"
   syntax:
@@ -1497,14 +1497,14 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Removes the most recent journal entry from back history."
-  remarks: "See <xref:System.Windows.Navigation.NavigationService.RemoveBackEntry%2A?displayProperty=fullName>."
+  summary: "Fjerner siste loggoppføring fra tilbake historikk."
+  remarks: "Se <xref:System.Windows.Navigation.NavigationService.RemoveBackEntry%2A?displayProperty=fullName>.</xref:System.Windows.Navigation.NavigationService.RemoveBackEntry%2A?displayProperty=fullName>"
   syntax:
     content: public System.Windows.Navigation.JournalEntry RemoveBackEntry ();
     parameters: []
     return:
       type: System.Windows.Navigation.JournalEntry
-      description: "The most recent <xref href=&quot;System.Windows.Navigation.JournalEntry&quot;></xref> in back navigation history, if there is one."
+      description: "Den siste <xref href=&quot;System.Windows.Navigation.JournalEntry&quot;> </xref> i bakre navigasjonslogg, hvis det finnes en."
   overload: System.Windows.Navigation.NavigationWindow.RemoveBackEntry*
   exceptions: []
   platform:
@@ -1521,18 +1521,18 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Gets or sets a value that indicates whether a <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref> isolates external [!INCLUDE[TLA#tla_xaml](~/add/includes/tlasharptla-xaml-md.md)] content within a partial trust security sandbox (with default Internet zone permission set)."
-  remarks: "External content is [!INCLUDE[TLA2#tla_xaml](~/add/includes/tla2sharptla-xaml-md.md)] content that is not included with an application as either a resource file or a content file (for more information, see [WPF Application Resource, Content, and Data Files](~/add/includes/ajax-current-ext-md.md)).       When SandboxExternalContent is true, and the content of the <xref:System.Windows.Navigation.NavigationWindow> is an external [!INCLUDE[TLA2#tla_xaml](~/add/includes/tla2sharptla-xaml-md.md)] file, the content is loaded into a partial trust security sandbox that is limited to the default Internet zone permission set. Additionally, the external content is loaded into a separate process. Consequently, the external content becomes isolated and does not have access to application-scope resources, such as resource dictionaries (for more information, see <xref:System.Windows.ResourceDictionary>).      > [!NOTE] >  <xref:System.Windows.Navigation.NavigationWindow> contains external content only when the <xref:System.Windows.Navigation.NavigationWindow.Source%2A> property is set to the [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] for an external [!INCLUDE[TLA2#tla_xaml](~/add/includes/tla2sharptla-xaml-md.md)] file. <xref:System.Windows.Navigation.NavigationWindow> content that is provided using the <xref:System.Windows.Controls.ContentControl.Content%2A> property is considered internal content and, subsequently, is not isolated.      <a name=&quot;dependencyPropertyInfo_NavigationWindowSandboxExternalContent&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|SandboxExternalContent|   |Metadata properties set to `true`|None|"
+  summary: "Henter eller angir en verdi som angir om en <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;> </xref> isolat ekstern [!INCLUDE[TLA#tla_xaml](~/add/includes/tlasharptla-xaml-md.md)] innhold i en delvis klarering sikkerhet sandkassen (med standard Internett-sone tillatelse angitt)."
+  remarks: "Eksternt innhold er [!INCLUDE[TLA2#tla_xaml](~/add/includes/tla2sharptla-xaml-md.md)] innhold som ikke er inkludert i en applikasjon som en ressursfil eller innhold fil (for mer informasjon, kan du se [WPF programmet ressursen, innhold og datafiler](~/add/includes/ajax-current-ext-md.md)).       Når SandboxExternalContent er true, og innholdet i den <xref:System.Windows.Navigation.NavigationWindow>er en ekstern [!INCLUDE[TLA2#tla_xaml](~/add/includes/tla2sharptla-xaml-md.md)] filen innholdet er lastet inn i en delvis klarering sikkerhet sandkassen som er begrenset til standard Internett-sone er angitt.</xref:System.Windows.Navigation.NavigationWindow> Det eksterne innholdet lastes i tillegg til en annen prosess. Derfor kan det eksterne innholdet blir isolert og ikke har tilgang til global informasjon ressurser, for eksempel ressursen ordlister (Hvis du vil ha mer informasjon, se <xref:System.Windows.ResourceDictionary>).</xref:System.Windows.ResourceDictionary>      > [!NOTE] > <xref:System.Windows.Navigation.NavigationWindow>inneholder eksternt innhold bare når det <xref:System.Windows.Navigation.NavigationWindow.Source%2A>er satt til den [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] for en ekstern [!INCLUDE[TLA2#tla_xaml](~/add/includes/tla2sharptla-xaml-md.md)] filen.</xref:System.Windows.Navigation.NavigationWindow.Source%2A> </xref:System.Windows.Navigation.NavigationWindow> <xref:System.Windows.Navigation.NavigationWindow>innhold som er angitt ved hjelp av den <xref:System.Windows.Controls.ContentControl.Content%2A>egenskapen anses intern innhold, og dermed, er ikke isolert.</xref:System.Windows.Controls.ContentControl.Content%2A></xref:System.Windows.Navigation.NavigationWindow>      <a name=&quot;dependencyPropertyInfo_NavigationWindowSandboxExternalContent&quot;></a>## Egenskapen avhengighetsinformasjon |||   |-|-|   | ID-feltet | SandboxExternalContent |   | Metadata egenskapene til `true`| Ingen |"
   syntax:
     content: public bool SandboxExternalContent { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if content is isolated within a partial trust security sandbox; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis innholdet er isolert i en delvis klarering sikkerhet sandkassen; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Standard <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Navigation.NavigationWindow.SandboxExternalContent*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "SandboxExternalContent is set when an application is executing in partial trust."
+    description: "SandboxExternalContent angis når et program som kjører i delvis klarering."
   platform:
   - net462
 - uid: System.Windows.Navigation.NavigationWindow.SandboxExternalContentProperty
@@ -1547,12 +1547,12 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Identifies the <xref:System.Windows.Navigation.NavigationWindow.SandboxExternalContent*> dependency property."
+  summary: "Identifiserer den <xref:System.Windows.Navigation.NavigationWindow.SandboxExternalContent*>avhengighetsegenskapen.</xref:System.Windows.Navigation.NavigationWindow.SandboxExternalContent*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty SandboxExternalContentProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -1568,14 +1568,14 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Indicates whether the <xref:System.Windows.Controls.ContentControl.Content*> property should be persisted."
-  remarks: "This `ShouldSerialize` method is provided because the <xref:System.Windows.Controls.ContentControl.Content%2A> property does not have a simple default value. This method indicates whether the property has changed from its default value. You typically call this method if you are either developing a designer for the <xref:System.Windows.Navigation.NavigationWindow> or developing your own control incorporating the <xref:System.Windows.Navigation.NavigationWindow>."
+  summary: "Angir om den <xref:System.Windows.Controls.ContentControl.Content*>egenskapen skal beholdes.</xref:System.Windows.Controls.ContentControl.Content*>"
+  remarks: "Dette `ShouldSerialize` metoden leveres fordi den <xref:System.Windows.Controls.ContentControl.Content%2A>egenskapen har ikke en enkel standardverdi.</xref:System.Windows.Controls.ContentControl.Content%2A> Denne metoden angir om egenskapen er endret fra standardverdien. Du vanligvis kalle denne metoden hvis du enten utvikler en utformer for <xref:System.Windows.Navigation.NavigationWindow>eller utvikler din egen kontrollere implementert <xref:System.Windows.Navigation.NavigationWindow>.</xref:System.Windows.Navigation.NavigationWindow> </xref:System.Windows.Navigation.NavigationWindow>"
   syntax:
     content: public override bool ShouldSerializeContent ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the property value has changed from its default; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis egenskapsverdien er endret fra standard. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Navigation.NavigationWindow.ShouldSerializeContent*
   exceptions: []
   platform:
@@ -1592,13 +1592,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Gets or sets a value that indicates whether a <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;></xref> shows its navigation [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)]."
-  remarks: "To aid back and forward navigation, <xref:System.Windows.Navigation.NavigationWindow> automatically displays a navigation [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)]       Navigation [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)] is displayed whether or not navigation has occurred.      <a name=&quot;dependencyPropertyInfo_NavigationWindowShowsNavigationUI&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|ShowsNavigationUI|   |Metadata properties set to `true`|None|"
+  summary: "Henter eller angir en verdi som angir om en <xref href=&quot;System.Windows.Navigation.NavigationWindow&quot;> </xref> viser navigeringen [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)]."
+  remarks: "For å hjelpe tilbake og fremover navigering <xref:System.Windows.Navigation.NavigationWindow>viser automatisk navigering [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)] navigasjon [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)] vises hvorvidt navigeringen har foretatt.</xref:System.Windows.Navigation.NavigationWindow>      <a name=&quot;dependencyPropertyInfo_NavigationWindowShowsNavigationUI&quot;></a>## Egenskapen avhengighetsinformasjon |||   |-|-|   | ID-feltet | ShowsNavigationUI |   | Metadata egenskapene til `true`| Ingen |"
   syntax:
     content: public bool ShowsNavigationUI { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the navigation [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)] is displayed; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis navigeringen [!INCLUDE[TLA2#tla_ui](~/add/includes/ajax-current-ext-md.md)] er viste; ellers, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Standard <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Navigation.NavigationWindow.ShowsNavigationUI*
   exceptions: []
   platform:
@@ -1615,12 +1615,12 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Identifies the <xref:System.Windows.Navigation.NavigationWindow.ShowsNavigationUI*> dependency property."
+  summary: "Identifiserer den <xref:System.Windows.Navigation.NavigationWindow.ShowsNavigationUI*>avhengighetsegenskapen.</xref:System.Windows.Navigation.NavigationWindow.ShowsNavigationUI*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty ShowsNavigationUIProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -1636,15 +1636,15 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Gets or sets the [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] of the current content, or the [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] of new content that is currently being navigated to."
-  remarks: "See <xref:System.Windows.Navigation.NavigationService.Source%2A?displayProperty=fullName>.      > [!NOTE] >  [!INCLUDE[TLA#tla_uri#initcap#plural](~/add/includes/tlasharptla-urisharpinitcapsharpplural-md.md)] can be either relative or absolute. For more information, see [Pack URIs in WPF](~/add/includes/ajax-current-ext-md.md).      <a name=&quot;dependencyPropertyInfo_NavigationWindowSource&quot;></a>    ## Dependency Property Information      |||   |-|-|   |Identifier field|Source|   |Metadata properties set to `true`|<xref:System.Windows.FrameworkPropertyMetadata.Journal%2A>|"
+  summary: "Henter eller angir den [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] for gjeldende innhold eller [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] på nytt innhold som for øyeblikket er navigeres til."
+  remarks: "Se <xref:System.Windows.Navigation.NavigationService.Source%2A?displayProperty=fullName>.</xref:System.Windows.Navigation.NavigationService.Source%2A?displayProperty=fullName>      > [!NOTE]  >   [!INCLUDE[TLA#tla_uri#initcap#plural](~/add/includes/tlasharptla-urisharpinitcapsharpplural-md.md)] kan være relativ eller absolutt. Hvis du vil ha mer informasjon, se [Pack URIer i WPF](~/add/includes/ajax-current-ext-md.md).      <a name=&quot;dependencyPropertyInfo_NavigationWindowSource&quot;></a>## Egenskapen avhengighetsinformasjon |||   |-|-|   | ID-feltet | Kilden |   | Metadata egenskapene til `true`|<xref:System.Windows.FrameworkPropertyMetadata.Journal%2A>|</xref:System.Windows.FrameworkPropertyMetadata.Journal%2A>"
   example:
   - "The following example shows how to navigate to a [!INCLUDE[TLA#tla_uri](~/add/includes/tlasharptla-uri-md.md)] by setting the Source property.  \n  \n [!code-cs[HOWTONavigationSnippets#NavigateToPageSrcCODE](~/add/codesnippet/csharp/HOWTONavigationSnippets/MainWindow.xaml.cs#navigatetopagesrccode)]\n [!code-vb[HOWTONavigationSnippets#NavigateToPageSrcCODE](~/add/codesnippet/visualbasic/howtonavigationsnippets/mainwindow.xaml.vb#navigatetopagesrccode)]"
   syntax:
     content: public Uri Source { get; set; }
     return:
       type: System.Uri
-      description: "The [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] for the current content, or the content that is currently being navigated to."
+      description: "Den [!INCLUDE[TLA2#tla_uri](~/add/includes/tla2sharptla-uri-md.md)] for gjeldende innhold eller innhold som for øyeblikket er navigeres til."
   overload: System.Windows.Navigation.NavigationWindow.Source*
   exceptions: []
   platform:
@@ -1661,12 +1661,12 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Identifies the <xref:System.Windows.Navigation.NavigationWindow.Source*> dependency property."
+  summary: "Identifiserer den <xref:System.Windows.Navigation.NavigationWindow.Source*>avhengighetsegenskapen.</xref:System.Windows.Navigation.NavigationWindow.Source*>"
   syntax:
     content: public static readonly System.Windows.DependencyProperty SourceProperty;
     return:
       type: System.Windows.DependencyProperty
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -1682,8 +1682,8 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Stops further downloading of content for the current navigation request."
-  remarks: "StopLoading stops the download of the requested content, and causes the <xref:System.Windows.Navigation.NavigationWindow.NavigationStopped> event to be raised.       See <xref:System.Windows.Navigation.NavigationService.StopLoading%2A?displayProperty=fullName>."
+  summary: "Hindrer videre nedlasting av innholdet for gjeldende navigeringsforespørselen."
+  remarks: "StopLoading stopper nedlasting av innholdet i forespørselen, og gjør den <xref:System.Windows.Navigation.NavigationWindow.NavigationStopped>-hendelse.</xref:System.Windows.Navigation.NavigationWindow.NavigationStopped>       Se <xref:System.Windows.Navigation.NavigationService.StopLoading%2A?displayProperty=fullName>.</xref:System.Windows.Navigation.NavigationService.StopLoading%2A?displayProperty=fullName>"
   example:
   - "The following example shows how to call the StopLoading method to stop navigation to content before it has finished being downloaded.  \n  \n [!code-cs[HOWTONavigationSnippets#NavigateStopLoadingCODE](~/add/codesnippet/csharp/HOWTONavigationSnippets/MainWindow.xaml.cs#navigatestoploadingcode)]\n [!code-vb[HOWTONavigationSnippets#NavigateStopLoadingCODE](~/add/codesnippet/visualbasic/howtonavigationsnippets/mainwindow.xaml.vb#navigatestoploadingcode)]"
   syntax:
@@ -1706,13 +1706,13 @@ items:
   assemblies:
   - PresentationFramework
   namespace: System.Windows.Navigation
-  summary: "Gets or sets the base uniform resource identifier (URI) of the current context."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Windows.Navigation.NavigationWindow> instance is cast to an <xref:System.Windows.Markup.IUriContext> interface."
+  summary: "Henter eller angir basis uniform resource identifier (URI) for den gjeldende konteksten."
+  remarks: "Dette medlemmet er implementering eksplisitt grensesnitt medlem. Den kan brukes bare når den <xref:System.Windows.Navigation.NavigationWindow>forekomsten endres til en <xref:System.Windows.Markup.IUriContext>grensesnittet.</xref:System.Windows.Markup.IUriContext> </xref:System.Windows.Navigation.NavigationWindow>"
   syntax:
     content: Uri System.Windows.Markup.IUriContext.BaseUri { get; set; }
     return:
       type: System.Uri
-      description: "The base URI of the current context."
+      description: "Basis-URIEN for gjeldende kontekst."
   overload: System.Windows.Navigation.NavigationWindow.System#Windows#Markup#IUriContext#BaseUri*
   exceptions: []
   platform:

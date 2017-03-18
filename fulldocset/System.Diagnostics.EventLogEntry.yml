@@ -25,8 +25,8 @@ items:
   nameWithType: EventLogEntry
   fullName: System.Diagnostics.EventLogEntry
   type: Class
-  summary: "Encapsulates a single record in the event log. This class cannot be inherited."
-  remarks: "You usually will not create instances of EventLogEntry directly when working with the <xref:System.Diagnostics.EventLog> class. The <xref:System.Diagnostics.EventLog.Entries%2A> member of the <xref:System.Diagnostics.EventLog> class contains a collection of EventLogEntry instances, which you iterate over when reading by using the <xref:System.Diagnostics.EventLogEntryCollection.Item%2A?displayProperty=fullName> class index member.      > [!IMPORTANT] >  This type implements the <xref:System.IDisposable> interface. When you have finished using the type, you should dispose of it either directly or indirectly. To dispose of the type directly, call its <xref:System.IDisposable.Dispose%2A> method in a `try`/`catch` block. To dispose of it indirectly, use a language construct such as `using` (in C#) or `Using` (in Visual Basic). For more information, see the “Using an Object that Implements IDisposable” section in the <xref:System.IDisposable> interface topic."
+  summary: "Innkapsler én post i hendelsesloggen. Denne klassen kan ikke arves."
+  remarks: "Vanligvis opprettes forekomster av EventLogEntry direkte når du arbeider med <xref:System.Diagnostics.EventLog>klasse.</xref:System.Diagnostics.EventLog> Den <xref:System.Diagnostics.EventLog.Entries%2A>medlem av den <xref:System.Diagnostics.EventLog>klassen inneholder en samling av EventLogEntry-forekomster som du gå over under lesing av ved hjelp av den <xref:System.Diagnostics.EventLogEntryCollection.Item%2A?displayProperty=fullName>klassen indeksen medlem.</xref:System.Diagnostics.EventLogEntryCollection.Item%2A?displayProperty=fullName> </xref:System.Diagnostics.EventLog> </xref:System.Diagnostics.EventLog.Entries%2A>      > [!IMPORTANT] > Denne typen implementerer den <xref:System.IDisposable>grensesnittet.</xref:System.IDisposable> Når du er ferdig ved hjelp av typen, må du fjerne den direkte eller indirekte. Hvis du vil fjerne av typen direkte, kan du kalle den <xref:System.IDisposable.Dispose%2A>metoden i en `try` / `catch` block.</xref:System.IDisposable.Dispose%2A> Hvis du vil fjerne den indirekte, bruke et språk som `using` (i C#) eller `Using` (i Visual Basic). For mer informasjon, se &quot;Ved hjelp av et objekt som implementerer IDisposable&quot; i den <xref:System.IDisposable>grensesnittet emnet.</xref:System.IDisposable>"
   example:
   - "The following code example demonstrates the use of the EventLogEntry class. In this example, a `switch` statement uses console input to search for event log entries for the specified event type.  If a match is found, log entry source information is displayed at the console.  \n  \n [!code-cpp[EventLogEntry_Source#1](~/add/codesnippet/cpp/t-system.diagnostics.eve_4_1.cpp)]\n [!code-cs[EventLogEntry_Source#1](~/add/codesnippet/csharp/t-system.diagnostics.eve_4_1.cs)]\n [!code-vb[EventLogEntry_Source#1](~/add/codesnippet/visualbasic/t-system.diagnostics.eve_4_1.vb)]"
   syntax:
@@ -71,18 +71,18 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Gets the text associated with the <xref:System.Diagnostics.EventLogEntry.CategoryNumber*> property for this entry."
-  remarks: "Each application (event source) can define its own numbered categories and the text strings to which they are mapped. The Event Viewer can use the category to filter events in the log."
+  summary: "Henter tekst som er tilknyttet den <xref:System.Diagnostics.EventLogEntry.CategoryNumber*>egenskapen for denne oppføring.</xref:System.Diagnostics.EventLogEntry.CategoryNumber*>"
+  remarks: "Hvert program (hendelseskilden) kan definere sitt eget nummererte kategorier og tekststrenger som de er tilordnet. Event Viewer kan bruke kategori for å filtrere hendelser i loggen."
   syntax:
     content: public string Category { get; }
     return:
       type: System.String
-      description: "The application-specific category text."
+      description: "Programspesifikt kategoriteksten."
   overload: System.Diagnostics.EventLogEntry.Category*
   exceptions:
   - type: System.Exception
     commentId: T:System.Exception
-    description: "The space could not be allocated for one of the insertion strings associated with the category."
+    description: "Kan ikke tildele plassen for en innsettingsstrenger som er knyttet til kategorien."
   platform:
   - net462
 - uid: System.Diagnostics.EventLogEntry.CategoryNumber
@@ -97,13 +97,13 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Gets the category number of the event log entry."
-  remarks: "Each application (event source) can define its own numbered categories and the text strings to which they are mapped. The Event Viewer can use the category to filter events in the log. The categories must be numbered consecutively beginning with the number 1. The category number is specified by the <xref:System.Diagnostics.EventInstance.CategoryId%2A?displayProperty=fullName> property. The Event Viewer can display the category as a numeric value, or it can use the category as a resource identifier to display a localized category string. For more information, see <xref:System.Diagnostics.EventInstance>."
+  summary: "Henter kategori antall oppføring i hendelsesloggen."
+  remarks: "Hvert program (hendelseskilden) kan definere sitt eget nummererte kategorier og tekststrenger som de er tilordnet. Event Viewer kan bruke kategori for å filtrere hendelser i loggen. Kategoriene må være nummererte pålogging som begynner med nummer 1. Hvor kategori er angitt i den <xref:System.Diagnostics.EventInstance.CategoryId%2A?displayProperty=fullName>egenskapen.</xref:System.Diagnostics.EventInstance.CategoryId%2A?displayProperty=fullName> Event Viewer kan vise kategorien som en tallverdi, eller den kan bruke kategorien som en ressurs-ID til å vise en lokaliserte strengen. Hvis du vil ha mer informasjon, kan du se <xref:System.Diagnostics.EventInstance>.</xref:System.Diagnostics.EventInstance>"
   syntax:
     content: public short CategoryNumber { get; }
     return:
       type: System.Int16
-      description: "The application-specific category number for this entry."
+      description: "Hvor programspesifikk kategorien for denne oppføring."
   overload: System.Diagnostics.EventLogEntry.CategoryNumber*
   exceptions: []
   platform:
@@ -120,13 +120,13 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Gets the binary data associated with the entry."
-  remarks: "Getting this property creates an array that holds a copy of the entry&quot;s event-specific binary data, which the Event Viewer displays in combined hexadecimal and text format. Event-specific data is sometimes used to store information that the application will process independently of the Event Viewer, for example, to make reports from the log file."
+  summary: "Henter de binære dataene som er knyttet til posten."
+  remarks: "Henting av denne egenskapen oppretter en matrise som inneholder en kopi av oppføringens hendelsen-spesifikke binære data som viser Event Viewer i kombinert heksadesimal og tekst. Data som er spesifikke hendelsen brukes til å lagre informasjon som programmet skal behandle uavhengig av hendelseslisten, for eksempel, foreta rapporter i loggfilen."
   syntax:
     content: public byte[] Data { get; }
     return:
       type: System.Byte[]
-      description: "An array of bytes that holds the binary data associated with the entry."
+      description: "En bytematrise som inneholder de binære dataene som er knyttet til posten."
   overload: System.Diagnostics.EventLogEntry.Data*
   exceptions: []
   platform:
@@ -143,15 +143,15 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Gets the event type of this entry."
-  remarks: "All event types have well-defined common data and can optionally include event-specific data. Each event is of a single type, which the application indicates when it reports the event. The Event Viewer uses the event type to determine which icon to display in the list view of the event log."
+  summary: "Henter hendelsestypen for denne oppføring."
+  remarks: "Alle hendelsestypene har godt definert felles data og kan inkludere data som er spesifikke for hendelsen. Hver hendelsen er en enkel type programmet angir når den registrerer hendelsen. Event Viewer bruker hendelsestypen for å avgjøre hvilke ikon som skal vises i listevisning i hendelsesloggen."
   example:
   - "The following code example demonstrates the use of the EntryType property. In this example, a `switch` statement uses console input to search for event log entries for the specified EntryType.  If a match is found, log entry source information is displayed at the console.  \n  \n [!code-cpp[EventLogEntry_Source#1](~/add/codesnippet/cpp/p-system.diagnostics.eve_4_1.cpp)]\n [!code-cs[EventLogEntry_Source#1](~/add/codesnippet/csharp/p-system.diagnostics.eve_4_1.cs)]\n [!code-vb[EventLogEntry_Source#1](~/add/codesnippet/visualbasic/p-system.diagnostics.eve_4_1.vb)]"
   syntax:
     content: public System.Diagnostics.EventLogEntryType EntryType { get; }
     return:
       type: System.Diagnostics.EventLogEntryType
-      description: "The event type that is associated with the entry in the event log."
+      description: "Hendelsestypen som er forbundet med oppføring i hendelsesloggen."
   overload: System.Diagnostics.EventLogEntry.EntryType*
   exceptions: []
   platform:
@@ -168,17 +168,17 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Performs a comparison between two event log entries."
-  remarks: "This method performs a byte-by-byte comparison between the two objects. It does not determine whether the two <xref:System.Diagnostics.EventLogEntry> instances refer to the same object."
+  summary: "Utfører en sammenligning mellom to oppføringer i hendelsesloggen."
+  remarks: "Denne metoden utfører en byte for byte sammenligningen mellom de to objektene. Bestemmer ikke om to <xref:System.Diagnostics.EventLogEntry>forekomster referere til samme objekt.</xref:System.Diagnostics.EventLogEntry>"
   syntax:
     content: public bool Equals (System.Diagnostics.EventLogEntry otherEntry);
     parameters:
     - id: otherEntry
       type: System.Diagnostics.EventLogEntry
-      description: "The <xref href=&quot;System.Diagnostics.EventLogEntry&quot;></xref> to compare."
+      description: "Den <xref href=&quot;System.Diagnostics.EventLogEntry&quot;> </xref> skal sammenlignes."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref href=&quot;System.Diagnostics.EventLogEntry&quot;></xref> objects are identical; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis den <xref href=&quot;System.Diagnostics.EventLogEntry&quot;> </xref> objekter er like, ellers, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Diagnostics.EventLogEntry.Equals*
   exceptions: []
   platform:
@@ -195,13 +195,13 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Gets the application-specific event identifier for the current event entry."
-  remarks: "This value represents the event identifier for the entry in the event log, with the top two bits masked off. The <xref:System.Diagnostics.EventLogEntry.InstanceId%2A> property for an event log entry represents the full 32-bit resource identifier for the event in the message resource file for the event source. Two event log entries from the same source can have matching EventID values, but have different <xref:System.Diagnostics.EventLogEntry.InstanceId%2A> values due to differences in the top two bits of the event identifier.       If the application wrote the event entry using one of the <xref:System.Diagnostics.EventLog.WriteEntry%2A> methods, the EventID property matches the optional `eventId` parameter. If the application wrote the event using <xref:System.Diagnostics.EventLog.WriteEvent%2A> or the Win32 API `ReportEvent`, the EventID property matches the resource identifier for the event, with the top two bits masked off."
+  summary: "Henter programspesifikk hendelses-IDen for den gjeldende hendelsen."
+  remarks: "Denne verdien representerer hendelses-IDen for oppføring i hendelsesloggen loggen med øverste to biter maskert av. Den <xref:System.Diagnostics.EventLogEntry.InstanceId%2A>-egenskapen for en oppføring i hendelsesloggen representerer fullstendig 32-biters ressurs-IDen for hendelsen i ressursen meldingsfilen for hendelseskilden.</xref:System.Diagnostics.EventLogEntry.InstanceId%2A> To oppføringer i hendelsesloggen fra samme kilde kan har samsvarende EventID verdier, men forskjellige <xref:System.Diagnostics.EventLogEntry.InstanceId%2A>verdier på grunn av forskjeller i de øverste to bitene i hendelses-IDen.</xref:System.Diagnostics.EventLogEntry.InstanceId%2A>       Hvis programmet skrevet hendelsen posten for den <xref:System.Diagnostics.EventLog.WriteEntry%2A>metoder, egenskapen EventID samsvarer med den valgfrie `eventId` parameteren.</xref:System.Diagnostics.EventLog.WriteEntry%2A> Hvis programmet skrevet hendelsen ved hjelp av <xref:System.Diagnostics.EventLog.WriteEvent%2A>eller Win32 API `ReportEvent`egenskapen EventID samsvarer med ressurs-IDen for hendelsen, med toppen to bits maskerte av.</xref:System.Diagnostics.EventLog.WriteEvent%2A>"
   syntax:
     content: public int EventID { get; }
     return:
       type: System.Int32
-      description: "The application-specific identifier for the event message."
+      description: "Programspesifikt identifikatoren for hendelsesmeldingen."
   overload: System.Diagnostics.EventLogEntry.EventID*
   exceptions: []
   platform:
@@ -218,13 +218,13 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Gets the index of this entry in the event log."
-  remarks: "This number is not necessarily zero-based."
+  summary: "Henter indeksen for denne oppføring i hendelsesloggen."
+  remarks: "Dette nummeret er ikke nødvendigvis nullbasert."
   syntax:
     content: public int Index { get; }
     return:
       type: System.Int32
-      description: "The index of this entry in the event log."
+      description: "Indeksen for denne oppføring i hendelsesloggen."
   overload: System.Diagnostics.EventLogEntry.Index*
   exceptions: []
   platform:
@@ -241,15 +241,15 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Gets the resource identifier that designates the message text of the event entry."
-  remarks: "The InstanceId property uniquely identifies an event entry for a configured event source. The InstanceId for an event log entry represents the full 32-bit resource identifier for the event in the message resource file for the event source. The <xref:System.Diagnostics.EventLogEntry.EventID%2A> property equals the InstanceId with the top two bits masked off. Two event log entries from the same source can have matching <xref:System.Diagnostics.EventLogEntry.EventID%2A> values, but have different InstanceId values due to differences in the top two bits of the resource identifier.       If the application wrote the event entry using one of the <xref:System.Diagnostics.EventLog.WriteEntry%2A> methods, the InstanceId property matches the optional `eventId` parameter. If the application wrote the event using <xref:System.Diagnostics.EventLog.WriteEvent%2A>, the InstanceId property matches the resource identifier specified in the <xref:System.Diagnostics.EventInstance.InstanceId%2A> of the `instance` parameter. If the application wrote the event using the Win32 API `ReportEvent`, the InstanceId property matches the resource identifier specified in the `dwEventID` parameter.       For details about defining event messages and building event log resource files, see the &quot;Message Compiler&quot; topic in the Platform SDK documentation at [http://msdn.microsoft.com](http://msdn.microsoft.com/). For details about event log identifiers, see the &quot;Event Identifiers&quot; topic in the Platform SDK."
+  summary: "Henter ressurs-IDen som angir teksten for hendelsen."
+  remarks: "Egenskapen InstanceId identifiserer en hendelse oppføring for en konfigurert hendelse-datakilde. InstanceId for en oppføring i hendelsesloggen representerer fullstendig 32-biters ressurs-IDen for hendelsen i ressursen meldingsfilen for hendelseskilden. <xref:System.Diagnostics.EventLogEntry.EventID%2A>Egenskapen er lik InstanceId med øverste to biter maskert av.</xref:System.Diagnostics.EventLogEntry.EventID%2A> To oppføringer i hendelsesloggen fra samme kilde kan ha samsvarende <xref:System.Diagnostics.EventLogEntry.EventID%2A>verdier, men har forskjellige verdier for InstanceId på grunn av forskjeller i de øverste to bitene med ressurs-IDen.</xref:System.Diagnostics.EventLogEntry.EventID%2A>       Hvis programmet skrevet hendelsen posten for den <xref:System.Diagnostics.EventLog.WriteEntry%2A>metoder, egenskapen InstanceId samsvarer med den valgfrie `eventId` parameteren.</xref:System.Diagnostics.EventLog.WriteEntry%2A> Hvis programmet skrevet hendelse ved hjelp av <xref:System.Diagnostics.EventLog.WriteEvent%2A>, egenskapen InstanceId samsvarer med ressurs-IDen som er angitt i den <xref:System.Diagnostics.EventInstance.InstanceId%2A>av den `instance` parameteren.</xref:System.Diagnostics.EventInstance.InstanceId%2A> </xref:System.Diagnostics.EventLog.WriteEvent%2A> Hvis programmet skrevet hendelsen ved hjelp av Win32 API `ReportEvent`, egenskapen InstanceId samsvarer med ressurs-IDen som er angitt i den `dwEventID` parameteren.       For informasjon om definerer hendelsesmeldinger og bygge hendelsesloggen ressursfiler, se emnet &quot;Meldingen kompilatoren&quot; i Platform SDK-dokumentasjonen på [http://msdn.microsoft.com](http://msdn.microsoft.com/). For mer informasjon om hendelsesloggen identifikatorer, kan du se emnet &quot;Hendelse identifikatorer&quot; i SDK."
   example:
   - "The following code example searches an event log for entries with a particular resource identifier. The code example displays the event message for each matching entry, and counts the total number of matching entries in the log. The message text for each entry may or may not be the same; each event message depends on the event source message file, insertion strings, and parameters used when it was written.  \n  \n [!code-cpp[EventLog_WriteEvent#10](~/add/codesnippet/cpp/p-system.diagnostics.eve_20_1.cpp)]\n [!code-vb[EventLog_WriteEvent#10](~/add/codesnippet/visualbasic/p-system.diagnostics.eve_20_1.vb)]\n [!code-cs[EventLog_WriteEvent#10](~/add/codesnippet/csharp/p-system.diagnostics.eve_20_1.cs)]"
   syntax:
     content: public long InstanceId { get; }
     return:
       type: System.Int64
-      description: "A resource identifier that corresponds to a string definition in the message resource file of the event source."
+      description: "En ressurs-ID som svarer til en strengdefinisjon i ressursen meldingsfilen for hendelseskilden."
   overload: System.Diagnostics.EventLogEntry.InstanceId*
   exceptions: []
   platform:
@@ -266,12 +266,12 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Gets the name of the computer on which this entry was generated."
+  summary: "Henter navnet på datamaskinen der denne oppføring ble generert."
   syntax:
     content: public string MachineName { get; }
     return:
       type: System.String
-      description: "The name of the computer that contains the event log."
+      description: "Navnet på datamaskinen som inneholder hendelsesloggen."
   overload: System.Diagnostics.EventLogEntry.MachineName*
   exceptions: []
   platform:
@@ -288,18 +288,18 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Gets the localized message associated with this event entry."
-  remarks: "Getting this property opens the registry to determine the file name of the .dll file that contains the localized text. If you receive a registry error when testing your source code, verify that the .dll file exists on the computer. If insertion strings are included in the message, catch errors in their allocation."
+  summary: "Henter lokalisert meldingen som er forbundet med denne oppføring i hendelsen."
+  remarks: "Henting av denne egenskapen åpner registret for å fastslå navnet på DLL-fil som inneholder den oversatte teksten. Hvis du får en registret når testing kildekoden, må du kontrollere at DLL-filen finnes på datamaskinen. Hvis innsettingsstrenger er inkludert i meldingen, faktisk feil i sine tildeling."
   syntax:
     content: public string Message { get; }
     return:
       type: System.String
-      description: "The formatted, localized text for the message. This includes associated replacement strings."
+      description: "Formatert, oversatte teksten for meldingen. Dette omfatter tilknyttede erstatning strenger."
   overload: System.Diagnostics.EventLogEntry.Message*
   exceptions:
   - type: System.Exception
     commentId: T:System.Exception
-    description: "The space could not be allocated for one of the insertion strings associated with the message."
+    description: "Kan ikke tildele plassen for en innsettingsstrenger som er knyttet til meldingen."
   platform:
   - net462
 - uid: System.Diagnostics.EventLogEntry.ReplacementStrings
@@ -314,13 +314,13 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Gets the replacement strings associated with the event log entry."
-  remarks: "This property retrieves only the replacement strings for the entry. To retrieve the full message, read the <xref:System.Diagnostics.EventLogEntry.Message%2A> property.       The ReplacementStrings property contains the localized versions of replacement strings that are used in the event log entry. If you provide resource files that contain strings in each target language for your application, you can emit event log messages in the language that is used on that computer. To do that, create an instance of the <xref:System.Resources.ResourceManager> class for the resource assembly that contains your replacement strings. The first parameter of the <xref:System.Resources.ResourceManager.%23ctor%28System.String%2CSystem.Reflection.Assembly%29> constructor identifies the resource assembly to be used. Use the <xref:System.Resources.ResourceManager.GetString%2A> method of that instance to supply localized messages for log events. The following code automatically sets the message to the language for the current culture.      ```   ResourceManager LocRM = new ResourceManager(&quot;ReplacementStrings.TestStrings&quot;,          typeof(Program).Assembly);   EventLog e1 = new EventLog(&quot;LocTest&quot;, &quot;MyMachine&quot;, &quot;LocTest&quot;);   // Get the string associated with the current culture.   e1.WriteEntry(LocRM.GetString(&quot;strMessage&quot;),      EventLogEntryType.Information);   ```"
+  summary: "Henter erstatning strenger som er knyttet til oppføring i hendelsesloggen."
+  remarks: "Denne egenskapen henter bare erstatning strenger for oppføringen. Hvis du vil hente hele meldingen, kan du lese den <xref:System.Diagnostics.EventLogEntry.Message%2A>egenskapen.</xref:System.Diagnostics.EventLogEntry.Message%2A>       Egenskapen ReplacementStrings inneholder de lokaliserte versjonene av erstatning strenger som brukes i oppføring i hendelsesloggen. Hvis du angir ressursfiler som inneholder strenger i hvert mål språk for programmet, kan du sende hendelsesloggmeldinger i språket som skal brukes på datamaskinen. Hvis du vil gjøre dette, kan du opprette en forekomst av den <xref:System.Resources.ResourceManager>klasse for ressursen samlingen som inneholder erstatningsdimensjonen-strenger.</xref:System.Resources.ResourceManager> Den første parameteren for den <xref:System.Resources.ResourceManager.%23ctor%28System.String%2CSystem.Reflection.Assembly%29>konstruktøren identifiserer samlingen ressursen som skal brukes.</xref:System.Resources.ResourceManager.%23ctor%28System.String%2CSystem.Reflection.Assembly%29> Bruk av <xref:System.Resources.ResourceManager.GetString%2A>-metoden for den forekomsten til å angi oversatte meldinger for logghendelser.</xref:System.Resources.ResourceManager.GetString%2A> Følgende kode angis automatisk meldingen til språket for gjeldende kultur.      ```   ResourceManager LocRM = new ResourceManager(&quot;ReplacementStrings.TestStrings&quot;,          typeof(Program).Assembly);   EventLog e1 = new EventLog(&quot;LocTest&quot;, &quot;MyMachine&quot;, &quot;LocTest&quot;);   // Get the string associated with the current culture.   e1.WriteEntry(LocRM.GetString(&quot;strMessage&quot;),      EventLogEntryType.Information);   ```"
   syntax:
     content: public string[] ReplacementStrings { get; }
     return:
       type: System.String[]
-      description: "An array that holds the replacement strings stored in the event entry."
+      description: "En matrise som inneholder erstatning strengene lagres i oppføringen."
   overload: System.Diagnostics.EventLogEntry.ReplacementStrings*
   exceptions: []
   platform:
@@ -337,15 +337,15 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Gets the name of the application that generated this event."
-  remarks: "The event source indicates what logged the event. It is often the name of the application or the name of a subcomponent of the application if the application is large. Applications and services usually write to (and therefore are sources for) the Application log or a custom log. Device drivers usually write to the System log."
+  summary: "Henter navnet på programmet som genererte denne hendelsen."
+  remarks: "Hendelseskilden angir hva logget hendelsen. Det er ofte navnet på programmet eller navnet på underkomponenten for applikasjonen hvis programmet er stor. Programmer og tjenester vanligvis skrive til (og er derfor datakilder for) programloggen eller en egendefinert logg. Enhetsdrivere skrive vanligvis til systemloggen."
   example:
   - "The following code example demonstrates the use of the Source property. In this example, a `switch` statement uses console input to search for event log entries for the specified <xref:System.Diagnostics.EventLogEntry.EntryType%2A>.  If a match is found, the Source property information is displayed at the console.  \n  \n [!code-cpp[EventLogEntry_Source#1](~/add/codesnippet/cpp/p-system.diagnostics.eve_27_1.cpp)]\n [!code-cs[EventLogEntry_Source#1](~/add/codesnippet/csharp/p-system.diagnostics.eve_27_1.cs)]\n [!code-vb[EventLogEntry_Source#1](~/add/codesnippet/visualbasic/p-system.diagnostics.eve_27_1.vb)]"
   syntax:
     content: public string Source { get; }
     return:
       type: System.String
-      description: "The name registered with the event log as the source of this event."
+      description: "Navnet som er registrert i hendelsesloggen som kilde til denne hendelsen."
   overload: System.Diagnostics.EventLogEntry.Source*
   exceptions: []
   platform:
@@ -363,16 +363,16 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Populates a <xref href=&quot;System.Runtime.Serialization.SerializationInfo&quot;></xref> with the data needed to serialize the target object."
+  summary: "Fyller ut en <xref href=&quot;System.Runtime.Serialization.SerializationInfo&quot;> </xref> med data som kreves for å serialisere målobjektet."
   syntax:
     content: void ISerializable.GetObjectData (System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
     parameters:
     - id: info
       type: System.Runtime.Serialization.SerializationInfo
-      description: "The <xref href=&quot;System.Runtime.Serialization.SerializationInfo&quot;></xref> to populate with data."
+      description: "Den <xref href=&quot;System.Runtime.Serialization.SerializationInfo&quot;> </xref> til å fylle ut med data."
     - id: context
       type: System.Runtime.Serialization.StreamingContext
-      description: "The destination (see <xref:System.Runtime.Serialization.StreamingContext>) for this serialization."
+      description: "Målet (se <xref:System.Runtime.Serialization.StreamingContext>) for denne serialisering.</xref:System.Runtime.Serialization.StreamingContext>"
   overload: System.Diagnostics.EventLogEntry.System#Runtime#Serialization#ISerializable#GetObjectData*
   exceptions: []
   platform:
@@ -389,13 +389,13 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Gets the local time at which this event was generated."
-  remarks: "This member holds the time that an event was generated. This might not be the same as the time when the event information was written to the event log. For the latter, read the <xref:System.Diagnostics.EventLogEntry.TimeWritten%2A> property.       There is usually a lag between the time that an event is generated and the time it is logged. It is more important to know when the event was generated, unless you want to see if there is a significant lag in logging. That can happen if your log files are on a different server and you are experiencing a bottleneck."
+  summary: "Henter den lokale tidssonen som denne hendelsen ble generert."
+  remarks: "Dette medlemmet inneholder tidspunktet når en hendelse ble generert. Dette kan ikke være den samme som tidspunktet når informasjonen om hendelsen ble skrevet til hendelsesloggen. For den siste lese den <xref:System.Diagnostics.EventLogEntry.TimeWritten%2A>egenskapen.</xref:System.Diagnostics.EventLogEntry.TimeWritten%2A>       Det er vanligvis en forsinkelse mellom tidspunktet når en hendelse genereres og tiden det logges. Det er flere viktig å vite når hendelsen ble generert, med mindre du vil se om det er en betydelig forsinkelse i logging. Som kan skje hvis loggfilene er på en annen server, og du har en flaskehalser."
   syntax:
     content: public DateTime TimeGenerated { get; }
     return:
       type: System.DateTime
-      description: "The local time at which this event was generated."
+      description: "Lokal tid som denne hendelsen ble generert."
   overload: System.Diagnostics.EventLogEntry.TimeGenerated*
   exceptions: []
   platform:
@@ -412,13 +412,13 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Gets the local time at which this event was written to the log."
-  remarks: "This member holds the time that an event&quot;s information is written to the event log. This might not be the same time as when the event was generated. For the latter, read the <xref:System.Diagnostics.EventLogEntry.TimeGenerated%2A> property."
+  summary: "Henter den lokale tidssonen som denne hendelsen ble skrevet til loggen."
+  remarks: "Dette medlemmet inneholder klokkeslettet informasjonen for en hendelse skrives til hendelsesloggen. Det kan ikke være samtidig som da hendelsen ble generert. For den siste lese den <xref:System.Diagnostics.EventLogEntry.TimeGenerated%2A>egenskapen.</xref:System.Diagnostics.EventLogEntry.TimeGenerated%2A>"
   syntax:
     content: public DateTime TimeWritten { get; }
     return:
       type: System.DateTime
-      description: "The local time at which this event was written to the log."
+      description: "Lokal tid som denne hendelsen ble skrevet til loggen."
   overload: System.Diagnostics.EventLogEntry.TimeWritten*
   exceptions: []
   platform:
@@ -435,18 +435,18 @@ items:
   assemblies:
   - System
   namespace: System.Diagnostics
-  summary: "Gets the name of the user who is responsible for this event."
-  remarks: "This property is often blank for events in logs other than the Security log."
+  summary: "Henter navnet på brukeren som er ansvarlig for denne hendelsen."
+  remarks: "Denne egenskapen er ofte tom for hendelser i loggene enn sikkerhetsloggen."
   syntax:
     content: public string UserName { get; }
     return:
       type: System.String
-      description: "The security identifier (SID) that uniquely identifies a user or group."
+      description: "Sikkerhetsidentifikatoren (SID) som identifiserer en bruker eller gruppe."
   overload: System.Diagnostics.EventLogEntry.UserName*
   exceptions:
   - type: System.SystemException
     commentId: T:System.SystemException
-    description: "Account information could not be obtained for the user&quot;s SID."
+    description: "Kan ikke hente kontoinformasjon for brukernes SID."
   platform:
   - net462
 references:

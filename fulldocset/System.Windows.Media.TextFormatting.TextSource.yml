@@ -14,8 +14,8 @@ items:
   nameWithType: TextSource
   fullName: System.Windows.Media.TextFormatting.TextSource
   type: Class
-  summary: "Provides an abstract class for specifying character data and formatting properties to be used by the <xref href=&quot;System.Windows.Media.TextFormatting.TextFormatter&quot;></xref> object."
-  remarks: "All access to the text in the TextSource object is through the <xref:System.Windows.Media.TextFormatting.TextSource.GetTextRun%2A>, which is designed to allow the text layout client to virtualize text in any way it chooses.       <xref:System.Windows.Media.TextFormatting.TextFormatter> is the [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] text engine that provides services for formatting text and breaking text lines. <xref:System.Windows.Media.TextFormatting.TextFormatter> can handle different text character formats and paragraph styles, and includes support for international text layout. Unlike a traditional text [!INCLUDE[TLA#tla_api](~/add/includes/tlasharptla-api-md.md)], the <xref:System.Windows.Media.TextFormatting.TextFormatter> interacts with a text layout client through a set of callback methods. It requires the client to provide these methods in an implementation of the TextSource class. The following list describes the three members you must override:      -   <xref:System.Windows.Media.TextFormatting.TextSource.GetTextRun%2A>: Retrieves a <xref:System.Windows.Media.TextFormatting.TextRun> starting at a specified TextSource position.      -   <xref:System.Windows.Media.TextFormatting.TextSource.GetPrecedingText%2A>: Retrieves the text span immediately before the specified TextSource position.      -   <xref:System.Windows.Media.TextFormatting.TextSource.GetTextEffectCharacterIndexFromTextSourceCharacterIndex%2A>: Retrieves a value that maps a TextSource character index to a <xref:System.Windows.Media.TextEffect> character index.      > [!NOTE] >  For a complete code sample that shows how to implement a derived TextSource class, see [Advanced Text Formatting Sample](http://go.microsoft.com/fwlink/?LinkID=159965) ."
+  summary: "Inneholder en abstrakt klasse for å angi tegndata og formatering egenskapene som skal brukes av den <xref href=&quot;System.Windows.Media.TextFormatting.TextFormatter&quot;> </xref> objektet."
+  remarks: "All tilgang til tekst i TextSource-objektet er i <xref:System.Windows.Media.TextFormatting.TextSource.GetTextRun%2A>, som er utformet for at teksten oppsettet klienten &quot;visualisere&quot; tekst slik den velger.</xref:System.Windows.Media.TextFormatting.TextSource.GetTextRun%2A>       <xref:System.Windows.Media.TextFormatting.TextFormatter>er det [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] motor som gir tjenester for tekstformatering og dele tekstlinjer.</xref:System.Windows.Media.TextFormatting.TextFormatter> <xref:System.Windows.Media.TextFormatting.TextFormatter>kan håndtere forskjellige tekstformater for tegn og avsnittsstiler, og inkluderer støtte for internasjonale tekstoppsettet.</xref:System.Windows.Media.TextFormatting.TextFormatter> I motsetning til en tradisjonell tekst [!INCLUDE[TLA#tla_api](~/add/includes/tlasharptla-api-md.md)], <xref:System.Windows.Media.TextFormatting.TextFormatter>samhandler med en tekst oppsettet klient gjennom et sett med tilbakeringing-metoder.</xref:System.Windows.Media.TextFormatting.TextFormatter> Den krever klienten å oppgi disse metodene i implementering av TextSource-klassen. Listen nedenfor beskriver tre medlemmer må du overstyre:- <xref:System.Windows.Media.TextFormatting.TextSource.GetTextRun%2A>: henter en <xref:System.Windows.Media.TextFormatting.TextRun>med Start fra den angitte posisjonen for TextSource.</xref:System.Windows.Media.TextFormatting.TextRun> </xref:System.Windows.Media.TextFormatting.TextSource.GetTextRun%2A>      - <xref:System.Windows.Media.TextFormatting.TextSource.GetPrecedingText%2A>: Henter tekst område umiddelbart før den angitte posisjonen for TextSource.</xref:System.Windows.Media.TextFormatting.TextSource.GetPrecedingText%2A>      - <xref:System.Windows.Media.TextFormatting.TextSource.GetTextEffectCharacterIndexFromTextSourceCharacterIndex%2A>: Henter en verdi som tilordner en TextSource tegn indeks til en <xref:System.Windows.Media.TextEffect>tegnindeksen.</xref:System.Windows.Media.TextEffect> </xref:System.Windows.Media.TextFormatting.TextSource.GetTextEffectCharacterIndexFromTextSourceCharacterIndex%2A>      > [!NOTE] > For en fullstendig kodeeksempel som viser hvordan du kan implementere avledede TextSource klassens, kan du se [Avansert tekst formatering utvalg](http://go.microsoft.com/fwlink/?LinkID=159965) ."
   syntax:
     content: public abstract class TextSource
   inheritance:
@@ -36,7 +36,7 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.TextFormatting
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Media.TextFormatting.TextSource&quot;></xref> class."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Windows.Media.TextFormatting.TextSource&quot;> </xref> klasse."
   syntax:
     content: protected TextSource ();
     parameters: []
@@ -56,17 +56,17 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.TextFormatting
-  summary: "Retrieves the text span immediately before the specified <xref href=&quot;System.Windows.Media.TextFormatting.TextSource&quot;></xref> position."
-  remarks: "The GetPrecedingText method returns an empty <xref:System.Windows.Media.TextFormatting.CultureSpecificCharacterBufferRange> if the text span immediately before `textSourceCharacterIndexLimit` does not contain any text, such as inline object or a hidden run.       This method returns a zero-length text span if there are no values preceding `textSourceCharacterIndexLimit`."
+  summary: "Henter tekst område umiddelbart før det angitte <xref href=&quot;System.Windows.Media.TextFormatting.TextSource&quot;> </xref> posisjon."
+  remarks: "GetPrecedingText returneres en tom <xref:System.Windows.Media.TextFormatting.CultureSpecificCharacterBufferRange>Hvis teksten strekker seg over umiddelbart før `textSourceCharacterIndexLimit` ikke inneholder tekst, for eksempel linjebundet objekt eller en skjult Kjør.</xref:System.Windows.Media.TextFormatting.CultureSpecificCharacterBufferRange>       Denne metoden returnerer en tom tekst-område hvis det finnes ingen verdier som kommer foran `textSourceCharacterIndexLimit`."
   syntax:
     content: public abstract System.Windows.Media.TextFormatting.TextSpan<System.Windows.Media.TextFormatting.CultureSpecificCharacterBufferRange> GetPrecedingText (int textSourceCharacterIndexLimit);
     parameters:
     - id: textSourceCharacterIndexLimit
       type: System.Int32
-      description: "An <xref:System.Int32> value that specifies the character index position where text retrieval stops."
+      description: "En <xref:System.Int32>verdi som angir indeksen tegnposisjonen der teksten henting slutter.</xref:System.Int32>"
     return:
       type: System.Windows.Media.TextFormatting.TextSpan{System.Windows.Media.TextFormatting.CultureSpecificCharacterBufferRange}
-      description: "A <xref href=&quot;System.Windows.Media.TextFormatting.CultureSpecificCharacterBufferRange&quot;></xref> value that represents the text span immediately before <code>textSourceCharacterIndexLimit</code>."
+      description: "En <xref href=&quot;System.Windows.Media.TextFormatting.CultureSpecificCharacterBufferRange&quot;> </xref> verdi som angir at teksten umiddelbart før <code> textSourceCharacterIndexLimit </code>."
   overload: System.Windows.Media.TextFormatting.TextSource.GetPrecedingText*
   exceptions: []
   platform:
@@ -83,16 +83,16 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.TextFormatting
-  summary: "Retrieves a value that maps a <xref href=&quot;System.Windows.Media.TextFormatting.TextSource&quot;></xref> character index to a <xref href=&quot;System.Windows.Media.TextEffect&quot;></xref> character index."
+  summary: "Henter en verdi som tilordner en <xref href=&quot;System.Windows.Media.TextFormatting.TextSource&quot;> </xref> tegn indeks til en <xref href=&quot;System.Windows.Media.TextEffect&quot;> </xref> tegnindeksen."
   syntax:
     content: public abstract int GetTextEffectCharacterIndexFromTextSourceCharacterIndex (int textSourceCharacterIndex);
     parameters:
     - id: textSourceCharacterIndex
       type: System.Int32
-      description: "An <xref:System.Int32> value that specifies the <xref href=&quot;System.Windows.Media.TextFormatting.TextSource&quot;></xref> character index to map."
+      description: "En <xref:System.Int32>verdi som angir den <xref href=&quot;System.Windows.Media.TextFormatting.TextSource&quot;> </xref> tegn indeks ikke tilordne.</xref:System.Int32>"
     return:
       type: System.Int32
-      description: "An <xref:System.Int32> value that represents the <xref href=&quot;System.Windows.Media.TextEffect&quot;></xref> character index."
+      description: "En <xref:System.Int32>verdi som representerer den <xref href=&quot;System.Windows.Media.TextEffect&quot;> </xref> tegnindeksen.</xref:System.Int32>"
   overload: System.Windows.Media.TextFormatting.TextSource.GetTextEffectCharacterIndexFromTextSourceCharacterIndex*
   exceptions: []
   platform:
@@ -109,8 +109,8 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.TextFormatting
-  summary: "Retrieves a <xref href=&quot;System.Windows.Media.TextFormatting.TextRun&quot;></xref> starting at a specified <xref href=&quot;System.Windows.Media.TextFormatting.TextSource&quot;></xref> position."
-  remarks: "A text run is a sequence of characters sharing a single property set. Any change to the format, such as font family, font style, foreground color, text decoration, or any other formatting effect, breaks the text run. The <xref:System.Windows.Media.TextFormatting.TextRun> class is the root of a type hierarchy representing several types of text content processed by <xref:System.Windows.Media.TextFormatting.TextFormatter>. Each class that is derived from <xref:System.Windows.Media.TextFormatting.TextRun> represents a distinct type of text content.      |Class|Description|   |-----------|-----------------|   |<xref:System.Windows.Media.TextFormatting.TextRun>|Root of the hierarchy. Defines a group of characters that share the same set of character properties.|   |<xref:System.Windows.Media.TextFormatting.TextCharacters>|Defines a collection of character glyphs from a distinct physical typeface.|   |<xref:System.Windows.Media.TextFormatting.TextEmbeddedObject>|Defines a type of text content in which measuring, hit testing, and drawing of the entire content is done as a distinct entity. An example of this type of content is a button in the middle of the line of text.|   |<xref:System.Windows.Media.TextFormatting.TextEndOfLine>|Defines a line-break character code.|   |<xref:System.Windows.Media.TextFormatting.TextEndOfParagraph>|Defines a paragraph-break character code. Derives from <xref:System.Windows.Media.TextFormatting.TextEndOfLine>.|   |<xref:System.Windows.Media.TextFormatting.TextEndOfSegment>|Defines a segment break marker.|   |<xref:System.Windows.Media.TextFormatting.TextHidden>|Defines a range of non-visible characters.|   |<xref:System.Windows.Media.TextFormatting.TextModifier>|Defines the beginning of a modification scope.|"
+  summary: "Henter en <xref href=&quot;System.Windows.Media.TextFormatting.TextRun&quot;> </xref> Start ved en angitt <xref href=&quot;System.Windows.Media.TextFormatting.TextSource&quot;> </xref> posisjon."
+  remarks: "En tekst som kjøres er en sekvens med tegn deling av et sett med én egenskap. Endring format, for eksempel skriftfamilien, skriftstil, forgrunnsfargen, text-decoration eller noen andre formatering effekt sideskift teksten kjøres. <xref:System.Windows.Media.TextFormatting.TextRun>Klassen er roten av et hierarki for typen som representerer flere typer tekstinnhold som er behandlet av <xref:System.Windows.Media.TextFormatting.TextFormatter>.</xref:System.Windows.Media.TextFormatting.TextFormatter> </xref:System.Windows.Media.TextFormatting.TextRun> Hver klasse som er avledet fra <xref:System.Windows.Media.TextFormatting.TextRun>representerer en distinkte type tekstinnhold.</xref:System.Windows.Media.TextFormatting.TextRun>      | Klassen | Beskrivelse |   |-----------|-----------------|   | <xref:System.Windows.Media.TextFormatting.TextRun>| Roten i hierarkiet.</xref:System.Windows.Media.TextFormatting.TextRun> Definerer en gruppe tegn som deler det samme settet med tegnegenskaper for. |   | <xref:System.Windows.Media.TextFormatting.TextCharacters>| Definerer en samling med tegnet tegn fra en distinkte fysisk skrift. |   | <xref:System.Windows.Media.TextFormatting.TextEmbeddedObject>| Definerer en type tekst innhold i som måle treffprosent testing og tegning av hele innholdet utføres som en distinkte enhet.</xref:System.Windows.Media.TextFormatting.TextEmbeddedObject> </xref:System.Windows.Media.TextFormatting.TextCharacters> Et eksempel på denne typen innhold er en knappen midt i tekstlinje. |   | <xref:System.Windows.Media.TextFormatting.TextEndOfLine>| Definerer en linjeskift tegnkode. |   | <xref:System.Windows.Media.TextFormatting.TextEndOfParagraph>| Definerer en avsnitt-break-tegnkode.</xref:System.Windows.Media.TextFormatting.TextEndOfParagraph> </xref:System.Windows.Media.TextFormatting.TextEndOfLine> Er avledet fra <xref:System.Windows.Media.TextFormatting.TextEndOfLine>. |   | <xref:System.Windows.Media.TextFormatting.TextEndOfSegment>| Definerer et segment break-merke. |   | <xref:System.Windows.Media.TextFormatting.TextHidden>| Definerer en rekke usynlige tegn. |   | <xref:System.Windows.Media.TextFormatting.TextModifier>| Definerer begynnelsen av en endring omfang. |</xref:System.Windows.Media.TextFormatting.TextModifier> </xref:System.Windows.Media.TextFormatting.TextHidden> </xref:System.Windows.Media.TextFormatting.TextEndOfSegment> </xref:System.Windows.Media.TextFormatting.TextEndOfLine>"
   example:
   - "In the following example, an override for the GetTextRun method is implemented.  \n  \n [!code-cs[TextFormattingSnippets#TextFormattingSnippet4](~/add/codesnippet/csharp/TextFormattingSnippets/CustomTextClasses.cs#textformattingsnippet4)]\n [!code-vb[TextFormattingSnippets#TextFormattingSnippet4](~/add/codesnippet/visualbasic/textformattingsnippets/customtextclasses.vb#textformattingsnippet4)]"
   syntax:
@@ -118,10 +118,10 @@ items:
     parameters:
     - id: textSourceCharacterIndex
       type: System.Int32
-      description: "Specifies the character index position in the <xref href=&quot;System.Windows.Media.TextFormatting.TextSource&quot;></xref> where the <xref href=&quot;System.Windows.Media.TextFormatting.TextRun&quot;></xref> is retrieved."
+      description: "Angir tegnposisjonen for indeksen i den <xref href=&quot;System.Windows.Media.TextFormatting.TextSource&quot;> </xref> der den <xref href=&quot;System.Windows.Media.TextFormatting.TextRun&quot;> </xref> hentes."
     return:
       type: System.Windows.Media.TextFormatting.TextRun
-      description: "A value that represents a <xref href=&quot;System.Windows.Media.TextFormatting.TextRun&quot;></xref>, or an object derived from <xref href=&quot;System.Windows.Media.TextFormatting.TextRun&quot;></xref>."
+      description: "En verdi som representerer en <xref href=&quot;System.Windows.Media.TextFormatting.TextRun&quot;> </xref>, eller et objekt som er avledet fra <xref href=&quot;System.Windows.Media.TextFormatting.TextRun&quot;> </xref>."
   overload: System.Windows.Media.TextFormatting.TextSource.GetTextRun*
   exceptions: []
   platform:
@@ -138,13 +138,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Media.TextFormatting
-  summary: "Get or sets the PixelsPerDip at which the text should be rendered."
-  remarks: "Any class that extends <xref:System.Windows.Media.TextFormatting.TextSource> should update         PixelsPerDip whenever the DPI changes for a Per Monitor DPI Aware application."
+  summary: "Får eller angir PixelsPerDip teksten skal gjengis."
+  remarks: "Klassen som utvider <xref:System.Windows.Media.TextFormatting.TextSource>må oppdatere PixelsPerDip når PPT endres for en Per overvåkingen PPT bevisste applikasjon.</xref:System.Windows.Media.TextFormatting.TextSource>"
   syntax:
     content: public double PixelsPerDip { get; set; }
     return:
       type: System.Double
-      description: "The current PixelsPerDip value."
+      description: "Gjeldende PixelsPerDip verdi."
   overload: System.Windows.Media.TextFormatting.TextSource.PixelsPerDip*
   exceptions: []
   platform:

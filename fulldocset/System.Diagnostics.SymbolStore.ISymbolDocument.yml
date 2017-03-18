@@ -19,8 +19,8 @@ items:
   nameWithType: ISymbolDocument
   fullName: System.Diagnostics.SymbolStore.ISymbolDocument
   type: Interface
-  summary: "Represents a document referenced by a symbol store."
-  remarks: "A document is defined by a URL and a document type GUID. Using the document type GUID and the URL, you can locate the document. You can optionally store document source in the symbol store.       This interface also provides access to that source, if present.      > [!NOTE] >  This interface is the managed counterpart of the `ISymUnmanagedDocument` interface, one of the unmanaged symbol store interfaces that provide an alternative way to read and write debug symbol information."
+  summary: "Representerer et dokument refererer til et symbol lager."
+  remarks: "Et dokument er definert av en URL-adresse og en dokumenttype GUID. Ved hjelp av dokumentet typen GUID og URL-adresse, kan du finne dokumentet. Du kan eventuelt lagre dokumentkilde i butikken symbolet.       Dette grensesnittet gir deg også tilgang til denne kilden, hvis den finnes.      > [!NOTE] > Dette grensesnittet er denne administrerte filen i den `ISymUnmanagedDocument` interface, en ubehandlet symbolet store grensesnitt som gir en annen måte å lese og skrive feilsøkingsinformasjon for symbolet."
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -41,12 +41,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Gets the checksum algorithm identifier."
+  summary: "Henter algoritme-ID for kontrollsum."
   syntax:
     content: public Guid CheckSumAlgorithmId { get; }
     return:
       type: System.Guid
-      description: "A GUID identifying the checksum algorithm. The value is all zeros, if there is no checksum."
+      description: "En GUID som identifiserer algoritmen kontrollsum. Verdien er bare nuller hvis det er ingen kontrollsum."
   overload: System.Diagnostics.SymbolStore.ISymbolDocument.CheckSumAlgorithmId*
   exceptions: []
   platform:
@@ -63,12 +63,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Gets the type of the current document."
+  summary: "Henter av dokumentet."
   syntax:
     content: public Guid DocumentType { get; }
     return:
       type: System.Guid
-      description: "The type of the current document."
+      description: "Typen for dokumentet."
   overload: System.Diagnostics.SymbolStore.ISymbolDocument.DocumentType*
   exceptions: []
   platform:
@@ -85,16 +85,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Returns the closest line that is a sequence point, given a line in the current document that might or might not be a sequence point."
+  summary: "Returnerer en linje som er et sekvenspunkt en linje i dokumentet som kan eller ikke er et sekvenspunkt."
   syntax:
     content: public int FindClosestLine (int line);
     parameters:
     - id: line
       type: System.Int32
-      description: "The specified line in the document."
+      description: "Den angitte linjen i dokumentet."
     return:
       type: System.Int32
-      description: "The closest line that is a sequence point."
+      description: "En linje som er et sekvenspunkt."
   overload: System.Diagnostics.SymbolStore.ISymbolDocument.FindClosestLine*
   exceptions: []
   platform:
@@ -111,13 +111,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Gets the checksum."
+  summary: "Henter kontrollsummen."
   syntax:
     content: public byte[] GetCheckSum ();
     parameters: []
     return:
       type: System.Byte[]
-      description: "The checksum."
+      description: "Kontrollsum."
   overload: System.Diagnostics.SymbolStore.ISymbolDocument.GetCheckSum*
   exceptions: []
   platform:
@@ -134,25 +134,25 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Gets the embedded document source for the specified range."
+  summary: "Henter innebygde dokumentet kilden for det angitte området."
   syntax:
     content: public byte[] GetSourceRange (int startLine, int startColumn, int endLine, int endColumn);
     parameters:
     - id: startLine
       type: System.Int32
-      description: "The starting line in the current document."
+      description: "Starter linjen i dokumentet."
     - id: startColumn
       type: System.Int32
-      description: "The starting column in the current document."
+      description: "Start-kolonnen i dokumentet."
     - id: endLine
       type: System.Int32
-      description: "The ending line in the current document."
+      description: "Den siste linjen i dokumentet."
     - id: endColumn
       type: System.Int32
-      description: "The ending column in the current document."
+      description: "Siste kolonnen i dokumentet."
     return:
       type: System.Byte[]
-      description: "The document source for the specified range."
+      description: "Dokumentet kilden for det angitte området."
   overload: System.Diagnostics.SymbolStore.ISymbolDocument.GetSourceRange*
   exceptions: []
   platform:
@@ -169,12 +169,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Checks whether the current document is stored in the symbol store."
+  summary: "Kontrollerer om dokumentet lagres i butikken symbolet."
   syntax:
     content: public bool HasEmbeddedSource { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the current document is stored in the symbol store; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis det gjeldende dokumentet lagres i butikken symbolet; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Diagnostics.SymbolStore.ISymbolDocument.HasEmbeddedSource*
   exceptions: []
   platform:
@@ -191,12 +191,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Gets the language of the current document."
+  summary: "Henter språket for dokumentet."
   syntax:
     content: public Guid Language { get; }
     return:
       type: System.Guid
-      description: "The language of the current document."
+      description: "Språket for dokumentet."
   overload: System.Diagnostics.SymbolStore.ISymbolDocument.Language*
   exceptions: []
   platform:
@@ -213,12 +213,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Gets the language vendor of the current document."
+  summary: "Henter språket leverandøren av dokumentet."
   syntax:
     content: public Guid LanguageVendor { get; }
     return:
       type: System.Guid
-      description: "The language vendor of the current document."
+      description: "Språk-leverandør for dokumentet."
   overload: System.Diagnostics.SymbolStore.ISymbolDocument.LanguageVendor*
   exceptions: []
   platform:
@@ -235,12 +235,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Gets the length, in bytes, of the embedded source."
+  summary: "Henter lengden, i byte for innebygde datakilden."
   syntax:
     content: public int SourceLength { get; }
     return:
       type: System.Int32
-      description: "The source length of the current document."
+      description: "Kilden lengden på gjeldende dokument."
   overload: System.Diagnostics.SymbolStore.ISymbolDocument.SourceLength*
   exceptions: []
   platform:
@@ -257,12 +257,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Gets the URL of the current document."
+  summary: "Henter URL-adressen til dokumentet."
   syntax:
     content: public string URL { get; }
     return:
       type: System.String
-      description: "The URL of the current document."
+      description: "URL-adressen til dokumentet."
   overload: System.Diagnostics.SymbolStore.ISymbolDocument.URL*
   exceptions: []
   platform:

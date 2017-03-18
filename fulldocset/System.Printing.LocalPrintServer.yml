@@ -23,8 +23,8 @@ items:
   nameWithType: LocalPrintServer
   fullName: System.Printing.LocalPrintServer
   type: Class
-  summary: "Represents the local print server (the computer on which your application is running) and enables management of its print queues."
-  remarks: "When your application writes a value to a property of the LocalPrintServer object, that change has no effect until the value is passed to the computer that is represented by the LocalPrintServer object. To ensure that the change in value takes effect, use the <xref:System.Printing.LocalPrintServer.Commit%2A> method.       In addition, other applications may also change the print service properties of the computer. To ensure that the LocalPrintServer object used by your application has the latest actual values, use the <xref:System.Printing.LocalPrintServer.Refresh%2A> method.      > [!CAUTION] >  Classes within the <xref:System.Printing> namespace are not supported for use within a Windows service or ASP.NET application or service. Attempting to use these classes from within one of these application types may produce unexpected problems, such as diminished service performance and run-time exceptions.       If you want to print from a Windows Forms application, see the <xref:System.Drawing.Printing> namespace."
+  summary: "Representerer lokale serveren (datamaskinen programmet kjører) og gjør det mulig for administrasjon av køer som er trykt."
+  remarks: "Når programmet skriver en verdi til en egenskap for LocalPrintServer-objektet som endres har ingen virkning før verdien som er sendt til datamaskinen som representeres av LocalPrintServer-objektet. For å sikre at endringen i verdien trer i kraft, kan du bruke den <xref:System.Printing.LocalPrintServer.Commit%2A>metoden.</xref:System.Printing.LocalPrintServer.Commit%2A>       I tillegg kan andre programmer også endre egenskapene trykker på datamaskinen. For å sikre at LocalPrintServer-objekt som brukes av programmet ditt har de nyeste faktiske verdiene, kan du bruke den <xref:System.Printing.LocalPrintServer.Refresh%2A>metoden.</xref:System.Printing.LocalPrintServer.Refresh%2A>      > [!CAUTION] > Klasser i den <xref:System.Printing>navneområdet støttes ikke for bruk i en Windows ASP.NET-program eller tjeneste.</xref:System.Printing> Forsøk på å bruke disse klassene fra i ett av disse programtyper kan føre til uventede problemer, for eksempel dårligere tjeneste ytelse og kjøretid unntak.       Hvis du vil skrive ut fra en Windows Forms-program, kan du se den <xref:System.Drawing.Printing>navneområde.</xref:System.Drawing.Printing>"
   example:
   - "The following example shows how to create an instance of the LocalPrintServer class.  \n  \n [!code-cs[XpsPrint#PrintQueueSnip](~/add/codesnippet/csharp/XpsPrint/XpsPrintHelper.cs#printqueuesnip)]\n [!code-vb[XpsPrint#PrintQueueSnip](~/add/codesnippet/visualbasic/xpsprint/xpsprinthelper.vb#printqueuesnip)]"
   syntax:
@@ -86,7 +86,7 @@ items:
   assemblies:
   - System.Printing
   namespace: System.Printing
-  summary: "Initializes a new instance of the <xref href=&quot;System.Printing.LocalPrintServer&quot;></xref> class."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Printing.LocalPrintServer&quot;> </xref> klasse."
   remarks: ''
   example:
   - "The following example shows how to use this constructor in code that tests a printer's capabilities and configures a print job to take advantage of them.  \n  \n [!code-cs[XpsCreate#PrinterCapabilities](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#printercapabilities)]\n [!code-cpp[XpsCreate#PrinterCapabilities](~/add/codesnippet/cpp/xpscreate/XpsCreate.cpp#printercapabilities)]\n [!code-vb[XpsCreate#PrinterCapabilities](~/add/codesnippet/visualbasic/xpscreate/xpscreate.vb#printercapabilities)]"
@@ -109,13 +109,13 @@ items:
   assemblies:
   - System.Printing
   namespace: System.Printing
-  summary: "Initializes a new instance of the <xref href=&quot;System.Printing.LocalPrintServer&quot;></xref> class that has the specified <xref href=&quot;System.Printing.LocalPrintServerIndexedProperty&quot;></xref> array."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Printing.LocalPrintServer&quot;> </xref> klasse som ikke har den angitte <xref href=&quot;System.Printing.LocalPrintServerIndexedProperty&quot;> </xref> matrise."
   syntax:
     content: public LocalPrintServer (System.Printing.LocalPrintServerIndexedProperty[] propertiesFilter);
     parameters:
     - id: propertiesFilter
       type: System.Printing.LocalPrintServerIndexedProperty[]
-      description: "An array of properties that the constructor initializes."
+      description: "En matrise med egenskaper som konstruktøren initialiserer."
   overload: System.Printing.LocalPrintServer.#ctor*
   exceptions: []
   platform:
@@ -132,7 +132,7 @@ items:
   assemblies:
   - System.Printing
   namespace: System.Printing
-  summary: "Initializes a new instance of the <xref href=&quot;System.Printing.LocalPrintServer&quot;></xref> class that has the specified <xref href=&quot;System.Printing.PrintSystemDesiredAccess&quot;></xref>."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Printing.LocalPrintServer&quot;> </xref> klasse som ikke har den angitte <xref href=&quot;System.Printing.PrintSystemDesiredAccess&quot;> </xref>."
   remarks: ''
   example:
   - "The following example shows how to use this constructor in code that will install a second printer that differs in its properties from an existing printer only in location, port, and shared status.  \n  \n [!code-vb[ClonePrinter#ClonePrinter](~/add/codesnippet/visualbasic/cloneprinter/program.vb#cloneprinter)]\n [!code-cs[ClonePrinter#ClonePrinter](~/add/codesnippet/csharp/ClonePrinter/Program.cs#cloneprinter)]"
@@ -141,12 +141,12 @@ items:
     parameters:
     - id: desiredAccess
       type: System.Printing.PrintSystemDesiredAccess
-      description: "A value specifying the type of access to the print server that your application needs."
+      description: "En verdi som angir hvilken type tilgang til serveren programmet trenger."
   overload: System.Printing.LocalPrintServer.#ctor*
   exceptions:
   - type: System.Printing.PrintServerException
     commentId: T:System.Printing.PrintServerException
-    description: "<code>desiredAccess</code> is a value that can be applied only to a <xref href=&quot;System.Printing.PrintQueue&quot;></xref> object, not a <xref href=&quot;System.Printing.LocalPrintServer&quot;></xref> object. For example, <xref href=&quot;System.Printing.PrintSystemDesiredAccess&quot;></xref>."
+    description: "<code>desiredAccess</code>er en verdi som kan bare brukes på en <xref href=&quot;System.Printing.PrintQueue&quot;> </xref> objektet, ikke en <xref href=&quot;System.Printing.LocalPrintServer&quot;> </xref> objektet. For eksempel <xref href=&quot;System.Printing.PrintSystemDesiredAccess&quot;> </xref>."
   platform:
   - net462
 - uid: System.Printing.LocalPrintServer.#ctor(System.String[])
@@ -161,13 +161,13 @@ items:
   assemblies:
   - System.Printing
   namespace: System.Printing
-  summary: "Initializes a new instance of the <xref href=&quot;System.Printing.LocalPrintServer&quot;></xref> class that has the specified properties."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Printing.LocalPrintServer&quot;> </xref> klasse som har de angitte egenskapene."
   syntax:
     content: public LocalPrintServer (string[] propertiesFilter);
     parameters:
     - id: propertiesFilter
       type: System.String[]
-      description: "An array of the property names that the constructor initializes."
+      description: "En matrise med egenskapsnavn konstruktøren initialiserer."
   overload: System.Printing.LocalPrintServer.#ctor*
   exceptions: []
   platform:
@@ -184,21 +184,21 @@ items:
   assemblies:
   - System.Printing
   namespace: System.Printing
-  summary: "Initializes a new instance of the <xref href=&quot;System.Printing.LocalPrintServer&quot;></xref> class that has the specified <xref href=&quot;System.Printing.LocalPrintServerIndexedProperty&quot;></xref> array and the specified <xref href=&quot;System.Printing.PrintSystemDesiredAccess&quot;></xref>."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Printing.LocalPrintServer&quot;> </xref> klasse som ikke har den angitte <xref href=&quot;System.Printing.LocalPrintServerIndexedProperty&quot;> </xref> matrisen og den angitte <xref href=&quot;System.Printing.PrintSystemDesiredAccess&quot;> </xref>."
   syntax:
     content: public LocalPrintServer (System.Printing.LocalPrintServerIndexedProperty[] propertiesFilter, System.Printing.PrintSystemDesiredAccess desiredAccess);
     parameters:
     - id: propertiesFilter
       type: System.Printing.LocalPrintServerIndexedProperty[]
-      description: "An array of properties that the constructor initializes."
+      description: "En matrise med egenskaper som konstruktøren initialiserer."
     - id: desiredAccess
       type: System.Printing.PrintSystemDesiredAccess
-      description: "A value specifying the type of access to the print server that your program needs."
+      description: "En verdi som angir hvilken type tilgang til serveren som programmet trenger."
   overload: System.Printing.LocalPrintServer.#ctor*
   exceptions:
   - type: System.Printing.PrintServerException
     commentId: T:System.Printing.PrintServerException
-    description: "<code>desiredAccess</code> is a value that can be applied only to a <xref href=&quot;System.Printing.PrintQueue&quot;></xref> object, not a <xref href=&quot;System.Printing.LocalPrintServer&quot;></xref> object. For example, <xref href=&quot;System.Printing.PrintSystemDesiredAccess&quot;></xref>."
+    description: "<code>desiredAccess</code>er en verdi som kan bare brukes på en <xref href=&quot;System.Printing.PrintQueue&quot;> </xref> objektet, ikke en <xref href=&quot;System.Printing.LocalPrintServer&quot;> </xref> objektet. For eksempel <xref href=&quot;System.Printing.PrintSystemDesiredAccess&quot;> </xref>."
   platform:
   - net462
 - uid: System.Printing.LocalPrintServer.#ctor(System.String[],System.Printing.PrintSystemDesiredAccess)
@@ -213,21 +213,21 @@ items:
   assemblies:
   - System.Printing
   namespace: System.Printing
-  summary: "Initializes a new instance of the <xref href=&quot;System.Printing.LocalPrintServer&quot;></xref> class that has the specified properties and <xref href=&quot;System.Printing.PrintSystemDesiredAccess&quot;></xref>."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Printing.LocalPrintServer&quot;> </xref> klasse som har de angitte egenskapene og <xref href=&quot;System.Printing.PrintSystemDesiredAccess&quot;> </xref>."
   syntax:
     content: public LocalPrintServer (string[] propertiesFilter, System.Printing.PrintSystemDesiredAccess desiredAccess);
     parameters:
     - id: propertiesFilter
       type: System.String[]
-      description: "An array of the property names that the constructor initializes."
+      description: "En matrise med egenskapsnavn konstruktøren initialiserer."
     - id: desiredAccess
       type: System.Printing.PrintSystemDesiredAccess
-      description: "A value specifying the type of access to the print server that your application needs."
+      description: "En verdi som angir hvilken type tilgang til serveren programmet trenger."
   overload: System.Printing.LocalPrintServer.#ctor*
   exceptions:
   - type: System.Printing.PrintServerException
     commentId: T:System.Printing.PrintServerException
-    description: "<code>desiredAccess</code> is a value that can be applied only to a <xref href=&quot;System.Printing.PrintQueue&quot;></xref> object, not a <xref href=&quot;System.Printing.LocalPrintServer&quot;></xref> object. For example, <xref href=&quot;System.Printing.PrintSystemDesiredAccess&quot;></xref>."
+    description: "<code>desiredAccess</code>er en verdi som kan bare brukes på en <xref href=&quot;System.Printing.PrintQueue&quot;> </xref> objektet, ikke en <xref href=&quot;System.Printing.LocalPrintServer&quot;> </xref> objektet. For eksempel <xref href=&quot;System.Printing.PrintSystemDesiredAccess&quot;> </xref>."
   platform:
   - net462
 - uid: System.Printing.LocalPrintServer.Commit
@@ -242,8 +242,8 @@ items:
   assemblies:
   - System.Printing
   namespace: System.Printing
-  summary: "Writes any changes that your application made to the properties of the <xref href=&quot;System.Printing.LocalPrintServer&quot;></xref> to the actual print server that the object represents."
-  remarks: "The method requires that the <xref:System.Printing.LocalPrintServer> object be created with <xref:System.Printing.PrintSystemDesiredAccess> rights."
+  summary: "Skriver ingen endringer som programmet gjort i egenskapene til det <xref href=&quot;System.Printing.LocalPrintServer&quot;> </xref> til faktiske serveren som representerer objektet."
+  remarks: "Metoden krever at den <xref:System.Printing.LocalPrintServer>objekt opprettes med <xref:System.Printing.PrintSystemDesiredAccess>rettigheter.</xref:System.Printing.PrintSystemDesiredAccess> </xref:System.Printing.LocalPrintServer>"
   example:
   - "The following example shows how to use this method in code that will install a second printer that differs in its properties from an existing printer only in location, port, and shared status.  \n  \n [!code-vb[ClonePrinter#ClonePrinter](~/add/codesnippet/visualbasic/cloneprinter/program.vb#cloneprinter)]\n [!code-cs[ClonePrinter#ClonePrinter](~/add/codesnippet/csharp/ClonePrinter/Program.cs#cloneprinter)]"
   syntax:
@@ -253,7 +253,7 @@ items:
   exceptions:
   - type: System.Printing.PrintServerException
     commentId: T:System.Printing.PrintServerException
-    description: "Some properties are not committed."
+    description: "Noen egenskaper er ikke lagret."
   - type: System.Printing.PrintCommitAttributesException
     commentId: T:System.Printing.PrintCommitAttributesException
     description: "Some of the properties could not be committed.  \n  \n \\- or -  \n  \n The <xref href=\"System.Printing.LocalPrintServer\"></xref> object was not created with sufficient rights. See Remarks."
@@ -271,21 +271,21 @@ items:
   assemblies:
   - System.Printing
   namespace: System.Printing
-  summary: "Connects the local print server to the specified <xref href=&quot;System.Printing.PrintQueue&quot;></xref>."
+  summary: "Kobler lokale serveren til den angitte <xref href=&quot;System.Printing.PrintQueue&quot;> </xref>."
   syntax:
     content: public bool ConnectToPrintQueue (System.Printing.PrintQueue printer);
     parameters:
     - id: printer
       type: System.Printing.PrintQueue
-      description: "The print queue to connect."
+      description: "Køen til."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the connection is made; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis tilkoblingen er opprettet; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Printing.LocalPrintServer.ConnectToPrintQueue*
   exceptions:
   - type: System.Printing.PrintServerException
     commentId: T:System.Printing.PrintServerException
-    description: "A print queue that matches the <xref:System.Printing.PrintQueue.FullName*> property of the <code>printer</code> is not found."
+    description: "En køen som samsvarer med den <xref:System.Printing.PrintQueue.FullName*>for den <code> printer </code> finnes ikke.</xref:System.Printing.PrintQueue.FullName*>"
   platform:
   - net462
 - uid: System.Printing.LocalPrintServer.ConnectToPrintQueue(System.String)
@@ -300,21 +300,21 @@ items:
   assemblies:
   - System.Printing
   namespace: System.Printing
-  summary: "Connects to the print queue that is specified by using the <xref:System.String>."
+  summary: "Kobler til køen som er angitt ved hjelp av <xref:System.String>.</xref:System.String>"
   syntax:
     content: public bool ConnectToPrintQueue (string printQueuePath);
     parameters:
     - id: printQueuePath
       type: System.String
-      description: "The full path of the print queue that is being connected."
+      description: "Den fullstendige banen til køen som kobles til."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the connection is made; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis tilkoblingen er opprettet; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Printing.LocalPrintServer.ConnectToPrintQueue*
   exceptions:
   - type: System.Printing.PrintServerException
     commentId: T:System.Printing.PrintServerException
-    description: "A print queue with the specified path is not found."
+    description: "Finner ikke en trykt kø med den angitte banen."
   platform:
   - net462
 - uid: System.Printing.LocalPrintServer.DefaultPrintQueue
@@ -329,15 +329,15 @@ items:
   assemblies:
   - System.Printing
   namespace: System.Printing
-  summary: "Gets or sets the default print queue."
-  remarks: "Your application will have only <xref:System.Printing.PrintSystemDesiredAccess> access to the default queue, even if you have <xref:System.Printing.PrintSystemDesiredAccess> rights to the print server. To open the queue with greater access, use one of the <xref:System.Printing.PrintQueue.%23ctor%2A> constructors that enables you to specify the desired access level."
+  summary: "Henter eller angir standardkøen."
+  remarks: "Programmet må bare <xref:System.Printing.PrintSystemDesiredAccess>tilgang til standardkøen, selv om du har <xref:System.Printing.PrintSystemDesiredAccess>rettigheter til serveren.</xref:System.Printing.PrintSystemDesiredAccess> </xref:System.Printing.PrintSystemDesiredAccess> Åpne køen med større tilgang ved bruk av <xref:System.Printing.PrintQueue.%23ctor%2A>konstruktører som kan du angi ønsket tilgangsnivået.</xref:System.Printing.PrintQueue.%23ctor%2A>"
   example:
   - "The following example shows how to use this property in code that will install a second printer that differs in its properties from an existing printer only in location, port, and shared status.  \n  \n [!code-vb[ClonePrinter#ClonePrinter](~/add/codesnippet/visualbasic/cloneprinter/program.vb#cloneprinter)]\n [!code-cs[ClonePrinter#ClonePrinter](~/add/codesnippet/csharp/ClonePrinter/Program.cs#cloneprinter)]"
   syntax:
     content: public System.Printing.PrintQueue DefaultPrintQueue { get; set; }
     return:
       type: System.Printing.PrintQueue
-      description: "The <xref href=&quot;System.Printing.PrintQueue&quot;></xref> that is designated as the default queue for the local computer."
+      description: "Den <xref href=&quot;System.Printing.PrintQueue&quot;> </xref> som er angitt som standardkøen for den lokale datamaskinen."
   overload: System.Printing.LocalPrintServer.DefaultPrintQueue*
   exceptions: []
   platform:
@@ -354,21 +354,21 @@ items:
   assemblies:
   - System.Printing
   namespace: System.Printing
-  summary: "Disconnects the local print server from the specified <xref href=&quot;System.Printing.PrintQueue&quot;></xref>."
+  summary: "Kobler fra den angitte fra lokale serveren <xref href=&quot;System.Printing.PrintQueue&quot;> </xref>."
   syntax:
     content: public bool DisconnectFromPrintQueue (System.Printing.PrintQueue printer);
     parameters:
     - id: printer
       type: System.Printing.PrintQueue
-      description: "The print queue that is being disconnected."
+      description: "Køen som er frakoblet."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the disconnection is successful; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis frakoblingen er fullført. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Printing.LocalPrintServer.DisconnectFromPrintQueue*
   exceptions:
   - type: System.Printing.PrintServerException
     commentId: T:System.Printing.PrintServerException
-    description: "A print queue matching the <xref:System.Printing.PrintQueue.FullName*> property of the <code>printer</code> is not found."
+    description: "En køen tilsvarende den <xref:System.Printing.PrintQueue.FullName*>for den <code> printer </code> finnes ikke.</xref:System.Printing.PrintQueue.FullName*>"
   platform:
   - net462
 - uid: System.Printing.LocalPrintServer.DisconnectFromPrintQueue(System.String)
@@ -383,21 +383,21 @@ items:
   assemblies:
   - System.Printing
   namespace: System.Printing
-  summary: "Disconnects from the print queue that is specified in the <xref:System.String>."
+  summary: "Kobler fra køen som er angitt i <xref:System.String>.</xref:System.String>"
   syntax:
     content: public bool DisconnectFromPrintQueue (string printQueuePath);
     parameters:
     - id: printQueuePath
       type: System.String
-      description: "The full path to the print queue that is disconnected."
+      description: "Den fullstendige banen til køen som er frakoblet."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the disconnection is successful; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis frakoblingen er fullført. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Printing.LocalPrintServer.DisconnectFromPrintQueue*
   exceptions:
   - type: System.Printing.PrintServerException
     commentId: T:System.Printing.PrintServerException
-    description: "A print queue with the specified path is not found."
+    description: "Finner ikke en trykt kø med den angitte banen."
   platform:
   - net462
 - uid: System.Printing.LocalPrintServer.GetDefaultPrintQueue
@@ -412,8 +412,8 @@ items:
   assemblies:
   - System.Printing
   namespace: System.Printing
-  summary: "Returns a reference to the default print queue of the <xref href=&quot;System.Printing.LocalPrintServer&quot;></xref>."
-  remarks: "Your application will have only <xref:System.Printing.PrintSystemDesiredAccess> access to the default queue, even if you have <xref:System.Printing.PrintSystemDesiredAccess> rights to the print server. To open the queue with greater access, use one of the <xref:System.Printing.PrintQueue.%23ctor%2A> constructors that enables you to specify the desired access level."
+  summary: "Returnerer en referanse til standardkøen av den <xref href=&quot;System.Printing.LocalPrintServer&quot;> </xref>."
+  remarks: "Programmet må bare <xref:System.Printing.PrintSystemDesiredAccess>tilgang til standardkøen, selv om du har <xref:System.Printing.PrintSystemDesiredAccess>rettigheter til serveren.</xref:System.Printing.PrintSystemDesiredAccess> </xref:System.Printing.PrintSystemDesiredAccess> Åpne køen med større tilgang ved bruk av <xref:System.Printing.PrintQueue.%23ctor%2A>konstruktører som kan du angi ønsket tilgangsnivået.</xref:System.Printing.PrintQueue.%23ctor%2A>"
   example:
   - "The following example shows how to use this method to discover at run time the properties, and the types of those properties, of a print queue, without using reflection.  \n  \n [!code-cs[GetPrintObjectPropertyTypesWithoutReflection#ShowPropertyTypesWithoutReflection](~/add/codesnippet/csharp/GetPrintObjectPropertiesWithoutReflection/Program.cs#showpropertytypeswithoutreflection)]\n [!code-vb[GetPrintObjectPropertyTypesWithoutReflection#ShowPropertyTypesWithoutReflection](~/add/codesnippet/visualbasic/getprintobjectpropertieswithoutreflection/program.vb#showpropertytypeswithoutreflection)]"
   syntax:
@@ -421,7 +421,7 @@ items:
     parameters: []
     return:
       type: System.Printing.PrintQueue
-      description: "The default <xref href=&quot;System.Printing.PrintQueue&quot;></xref>."
+      description: "Standard <xref href=&quot;System.Printing.PrintQueue&quot;> </xref>."
   overload: System.Printing.LocalPrintServer.GetDefaultPrintQueue*
   exceptions: []
   platform:
@@ -438,8 +438,8 @@ items:
   assemblies:
   - System.Printing
   namespace: System.Printing
-  summary: "Updates the properties of the <xref href=&quot;System.Printing.LocalPrintServer&quot;></xref> object so that their values match the values of the print server that the object represents."
-  remarks: "Any changes that you make to <xref:System.Printing.LocalPrintServer> properties that are not written to the print server by using the <xref:System.Printing.LocalPrintServer.Commit%2A> method are lost when Refresh runs."
+  summary: "Oppdaterer egenskapene for den <xref href=&quot;System.Printing.LocalPrintServer&quot;> </xref> objektet slik at verdiene samsvarer med verdier for serveren som representerer objektet."
+  remarks: "Endringer du gjør <xref:System.Printing.LocalPrintServer>Egenskaper som ikke er skrevet til serveren ved hjelp av den <xref:System.Printing.LocalPrintServer.Commit%2A>metoden går tapt når oppdateringen kjører.</xref:System.Printing.LocalPrintServer.Commit%2A> </xref:System.Printing.LocalPrintServer>"
   syntax:
     content: public override sealed void Refresh ();
     parameters: []
@@ -447,7 +447,7 @@ items:
   exceptions:
   - type: System.Printing.PrintServerException
     commentId: T:System.Printing.PrintServerException
-    description: "Some properties did not update."
+    description: "Noen egenskaper ble ikke oppdatert."
   platform:
   - net462
 references:

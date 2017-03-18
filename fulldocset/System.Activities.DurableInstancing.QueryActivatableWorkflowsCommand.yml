@@ -12,8 +12,8 @@ items:
   nameWithType: QueryActivatableWorkflowsCommand
   fullName: System.Activities.DurableInstancing.QueryActivatableWorkflowsCommand
   type: Class
-  summary: "Represents the command that a generic host executes against an instance store to retrieve activation parameters. The generic host uses these activation parameters to create a workflow host, which in turn loads a runnable service instance."
-  remarks: "An instance is *activatable*, if it is not in the suspended state or the completed state and satisfies the following conditions:      -   The instance is *runnable*. An instance in the persistence database is considered as runnable if it satisfies the following conditions:          -   The instance is unlocked and has a pending timer that has expired.          -   The instance is unlocked and its status is **Executing**.          -   The instance has an expired lock on it.      -   There is no workflow host capable of loading the instance is running on the local computer.       An instance store should periodically search for activatable workflow instances that belong to a workflow host that uses the store. It should raise the <xref:System.Activities.DurableInstancing.HasActivatableWorkflowEvent> when it finds an activatable instance in the persistence store. If the instance store does not find an activatable instance in the persistence store, it should continue to monitor the persistence store for any activatable instances.       After raising the HasActivatableWorkflowEvent, the instance store should stop monitoring the persistence store for activatable instances until it receives and executes the QueryActivatableWorkflowsCommand. The monitoring continues only if the command execution does not return any activatable workflow instances.       When a generic host receives this event, it executes the QueryActivatableWorkflowsCommand against the instance store to obtain activation parameters required to create a workflow host. The generic host uses these activation parameters to create a workflow host, which in turn loads and runs the service instance. The activation parameters for the WAS activation type are: Site Name, Application Path (relative to the site), and Service Path (relative to the application). An instance store could return multiple sets of these three activation parameters.       A generic host is a host that has an XName parameter named **ActivationType**, which should be set to a value supported by the instance store. Currently, the SQL Workflow Instance Store supports generic hosts with ActivationType parameter set to value: **WAS**. If the ActivationType is not set at all, the SQL Workflow Instance Store treats the host as a generic host.      > [!NOTE] >  The Workflow Management Service that ships with the code named “Dublin” (Application Server Extensions for .NET 4.0) is a generic host that has the activation type set to **WAS**."
+  summary: "Representerer kommandoen som utfører generelle vert mot en forekomst lager å hente aktiveringsparametere. Generell verten bruker disse Aktiveringsparametere til å opprette en arbeidsflytverten som laster inn en runnable tjenesteforekomsten igjen."
+  remarks: "En forekomst er *activatable*, hvis den ikke er i hvilemodus eller fullført status og oppfyller følgende:-forekomsten *runnable*. En forekomst i databasen utholdenhet anses som runnable om den oppfyller betingelsene nedenfor:-forekomsten er låst og har en ventende tidtaker som er utløpt.          -Forekomsten er låst og har statusen **utfører**.          -Forekomsten har en lås som er utløpt.      -Det er ingen arbeidsflytverten stand til å laste inn forekomsten kjører på den lokale datamaskinen.       En forekomst butikk skal regelmessig Søk etter activatable arbeidsflytforekomster som hører til en arbeidsflytverten som bruker butikken. Den skal opphøyes i <xref:System.Activities.DurableInstancing.HasActivatableWorkflowEvent>når det finner en activatable forekomst i vedvarende lager.</xref:System.Activities.DurableInstancing.HasActivatableWorkflowEvent> Hvis forekomsten butikken ikke finner en activatable forekomst i vedvarende lager, må den fortsette å overvåke vedvarende lager for alle activatable forekomster.       Når du har opprettet i HasActivatableWorkflowEvent, bør forekomst-butikken stoppe overvåking vedvarende lager for activatable forekomster før den mottar og utfører QueryActivatableWorkflowsCommand. Overvåkingen fortsetter bare hvis Kommandoutførelsen ikke returnere en activatable arbeidsflytforekomster.       Når en generisk vert mottar denne hendelsen, utfører QueryActivatableWorkflowsCommand mot forekomst-butikken for å få Aktiveringsparametere kreves for å opprette en arbeidsflyt-vert. Generell verten bruker disse Aktiveringsparametere til å opprette en arbeidsflytverten som laster inn og kjører tjenesteforekomsten igjen. Aktiveringsparametere for WAS aktiveringstypen er: områdenavn, applikasjonsbane (i forhold området) og Tjenestebane (i forhold til programmet). En forekomst butikk kan returnere flere sett med disse tre aktiveringsparametere.       Generell vert er vert som har en XName parameter med navnet **ActivationType**, som må være satt til en verdi som støttes for forekomst-butikken. SQL arbeidsflyten forekomsten Store støtter for øyeblikket generisk verter med ActivationType-parameteren som er angitt til verdien: **WAS**. Hvis ActivationType ikke er angitt i det hele tatt, behandler SQL arbeidsflyten forekomsten Store verten som en generell vert.      > [!NOTE] > Arbeidsflyten Management tjenesten leveres med koden navnet &quot;Dublin&quot; (programmet Server Extensions for .NET 4.0) er en generisk vert som har aktiveringstypen satt til **WAS**."
   syntax:
     content: 'public sealed class QueryActivatableWorkflowsCommand : System.Runtime.DurableInstancing.InstancePersistenceCommand'
   inheritance:
@@ -37,7 +37,7 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.DurableInstancing
-  summary: "Initializes an instance of the <xref href=&quot;System.Activities.DurableInstancing.QueryActivatableWorkflowsCommand&quot;></xref> class."
+  summary: "Initialiserer en forekomst av den <xref href=&quot;System.Activities.DurableInstancing.QueryActivatableWorkflowsCommand&quot;> </xref> klasse."
   syntax:
     content: public QueryActivatableWorkflowsCommand ();
     parameters: []
@@ -61,7 +61,7 @@ items:
     content: protected override bool IsTransactionEnlistmentOptional { get; }
     return:
       type: System.Boolean
-      description: "To be added."
+      description: "Som skal legges til."
   overload: System.Activities.DurableInstancing.QueryActivatableWorkflowsCommand.IsTransactionEnlistmentOptional*
   exceptions: []
   platform:
@@ -83,7 +83,7 @@ items:
     parameters:
     - id: view
       type: System.Runtime.DurableInstancing.InstanceView
-      description: "To be added."
+      description: "Som skal legges til."
   overload: System.Activities.DurableInstancing.QueryActivatableWorkflowsCommand.Validate*
   exceptions: []
   platform:

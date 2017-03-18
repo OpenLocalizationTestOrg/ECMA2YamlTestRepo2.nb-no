@@ -17,8 +17,8 @@ items:
   nameWithType: IRegistrationServices
   fullName: System.Runtime.InteropServices.IRegistrationServices
   type: Interface
-  summary: "Provides a set of services for registering and unregistering managed assemblies for use from COM."
-  remarks: "Registration is needed when the objects within an assembly are being used by COM clients."
+  summary: "Inneholder et sett med tjenester til å registrere og under avregistrering av administrerte samlinger for bruk fra COM."
+  remarks: "Registrering er nødvendig når objekter i en samling som brukes av COM-klienter."
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -41,13 +41,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Returns the GUID of the COM category that contains the managed classes."
+  summary: "Returnerer GUID for COM-kategorien som inneholder de forvaltede klassene."
   syntax:
     content: public Guid GetManagedCategoryGuid ();
     parameters: []
     return:
       type: System.Guid
-      description: "The GUID of the COM category that contains the managed classes."
+      description: "GUIDEN for COM-kategorien som inneholder de forvaltede klassene."
   overload: System.Runtime.InteropServices.IRegistrationServices.GetManagedCategoryGuid*
   exceptions: []
   platform:
@@ -64,16 +64,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Retrieves the COM ProgID for a specified type."
+  summary: "Henter COM-ProgID for en angitt type."
   syntax:
     content: public string GetProgIdForType (Type type);
     parameters:
     - id: type
       type: System.Type
-      description: "The type whose ProgID is being requested."
+      description: "Typen som ProgID som blir sendt."
     return:
       type: System.String
-      description: "The ProgID for the specified type."
+      description: "Program-IDen for den angitte typen."
   overload: System.Runtime.InteropServices.IRegistrationServices.GetProgIdForType*
   exceptions: []
   platform:
@@ -90,16 +90,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Retrieves a list of classes in an assembly that would be registered by a call to <xref:System.Runtime.InteropServices.IRegistrationServices.RegisterAssembly*>."
+  summary: "Henter en liste over klasser i en samling som vil bli registrert av et kall til <xref:System.Runtime.InteropServices.IRegistrationServices.RegisterAssembly*>.</xref:System.Runtime.InteropServices.IRegistrationServices.RegisterAssembly*>"
   syntax:
     content: public Type[] GetRegistrableTypesInAssembly (System.Reflection.Assembly assembly);
     parameters:
     - id: assembly
       type: System.Reflection.Assembly
-      description: "The assembly to search for classes."
+      description: "Samlingen til å søke etter klasser."
     return:
       type: System.Type[]
-      description: "A <xref:System.Type> array containing a list of classes in <code>assembly</code>."
+      description: "En <xref:System.Type>matrise som inneholder en liste over klasser i <code> assembly </code>.</xref:System.Type>"
   overload: System.Runtime.InteropServices.IRegistrationServices.GetRegistrableTypesInAssembly*
   exceptions: []
   platform:
@@ -116,28 +116,28 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Registers the classes in a managed assembly to enable creation from COM."
-  remarks: "`RegisterAssembly` adds the appropriate registry entries for the types in the specified assembly. This method also calls any registration functions found in the assembly.       Use <xref:System.Reflection.Assembly.Load%2A?displayProperty=fullName> to get an assembly."
+  summary: "Registrerer klassene i en forvaltet samling for å kunne opprette fra COM."
+  remarks: "`RegisterAssembly`legger til de riktige registeroppføringene for typer i den angitte samlingen. Denne metoden kaller også eventuelle registrering-funksjonene som finnes i samlingen.       Bruk <xref:System.Reflection.Assembly.Load%2A?displayProperty=fullName>å hente en samling.</xref:System.Reflection.Assembly.Load%2A?displayProperty=fullName>"
   syntax:
     content: public bool RegisterAssembly (System.Reflection.Assembly assembly, System.Runtime.InteropServices.AssemblyRegistrationFlags flags);
     parameters:
     - id: assembly
       type: System.Reflection.Assembly
-      description: "The assembly to be registered."
+      description: "Samlingen som skal registreres."
     - id: flags
       type: System.Runtime.InteropServices.AssemblyRegistrationFlags
-      description: "An <xref href=&quot;System.Runtime.InteropServices.AssemblyRegistrationFlags&quot;></xref> value indicating any special settings needed when registering `assembly`."
+      description: "En <xref href=&quot;System.Runtime.InteropServices.AssemblyRegistrationFlags&quot;> </xref> verdi som angir spesiell innstillinger kreves når du registrerer `assembly`."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if <code>assembly</code> contains types that were successfully registered; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if the assembly contains no eligible types."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis <code> assembly </code> inneholder typer som ble ble registrert; ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> hvis samlingen inneholder ingen kvalifisert typer."
   overload: System.Runtime.InteropServices.IRegistrationServices.RegisterAssembly*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>assembly</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>assembly</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The full name of <code>assembly</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       A method marked with <xref href=&quot;System.Runtime.InteropServices.ComRegisterFunctionAttribute&quot;></xref> is not <xref uid=&quot;langword_csharp_static&quot; name=&quot;static&quot; href=&quot;&quot;></xref>.       -or-       There is more than one method marked with <xref href=&quot;System.Runtime.InteropServices.ComRegisterFunctionAttribute&quot;></xref> at a given level of the hierarchy.       -or-       The signature of the method marked with <xref href=&quot;System.Runtime.InteropServices.ComRegisterFunctionAttribute&quot;></xref> is not valid."
+    description: "The full name of <code>assembly</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       - eller - metoden merket med <xref href=&quot;System.Runtime.InteropServices.ComRegisterFunctionAttribute&quot;> </xref> er ikke <xref uid=&quot;langword_csharp_static&quot; name=&quot;static&quot; href=&quot;&quot;> </xref>.       - eller - det er flere merket med <xref href=&quot;System.Runtime.InteropServices.ComRegisterFunctionAttribute&quot;> </xref> på et angitt nivå i hierarkiet.       - eller - signatur for metoden merket med <xref href=&quot;System.Runtime.InteropServices.ComRegisterFunctionAttribute&quot;> </xref> er ikke gyldig."
   platform:
   - net462
 - uid: System.Runtime.InteropServices.IRegistrationServices.RegisterTypeForComClients(System.Type,System.Guid@)
@@ -152,17 +152,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Registers the specified type with COM using the specified GUID."
-  remarks: "This method is equivalent to calling `CoRegisterClassObject` in COM."
+  summary: "Registrerer den angitte typen med COM med angitt GUID."
+  remarks: "Denne metoden tilsvarer kaller `CoRegisterClassObject` i COM."
   syntax:
     content: public void RegisterTypeForComClients (Type type, ref Guid g);
     parameters:
     - id: type
       type: System.Type
-      description: "The type to be registered for use from COM."
+      description: "Typen som skal registreres for bruk fra COM."
     - id: g
       type: System.Guid
-      description: "GUID used to register the specified type."
+      description: "GUIDEN som brukes til å registrere den angitte typen."
   overload: System.Runtime.InteropServices.IRegistrationServices.RegisterTypeForComClients*
   exceptions: []
   platform:
@@ -179,16 +179,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Determines whether the specified type is a COM type."
+  summary: "Bestemmer om den angitte typen er en COM-type."
   syntax:
     content: public bool TypeRepresentsComType (Type type);
     parameters:
     - id: type
       type: System.Type
-      description: "The type to determine if it is a COM type."
+      description: "Type for å fastslå om det er en COM-type."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the specified type is a COM type; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis den angitte typen er en COM-type. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Runtime.InteropServices.IRegistrationServices.TypeRepresentsComType*
   exceptions: []
   platform:
@@ -205,16 +205,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Determines whether the specified type requires registration."
+  summary: "Bestemmer om den angitte typen krever registrering."
   syntax:
     content: public bool TypeRequiresRegistration (Type type);
     parameters:
     - id: type
       type: System.Type
-      description: "The type to check for COM registration requirements."
+      description: "Typen til COM registrering krav."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the type must be registered for use from COM; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis typen må være registrert for bruk fra COM-grensesnitt. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Runtime.InteropServices.IRegistrationServices.TypeRequiresRegistration*
   exceptions: []
   platform:
@@ -231,25 +231,25 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Unregisters the classes in a managed assembly."
-  remarks: '`UnregisterAssembly` removes the registry entries for the types in the specified assembly previously added by <xref:System.Runtime.InteropServices.IRegistrationServices.RegisterAssembly%2A>. This method also calls any unregistration functions found in the assembly.'
+  summary: "Avregistrerer klassene i en forvaltet samling."
+  remarks: '`UnregisterAssembly`fjerner registeroppføringene for typene i den angitte samlingen tidligere lagt til av <xref:System.Runtime.InteropServices.IRegistrationServices.RegisterAssembly%2A>.</xref:System.Runtime.InteropServices.IRegistrationServices.RegisterAssembly%2A> Denne metoden kaller også eventuelle fjerning-funksjonene som finnes i samlingen.'
   syntax:
     content: public bool UnregisterAssembly (System.Reflection.Assembly assembly);
     parameters:
     - id: assembly
       type: System.Reflection.Assembly
-      description: "The assembly to be unregistered."
+      description: "Samlingen som skal registreres."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if <code>assembly</code> contains types that were successfully unregistered; otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if the assembly contains no eligible types."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis <code> assembly </code> inneholder typer som ble fullført uregistrerte; ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> hvis samlingen inneholder ingen kvalifisert typer."
   overload: System.Runtime.InteropServices.IRegistrationServices.UnregisterAssembly*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>assembly</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>assembly</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The full name of <code>assembly</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       A method marked with <xref href=&quot;System.Runtime.InteropServices.ComUnregisterFunctionAttribute&quot;></xref> is not <xref uid=&quot;langword_csharp_static&quot; name=&quot;static&quot; href=&quot;&quot;></xref>.       -or-       There is more than one method marked with <xref href=&quot;System.Runtime.InteropServices.ComUnregisterFunctionAttribute&quot;></xref> at a given level of the hierarchy.       -or-       The signature of the method marked with <xref href=&quot;System.Runtime.InteropServices.ComUnregisterFunctionAttribute&quot;></xref> is not valid."
+    description: "The full name of <code>assembly</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       - eller - metoden merket med <xref href=&quot;System.Runtime.InteropServices.ComUnregisterFunctionAttribute&quot;> </xref> er ikke <xref uid=&quot;langword_csharp_static&quot; name=&quot;static&quot; href=&quot;&quot;> </xref>.       - eller - det er flere merket med <xref href=&quot;System.Runtime.InteropServices.ComUnregisterFunctionAttribute&quot;> </xref> på et angitt nivå i hierarkiet.       - eller - signatur for metoden merket med <xref href=&quot;System.Runtime.InteropServices.ComUnregisterFunctionAttribute&quot;> </xref> er ikke gyldig."
   platform:
   - net462
 references:

@@ -21,8 +21,8 @@ items:
   nameWithType: IReflect
   fullName: System.Reflection.IReflect
   type: Interface
-  summary: "Interoperates with the [IDispatch interface](http://msdn.microsoft.com/en-us/ebbff4bc-36b2-4861-9efa-ffa45e013eb5)."
-  remarks: "The IReflect interface is used to interoperate with the [IDispatch interface](http://msdn.microsoft.com/en-us/ebbff4bc-36b2-4861-9efa-ffa45e013eb5). IReflect defines a subset of the <xref:System.Type> reflection methods. Implementing this interface enables a type to customize its behavior when the object is being accessed from COM as an `IDispatch` object. The <xref:System.Runtime.InteropServices.CustomMarshalers.ExpandoToDispatchExMarshaler> class can be used to marshal an object that implements IReflect or <xref:System.Runtime.InteropServices.Expando.IExpando> as a COM `IDispatch` object, and vice versa."
+  summary: "Fungerer sammen med den [IDispatch-grensesnittet](http://msdn.microsoft.com/en-us/ebbff4bc-36b2-4861-9efa-ffa45e013eb5)."
+  remarks: "Grensesnittet IReflect brukes til å fungere sammen med den [IDispatch-grensesnittet](http://msdn.microsoft.com/en-us/ebbff4bc-36b2-4861-9efa-ffa45e013eb5). IReflect definerer et delsett av den <xref:System.Type>gjenspeiling-metoder.</xref:System.Type> En type for å tilpasse virkemåten når objektet er åpnet fra COM som implementerer dette grensesnittet aktiverer en `IDispatch` objektet. Den <xref:System.Runtime.InteropServices.CustomMarshalers.ExpandoToDispatchExMarshaler>klassen kan brukes til å formidle et objekt som implementerer IReflect eller <xref:System.Runtime.InteropServices.Expando.IExpando>som en COM `IDispatch` objekt, og omvendt.</xref:System.Runtime.InteropServices.Expando.IExpando> </xref:System.Runtime.InteropServices.CustomMarshalers.ExpandoToDispatchExMarshaler>"
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -45,24 +45,24 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: "Returns the <xref:System.Reflection.FieldInfo> object that corresponds to the specified field and binding flag."
+  summary: "Returnerer den <xref:System.Reflection.FieldInfo>objektet som tilsvarer det angitte feltet og bindingen flagg.</xref:System.Reflection.FieldInfo>"
   syntax:
     content: public System.Reflection.FieldInfo GetField (string name, System.Reflection.BindingFlags bindingAttr);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the field to find."
+      description: "Navnet på feltet for å finne."
     - id: bindingAttr
       type: System.Reflection.BindingFlags
-      description: "The binding attributes used to control the search."
+      description: "Bindingen-attributter som brukes til å kontrollere søket."
     return:
       type: System.Reflection.FieldInfo
-      description: "A <xref:System.Reflection.FieldInfo> object containing the field information for the named object that meets the search constraints specified in <code>bindingAttr</code>."
+      description: "En <xref:System.Reflection.FieldInfo>objektet som inneholder feltinformasjon for navngitte objektet som oppfyller Søk begrensninger som er angitt i <code> bindingAttr </code>.</xref:System.Reflection.FieldInfo>"
   overload: System.Reflection.IReflect.GetField*
   exceptions:
   - type: System.Reflection.AmbiguousMatchException
     commentId: T:System.Reflection.AmbiguousMatchException
-    description: "The object implements multiple fields with the same name."
+    description: "Objektet som implementerer flere felt med samme navn."
   platform:
   - net462
 - uid: System.Reflection.IReflect.GetFields(System.Reflection.BindingFlags)
@@ -77,17 +77,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: "Returns an array of <xref:System.Reflection.FieldInfo> objects that correspond to all fields of the current class."
-  remarks: "The match is based upon a name. Each field must have a unique name. The <xref:System.Reflection.BindingFlags?displayProperty=fullName> flag specifies that non-public methods are included in the search. The <xref:System.Reflection.BindingFlags?displayProperty=fullName> flag specifies that public methods are included in the search."
+  summary: "Returnerer en matrise av <xref:System.Reflection.FieldInfo>objekter som samsvarer med alle felt i gjeldende klassen.</xref:System.Reflection.FieldInfo>"
+  remarks: "Resultatet er basert på et navn. Hvert felt må ha et unikt navn. Den <xref:System.Reflection.BindingFlags?displayProperty=fullName>flagg angir at ikke-offentlig metoder er inkludert i søket.</xref:System.Reflection.BindingFlags?displayProperty=fullName> Den <xref:System.Reflection.BindingFlags?displayProperty=fullName>flagg angir at offentlige metodene er inkludert i søket.</xref:System.Reflection.BindingFlags?displayProperty=fullName>"
   syntax:
     content: public System.Reflection.FieldInfo[] GetFields (System.Reflection.BindingFlags bindingAttr);
     parameters:
     - id: bindingAttr
       type: System.Reflection.BindingFlags
-      description: "The binding attributes used to control the search."
+      description: "Bindingen-attributter som brukes til å kontrollere søket."
     return:
       type: System.Reflection.FieldInfo[]
-      description: "An array of <xref:System.Reflection.FieldInfo> objects containing all the field information for this reflection object that meets the search constraints specified in <code>bindingAttr</code>."
+      description: "En matrise av <xref:System.Reflection.FieldInfo>objekter som inneholder alle feltinformasjon for objektet gjenspeilingen som oppfyller Søk begrensninger som er angitt i <code> bindingAttr </code>.</xref:System.Reflection.FieldInfo>"
   overload: System.Reflection.IReflect.GetFields*
   exceptions: []
   platform:
@@ -104,20 +104,20 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: "Retrieves an array of <xref:System.Reflection.MemberInfo> objects corresponding to all public members or to all members that match a specified name."
-  remarks: "The GetMember method retrieves an array of <xref:System.Reflection.MemberInfo> objects by using the name and binding attribute that correspond to all public members or to all members that match a specified name. The case of the specified name is observed or ignored, as specified by <xref:System.Reflection.BindingFlags?displayProperty=fullName>."
+  summary: "Henter en matrise av <xref:System.Reflection.MemberInfo>objekter som svarer til alle offentlige medlemmer eller til alle medlemmer som samsvarer med angitt navn.</xref:System.Reflection.MemberInfo>"
+  remarks: "Metoden GetMember henter en matrise av <xref:System.Reflection.MemberInfo>objekter ved hjelp av navn og bindingen attributt som svarer til alle offentlige medlemmer eller til alle medlemmer som samsvarer med angitt navn.</xref:System.Reflection.MemberInfo> Tilfellet for det angitte navnet er observerte eller ignorert, som angitt av <xref:System.Reflection.BindingFlags?displayProperty=fullName>.</xref:System.Reflection.BindingFlags?displayProperty=fullName>"
   syntax:
     content: public System.Reflection.MemberInfo[] GetMember (string name, System.Reflection.BindingFlags bindingAttr);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the member to find."
+      description: "Navnet på medlemmet til å finne."
     - id: bindingAttr
       type: System.Reflection.BindingFlags
-      description: "The binding attributes used to control the search."
+      description: "Bindingen-attributter som brukes til å kontrollere søket."
     return:
       type: System.Reflection.MemberInfo[]
-      description: "An array of <xref:System.Reflection.MemberInfo> objects matching the <code>name</code> parameter."
+      description: "En matrise av <xref:System.Reflection.MemberInfo>objekter som samsvarer med den <code> name </code> parameteren.</xref:System.Reflection.MemberInfo>"
   overload: System.Reflection.IReflect.GetMember*
   exceptions: []
   platform:
@@ -134,17 +134,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: "Retrieves an array of <xref:System.Reflection.MemberInfo> objects that correspond either to all public members or to all members of the current class."
-  remarks: "This method retrieves an array of <xref:System.Reflection.MemberInfo> objects by using the binding attribute that corresponds either to all public members or to all members of the current class. It returns an array of all of the members defined for this object."
+  summary: "Henter en matrise av <xref:System.Reflection.MemberInfo>objekter som svarer til alle offentlige medlemmer eller til alle medlemmer i den gjeldende klasse.</xref:System.Reflection.MemberInfo>"
+  remarks: "Denne metoden henter en matrise av <xref:System.Reflection.MemberInfo>objekter ved hjelp av attributtet binding som svarer til alle offentlige medlemmer eller til alle medlemmer i den gjeldende klasse.</xref:System.Reflection.MemberInfo> Returnerer en matrise med alle medlemmer som er definert for dette objektet."
   syntax:
     content: public System.Reflection.MemberInfo[] GetMembers (System.Reflection.BindingFlags bindingAttr);
     parameters:
     - id: bindingAttr
       type: System.Reflection.BindingFlags
-      description: "The binding attributes used to control the search."
+      description: "Bindingen-attributter som brukes til å kontrollere søket."
     return:
       type: System.Reflection.MemberInfo[]
-      description: "An array of <xref:System.Reflection.MemberInfo> objects containing all the member information for this reflection object."
+      description: "En matrise av <xref:System.Reflection.MemberInfo>objekter som inneholder alle medlemsinformasjonen for dette objektet gjenspeilingen.</xref:System.Reflection.MemberInfo>"
   overload: System.Reflection.IReflect.GetMembers*
   exceptions: []
   platform:
@@ -161,24 +161,24 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: "Retrieves a <xref:System.Reflection.MethodInfo> object that corresponds to a specified method under specified search constraints."
+  summary: "Henter en <xref:System.Reflection.MethodInfo>objekt som samsvarer med en angitt metode under angitt Søk begrensninger.</xref:System.Reflection.MethodInfo>"
   syntax:
     content: public System.Reflection.MethodInfo GetMethod (string name, System.Reflection.BindingFlags bindingAttr);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the member to find."
+      description: "Navnet på medlemmet til å finne."
     - id: bindingAttr
       type: System.Reflection.BindingFlags
-      description: "The binding attributes used to control the search."
+      description: "Bindingen-attributter som brukes til å kontrollere søket."
     return:
       type: System.Reflection.MethodInfo
-      description: "A <xref:System.Reflection.MethodInfo> object containing the method information, with the match being based on the method name and search constraints specified in <code>bindingAttr</code>."
+      description: "En <xref:System.Reflection.MethodInfo>objektet som inneholder informasjon om metoden med en lik på metoden og søkeliste begrensninger som er angitt i <code> bindingAttr </code>.</xref:System.Reflection.MethodInfo>"
   overload: System.Reflection.IReflect.GetMethod*
   exceptions:
   - type: System.Reflection.AmbiguousMatchException
     commentId: T:System.Reflection.AmbiguousMatchException
-    description: "The object implements multiple methods with the same name."
+    description: "Objektet som implementerer flere metoder med samme navn."
   platform:
   - net462
 - uid: System.Reflection.IReflect.GetMethod(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Type[],System.Reflection.ParameterModifier[])
@@ -193,34 +193,34 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: "Retrieves a <xref:System.Reflection.MethodInfo> object corresponding to a specified method, using a <xref:System.Type> array to choose from among overloaded methods."
-  remarks: "The return value is a match based on the method name, <xref:System.Reflection.BindingFlags> enum member, the kind of type conversion specified by the `binder` parameter, the overload, and the <xref:System.Reflection.ParameterInfo> that describes the signature of the method."
+  summary: "Henter en <xref:System.Reflection.MethodInfo>objektet samsvarer med en angitt metode, ved hjelp av en <xref:System.Type>matrisen til å velge fra mellom overbelastede metoder.</xref:System.Type> </xref:System.Reflection.MethodInfo>"
+  remarks: "Den returnerte verdien er et samsvar basert på metodenavnet <xref:System.Reflection.BindingFlags>enum medlem, hvilke typekonvertering som er angitt av den `binder` parameter, overlasten, og <xref:System.Reflection.ParameterInfo>som beskriver signaturen for metoden.</xref:System.Reflection.ParameterInfo> </xref:System.Reflection.BindingFlags>"
   syntax:
     content: public System.Reflection.MethodInfo GetMethod (string name, System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, Type[] types, System.Reflection.ParameterModifier[] modifiers);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the member to find."
+      description: "Navnet på medlemmet til å finne."
     - id: bindingAttr
       type: System.Reflection.BindingFlags
-      description: "The binding attributes used to control the search."
+      description: "Bindingen-attributter som brukes til å kontrollere søket."
     - id: binder
       type: System.Reflection.Binder
-      description: "An object that implements <xref href=&quot;System.Reflection.Binder&quot;></xref>, containing properties related to this method."
+      description: "Et objekt som implementerer <xref href=&quot;System.Reflection.Binder&quot;> </xref>, som inneholder egenskaper relatert til denne metoden."
     - id: types
       type: System.Type[]
-      description: "An array used to choose among overloaded methods."
+      description: "En matrise som brukes til å velge mellom overbelastede metoder."
     - id: modifiers
       type: System.Reflection.ParameterModifier[]
-      description: "An array of parameter modifiers used to make binding work with parameter signatures in which the types have been modified."
+      description: "En matrise med parameteren-modifikatorer brukes til å gjøre en binding arbeide med parameteren-signaturer typene er endret."
     return:
       type: System.Reflection.MethodInfo
-      description: "The requested method that matches all the specified parameters."
+      description: "Den forespurte metoden som samsvarer med de angitte parameterne."
   overload: System.Reflection.IReflect.GetMethod*
   exceptions:
   - type: System.Reflection.AmbiguousMatchException
     commentId: T:System.Reflection.AmbiguousMatchException
-    description: "The object implements multiple methods with the same name."
+    description: "Objektet som implementerer flere metoder med samme navn."
   platform:
   - net462
 - uid: System.Reflection.IReflect.GetMethods(System.Reflection.BindingFlags)
@@ -235,17 +235,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: "Retrieves an array of <xref:System.Reflection.MethodInfo> objects with all public methods or all methods of the current class."
-  remarks: "The non-public attribute of `bindingAttr` is indicated only if public methods are returned."
+  summary: "Henter en matrise av <xref:System.Reflection.MethodInfo>objekter med alle offentlige metoder eller alle metoder for gjeldende klassen.</xref:System.Reflection.MethodInfo>"
+  remarks: "Attributtet ikke er felles for `bindingAttr` angis bare hvis offentlige metodene returneres."
   syntax:
     content: public System.Reflection.MethodInfo[] GetMethods (System.Reflection.BindingFlags bindingAttr);
     parameters:
     - id: bindingAttr
       type: System.Reflection.BindingFlags
-      description: "The binding attributes used to control the search."
+      description: "Bindingen-attributter som brukes til å kontrollere søket."
     return:
       type: System.Reflection.MethodInfo[]
-      description: "An array of <xref:System.Reflection.MethodInfo> objects containing all the methods defined for this reflection object that meet the search constraints specified in <code>bindingAttr</code>."
+      description: "En matrise av <xref:System.Reflection.MethodInfo>objekter som inneholder alle metodene som er definert for dette objektet gjenspeilingen, som oppfyller Søk begrensninger som er angitt i <code> bindingAttr </code>.</xref:System.Reflection.MethodInfo>"
   overload: System.Reflection.IReflect.GetMethods*
   exceptions: []
   platform:
@@ -262,16 +262,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: "Retrieves an array of <xref:System.Reflection.PropertyInfo> objects corresponding to all public properties or to all properties of the current class."
+  summary: "Henter en matrise av <xref:System.Reflection.PropertyInfo>objekter som svarer til alle offentlige egenskaper eller alle egenskapene for den gjeldende klasse.</xref:System.Reflection.PropertyInfo>"
   syntax:
     content: public System.Reflection.PropertyInfo[] GetProperties (System.Reflection.BindingFlags bindingAttr);
     parameters:
     - id: bindingAttr
       type: System.Reflection.BindingFlags
-      description: "The binding attribute used to control the search."
+      description: "Bindingen attributtet som brukes til å kontrollere søket."
     return:
       type: System.Reflection.PropertyInfo[]
-      description: "An array of <xref:System.Reflection.PropertyInfo> objects for all the properties defined on the reflection object."
+      description: "En matrise av <xref:System.Reflection.PropertyInfo>objekter for alle egenskaper som er definert i objektet gjenspeilingen.</xref:System.Reflection.PropertyInfo>"
   overload: System.Reflection.IReflect.GetProperties*
   exceptions: []
   platform:
@@ -288,24 +288,24 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: "Retrieves a <xref:System.Reflection.PropertyInfo> object corresponding to a specified property under specified search constraints."
+  summary: "Henter en <xref:System.Reflection.PropertyInfo>objekt som svarer til en angitt egenskap under angitt Søk begrensninger.</xref:System.Reflection.PropertyInfo>"
   syntax:
     content: public System.Reflection.PropertyInfo GetProperty (string name, System.Reflection.BindingFlags bindingAttr);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the property to find."
+      description: "Navnet på egenskapen til å finne."
     - id: bindingAttr
       type: System.Reflection.BindingFlags
-      description: "The binding attributes used to control the search."
+      description: "Bindingen-attributter som brukes til å kontrollere søket."
     return:
       type: System.Reflection.PropertyInfo
-      description: "A <xref:System.Reflection.PropertyInfo> object for the located property that meets the search constraints specified in <code>bindingAttr</code>, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the property was not located."
+      description: "En <xref:System.Reflection.PropertyInfo>objekt for egenskapen finner som oppfyller Søk begrensninger som er angitt i <code> bindingAttr </code>, eller <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Hvis egenskapen ikke ble funnet.</xref:System.Reflection.PropertyInfo>"
   overload: System.Reflection.IReflect.GetProperty*
   exceptions:
   - type: System.Reflection.AmbiguousMatchException
     commentId: T:System.Reflection.AmbiguousMatchException
-    description: "The object implements multiple fields with the same name."
+    description: "Objektet som implementerer flere felt med samme navn."
   platform:
   - net462
 - uid: System.Reflection.IReflect.GetProperty(System.String,System.Reflection.BindingFlags,System.Reflection.Binder,System.Type,System.Type[],System.Reflection.ParameterModifier[])
@@ -320,32 +320,32 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: "Retrieves a <xref:System.Reflection.PropertyInfo> object that corresponds to a specified property with specified search constraints."
-  remarks: "This method retrieves a <xref:System.Reflection.PropertyInfo> object corresponding to a specified property under specified search constraints. A type array is used to choose from among overloaded methods."
+  summary: "Henter en <xref:System.Reflection.PropertyInfo>objekt som samsvarer med en angitt egenskap med angitt Søk begrensninger.</xref:System.Reflection.PropertyInfo>"
+  remarks: "Denne metoden henter en <xref:System.Reflection.PropertyInfo>objekt som svarer til en angitt egenskap under angitt Søk begrensninger.</xref:System.Reflection.PropertyInfo> En type matrise brukes til å velge mellom overbelastede metoder."
   syntax:
     content: public System.Reflection.PropertyInfo GetProperty (string name, System.Reflection.BindingFlags bindingAttr, System.Reflection.Binder binder, Type returnType, Type[] types, System.Reflection.ParameterModifier[] modifiers);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the member to find."
+      description: "Navnet på medlemmet til å finne."
     - id: bindingAttr
       type: System.Reflection.BindingFlags
-      description: "The binding attribute used to control the search."
+      description: "Bindingen attributtet som brukes til å kontrollere søket."
     - id: binder
       type: System.Reflection.Binder
-      description: "An object that implements <xref href=&quot;System.Reflection.Binder&quot;></xref>, containing properties related to this method."
+      description: "Et objekt som implementerer <xref href=&quot;System.Reflection.Binder&quot;> </xref>, som inneholder egenskaper relatert til denne metoden."
     - id: returnType
       type: System.Type
-      description: "The type of the property."
+      description: "Typen for egenskapen."
     - id: types
       type: System.Type[]
-      description: "An array used to choose among overloaded methods with the same name."
+      description: "En matrise som brukes til å velge mellom overbelastede metoder med samme navn."
     - id: modifiers
       type: System.Reflection.ParameterModifier[]
-      description: "An array used to choose the parameter modifiers."
+      description: "En matrise som brukes til å velge parameteren modifikatorer."
     return:
       type: System.Reflection.PropertyInfo
-      description: "A <xref:System.Reflection.PropertyInfo> object for the located property, if a property with the specified name was located in this reflection object, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the property was not located."
+      description: "En <xref:System.Reflection.PropertyInfo>objekt for finner egenskapen, hvis en egenskap med det angitte navnet er plassert i objektet gjenspeilingen, eller <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Hvis egenskapen ikke ble funnet.</xref:System.Reflection.PropertyInfo>"
   overload: System.Reflection.IReflect.GetProperty*
   exceptions: []
   platform:
@@ -362,8 +362,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: "Invokes a specified member."
-  remarks: "The method that is to be invoked must be accessible and provide the most specific match with the specified argument list, under the constraints of the specified binder and invocation attributes.       A method is invoked if the number of parameters in the method declaration equals the number of arguments in the specified argument list, and the type of each argument can be converted by the binder to the type of the parameter.      > [!NOTE] >  The array of parameter modifiers passed to the InvokeMember method must contain a single parameter modifier. Only the first parameter modifier is considered when determining which argument needs to be passed by reference when exposed to COM.       The binder finds all matching methods, in accordance with the type of binding requested (<xref:System.Reflection.BindingFlags?displayProperty=fullName>, <xref:System.Reflection.IReflect.GetProperties%2A>, and so on). The set of methods is filtered by the name, number of arguments, and a set of search modifiers defined in the binder. After the method is selected, it is invoked, and accessibility is checked at that point. The search may control which set of methods is searched based upon the accessibility attribute associated with the method. <xref:System.Reflection.Binder.BindToMethod%2A> selects the method to be invoked. The default binder selects the most specific match.       Access restrictions are ignored for fully trusted code. That is, private constructors, methods, fields, and properties can be accessed and invoked through reflection whenever the code is fully trusted."
+  summary: "Aktiverer et angitt medlem."
+  remarks: "Metoden som skal aktiveres må være tilgjengelige og få mest spesifikke treff med under begrensninger for de angitte dokumentordner og aktivering attributtene i listen angitte argumentet.       En metode aktiveres hvis antallet parametere i denne metodedeklarasjonen er lik antall argumenter i listen angitte argumentet, og hver Argumenttypen kan konverteres av ha typen for parameteren.      > [!NOTE] > Matrisen for parameteren modifikatorer sendt til InvokeMember-metoden må inneholde en enkelt parameter modifikator. Bare den første parameteren modifikatoren vurderes ved å fastslå hvilke argumentet må sendes med referanse når eksponert til COM.       Dokumentordneren finner alle samsvarende metoder, i henhold til binde forespurte (<xref:System.Reflection.BindingFlags?displayProperty=fullName>, <xref:System.Reflection.IReflect.GetProperties%2A>og så videre).</xref:System.Reflection.IReflect.GetProperties%2A> </xref:System.Reflection.BindingFlags?displayProperty=fullName> Sett med metoder er filtrert etter navnet, antall argumenter og et sett med søk modifikatorer definert i dokumentordneren. Når metoden er merket, den startes og tilgjengelighet kontrolleres på dette tidspunktet. Søket bestemme hvilket sett med metoder søkes basert på attributtet tilgjengelighet som er forbundet med metoden. <xref:System.Reflection.Binder.BindToMethod%2A>Velg metoden som skal aktiveres.</xref:System.Reflection.Binder.BindToMethod%2A> Standard dokumentordneren velger det mest spesifikke samsvaret.       Tilgangsbegrensninger ignoreres for fullstendig klarert kode. Private konstruktører, metoder, felt og egenskaper kan som er tilgjengelig og aktiveres via gjenspeiling når koden er fullstendig klarert."
   example:
   - "The following example obtains the value of the <xref:System.DateTime.Now%2A> property.  \n  \n [!code-cs[Classic IReflect.InvokeMember Example#1](~/add/codesnippet/csharp/46b5c0ee-07c6-4491-8e06-_1.cs)]\n [!code-vb[Classic IReflect.InvokeMember Example#1](~/add/codesnippet/visualbasic/46b5c0ee-07c6-4491-8e06-_1.vb)]\n [!code-cpp[Classic IReflect.InvokeMember Example#1](~/add/codesnippet/cpp/46b5c0ee-07c6-4491-8e06-_1.cpp)]"
   syntax:
@@ -371,45 +371,45 @@ items:
     parameters:
     - id: name
       type: System.String
-      description: "The name of the member to find."
+      description: "Navnet på medlemmet til å finne."
     - id: invokeAttr
       type: System.Reflection.BindingFlags
-      description: "One of the <xref href=&quot;System.Reflection.BindingFlags&quot;></xref> invocation attributes. The `invokeAttr` parameter may be a constructor, method, property, or field. A suitable invocation attribute must be specified. Invoke the default member of a class by passing the empty string (&quot;&quot;) as the name of the member."
+      description: "Én av de <xref href=&quot;System.Reflection.BindingFlags&quot;> </xref> aktivering attributter. Den `invokeAttr` parameteren kan være en konstruktøren, metoden, egenskapen eller feltet. Et passende aktivering-attributt må angis. Aktivere Standardmedlemmet i en klasse ved å sende en tom streng (&quot;&quot;) med navnet på medlemmet."
     - id: binder
       type: System.Reflection.Binder
-      description: "One of the <xref href=&quot;System.Reflection.BindingFlags&quot;></xref> bit flags. Implements <xref href=&quot;System.Reflection.Binder&quot;></xref>, containing properties related to this method."
+      description: "Én av de <xref href=&quot;System.Reflection.BindingFlags&quot;> </xref> bit flagg. Implementerer <xref href=&quot;System.Reflection.Binder&quot;> </xref>, som inneholder egenskaper relatert til denne metoden."
     - id: target
       type: System.Object
-      description: "The object on which to invoke the specified member. This parameter is ignored for static members."
+      description: "Objektet som du vil aktivere det angitte medlemmet. Denne parameteren ignoreres for statiske medlemmene."
     - id: args
       type: System.Object[]
-      description: "An array of objects that contains the number, order, and type of the parameters of the member to be invoked. This is an empty array if there are no parameters."
+      description: "En matrise av objekter som inneholder tall, rekkefølge og Parametertypen for medlemmet som skal aktiveres. Dette er en tom matrise Hvis det er ingen parametere."
     - id: modifiers
       type: System.Reflection.ParameterModifier[]
       description: 'An array of <xref href="System.Reflection.ParameterModifier"></xref> objects. This array has the same length as the `args` parameter, representing the invoked member''s argument attributes in the metadata. A parameter can have the following attributes: <xref uid="langword_csharp_pdIn" name="pdIn" href=""></xref>, <xref uid="langword_csharp_pdOut" name="pdOut" href=""></xref>, <xref uid="langword_csharp_pdRetval" name="pdRetval" href=""></xref>, <xref uid="langword_csharp_pdOptional" name="pdOptional" href=""></xref>, and <xref uid="langword_csharp_pdHasDefault" name="pdHasDefault" href=""></xref>. These represent [In], [Out], [retval], [optional], and a default parameter, respectively. These attributes are used by various interoperability services.'
     - id: culture
       type: System.Globalization.CultureInfo
-      description: "An instance of <xref:System.Globalization.CultureInfo> used to govern the coercion of types. For example, `culture` converts a <xref uid=&quot;langword_csharp_String&quot; name=&quot;String&quot; href=&quot;&quot;></xref> that represents 1000 to a <xref uid=&quot;langword_csharp_Double&quot; name=&quot;Double&quot; href=&quot;&quot;></xref> value, since 1000 is represented differently by different cultures. If this parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, the <xref:System.Globalization.CultureInfo> for the current thread is used."
+      description: "En forekomst av <xref:System.Globalization.CultureInfo>brukes til å styre rangeringen av typene.</xref:System.Globalization.CultureInfo> For eksempel `culture` konverterer en <xref uid=&quot;langword_csharp_String&quot; name=&quot;String&quot; href=&quot;&quot;> </xref> som representerer 1000 til en <xref uid=&quot;langword_csharp_Double&quot; name=&quot;Double&quot; href=&quot;&quot;> </xref> verdi, fordi 1000 er på en annen måte av ulike kulturer. Hvis denne parameteren er <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>, <xref:System.Globalization.CultureInfo>for gjeldende tråd brukes.</xref:System.Globalization.CultureInfo>"
     - id: namedParameters
       type: System.String[]
-      description: "A <xref uid=&quot;langword_csharp_String&quot; name=&quot;String&quot; href=&quot;&quot;></xref> array of parameters."
+      description: "En <xref uid=&quot;langword_csharp_String&quot; name=&quot;String&quot; href=&quot;&quot;> </xref> matrise med parametere."
     return:
       type: System.Object
-      description: "The specified member."
+      description: "Det angitte medlemmet."
   overload: System.Reflection.IReflect.InvokeMember*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "More than one argument is specified for a field <xref uid=&quot;langword_csharp_set&quot; name=&quot;set&quot; href=&quot;&quot;></xref>."
+    description: "Mer enn ett argument er angitt for et felt <xref uid=&quot;langword_csharp_set&quot; name=&quot;set&quot; href=&quot;&quot;> </xref>."
   - type: System.MissingFieldException
     commentId: T:System.MissingFieldException
-    description: "The field or property cannot be found."
+    description: "Finner ikke feltet eller egenskapen."
   - type: System.MissingMethodException
     commentId: T:System.MissingMethodException
-    description: "The method cannot be found."
+    description: "Finner ikke metoden."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "A private member is invoked without the necessary <xref href=&quot;System.Security.Permissions.ReflectionPermission&quot;></xref>."
+    description: "Medlem private aktiveres uten nødvendige <xref href=&quot;System.Security.Permissions.ReflectionPermission&quot;> </xref>."
   platform:
   - net462
 - uid: System.Reflection.IReflect.UnderlyingSystemType
@@ -424,12 +424,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Reflection
-  summary: "Gets the underlying type that represents the <xref href=&quot;System.Reflection.IReflect&quot;></xref> object."
+  summary: "Henter underliggende typen som representerer den <xref href=&quot;System.Reflection.IReflect&quot;> </xref> objektet."
   syntax:
     content: public Type UnderlyingSystemType { get; }
     return:
       type: System.Type
-      description: "The underlying type that represents the <xref href=&quot;System.Reflection.IReflect&quot;></xref> object."
+      description: "Den underliggende typen som representerer den <xref href=&quot;System.Reflection.IReflect&quot;> </xref> objektet."
   overload: System.Reflection.IReflect.UnderlyingSystemType*
   exceptions: []
   platform:
