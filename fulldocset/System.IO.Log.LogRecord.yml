@@ -15,7 +15,7 @@ items:
   nameWithType: LogRecord
   fullName: System.IO.Log.LogRecord
   type: Class
-  summary: "Represents a log record that has been appended to a sequence."
+  summary: "Representerer en loggpost som er lagt til en sekvens."
   syntax:
     content: 'public abstract class LogRecord : IDisposable'
   inheritance:
@@ -37,7 +37,7 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Initializes a new instance of the <xref href=&quot;System.IO.Log.LogRecord&quot;></xref> class."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.IO.Log.LogRecord&quot;> </xref> klasse."
   syntax:
     content: protected LogRecord ();
     parameters: []
@@ -57,17 +57,17 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, gets a stream that contains the record data."
+  summary: "Henter en dataflyt som inneholder postdataene når overstyres i en avledet klasse."
   syntax:
     content: public abstract System.IO.Stream Data { get; }
     return:
       type: System.IO.Stream
-      description: "A stream that contains the record data."
+      description: "En dataflyt som inneholder postdata."
   overload: System.IO.Log.LogRecord.Data*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The <xref href=&quot;System.IO.Log.LogRecord&quot;></xref> has been disposed of."
+    description: "Den <xref href=&quot;System.IO.Log.LogRecord&quot;> </xref> har blitt fjernet av."
   platform:
   - net462
 - uid: System.IO.Log.LogRecord.Dispose
@@ -82,8 +82,8 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "Releases all resources used by the <xref href=&quot;System.IO.Log.LogRecord&quot;></xref>."
-  remarks: "You should call this method when you finish using the <xref:System.IO.Log.LogRecord> instance. The Dispose method leaves the <xref:System.IO.Log.LogRecord> instance in an unusable state. After calling this method, you must release all references to the <xref:System.IO.Log.LogRecord> instance, so that the garbage collector can reclaim the memory that the <xref:System.IO.Log.LogRecord> instance was occupying.      > [!NOTE] >  Always call Dispose before you release your last reference to the <xref:System.IO.Log.LogRecord> instance. Otherwise, the resources it is using cannot be freed until the garbage collector calls the <xref:System.IO.Log.LogRecord> instance&quot;s `Finalize` method."
+  summary: "Frigir alle ressursene som brukes av den <xref href=&quot;System.IO.Log.LogRecord&quot;> </xref>."
+  remarks: "Du må kalle denne metoden når du er ferdig med å bruke den <xref:System.IO.Log.LogRecord>forekomsten.</xref:System.IO.Log.LogRecord> Fjerningsmetoden forlater den <xref:System.IO.Log.LogRecord>forekomst i en ubrukelig tilstand.</xref:System.IO.Log.LogRecord> Etter kalle denne metoden, må du frigi alle referanser til den <xref:System.IO.Log.LogRecord>serverforekomsten slik at saneringsoppsamlingen kan gjenvinne minnet som den <xref:System.IO.Log.LogRecord>forekomsten ble bruker.</xref:System.IO.Log.LogRecord> </xref:System.IO.Log.LogRecord>      > [!NOTE] > Alltid kall avhending før du slipper siste referanse til det <xref:System.IO.Log.LogRecord>forekomsten.</xref:System.IO.Log.LogRecord> Ellers ressurser den bruker kan ikke frigis før saneringsoppsamling kall av <xref:System.IO.Log.LogRecord>forekomstens `Finalize` metode.</xref:System.IO.Log.LogRecord>"
   syntax:
     content: public abstract void Dispose ();
     parameters: []
@@ -103,13 +103,13 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, gets the sequence number of the previous record."
-  remarks: "The value of this property is the sequence number that was provided as the `previousUndoRecord` parameter in the <xref:System.IO.Log.IRecordSequence.Append%2A> method. Aside from its use in enumeration, this sequence number is treated as opaque by the record sequence."
+  summary: "Når overstyrt i en avledet klasse, henter sekvensnummeret for den forrige posten."
+  remarks: "Verdien for denne egenskapen er sekvensnummer som ble oppgitt som den `previousUndoRecord` parameter i den <xref:System.IO.Log.IRecordSequence.Append%2A>metoden.</xref:System.IO.Log.IRecordSequence.Append%2A> I tillegg bruken i opplistingen behandles dette serienummeret som ugjennomsiktig etter post-sekvensen."
   syntax:
     content: public abstract System.IO.Log.SequenceNumber Previous { get; }
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the previous record."
+      description: "Serienummeret for den forrige posten."
   overload: System.IO.Log.LogRecord.Previous*
   exceptions: []
   platform:
@@ -126,12 +126,12 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, gets the sequence number of this record."
+  summary: "Henter serienummeret for denne oppføring når overstyres i en avledet klasse."
   syntax:
     content: public abstract System.IO.Log.SequenceNumber SequenceNumber { get; }
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of this record."
+      description: "Serienummeret for denne oppføring."
   overload: System.IO.Log.LogRecord.SequenceNumber*
   exceptions: []
   platform:
@@ -148,13 +148,13 @@ items:
   assemblies:
   - System.IO.Log
   namespace: System.IO.Log
-  summary: "When overridden in a derived class, gets the sequence number of the next record."
-  remarks: "The value of this property is the sequence number that was provided as the `nextUndoRecord` parameter in the <xref:System.IO.Log.IRecordSequence.Append%2A> method. Aside from its use in enumeration, this sequence number is treated as opaque by the record sequence."
+  summary: "Henter sekvensnummeret i neste post når overstyres i en avledet klasse."
+  remarks: "Verdien for denne egenskapen er sekvensnummer som ble oppgitt som den `nextUndoRecord` parameter i den <xref:System.IO.Log.IRecordSequence.Append%2A>metoden.</xref:System.IO.Log.IRecordSequence.Append%2A> I tillegg bruken i opplistingen behandles dette serienummeret som ugjennomsiktig etter post-sekvensen."
   syntax:
     content: public abstract System.IO.Log.SequenceNumber User { get; }
     return:
       type: System.IO.Log.SequenceNumber
-      description: "The sequence number of the next record in the user-specified chain."
+      description: "Serienummeret for neste post i brukerangitte-kjede."
   overload: System.IO.Log.LogRecord.User*
   exceptions: []
   platform:

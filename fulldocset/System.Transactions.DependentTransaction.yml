@@ -10,8 +10,8 @@ items:
   nameWithType: DependentTransaction
   fullName: System.Transactions.DependentTransaction
   type: Class
-  summary: "Describes a clone of a transaction providing guarantee that the transaction cannot be committed until the application comes to rest regarding work on the transaction. This class cannot be inherited."
-  remarks: "The DependentTransaction is a clone of a <xref:System.Transactions.Transaction> object created using the <xref:System.Transactions.Transaction.DependentClone%2A> method.  Its sole purpose is to allow the application to come to rest and guarantee that the transaction cannot commit while work is still being performed on the transaction (for example, on a worker thread).       When the work done within the cloned transaction is finally complete and ready to be committed, it can inform the creator of the transaction using the <xref:System.Transactions.DependentTransaction.Complete%2A> method. Thus you can preserve the consistency and correctness of data.       The <xref:System.Transactions.DependentCloneOption> enumeration is used to determine the behavior on commit.  This behavior control allows an application to come to rest, as well as provides concurrency support. For more information on how this enumeration is used, see [Managing Concurrency with DependentTransaction](http://msdn.microsoft.com/en-us/bdad8468-2a90-4b81-8375-278067120cab)."
+  summary: "Beskriver en kopi av en transaksjon som gir garantere transaksjonen kan ikke utføres før programmet kommer til resten om arbeid på transaksjonen. Denne klassen kan ikke arves."
+  remarks: "DependentTransaction er en kopi av en <xref:System.Transactions.Transaction>objektet som ble opprettet ved hjelp av den <xref:System.Transactions.Transaction.DependentClone%2A>metoden.</xref:System.Transactions.Transaction.DependentClone%2A> </xref:System.Transactions.Transaction>  Det eneste formålet er at programmet skal bli Hold for å garantere at transaksjonen ikke kan utføres under arbeid er fremdeles i transaksjonen (for eksempel på en arbeidstråd).       Når arbeidet i klonede transaksjonen til slutt er fullført, og kan ikke utføres, kan det informere oppretteren av transaksjon ved hjelp av den <xref:System.Transactions.DependentTransaction.Complete%2A>metoden.</xref:System.Transactions.DependentTransaction.Complete%2A> Du kan derfor beholde konsekvent og korrekt av data.       Den <xref:System.Transactions.DependentCloneOption>nummerering brukes til å bestemme virkemåten på commit.</xref:System.Transactions.DependentCloneOption>  Kontrollen virkemåte kan et program for å gå til holder, i tillegg til støtte for samtidighet. For mer informasjon om hvordan du bruker denne opplisting, kan du se [behandle samtidighet med DependentTransaction](http://msdn.microsoft.com/en-us/bdad8468-2a90-4b81-8375-278067120cab)."
   example:
   - "The following example shows you how to create a dependent transaction.  \n  \n [!code-vb[Tx_DependentTx#1](~/add/codesnippet/visualbasic/t-system.transactions.de_0_1.vb)]\n [!code-cs[Tx_DependentTx#1](~/add/codesnippet/csharp/t-system.transactions.de_0_1.cs)]"
   syntax:
@@ -59,8 +59,8 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Attempts to complete the dependent transaction."
-  remarks: "Call this method when the dependent clone wants to inform the creator of the transaction that it has finished its work, and the transaction can be committed if the parent is also ready.       After this call is invoked, you should not attempt any additional work on the transaction, or an exception is thrown.       If the application domain goes down after this method is called, and before the transaction is completed, the transaction might abort.       **Note** This method should be called only once during the dependent transaction&quot;s lifetime."
+  summary: "Forsøk på å fullføre avhengige transaksjonen."
+  remarks: "Kalle denne metoden når underordnet klone ønsker å informere oppretteren av transaksjonen arbeidet er fullført, og transaksjonen ikke kan utføres hvis overordnet også er klar.       Når dette kallet er aktivert, bør du prøve ekstra arbeid på transaksjonen, eller et unntak.       Hvis programdomenet går etter at denne metoden, og før transaksjonen er fullført, transaksjonen kan avbrytes.       **Obs** denne metoden må kalles én gang under avhengige transaksjonen levetid."
   syntax:
     content: public void Complete ();
     parameters: []
@@ -68,7 +68,7 @@ items:
   exceptions:
   - type: System.Transactions.TransactionException
     commentId: T:System.Transactions.TransactionException
-    description: "Any attempt for additional work on the transaction after this method is called. These include invoking methods such as <xref:System.Transactions.Transaction.EnlistVolatile*>, <xref:System.Transactions.Transaction.EnlistDurable*>, <xref:System.Transactions.Transaction.Clone*>, <xref:System.Transactions.Transaction.DependentClone*> , or any serialization operations on the transaction."
+    description: "Forsøk på for ekstra arbeid på transaksjonen etter at denne metoden. Disse omfatter bruke metoder som <> </> *>, <> </> *>, <> </> *>, <> </> *>, eller serialisering operasjoner i transaksjonen."
   platform:
   - net462
 references:

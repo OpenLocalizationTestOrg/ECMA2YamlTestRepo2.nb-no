@@ -20,8 +20,8 @@ items:
   nameWithType: ServicedComponent
   fullName: System.EnterpriseServices.ServicedComponent
   type: Class
-  summary: "Represents the base class of all classes using COM+ services."
-  remarks: "Under certain conditions, a class that is derived from ServicedComponent that runs in a COM+ application may stop responding. This problem is caused by an Activity deadlock. Activities can deadlock on multithreaded applications because of an asynchronous cleanup of component references. To work around this problem, call the <xref:System.EnterpriseServices.ServicedComponent.Dispose%2A> method when you complete work with objects derived from ServicedComponent. For more information, see [http://support.microsoft.com/default.aspx?scid=kb;en-us;327443](http://support.microsoft.com/default.aspx?scid=kb;en-us;327443).      > [!NOTE] >  Client code must call `Dispose` on serviced components to ensure proper operation."
+  summary: "Representerer basisklasse for alle klasser ved hjelp av COM +-tjenester."
+  remarks: "I enkelte tilfeller kan svarer en klasse som er avledet fra ServicedComponent som kjører i COM +-programmet ikke. Dette problemet er forårsaket av en vranglås aktivitet. Aktiviteter kan vranglås på flere tråder programmer på grunn av en asynkron Opprydding av komponenten referanser. Du kan løse dette problemet ved å kalle den <xref:System.EnterpriseServices.ServicedComponent.Dispose%2A>metoden når du fullfører arbeid med objekter som er avledet fra ServicedComponent.</xref:System.EnterpriseServices.ServicedComponent.Dispose%2A> Hvis du vil ha mer informasjon, se [http://support.microsoft.com/default.aspx?scid=kb;en-us;327443](http://support.microsoft.com/default.aspx?scid=kb;en-us;327443).      > [!NOTE] > Klientkoden må kalle `Dispose` på vedlikehold for å sikre ordentlig."
   example:
   - "The following code example demonstrates how to expose a class as a configured COM component.  \n  \n [!code-cpp[EnterpriseServices_Basic#1](~/add/codesnippet/cpp/t-system.enterpriseservi_3_1.cpp)]\n [!code-cs[EnterpriseServices_Basic#1](~/add/codesnippet/csharp/t-system.enterpriseservi_3_1.cs)]  \n  \n To deploy this class as a configured COM component, you must generate a strong key, compile the class as a library, and register the library. These three steps are accomplished by the following three commands.  \n  \n```  \nsn -k Calculator.snk  \ncsc /t:library Calculator.cs  \nregsvcs Calculator.dll  \n```"
   syntax:
@@ -53,8 +53,8 @@ items:
   assemblies:
   - System.EnterpriseServices
   namespace: System.EnterpriseServices
-  summary: "Initializes a new instance of the <xref href=&quot;System.EnterpriseServices.ServicedComponent&quot;></xref> class."
-  remarks: "This constructor is called by derived class constructors to initialize state in this type."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.EnterpriseServices.ServicedComponent&quot;> </xref> klasse."
+  remarks: "Denne konstruktøren kalles av utledede klassen brukes til å initialisere tilstand i denne typen."
   syntax:
     content: public ServicedComponent ();
     parameters: []
@@ -74,7 +74,7 @@ items:
   assemblies:
   - System.EnterpriseServices
   namespace: System.EnterpriseServices
-  summary: "Called by the infrastructure when the object is created or allocated from a pool. Override this method to add custom initialization code to objects."
+  summary: "Kalles av infrastrukturen når objektet er opprettet eller tildelt fra et utvalg. Overstyre denne metoden for å legge til av egendefinert initialiseringskode objekter."
   remarks: ''
   example:
   - "The following code example demonstrates the use of this method.  \n  \n [!code-cpp[EnterpriseServices_Pooling#3](~/add/codesnippet/cpp/m-system.enterpriseservi_15_1.cpp)]\n [!code-cs[EnterpriseServices_Pooling#3](~/add/codesnippet/csharp/m-system.enterpriseservi_15_1.cs)]\n [!code-vb[EnterpriseServices_Pooling#3](~/add/codesnippet/visualbasic/m-system.enterpriseservi_15_1.vb)]"
@@ -97,7 +97,7 @@ items:
   assemblies:
   - System.EnterpriseServices
   namespace: System.EnterpriseServices
-  summary: "This method is called by the infrastructure before the object is put back into the pool. Override this method to vote on whether the object is put back into the pool."
+  summary: "Denne metoden kalles av infrastrukturen før objektet går tilbake til utvalget. Overstyre denne metoden vil svare på om objektet går tilbake til utvalget."
   remarks: ''
   example:
   - "The following code example demonstrates the use of this method.  \n  \n [!code-cpp[EnterpriseServices_Pooling#5](~/add/codesnippet/cpp/m-system.enterpriseservi_19_1.cpp)]\n [!code-cs[EnterpriseServices_Pooling#5](~/add/codesnippet/csharp/m-system.enterpriseservi_19_1.cs)]\n [!code-vb[EnterpriseServices_Pooling#5](~/add/codesnippet/visualbasic/m-system.enterpriseservi_19_1.vb)]"
@@ -106,7 +106,7 @@ items:
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the serviced component can be pooled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis Service komponenten kan utvalg; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.EnterpriseServices.ServicedComponent.CanBePooled*
   exceptions: []
   platform:
@@ -123,13 +123,13 @@ items:
   assemblies:
   - System.EnterpriseServices
   namespace: System.EnterpriseServices
-  summary: "Called by the infrastructure just after the constructor is called, passing in the constructor string. Override this method to make use of the construction string value."
+  summary: "Kalles av infrastrukturen like etter at konstruktøren kalles, i konstruktøren-streng. Overstyre denne metoden til å gjøre bruk av strengverdien konstruksjon."
   syntax:
     content: protected virtual void Construct (string s);
     parameters:
     - id: s
       type: System.String
-      description: "The construction string."
+      description: "Konstruksjon-streng."
   overload: System.EnterpriseServices.ServicedComponent.Construct*
   exceptions: []
   platform:
@@ -146,7 +146,7 @@ items:
   assemblies:
   - System.EnterpriseServices
   namespace: System.EnterpriseServices
-  summary: "Called by the infrastructure when the object is about to be deactivated. Override this method to add custom finalization code to objects when just-in-time (JIT) compiled code or object pooling is used."
+  summary: "Kalles av infrastrukturen når objektet er til å bli deaktivert. Overstyre denne metoden for å legge til egendefinerte finalization kode objekter når utelukkende tidsnok (JIT) kompilert kode eller objektutvalg brukes."
   remarks: ''
   example:
   - "The following code example demonstrates the use of this method.  \n  \n [!code-cpp[EnterpriseServices_Pooling#4](~/add/codesnippet/cpp/m-system.enterpriseservi_27_1.cpp)]\n [!code-cs[EnterpriseServices_Pooling#4](~/add/codesnippet/csharp/m-system.enterpriseservi_27_1.cs)]\n [!code-vb[EnterpriseServices_Pooling#4](~/add/codesnippet/visualbasic/m-system.enterpriseservi_27_1.vb)]"
@@ -169,8 +169,8 @@ items:
   assemblies:
   - System.EnterpriseServices
   namespace: System.EnterpriseServices
-  summary: "Releases all resources used by the <xref href=&quot;System.EnterpriseServices.ServicedComponent&quot;></xref>."
-  remarks: "Finalizes the object and removes the associated COM+ context.       It is recommended to explicitly release COM+ objects and external resources before the garbage collector frees the object. If the external resource is scarce or expensive, better performance can be achieved by explicitly releasing COM+ resources when they are no longer needed. Explicit control is provided by the Dispose method.       Calling Dispose allows the resources used by the <xref:System.EnterpriseServices.ServicedComponent> to be reallocated for other purposes. For more information about Dispose, see [Cleaning Up Unmanaged Resources](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Frigir alle ressursene som brukes av den <xref href=&quot;System.EnterpriseServices.ServicedComponent&quot;> </xref>."
+  remarks: "Fullfører objektet, og fjerner den tilknyttede COM +-konteksten.       Det anbefales å gi eksplisitt COM +-objekter og eksterne ressurser før saneringsoppsamlingen frigjør objektet. Hvis den eksterne ressursen er lite eller kostbar, kan bedre ytelse oppnås ved å frigi eksplisitt COM +-ressurser når de ikke lenger er nødvendige. Eksplisitt kontrollen er angitt av fjerningsmetoden.       Kaller avhending tillater ressursene som brukes av den <xref:System.EnterpriseServices.ServicedComponent>til tildeles på nytt til andre formål.</xref:System.EnterpriseServices.ServicedComponent> Du finner mer informasjon om avhending [Rydder opp uforvaltede ressurser](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public void Dispose ();
     parameters: []
@@ -190,14 +190,14 @@ items:
   assemblies:
   - System.EnterpriseServices
   namespace: System.EnterpriseServices
-  summary: "Releases the unmanaged resources used by the <xref href=&quot;System.EnterpriseServices.ServicedComponent&quot;></xref> and optionally releases the managed resources."
-  remarks: "This method is called by the public `Dispose` method and the <xref:System.Object.Finalize%2A> method. `Dispose` invokes the protected `Dispose(Boolean)` method with the `disposing` parameter set to `true`. <xref:System.Object.Finalize%2A> invokes `Dispose` with `disposing` set to `false`.       When the `disposing` parameter is `true`, this method releases all resources held by any managed objects that this <xref:System.EnterpriseServices.ServicedComponent> references. This method invokes the `Dispose` method of each referenced object."
+  summary: "Frigir uforvaltede ressursene som brukes av den <xref href=&quot;System.EnterpriseServices.ServicedComponent&quot;> </xref> og eventuelt frigir administrerte ressurser."
+  remarks: "Denne metoden kalles av offentlig `Dispose` metoden og <xref:System.Object.Finalize%2A>metode.</xref:System.Object.Finalize%2A> `Dispose`Aktiverer den beskyttede `Dispose(Boolean)` metoden med den `disposing` parameteren satt til `true`. <xref:System.Object.Finalize%2A>aktiverer `Dispose` med `disposing` satt til `false`.</xref:System.Object.Finalize%2A>       Når den `disposing` parameteren er `true`, denne metoden Frigjør alle ressurser holdes av administrerte objekter som denne <xref:System.EnterpriseServices.ServicedComponent>referanser.</xref:System.EnterpriseServices.ServicedComponent> Denne metoden starter den `Dispose` metode for hver referert objekt."
   syntax:
     content: protected virtual void Dispose (bool disposing);
     parameters:
     - id: disposing
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to release both managed and unmanaged resources; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to release only unmanaged resources."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>å frigjøre både administrerte og uforvaltede ressurser. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> frigi bare uforvaltede ressurser."
   overload: System.EnterpriseServices.ServicedComponent.Dispose*
   exceptions: []
   platform:
@@ -214,14 +214,14 @@ items:
   assemblies:
   - System.EnterpriseServices
   namespace: System.EnterpriseServices
-  summary: "Finalizes the object and removes the associated COM+ reference."
-  remarks: "It is preferable to use the `Dispose` design pattern rather than DisposeObject."
+  summary: "Fullfører objektet, og fjerner den tilknyttede COM +-referansen."
+  remarks: "Det er best å bruke den `Dispose` utforme mønsteret i stedet for DisposeObject."
   syntax:
     content: public static void DisposeObject (System.EnterpriseServices.ServicedComponent sc);
     parameters:
     - id: sc
       type: System.EnterpriseServices.ServicedComponent
-      description: "The object to dispose."
+      description: "Objektet til å fjerne."
   overload: System.EnterpriseServices.ServicedComponent.DisposeObject*
   exceptions: []
   platform:
@@ -239,17 +239,17 @@ items:
   assemblies:
   - System.EnterpriseServices
   namespace: System.EnterpriseServices
-  summary: "Ensures that, in the COM+ context, the <xref href=&quot;System.EnterpriseServices.ServicedComponent&quot;></xref> class object&quot;s <xref uid=&quot;langword_csharp_done&quot; name=&quot;done&quot; href=&quot;&quot;></xref> bit is set to <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> after a remote method invocation."
-  remarks: "The <xref:System.EnterpriseServices.IRemoteDispatch.RemoteDispatchAutoDone%2A> method does not belong to the published interface of the <xref:System.EnterpriseServices.ServicedComponent> class and does not need to be implemented elsewhere."
+  summary: "Sikrer at, i COM +-kontekst i <xref href=&quot;System.EnterpriseServices.ServicedComponent&quot;> </xref> klassen objektets <xref uid=&quot;langword_csharp_done&quot; name=&quot;done&quot; href=&quot;&quot;> </xref> bit er satt til <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> etter en ekstern metodeaktivering."
+  remarks: "Den <xref:System.EnterpriseServices.IRemoteDispatch.RemoteDispatchAutoDone%2A>metoden tilhører ikke publisert grensesnittet for den <xref:System.EnterpriseServices.ServicedComponent>klasse og trenger ikke å implementeres andre steder.</xref:System.EnterpriseServices.ServicedComponent> </xref:System.EnterpriseServices.IRemoteDispatch.RemoteDispatchAutoDone%2A>"
   syntax:
     content: string IRemoteDispatch.RemoteDispatchAutoDone (string s);
     parameters:
     - id: s
       type: System.String
-      description: "To be added."
+      description: "Som skal legges til."
     return:
       type: System.String
-      description: "A string converted from a response object that implements the <xref href=&quot;System.Runtime.Remoting.Messaging.IMethodReturnMessage&quot;></xref> interface."
+      description: "En streng som er konvertert fra en svar-objekt som implementerer den <xref href=&quot;System.Runtime.Remoting.Messaging.IMethodReturnMessage&quot;> </xref> grensesnitt."
   overload: System.EnterpriseServices.ServicedComponent.System#EnterpriseServices#IRemoteDispatch#RemoteDispatchAutoDone*
   exceptions: []
   platform:
@@ -267,17 +267,17 @@ items:
   assemblies:
   - System.EnterpriseServices
   namespace: System.EnterpriseServices
-  summary: "Does not ensure that, in the COM+ context, the <xref href=&quot;System.EnterpriseServices.ServicedComponent&quot;></xref> class object&quot;s <xref uid=&quot;langword_csharp_done&quot; name=&quot;done&quot; href=&quot;&quot;></xref> bit is set to <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> after a remote method invocation."
-  remarks: "The <xref:System.EnterpriseServices.IRemoteDispatch.RemoteDispatchNotAutoDone%2A> method does not belong to the published interface of the <xref:System.EnterpriseServices.ServicedComponent> class and does not need to be implemented elsewhere."
+  summary: "Sikrer som ikke i COM +-kontekst i <xref href=&quot;System.EnterpriseServices.ServicedComponent&quot;> </xref> klassen objektets <xref uid=&quot;langword_csharp_done&quot; name=&quot;done&quot; href=&quot;&quot;> </xref> bit er satt til <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> etter en ekstern metodeaktivering."
+  remarks: "Den <xref:System.EnterpriseServices.IRemoteDispatch.RemoteDispatchNotAutoDone%2A>metoden tilhører ikke publisert grensesnittet for den <xref:System.EnterpriseServices.ServicedComponent>klasse og trenger ikke å implementeres andre steder.</xref:System.EnterpriseServices.ServicedComponent> </xref:System.EnterpriseServices.IRemoteDispatch.RemoteDispatchNotAutoDone%2A>"
   syntax:
     content: string IRemoteDispatch.RemoteDispatchNotAutoDone (string s);
     parameters:
     - id: s
       type: System.String
-      description: "A string to be converted into a request object that implements the <xref href=&quot;System.Runtime.Remoting.Messaging.IMessage&quot;></xref> interface."
+      description: "En streng som skal konverteres til et objekt som implementerer den <xref href=&quot;System.Runtime.Remoting.Messaging.IMessage&quot;> </xref> grensesnitt."
     return:
       type: System.String
-      description: "A string converted from a response object that implements the <xref href=&quot;System.Runtime.Remoting.Messaging.IMethodReturnMessage&quot;></xref> interface."
+      description: "En streng som er konvertert fra en svar-objekt som implementerer den <xref href=&quot;System.Runtime.Remoting.Messaging.IMethodReturnMessage&quot;> </xref> grensesnitt."
   overload: System.EnterpriseServices.ServicedComponent.System#EnterpriseServices#IRemoteDispatch#RemoteDispatchNotAutoDone*
   exceptions: []
   platform:
@@ -295,14 +295,14 @@ items:
   assemblies:
   - System.EnterpriseServices
   namespace: System.EnterpriseServices
-  summary: "Obtains certain information about the <xref href=&quot;System.EnterpriseServices.ServicedComponent&quot;></xref> class instance."
-  remarks: "The [IServicedComponentInfo.GetComponentInfo(Int32, String\\[\\])](assetId:///M:System.EnterpriseServices.IServicedComponentInfo.GetComponentInfo(System.Int32@,System.String[]@)?qualifyHint=False&autoUpgrade=True) method does not belong to the published interface of the <xref:System.EnterpriseServices.ServicedComponent> class and does not need to be implemented elsewhere."
+  summary: "Henter informasjon om den <xref href=&quot;System.EnterpriseServices.ServicedComponent&quot;> </xref> klasseforekomsten."
+  remarks: "Den [IServicedComponentInfo.GetComponentInfo (Int32, streng\\[\\])](assetId:///M:System.EnterpriseServices.IServicedComponentInfo.GetComponentInfo(System.Int32@,System.String[]@)?qualifyHint=False&autoUpgrade=True) metoden tilhører ikke publisert grensesnittet for den <xref:System.EnterpriseServices.ServicedComponent>klasse og trenger ikke å implementeres andre steder.</xref:System.EnterpriseServices.ServicedComponent>"
   syntax:
     content: void IServicedComponentInfo.GetComponentInfo (ref int infoMask, out string[] infoArray);
     parameters:
     - id: infoMask
       type: System.Int32
-      description: "A bitmask where 0x00000001 is a key for the serviced component&quot;s process ID, 0x00000002 is a key for the application domain ID, and 0x00000004 is a key for the serviced component&quot;s remote URI."
+      description: "Bitmaske der 0x00000001 er en nøkkel for fikk service komponentens prosess-IDen 0x00000002 er en nøkkel for programmet område-ID og 0x00000004 er en nøkkel for fikk service komponentens eksterne URI."
     - id: infoArray
       type: System.String[]
       description: 'A string array that may contain any or all of the following, in order: the serviced component''s process ID, the application domain ID, and the serviced component''s remote URI.'

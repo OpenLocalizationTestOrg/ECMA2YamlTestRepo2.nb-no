@@ -15,8 +15,8 @@ items:
   nameWithType: RequestedProofToken
   fullName: System.IdentityModel.Protocols.WSTrust.RequestedProofToken
   type: Class
-  summary: "Represents the contents of a wst:RequestedProofToken element."
-  remarks: "The content of a wst:RequestedProofToken element can be either an encrypted key or a key in clear text. In either of these cases, the <xref:System.IdentityModel.Protocols.WSTrust.RequestedProofToken.ProtectedKey%2A> property contains the key. If the security token is a regular token, such as a SCT, then its session key will be the material which gets encrypted. When the wst:RequestedProofToken contains only a wst:ComputedKey element as in the case of combined entropy, the <xref:System.IdentityModel.Protocols.WSTrust.RequestedProofToken.ComputedKeyAlgorithm%2A> property holds its contents.       For more information about the element that this class represents, see the version of the WS-Trust specification that applies to your scenario."
+  summary: "Representerer innholdet i et wst:RequestedProofToken-element."
+  remarks: "Innholdet i et wst:RequestedProofToken-element kan være en kryptert nøkkel eller en nøkkel i ren tekst. I ett av disse tilfellene i <xref:System.IdentityModel.Protocols.WSTrust.RequestedProofToken.ProtectedKey%2A>egenskapen inneholder nøkkelen.</xref:System.IdentityModel.Protocols.WSTrust.RequestedProofToken.ProtectedKey%2A> Hvis sikkerhetstokenet er en vanlig tokenet, for eksempel en SCT blir øktnøkkelen materiale som henter kryptert. Når wst:RequestedProofToken inneholder bare et wst:ComputedKey-element som når det gjelder kombinert entropy den <xref:System.IdentityModel.Protocols.WSTrust.RequestedProofToken.ComputedKeyAlgorithm%2A>oppbevarer innholdet.</xref:System.IdentityModel.Protocols.WSTrust.RequestedProofToken.ComputedKeyAlgorithm%2A>       For mer informasjon om elementet som denne klassen representerer, kan du se versjonen av WS-Trust spesifikasjonen som gjelder for scenariet."
   syntax:
     content: public class RequestedProofToken
   inheritance:
@@ -37,14 +37,14 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Protocols.WSTrust
-  summary: "Initializes a new instance of the <xref href=&quot;System.IdentityModel.Protocols.WSTrust.RequestedProofToken&quot;></xref> class using the specified key material."
-  remarks: "Use this constructor when the key is plain text."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.IdentityModel.Protocols.WSTrust.RequestedProofToken&quot;> </xref> klasse ved hjelp av det angitte nøkkelen materialet."
+  remarks: "Bruk denne konstruktøren når nøkkelen er ren tekst."
   syntax:
     content: public RequestedProofToken (byte[] secret);
     parameters:
     - id: secret
       type: System.Byte[]
-      description: "An array of <xref:System.Byte> that contains the key material."
+      description: "En matrise av <xref:System.Byte>som inneholder key materiale.</xref:System.Byte>"
   overload: System.IdentityModel.Protocols.WSTrust.RequestedProofToken.#ctor*
   exceptions: []
   platform:
@@ -61,18 +61,18 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Protocols.WSTrust
-  summary: "Initializes a new instance of the <xref href=&quot;System.IdentityModel.Protocols.WSTrust.RequestedProofToken&quot;></xref> class using the specified <xref href=&quot;System.IdentityModel.Protocols.WSTrust.ProtectedKey&quot;></xref> object."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.IdentityModel.Protocols.WSTrust.RequestedProofToken&quot;> </xref> klasse parametersettet med de angitte <xref href=&quot;System.IdentityModel.Protocols.WSTrust.ProtectedKey&quot;> </xref> objektet."
   syntax:
     content: public RequestedProofToken (System.IdentityModel.Protocols.WSTrust.ProtectedKey protectedKey);
     parameters:
     - id: protectedKey
       type: System.IdentityModel.Protocols.WSTrust.ProtectedKey
-      description: "A <xref href=&quot;System.IdentityModel.Protocols.WSTrust.ProtectedKey&quot;></xref> that represents the key, which can be either a binary secret or an encrypted key."
+      description: "En <xref href=&quot;System.IdentityModel.Protocols.WSTrust.ProtectedKey&quot;> </xref> som representerer nøkkelen, som kan være en binær hemmelighet eller en kryptert nøkkel."
   overload: System.IdentityModel.Protocols.WSTrust.RequestedProofToken.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>protectedKey</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>protectedKey</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.IdentityModel.Protocols.WSTrust.RequestedProofToken.#ctor(System.String)
@@ -87,19 +87,19 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Protocols.WSTrust
-  summary: "Initializes a new instance of the <xref href=&quot;System.IdentityModel.Protocols.WSTrust.RequestedProofToken&quot;></xref> class using the specified computed key algorithm."
-  remarks: "Use this constructor in the case of combined entropy to specify the algorithm used to calculate the session key."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.IdentityModel.Protocols.WSTrust.RequestedProofToken&quot;> </xref> klasse ved hjelp av den angitte beregnede key algoritmen."
+  remarks: "Bruk denne konstruktøren når det gjelder kombinert entropy til å angi algoritmen som brukes til å beregne øktnøkkelen."
   syntax:
     content: public RequestedProofToken (string computedKeyAlgorithm);
     parameters:
     - id: computedKeyAlgorithm
       type: System.String
-      description: "A string that contains a URI that indicates the algorithm used to compute the session key in the combined entropy case."
+      description: "En streng som inneholder en URI som angir algoritmen som brukes til å beregne øktnøkkelen i kombinert entropy tilfeller."
   overload: System.IdentityModel.Protocols.WSTrust.RequestedProofToken.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>computedKeyAlgorithm</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>computedKeyAlgorithm</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.IdentityModel.Protocols.WSTrust.RequestedProofToken.#ctor(System.Byte[],System.IdentityModel.Tokens.EncryptingCredentials)
@@ -114,17 +114,17 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Protocols.WSTrust
-  summary: "Initializes a new instance of the <xref href=&quot;System.IdentityModel.Protocols.WSTrust.RequestedProofToken&quot;></xref> class using the specified key material and encrypting credentials."
-  remarks: "Use this constructor when the key is encrypted."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.IdentityModel.Protocols.WSTrust.RequestedProofToken&quot;> </xref> klasse ved hjelp av det angitte nøkkelen materialet og kryptering av legitimasjon."
+  remarks: "Bruk denne konstruktøren når nøkkelen er kryptert."
   syntax:
     content: public RequestedProofToken (byte[] secret, System.IdentityModel.Tokens.EncryptingCredentials wrappingCredentials);
     parameters:
     - id: secret
       type: System.Byte[]
-      description: "An array of <xref:System.Byte> that contains the key material."
+      description: "En matrise av <xref:System.Byte>som inneholder key materiale.</xref:System.Byte>"
     - id: wrappingCredentials
       type: System.IdentityModel.Tokens.EncryptingCredentials
-      description: "A <xref:System.IdentityModel.SecurityTokenService.EncryptingCredentials> that represents the credentials used to encrypt the key material."
+      description: "En <xref:System.IdentityModel.SecurityTokenService.EncryptingCredentials>som representerer legitimasjonen som brukes til å kryptere nøkkelen materiale.</xref:System.IdentityModel.SecurityTokenService.EncryptingCredentials>"
   overload: System.IdentityModel.Protocols.WSTrust.RequestedProofToken.#ctor*
   exceptions: []
   platform:
@@ -141,13 +141,13 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Protocols.WSTrust
-  summary: "Gets the computed key algorithm used to calculate the session key in the combined entropy case."
-  remarks: "Represents the contents of the wst:ComputedKey element. This element contains a URI that indicates the computed key algorithm used when keys must be computed; for example, in the combined entropy case when both the requestor and issuer specify entropy."
+  summary: "Henter beregnet key algoritmen som brukes til å beregne øktnøkkelen i kombinert entropy tilfeller."
+  remarks: "Representerer innholdet i elementet wst:ComputedKey. Dette elementet inneholder en URI som angir algoritmen for beregnet nøkkelen som brukes når nøkler må være beregnet; for eksempel i kombinert entropy tilfeller når både anmoder og utsteder angir entropy."
   syntax:
     content: public string ComputedKeyAlgorithm { get; }
     return:
       type: System.String
-      description: "A string that contains a URI that indicates the computed key algorithm."
+      description: "En streng som inneholder en URI som angir algoritmen beregnet nøkkel."
   overload: System.IdentityModel.Protocols.WSTrust.RequestedProofToken.ComputedKeyAlgorithm*
   exceptions: []
   platform:
@@ -164,13 +164,13 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Protocols.WSTrust
-  summary: "Gets the key in the case when the wst:RequestedProofToken element contains a key."
-  remarks: "Represents the contents of the wst:RequestedProofToken element when the element contains a key (rather than a wst:ComputedKeyElement)."
+  summary: "Henter nøkkelen i tilfelle når elementet wst:RequestedProofToken inneholder en nøkkel."
+  remarks: "Representerer innholdet i elementet wst:RequestedProofToken når elementet inneholder en nøkkel (i stedet for en wst:ComputedKeyElement)."
   syntax:
     content: public System.IdentityModel.Protocols.WSTrust.ProtectedKey ProtectedKey { get; }
     return:
       type: System.IdentityModel.Protocols.WSTrust.ProtectedKey
-      description: "A <xref href=&quot;System.IdentityModel.Protocols.WSTrust.ProtectedKey&quot;></xref> that represents the key, which can be either encrypted or clear text."
+      description: "En <xref href=&quot;System.IdentityModel.Protocols.WSTrust.ProtectedKey&quot;> </xref> som representerer nøkkel, som kan være kryptert eller fjern tekst."
   overload: System.IdentityModel.Protocols.WSTrust.RequestedProofToken.ProtectedKey*
   exceptions: []
   platform:
