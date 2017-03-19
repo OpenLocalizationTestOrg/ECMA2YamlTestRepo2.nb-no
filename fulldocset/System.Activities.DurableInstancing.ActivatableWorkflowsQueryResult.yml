@@ -13,8 +13,8 @@ items:
   nameWithType: ActivatableWorkflowsQueryResult
   fullName: System.Activities.DurableInstancing.ActivatableWorkflowsQueryResult
   type: Class
-  summary: "Contains the results from executing the <xref href=&quot;System.Activities.DurableInstancing.QueryActivatableWorkflowsCommand&quot;></xref> against an instance store."
-  remarks: "An instance store should periodically search for activatable workflow instances that belong to a workflow host that uses the store. It should raise the <xref:System.Activities.DurableInstancing.HasActivatableWorkflowEvent> when it finds an activatable instance in the persistence store. If the instance store does not find an activatable instance in the persistence store, it should continue to monitor the persistence store for any activatable instances.       After raising the HasActivatableWorkflowEvent, the instance store should stop monitoring the persistence store for activatable instances until it receives and executes the <xref:System.Activities.DurableInstancing.QueryActivatableWorkflowsCommand>. The monitoring continues only if the command execution does not return any activatable workflow instances.       When a generic host receives this event, it executes the <xref:System.Activities.DurableInstancing.QueryActivatableWorkflowsCommand> against the instance store to obtain activation parameters required to create a workflow host. The generic host uses these activation parameters to create a workflow host, which in turn loads and runs the service instance. The activation parameters for the WAS activation type are: Site Name, Application Path (relative to the site), and Service Path (relative to the application). An instance store could return multiple sets of these three activation parameters.       A generic host is a host that has an XName parameter named **ActivationType**, which should be set to a value supported by the instance store. Currently, the SQL Workflow Instance Store supports generic hosts with ActivationType parameter set to value: **WAS**. If the ActivationType is not set at all, the SQL Workflow Instance Store treats the host as a generic host.      > [!NOTE] >  The Workflow Management Service that ships with the code named “Dublin” (Application Server Extensions for .NET 4.0) is a generic host that has the activation type set to **WAS**."
+  summary: "Inneholder resultatene fra kjøring av <xref href=&quot;System.Activities.DurableInstancing.QueryActivatableWorkflowsCommand&quot;> </xref> mot en forekomst-butikk."
+  remarks: "En forekomst butikk skal regelmessig Søk etter activatable arbeidsflytforekomster som hører til en arbeidsflytverten som bruker butikken. Den skal opphøyes i <xref:System.Activities.DurableInstancing.HasActivatableWorkflowEvent>når det finner en activatable forekomst i vedvarende lager.</xref:System.Activities.DurableInstancing.HasActivatableWorkflowEvent> Hvis forekomsten butikken ikke finner en activatable forekomst i vedvarende lager, må den fortsette å overvåke vedvarende lager for alle activatable forekomster.       Når du har opprettet i HasActivatableWorkflowEvent må forekomst-butikken slutte å overvåke vedvarende lager for activatable forekomster før den mottar og utfører <xref:System.Activities.DurableInstancing.QueryActivatableWorkflowsCommand>.</xref:System.Activities.DurableInstancing.QueryActivatableWorkflowsCommand> Overvåkingen fortsetter bare hvis Kommandoutførelsen ikke returnere en activatable arbeidsflytforekomster.       Når en generisk vert mottar denne hendelsen, utfører det den <xref:System.Activities.DurableInstancing.QueryActivatableWorkflowsCommand>mot forekomsten butikken for å hente Aktiveringsparametere kreves for å opprette en arbeidsflytverten.</xref:System.Activities.DurableInstancing.QueryActivatableWorkflowsCommand> Generell verten bruker disse Aktiveringsparametere til å opprette en arbeidsflytverten som laster inn og kjører tjenesteforekomsten igjen. Aktiveringsparametere for WAS aktiveringstypen er: områdenavn, applikasjonsbane (i forhold området) og Tjenestebane (i forhold til programmet). En forekomst butikk kan returnere flere sett med disse tre aktiveringsparametere.       Generell vert er vert som har en XName parameter med navnet **ActivationType**, som må være satt til en verdi som støttes for forekomst-butikken. SQL arbeidsflyten forekomsten Store støtter for øyeblikket generisk verter med ActivationType-parameteren som er angitt til verdien: **WAS**. Hvis ActivationType ikke er angitt i det hele tatt, behandler SQL arbeidsflyten forekomsten Store verten som en generell vert.      > [!NOTE] > Arbeidsflyten Management tjenesten leveres med koden navnet &quot;Dublin&quot; (programmet Server Extensions for .NET 4.0) er en generisk vert som har aktiveringstypen satt til **WAS**."
   syntax:
     content: 'public sealed class ActivatableWorkflowsQueryResult : System.Runtime.DurableInstancing.InstanceStoreQueryResult'
   inheritance:
@@ -36,7 +36,7 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.DurableInstancing
-  summary: "Initializes an instance of the <xref href=&quot;System.Activities.DurableInstancing.ActivatableWorkflowsQueryResult&quot;></xref> class."
+  summary: "Initialiserer en forekomst av den <xref href=&quot;System.Activities.DurableInstancing.ActivatableWorkflowsQueryResult&quot;> </xref> klasse."
   syntax:
     content: public ActivatableWorkflowsQueryResult ();
     parameters: []
@@ -56,13 +56,13 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.DurableInstancing
-  summary: "Creates an instance of the <xref href=&quot;System.Activities.DurableInstancing.ActivatableWorkflowsQueryResult&quot;></xref> class and initializes the <xref:System.Activities.DurableInstancing.ActivatableWorkflowsQueryResult.ActivationParameters*> property with the data in the dictionary object passed in as a parameter."
+  summary: "Oppretter en forekomst av den <xref href=&quot;System.Activities.DurableInstancing.ActivatableWorkflowsQueryResult&quot;> </xref> klassen og initialisere de <xref:System.Activities.DurableInstancing.ActivatableWorkflowsQueryResult.ActivationParameters*>egenskapen med dataene i dictionary-objektet ble sendt som en parameter.</xref:System.Activities.DurableInstancing.ActivatableWorkflowsQueryResult.ActivationParameters*>"
   syntax:
     content: public ActivatableWorkflowsQueryResult (System.Collections.Generic.IDictionary<System.Xml.Linq.XName,object> parameters);
     parameters:
     - id: parameters
       type: System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Object}
-      description: "A dictionary object containing activation parameters."
+      description: "Objektet dictionary som inneholder aktiveringsparametere."
   overload: System.Activities.DurableInstancing.ActivatableWorkflowsQueryResult.#ctor*
   exceptions: []
   platform:
@@ -79,13 +79,13 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.DurableInstancing
-  summary: "Creates an instance of the <xref href=&quot;System.Activities.DurableInstancing.ActivatableWorkflowsQueryResult&quot;></xref> class and initializes the <xref:System.Activities.DurableInstancing.ActivatableWorkflowsQueryResult.ActivationParameters*> property with the data in the enumerable dictionary object passed in as a parameter."
+  summary: "Oppretter en forekomst av den <xref href=&quot;System.Activities.DurableInstancing.ActivatableWorkflowsQueryResult&quot;> </xref> klassen og initialisere de <xref:System.Activities.DurableInstancing.ActivatableWorkflowsQueryResult.ActivationParameters*>egenskapen med data i et tallsett dictionary-objektet ble sendt som en parameter.</xref:System.Activities.DurableInstancing.ActivatableWorkflowsQueryResult.ActivationParameters*>"
   syntax:
     content: public ActivatableWorkflowsQueryResult (System.Collections.Generic.IEnumerable<System.Collections.Generic.IDictionary<System.Xml.Linq.XName,object>> parameters);
     parameters:
     - id: parameters
       type: System.Collections.Generic.IEnumerable{System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Object}}
-      description: "An enumerable dictionary object containing activation parameters."
+      description: "Et objekt med et tallsett ordlisten som inneholder aktiveringsparametere."
   overload: System.Activities.DurableInstancing.ActivatableWorkflowsQueryResult.#ctor*
   exceptions: []
   platform:
@@ -102,12 +102,12 @@ items:
   assemblies:
   - System.Activities
   namespace: System.Activities.DurableInstancing
-  summary: "A list of activation parameters that a generic host uses to create a workflow host."
+  summary: "En liste over aktiveringsparametere generisk vert bruker til å opprette en arbeidsflyt-vert."
   syntax:
     content: public System.Collections.Generic.List<System.Collections.Generic.IDictionary<System.Xml.Linq.XName,object>> ActivationParameters { get; }
     return:
       type: System.Collections.Generic.List{System.Collections.Generic.IDictionary{System.Xml.Linq.XName,System.Object}}
-      description: "A List object containing activation parameters."
+      description: "Et listeobjekt som inneholder aktiveringsparametere."
   overload: System.Activities.DurableInstancing.ActivatableWorkflowsQueryResult.ActivationParameters*
   exceptions: []
   platform:

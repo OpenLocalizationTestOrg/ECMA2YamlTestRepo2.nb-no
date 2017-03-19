@@ -12,8 +12,8 @@ items:
   nameWithType: IGridProvider
   fullName: System.Windows.Automation.Provider.IGridProvider
   type: Interface
-  summary: "Exposes methods and properties to support UI Automation client access to controls that act as containers for a collection of child elements. The children of this element must implement <xref href=&quot;System.Windows.Automation.Provider.IGridItemProvider&quot;></xref> and be organized in a two-dimensional logical coordinate system that can be traversed (that is, a UI Automation client can move to adjacent controls) by using the keyboard."
-  remarks: "Implemented on a UI Automation provider that must support the <xref:System.Windows.Automation.GridPattern> control pattern.       IGridProvider does not enable active manipulation of a grid; <xref:System.Windows.Automation.Provider.ITransformProvider> must be implemented to enable this functionality."
+  summary: "Viser metodene og egenskapene som støtter automatisering av Brukergrensesnittet klienttilgang til kontroller som brukes som beholdere for en samling av underordnede elementer. Underordnede til dette elementet må implementere <xref href=&quot;System.Windows.Automation.Provider.IGridItemProvider&quot;> </xref> og ordnes i et todimensjonal logiske koordinatsystem kan traversert (det vil si en Brukergrensesnittet Automation-klient kan flytte tilstøtende kontroller) ved hjelp av tastaturet."
+  remarks: "Implementert på en Brukergrensesnittet Automation leverandør må støtte av <xref:System.Windows.Automation.GridPattern>kontrollen mønsteret.</xref:System.Windows.Automation.GridPattern>       IGridProvider aktivere ikke active manipulering av et rutenett. <xref:System.Windows.Automation.Provider.ITransformProvider>må implementeres for å aktivere denne funksjonen.</xref:System.Windows.Automation.Provider.ITransformProvider>"
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -38,15 +38,15 @@ items:
   assemblies:
   - UIAutomationProvider
   namespace: System.Windows.Automation.Provider
-  summary: "Gets the total number of columns in a grid."
-  remarks: "Hidden rows and columns, depending on the provider implementation, can be loaded in the [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] tree and will therefore be reflected in the <xref:System.Windows.Automation.GridPattern.GridPatternInformation.RowCount%2A> and <xref:System.Windows.Automation.GridPattern.GridPatternInformation.ColumnCount%2A> properties. If the hidden rows and columns have not yet been loaded they will not be counted."
+  summary: "Henter antall kolonner i et rutenett."
+  remarks: "Skjulte rader og kolonner, avhengig av implementeringen leverandøren kan lastes inn i den [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] tre og vil derfor gjenspeiles i den <xref:System.Windows.Automation.GridPattern.GridPatternInformation.RowCount%2A>og <xref:System.Windows.Automation.GridPattern.GridPatternInformation.ColumnCount%2A>Egenskaper.</xref:System.Windows.Automation.GridPattern.GridPatternInformation.ColumnCount%2A> </xref:System.Windows.Automation.GridPattern.GridPatternInformation.RowCount%2A> Hvis skjulte rader og kolonner ikke er lastet er de ikke talt."
   example:
   - "The following example code returns the property value.  \n  \n [!code-vb[UIAMiscPatternProviders_snip#102](~/add/codesnippet/visualbasic/patternproviders/customgrid.vb#102)]\n [!code-cs[UIAMiscPatternProviders_snip#102](~/add/codesnippet/csharp/PatternProviders/CustomGrid.cs#102)]"
   syntax:
     content: public int ColumnCount { get; }
     return:
       type: System.Int32
-      description: "The total number of columns in a grid."
+      description: "Totalt antall kolonner i et rutenett."
   overload: System.Windows.Automation.Provider.IGridProvider.ColumnCount*
   exceptions: []
   platform:
@@ -63,8 +63,8 @@ items:
   assemblies:
   - UIAutomationProvider
   namespace: System.Windows.Automation.Provider
-  summary: "Retrieves the UI Automation provider for the specified cell."
-  remarks: "-   Grid coordinates are zero-based with the upper left (or upper right cell depending on locale) having coordinates (0,0).      -   If a cell is empty a UI Automation provider must still be returned in order to support the <xref:System.Windows.Automation.Provider.IGridItemProvider.ContainingGrid%2A> property for that cell. This is possible when the layout of child elements in the grid is similar to a ragged array.       ![Windows Explorer view showing ragged layout.](~/add/media/uia-gridpattern-ragged-array.PNG &quot;Windows Explorer view showing ragged layout.&quot;)   Example of a Grid Control with Empty Coordinates      -   Hidden rows and columns, depending on the provider implementation, can be loaded in the [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] tree and will therefore be reflected in the <xref:System.Windows.Automation.Provider.IGridProvider.RowCount%2A> and <xref:System.Windows.Automation.Provider.IGridProvider.ColumnCount%2A> properties. If the hidden rows and columns have not yet been loaded they should not be counted."
+  summary: "Henter Brukergrensesnittet Automation-leverandøren for den angitte cellen."
+  remarks: "-Rutenett koordinatene er nullbasert med øvre venstre (eller cellen øverst til høyre avhengig nasjonal innstilling) med koordinater (0,0).      -Hvis en celle er tom Brukergrensesnittet Automation leverandør fremdeles må returneres for at den <xref:System.Windows.Automation.Provider.IGridItemProvider.ContainingGrid%2A>egenskapen for denne cellen.</xref:System.Windows.Automation.Provider.IGridItemProvider.ContainingGrid%2A> Dette er mulige når oppsettet for underordnede elementer i rutenettet ligner en uregelmessige matrise.       ![Windows Utforsker Vis viser uregelmessige oppsett. ] (~/add/media/uia-gridpattern-ragged-array.PNG &quot;Windows Utforsker visningen viser uregelmessige oppsett.&quot;)   Eksempel på en rutenettkontrollen med tom koordinatene - skjulte rader og kolonner, avhengig av implementeringen leverandøren kan lastes inn i den [!INCLUDE[TLA2#tla_uiautomation](~/add/includes/tla2sharptla-uiautomation-md.md)] tre og vil derfor gjenspeiles i den <xref:System.Windows.Automation.Provider.IGridProvider.RowCount%2A>og <xref:System.Windows.Automation.Provider.IGridProvider.ColumnCount%2A>Egenskaper.</xref:System.Windows.Automation.Provider.IGridProvider.ColumnCount%2A> </xref:System.Windows.Automation.Provider.IGridProvider.RowCount%2A> Hvis skjulte rader og kolonner ikke er lastet skal de telles ikke."
   example:
   - "The following code is an example implementation of this method that returns an object representing the item at the specified location.  \n  \n [!code-vb[UIAMiscPatternProviders_snip#101](~/add/codesnippet/visualbasic/patternproviders/customgrid.vb#101)]\n [!code-cs[UIAMiscPatternProviders_snip#101](~/add/codesnippet/csharp/PatternProviders/CustomGrid.cs#101)]"
   syntax:
@@ -72,13 +72,13 @@ items:
     parameters:
     - id: row
       type: System.Int32
-      description: "The ordinal number of the row of interest."
+      description: "Ordenstallet radverdiene interessante."
     - id: column
       type: System.Int32
-      description: "The ordinal number of the column of interest."
+      description: "Ordenstallet antall kolonner av interesse."
     return:
       type: System.Windows.Automation.Provider.IRawElementProviderSimple
-      description: "The UI Automation provider for the specified cell."
+      description: "Automation UI-leverandør for den angitte cellen."
   overload: System.Windows.Automation.Provider.IGridProvider.GetItem*
   exceptions: []
   platform:
@@ -95,15 +95,15 @@ items:
   assemblies:
   - UIAutomationProvider
   namespace: System.Windows.Automation.Provider
-  summary: "Gets the total number of rows in a grid."
-  remarks: "Hidden rows and columns, depending on the provider implementation, can be loaded in the logical tree and will therefore be reflected in the <xref:System.Windows.Automation.GridPattern.GridPatternInformation.RowCount%2A> and <xref:System.Windows.Automation.GridPattern.GridPatternInformation.ColumnCount%2A> properties. If the hidden rows and columns have not yet been loaded they will not be counted."
+  summary: "Henter antall rader i et rutenett."
+  remarks: "Skjulte rader og kolonner, avhengig av leverandøren-implementering kan ikke lastes inn i det logiske treet derfor gjenspeiles i den <xref:System.Windows.Automation.GridPattern.GridPatternInformation.RowCount%2A>og <xref:System.Windows.Automation.GridPattern.GridPatternInformation.ColumnCount%2A>Egenskaper.</xref:System.Windows.Automation.GridPattern.GridPatternInformation.ColumnCount%2A> </xref:System.Windows.Automation.GridPattern.GridPatternInformation.RowCount%2A> Hvis skjulte rader og kolonner ikke er lastet er de ikke talt."
   example:
   - "The following example code returns the property value.  \n  \n [!code-vb[UIAMiscPatternProviders_snip#103](~/add/codesnippet/visualbasic/patternproviders/customgrid.vb#103)]\n [!code-cs[UIAMiscPatternProviders_snip#103](~/add/codesnippet/csharp/PatternProviders/CustomGrid.cs#103)]"
   syntax:
     content: public int RowCount { get; }
     return:
       type: System.Int32
-      description: "The total number of rows in a grid."
+      description: "Totalt antall rader i et rutenett."
   overload: System.Windows.Automation.Provider.IGridProvider.RowCount*
   exceptions: []
   platform:

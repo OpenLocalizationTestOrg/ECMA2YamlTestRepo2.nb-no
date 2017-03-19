@@ -29,8 +29,8 @@ items:
   nameWithType: ISymbolWriter
   fullName: System.Diagnostics.SymbolStore.ISymbolWriter
   type: Interface
-  summary: "Represents a symbol writer for managed code."
-  remarks: "The ISymbolWriter interface provides methods that define documents, sequence points, lexical scopes, and variables.      > [!NOTE] >  This interface is the managed counterpart of the `ISymUnmanagedWriter` interface, which is one of the unmanaged symbol store interfaces that provides an alternative way to read and write debug symbol information."
+  summary: "Representerer et symbol writer for forvaltet kode."
+  remarks: "Grensesnittet ISymbolWriter inneholder metoder som definerer dokumenter, sekvensnummer peker, Leksikalsk omfang og variabler.      > [!NOTE] > Dette grensesnittet er denne administrerte filen i den `ISymUnmanagedWriter` grensesnitt som er en ubehandlet symbolet store grensesnitt som gir en annen måte å lese og skrive feilsøkingsinformasjon for symbolet."
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -51,8 +51,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Closes <xref href=&quot;System.Diagnostics.SymbolStore.ISymbolWriter&quot;></xref> and commits the symbols to the symbol store."
-  remarks: "After this call, <xref:System.Diagnostics.SymbolStore.ISymbolWriter> becomes invalid for further updates."
+  summary: "Lukker <xref href=&quot;System.Diagnostics.SymbolStore.ISymbolWriter&quot;> </xref> og skriver symbolene til butikken for symbolet."
+  remarks: "Etter dette kallet <xref:System.Diagnostics.SymbolStore.ISymbolWriter>er ugyldig for fremtidige oppdateringer.</xref:System.Diagnostics.SymbolStore.ISymbolWriter>"
   syntax:
     content: public void Close ();
     parameters: []
@@ -72,8 +72,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Closes the current method."
-  remarks: "After a method is closed, you cannot define a symbol from within it."
+  summary: "Lukker den gjeldende metoden."
+  remarks: "Når en metode er lukket, kan du definere et symbol fra i den."
   syntax:
     content: public void CloseMethod ();
     parameters: []
@@ -93,7 +93,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Closes the most recent namespace."
+  summary: "Lukker det siste navneområdet."
   syntax:
     content: public void CloseNamespace ();
     parameters: []
@@ -113,14 +113,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Closes the current lexical scope."
-  remarks: "After a scope is closed, you cannot define a variable from within it."
+  summary: "Lukker gjeldende Leksikalsk område."
+  remarks: "Når et område er lukket, kan du definere en variabel fra i den."
   syntax:
     content: public void CloseScope (int endOffset);
     parameters:
     - id: endOffset
       type: System.Int32
-      description: "The points past the last instruction in the scope."
+      description: "Punkt forbi siste instruksjonene i omfanget."
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.CloseScope*
   exceptions: []
   platform:
@@ -137,25 +137,25 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Defines a source document."
+  summary: "Definerer et kildedokument."
   syntax:
     content: public System.Diagnostics.SymbolStore.ISymbolDocumentWriter DefineDocument (string url, Guid language, Guid languageVendor, Guid documentType);
     parameters:
     - id: url
       type: System.String
-      description: "The URL that identifies the document."
+      description: "URL-adressen som identifiserer dokumentet."
     - id: language
       type: System.Guid
-      description: "The document language. This parameter can be <xref:System.Guid>."
+      description: "Dokumentspråket som. Denne parameteren kan være <xref:System.Guid>.</xref:System.Guid>"
     - id: languageVendor
       type: System.Guid
-      description: "The identity of the vendor for the document language. This parameter can be <xref:System.Guid>."
+      description: "Identiteten til leverandøren for dokumentspråket. Denne parameteren kan være <xref:System.Guid>.</xref:System.Guid>"
     - id: documentType
       type: System.Guid
-      description: "The type of the document. This parameter can be <xref:System.Guid>."
+      description: "Dokumenttypen. Denne parameteren kan være <xref:System.Guid>.</xref:System.Guid>"
     return:
       type: System.Diagnostics.SymbolStore.ISymbolDocumentWriter
-      description: "The object that represents the document."
+      description: "Objektet som representerer dokumentet."
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.DefineDocument*
   exceptions: []
   platform:
@@ -172,35 +172,35 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Defines a field in a type or a global field."
-  remarks: "The DefineField method defines a single variable that is not within a method by using specified fields in classes, bit fields, and so on."
+  summary: "Definerer et felt i en type eller en global-feltet."
+  remarks: "Metoden DefineField definerer en enkelt variabel som ikke er i en metode ved hjelp av angitte feltene i klasser, bit-felt og så videre."
   syntax:
     content: public void DefineField (System.Diagnostics.SymbolStore.SymbolToken parent, string name, System.Reflection.FieldAttributes attributes, byte[] signature, System.Diagnostics.SymbolStore.SymAddressKind addrKind, int addr1, int addr2, int addr3);
     parameters:
     - id: parent
       type: System.Diagnostics.SymbolStore.SymbolToken
-      description: "The metadata type or method token."
+      description: "Metadatatype eller metoden token."
     - id: name
       type: System.String
-      description: "The field name."
+      description: "Feltnavnet."
     - id: attributes
       type: System.Reflection.FieldAttributes
-      description: "A bitwise combination of the field attributes."
+      description: "En bitvis kombinasjon av feltattributtene."
     - id: signature
       type: System.Byte[]
-      description: "The field signature."
+      description: "Feltsignatur."
     - id: addrKind
       type: System.Diagnostics.SymbolStore.SymAddressKind
-      description: "The address types for `addr1` and `addr2`."
+      description: "Adressen datatyper `addr1` og `addr2`."
     - id: addr1
       type: System.Int32
-      description: "The first address for the field specification."
+      description: "Den første adressen for feltspesifikasjonen."
     - id: addr2
       type: System.Int32
-      description: "The second address for the field specification."
+      description: "Andre adressen til feltspesifikasjonen."
     - id: addr3
       type: System.Int32
-      description: "The third address for the field specification."
+      description: "Den tredje adressen for feltspesifikasjonen."
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.DefineField*
   exceptions: []
   platform:
@@ -217,31 +217,31 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Defines a single global variable."
+  summary: "Definerer en enkel global variabel."
   syntax:
     content: public void DefineGlobalVariable (string name, System.Reflection.FieldAttributes attributes, byte[] signature, System.Diagnostics.SymbolStore.SymAddressKind addrKind, int addr1, int addr2, int addr3);
     parameters:
     - id: name
       type: System.String
-      description: "The global variable name."
+      description: "Globale variabelnavnet."
     - id: attributes
       type: System.Reflection.FieldAttributes
-      description: "A bitwise combination of the global variable attributes."
+      description: "En bitvis kombinasjon av de globale variabelen attributtene."
     - id: signature
       type: System.Byte[]
-      description: "The global variable signature."
+      description: "Den globale variabelen signaturen."
     - id: addrKind
       type: System.Diagnostics.SymbolStore.SymAddressKind
-      description: "The address types for `addr1`, `addr2`, and `addr3`."
+      description: "Adressen datatyper `addr1`, `addr2`, og `addr3`."
     - id: addr1
       type: System.Int32
-      description: "The first address for the global variable specification."
+      description: "Første adressen til den globale variabelen spesifikasjonen."
     - id: addr2
       type: System.Int32
-      description: "The second address for the global variable specification."
+      description: "Andre adressen til den globale variabelen spesifikasjonen."
     - id: addr3
       type: System.Int32
-      description: "The third address for the global variable specification."
+      description: "Tredje adressen til den globale variabelen spesifikasjonen."
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.DefineGlobalVariable*
   exceptions: []
   platform:
@@ -258,38 +258,38 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Defines a single variable in the current lexical scope."
-  remarks: "The `startOffset` and `endOffset` parameters are optional. If their value is zero, they are ignored and the variable is defined throughout the entire scope. If their value is nonzero, the variable falls within the offsets of the current scope.       You can call DefineLocalVariable multiple times for a variable of the same name that occurs multiple times in different offset ranges throughout a scope. (In this case, start and end offsets must not overlap.)"
+  summary: "Definerer en enkelt variabel i gjeldende Leksikalsk område."
+  remarks: "Den `startOffset` og `endOffset` er valgfrie. Hvis verdien er null, de ignoreres og variabelen er definert i hele området. Hvis de ikke er null, er variabelen innenfor forskyvningene for gjeldende område.       Du kan ringe DefineLocalVariable flere ganger for en variabel med samme navn som forekommer flere ganger i forskjellige forskyvningen områder i et omfang. (I dette tilfellet start- og forskyvninger må ikke overlappe.)"
   syntax:
     content: public void DefineLocalVariable (string name, System.Reflection.FieldAttributes attributes, byte[] signature, System.Diagnostics.SymbolStore.SymAddressKind addrKind, int addr1, int addr2, int addr3, int startOffset, int endOffset);
     parameters:
     - id: name
       type: System.String
-      description: "The local variable name."
+      description: "Lokale variabelnavnet."
     - id: attributes
       type: System.Reflection.FieldAttributes
-      description: "A bitwise combination of the local variable attributes."
+      description: "En bitvis kombinasjon av attributtene for lokale variabelen."
     - id: signature
       type: System.Byte[]
-      description: "The local variable signature."
+      description: "Den lokale variabelen signaturen."
     - id: addrKind
       type: System.Diagnostics.SymbolStore.SymAddressKind
-      description: "The address types for `addr1`, `addr2`, and `addr3`."
+      description: "Adressen datatyper `addr1`, `addr2`, og `addr3`."
     - id: addr1
       type: System.Int32
-      description: "The first address for the local variable specification."
+      description: "Første adressen til den lokale variabelen spesifikasjonen."
     - id: addr2
       type: System.Int32
-      description: "The second address for the local variable specification."
+      description: "Andre adressen til den lokale variabelen spesifikasjonen."
     - id: addr3
       type: System.Int32
-      description: "The third address for the local variable specification."
+      description: "Tredje adressen til den lokale variabelen spesifikasjonen."
     - id: startOffset
       type: System.Int32
-      description: "The start offset for the variable. If this parameter is zero, it is ignored and the variable is defined throughout the entire scope. If the parameter is nonzero, the variable falls within the offsets of the current scope."
+      description: "Startadressen for variabelen. Hvis denne parameteren er null, ignoreres og variabelen er definert i hele området. Hvis parameteren er null, er variabelen innenfor forskyvningene for gjeldende område."
     - id: endOffset
       type: System.Int32
-      description: "The end offset for the variable. If this parameter is zero, it is ignored and the variable is defined throughout the entire scope. If the parameter is nonzero, the variable falls within the offsets of the current scope."
+      description: "End-forskyvningen for variabelen. Hvis denne parameteren er null, ignoreres og variabelen er definert i hele området. Hvis parameteren er null, er variabelen innenfor forskyvningene for gjeldende område."
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.DefineLocalVariable*
   exceptions: []
   platform:
@@ -306,32 +306,32 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Defines a single parameter in the current method. The type of each parameter is taken from its position within the signature of the method."
-  remarks: "If parameters are defined in the metadata for a given method, you do not have to define them again with calls to this method. Symbol readers need to check for these in the normal metadata first, and then use the symbol store."
+  summary: "Definerer en én parameter i den gjeldende metoden. Typen for hver parameter hentes fra posisjon i signaturen for metoden."
+  remarks: "Hvis parametere er definert i metadataene for en gitt metode, har du ikke definerer dem på nytt med et kall til denne metoden. Symbolet lesere må kontrollere for disse i normal metadataene først, og bruk deretter symbol-butikken."
   syntax:
     content: public void DefineParameter (string name, System.Reflection.ParameterAttributes attributes, int sequence, System.Diagnostics.SymbolStore.SymAddressKind addrKind, int addr1, int addr2, int addr3);
     parameters:
     - id: name
       type: System.String
-      description: "The parameter name."
+      description: "Parameternavnet."
     - id: attributes
       type: System.Reflection.ParameterAttributes
-      description: "A bitwise combination of the parameter attributes."
+      description: "En bitvis kombinasjon av parameter-attributter."
     - id: sequence
       type: System.Int32
-      description: "The parameter signature."
+      description: "Parameteren-signatur."
     - id: addrKind
       type: System.Diagnostics.SymbolStore.SymAddressKind
-      description: "The address types for `addr1`, `addr2`, and `addr3`."
+      description: "Adressen datatyper `addr1`, `addr2`, og `addr3`."
     - id: addr1
       type: System.Int32
-      description: "The first address for the parameter specification."
+      description: "Den første adressen for parameteren-spesifikasjonen."
     - id: addr2
       type: System.Int32
-      description: "The second address for the parameter specification."
+      description: "Andre adressen for parameteren-spesifikasjonen."
     - id: addr3
       type: System.Int32
-      description: "The third address for the parameter specification."
+      description: "Den tredje adressen for parameteren-spesifikasjonen."
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.DefineParameter*
   exceptions: []
   platform:
@@ -348,29 +348,29 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Defines a group of sequence points within the current method."
-  remarks: "Each line and each column defines the start of a statement within a method. The arrays should be sorted in increasing order of offsets. The offset is always the offset from the start of the method, in bytes."
+  summary: "Definerer en gruppe med sekvensnummer peker i den gjeldende metoden."
+  remarks: "Definerer starten av et uttrykk i en metode hver linje og hver kolonne. Matrisene skal sorteres i stigende rekkefølge med forskyvninger. Forskyvningen er alltid forskyvningen fra starten av metoden, i byte."
   syntax:
     content: public void DefineSequencePoints (System.Diagnostics.SymbolStore.ISymbolDocumentWriter document, int[] offsets, int[] lines, int[] columns, int[] endLines, int[] endColumns);
     parameters:
     - id: document
       type: System.Diagnostics.SymbolStore.ISymbolDocumentWriter
-      description: "The document object for which the sequence points are being defined."
+      description: "Dokumentobjektet som sekvensnummer peker er definert."
     - id: offsets
       type: System.Int32[]
-      description: "The sequence point offsets measured from the beginning of methods."
+      description: "Sekvens punkt forskyvningene målt fra begynnelsen av metoder."
     - id: lines
       type: System.Int32[]
-      description: "The document lines for the sequence points."
+      description: "Dokumentlinjene for punktene i rekkefølge."
     - id: columns
       type: System.Int32[]
-      description: "The document positions for the sequence points."
+      description: "Dokumentet posisjonen for punktene i rekkefølge."
     - id: endLines
       type: System.Int32[]
-      description: "The document end lines for the sequence points."
+      description: "Dokumentet Avslutt linjer for punktene i rekkefølge."
     - id: endColumns
       type: System.Int32[]
-      description: "The document end positions for the sequence points."
+      description: "Dokumentet end posisjonen for punktene i rekkefølge."
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.DefineSequencePoints*
   exceptions: []
   platform:
@@ -387,20 +387,20 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Sets the metadata emitter interface to associate with a writer."
-  remarks: "Initialize also sets the output file name where the debugging symbols are written. This method can be called only once and must be called before any other writer methods."
+  summary: "Angir metadataene sender grensesnittet å knytte til en skriver."
+  remarks: "Initialisere også angir utdatafil der feilsøking symbolene skrives. Denne metoden kan bare kalles én gang, og må kalles før andre writer-metoder."
   syntax:
     content: public void Initialize (IntPtr emitter, string filename, bool fFullBuild);
     parameters:
     - id: emitter
       type: System.IntPtr
-      description: "The metadata emitter interface."
+      description: "Metadata sender grensesnittet."
     - id: filename
       type: System.String
-      description: "The file name for which the debugging symbols are written. Some writers require a file name, and others do not. If a file name is specified for a writer that does not use file names, this parameter is ignored."
+      description: "Filnavnet feilsøking symbolene skrives. Noen forfattere krever et filnavn og andre ikke. Hvis et filnavn er angitt for en skriver som ikke bruker filnavn, ignoreres denne parameteren."
     - id: fFullBuild
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> indicates that this is a full rebuild; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> indicates that this is an incremental compilation."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Angir at dette er en fullstendig Bygg; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> indikerer at dette er en trinnvis kompilering."
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.Initialize*
   exceptions: []
   platform:
@@ -417,14 +417,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Opens a method to place symbol information into."
-  remarks: "The specified method becomes the current method for calls to define sequence points, parameters, and lexical scopes. There is an implicit lexical scope around the entire method. Reopening a method that has been previously closed erases any previously defined symbols for the method."
+  summary: "Åpner en metode for å plassere symbolinformasjon til."
+  remarks: "Den angitte metoden blir den gjeldende metoden for samtaler for å definere sekvensnummer peker, parametere og Leksikalsk omfang. Det er en implisitt Leksikalsk omfanget rundt hele-metoden. Åpne en metode som tidligere ble lukket sletter tidligere definerte symboler for metoden."
   syntax:
     content: public void OpenMethod (System.Diagnostics.SymbolStore.SymbolToken method);
     parameters:
     - id: method
       type: System.Diagnostics.SymbolStore.SymbolToken
-      description: "The metadata token for the method to be opened."
+      description: "Metadata tokenet for metoden åpnes."
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.OpenMethod*
   exceptions: []
   platform:
@@ -441,14 +441,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Opens a new namespace."
-  remarks: "Call this method before defining methods or variables that exist within a namespace. Namespaces can be nested."
+  summary: "Åpner et nytt navneområde."
+  remarks: "Kalle denne metoden før du definerer metoder eller variabler som finnes i et navneområde. Navneområder kan neste."
   syntax:
     content: public void OpenNamespace (string name);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the new namespace."
+      description: "Navnet på det nye navneområdet."
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.OpenNamespace*
   exceptions: []
   platform:
@@ -465,17 +465,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Opens a new lexical scope in the current method."
-  remarks: "This scope becomes the new current scope and is pushed onto a stack of scopes. Scopes must form a hierarchy. Siblings are not allowed to overlap.       Scope identifiers are valid only in the current method."
+  summary: "Åpner et nytt Leksikalsk område i gjeldende-metoden."
+  remarks: "Dette området blir nye gjeldende omfang og trykkes på en bunke omfang. Omfang må danne et hierarki. Sideordnede kan ikke overlappe.       Omfanget identifikatorer er bare gyldig i gjeldende-metoden."
   syntax:
     content: public int OpenScope (int startOffset);
     parameters:
     - id: startOffset
       type: System.Int32
-      description: "The offset, in bytes, from the beginning of the method to the first instruction in the lexical scope."
+      description: "Forskyvningen for, i byte fra begynnelsen av metoden til første instruksjonene i Leksikalsk omfanget."
     return:
       type: System.Int32
-      description: "An opaque scope identifier that can be used with <xref:System.Diagnostics.SymbolStore.ISymbolWriter.SetScopeRange*> to define the start and end offsets of a scope at a later time. In this case, the offsets passed to OpenScope and <xref:System.Diagnostics.SymbolStore.ISymbolWriter.CloseScope*> are ignored. A scope identifier is valid only in the current method."
+      description: "En ugjennomsiktig område-ID som kan brukes med <> </> *> til å definere start- og forskyvningene for et område på nytt senere. I dette tilfellet forskyvningene sendt til OpenScope og <> </> *> ignoreres. Et område-IDen er bare gyldig i gjeldende-metoden."
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.OpenScope*
   exceptions: []
   platform:
@@ -492,28 +492,28 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Specifies the true start and end of a method within a source file. Use SetMethodSourceRange to specify the extent of a method, independent of the sequence points that exist within the method."
+  summary: "Angir true starten og slutten på en metode i en fil. Bruk SetMethodSourceRange til å angi omfanget av en metode, uavhengig av sekvens-punkt som finnes i metoden."
   syntax:
     content: public void SetMethodSourceRange (System.Diagnostics.SymbolStore.ISymbolDocumentWriter startDoc, int startLine, int startColumn, System.Diagnostics.SymbolStore.ISymbolDocumentWriter endDoc, int endLine, int endColumn);
     parameters:
     - id: startDoc
       type: System.Diagnostics.SymbolStore.ISymbolDocumentWriter
-      description: "The document that contains the starting position."
+      description: "Dokumentet som inneholder startposisjonen."
     - id: startLine
       type: System.Int32
-      description: "The starting line number."
+      description: "Starter linjenummeret."
     - id: startColumn
       type: System.Int32
-      description: "The starting column."
+      description: "Start kolonnen."
     - id: endDoc
       type: System.Diagnostics.SymbolStore.ISymbolDocumentWriter
-      description: "The document that contains the ending position."
+      description: "Dokumentet som inneholder den siste posisjonen."
     - id: endLine
       type: System.Int32
-      description: "The ending line number."
+      description: "Sluttverdi linjenummeret."
     - id: endColumn
       type: System.Int32
-      description: "The ending column number."
+      description: "Det siste tallet i kolonnen."
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.SetMethodSourceRange*
   exceptions: []
   platform:
@@ -530,19 +530,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Defines the offset range for the specified lexical scope."
+  summary: "Definerer forskyvningen området for det angitte Leksikalsk omfanget."
   syntax:
     content: public void SetScopeRange (int scopeID, int startOffset, int endOffset);
     parameters:
     - id: scopeID
       type: System.Int32
-      description: "The identifier of the lexical scope."
+      description: "Identifikatoren for Leksikalsk omfanget."
     - id: startOffset
       type: System.Int32
-      description: "The byte offset of the beginning of the lexical scope."
+      description: "Byte forskyvningen for begynnelsen av Leksikalsk omfanget."
     - id: endOffset
       type: System.Int32
-      description: "The byte offset of the end of the lexical scope."
+      description: "Byte forskyvningen for slutten av Leksikalsk omfanget."
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.SetScopeRange*
   exceptions: []
   platform:
@@ -559,20 +559,20 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Defines an attribute when given the attribute name and the attribute value."
-  remarks: "The SetSymAttribute method is only associated with symbolic information and is not a metadata custom attribute."
+  summary: "Definerer et attributt når attributtnavnet og attributtverdien."
+  remarks: "Metoden SetSymAttribute er bare knyttet symbolsk informasjon og er ikke et egendefinert metadataattributt."
   syntax:
     content: public void SetSymAttribute (System.Diagnostics.SymbolStore.SymbolToken parent, string name, byte[] data);
     parameters:
     - id: parent
       type: System.Diagnostics.SymbolStore.SymbolToken
-      description: "The metadata token for which the attribute is being defined."
+      description: "Metadata tokenet som attributtet er definert."
     - id: name
       type: System.String
-      description: "The attribute name."
+      description: "Attributtnavnet på."
     - id: data
       type: System.Byte[]
-      description: "The attribute value."
+      description: "Attributtverdien."
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.SetSymAttribute*
   exceptions: []
   platform:
@@ -589,14 +589,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Sets the underlying <xref uid=&quot;langword_csharp_ISymUnmanagedWriter&quot; name=&quot;ISymUnmanagedWriter&quot; href=&quot;&quot;></xref> (the corresponding unmanaged interface) that a managed <xref href=&quot;System.Diagnostics.SymbolStore.ISymbolWriter&quot;></xref> uses to emit symbols."
-  remarks: "The underlying `ISymUnmanagedWriter` (the corresponding unmanaged interface) represents a symbol writer for managed code. The interface provides methods for defining documents, sequence points, lexical scopes, and variables."
+  summary: "Angir den underliggende <xref uid=&quot;langword_csharp_ISymUnmanagedWriter&quot; name=&quot;ISymUnmanagedWriter&quot; href=&quot;&quot;> </xref> (den tilsvarende ikke-administrert interface) som en administrert <xref href=&quot;System.Diagnostics.SymbolStore.ISymbolWriter&quot;> </xref> bruker utdata fra symboler."
+  remarks: "Den underliggende `ISymUnmanagedWriter` (tilsvarende uforvaltede grensesnittet) representerer symbolet forfatter for forvaltet kode. Grensesnittet inneholder metoder for å definere dokumenter, sekvensnummer peker, Leksikalsk omfang og variabler."
   syntax:
     content: public void SetUnderlyingWriter (IntPtr underlyingWriter);
     parameters:
     - id: underlyingWriter
       type: System.IntPtr
-      description: "A pointer to code that represents the underlying writer."
+      description: "En peker til koden som representerer underliggende skriveren."
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.SetUnderlyingWriter*
   exceptions: []
   platform:
@@ -613,14 +613,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Identifies the user-defined method as the entry point for the current module."
-  remarks: "This is normally your main method, rather than compiler-generated stubs before the main method."
+  summary: "Identifiserer metoden brukerdefinerte som inngangspunktet for gjeldende modul."
+  remarks: "Dette er vanligvis primære metoden i stedet for kompilatoren genererte stubber før hoved-metoden."
   syntax:
     content: public void SetUserEntryPoint (System.Diagnostics.SymbolStore.SymbolToken entryMethod);
     parameters:
     - id: entryMethod
       type: System.Diagnostics.SymbolStore.SymbolToken
-      description: "The metadata token for the method that is the user entry point."
+      description: "Tokenet metadata for metoden som er registrering datapunkt."
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.SetUserEntryPoint*
   exceptions: []
   platform:
@@ -637,14 +637,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Diagnostics.SymbolStore
-  summary: "Specifies that the given, fully qualified namespace name is used within the open lexical scope."
-  remarks: "Closing the current scope prevents this scope from using the namespace. The namespace remains in use in all scopes that inherit from the current open scope."
+  summary: "Angir at navneområdenavnet på gitt, fullstendige brukes i åpne Leksikalsk omfanget."
+  remarks: "Lukker gjeldende omfang, hindrer du at dette området bruker navneområdet. Navneområdet forblir i bruk i alle områder som arver fra gjeldende åpne område."
   syntax:
     content: public void UsingNamespace (string fullName);
     parameters:
     - id: fullName
       type: System.String
-      description: "The fully qualified name of the namespace."
+      description: "Fullstendige navnet på navneområdet."
   overload: System.Diagnostics.SymbolStore.ISymbolWriter.UsingNamespace*
   exceptions: []
   platform:

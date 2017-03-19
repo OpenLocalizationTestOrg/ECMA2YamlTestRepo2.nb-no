@@ -14,8 +14,8 @@ items:
   nameWithType: HandleRef
   fullName: System.Runtime.InteropServices.HandleRef
   type: Struct
-  summary: "Wraps a managed object holding a handle to a resource that is passed to unmanaged code using platform invoke."
-  remarks: "> [!IMPORTANT] >  Starting with the .NET Framework 2.0, the functionality of the HandleRef class has been replaced by the <xref:System.Runtime.InteropServices.SafeHandle> class and its derived classes, as well as by the <xref:System.Runtime.InteropServices.CriticalHandle> class.       If you use platform invoke to call a managed object, and the object is not referenced elsewhere after the platform invoke call, it is possible for the garbage collector to finalize the managed object. This action releases the resource and invalidates the handle, causing the platform invoke call to fail. Wrapping a handle with HandleRef guarantees that the managed object is not garbage collected until the platform invoke call completes. For a description of platform invoke services, see [Consuming Unmanaged DLL Functions](~/add/includes/ajax-current-ext-md.md).       The HandleRef value type, like <xref:System.Runtime.InteropServices.GCHandle>, is a special type recognized by the interop marshaler. A normal, nonpinned <xref:System.Runtime.InteropServices.GCHandle> also prevents untimely garbage collection, yet HandleRef provides better performance. Although using HandleRef to keep an object alive for the duration of a platform invoke call is preferred, you can also use the <xref:System.GC.KeepAlive%2A?displayProperty=fullName> method for the same purpose.       The HandleRef constructor takes two parameters: an <xref:System.Object> representing the wrapper, and an <xref:System.IntPtr> representing the unmanaged handle. The interop marshaler passes only the handle to unmanaged code, and guarantees that the wrapper (passed as the first parameter to the constructor of the `HandleRef`) remains alive for the duration of the call."
+  summary: "Brytes aktivere en behandlede objektet inneholder en referanse til en ressurs som er sendt til ubehandlet kode ved hjelp av plattform."
+  remarks: "> [!IMPORTANT]> Starter med .NET Framework 2.0, funksjonaliteten til HandleRef klassen har blitt erstattet med den <xref:System.Runtime.InteropServices.SafeHandle>klassen og de avledede klassene, samt ved <xref:System.Runtime.InteropServices.CriticalHandle>klasse.</xref:System.Runtime.InteropServices.CriticalHandle> </xref:System.Runtime.InteropServices.SafeHandle>       Hvis du bruker plattformen aktivere for å kalle en behandlede objektet, og objektet refererer til ikke et annet sted etter plattformen aktivere kall, er det mulig for saneringsoppsamlingen til å fullføre behandlede objektet. Denne handlingen frigir ressursen og ugyldiggjøres håndtaket, fører til at plattformen aktivere kallet mislykkes. Wrapping et håndtak med HandleRef sikrer at behandlede objektet ikke er ugyldige samlet før plattformen aktivere kallet er fullført. En beskrivelse av plattformen aktivere tjenester, kan du se [bruker funksjoner for uforvaltede DLL](~/add/includes/ajax-current-ext-md.md).       HandleRef verditype, som <xref:System.Runtime.InteropServices.GCHandle>, er en spesiell type gjenkjent interop formidler.</xref:System.Runtime.InteropServices.GCHandle> En normal, nonpinned <xref:System.Runtime.InteropServices.GCHandle>hindrer også untimely datasanering ennå HandleRef gir bedre ytelse.</xref:System.Runtime.InteropServices.GCHandle> Selv om å bruke HandleRef til å holde et objekt aktiv i løpet av en plattform aktivere kallet er foretrukket, du kan også bruke den <xref:System.GC.KeepAlive%2A?displayProperty=fullName>metoden på samme måte.</xref:System.GC.KeepAlive%2A?displayProperty=fullName>       Konstruktøren HandleRef tar to parametere: en <xref:System.Object>som representerer wrapperen og en <xref:System.IntPtr>som representerer uforvaltede håndtaket.</xref:System.IntPtr> </xref:System.Object> Interop formidler sender bare referansen til ubehandlet kode og garanterer som wrapperen (sendt som den første parameteren for konstruktøren for den `HandleRef`) forblir aktiv i løpet av samtalen."
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -38,16 +38,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Initializes a new instance of the <xref href=&quot;System.Runtime.InteropServices.HandleRef&quot;></xref> class with the object to wrap and a handle to the resource used by unmanaged code."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Runtime.InteropServices.HandleRef&quot;> </xref> klassen med objektet som brytes og et håndtak til ressursen som er ubehandlet kode."
   syntax:
     content: public HandleRef (object wrapper, IntPtr handle);
     parameters:
     - id: wrapper
       type: System.Object
-      description: "A managed object that should not be finalized until the platform invoke call returns."
+      description: "Returnerer behandlede objektet som ikke er fullført før plattformen aktivere kall."
     - id: handle
       type: System.IntPtr
-      description: "An <xref:System.IntPtr> that indicates a handle to a resource."
+      description: "En <xref:System.IntPtr>som angir en referanse til en ressurs.</xref:System.IntPtr>"
   overload: System.Runtime.InteropServices.HandleRef.#ctor*
   exceptions: []
   platform:
@@ -64,12 +64,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Gets the handle to a resource."
+  summary: "Henter håndtaket for en ressurs."
   syntax:
     content: public IntPtr Handle { get; }
     return:
       type: System.IntPtr
-      description: "The handle to a resource."
+      description: "Referanse til en ressurs."
   overload: System.Runtime.InteropServices.HandleRef.Handle*
   exceptions: []
   platform:
@@ -91,10 +91,10 @@ items:
     parameters:
     - id: value
       type: System.Runtime.InteropServices.HandleRef
-      description: "To be added."
+      description: "Som skal legges til."
     return:
       type: System.IntPtr
-      description: "To be added."
+      description: "Som skal legges til."
   overload: System.Runtime.InteropServices.HandleRef.op_Explicit*
   exceptions: []
   platform:
@@ -111,16 +111,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Returns the internal integer representation of a <xref href=&quot;System.Runtime.InteropServices.HandleRef&quot;></xref> object."
+  summary: "Returnerer den interne heltall som representerer en <xref href=&quot;System.Runtime.InteropServices.HandleRef&quot;> </xref> objektet."
   syntax:
     content: public static IntPtr ToIntPtr (System.Runtime.InteropServices.HandleRef value);
     parameters:
     - id: value
       type: System.Runtime.InteropServices.HandleRef
-      description: "A <xref href=&quot;System.Runtime.InteropServices.HandleRef&quot;></xref> object to retrieve an internal integer representation from."
+      description: "En <xref href=&quot;System.Runtime.InteropServices.HandleRef&quot;> </xref> objektet til å hente en intern heltall gjengivelse fra."
     return:
       type: System.IntPtr
-      description: "An <xref:System.IntPtr> object that represents a <xref href=&quot;System.Runtime.InteropServices.HandleRef&quot;></xref> object."
+      description: "En <xref:System.IntPtr>objektet som representerer en <xref href=&quot;System.Runtime.InteropServices.HandleRef&quot;> </xref> objektet.</xref:System.IntPtr>"
   overload: System.Runtime.InteropServices.HandleRef.ToIntPtr*
   exceptions: []
   platform:
@@ -137,12 +137,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.InteropServices
-  summary: "Gets the object holding the handle to a resource."
+  summary: "Henter objektet inneholder referansen til en ressurs."
   syntax:
     content: public object Wrapper { get; }
     return:
       type: System.Object
-      description: "The object holding the handle to a resource."
+      description: "Objektet inneholder referansen til en ressurs."
   overload: System.Runtime.InteropServices.HandleRef.Wrapper*
   exceptions: []
   platform:
