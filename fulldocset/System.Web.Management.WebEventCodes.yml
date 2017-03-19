@@ -74,8 +74,8 @@ items:
   nameWithType: WebEventCodes
   fullName: System.Web.Management.WebEventCodes
   type: Class
-  summary: "Defines the codes associated with the ASP.NET health monitoring events."
-  remarks: "ASP.NET health monitoring allows production and operations staff to manage deployed Web applications. The <xref:System.Web.Management> namespace contains the health-event types responsible for packaging application health-status data and the provider types responsible for processing this data. It also contains supporting types that help during the management of health events.       The WebEventCodes class contains codes that identify types of health-monitoring events. Two types of codes are defined within the class: major codes, which identify the ASP.NET health-monitoring events; and detail codes, which provide more information about a related major code. These codes are implemented as integers, rather than as an enumeration, to allow for extensibility.       When a health-monitoring event is raised, it is associated with a major event code. The following list identifies the categories of major event codes that are defined within the WebEventCodes class:      -   **Application codes**. Application codes identify events in the lifetime of an application, such as startup and shutdown events. Their values are greater than the <xref:System.Web.Management.WebEventCodes.ApplicationCodeBase> field constant. They are associated with the <xref:System.Web.Management.WebApplicationLifetimeEvent> event type. The heartbeat event is a special kind of application event. It identifies events raised at periodic intervals to provide information relative to the state of the running process. It is associated with the <xref:System.Web.Management.WebHeartbeatEvent> event type.      -   **Request codes**. Request codes identify non-error events that provide per-request information. Their values are greater than the <xref:System.Web.Management.WebEventCodes.RequestCodeBase> field constant. They are associated with the <xref:System.Web.Management.WebRequestEvent> event type.      -   **Error codes**. Error codes identify events that contain information about two kinds of errors: errors specifically related to a Web request and systemic errors. The errors related to Web requests include unhandled exceptions, view-state errors, and input-validation errors. They are associated with the <xref:System.Web.Management.WebRequestErrorEvent> event type. The systemic errors relate to configuration or application code, including parser errors and compilation errors. They are associated with the <xref:System.Web.Management.WebErrorEvent> event type. Both kinds of errors have values greater than the <xref:System.Web.Management.WebEventCodes.ErrorCodeBase> field constant.      -   **Audit codes**. Audit codes identify events that contain auditable information such as login attempts, access security violations, and authorization violations. Their values are greater than <xref:System.Web.Management.WebEventCodes.AuditCodeBase>. They are associated with <xref:System.Web.Management.WebAuditEvent> and its derived event types.      -   **Miscellaneous codes**. Miscellaneous codes do not identify events but are used to flag nonstandard event information. Their values are greater than <xref:System.Web.Management.WebEventCodes.MiscCodeBase>. Refer also to <xref:System.Web.Management.WebEventCodes.WebEventProviderInformation> for more information.       You can create your own custom event code by choosing code values above <xref:System.Web.Management.WebEventCodes.WebExtendedBase>.       In the `eventMappings` health-monitoring configuration element, you can optionally specify an event-code range.  If the event code range is specified, the mapping only applies to the events that have an event code within that range; otherwise, it applies to all the event codes. The following configuration file excerpt shows the <xref:System.Web.Management.EventLogWebEventProvider> configured to handle <xref:System.Web.Management.WebFailureAuditEvent> events whose event codes belong to the audit category.      ```   <healthMonitoring>     <eventMappings>        <add name=&quot;Failure Audits&quot; type=         &quot;System.Web.Management.WebFailureAuditEvent,System.Web, Version=2.0.3600.0,Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a&quot; />     </eventMappings>        <rules>       <add name=&quot;Failure Audits Default&quot;         eventName=&quot;Failure Audits&quot;         provider=&quot;EventLogProvider&quot;         profile=&quot;Default&quot;         minInterval=&quot;00:01:00&quot; />     </rules>   </healthMonitoring>   ```       You can create your own custom event code by choosing code values above <xref:System.Web.Management.WebEventCodes.WebExtendedBase>."
+  summary: "Definerer koder som er knyttet til ASP.NET-tilstanden overvåking hendelser."
+  remarks: "ASP.NET helseovervåking gjør det mulig for produksjon og operasjoner for å behandle distribuert webprogrammer. Den <xref:System.Web.Management>navneområdet inneholder health-hendelsestypene ansvarlig for pakke-tilstandsstatusen programdata og leverandøren-typer som er ansvarlig for å behandle disse dataene.</xref:System.Web.Management> Det inneholder støttet typer som hjelper under behandling av hendelser for tilstanden.       Klassen WebEventCodes inneholder koder som identifiserer typer helseovervåking hendelser. To typer koder som er definert i klassen: overordnede koder, som identifiserer ASP.NET-helseovervåking hendelser; og detalj koder, som gir mer informasjon om relaterte hoved-koden. Disse kodene implementeres som heltall, i stedet for en opplisting, slik at utvidelsesevne.       Når det oppstår en helseovervåking hendelse, er den knyttet til en overordnet hendelseskode. Følgende liste identifiserer kategorier av viktig hendelse-koder som er definert i WebEventCodes-klasse:- **programmet koder**. Programmet koder identifisere hendelser i levetiden for et program, for eksempel startet og avslutninger. Verdiene er større enn den <xref:System.Web.Management.WebEventCodes.ApplicationCodeBase>feltet konstant.</xref:System.Web.Management.WebEventCodes.ApplicationCodeBase> De er tilknyttet den <xref:System.Web.Management.WebApplicationLifetimeEvent>hendelsestype.</xref:System.Web.Management.WebApplicationLifetimeEvent> Livstegnet hendelsen er en spesiell type programmet hendelsen. Identifiserer hendelser opphøyd i periodiske intervaller som skal gir informasjon i forhold til tilstanden for prosessen som kjører. Det er knyttet til den <xref:System.Web.Management.WebHeartbeatEvent>hendelsestype.</xref:System.Web.Management.WebHeartbeatEvent>      - **Forespørsel koder**. Forespørselen koder identifisere uten feil hendelser som gir informasjon om per forespørselen. Verdiene er større enn den <xref:System.Web.Management.WebEventCodes.RequestCodeBase>feltet konstant.</xref:System.Web.Management.WebEventCodes.RequestCodeBase> De er tilknyttet den <xref:System.Web.Management.WebRequestEvent>hendelsestype.</xref:System.Web.Management.WebRequestEvent>      - **Feilkoder**. Feilkoder identifisere hendelser som inneholder informasjon om to typer feil: feil spesifikt er relatert til en forespørsel og systemic feil. Feil relatert til webforespørsler inkludere et ubehandlet unntak, visningsstatus feil og inndataene valideringsfeil. De er tilknyttet den <xref:System.Web.Management.WebRequestErrorEvent>hendelsestype.</xref:System.Web.Management.WebRequestErrorEvent> Systemic feilene som er knyttet til konfigurasjons- eller kode, inkludert parseren feil og kompileringsfeil. De er tilknyttet den <xref:System.Web.Management.WebErrorEvent>hendelsestype.</xref:System.Web.Management.WebErrorEvent> Begge typene feil har verdier som er større enn den <xref:System.Web.Management.WebEventCodes.ErrorCodeBase>feltet konstant.</xref:System.Web.Management.WebEventCodes.ErrorCodeBase>      - **Audit koder**. Overvåk koder identifisere hendelser som inneholder overvåkbare informasjon for eksempel påloggingsforsøk, tilgang sikkerhetsbrudd og godkjenning brudd. Verdiene er større enn <xref:System.Web.Management.WebEventCodes.AuditCodeBase>.</xref:System.Web.Management.WebEventCodes.AuditCodeBase> Tilknyttede <xref:System.Web.Management.WebAuditEvent>og de avledede hendelsestypene.</xref:System.Web.Management.WebAuditEvent>      - **Diverse koder**. Diverse koder identifisere ikke hendelser, men brukes til å hendelsesinformasjon-flagget. Verdiene er større enn <xref:System.Web.Management.WebEventCodes.MiscCodeBase>.</xref:System.Web.Management.WebEventCodes.MiscCodeBase> Se også til <xref:System.Web.Management.WebEventCodes.WebEventProviderInformation>for mer informasjon.</xref:System.Web.Management.WebEventCodes.WebEventProviderInformation>       Du kan opprette dine egne egendefinerte hendelseskode ved å velge kodeverdier over <xref:System.Web.Management.WebEventCodes.WebExtendedBase>.</xref:System.Web.Management.WebEventCodes.WebExtendedBase>       I de `eventMappings` helseovervåking konfigurasjonselementet, kan du angi et hendelseskode område.  Hvis hendelsen kode området er angitt, gjelder tilordningen bare for hendelser som har en hendelseskode i dette området. Hvis ikke, den gjelder alle hendelsen kodene. Følgende konfigurasjonsfil hentet viser den <xref:System.Web.Management.EventLogWebEventProvider>konfigurert til å håndtere <xref:System.Web.Management.WebFailureAuditEvent>hendelser der hendelsen-koder som hører til kategorien audit.</xref:System.Web.Management.WebFailureAuditEvent> </xref:System.Web.Management.EventLogWebEventProvider>      ```   <healthMonitoring>     <eventMappings>        <add name=&quot;Failure Audits&quot; type=         &quot;System.Web.Management.WebFailureAuditEvent,System.Web, Version=2.0.3600.0,Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a&quot; />     </eventMappings>        <rules>       <add name=&quot;Failure Audits Default&quot;         eventName=&quot;Failure Audits&quot;         provider=&quot;EventLogProvider&quot;         profile=&quot;Default&quot;         minInterval=&quot;00:01:00&quot; />     </rules>   </healthMonitoring>   ```Du kan opprette dine egne egendefinerte hendelseskode ved å velge kodeverdier over <xref:System.Web.Management.WebEventCodes.WebExtendedBase>.</xref:System.Web.Management.WebEventCodes.WebExtendedBase>"
   syntax:
     content: public sealed class WebEventCodes
   inheritance:
@@ -96,13 +96,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Identifies the offset for the ASP.NET health-monitoring application event codes. This field is constant."
-  remarks: "The ApplicationCodeBase value represents the offset for major event codes associated with the <xref:System.Web.Management.WebApplicationLifetimeEvent> type. All application codes are assigned values greater than ApplicationCodeBase."
+  summary: "Angir forskyvningen for ASP.NET-helseovervåking programmet hendelsen kodene. Dette feltet er konstant."
+  remarks: "ApplicationCodeBase-verdien angir forskyvningen for overordnede hendelser som er tilknyttet den <xref:System.Web.Management.WebApplicationLifetimeEvent>type.</xref:System.Web.Management.WebApplicationLifetimeEvent> Alle programmet koder tilordnes verdier som er større enn ApplicationCodeBase."
   syntax:
     content: public const int ApplicationCodeBase = 1000;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -118,13 +118,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the compilation of the application has finished. This field is constant."
-  remarks: "The ApplicationCompilationEnd value is a major code and its value is greater than the <xref:System.Web.Management.WebEventCodes.ApplicationCodeBase> value. ASP.NET raises the related <xref:System.Web.Management.WebApplicationLifetimeEvent> event when the compilation of the application ends."
+  summary: "Representerer den hendelsen som indikerer at det er ferdig med kompilering av programmet. Dette feltet er konstant."
+  remarks: "Verdien for ApplicationCompilationEnd er en overordnet kode og verdien er større enn den <xref:System.Web.Management.WebEventCodes.ApplicationCodeBase>verdi.</xref:System.Web.Management.WebEventCodes.ApplicationCodeBase> ASP.NET opphøyer den tilknyttede <xref:System.Web.Management.WebApplicationLifetimeEvent>-hendelse når kompilering av programmet avsluttes.</xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationCompilationEnd = 1004;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -140,13 +140,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the compilation of the application has started. This field is constant."
-  remarks: "The ApplicationCompilationStart value is a major code and its value is greater than the <xref:System.Web.Management.WebEventCodes.ApplicationCodeBase> value. ASP.NET raises the related <xref:System.Web.Management.WebApplicationLifetimeEvent> event when the compilation of the application starts."
+  summary: "Representerer den hendelsen som indikerer at kompilering av applikasjonen er startet. Dette feltet er konstant."
+  remarks: "Verdien for ApplicationCompilationStart er en overordnet kode og verdien er større enn den <xref:System.Web.Management.WebEventCodes.ApplicationCodeBase>verdi.</xref:System.Web.Management.WebEventCodes.ApplicationCodeBase> ASP.NET opphøyer den tilknyttede <xref:System.Web.Management.WebApplicationLifetimeEvent>-hendelse når kompilering av applikasjonen starter.</xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationCompilationStart = 1003;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -162,13 +162,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Identifies the offset for the application detail event codes. This field is constant."
-  remarks: "The ApplicationDetailCodeBase value represents the offset for the detail event code range associated with the <xref:System.Web.Management.WebApplicationLifetimeEvent> type. All application detail codes are assigned values greater than ApplicationDetailCodeBase."
+  summary: "Angir forskyvningen for programmet detail hendelsen kodene. Dette feltet er konstant."
+  remarks: "ApplicationDetailCodeBase-verdien angir forskyvningen for detail hendelsen kode området som er tilknyttet den <xref:System.Web.Management.WebApplicationLifetimeEvent>type.</xref:System.Web.Management.WebApplicationLifetimeEvent> Alle programmet detail koder tilordnes verdier som er større enn ApplicationDetailCodeBase."
   syntax:
     content: public const int ApplicationDetailCodeBase = 50000;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -184,13 +184,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that a heartbeat event occurred. This field is constant."
-  remarks: "The ApplicationHeartbeat is a major code and its value is greater than <xref:System.Web.Management.WebEventCodes.ApplicationCodeBase>. ASP.NET raises the related <xref:System.Web.Management.WebHeartbeatEvent> event at a periodic interval, as defined by the configuration file."
+  summary: "Representerer den hendelsen som indikerer at det oppstod en hendelse for livstegn. Dette feltet er konstant."
+  remarks: "ApplicationHeartbeat er en overordnet kode og verdien er større enn <xref:System.Web.Management.WebEventCodes.ApplicationCodeBase>.</xref:System.Web.Management.WebEventCodes.ApplicationCodeBase> ASP.NET opphøyer den tilknyttede <xref:System.Web.Management.WebHeartbeatEvent>hendelsen med en periodisk intervallet definert i konfigurasjonsfilen.</xref:System.Web.Management.WebHeartbeatEvent>"
   syntax:
     content: public const int ApplicationHeartbeat = 1005;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -206,13 +206,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that an application has shut down. This field is constant."
-  remarks: "ApplicationShutdown is a major code and its value is greater than <xref:System.Web.Management.WebEventCodes.ApplicationCodeBase>. ASP.NET raises the related <xref:System.Web.Management.WebApplicationLifetimeEvent> event when the application shuts down."
+  summary: "Representerer den hendelsen som indikerer at et program er avsluttet. Dette feltet er konstant."
+  remarks: "ApplicationShutdown er en overordnet kode og verdien er større enn <xref:System.Web.Management.WebEventCodes.ApplicationCodeBase>.</xref:System.Web.Management.WebEventCodes.ApplicationCodeBase> ASP.NET opphøyer den tilknyttede <xref:System.Web.Management.WebApplicationLifetimeEvent>hendelsen når programmet avsluttes.</xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationShutdown = 1002;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -228,13 +228,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating a subdirectory in the application&quot;s Bin directory was changed or renamed. This field is constant."
-  remarks: "The ApplicationShutdownBinDirChangeOrDirectoryRename is the detail code that specifies the causes of the shutdown.       When a subdirectory in the application&quot;s Bin directory is changed or renamed, ASP.NET raises a <xref:System.Web.Management.WebApplicationLifetimeEvent> with a major code of <xref:System.Web.Management.WebEventCodes.ApplicationShutdown> and a detail code of ApplicationShutdownBinDirChangeOrDirectoryRename."
+  summary: "Representerer hendelseskode som angir en undermappe i programmappen biters ble endret eller gis nytt navn. Dette feltet er konstant."
+  remarks: "ApplicationShutdownBinDirChangeOrDirectoryRename er Detaljkoden som angir årsaker til avslutningen.       Når en undermappe i programmappen biters endres eller gis nytt navn, ASP.NET opphøyer et <xref:System.Web.Management.WebApplicationLifetimeEvent>med store koden <xref:System.Web.Management.WebEventCodes.ApplicationShutdown>og detaljer for ApplicationShutdownBinDirChangeOrDirectoryRename.</xref:System.Web.Management.WebEventCodes.ApplicationShutdown> </xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationShutdownBinDirChangeOrDirectoryRename = 50007;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -250,13 +250,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating a subdirectory in the Browsers application directory was changed or renamed. This field is constant."
-  remarks: "ApplicationShutdownBrowsersDirChangeOrDirectoryRename is the detail code that specifies the cause of the shutdown.       When a subdirectory in the Browsers application directory is changed or renamed, ASP.NET raises a <xref:System.Web.Management.WebApplicationLifetimeEvent> with a major code of <xref:System.Web.Management.WebEventCodes.ApplicationShutdown> and a detail code of ApplicationShutdownBrowsersDirChangeOrDirectoryRename."
+  summary: "Representerer hendelseskode som angir en undermappe i programmappen nettlesere ble endret eller gis nytt navn. Dette feltet er konstant."
+  remarks: "ApplicationShutdownBrowsersDirChangeOrDirectoryRename er Detaljkoden som angir årsaken til avslutningen.       Når en undermappe i programmappen nettlesere endres eller gis nytt navn, ASP.NET opphøyer et <xref:System.Web.Management.WebApplicationLifetimeEvent>med store koden <xref:System.Web.Management.WebEventCodes.ApplicationShutdown>og detaljer for ApplicationShutdownBrowsersDirChangeOrDirectoryRename.</xref:System.Web.Management.WebEventCodes.ApplicationShutdown> </xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationShutdownBrowsersDirChangeOrDirectoryRename = 50008;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -272,13 +272,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the build manager has made a change that requires the application domain to be shut down."
-  remarks: "ApplicationShutdownBuildManagerChange is the detail code that specifies the cause of the shutdown.       When the build manager has made a change that requires the application domain to be shut down, ASP.NET raises a <xref:System.Web.Management.WebApplicationLifetimeEvent> with a major code of <xref:System.Web.Management.WebEventCodes.ApplicationShutdown> and a detail code of ApplicationShutdownBuildManagerChange."
+  summary: "Representerer den hendelsen som indikerer at build-manager har gjort endringer som krever programdomenet å bli avsluttet."
+  remarks: "ApplicationShutdownBuildManagerChange er Detaljkoden som angir årsaken til avslutningen.       Når build-manager har gjort endringer som krever programdomenet å bli avsluttet, ASP.NET gir et <xref:System.Web.Management.WebApplicationLifetimeEvent>med store koden <xref:System.Web.Management.WebEventCodes.ApplicationShutdown>og detaljer for ApplicationShutdownBuildManagerChange.</xref:System.Web.Management.WebEventCodes.ApplicationShutdown> </xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationShutdownBuildManagerChange = 50017;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -294,13 +294,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the Global.asax file has changed. This field is constant."
-  remarks: "ApplicationShutdownChangeInGlobalAsax is the detail code that specifies the cause of the shutdown.       When the Global.asax file is changed, ASP.NET raises a <xref:System.Web.Management.WebApplicationLifetimeEvent> with a major code of <xref:System.Web.Management.WebEventCodes.ApplicationShutdown> and a detail code of ApplicationShutdownChangeInGlobalAsax."
+  summary: "Representerer den hendelsen som indikerer at filen Global.asax er endret. Dette feltet er konstant."
+  remarks: "ApplicationShutdownChangeInGlobalAsax er Detaljkoden som angir årsaken til avslutningen.       Når filen Global.asax endres, ASP.NET opphøyer et <xref:System.Web.Management.WebApplicationLifetimeEvent>med store koden <xref:System.Web.Management.WebEventCodes.ApplicationShutdown>og detaljer for ApplicationShutdownChangeInGlobalAsax.</xref:System.Web.Management.WebEventCodes.ApplicationShutdown> </xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationShutdownChangeInGlobalAsax = 50003;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -316,13 +316,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the security policy file has changed. This field is constant."
-  remarks: "ApplicationShutdownChangeInSecurityPolicyFile is the detail code that specifies the cause of the shutdown.       When the security policy file is changed, ASP.NET raises a <xref:System.Web.Management.WebApplicationLifetimeEvent> with a major code of <xref:System.Web.Management.WebEventCodes.ApplicationShutdown> and a detail code of ApplicationShutdownChangeInSecurityPolicyFile."
+  summary: "Representerer den hendelsen som indikerer at security-policyfil er endret. Dette feltet er konstant."
+  remarks: "ApplicationShutdownChangeInSecurityPolicyFile er Detaljkoden som angir årsaken til avslutningen.       Når security-policyfil endres, ASP.NET opphøyer et <xref:System.Web.Management.WebApplicationLifetimeEvent>med store koden <xref:System.Web.Management.WebEventCodes.ApplicationShutdown>og detaljer for ApplicationShutdownChangeInSecurityPolicyFile.</xref:System.Web.Management.WebEventCodes.ApplicationShutdown> </xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationShutdownChangeInSecurityPolicyFile = 50006;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -338,13 +338,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating a subdirectory in the App_Code directory was changed or renamed. This field is constant."
-  remarks: "ApplicationShutdownCodeDirChangeOrDirectoryRename is the detail code that specifies the cause of the shutdown.       When a subdirectory in the App_Code directory is changed or renamed, ASP.NET raises a <xref:System.Web.Management.WebApplicationLifetimeEvent> with a major code of <xref:System.Web.Management.WebEventCodes.ApplicationShutdown> and a detail code of ApplicationShutdownCodeDirChangeOrDirectoryRename."
+  summary: "Representerer hendelseskode som angir en undermappe i mappen App_Code ble endret eller gis nytt navn. Dette feltet er konstant."
+  remarks: "ApplicationShutdownCodeDirChangeOrDirectoryRename er Detaljkoden som angir årsaken til avslutningen.       Når en undermappe i mappen App_Code endres eller gis nytt navn, ASP.NET opphøyer et <xref:System.Web.Management.WebApplicationLifetimeEvent>med store koden <xref:System.Web.Management.WebEventCodes.ApplicationShutdown>og detaljer for ApplicationShutdownCodeDirChangeOrDirectoryRename.</xref:System.Web.Management.WebEventCodes.ApplicationShutdown> </xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationShutdownCodeDirChangeOrDirectoryRename = 50009;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -360,13 +360,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the configuration file has changed. This field is constant."
-  remarks: "ApplicationShutdownConfigurationChange is the detail code that specifies the cause of the shutdown.       When the configuration file is changed, ASP.NET raises a <xref:System.Web.Management.WebApplicationLifetimeEvent> with a major code of <xref:System.Web.Management.WebEventCodes.ApplicationShutdown> and a detail code of ApplicationShutdownConfigurationChange."
+  summary: "Representerer den hendelsen som indikerer at konfigurasjonsfilen er endret. Dette feltet er konstant."
+  remarks: "ApplicationShutdownConfigurationChange er Detaljkoden som angir årsaken til avslutningen.       Når filen endres, ASP.NET opphøyer et <xref:System.Web.Management.WebApplicationLifetimeEvent>med store koden <xref:System.Web.Management.WebEventCodes.ApplicationShutdown>og detaljer for ApplicationShutdownConfigurationChange.</xref:System.Web.Management.WebEventCodes.ApplicationShutdown> </xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationShutdownConfigurationChange = 50004;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -382,13 +382,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the hosting environment is shutting down. This field is constant."
-  remarks: "The ApplicationShutdownHostingEnvironment is the detail code that specifies the cause of the shutdown.       When the hosting environment is shutting down, ASP.NET raises a <xref:System.Web.Management.WebApplicationLifetimeEvent> with a major code of <xref:System.Web.Management.WebEventCodes.ApplicationShutdown> and a detail code of ApplicationShutdownHostingEnvironment."
+  summary: "Representerer den hendelsen som indikerer at Vertsmiljøet avsluttes. Dette feltet er konstant."
+  remarks: "ApplicationShutdownHostingEnvironment er Detaljkoden som angir årsaken til avslutningen.       Når Vertsmiljøet avsluttes, ASP.NET opphøyer et <xref:System.Web.Management.WebApplicationLifetimeEvent>med store koden <xref:System.Web.Management.WebEventCodes.ApplicationShutdown>og detaljer for ApplicationShutdownHostingEnvironment.</xref:System.Web.Management.WebEventCodes.ApplicationShutdown> </xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationShutdownHostingEnvironment = 50002;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -404,13 +404,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the ASP.NET run time was explicitly closed. This field is constant."
-  remarks: "ApplicationShutdownHttpRuntimeClose is the detail code that specifies the cause of the shutdown.       When the ASP.NET run time is explicitly closed, ASP.NET raises a <xref:System.Web.Management.WebApplicationLifetimeEvent> with a major code of <xref:System.Web.Management.WebEventCodes.ApplicationShutdown> and a detail code of ApplicationShutdownHttpRuntimeClose."
+  summary: "Representerer den hendelsen kode som angir at ASP.NET kjøretid eksplisitt ble lukket. Dette feltet er konstant."
+  remarks: "ApplicationShutdownHttpRuntimeClose er Detaljkoden som angir årsaken til avslutningen.       Når ASP.NET kjøretid lukkes eksplisitt, ASP.NET opphøyer et <xref:System.Web.Management.WebApplicationLifetimeEvent>med store koden <xref:System.Web.Management.WebEventCodes.ApplicationShutdown>og detaljer for ApplicationShutdownHttpRuntimeClose.</xref:System.Web.Management.WebEventCodes.ApplicationShutdown> </xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationShutdownHttpRuntimeClose = 50013;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -426,13 +426,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the idle time-out was exceeded. This field is constant."
-  remarks: "The ApplicationShutdownIdleTimeout is the detail code that specifies the cause of the shutdown.       When the idle time-out is exceeded, ASP.NET raises a <xref:System.Web.Management.WebApplicationLifetimeEvent> with a major code of <xref:System.Web.Management.WebEventCodes.ApplicationShutdown> and a detail code of ApplicationShutdownIdleTimeout."
+  summary: "Representerer den hendelsen som indikerer at tidsavbruddet for inaktivitet er overskredet. Dette feltet er konstant."
+  remarks: "ApplicationShutdownIdleTimeout er Detaljkoden som angir årsaken til avslutningen.       Når tidsavbruddet for inaktivitet er nådd, ASP.NET opphøyer et <xref:System.Web.Management.WebApplicationLifetimeEvent>med store koden <xref:System.Web.Management.WebEventCodes.ApplicationShutdown>og detaljer for ApplicationShutdownIdleTimeout.</xref:System.Web.Management.WebEventCodes.ApplicationShutdown> </xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationShutdownIdleTimeout = 50011;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -448,13 +448,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating an application-initialization error occurred. This field is constant."
-  remarks: "ApplicationShutdownInitializationError is the detail code that specifies the cause of the shutdown.       When an application-initialization error occurs, ASP.NET raises a <xref:System.Web.Management.WebApplicationLifetimeEvent> with a major code of <xref:System.Web.Management.WebEventCodes.ApplicationShutdown> and a detail code of ApplicationShutdownInitializationError."
+  summary: "Representerer hendelseskode som angir programinitialisering feil. Dette feltet er konstant."
+  remarks: "ApplicationShutdownInitializationError er Detaljkoden som angir årsaken til avslutningen.       Når det oppstår en applikasjon initialiseringsfeil, ASP.NET opphøyer et <xref:System.Web.Management.WebApplicationLifetimeEvent>med store koden <xref:System.Web.Management.WebEventCodes.ApplicationShutdown>og detaljer for ApplicationShutdownInitializationError.</xref:System.Web.Management.WebEventCodes.ApplicationShutdown> </xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationShutdownInitializationError = 50014;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -470,13 +470,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the maximum number of recompilations was reached. This field is constant."
-  remarks: "ApplicationShutdownMaxRecompilationsReached is the detail code that specifies the cause of the shutdown.       When the maximum number of recompilations is reached, ASP.NET raises a <xref:System.Web.Management.WebApplicationLifetimeEvent> with a major code of <xref:System.Web.Management.WebEventCodes.ApplicationShutdown> and a detail code of ApplicationShutdownMaxRecompilationsReached."
+  summary: "Representerer den hendelsen som indikerer at det maksimale antallet kompileringer ble nådd. Dette feltet er konstant."
+  remarks: "ApplicationShutdownMaxRecompilationsReached er Detaljkoden som angir årsaken til avslutningen.       Når det maksimale antallet kompileringer er nådd, ASP.NET opphøyer et <xref:System.Web.Management.WebApplicationLifetimeEvent>med store koden <xref:System.Web.Management.WebEventCodes.ApplicationShutdown>og detaljer for ApplicationShutdownMaxRecompilationsReached.</xref:System.Web.Management.WebEventCodes.ApplicationShutdown> </xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationShutdownMaxRecompilationsReached = 50015;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -492,13 +492,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the physical path of the application has changed. This field is constant."
-  remarks: "ApplicationShutdownPhysicalApplicationPathChanged is the detail code that specifies the cause of the shutdown.       When the physical path of the application is changed, ASP.NET raises a <xref:System.Web.Management.WebApplicationLifetimeEvent> with a major code of <xref:System.Web.Management.WebEventCodes.ApplicationShutdown> and a detail code of ApplicationShutdownPhysicalApplicationPathChanged."
+  summary: "Representerer den hendelsen som indikerer at den fysiske banen for applikasjonen som er endret. Dette feltet er konstant."
+  remarks: "ApplicationShutdownPhysicalApplicationPathChanged er Detaljkoden som angir årsaken til avslutningen.       Når den fysiske banen for applikasjonen endres, ASP.NET opphøyer et <xref:System.Web.Management.WebApplicationLifetimeEvent>med store koden <xref:System.Web.Management.WebEventCodes.ApplicationShutdown>og detaljer for ApplicationShutdownPhysicalApplicationPathChanged.</xref:System.Web.Management.WebEventCodes.ApplicationShutdown> </xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationShutdownPhysicalApplicationPathChanged = 50012;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -514,13 +514,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating a subdirectory in the App_Resources directory was changed or renamed. This field is constant."
-  remarks: "ApplicationShutdownResourcesDirChangeOrDirectoryRename is the detail code that specifies the cause of the shutdown.       When a subdirectory in the App_Resources directory is changed or renamed, ASP.NET raises a <xref:System.Web.Management.WebApplicationLifetimeEvent> with a major code of <xref:System.Web.Management.WebEventCodes.ApplicationShutdown> and a detail code of ApplicationShutdownResourcesDirChangeOrDirectoryRename."
+  summary: "Representerer hendelseskode som angir en undermappe i mappen App_Resources ble endret eller gis nytt navn. Dette feltet er konstant."
+  remarks: "ApplicationShutdownResourcesDirChangeOrDirectoryRename er Detaljkoden som angir årsaken til avslutningen.       Når en undermappe i mappen App_Resources endres eller gis nytt navn, ASP.NET opphøyer et <xref:System.Web.Management.WebApplicationLifetimeEvent>med store koden <xref:System.Web.Management.WebEventCodes.ApplicationShutdown>og detaljer for ApplicationShutdownResourcesDirChangeOrDirectoryRename.</xref:System.Web.Management.WebEventCodes.ApplicationShutdown> </xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationShutdownResourcesDirChangeOrDirectoryRename = 50010;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -536,13 +536,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the application shutdown reason is unknown. This field is constant."
-  remarks: "ApplicationShutdownUnknown is the detail code that specifies the causes of the shutdown.       When the application shuts down for an unknown reason, ASP.NET raises a <xref:System.Web.Management.WebApplicationLifetimeEvent> with a major code of <xref:System.Web.Management.WebEventCodes.ApplicationShutdown> and a detail code of ApplicationShutdownUnknown."
+  summary: "Representerer den hendelsen som indikerer at programmet avsluttes årsaken er ukjent. Dette feltet er konstant."
+  remarks: "ApplicationShutdownUnknown er Detaljkoden som angir årsaker til avslutningen.       Når programmet avsluttes på grunn av en ukjent årsak, ASP.NET opphøyer et <xref:System.Web.Management.WebApplicationLifetimeEvent>med store koden <xref:System.Web.Management.WebEventCodes.ApplicationShutdown>og detaljer for ApplicationShutdownUnknown.</xref:System.Web.Management.WebEventCodes.ApplicationShutdown> </xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationShutdownUnknown = 50001;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -558,13 +558,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the application domain was explicitly unloaded. This field is constant."
-  remarks: "ApplicationShutdownUnloadAppDomainCalled is the detail code that specifies the cause of the shutdown.       When the application domain is explicitly unloaded, ASP.NET raises a <xref:System.Web.Management.WebApplicationLifetimeEvent> with a major code of <xref:System.Web.Management.WebEventCodes.ApplicationShutdown> and a detail code of ApplicationShutdownUnloadAppDomainCalled."
+  summary: "Representerer den hendelsen som indikerer at programdomenet ble lastet ut eksplisitt. Dette feltet er konstant."
+  remarks: "ApplicationShutdownUnloadAppDomainCalled er Detaljkoden som angir årsaken til avslutningen.       Når programdomenet eksplisitt lastes, ASP.NET opphøyer et <xref:System.Web.Management.WebApplicationLifetimeEvent>med store koden <xref:System.Web.Management.WebEventCodes.ApplicationShutdown>og detaljer for ApplicationShutdownUnloadAppDomainCalled.</xref:System.Web.Management.WebEventCodes.ApplicationShutdown> </xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationShutdownUnloadAppDomainCalled = 50005;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -580,13 +580,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that an application has started. This field is constant."
-  remarks: "ApplicationStart is the major code that refers to the start of an application. When the application starts, ASP.NET raises a <xref:System.Web.Management.WebApplicationLifetimeEvent> with a major code of ApplicationStart."
+  summary: "Representerer den hendelsen som indikerer at et program har startet. Dette feltet er konstant."
+  remarks: "ApplicationStart er den overordnede koden som refererer til starten av en applikasjon. Når applikasjonen starter, ASP.NET opphøyer et <xref:System.Web.Management.WebApplicationLifetimeEvent>med store koden ApplicationStart.</xref:System.Web.Management.WebApplicationLifetimeEvent>"
   syntax:
     content: public const int ApplicationStart = 1001;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -602,13 +602,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Identifies the offset for the ASP.NET health-monitoring audit event codes. This field is constant."
-  remarks: "The AuditCodeBase value represents the offset for the major event code range associated with the <xref:System.Web.Management.WebAuthenticationSuccessAuditEvent>, <xref:System.Web.Management.WebSuccessAuditEvent>, <xref:System.Web.Management.WebAuthenticationFailureAuditEvent>, <xref:System.Web.Management.WebFailureAuditEvent>, and <xref:System.Web.Management.WebViewStateFailureAuditEvent> types.       All audit codes are assigned values greater than AuditCodeBase."
+  summary: "Angir forskyvningen for ASP.NET-helseovervåking audit hendelsen kodene. Dette feltet er konstant."
+  remarks: "AuditCodeBase-verdien angir forskyvningen for viktig hendelse kode området som er tilknyttet den <xref:System.Web.Management.WebAuthenticationSuccessAuditEvent>, <xref:System.Web.Management.WebSuccessAuditEvent>, <xref:System.Web.Management.WebAuthenticationFailureAuditEvent>, <xref:System.Web.Management.WebFailureAuditEvent>, og <xref:System.Web.Management.WebViewStateFailureAuditEvent>typer.</xref:System.Web.Management.WebViewStateFailureAuditEvent> </xref:System.Web.Management.WebFailureAuditEvent> </xref:System.Web.Management.WebAuthenticationFailureAuditEvent> </xref:System.Web.Management.WebSuccessAuditEvent> </xref:System.Web.Management.WebAuthenticationSuccessAuditEvent>       Alle audit koder tilordnes verdier som er større enn AuditCodeBase."
   syntax:
     content: public const int AuditCodeBase = 4000;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -624,13 +624,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Identifies the offset for the ASP.NET audit-detail event codes. This field is constant."
-  remarks: "AuditDetailCodeBase represents the offset for the detail-event-code range associated with audit events. All audit detail codes are assigned values greater than AuditDetailCodeBase."
+  summary: "Angir forskyvningen for ASP.NET audit detail hendelsen kodene. Dette feltet er konstant."
+  remarks: "AuditDetailCodeBase representerer forskyvningen for detail hendelseskode området som er forbundet med overvåkingshendelser. Alle audit detail koder tilordnes verdier som er større enn AuditDetailCodeBase."
   syntax:
     content: public const int AuditDetailCodeBase = 50200;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -646,13 +646,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that a file-authorization failure occurred during a Web request. This field is constant."
-  remarks: "AuditFileAuthorizationFailure is the major code for the health event related to the access of a file for which authorization is not granted. When a file-authorization failure occurs, ASP.NET raises a <xref:System.Web.Management.WebFailureAuditEvent> with a major code of AuditFileAuthorizationFailure."
+  summary: "Representerer hendelseskode som angir at en fil godkjenningsproblemer oppstod under en forespørsel. Dette feltet er konstant."
+  remarks: "AuditFileAuthorizationFailure er viktige for hendelsen tilstanden relatert til en fil som godkjenning ikke er gitt tilgang. Når en fil godkjenningsproblemer oppstår, ASP.NET opphøyer et <xref:System.Web.Management.WebFailureAuditEvent>med store koden AuditFileAuthorizationFailure.</xref:System.Web.Management.WebFailureAuditEvent>"
   syntax:
     content: public const int AuditFileAuthorizationFailure = 4008;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -668,13 +668,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that a file-authorization success occurred during a Web request. This field is constant."
-  remarks: "AuditFileAuthorizationSuccess is the major code for the health event related to the access of a file for which authorization is granted. When a file authorization is successful, ASP.NET raises a <xref:System.Web.Management.WebSuccessAuditEvent> with a major code of AuditFileAuthorizationSuccess."
+  summary: "Representerer hendelseskode som angir at filen godkjenning vellykket oppstod under en forespørsel. Dette feltet er konstant."
+  remarks: "AuditFileAuthorizationSuccess er viktige for hendelsen tilstanden relatert til en fil godkjenning gis tilgang. Når en fil-godkjenning er fullført, ASP.NET opphøyer et <xref:System.Web.Management.WebSuccessAuditEvent>med store koden AuditFileAuthorizationSuccess.</xref:System.Web.Management.WebSuccessAuditEvent>"
   syntax:
     content: public const int AuditFileAuthorizationSuccess = 4004;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -690,13 +690,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating a form authentication failure occurred during a Web request. This field is constant."
-  remarks: "AuditFormsAuthenticationFailure is the major code for the health event related to user&quot;s authentication failure. When this event happens, ASP.NET raises a <xref:System.Web.Management.WebAuthenticationFailureAuditEvent> with a major code of AuditFormsAuthenticationFailure."
+  summary: "Representerer hendelseskode som angir en skjemaet godkjenningsfeil oppstod under en forespørsel. Dette feltet er konstant."
+  remarks: "AuditFormsAuthenticationFailure er viktige for hendelsen tilstanden relatert til brukerens godkjenningsfeil. Når denne hendelsen skjer, ASP.NET opphøyer et <xref:System.Web.Management.WebAuthenticationFailureAuditEvent>med store koden AuditFormsAuthenticationFailure.</xref:System.Web.Management.WebAuthenticationFailureAuditEvent>"
   syntax:
     content: public const int AuditFormsAuthenticationFailure = 4005;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -712,13 +712,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating a form-authentication success occurred during a Web request. This field is constant."
-  remarks: "The AuditFormsAuthenticationSuccess is the major code for the health event related to a user&quot;s authentication success. When this event occurs, ASP.NET raises a <xref:System.Web.Management.WebAuthenticationSuccessAuditEvent> with a major code of AuditFormsAuthenticationSuccess."
+  summary: "Representerer hendelseskode som angir skjemagodkjenning vellykket oppstod under en forespørsel. Dette feltet er konstant."
+  remarks: "AuditFormsAuthenticationSuccess er viktige for hendelsen tilstanden relatert til en bruker godkjenningen var vellykket. Når denne hendelsen oppstår, ASP.NET opphøyer et <xref:System.Web.Management.WebAuthenticationSuccessAuditEvent>med store koden AuditFormsAuthenticationSuccess.</xref:System.Web.Management.WebAuthenticationSuccessAuditEvent>"
   syntax:
     content: public const int AuditFormsAuthenticationSuccess = 4001;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -734,13 +734,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the view-state verification failed. This field is constant."
-  remarks: "AuditInvalidViewStateFailure is the major code for the health event related to view-state verification failure. When this event occurs, ASP.NET raises a <xref:System.Web.Management.WebViewStateFailureAuditEvent> with a major code of AuditInvalidViewStateFailure."
+  summary: "Representerer den hendelsen kode som angir at visningsstatusen bekreftelse mislyktes. Dette feltet er konstant."
+  remarks: "AuditInvalidViewStateFailure er viktige for hendelsen tilstanden relatert til visningsstatus bekreftelse mislyktes. Når denne hendelsen oppstår, ASP.NET opphøyer et <xref:System.Web.Management.WebViewStateFailureAuditEvent>med store koden AuditInvalidViewStateFailure.</xref:System.Web.Management.WebViewStateFailureAuditEvent>"
   syntax:
     content: public const int AuditInvalidViewStateFailure = 4009;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -756,13 +756,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that a membership-authentication failure occurred during a Web request. This field is constant."
-  remarks: "The AuditMembershipAuthenticationFailure is the major code for the health event related to a user&quot;s membership-authentication failure. When this event occurs, ASP.NET raises a <xref:System.Web.Management.WebAuthenticationFailureAuditEvent> with a major code of AuditMembershipAuthenticationFailure."
+  summary: "Representerer hendelseskode som angir at en medlemskap godkjenningsfeil oppstod under en forespørsel. Dette feltet er konstant."
+  remarks: "AuditMembershipAuthenticationFailure er viktige for hendelsen tilstanden relatert til en bruker medlemskap-godkjenningsfeil. Når denne hendelsen oppstår, ASP.NET opphøyer et <xref:System.Web.Management.WebAuthenticationFailureAuditEvent>med store koden AuditMembershipAuthenticationFailure.</xref:System.Web.Management.WebAuthenticationFailureAuditEvent>"
   syntax:
     content: public const int AuditMembershipAuthenticationFailure = 4006;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -778,13 +778,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that a membership-authentication success occurred during a Web request. This field is constant."
-  remarks: "AuditMembershipAuthenticationSuccess is the major code for the health event related to a user&quot;s membership-authentication success. When this event occurs, ASP.NET raises a <xref:System.Web.Management.WebAuthenticationSuccessAuditEvent> with a major code of AuditMembershipAuthenticationSuccess."
+  summary: "Representerer hendelseskode som angir at en medlemskap-godkjenningen var vellykket oppstod under en forespørsel. Dette feltet er konstant."
+  remarks: "AuditMembershipAuthenticationSuccess er viktige for hendelsen tilstanden relatert til en bruker medlemskap-godkjenningen var vellykket. Når denne hendelsen oppstår, ASP.NET opphøyer et <xref:System.Web.Management.WebAuthenticationSuccessAuditEvent>med store koden AuditMembershipAuthenticationSuccess.</xref:System.Web.Management.WebAuthenticationSuccessAuditEvent>"
   syntax:
     content: public const int AuditMembershipAuthenticationSuccess = 4002;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -800,13 +800,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that an unhandled access exception occurred during a Web request. This field is constant."
-  remarks: "AuditUnhandledAccessException is the major code for the unhandled health event related to the access of a resource for which authorization is not granted. When this event occurs, ASP.NET raises a <xref:System.Web.Management.WebFailureAuditEvent> with a major code of AuditUnhandledAccessException."
+  summary: "Representerer den hendelsen som indikerer at det oppstod et ubehandlet tilgang-unntak under en forespørsel. Dette feltet er konstant."
+  remarks: "AuditUnhandledAccessException er viktige for hendelsen ubehandlet tilstanden relatert til en ressurs som godkjenning ikke er gitt tilgang. Når denne hendelsen oppstår, ASP.NET opphøyer et <xref:System.Web.Management.WebFailureAuditEvent>med store koden AuditUnhandledAccessException.</xref:System.Web.Management.WebFailureAuditEvent>"
   syntax:
     content: public const int AuditUnhandledAccessException = 4011;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -822,13 +822,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that an unhandled security exception occurred during a Web request. This field is constant."
-  remarks: "AuditUnhandledSecurityException is the major code of the unhandled health event related to a security violation. When an unhandled security exception is thrown, ASP.NET raises a <xref:System.Web.Management.WebFailureAuditEvent> with a major code of AuditUnhandledSecurityException."
+  summary: "Representerer den hendelsen som indikerer at det oppstod et ubehandlet sikkerhetsunntak under en forespørsel. Dette feltet er konstant."
+  remarks: "AuditUnhandledSecurityException er hoved-koden for hendelsen ubehandlet tilstanden knyttet til et sikkerhetsbrudd. Når et ubehandlet sikkerhet unntak, ASP.NET opphøyer et <xref:System.Web.Management.WebFailureAuditEvent>med store koden AuditUnhandledSecurityException.</xref:System.Web.Management.WebFailureAuditEvent>"
   syntax:
     content: public const int AuditUnhandledSecurityException = 4010;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -844,13 +844,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that a URL-authorization failure occurred during a Web request. This field is constant."
-  remarks: "AuditUrlAuthorizationFailure is the major code for the health event related to the use of a URL for which authorization is not granted. When the URL-authorization failure occurs, ASP.NET raises a <xref:System.Web.Management.WebFailureAuditEvent> with a major code of AuditUrlAuthorizationFailure."
+  summary: "Representerer hendelseskode som angir at en URL-autorisasjon feil oppstod under en forespørsel. Dette feltet er konstant."
+  remarks: "AuditUrlAuthorizationFailure er viktige for hendelsen tilstanden relatert til bruk av en URL-adresse som ikke gis godkjenning. Når URL-autorisasjon feilen oppstår, ASP.NET opphøyer et <xref:System.Web.Management.WebFailureAuditEvent>med store koden AuditUrlAuthorizationFailure.</xref:System.Web.Management.WebFailureAuditEvent>"
   syntax:
     content: public const int AuditUrlAuthorizationFailure = 4007;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -866,13 +866,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating a URL-authorization success occurred during a Web request. This field is constant."
-  remarks: "AuditUrlAuthorizationSuccess is the major code for the health event related to the use of a URL for which authorization is granted. When a URL is successfully authorized, ASP.NET raises a <xref:System.Web.Management.WebSuccessAuditEvent> with a major code of AuditUrlAuthorizationSuccess."
+  summary: "Representerer hendelseskode som angir en URL-autorisasjon var vellykket oppstod under en forespørsel. Dette feltet er konstant."
+  remarks: "AuditUrlAuthorizationSuccess er viktige for hendelsen tilstanden relatert til bruk av en URL-adresse som godkjenning er gitt. Når en URL-adresse er ble godkjent, ASP.NET opphøyer et <xref:System.Web.Management.WebSuccessAuditEvent>med store koden AuditUrlAuthorizationSuccess.</xref:System.Web.Management.WebSuccessAuditEvent>"
   syntax:
     content: public const int AuditUrlAuthorizationSuccess = 4003;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -888,13 +888,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Identifies the offset for the ASP.NET health-monitoring error event codes. This field is constant."
-  remarks: "The ErrorCodeBase value represents the offset for the major event code range associated with the <xref:System.Web.Management.WebRequestErrorEvent> and <xref:System.Web.Management.WebErrorEvent> types. All error codes are assigned values greater than ErrorCodeBase."
+  summary: "Angir forskyvningen for ASP.NET-helseovervåking hendelsen feilkoder. Dette feltet er konstant."
+  remarks: "ErrorCodeBase-verdien angir forskyvningen for viktig hendelse kode området som er tilknyttet den <xref:System.Web.Management.WebRequestErrorEvent>og <xref:System.Web.Management.WebErrorEvent>typer.</xref:System.Web.Management.WebErrorEvent> </xref:System.Web.Management.WebRequestErrorEvent> Alle feilkoder tilordnes verdier som er større enn ErrorCodeBase."
   syntax:
     content: public const int ErrorCodeBase = 3000;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -910,13 +910,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the supplied ticket is expired. This field is constant."
-  remarks: "ExpiredTicketFailure is the detail code that specifies the cause of the user&quot;s authentication failure.       When the user&quot;s authentication fails due to an expired ticket, ASP.NET raises a <xref:System.Web.Management.WebAuthenticationFailureAuditEvent> with a major code of <xref:System.Web.Management.WebEventCodes.AuditFormsAuthenticationFailure> and a detail code of ExpiredTicketFailure."
+  summary: "Representerer den hendelsen som indikerer at den angitte billetten er utløpt. Dette feltet er konstant."
+  remarks: "ExpiredTicketFailure er Detaljkoden som angir årsaken til brukerens godkjenningsfeil.       Når brukerens godkjenning mislykkes på grunn av en utløpt billett, ASP.NET opphøyer et <xref:System.Web.Management.WebAuthenticationFailureAuditEvent>med store koden <xref:System.Web.Management.WebEventCodes.AuditFormsAuthenticationFailure>og detaljer for ExpiredTicketFailure.</xref:System.Web.Management.WebEventCodes.AuditFormsAuthenticationFailure> </xref:System.Web.Management.WebAuthenticationFailureAuditEvent>"
   syntax:
     content: public const int ExpiredTicketFailure = 50202;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -932,13 +932,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the event code value is not allowed. This field is constant."
-  remarks: "The InvalidEventCode represents the use of a code value that is not allowed by the system. For instance, this can happen if you customize an ASP.NET health-monitoring event and use a code value that is already assigned by the system."
+  summary: "Representerer den hendelsen som indikerer at hendelsen code-verdien ikke er tillatt. Dette feltet er konstant."
+  remarks: "InvalidEventCode representerer bruk av en kodeverdi som ikke tillates av systemet. For eksempel kan dette skje hvis du tilpasser en ASP.NET-helseovervåking hendelse, og bruk en kodeverdi som allerede er tilordnet av systemet."
   syntax:
     content: public const int InvalidEventCode = -1;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -954,13 +954,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the supplied ticket is invalid. This field is constant."
-  remarks: "InvalidTicketFailure is the detail code that specifies the cause of the user&quot;s authentication failure.       When the user&quot;s authentication fails due to an invalid ticket, ASP.NET raises a <xref:System.Web.Management.WebAuthenticationFailureAuditEvent> with a major code of <xref:System.Web.Management.WebEventCodes.AuditFormsAuthenticationFailure> and a detail code of InvalidTicketFailure."
+  summary: "Representerer den hendelsen som indikerer at den angitte billetten er ugyldig. Dette feltet er konstant."
+  remarks: "InvalidTicketFailure er Detaljkoden som angir årsaken til brukerens godkjenningsfeil.       Når brukerens godkjenning mislykkes på grunn av en ugyldig billett, ASP.NET opphøyer et <xref:System.Web.Management.WebAuthenticationFailureAuditEvent>med store koden <xref:System.Web.Management.WebEventCodes.AuditFormsAuthenticationFailure>og detaljer for InvalidTicketFailure.</xref:System.Web.Management.WebEventCodes.AuditFormsAuthenticationFailure> </xref:System.Web.Management.WebAuthenticationFailureAuditEvent>"
   syntax:
     content: public const int InvalidTicketFailure = 50201;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -976,13 +976,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the supplied view state is invalid. This field is constant."
-  remarks: "InvalidViewState is the detail code that specifies the cause of the view-state failure.       When the view-state error occurs, ASP.NET raises a <xref:System.Web.Management.WebViewStateFailureAuditEvent> with a major code of <xref:System.Web.Management.WebEventCodes.AuditInvalidViewStateFailure> and a detail code of InvalidViewState."
+  summary: "Representerer den hendelsen som indikerer at den angitte visningsstatusen er ugyldig. Dette feltet er konstant."
+  remarks: "InvalidViewState er Detaljkoden som angir årsaken til feilen visningsstatus.       Når visningsstatusen feil oppstår, ASP.NET opphøyer et <xref:System.Web.Management.WebViewStateFailureAuditEvent>med store koden <xref:System.Web.Management.WebEventCodes.AuditInvalidViewStateFailure>og detaljer for InvalidViewState.</xref:System.Web.Management.WebEventCodes.AuditInvalidViewStateFailure> </xref:System.Web.Management.WebViewStateFailureAuditEvent>"
   syntax:
     content: public const int InvalidViewState = 50204;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -998,13 +998,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the supplied view state failed the integrity check. This field is constant."
-  remarks: "InvalidViewStateMac is the detail code that specifies the cause of the view-state failure.       When the supplied view state fails the integrity check, ASP.NET raises a <xref:System.Web.Management.WebViewStateFailureAuditEvent> with a major code of <xref:System.Web.Management.WebEventCodes.AuditInvalidViewStateFailure> and a detail code of InvalidViewStateMac."
+  summary: "Representerer den hendelsen kode som angir at den angitte visningsstatusen mislyktes Integritetskontroll av. Dette feltet er konstant."
+  remarks: "InvalidViewStateMac er Detaljkoden som angir årsaken til feilen visningsstatus.       Når den angitte visningsstatusen mislykkes i integritetskontroll, ASP.NET opphøyer et <xref:System.Web.Management.WebViewStateFailureAuditEvent>med store koden <xref:System.Web.Management.WebEventCodes.AuditInvalidViewStateFailure>og detaljer for InvalidViewStateMac.</xref:System.Web.Management.WebEventCodes.AuditInvalidViewStateFailure> </xref:System.Web.Management.WebViewStateFailureAuditEvent>"
   syntax:
     content: public const int InvalidViewStateMac = 50203;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -1020,13 +1020,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Identifies the offset for the ASP.NET health-monitoring Web miscellaneous event codes. This field is constant."
-  remarks: "The MiscCodeBase value represents the offset for the major event code range associated with health events that have not been categorized. All miscellaneous codes are assigned values greater than MiscCodeBase."
+  summary: "Angir forskyvningen for ASP.NET-helseovervåking Web diverse hendelsen kodene. Dette feltet er konstant."
+  remarks: "MiscCodeBase-verdien angir forskyvningen for viktig hendelse kode området som er forbundet med tilstanden hendelser som ikke er kategorisert. Alle diverse koder tilordnes verdier som er større enn MiscCodeBase."
   syntax:
     content: public const int MiscCodeBase = 6000;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -1042,13 +1042,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Identifies the offset for the ASP.NET health-monitoring Web-request event codes. This field is constant."
-  remarks: "The RequestCodeBase value represents the offset for the major event code range associated with the <xref:System.Web.Management.WebRequestEvent> type. All request codes are assigned values greater than RequestCodeBase."
+  summary: "Angir forskyvningen for ASP.NET-helseovervåking webforespørsel hendelsen kodene. Dette feltet er konstant."
+  remarks: "RequestCodeBase-verdien angir forskyvningen for viktig hendelse kode området som er tilknyttet den <xref:System.Web.Management.WebRequestEvent>type.</xref:System.Web.Management.WebRequestEvent> Alle koder i forespørselen tilordnes verdier som er større enn RequestCodeBase."
   syntax:
     content: public const int RequestCodeBase = 2000;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -1064,13 +1064,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the Web request was aborted. This field is constant."
-  remarks: "RequestTransactionAbort is the major code that refers to a Web-request abnormal termination. When a Web request aborts, ASP.NET raises a <xref:System.Web.Management.WebRequestEvent> with a major code of RequestTransactionAbort."
+  summary: "Representerer den hendelsen som indikerer at Web-forespørselen ble avbrutt. Dette feltet er konstant."
+  remarks: "RequestTransactionAbort er overordnede koden som refererer til en webforespørsel unormal avslutning. Når en forespørsel avbryter, ASP.NET opphøyer et <xref:System.Web.Management.WebRequestEvent>med store koden RequestTransactionAbort.</xref:System.Web.Management.WebRequestEvent>"
   syntax:
     content: public const int RequestTransactionAbort = 2002;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -1086,13 +1086,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the Web request was completed. This field is constant."
-  remarks: "RequestTransactionComplete is the major code that refers to a Web request normal termination. When the Web request completes normally, ASP.NET raises a <xref:System.Web.Management.WebRequestEvent> with a major code of RequestTransactionComplete."
+  summary: "Representerer den hendelsen som indikerer at Web-forespørsel ble fullført. Dette feltet er konstant."
+  remarks: "RequestTransactionComplete er overordnede koden som refererer til en vanlig avslutning for Web-forespørselen. Når Web-forespørselen er fullført vanligvis ASP.NET gir et <xref:System.Web.Management.WebRequestEvent>med store koden RequestTransactionComplete.</xref:System.Web.Management.WebRequestEvent>"
   syntax:
     content: public const int RequestTransactionComplete = 2001;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -1108,13 +1108,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the size of the posted information exceeded the allowed limits. This field is constant."
-  remarks: "RuntimeErrorPostTooLarge is the major code that refers to a data posting whose size exceeds the allowed limits. When a form posts data that exceeds the allowed limits, ASP.NET raises a <xref:System.Web.Management.WebRequestErrorEvent> with a major code of RuntimeErrorPostTooLarge."
+  summary: "Representerer den hendelsen kode som angir størrelsen på informasjonen som posteres overskred de tillatte grensen. Dette feltet er konstant."
+  remarks: "RuntimeErrorPostTooLarge er den overordnede koden som refererer til et datasett posting størrelse overskrider de tillatte grensen. Når et skjema legger inn data som overskrider de tillatte grensen, ASP.NET opphøyer et <xref:System.Web.Management.WebRequestErrorEvent>med store koden RuntimeErrorPostTooLarge.</xref:System.Web.Management.WebRequestErrorEvent>"
   syntax:
     content: public const int RuntimeErrorPostTooLarge = 3004;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -1130,13 +1130,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the Web request has been aborted."
-  remarks: "RuntimeErrorRequestAbort is the major code that refers to the abnormal termination of the Web request. When the Web request aborts, ASP.NET raises a <xref:System.Web.Management.WebRequestErrorEvent> with a major code of RuntimeErrorRequestAbort."
+  summary: "Representerer den hendelsen som indikerer at Web-forespørselen har blitt avbrutt."
+  remarks: "RuntimeErrorRequestAbort er den overordnede koden som refererer til unormal avslutning av webforespørsel. Når Webforespørselen avbryter, ASP.NET opphøyer et <xref:System.Web.Management.WebRequestErrorEvent>med store koden RuntimeErrorRequestAbort.</xref:System.Web.Management.WebRequestErrorEvent>"
   syntax:
     content: public const int RuntimeErrorRequestAbort = 3001;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -1152,13 +1152,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating an unhandled exception occurred. This field is constant."
-  remarks: "RuntimeErrorUnhandledException is the major code that refers to the occurrence of an exception that is not handled by ASP.NET. When the exception occurs, ASP.NET raises a <xref:System.Web.Management.WebRequestErrorEvent> with a major code of RuntimeErrorUnhandledException."
+  summary: "Representerer hendelseskode som angir et ubehandlet unntak. Dette feltet er konstant."
+  remarks: "RuntimeErrorUnhandledException er den overordnede koden som refererer til forekomsten av et unntak som ikke er behandlet av ASP.NET. Når det oppstår unntaket, ASP.NET opphøyer et <xref:System.Web.Management.WebRequestErrorEvent>med store koden RuntimeErrorUnhandledException.</xref:System.Web.Management.WebRequestErrorEvent>"
   syntax:
     content: public const int RuntimeErrorUnhandledException = 3005;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -1174,13 +1174,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that a validation error occurred. This field is constant."
-  remarks: "RuntimeErrorValidationFailure is the major code that refers to the occurrence of a validation exception that is not handled by ASP.NET. When this exception occurs, ASP.NET raises a <xref:System.Web.Management.WebRequestErrorEvent> with a major code of RuntimeErrorValidationFailure."
+  summary: "Representerer den hendelsen som indikerer at det oppstod en valideringsfeil. Dette feltet er konstant."
+  remarks: "RuntimeErrorValidationFailure er den overordnede koden som refererer til forekomsten av en valideringsfeil unntak som ikke er behandlet av ASP.NET. Når dette unntaket oppstår, ASP.NET opphøyer et <xref:System.Web.Management.WebRequestErrorEvent>med store koden RuntimeErrorValidationFailure.</xref:System.Web.Management.WebRequestErrorEvent>"
   syntax:
     content: public const int RuntimeErrorValidationFailure = 3003;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -1196,13 +1196,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that a view-state failure occurred. This field is constant."
-  remarks: "RuntimeErrorViewStateFailure is the major code that refers to a view-state failure. When this happens, ASP.NET raises a <xref:System.Web.Management.WebRequestErrorEvent> with a major code of RuntimeErrorViewStateFailure."
+  summary: "Representerer den hendelsen som indikerer at det oppstod en feil i Vis-tilstand. Dette feltet er konstant."
+  remarks: "RuntimeErrorViewStateFailure er overordnede koden som refererer til en visningsstatus feil. Når dette skjer, ASP.NET opphøyer et <xref:System.Web.Management.WebRequestErrorEvent>med store koden RuntimeErrorViewStateFailure.</xref:System.Web.Management.WebRequestErrorEvent>"
   syntax:
     content: public const int RuntimeErrorViewStateFailure = 3002;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -1218,12 +1218,12 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that there was an error accessing a web resource. This field is constant."
+  summary: "Representerer den hendelsen som indikerer at det oppstod en feil under en nettressursen. Dette feltet er konstant."
   syntax:
     content: public const int RuntimeErrorWebResourceFailure = 3012;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -1239,13 +1239,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the SQL provider dropped events. This field is constant."
-  remarks: "When the notification occurs after the one during which events have been dropped, a special warning row is written to the SQL server. This row is written before all other events in the notification, and is not counted in the total number of events as far as the configured flush size is concerned."
+  summary: "Representerer den hendelsen som indikerer at SQL-leverandør slettet hendelser. Dette feltet er konstant."
+  remarks: "Når varselet oppstår etter at det som hendelser er slettet, er en spesiell advarsel rad skrevet til SQLServer. Denne raden skrives før alle hendelser i meldingen, og telles ikke i det totale antallet hendelser som gjelder den konfigurerte tømming størrelsen."
   syntax:
     content: public const int SqlProviderEventsDropped = 50301;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -1261,13 +1261,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that an error occurred while communicating with the state server. This field is constant."
-  remarks: "When a connection error occurs while communicating with the state server, ASP.NET raises a <xref:System.Web.Management.WebErrorEvent> with a major code of <xref:System.Web.Management.WebEventCodes.WebErrorOtherError> and detail code of StateServerConnectionError.       The StateServerConnectionError is a detail code and its value is greater than the <xref:System.Web.Management.WebEventCodes.ApplicationCodeBase>."
+  summary: "Representerer den hendelsen som indikerer at det oppstod en feilen under kommunikasjon med tilstandsserveren. Dette feltet er konstant."
+  remarks: "Når det oppstår en feil ved tilkoblingen under kommunikasjon med tilstandsserveren, ASP.NET opphøyer et <xref:System.Web.Management.WebErrorEvent>med store koden <xref:System.Web.Management.WebEventCodes.WebErrorOtherError>og detalj-koden for StateServerConnectionError.</xref:System.Web.Management.WebEventCodes.WebErrorOtherError> </xref:System.Web.Management.WebErrorEvent>       StateServerConnectionError er en detalj-kode, og verdien er større enn <xref:System.Web.Management.WebEventCodes.ApplicationCodeBase>.</xref:System.Web.Management.WebEventCodes.ApplicationCodeBase>"
   syntax:
     content: public const int StateServerConnectionError = 50016;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -1283,13 +1283,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the major event code value is not defined. This field is constant."
-  remarks: "UndefinedEventCode represents the use of a major code value that is not defined by the system."
+  summary: "Representerer den hendelsen som indikerer at kodeverdi viktig hendelse ikke er definert. Dette feltet er konstant."
+  remarks: "UndefinedEventCode representerer bruk av en overordnet kodeverdi som ikke er definert av systemet."
   syntax:
     content: public const int UndefinedEventCode = 0;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -1305,13 +1305,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that the detail event code value is not defined. This field is constant."
-  remarks: "<xref:System.Web.Management.WebEventCodes.UndefinedEventCode> represents the use of a detail code value that is not defined by the system."
+  summary: "Representerer den hendelsen som indikerer at detail hendelsen code-verdien ikke er definert. Dette feltet er konstant."
+  remarks: "<xref:System.Web.Management.WebEventCodes.UndefinedEventCode>representerer bruk av en detaljert kodeverdi som ikke er definert av systemet.</xref:System.Web.Management.WebEventCodes.UndefinedEventCode>"
   syntax:
     content: public const int UndefinedEventDetailCode = 0;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -1327,13 +1327,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Indicates that a compilation error occurred."
-  remarks: "WebErrorCompilationError is the major code that refers to an error that happened during the application compilation phase. When this error occurs, ASP.NET raises a <xref:System.Web.Management.WebErrorEvent> with a major code of WebErrorCompilationError."
+  summary: "Indikerer at det oppstod en kompileringsfeil."
+  remarks: "WebErrorCompilationError er overordnede koden som refererer til en feil som oppstod fasen for kompilering av programmet. Når denne feilen oppstår, ASP.NET opphøyer et <xref:System.Web.Management.WebErrorEvent>med store koden WebErrorCompilationError.</xref:System.Web.Management.WebErrorEvent>"
   syntax:
     content: public const int WebErrorCompilationError = 3007;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -1349,13 +1349,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Indicates that a configuration error occurred. This field is constant."
-  remarks: "WebErrorConfigurationError is the major code that refers to an error that happened during the application-configuring phase. When this error occurs, ASP.NET raises a <xref:System.Web.Management.WebErrorEvent> with a major code of WebErrorConfigurationError."
+  summary: "Indikerer at det oppstod en konfigurasjonsfeil. Dette feltet er konstant."
+  remarks: "WebErrorConfigurationError er overordnede koden som refererer til en feil som oppstod under konfigurasjon av applikasjonen-fase. Når denne feilen oppstår, ASP.NET opphøyer et <xref:System.Web.Management.WebErrorEvent>med store koden WebErrorConfigurationError.</xref:System.Web.Management.WebErrorEvent>"
   syntax:
     content: public const int WebErrorConfigurationError = 3008;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -1371,12 +1371,12 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that there was an error during the deserialization of the type or value of an object. This field is constant."
+  summary: "Representerer den hendelsen som indikerer at det oppstod en feil under deserialisering av typen eller verdien for et objekt. Dette feltet er konstant."
   syntax:
     content: public const int WebErrorObjectStateFormatterDeserializationError = 3011;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -1392,13 +1392,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that an unclassified error occurred. This field is constant."
-  remarks: "WebErrorOtherError is the major code for an unclassified error. When this error occurs, ASP.NET raises a <xref:System.Web.Management.WebErrorEvent> with a major code of WebErrorOtherError."
+  summary: "Representerer den hendelsen som indikerer at uklassifiserte feil. Dette feltet er konstant."
+  remarks: "WebErrorOtherError er viktige for en uklassifiserte feil. Når denne feilen oppstår, ASP.NET opphøyer et <xref:System.Web.Management.WebErrorEvent>med store koden WebErrorOtherError.</xref:System.Web.Management.WebErrorEvent>"
   syntax:
     content: public const int WebErrorOtherError = 3009;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -1414,13 +1414,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating a parser error occurred."
-  remarks: "WebErrorParserError is the major code that refers to an error that happened during the application-parsing phase. When this error occurs, ASP.NET raises a <xref:System.Web.Management.WebErrorEvent> with a major code of WebErrorParserError."
+  summary: "Representerer hendelseskode som angir det oppstod en parseren."
+  remarks: "WebErrorParserError er overordnede koden som refererer til en feil som oppstod under analyse av programmet fasen. Når denne feilen oppstår, ASP.NET opphøyer et <xref:System.Web.Management.WebErrorEvent>med store koden WebErrorParserError.</xref:System.Web.Management.WebErrorEvent>"
   syntax:
     content: public const int WebErrorParserError = 3006;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -1436,12 +1436,12 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code indicating that there was an error during the deserialization of a property. This field is constant."
+  summary: "Representerer den hendelsen som indikerer at det oppstod en feil under deserialisering av en egenskap. Dette feltet er konstant."
   syntax:
     content: public const int WebErrorPropertyDeserializationError = 3010;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -1457,13 +1457,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Identifies the offset for the ASP.NET health-monitoring Web-detail event codes."
-  remarks: "The WebEventDetailCodeBase value represents the offset for the detail-event code range associated with the <xref:System.Web.Management.WebApplicationLifetimeEvent> type. All application detail codes are assigned values greater than <xref:System.Web.Management.WebEventCodes.ApplicationDetailCodeBase>."
+  summary: "Angir forskyvningen for ASP.NET-helseovervåking Web-detaljer hendelsen kodene."
+  remarks: "WebEventDetailCodeBase-verdien angir forskyvningen for detail hendelsen kode området som er tilknyttet den <xref:System.Web.Management.WebApplicationLifetimeEvent>type.</xref:System.Web.Management.WebApplicationLifetimeEvent> Alle programmet detail koder tilordnes verdier som er større enn <xref:System.Web.Management.WebEventCodes.ApplicationDetailCodeBase>.</xref:System.Web.Management.WebEventCodes.ApplicationDetailCodeBase>"
   syntax:
     content: public const int WebEventDetailCodeBase = 50300;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -1479,13 +1479,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Represents the event code used by providers to record nonstandard information about an event. This field is constant."
-  remarks: "WebEventProviderInformation is the major code used by providers to store nonstandard health event information. Its value is greater than <xref:System.Web.Management.WebEventCodes.MiscCodeBase>.       For example, if ASP.NET health events are dropped during buffering, the <xref:System.Web.Management.SimpleMailWebEventProvider> adds a warning to the top of the messages without using the WebEventProviderInformation.But  the only way for the <xref:System.Web.Management.SqlWebEventProvider> to write this warning is to create a record in the database. Because every record in the database needs an event ID, the provider uses the WebEventProviderInformation as its major code and <xref:System.Web.Management.WebEventCodes.SqlProviderEventsDropped> as the detail code to create this ID.      > [!NOTE] >  As you can see from the above discussion, the WebEventProviderInformation is not associated with any ASP.NET health event."
+  summary: "Representerer hendelseskode brukes til å registrere informasjon om en hendelse i leverandører. Dette feltet er konstant."
+  remarks: "WebEventProviderInformation er hoved-koden brukes av leverandører for å lagre helseinformasjon for hendelsen. Verdien er større enn <xref:System.Web.Management.WebEventCodes.MiscCodeBase>.</xref:System.Web.Management.WebEventCodes.MiscCodeBase>       Hvis ASP.NET tilstanden hendelser er slettet under hurtigbufring, for eksempel den <xref:System.Web.Management.SimpleMailWebEventProvider>legger til en advarsel til toppen av meldingene uten å bruke WebEventProviderInformation.But den eneste måten den <xref:System.Web.Management.SqlWebEventProvider>ikke skrive denne advarselen er å opprette en post i databasen.</xref:System.Web.Management.SqlWebEventProvider> </xref:System.Web.Management.SimpleMailWebEventProvider> Hver post i databasen krever hendelses-IDen, bruker leverandøren WebEventProviderInformation som den overordnede koden og <xref:System.Web.Management.WebEventCodes.SqlProviderEventsDropped>som detalj-kode for å opprette denne IDen.</xref:System.Web.Management.WebEventCodes.SqlProviderEventsDropped>      > [!NOTE] > Som du kan se fra ovenfor diskusjoner, WebEventProviderInformation er ikke knyttet til en hendelse for ASP.NET-tilstanden."
   syntax:
     content: public const int WebEventProviderInformation = 6001;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -1501,13 +1501,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Identifies the offset for the custom event codes. This field is constant."
-  remarks: "If you create your own custom event, you must use an event code with a value greater than WebExtendedBase."
+  summary: "Angir forskyvningen for egendefinert hendelse-koder. Dette feltet er konstant."
+  remarks: "Hvis du oppretter egendefinerte hendelsen, må du bruke en hendelseskode med en verdi større enn WebExtendedBase."
   syntax:
     content: public const int WebExtendedBase = 100000;
     return:
       type: System.Int32
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462

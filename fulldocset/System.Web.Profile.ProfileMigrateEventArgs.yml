@@ -12,8 +12,8 @@ items:
   nameWithType: ProfileMigrateEventArgs
   fullName: System.Web.Profile.ProfileMigrateEventArgs
   type: Class
-  summary: "Provides data for the <xref href=&quot;System.Web.Profile.ProfileModule.MigrateAnonymous&quot;></xref> event of the <xref href=&quot;System.Web.Profile.ProfileModule&quot;></xref> class."
-  remarks: "The ProfileMigrateEventArgs object provides event information to the <xref:System.Web.Profile.ProfileModule.MigrateAnonymous> event of the <xref:System.Web.Profile.ProfileModule> class. The ProfileMigrateEventArgs object provides access to the <xref:System.Web.HttpContext> of the current request and the anonymous user identifier for the anonymous profile in the <xref:System.Web.Profile.ProfileMigrateEventArgs.AnonymousID%2A> property.       You can use the <xref:System.Web.Profile.ProfileModule.MigrateAnonymous> event to copy profile property values from an anonymous profile to an authenticated profile when a user who has been anonymously using your application logs in.       When an application that has the user profile enabled is started, ASP.NET creates a new class of type `ProfileCommon`, which inherits from the <xref:System.Web.Profile.ProfileBase> class. When the `ProfileCommon` class is generated, based on the profile properties specified in the Web.config file, a `GetProfile` method is added that enables you to retrieve a `ProfileCommon` object based on a user name. You can use the `GetProfile` method of the current profile to retrieve the property values of the anonymous profile. The anonymous property values can then be copied to the current profile for the authenticated user."
+  summary: "Gir dataene for den <xref href=&quot;System.Web.Profile.ProfileModule.MigrateAnonymous&quot;> </xref> hendelsen til den <xref href=&quot;System.Web.Profile.ProfileModule&quot;> </xref> klassen."
+  remarks: "ProfileMigrateEventArgs-objektet inneholder hendelsesinformasjon <xref:System.Web.Profile.ProfileModule.MigrateAnonymous>hendelse av <xref:System.Web.Profile.ProfileModule>klasse.</xref:System.Web.Profile.ProfileModule> </xref:System.Web.Profile.ProfileModule.MigrateAnonymous> ProfileMigrateEventArgs-objektet gir tilgang til den <xref:System.Web.HttpContext>for den gjeldende forespørselen og anonym bruker-IDen for anonym profilen i den <xref:System.Web.Profile.ProfileMigrateEventArgs.AnonymousID%2A>egenskapen.</xref:System.Web.Profile.ProfileMigrateEventArgs.AnonymousID%2A> </xref:System.Web.HttpContext>       Du kan bruke <xref:System.Web.Profile.ProfileModule.MigrateAnonymous>hendelsen for å kopiere profilegenskapsverdier fra en anonym profilen til en godkjent profil når en bruker som har brukt den programmet logger inn anonymt</xref:System.Web.Profile.ProfileModule.MigrateAnonymous>       Når et program som har brukerprofilen aktivert startes, ASP.NET oppretter en ny klasse av typen `ProfileCommon`, som arver fra <xref:System.Web.Profile.ProfileBase>klasse.</xref:System.Web.Profile.ProfileBase> Når den `ProfileCommon` klassen genereres, basert på profilegenskaper som er angitt i Web.config-filen, en `GetProfile` metoden er lagt til som gjør det mulig å hente en `ProfileCommon` objekt basert på et brukernavn. Du kan bruke den `GetProfile` metoden for den gjeldende profilen til henter egenskapsverdier for anonym profilen. Deretter kan kopieres anonym egenskapsverdiene for gjeldende profil for den godkjente brukeren."
   example:
   - "The following code examples show a Web.config file that enables anonymous authentication and the <xref:System.Web.Profile.ProfileModule.MigrateAnonymous> event included in the Global.asax file for an ASP.NET application.  \n  \n The following code example shows a Web.config file that enables anonymous identification and profile properties that support anonymous users.  \n  \n```  \n<configuration>  \n  <system.web>  \n    <authentication mode=\"Forms\" >  \n      <forms loginUrl=\"login.aspx\" name=\".ASPXFORMSAUTH\" />  \n    </authentication>  \n  \n    <AnonymousIdentification enabled=\"true\" />  \n  \n    <profile enabled=\"true\" defaultProvider=\"AspNetSqlProvider\">  \n      <properties>  \n        <add name=\"ZipCode\" allowAnonymous=\"true\" />  \n        <add name=\"CityAndState\" allowAnonymous=\"true\" />  \n        <add name=\"StockSymbols\" type=\"System.Collections.ArrayList\" allowAnonymous=\"true\" />  \n      </properties>  \n    </profile>  \n  </system.web>  \n</configuration>  \n```  \n  \n The following code example shows the <xref:System.Web.Profile.ProfileModule.MigrateAnonymous> event included in the Global.asax file for an ASP.NET application. The <xref:System.Web.Profile.ProfileModule.MigrateAnonymous> event copies profile property values from the anonymous profile to the profile for the current user.  \n  \n [!code-vb[System.Web.Profile.ProfileManager#1](~/add/codesnippet/visualbasic/t-system.web.profile.pro_12_1.asax)]\n [!code-cs[System.Web.Profile.ProfileManager#1](~/add/codesnippet/csharp/t-system.web.profile.pro_12_1.asax)]"
   syntax:
@@ -36,17 +36,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Profile
-  summary: "Creates an instance of the <xref href=&quot;System.Web.Profile.ProfileMigrateEventArgs&quot;></xref> class."
-  remarks: "The ProfileMigrateEventArgs creates an instance of the <xref:System.Web.Profile.ProfileMigrateEventArgs> class, sets the <xref:System.Web.Profile.ProfileMigrateEventArgs.Context%2A> property to the specified <xref:System.Web.HttpContext>, and sets the <xref:System.Web.Profile.ProfileMigrateEventArgs.AnonymousID%2A> property to the specified `anonymousId`."
+  summary: "Oppretter en forekomst av den <xref href=&quot;System.Web.Profile.ProfileMigrateEventArgs&quot;> </xref> klasse."
+  remarks: "ProfileMigrateEventArgs oppretter en forekomst av den <xref:System.Web.Profile.ProfileMigrateEventArgs>klasse, angir den <xref:System.Web.Profile.ProfileMigrateEventArgs.Context%2A>egenskapen til den angitte <xref:System.Web.HttpContext>, og angir den <xref:System.Web.Profile.ProfileMigrateEventArgs.AnonymousID%2A>egenskapen til den angitte `anonymousId`.</xref:System.Web.Profile.ProfileMigrateEventArgs.AnonymousID%2A> </xref:System.Web.HttpContext> </xref:System.Web.Profile.ProfileMigrateEventArgs.Context%2A> </xref:System.Web.Profile.ProfileMigrateEventArgs>"
   syntax:
     content: public ProfileMigrateEventArgs (System.Web.HttpContext context, string anonymousId);
     parameters:
     - id: context
       type: System.Web.HttpContext
-      description: "The <xref href=&quot;System.Web.HttpContext&quot;></xref> of the current request."
+      description: "Den <xref href=&quot;System.Web.HttpContext&quot;> </xref> til gjeldende forespørsel."
     - id: anonymousId
       type: System.String
-      description: "The anonymous identifier being migrated from."
+      description: "Anonym ID overføres fra."
   overload: System.Web.Profile.ProfileMigrateEventArgs.#ctor*
   exceptions: []
   platform:
@@ -63,15 +63,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Profile
-  summary: "Gets the anonymous identifier for the anonymous profile from which to migrate profile property values."
-  remarks: "The AnonymousID property contains the unique identifier for an anonymous user. When someone who has been using your application anonymously logs in, you can handle the <xref:System.Web.Profile.ProfileModule.MigrateAnonymous> event to copy profile property values from the user&quot;s anonymous profile to his or her authenticated profile.       When an application that has the user profile enabled is started, ASP.NET creates a new class of type `ProfileCommon`, which inherits from the <xref:System.Web.Profile.ProfileBase> class and includes profile properties specified in the Web.config file. When the `ProfileCommon` class is generated, a `GetProfile` method is added that enables you to retrieve a `ProfileCommon` object based on a user name. You can use the `GetProfile` method of the current profile to retrieve the property values of the anonymous profile. The anonymous property values can then be copied to the current profile for the authenticated user. See the second code example for an example of copying anonymous property values."
+  summary: "Henter anonym identifikatoren for den anonyme profilen som skal overføres profilegenskapsverdier."
+  remarks: "Egenskapen AnonymousID inneholder den unike identifikatoren for en anonym bruker. Når noen som har brukt programmet anonymt logge på, kan du behandle den <xref:System.Web.Profile.ProfileModule.MigrateAnonymous>-hendelsen for å kopiere profilegenskapen verdier fra anonym brukerprofilen hans eller hennes godkjente profilen.</xref:System.Web.Profile.ProfileModule.MigrateAnonymous>       Når et program som har brukerprofilen aktivert startes, ASP.NET oppretter en ny klasse av typen `ProfileCommon`, som arver fra den <xref:System.Web.Profile.ProfileBase>klasse og inkluderer profilegenskaper som er angitt i Web.config-filen.</xref:System.Web.Profile.ProfileBase> Når den `ProfileCommon` klassen genereres, en `GetProfile` metoden er lagt til som gjør det mulig å hente en `ProfileCommon` objekt basert på et brukernavn. Du kan bruke den `GetProfile` metoden for den gjeldende profilen til henter egenskapsverdier for anonym profilen. Deretter kan kopieres anonym egenskapsverdiene for gjeldende profil for den godkjente brukeren. Se andre kodeeksempel et eksempel på kopiere anonym egenskapsverdier."
   example:
   - "The following code examples show a Web.config file that enables anonymous authentication and the <xref:System.Web.Profile.ProfileModule.MigrateAnonymous> event included in the Global.asax file for an ASP.NET application  \n  \n The following code example shows a Web.config file that enables anonymous identification and profile properties that support anonymous users.  \n  \n```  \n<configuration>  \n  <system.web>  \n    <authentication mode=\"Forms\" >  \n      <forms loginUrl=\"login.aspx\" name=\".ASPXFORMSAUTH\" />  \n    </authentication>  \n  \n    <AnonymousIdentification enabled=\"true\" />  \n  \n    <profile enabled=\"true\" defaultProvider=\"AspNetSqlProvider\">  \n      <properties>  \n        <add name=\"ZipCode\" allowAnonymous=\"true\" />  \n        <add name=\"CityAndState\" allowAnonymous=\"true\" />  \n        <add name=\"StockSymbols\" type=\"System.Collections.ArrayList\" allowAnonymous=\"true\" />  \n      </properties>  \n    </profile>  \n  </system.web>  \n</configuration>  \n  \n```  \n  \n The following code example shows the <xref:System.Web.Profile.ProfileModule.MigrateAnonymous> event included in the Global.asax file for an ASP.NET application. The <xref:System.Web.Profile.ProfileModule.MigrateAnonymous> event copies profile property values from the anonymous profile to the profile for the current user.  \n  \n [!code-vb[System.Web.Profile.ProfileManager#1](~/add/codesnippet/visualbasic/p-system.web.profile.pro_4_1.asax)]\n [!code-cs[System.Web.Profile.ProfileManager#1](~/add/codesnippet/csharp/p-system.web.profile.pro_4_1.asax)]"
   syntax:
     content: public string AnonymousID { get; }
     return:
       type: System.String
-      description: "The anonymous identifier for the anonymous profile from which to migrate profile property values."
+      description: "Anonym ID for anonyme profilen som skal overføres profilegenskapsverdier."
   overload: System.Web.Profile.ProfileMigrateEventArgs.AnonymousID*
   exceptions: []
   platform:
@@ -88,13 +88,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Profile
-  summary: "Gets the <xref href=&quot;System.Web.HttpContext&quot;></xref> for the current request."
-  remarks: "The <xref:System.Web.Profile.ProfileMigrateEventArgs> object provides event information to the <xref:System.Web.Profile.ProfileModule.MigrateAnonymous> event of the <xref:System.Web.Profile.ProfileModule> class. The Context property provides access to the <xref:System.Web.HttpContext> of the current request."
+  summary: "Henter den <xref href=&quot;System.Web.HttpContext&quot;> </xref> for gjeldende forespørsel."
+  remarks: "<xref:System.Web.Profile.ProfileMigrateEventArgs>Objektet inneholder hendelsesinformasjon <xref:System.Web.Profile.ProfileModule.MigrateAnonymous>hendelse av <xref:System.Web.Profile.ProfileModule>klasse.</xref:System.Web.Profile.ProfileModule> </xref:System.Web.Profile.ProfileModule.MigrateAnonymous> </xref:System.Web.Profile.ProfileMigrateEventArgs> Context-egenskapen gir tilgang til den <xref:System.Web.HttpContext>til gjeldende forespørsel.</xref:System.Web.HttpContext>"
   syntax:
     content: public System.Web.HttpContext Context { get; }
     return:
       type: System.Web.HttpContext
-      description: "The <xref href=&quot;System.Web.HttpContext&quot;></xref> for the current request"
+      description: "Den <xref href=&quot;System.Web.HttpContext&quot;> </xref> for den gjeldende forespørselen"
   overload: System.Web.Profile.ProfileMigrateEventArgs.Context*
   exceptions: []
   platform:

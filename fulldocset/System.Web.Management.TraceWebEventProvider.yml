@@ -13,8 +13,8 @@ items:
   nameWithType: TraceWebEventProvider
   fullName: System.Web.Management.TraceWebEventProvider
   type: Class
-  summary: "Implements an event provider that sends ASP.NET health-monitoring events as trace messages."
-  remarks: "ASP.NET health monitoring allows production and operations staff to manage deployed Web applications. The <xref:System.Web.Management?displayProperty=fullName> namespace contains the health event types responsible for packaging application health-status data and the provider types responsible for processing this data. It also contains supporting types that help during the management of health events.       This provider passes events to the <xref:System.Diagnostics.Trace> object. It passes events that derive from the <xref:System.Web.Management.WebBaseErrorEvent> class as trace errors and passes all other events as trace information.      > [!NOTE] >  The TraceWebEventProvider object does not provide event buffering.      > [!NOTE] >  In most cases you will be able to use the ASP.NET health-monitoring types as implemented, and you will control the health-monitoring system by specifying values in the `healthMonitoring` configuration section. You can also derive from the health-monitoring types to create your own custom events and providers. For an example of creating a custom provider, see [How to: Implement the Health Monitoring Custom Provider Example](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Implementerer en hendelse leverandør som sender ASP.NET-helseovervåking hendelser som Sporingsmeldinger."
+  remarks: "ASP.NET helseovervåking gjør det mulig for produksjon og operasjoner for å behandle distribuert webprogrammer. Den <xref:System.Web.Management?displayProperty=fullName>navneområdet inneholder hendelsestypene tilstanden ansvarlig for pakke-tilstandsstatusen programdata og leverandøren-typer som er ansvarlig for å behandle disse dataene.</xref:System.Web.Management?displayProperty=fullName> Det inneholder støttet typer som hjelper under behandling av hendelser for tilstanden.       Denne leverandøren sender hendelser til det <xref:System.Diagnostics.Trace>objektet.</xref:System.Diagnostics.Trace> Den sender hendelser som er avledet fra den <xref:System.Web.Management.WebBaseErrorEvent>klassen som spore feil, og sender alle andre hendelser som sporingsinformasjon.</xref:System.Web.Management.WebBaseErrorEvent>      > [!NOTE] > For TraceWebEventProvider objektet inneholder ikke hendelsesbufring.      > [!NOTE] > I de fleste tilfeller vil du ikke kunne bruke ASP.NET-helseovervåking typene som implementert, og du vil kontrollere helseovervåking systemet ved å angi verdiene i den `healthMonitoring` konfigurasjonsdelen. Du kan også utledet fra typen helseovervåking til å opprette dine egne egendefinerte hendelser og leverandører. Et eksempel på hvordan du oppretter egendefinerte leverandøren, kan du se [slik: implementere tilstanden overvåking egendefinerte leverandøren eksemplet](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following configuration file excerpt shows how to specify a provider of type TraceWebEventProvider in the `healthMonitoring` section. The `add` element in the `rules` section specifies that the provider will handle request-processing events.  \n  \n```  \n<healthMonitoring  \n    enabled=\"true\"  \n    heartBeatInterval=\"0\">  \n    <providers>  \n        <add name=\"TraceEventProvider\"  \n            type=\"System.Web.Management.TraceWebEventProvider,   \n              System.Web\"  \n            buffer=\"false\"  \n            bufferMode=\"\"  \n            maxEventLength=\"4096\"  \n            maxSize=\"4096\"  \n            maxMessagesPerNotification=\"1\"  \n        />  \n    </providers>  \n    <eventMappings>  \n        <add name=\"Request Processing Events\"  \n            type=\"System.Web.Management.WebRequestEvent, System.Web\"   \n        />  \n    </eventMappings>  \n    <profiles>  \n        <add name=\"Trace\"  \n            minInstances=\"1\"  \n            maxLimit=\"Infinite\"  \n            minInterval=\"00:00:00\"  \n        />  \n    </profiles>  \n    <rules>  \n        <add name=\"Trace Request Processing\"  \n            eventName=\"Request Processing Events\"  \n            provider=\"TraceEventProvider\"  \n            profile=\"Trace\"  \n        />  \n   </rules>  \n</healthMonitoring>   \n```"
   syntax:
@@ -41,8 +41,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Removes all events from the provider&quot;s buffer."
-  remarks: "This method is not intended to be used directly from your code. It is called by the ASP.NET health-monitoring system.      > [!NOTE] >  The <xref:System.Web.Management.WebEventProvider> object does not provide event buffering."
+  summary: "Fjerner alle hendelser fra leverandørens bufferen."
+  remarks: "Denne metoden skal ikke brukes direkte fra koden. Kalles av ASP.NET helseovervåking systemet.      > [!NOTE] > Den <xref:System.Web.Management.WebEventProvider>objektet inneholder ikke hendelsesbufring.</xref:System.Web.Management.WebEventProvider>"
   syntax:
     content: public override void Flush ();
     parameters: []
@@ -62,17 +62,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Sets the initial values for this object."
-  remarks: "ASP.NET calls the Initialize method to initialize the <xref:System.Web.Management.TraceWebEventProvider> with the configuration settings and name as specified in the configuration file."
+  summary: "Angir de opprinnelige verdiene for dette objektet."
+  remarks: "ASP.NET kaller initialiseringsmetoden initialisere den <xref:System.Web.Management.TraceWebEventProvider>med konfigurasjonsinnstillinger og navnet som er angitt i konfigurasjonsfilen.</xref:System.Web.Management.TraceWebEventProvider>"
   syntax:
     content: public override void Initialize (string name, System.Collections.Specialized.NameValueCollection config);
     parameters:
     - id: name
       type: System.String
-      description: "The name used in the configuration file to identify this provider."
+      description: "Navnet som brukes i konfigurasjonsfilen for å identifisere denne leverandøren."
     - id: config
       type: System.Collections.Specialized.NameValueCollection
-      description: "A <xref href=&quot;System.Collections.Specialized.NameValueCollection&quot;></xref> that specifies the attributes assigned for this provider in the configuration file."
+      description: "En <xref href=&quot;System.Collections.Specialized.NameValueCollection&quot;> </xref> som angir attributtene tilordnet for denne leverandøren i konfigurasjonsfilen."
   overload: System.Web.Management.TraceWebEventProvider.Initialize*
   exceptions: []
   platform:
@@ -89,14 +89,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Processes the event passed to the provider."
-  remarks: "This method is not intended to be used directly from your code. It is called by the ASP.NET health-monitoring system.      > [!NOTE] >  The <xref:System.Web.Management.WebEventProvider> object does not do event buffering."
+  summary: "Behandler hendelsen ble sendt til leverandøren."
+  remarks: "Denne metoden skal ikke brukes direkte fra koden. Kalles av ASP.NET helseovervåking systemet.      > [!NOTE] > Den <xref:System.Web.Management.WebEventProvider>objektet er ikke hendelsesbufring.</xref:System.Web.Management.WebEventProvider>"
   syntax:
     content: public override void ProcessEvent (System.Web.Management.WebBaseEvent eventRaised);
     parameters:
     - id: eventRaised
       type: System.Web.Management.WebBaseEvent
-      description: "The <xref href=&quot;System.Web.Management.WebBaseEvent&quot;></xref> object to process."
+      description: "Den <xref href=&quot;System.Web.Management.WebBaseEvent&quot;> </xref> objekt prosessen."
   overload: System.Web.Management.TraceWebEventProvider.ProcessEvent*
   exceptions: []
   platform:
@@ -113,8 +113,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Performs tasks associated with shutting down the provider."
-  remarks: "ASP.NET calls the Shutdown method when the application domain hosting the Web application terminates. The method is called to perform tasks that will allow the application to end gracefully."
+  summary: "Utfører oppgaver som er knyttet til under kontrollert avslutning av leverandøren."
+  remarks: "ASP.NET kaller metoden avsluttet når programdomenet som er vert for webprogrammet avsluttes. Metoden kalles for å utføre oppgaver som gjør at programmet avsluttes webområdet."
   syntax:
     content: public override void Shutdown ();
     parameters: []

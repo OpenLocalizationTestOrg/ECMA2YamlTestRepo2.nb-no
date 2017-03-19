@@ -19,8 +19,8 @@ items:
   nameWithType: TraceContext
   fullName: System.Web.TraceContext
   type: Class
-  summary: "Captures and presents execution details about a Web request. This class cannot be inherited."
-  remarks: "You can use this class to append messages to specific trace categories. For example, if you are creating an instance of the <xref:System.Web.UI.WebControls.Calendar> class for your application, you might include the trace message &quot;Starting To Render&quot; in a rendering procedure, and &quot;Raising OnChange Event&quot; in an event handler procedure.       You can also use the TraceContext class to obtain a set of trace records at the end of request execution for custom processing. For more information, see [ASP.NET Tracing Overview](~/add/includes/ajax-current-ext-md.md).       To enable tracing, set the `Trace` attribute in the [@ Page](http://msdn.microsoft.com/en-us/f06cf9e5-22bb-461d-8b8f-549e53ff40a4) directive or the <xref:System.Web.TraceContext.IsEnabled%2A> property to `true`. When tracing is enabled, in addition to showing user-provided trace content, the <xref:System.Web.UI.Page> class automatically includes performance data, control-tree structure information, and state management content for every request."
+  summary: "Registrerer og viser kjøring detaljer om en forespørsel. Denne klassen kan ikke arves."
+  remarks: "Du kan bruke denne klassen vil tilføye meldinger bestemte sporingen kategorier. For eksempel hvis du oppretter en forekomst av den <xref:System.Web.UI.WebControls.Calendar>klasse for applikasjonen kan du inkludere sporingsmeldingen &quot;Begynner å gjengi&quot; i en prosedyre for gjengivelse og &quot;Opprettet OnChange-hendelsen&quot; i en hendelse behandlingsprogrammet prosedyre.</xref:System.Web.UI.WebControls.Calendar>       Du kan også bruke klassen TraceContext ikke hente et sett med sporingen poster på slutten av forespørselen kjøring for egendefinert behandling. Hvis du vil ha mer informasjon, se [ASP.NET sporing oversikt over](~/add/includes/ajax-current-ext-md.md).       Angi for å aktivere sporing av `Trace` attributt i den [@ siden](http://msdn.microsoft.com/en-us/f06cf9e5-22bb-461d-8b8f-549e53ff40a4) direktivet eller <xref:System.Web.TraceContext.IsEnabled%2A>egenskapen `true`.</xref:System.Web.TraceContext.IsEnabled%2A> Når sporing er aktivert, i tillegg til å vise gitt sporingsinnholdet den <xref:System.Web.UI.Page>klassen inkluderer automatisk ytelsesdata, kontroll-treet strukturinformasjon og tilstanden management innhold for hver forespørsel.</xref:System.Web.UI.Page>"
   syntax:
     content: public sealed class TraceContext
   inheritance:
@@ -41,13 +41,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.TraceContext&quot;></xref> class."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Web.TraceContext&quot;> </xref> klasse."
   syntax:
     content: public TraceContext (System.Web.HttpContext context);
     parameters:
     - id: context
       type: System.Web.HttpContext
-      description: "An <xref href=&quot;System.Web.HttpContext&quot;></xref> that contains information about the current Web request."
+      description: "En <xref href=&quot;System.Web.HttpContext&quot;> </xref> som inneholder informasjon om gjeldende webforespørsel."
   overload: System.Web.TraceContext.#ctor*
   exceptions: []
   platform:
@@ -64,15 +64,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets or sets a value indicating whether tracing is enabled for the current Web request."
-  remarks: "Use this flag to check whether your page or application should output tracing information before it writes anything to the trace log.       The value of the IsEnabled property depends on the settings in the  subsection of the `system.web` configuration section and the value of the `trace` attribute of the  directive. The tracing option set in the page directive takes precedence over the option set in the configuration file. Setting the IsEnabled value programmatically takes precedence over both the page directive attribute and the configuration setting.      > [!NOTE] >  If you set the IsEnabled property to `true` for an entire application, you must explicitly set this property to `false` for any page in the application for which you do not want tracing information displayed."
+  summary: "Henter eller angir en verdi som angir om sporing er aktivert for gjeldende webforespørsel."
+  remarks: "Bruk dette flagget for å kontrollere om applikasjonen eller siden må sender sporingsinformasjon før den skriver noe til sporingsloggen.       Verdien for egenskapen IsEnabled er avhengig av innstillingene i avsnittet om den `system.web` konfigurasjonsdelen og verdien for den `trace` for direktivet. Sporingsalternativet er angitt i page-direktivet overstyrer alternativet angitt i konfigurasjonsfilen. Angivelse av verdien for IsEnabled programmatisk overstyrer både attributtet siden direktivet og konfigurasjonsinnstillingen for.      > [!NOTE] > Hvis IsEnabled-egenskapen settes til `true` for en hele programmet, må du eksplisitt angi denne egenskapen `false` for alle sider i applikasjonen du ikke vil sporingsinformasjon vises."
   example:
   - "The following code example demonstrates how you can determine whether tracing is enabled for a page. The code iterates through the rows in a dataset, writing trace statements for each row in that dataset.  \n  \n [!code-cs[Classic TraceContext.IsEnabled Example#1](~/add/codesnippet/csharp/p-system.web.tracecontex_4_1.cs)]\n [!code-vb[Classic TraceContext.IsEnabled Example#1](~/add/codesnippet/visualbasic/p-system.web.tracecontex_4_1.vb)]"
   syntax:
     content: public bool IsEnabled { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if tracing is enabled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis sporing er aktivert. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.TraceContext.IsEnabled*
   exceptions: []
   platform:
@@ -89,15 +89,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Raised by the <xref href=&quot;System.Web.TraceContext&quot;></xref> object to expose trace messages after all request information is gathered."
-  remarks: "The TraceFinished event is raised during the `EndRequest` stage of HTTP request processing. It is raised by a <xref:System.Web.TraceContext> object after all request information is gathered, to expose the collection of <xref:System.Web.TraceContextRecord> messages to registered <xref:System.Web.TraceContextEventHandler> delegates."
+  summary: "Oppstå i <xref href=&quot;System.Web.TraceContext&quot;> </xref> objekt for å vise sporingen meldinger når alle Forespørselsinformasjon samlet."
+  remarks: "TraceFinished denne hendelsen oppstår under den `EndRequest` fase av HTTP-forespørselsbehandling. Det oppstår av en <xref:System.Web.TraceContext>objekt når alle Forespørselsinformasjon samles inn, vise samlingen av <xref:System.Web.TraceContextRecord>meldinger registrert <xref:System.Web.TraceContextEventHandler>representanter.</xref:System.Web.TraceContextEventHandler> </xref:System.Web.TraceContextRecord> </xref:System.Web.TraceContext>"
   example:
   - "The following code example demonstrates how you can register a <xref:System.Web.TraceContextEventHandler> to handle the TraceFinished event. In this example, the delegate iterates through the trace messages and writes them to the response stream; however, you could write the same information to a database or a profiling tool consumer.  \n  \n [!code-cs[System.Web.Trace_3#1](~/add/codesnippet/csharp/e-system.web.tracecontex_1.aspx)]\n [!code-vb[System.Web.Trace_3#1](~/add/codesnippet/visualbasic/e-system.web.tracecontex_1.aspx)]"
   syntax:
     content: public event System.Web.TraceContextEventHandler TraceFinished;
     return:
       type: System.Web.TraceContextEventHandler
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -113,20 +113,20 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets or sets the sorted order in which trace messages should be output to a requesting browser."
-  remarks: "Trace messages can be sorted in the order they were processed, or alphabetically by user-defined category."
+  summary: "Henter eller angir sorterte rekkefølgen som skal Sporingsmeldinger utdata til en anmoder leser."
+  remarks: "Sporingsmeldinger kan sorteres i rekkefølgen de ble behandlet eller alfabetisk etter en brukerdefinert kategori."
   example:
   - "The following code example demonstrates how you can sort a page's trace statements alphabetically by the categories that you have assigned to the statements.  \n  \n [!code-cs[Classic TraceContext.TraceMode Example#1](~/add/codesnippet/csharp/p-system.web.tracecontex_5_1.aspx)]\n [!code-vb[Classic TraceContext.TraceMode Example#1](~/add/codesnippet/visualbasic/p-system.web.tracecontex_5_1.aspx)]"
   syntax:
     content: public System.Web.TraceMode TraceMode { get; set; }
     return:
       type: System.Web.TraceMode
-      description: "One of the <xref href=&quot;System.Web.TraceMode&quot;></xref> enumeration values. The default is the setting specified by the <xref uid=&quot;langword_csharp_traceMode&quot; name=&quot;traceMode&quot; href=&quot;&quot;></xref> attribute in the <xref uid=&quot;langword_csharp_trace&quot; name=&quot;trace&quot; href=&quot;&quot;></xref> section of a configuration file, whose default is <xref uid=&quot;langword_csharp_SortByTime&quot; name=&quot;SortByTime&quot; href=&quot;&quot;></xref>."
+      description: "Én av de <xref href=&quot;System.Web.TraceMode&quot;> </xref> nummereringsverdier. Standard er angitt for den <xref uid=&quot;langword_csharp_traceMode&quot; name=&quot;traceMode&quot; href=&quot;&quot;> </xref> attributt i den <xref uid=&quot;langword_csharp_trace&quot; name=&quot;trace&quot; href=&quot;&quot;> </xref> delen av konfigurasjonsfilen, som standard er <xref uid=&quot;langword_csharp_SortByTime&quot; name=&quot;SortByTime&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.TraceContext.TraceMode*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The selected value is not one of the <xref href=&quot;System.Web.TraceMode&quot;></xref> enumeration values."
+    description: "Den valgte verdien er ikke én av de <xref href=&quot;System.Web.TraceMode&quot;> </xref> nummereringsverdier."
   platform:
   - net462
 - uid: System.Web.TraceContext.Warn(System.String)
@@ -141,14 +141,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Writes a trace message to the trace log. All warnings appear in the log as red text."
-  remarks: "Every time the <xref:System.Web.TraceContext.Warn%2A> method is called, a <xref:System.Web.TraceContext> trace message is added to the <xref:System.Web.TraceContextEventArgs.TraceRecords%2A> messages collection, which is accessible when you handle the <xref:System.Web.TraceContext.TraceFinished> event. The message is added with its <xref:System.Web.TraceContextRecord.IsWarning%2A> property set to `true` and its <xref:System.Web.TraceContextRecord.ErrorInfo%2A> property set to `null`."
+  summary: "Skriver en trace-melding til sporingsloggen. Alle advarsler vises i loggen som røde tekst."
+  remarks: "Hver gang de <xref:System.Web.TraceContext.Warn%2A>-metoden, en <xref:System.Web.TraceContext>sporingsmeldingen legges til i <xref:System.Web.TraceContextEventArgs.TraceRecords%2A>meldinger samling, som er tilgjengelig når du håndterer den <xref:System.Web.TraceContext.TraceFinished>hendelsen.</xref:System.Web.TraceContext.TraceFinished> </xref:System.Web.TraceContextEventArgs.TraceRecords%2A> </xref:System.Web.TraceContext> </xref:System.Web.TraceContext.Warn%2A> Meldingen er lagt til med den <xref:System.Web.TraceContextRecord.IsWarning%2A>-egenskapen satt til `true` og <xref:System.Web.TraceContextRecord.ErrorInfo%2A>-egenskapen satt til `null`.</xref:System.Web.TraceContextRecord.ErrorInfo%2A> </xref:System.Web.TraceContextRecord.IsWarning%2A>"
   syntax:
     content: public void Warn (string message);
     parameters:
     - id: message
       type: System.String
-      description: "The trace message to write to the log."
+      description: "Sporingsmeldingen for å skrive til loggen."
   overload: System.Web.TraceContext.Warn*
   exceptions: []
   platform:
@@ -165,17 +165,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Writes trace information to the trace log, including any user-defined categories and trace messages. All warnings appear in the log as red text."
-  remarks: "Every time the <xref:System.Web.TraceContext.Warn%2A> method is called, a <xref:System.Web.TraceContext> trace message is added to the <xref:System.Web.TraceContextEventArgs.TraceRecords%2A> messages collection, which is accessible when you handle the <xref:System.Web.TraceContext.TraceFinished> event. The message is added with its <xref:System.Web.TraceContextRecord.IsWarning%2A> property set to `true` and its <xref:System.Web.TraceContextRecord.ErrorInfo%2A> property set to `null`."
+  summary: "Skriver sporingsinformasjon i sporingsloggen, inkludert eventuelle brukerdefinerte kategorier, og spor meldinger. Alle advarsler vises i loggen som røde tekst."
+  remarks: "Hver gang de <xref:System.Web.TraceContext.Warn%2A>-metoden, en <xref:System.Web.TraceContext>sporingsmeldingen legges til i <xref:System.Web.TraceContextEventArgs.TraceRecords%2A>meldinger samling, som er tilgjengelig når du håndterer den <xref:System.Web.TraceContext.TraceFinished>hendelsen.</xref:System.Web.TraceContext.TraceFinished> </xref:System.Web.TraceContextEventArgs.TraceRecords%2A> </xref:System.Web.TraceContext> </xref:System.Web.TraceContext.Warn%2A> Meldingen er lagt til med den <xref:System.Web.TraceContextRecord.IsWarning%2A>-egenskapen satt til `true` og <xref:System.Web.TraceContextRecord.ErrorInfo%2A>-egenskapen satt til `null`.</xref:System.Web.TraceContextRecord.ErrorInfo%2A> </xref:System.Web.TraceContextRecord.IsWarning%2A>"
   syntax:
     content: public void Warn (string category, string message);
     parameters:
     - id: category
       type: System.String
-      description: "The trace category that receives the message."
+      description: "Sporingen kategorien som mottar meldingen."
     - id: message
       type: System.String
-      description: "The trace message to write to the log."
+      description: "Sporingsmeldingen for å skrive til loggen."
   overload: System.Web.TraceContext.Warn*
   exceptions: []
   platform:
@@ -192,8 +192,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Writes trace information to the trace log, including any user-defined categories, trace messages, and error information. All warnings appear in the log as red text."
-  remarks: "Every time the <xref:System.Web.TraceContext.Warn%2A> method is called, a <xref:System.Web.TraceContext> trace message is added to the <xref:System.Web.TraceContextEventArgs.TraceRecords%2A> messages collection, which is accessible when you handle the <xref:System.Web.TraceContext.TraceFinished> event. The message is added with its <xref:System.Web.TraceContextRecord.IsWarning%2A> property set to `true`, and the <xref:System.Web.TraceContextRecord.ErrorInfo%2A> property is set to the object passed by the `errorInfo` parameter."
+  summary: "Skriver sporingsinformasjon i sporingsloggen, inkludert alle brukerdefinerte kategorier Sporingsmeldinger og informasjon om feilen. Alle advarsler vises i loggen som røde tekst."
+  remarks: "Hver gang de <xref:System.Web.TraceContext.Warn%2A>-metoden, en <xref:System.Web.TraceContext>sporingsmeldingen legges til i <xref:System.Web.TraceContextEventArgs.TraceRecords%2A>meldinger samling, som er tilgjengelig når du håndterer den <xref:System.Web.TraceContext.TraceFinished>hendelsen.</xref:System.Web.TraceContext.TraceFinished> </xref:System.Web.TraceContextEventArgs.TraceRecords%2A> </xref:System.Web.TraceContext> </xref:System.Web.TraceContext.Warn%2A> Meldingen er lagt til med den <xref:System.Web.TraceContextRecord.IsWarning%2A>-egenskapen satt til `true`, og <xref:System.Web.TraceContextRecord.ErrorInfo%2A>er satt til objektet som ble sendt den `errorInfo` parameteren.</xref:System.Web.TraceContextRecord.ErrorInfo%2A> </xref:System.Web.TraceContextRecord.IsWarning%2A>"
   example:
   - "The following code example demonstrates how to call the <xref:System.Web.TraceContext.Write%2A> method to write an error trace message to the trace log. In this example, different exceptions are traced as errors and warnings. When the page throws an <xref:System.ArgumentException>, it writes a warning message using the <xref:System.Web.TraceContext.Warn%2A> method. When the page throws an <xref:System.InvalidOperationException>, it writes an error message using the <xref:System.Web.TraceContext.Write%2A> method.  \n  \n [!code-cs[System.Web.Trace_4#1](~/add/codesnippet/csharp/m-system.web.tracecontex_1_1.aspx)]\n [!code-vb[System.Web.Trace_4#1](~/add/codesnippet/visualbasic/m-system.web.tracecontex_1_1.aspx)]"
   syntax:
@@ -201,13 +201,13 @@ items:
     parameters:
     - id: category
       type: System.String
-      description: "The trace category that receives the message."
+      description: "Sporingen kategorien som mottar meldingen."
     - id: message
       type: System.String
-      description: "The trace message to write to the log."
+      description: "Sporingsmeldingen for å skrive til loggen."
     - id: errorInfo
       type: System.Exception
-      description: "An <xref:System.Exception> that contains information about the error."
+      description: "En <xref:System.Exception>som inneholder informasjon om feilen.</xref:System.Exception>"
   overload: System.Web.TraceContext.Warn*
   exceptions: []
   platform:
@@ -224,14 +224,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Writes a trace message to the trace log."
-  remarks: "Every time the <xref:System.Web.TraceContext.Write%2A> method is called, a <xref:System.Web.TraceContext> trace message is added to the <xref:System.Web.TraceContextEventArgs.TraceRecords%2A> messages collection, which is accessible when you handle the <xref:System.Web.TraceContext.TraceFinished> event. The message is added with its <xref:System.Web.TraceContextRecord.IsWarning%2A> property set to `false` and its <xref:System.Web.TraceContextRecord.ErrorInfo%2A> property set to `null`."
+  summary: "Skriver en trace-melding til sporingsloggen."
+  remarks: "Hver gang de <xref:System.Web.TraceContext.Write%2A>-metoden, en <xref:System.Web.TraceContext>sporingsmeldingen legges til i <xref:System.Web.TraceContextEventArgs.TraceRecords%2A>meldinger samling, som er tilgjengelig når du håndterer den <xref:System.Web.TraceContext.TraceFinished>hendelsen.</xref:System.Web.TraceContext.TraceFinished> </xref:System.Web.TraceContextEventArgs.TraceRecords%2A> </xref:System.Web.TraceContext> </xref:System.Web.TraceContext.Write%2A> Meldingen er lagt til med den <xref:System.Web.TraceContextRecord.IsWarning%2A>-egenskapen satt til `false` og <xref:System.Web.TraceContextRecord.ErrorInfo%2A>-egenskapen satt til `null`.</xref:System.Web.TraceContextRecord.ErrorInfo%2A> </xref:System.Web.TraceContextRecord.IsWarning%2A>"
   syntax:
     content: public void Write (string message);
     parameters:
     - id: message
       type: System.String
-      description: "The trace message to write to the log."
+      description: "Sporingsmeldingen for å skrive til loggen."
   overload: System.Web.TraceContext.Write*
   exceptions: []
   platform:
@@ -248,8 +248,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Writes trace information to the trace log, including a message and any user-defined categories."
-  remarks: "Every time the <xref:System.Web.TraceContext.Write%2A> method is called, a <xref:System.Web.TraceContext> trace message is added to the <xref:System.Web.TraceContextEventArgs.TraceRecords%2A> messages collection, which is accessible when you handle the <xref:System.Web.TraceContext.TraceFinished> event. The message is added with its <xref:System.Web.TraceContextRecord.IsWarning%2A> property set to `false` and its <xref:System.Web.TraceContextRecord.ErrorInfo%2A> property set to `null`."
+  summary: "Skriver sporingsinformasjon i sporingsloggen, inkludert en melding og noen brukerdefinerte kategorier."
+  remarks: "Hver gang de <xref:System.Web.TraceContext.Write%2A>-metoden, en <xref:System.Web.TraceContext>sporingsmeldingen legges til i <xref:System.Web.TraceContextEventArgs.TraceRecords%2A>meldinger samling, som er tilgjengelig når du håndterer den <xref:System.Web.TraceContext.TraceFinished>hendelsen.</xref:System.Web.TraceContext.TraceFinished> </xref:System.Web.TraceContextEventArgs.TraceRecords%2A> </xref:System.Web.TraceContext> </xref:System.Web.TraceContext.Write%2A> Meldingen er lagt til med den <xref:System.Web.TraceContextRecord.IsWarning%2A>-egenskapen satt til `false` og <xref:System.Web.TraceContextRecord.ErrorInfo%2A>-egenskapen satt til `null`.</xref:System.Web.TraceContextRecord.ErrorInfo%2A> </xref:System.Web.TraceContextRecord.IsWarning%2A>"
   example:
   - "The following code example demonstrates how to call the Write method to write an error trace message to the trace log. In this example, the delegate iterates through the trace messages and writes them as an HTML table; however, you can write the same information to a database or a profiling tool consumer.  \n  \n [!code-cs[System.Web.Trace_5#1](~/add/codesnippet/csharp/m-system.web.tracecontex_0_1.aspx)]\n [!code-vb[System.Web.Trace_5#1](~/add/codesnippet/visualbasic/m-system.web.tracecontex_0_1.aspx)]"
   syntax:
@@ -257,10 +257,10 @@ items:
     parameters:
     - id: category
       type: System.String
-      description: "The trace category that receives the message."
+      description: "Sporingen kategorien som mottar meldingen."
     - id: message
       type: System.String
-      description: "The trace message to write to the log."
+      description: "Sporingsmeldingen for å skrive til loggen."
   overload: System.Web.TraceContext.Write*
   exceptions: []
   platform:
@@ -277,8 +277,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Writes trace information to the trace log, including any user-defined categories, trace messages, and error information."
-  remarks: "Every time the <xref:System.Web.TraceContext.Write%2A> method is called, a <xref:System.Web.TraceContext> trace message is added to the <xref:System.Web.TraceContextEventArgs.TraceRecords%2A> messages collection, which is accessible when you handle the <xref:System.Web.TraceContext.TraceFinished> event. The message is added with its <xref:System.Web.TraceContextRecord.IsWarning%2A> property set to `false`, and the <xref:System.Web.TraceContextRecord.ErrorInfo%2A> property is set to the object passed by the `errorInfo` parameter."
+  summary: "Skriver sporingsinformasjon i sporingsloggen, inkludert alle brukerdefinerte kategorier Sporingsmeldinger og informasjon om feilen."
+  remarks: "Hver gang de <xref:System.Web.TraceContext.Write%2A>-metoden, en <xref:System.Web.TraceContext>sporingsmeldingen legges til i <xref:System.Web.TraceContextEventArgs.TraceRecords%2A>meldinger samling, som er tilgjengelig når du håndterer den <xref:System.Web.TraceContext.TraceFinished>hendelsen.</xref:System.Web.TraceContext.TraceFinished> </xref:System.Web.TraceContextEventArgs.TraceRecords%2A> </xref:System.Web.TraceContext> </xref:System.Web.TraceContext.Write%2A> Meldingen er lagt til med den <xref:System.Web.TraceContextRecord.IsWarning%2A>-egenskapen satt til `false`, og <xref:System.Web.TraceContextRecord.ErrorInfo%2A>er satt til objektet som ble sendt den `errorInfo` parameteren.</xref:System.Web.TraceContextRecord.ErrorInfo%2A> </xref:System.Web.TraceContextRecord.IsWarning%2A>"
   example:
   - "The following code example demonstrates how to call the Write method to write an error trace message to the trace log. In this example, different exceptions are traced as errors and warnings. When the page throws an <xref:System.ArgumentException>, it writes a warning message using the <xref:System.Web.TraceContext.Warn%2A> method. When the page throws an <xref:System.InvalidOperationException>, it writes an error message using the <xref:System.Web.TraceContext.Write%2A> method.  \n  \n [!code-cs[System.Web.Trace_4#1](~/add/codesnippet/csharp/m-system.web.tracecontex_2_1.aspx)]\n [!code-vb[System.Web.Trace_4#1](~/add/codesnippet/visualbasic/m-system.web.tracecontex_2_1.aspx)]"
   syntax:
@@ -286,13 +286,13 @@ items:
     parameters:
     - id: category
       type: System.String
-      description: "The trace category that receives the message."
+      description: "Sporingen kategorien som mottar meldingen."
     - id: message
       type: System.String
-      description: "The trace message to write to the log."
+      description: "Sporingsmeldingen for å skrive til loggen."
     - id: errorInfo
       type: System.Exception
-      description: "An <xref:System.Exception> that contains information about the error."
+      description: "En <xref:System.Exception>som inneholder informasjon om feilen.</xref:System.Exception>"
   overload: System.Web.TraceContext.Write*
   exceptions: []
   platform:

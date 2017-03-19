@@ -20,8 +20,8 @@ items:
   nameWithType: AnonymousIdentificationSection
   fullName: System.Web.Configuration.AnonymousIdentificationSection
   type: Class
-  summary: "Configures anonymous identification for users that are not authenticated. This class cannot be inherited."
-  remarks: "The AnonymousIdentificationSection class allows you to programmatically access and modify the `anonymousIdentification` element of a configuration file.       The purpose of anonymous identification is to assign, at machine and application level, a unique identity to a non-authenticated user. This unique identity can then be used to track the user. Anonymous identification as used in this context does not have any relationship with the identity of the issuer of the Web request or with other security aspects related to the user; it simply assigns a unique identity for tracking purposes and user state management.       Anonymous users are often tracked using the `Session` identifier. The main problems with this approach are the non-uniqueness of the identifier and the overhead involved in storing data to set a `Session` state value, which must be done in order to assign a session identifier to a user. Anonymous identification resolves these problems by providing a unique identifier for each non-authenticated user and not requiring the user to store any data to set the identifier."
+  summary: "Konfigurerer anonym identifisering for brukere som ikke er godkjent. Denne klassen kan ikke arves."
+  remarks: "Klassen AnonymousIdentificationSection gjør det mulig å programmatisk tilgang til og endre den `anonymousIdentification` element i en konfigurasjonsfil.       Formålet med anonym identifisering er å tilordne på maskin, og programmet nivå, en unik ID til en ikke-godkjent bruker. Unike identiteten kan deretter brukes til å spore brukeren. Anonym identifisering har som brukes i denne konteksten ikke noen relasjoner identiteten til utstederen av webforespørsel eller med andre sikkerhet sider som er relatert til brukeren; ganske enkelt å tilordne en unik ID for å spore formål og brukeradministrasjon tilstand.       Anonyme brukere spores ofte ved hjelp av den `Session` identifikator. De primære problemene med denne tilnærmingen er ikke-unikhet identifikatoren og overhead involvert i lagring av data til å angi en `Session` tilstandsverdi, og det må gjøres for å tilordne en Øktidentifikator til en bruker. Anonym identifisering løser disse problemene ved å angi en unik identifikator for hver bruker som ikke er godkjent, og krever ikke brukeren å lagre data for å angi identifikatoren."
   example:
   - "The following example shows how to obtain the AnonymousIdentificationSection object from the underlying configuration file. You use this object to get or set the related configuration values.  \n  \n [!code-cs[System.Web.Configuration.AnonymousIdentificationSection#2](~/add/codesnippet/csharp/t-system.web.configurati_64_1.cs)]\n [!code-vb[System.Web.Configuration.AnonymousIdentificationSection#2](~/add/codesnippet/visualbasic/t-system.web.configurati_64_1.vb)]"
   syntax:
@@ -87,8 +87,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.Configuration.AnonymousIdentificationSection&quot;></xref> class."
-  remarks: "The AnonymousIdentificationSection constructor is not intended to be used directly from your code. It is called by the ASP.NET configuration system. You obtain an instance of the <xref:System.Web.Configuration.AnonymousIdentificationSection> class by using the <xref:System.Configuration.Configuration.GetSection%2A> method."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Web.Configuration.AnonymousIdentificationSection&quot;> </xref> klasse."
+  remarks: "Konstruktøren AnonymousIdentificationSection skal ikke brukes direkte fra koden. Kalles av ASP.NET Konfigurasjonssystemet. Du hente en forekomst av den <xref:System.Web.Configuration.AnonymousIdentificationSection>klassen ved hjelp av den <xref:System.Configuration.Configuration.GetSection%2A>metoden.</xref:System.Configuration.Configuration.GetSection%2A> </xref:System.Web.Configuration.AnonymousIdentificationSection>"
   syntax:
     content: public AnonymousIdentificationSection ();
     parameters: []
@@ -108,15 +108,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: "Gets or sets a value indicating whether to use cookies."
-  remarks: "The Cookieless property defines when a cookie should be used to maintain information about the user.       When the Cookieless property is set to <xref:System.Web.HttpCookieMode>, the user&quot;s identifier is stored in a cookie. For more information, refer to <xref:System.Web.HttpCookieMode>.      > [!NOTE] >  ASP.NET stores the user&quot;s anonymous identifier within the URI path (that is, it runs in cookieless mode) if the Cookieless property is set to one of the following values: <xref:System.Web.HttpCookieMode>; <xref:System.Web.HttpCookieMode> when the browser profile indicates that cookies are not supported; or <xref:System.Web.HttpCookieMode> when the auto-detection process determines that the browser does not support cookies. Finally, if the size of the URI and the anonymous identifier exceeds the allowed length, the anonymous identifier is not applied."
+  summary: "Henter eller angir en verdi som angir om du vil bruke informasjonskapsler."
+  remarks: "Egenskapen uten informasjonskapsel definerer når en informasjonskapsel må brukes til å vedlikeholde informasjon om brukeren.       Når egenskapen uten informasjonskapsel er satt til <xref:System.Web.HttpCookieMode>, brukerens ID er lagret i en informasjonskapsel.</xref:System.Web.HttpCookieMode> Hvis du vil ha mer informasjon, kan du se <xref:System.Web.HttpCookieMode>.</xref:System.Web.HttpCookieMode>      > [!NOTE] > ASP.NET lagrer brukerens anonym ID i URI-bane (det vil si spørringen kjøres i modus uten informasjonskapsel) Hvis egenskapen uten informasjonskapsel er satt til en av følgende verdier: <xref:System.Web.HttpCookieMode>; <xref:System.Web.HttpCookieMode>når profilen browser indikerer at ikke støttes informasjonskapsler; eller <xref:System.Web.HttpCookieMode>når automatisk gjenkjenning prosessen bestemmer nettleseren ikke støtter informasjonskapsler.</xref:System.Web.HttpCookieMode> </xref:System.Web.HttpCookieMode> </xref:System.Web.HttpCookieMode> Til slutt Hvis størrelsen på URIEN og anonym ID overskrider den tillatte lengden, brukes anonym identifikatoren ikke."
   example:
   - "The following code example demonstrates how to access the Cookieless property.  \n  \n [!code-cs[System.Web.Configuration.AnonymousIdentificationSection#3](~/add/codesnippet/csharp/p-system.web.configurati_395_1.cs)]\n [!code-vb[System.Web.Configuration.AnonymousIdentificationSection#3](~/add/codesnippet/visualbasic/p-system.web.configurati_395_1.vb)]"
   syntax:
     content: public System.Web.HttpCookieMode Cookieless { get; set; }
     return:
       type: System.Web.HttpCookieMode
-      description: "One of the <xref href=&quot;System.Web.HttpCookieMode&quot;></xref> values. The default value is <xref href=&quot;System.Web.HttpCookieMode&quot;></xref>."
+      description: "Én av de <xref href=&quot;System.Web.HttpCookieMode&quot;> </xref> verdier. Standardverdien er <xref href=&quot;System.Web.HttpCookieMode&quot;> </xref>."
   overload: System.Web.Configuration.AnonymousIdentificationSection.Cookieless*
   exceptions: []
   platform:
@@ -133,7 +133,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: "Gets or sets the cookie name."
+  summary: "Henter eller angir navnet på informasjonskapselen."
   remarks: ''
   example:
   - "The following code example shows how to access the CookieName property.  \n  \n [!code-cs[System.Web.Configuration.AnonymousIdentificationSection#4](~/add/codesnippet/csharp/p-system.web.configurati_157_1.cs)]\n [!code-vb[System.Web.Configuration.AnonymousIdentificationSection#4](~/add/codesnippet/visualbasic/p-system.web.configurati_157_1.vb)]"
@@ -141,7 +141,7 @@ items:
     content: public string CookieName { get; set; }
     return:
       type: System.String
-      description: "The name of the cookie. The default value is &quot;.ASPXANONYMOUS&quot;."
+      description: "Navn på informasjonskapselen. Standardverdien er &quot;. ASPXANONYMOUS&quot;."
   overload: System.Web.Configuration.AnonymousIdentificationSection.CookieName*
   exceptions: []
   platform:
@@ -158,15 +158,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: "Gets or sets the path where the cookie is stored."
-  remarks: "The CookiePath property indicates where the authentication cookie resides and is transmitted along with the authentication cookie itself."
+  summary: "Henter eller angir banen der informasjonskapselen er lagret."
+  remarks: "Egenskapen CookiePath angir der informasjonskapselen for godkjenning, og den overføres sammen med godkjenning informasjonskapselen seg selv."
   example:
   - "The following code example shows how to access the CookiePath property.  \n  \n [!code-cs[System.Web.Configuration.AnonymousIdentificationSection#5](~/add/codesnippet/csharp/p-system.web.configurati_67_1.cs)]\n [!code-vb[System.Web.Configuration.AnonymousIdentificationSection#5](~/add/codesnippet/visualbasic/p-system.web.configurati_67_1.vb)]"
   syntax:
     content: public string CookiePath { get; set; }
     return:
       type: System.String
-      description: "The path of the HTTP cookie to use for the user&quot;s anonymous identification. The default value is a slash (/), which represents the Web application root."
+      description: "Banen til HTTP-informasjonskapselen som skal brukes for brukerens anonym identifisering. Standardverdien er et punktum (.), som representerer Web application roten."
   overload: System.Web.Configuration.AnonymousIdentificationSection.CookiePath*
   exceptions: []
   platform:
@@ -183,15 +183,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: "Gets or sets the encryption type used to encrypt the cookie."
-  remarks: "To improve the protection of your cookie, you may want also set the <xref:System.Web.Configuration.AnonymousIdentificationSection.CookieRequireSSL%2A> property to `true`.       Be sure to use the default value for this property if you want both data validation and encryption to help protect the cookie. This option uses the configured data-validation algorithm, based on the  element. Triple-DES (3DES) is used for encryption, if available and if the key is long enough (48 bytes or more)."
+  summary: "Henter eller angir krypteringstypen som brukes til å kryptere informasjonskapselen."
+  remarks: "For å forbedre beskyttelsen for din informasjonskapsel, bør du også angi den <xref:System.Web.Configuration.AnonymousIdentificationSection.CookieRequireSSL%2A>egenskapen `true`.</xref:System.Web.Configuration.AnonymousIdentificationSection.CookieRequireSSL%2A>       Husk å bruke standardverdien for denne egenskapen Hvis du vil både datavalidering og kryptering for å beskytte informasjonskapselen. Dette alternativet, bruker algoritmen konfigurerte datavalidering, basert på elementet. Tre ganger-DES (3DES) brukes til kryptering, hvis det er tilgjengelig og nøkkelen er lang nok (48 byte eller mer)."
   example:
   - "The following code example shows how to access the CookieProtection property.  \n  \n [!code-cs[System.Web.Configuration.AnonymousIdentificationSection#6](~/add/codesnippet/csharp/p-system.web.configurati_40_1.cs)]\n [!code-vb[System.Web.Configuration.AnonymousIdentificationSection#6](~/add/codesnippet/visualbasic/p-system.web.configurati_40_1.vb)]"
   syntax:
     content: public System.Web.Security.CookieProtection CookieProtection { get; set; }
     return:
       type: System.Web.Security.CookieProtection
-      description: "One of the <xref href=&quot;System.Web.Security.CookieProtection&quot;></xref> values. The default value is <xref href=&quot;System.Web.Security.CookieProtection&quot;></xref>."
+      description: "Én av de <xref href=&quot;System.Web.Security.CookieProtection&quot;> </xref> verdier. Standardverdien er <xref href=&quot;System.Web.Security.CookieProtection&quot;> </xref>."
   overload: System.Web.Configuration.AnonymousIdentificationSection.CookieProtection*
   exceptions: []
   platform:
@@ -208,15 +208,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: "Gets or sets a value indicating whether a Secure Sockets Layer (SSL) connection is required when transmitting authentication information."
-  remarks: "If CookieRequireSSL is `true`, a compliant browser does not return the cookie unless the connection is over SSL.      > [!NOTE] >  When the anonymous identifier is stored within the URI path, rather than in a cookie, the CookieRequireSSL setting does not affect the behavior of the anonymous identification module. This is consistent with the behavior in forms authentication."
+  summary: "Henter eller angir en verdi som angir om en Secure Sockets Layer (SSL)-tilkobling er nødvendig ved overføring av godkjenningsinformasjon."
+  remarks: "Hvis CookieRequireSSL `true`, en kompatibel nettleser ikke returnerer informasjonskapselen hvis tilkoblingen er over SSL.      > [!NOTE] > Når anonym ID er lagret i URI-bane i stedet for i en informasjonskapsel CookieRequireSSL-innstillingen påvirker ikke virkemåten for modulen anonym identifisering. Dette er konsekvente med virkemåten skjemagodkjenning."
   example:
   - "The following code example shows how to access the CookieRequireSSL property.  \n  \n [!code-cs[System.Web.Configuration.AnonymousIdentificationSection#7](~/add/codesnippet/csharp/p-system.web.configurati_100_1.cs)]\n [!code-vb[System.Web.Configuration.AnonymousIdentificationSection#7](~/add/codesnippet/visualbasic/p-system.web.configurati_100_1.vb)]"
   syntax:
     content: public bool CookieRequireSSL { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if an SSL connection is required; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis en SSL-tilkobling er påkrevd. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Standard <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.Configuration.AnonymousIdentificationSection.CookieRequireSSL*
   exceptions: []
   platform:
@@ -233,15 +233,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: "Gets or sets whether the cookie time-out value is reset on each request."
-  remarks: "When CookieSlidingExpiration is set to `true`, for each request issued during a single session the time interval during which the cookie is valid is reset to the amount of time specified in the <xref:System.Web.Configuration.AnonymousIdentificationSection.CookieTimeout%2A> property. When CookieSlidingExpiration is set to `false`, the cookie expires at a set point in time."
+  summary: "Henter eller angir om verdien for tidsavbrudd for informasjonskapsler tilbakestilles ved hver forespørsel."
+  remarks: "Når CookieSlidingExpiration er satt til `true`for hver forespørsel som er publisert i én enkelt økt tidsintervallet som informasjonskapselen er ugyldig tilbakestilles til tiden som er angitt i den <xref:System.Web.Configuration.AnonymousIdentificationSection.CookieTimeout%2A>egenskapen.</xref:System.Web.Configuration.AnonymousIdentificationSection.CookieTimeout%2A> Når CookieSlidingExpiration er satt til `false`, informasjonskapselen utløper på et sett i gang."
   example:
   - "The following code example shows how to access the CookieSlidingExpiration property.  \n  \n [!code-cs[System.Web.Configuration.AnonymousIdentificationSection#8](~/add/codesnippet/csharp/4fdcc12c-f94c-4c76-8fd1-_1.cs)]\n [!code-vb[System.Web.Configuration.AnonymousIdentificationSection#8](~/add/codesnippet/visualbasic/4fdcc12c-f94c-4c76-8fd1-_1.vb)]"
   syntax:
     content: public bool CookieSlidingExpiration { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the sliding expiration is enabled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis glidende utløpsdatoen er aktivert. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Standard <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.Configuration.AnonymousIdentificationSection.CookieSlidingExpiration*
   exceptions: []
   platform:
@@ -258,15 +258,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: "Gets or sets the amount of time, in minutes, after which the authentication expires."
-  remarks: "This property can be set to an arbitrarily large value, but internally the CookieTimeout value is limited to a maximum value of two years."
+  summary: "Henter eller angir tiden, i minutter, før godkjenningen utløper."
+  remarks: "Denne egenskapen kan settes til en tilfeldig stort verdi, men internt CookieTimeout-verdien er begrenset til en maksimumsverdi i to år."
   example:
   - "The following code example shows how to access the CookieTimeout property.  \n  \n [!code-cs[System.Web.Configuration.AnonymousIdentificationSection#9](~/add/codesnippet/csharp/p-system.web.configurati_155_1.cs)]\n [!code-vb[System.Web.Configuration.AnonymousIdentificationSection#9](~/add/codesnippet/visualbasic/p-system.web.configurati_155_1.vb)]"
   syntax:
     content: public TimeSpan CookieTimeout { get; set; }
     return:
       type: System.TimeSpan
-      description: "The amount of time, in minutes, after which the authentication expires. The default value is 100000."
+      description: "Hvor lang tid i minutter, før godkjenningen utløper. Standardverdien er 100000."
   overload: System.Web.Configuration.AnonymousIdentificationSection.CookieTimeout*
   exceptions: []
   platform:
@@ -283,15 +283,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: "Gets or sets the cookie domain."
-  remarks: "This attribute allows sharing of the anonymous identification cookie across domains that have a common DNS namespace (for example, all sites that end in &quot;contoso.com&quot;). The following requirements must be met in order for anonymous identification cookies to be shared:      -   Sites that want to share the cookie need to have common decryption and validation keys.      -   Other anonymous identification configuration attributes such as cookie path and cookie name must be the same for all the sites.       For more information, refer to the <xref:System.Web.HttpCookie> class."
+  summary: "Henter eller angir informasjonskapsel domenet."
+  remarks: "Dette attributtet kan dele anonym identifisering informasjonskapselen domener som har en vanlig DNS-navneområdet (for eksempel alle områder som slutter med &quot;contoso.com&quot;). De følgende kravene som må oppfylles for at anonym identifisering informasjonskapsler deles:-områder som ønsker å dele informasjonskapselen må ha vanlige dekryptering og validering nøkler.      -Andre anonym identifisering konfigurasjonen attributter for eksempel informasjonskapselbanen og informasjonskapselnavn må være den samme for alle områder.       Hvis du vil ha mer informasjon, kan du se <xref:System.Web.HttpCookie>klasse.</xref:System.Web.HttpCookie>"
   example:
   - "The following code example shows how to access the Domain property.  \n  \n [!code-cs[System.Web.Configuration.AnonymousIdentificationSection#10](~/add/codesnippet/csharp/p-system.web.configurati_398_1.cs)]\n [!code-vb[System.Web.Configuration.AnonymousIdentificationSection#10](~/add/codesnippet/visualbasic/p-system.web.configurati_398_1.vb)]"
   syntax:
     content: public string Domain { get; set; }
     return:
       type: System.String
-      description: "The name of the cookie domain. The default is an empty string (&quot;&quot;)."
+      description: "Navn på informasjonskapselen domenet. Standarden er en tom streng (&quot;&quot;)."
   overload: System.Web.Configuration.AnonymousIdentificationSection.Domain*
   exceptions: []
   platform:
@@ -308,15 +308,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: "Gets or sets a value indicating whether anonymous identification is enabled."
-  remarks: "If Enabled is set to `true`, a cookie is used to manage the user&quot;s state information."
+  summary: "Henter eller angir en verdi som angir om anonym identifisering er aktivert."
+  remarks: "Hvis aktivert er satt til `true`, en informasjonskapsel brukes til å behandle brukerens informasjon om."
   example:
   - "The following code example shows how to access the Enabled property.  \n  \n [!code-cs[System.Web.Configuration.AnonymousIdentificationSection#11](~/add/codesnippet/csharp/p-system.web.configurati_369_1.cs)]\n [!code-vb[System.Web.Configuration.AnonymousIdentificationSection#11](~/add/codesnippet/visualbasic/p-system.web.configurati_369_1.vb)]"
   syntax:
     content: public bool Enabled { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if anonymous identification is enabled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis anonym identifisering er aktivert. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Standard <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.Configuration.AnonymousIdentificationSection.Enabled*
   exceptions: []
   platform:
@@ -337,7 +337,7 @@ items:
     content: protected override System.Configuration.ConfigurationPropertyCollection Properties { get; }
     return:
       type: System.Configuration.ConfigurationPropertyCollection
-      description: "To be added."
+      description: "Som skal legges til."
   overload: System.Web.Configuration.AnonymousIdentificationSection.Properties*
   exceptions: []
   platform:
