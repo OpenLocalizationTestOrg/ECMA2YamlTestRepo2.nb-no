@@ -46,8 +46,8 @@ items:
   nameWithType: Membership
   fullName: System.Web.Security.Membership
   type: Class
-  summary: "Validates user credentials and manages user settings. This class cannot be inherited."
-  remarks: "The Membership class is used in ASP.NET applications to validate user credentials and manage user settings such as passwords and e-mail addresses. The Membership class can be used on its own, or in conjunction with the <xref:System.Web.Security.FormsAuthentication> to create a complete system for authenticating users of a Web application or site. The <xref:System.Web.UI.WebControls.Login> control encapsulates the Membership class to provide a convenient mechanism for validating users.      > [!NOTE] >  If you are not familiar with the membership features of ASP.NET, see [Introduction to Membership](~/add/includes/ajax-current-ext-md.md) before continuing. For a list of other topics related to membership, see [Managing Users by Using Membership](~/add/includes/ajax-current-ext-md.md).       The Membership class provides facilities for:      -   Creating new users.      -   Storing membership information (user names, passwords, e-mail addresses, and supporting data) in Microsoft SQL Server or in an alternative data store.      -   Authenticating users who visit your site. You can authenticate users programmatically, or you can use the <xref:System.Web.UI.WebControls.Login> control to create a complete authentication system that requires little or no code.      -   Managing passwords, which includes creating, changing, retrieving, and resetting them, and so on. You can optionally configure ASP.NET membership to require a password question and answer to authenticate password reset or retrieval requests for users that have forgotten their password.       Although ASP.NET membership is a self-standing feature in ASP.NET For authentication, it can be integrated with ASP.NET role management to provide authorization services for your site. Membership can also be integrated with the ASP.NET user <xref:System.Web.Profile> to provide application-specific customization that can be tailored to individual users. For details, see [Understanding Role Management](~/add/includes/ajax-current-ext-md.md) and [ASP.NET Profile Properties Overview](~/add/includes/ajax-current-ext-md.md).       The Membership class relies on membership providers to communicate with a data source. The .NET Framework includes a <xref:System.Web.Security.SqlMembershipProvider>, which stores user information in a Microsoft SQL Server database, and an <xref:System.Web.Security.ActiveDirectoryMembershipProvider>, which enables you to store user information on an Active Directory or Active Directory Application Mode (ADAM) server. You can also implement a custom membership provider to communicate with an alternative data source that can be used by the Membership class. Custom membership providers inherit the <xref:System.Web.Security.MembershipProvider> abstract class. For more information, see [Implementing a Membership Provider](~/add/includes/ajax-current-ext-md.md).       By default, ASP.NET membership is enabled for all ASP.NET applications. The default membership provider is the <xref:System.Web.Security.SqlMembershipProvider> and is specified in the machine configuration with the name `AspNetSqlProvider`. The default instance of the <xref:System.Web.Security.SqlMembershipProvider> is configured to connect to a local instance of Microsoft SQL Server.       You can modify the default settings to specify a <xref:System.Web.Security.SqlMembershipProvider> other than the `AspNetSqlProvider` instance as the default provider, or specify an instance of a custom provider as the default provider for your ASP.NET application using the Web.config file. You can specify the ASP.NET membership configuration for your Web application using the  configuration section in the Web.config file. You can use the `providers` subsection of the  section to specify a membership provider other than one of the default providers. For example, the following  section removes the default membership providers from the current application configuration and adds a new provider with a name of `SqlProvider` that connects to a SQL Server instance named `AspSqlServer`.      ```   <configuration>     <connectionStrings>       <add name=&quot;SqlServices&quot; connectionString=&quot;Data Source=AspSqlServer;Integrated Security=SSPI;Initial Catalog=aspnetdb;&quot; />     </connectionStrings>     <system.web>       <membership defaultProvider=&quot;SqlProvider&quot; userIsOnlineTimeWindow=&quot;20&quot;>         <providers>           <remove name=&quot;AspNetSqlProvider&quot; />           <add name=&quot;SqlProvider&quot;             type=&quot;System.Web.Security.SqlMembershipProvider&quot;             connectionStringName=&quot;SqlServices&quot;             enablePasswordRetrieval=&quot;false&quot;             enablePasswordReset=&quot;true&quot;             requiresQuestionAndAnswer=&quot;true&quot;             passwordFormat=&quot;Hashed&quot;             applicationName=&quot;/&quot; />         </providers>       </membership>     </system.web>   </configuration>   ```"
+  summary: "Validerer brukerlegitimasjon, og behandler brukerinnstillinger. Denne klassen kan ikke arves."
+  remarks: "Medlemskap klassen brukes til å validere brukerlegitimasjon, og administrer brukerinnstillinger for som passord og e-postadresser i ASP.NET-applikasjoner. Klassen medlemskap kan brukes på en egen eller sammen med den <xref:System.Web.Security.FormsAuthentication>til å opprette et komplett system for å godkjenne brukere av et webprogram eller område.</xref:System.Web.Security.FormsAuthentication> Den <xref:System.Web.UI.WebControls.Login>kontrollen innkapsler medlemskap klassen for å gi praktisk validering av brukere.</xref:System.Web.UI.WebControls.Login>      > [!NOTE] > Hvis du ikke er kjent med medlemskap av ASP.NET, kan du se [innføring i medlemskap](~/add/includes/ajax-current-ext-md.md) før du fortsetter. En liste med andre emner som er relatert til medlemskap, kan du se [styre brukere ved hjelp av medlemskap](~/add/includes/ajax-current-ext-md.md).       Medlemskap klassen brukes til:-opprette nye brukere.      -Lagrer medlemskapsinformasjon (brukernavn, passord, e-postadresser og tilhørende data) i Microsoft SQL Server eller i et alternativt datalager.      -Godkjenning av brukere som besøker området. Du kan godkjenne brukere programmatisk, eller du kan bruke den <xref:System.Web.UI.WebControls.Login>kontrollen kan ikke lage fullført godkjenning som krever lite eller ingen kode.</xref:System.Web.UI.WebControls.Login>      -Administrere passord som inkluderer oppretting, endring, henter og tilbakestille dem, og så videre. Du kan også konfigurere ASP.NET-medlemskap til å kreve et for passordspørsmål og svar å godkjenne forespørsler for tilbakestilling av eller henting av passord for brukere som har glemt passordet.       Selv om ASP.NET-medlemskap er en selv standing funksjon i ASP.NET For godkjenning, kan det være integrert med ASP.NET rollebehandling for tjenester for godkjenning for området. Medlemskap kan også integreres med ASP.NET-brukeren <xref:System.Web.Profile>Angi programspesifikk tilpassing kan skreddersydd til enkeltbrukere.</xref:System.Web.Profile> Hvis du vil ha mer informasjon, se [forstå rollebehandling](~/add/includes/ajax-current-ext-md.md) og [ASP.NET profilen egenskaper oversikt over](~/add/includes/ajax-current-ext-md.md).       Klassen medlemskap, avhengig av medlemskap leverandører til å kommunisere med en datakilde. .NET Framework inkluderer en <xref:System.Web.Security.SqlMembershipProvider>, som inneholder brukerinformasjon i en Microsoft SQL Server-database, og en <xref:System.Web.Security.ActiveDirectoryMembershipProvider>, som lar deg oppbevare brukerinformasjon på en Active Directory eller Active Directory Application-modus (ADAM)-server.</xref:System.Web.Security.ActiveDirectoryMembershipProvider> </xref:System.Web.Security.SqlMembershipProvider> Du kan også implementere en egendefinert medlemskapsleverandør som skal kommunisere med en alternativ datakilde som kan brukes av klassen medlemskap. Tilpassede medlemskap leverandører arver <xref:System.Web.Security.MembershipProvider>abstrakt klasse.</xref:System.Web.Security.MembershipProvider> Hvis du vil ha mer informasjon, se [implementere en leverandør av medlemskap](~/add/includes/ajax-current-ext-md.md).       ASP.NET-medlemskap er aktivert for alle ASP.NET-applikasjoner som standard. Medlemskap standardleverandøren den <xref:System.Web.Security.SqlMembershipProvider>og er angitt i maskinkonfigurasjonen av med navnet `AspNetSqlProvider`.</xref:System.Web.Security.SqlMembershipProvider> Standardforekomst av den <xref:System.Web.Security.SqlMembershipProvider>er konfigurert til å koble til en lokal forekomst av Microsoft SQL Server.</xref:System.Web.Security.SqlMembershipProvider>       Du kan endre standardinnstillingene til å angi en <xref:System.Web.Security.SqlMembershipProvider>enn den `AspNetSqlProvider` forekomsten som standardleverandøren, eller angi en forekomst av en egendefinert leverandør som standardleverandøren for ASP.NET-programmet bruker Web.config-filen.</xref:System.Web.Security.SqlMembershipProvider> Du kan angi ASP.NET medlemskap konfigurasjonen for webprogrammet ved hjelp av konfigurasjonsdelen i Web.config-filen. Du kan bruke den `providers` avsnittet om å angi en leverandør av medlemskap enn ett standard leverandørene. For eksempel delen nedenfor fjerner standard medlemskap leverandørene fra gjeldende Programkonfigurasjonen og legger til en ny leverandør med et navn på `SqlProvider` som kobler til en SQL Server-forekomst med navnet `AspSqlServer`.      ```   <configuration>     <connectionStrings>       <add name=&quot;SqlServices&quot; connectionString=&quot;Data Source=AspSqlServer;Integrated Security=SSPI;Initial Catalog=aspnetdb;&quot; />     </connectionStrings>     <system.web>       <membership defaultProvider=&quot;SqlProvider&quot; userIsOnlineTimeWindow=&quot;20&quot;>         <providers>           <remove name=&quot;AspNetSqlProvider&quot; />           <add name=&quot;SqlProvider&quot;             type=&quot;System.Web.Security.SqlMembershipProvider&quot;             connectionStringName=&quot;SqlServices&quot;             enablePasswordRetrieval=&quot;false&quot;             enablePasswordReset=&quot;true&quot;             requiresQuestionAndAnswer=&quot;true&quot;             passwordFormat=&quot;Hashed&quot;             applicationName=&quot;/&quot; />         </providers>       </membership>     </system.web>   </configuration>   ```"
   example:
   - "The following code example shows the login page for an ASP.NET application configured to use forms authentication and ASP.NET membership. If the supplied user credentials are invalid, a message is displayed to the user. Otherwise, the user is redirected to the originally requested URL using the <xref:System.Web.Security.FormsAuthentication.RedirectFromLoginPage%2A> method.  \n  \n> [!NOTE]\n>  The ASP.NET login controls (<xref:System.Web.UI.WebControls.Login>, <xref:System.Web.UI.WebControls.LoginView>, <xref:System.Web.UI.WebControls.LoginStatus>, <xref:System.Web.UI.WebControls.LoginName>, and <xref:System.Web.UI.WebControls.PasswordRecovery>) encapsulate virtually all of the logic required to prompt users for credentials and validate the credentials in the membership system and can be used in place of programmatic checking using the Membership class.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[System.Web.Security.SqlMembershipProvider#1](~/add/codesnippet/csharp/t-system.web.security.me_1.aspx)]\n [!code-vb[System.Web.Security.SqlMembershipProvider#1](~/add/codesnippet/visualbasic/t-system.web.security.me_1.aspx)]"
   syntax:
@@ -70,15 +70,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Gets or sets the name of the application."
-  remarks: "The ApplicationName is used to identify users specific to an application. That is, the same user name can exist in the database for multiple ASP.NET applications that specify a different ApplicationName. This enables multiple applications to use the same database to store user information without running into duplicate user name conflicts. Alternatively, multiple ASP.NET applications can use the same user database by specifying the same ApplicationName. The ApplicationName can be set programmatically or declaratively in the configuration for the Web application.      > [!CAUTION] >  Because a single default membership provider instance is used for all of the requests served by an <xref:System.Web.HttpApplication> object, you can have multiple requests executing concurrently and attempting to set the ApplicationName property value. The ApplicationName property is not thread safe for multiple writes, and changing the ApplicationName property value can result in unexpected behavior for multiple users of an application. We recommend that you avoid writing code that allows users to set the ApplicationName property, unless you must. An example of an application where setting the ApplicationName property may be required is an administrative application that manages membership data for multiple applications. Such an application should be a single-user application and not a Web application."
+  summary: "Henter eller angir navnet på programmet."
+  remarks: "ApplicationName brukes til å identifisere brukere som er spesifikke for en applikasjon. Det vil si kan samme brukernavn finnes i databasen for flere ASP.NET-applikasjoner som angir en annen ApplicationName. Dette aktiverer flere programmer å bruke samme database til å lagre brukerinformasjon uten å kjøre i dupliserte bruker navnet er i konflikt. Flere ASP.NET-applikasjoner kan eventuelt bruke samme brukerdatabasen ved å angi den samme ApplicationName. ApplicationName kan angis programmatisk eller deklarativt i konfigurasjonen for webprogrammet.      > [!CAUTION] > Fordi en enkelt medlemskap leverandøren Standardforekomst brukes for alle forespørsler som ble behandlet av en <xref:System.Web.HttpApplication>objektet, du kan ha flere forespørsler kjøres samtidig, og forsøk på å angi egenskapsverdien ApplicationName.</xref:System.Web.HttpApplication> Egenskapen ApplicationName er ikke klarert for flere skriver tråd, og endre egenskapsverdien ApplicationName kan føre til uventede resultater for flere brukere med en applikasjon. Vi anbefaler at du unngår skrive kode som kan brukes til å angi egenskapen ApplicationName med mindre du må gjøre. Et eksempel på et program der angivelse av ApplicationName-egenskapen kan være nødvendig med er et administrative program som administrerer medlemskap data for flere applikasjoner. Et slikt program må være et program for én bruker og ikke et webprogram."
   example:
   - "The following code example shows the  element in the `system.web` section of the Web.config file for an ASP.NET application. It specifies that the application use a <xref:System.Web.Security.SqlMembershipProvider> instance and sets the ApplicationName to `MyApplication`.  \n  \n```  \n<membership defaultProvider=\"SqlProvider\" userIsOnlineTimeWindow=\"20\">  \n  <providers>  \n    <add name=\"SqlProvider\"  \n      type=\"System.Web.Security.SqlMembershipProvider\"  \n      connectionStringName=\"SqlServices\"  \n      enablePasswordRetrieval=\"true\"  \n      enablePasswordReset=\"false\"  \n      requiresQuestionAndAnswer=\"true\"  \n      passwordFormat=\"Encrypted\"  \n      applicationName=\"MyApplication\" />  \n  </providers>  \n</membership>  \n```"
   syntax:
     content: public static string ApplicationName { get; set; }
     return:
       type: System.String
-      description: "The name of the application."
+      description: "Navnet på programmet."
   overload: System.Web.Security.Membership.ApplicationName*
   exceptions: []
   platform:
@@ -95,8 +95,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Adds a new user to the data store."
-  remarks: "CreateUser adds a new user to the data store and returns a <xref:System.Web.Security.MembershipUser> object for the newly created user. If the user creation fails, a <xref:System.Web.Security.MembershipCreateUserException> is thrown. You can retrieve a <xref:System.Web.Security.MembershipCreateStatus> value from the <xref:System.Web.Security.MembershipCreateUserException.StatusCode%2A> property of the <xref:System.Web.Security.MembershipCreateUserException> that indicates why user creation failed.       Once a membership user has been created and you have a reference to a <xref:System.Web.Security.MembershipUser> object for that user, you can modify the settings for that user with the <xref:System.Web.Security.MembershipUser> public methods, such as <xref:System.Web.Security.MembershipUser.ChangePasswordQuestionAndAnswer%2A> for applications where <xref:System.Web.Security.Membership.RequiresQuestionAndAnswer%2A> is `true`, or by setting the property values of the <xref:System.Web.Security.MembershipUser> object and passing them to the <xref:System.Web.Security.Membership.UpdateUser%2A> method.       If a user already exists in the data source for the application, you can obtain a <xref:System.Web.Security.MembershipUser> object for the existing user with the <xref:System.Web.Security.Membership.GetUser%2A> method.       The <xref:System.Web.Security.SqlMembershipProvider> provides an option to require a unique e-mail address for each user. If the <xref:System.Web.Security.SqlMembershipProvider.RequiresUniqueEmail%2A> property is `true`, you will need to use one of the CreateUser overloads that allows you to specify an e-mail address for the user being created. Otherwise, a <xref:System.Web.Security.MembershipCreateUserException> will be thrown.       Leading and trailing spaces are trimmed from all parameter values."
+  summary: "Legger til en ny bruker i datakilden."
+  remarks: "CreateUser legger til en ny bruker i datakilden, og returnerer et <xref:System.Web.Security.MembershipUser>objekt for nyopprettede brukeren.</xref:System.Web.Security.MembershipUser> Hvis Brukeroppretting mislykkes, en <xref:System.Web.Security.MembershipCreateUserException>forårsakes.</xref:System.Web.Security.MembershipCreateUserException> Du kan hente en <xref:System.Web.Security.MembershipCreateStatus>verdi fra den <xref:System.Web.Security.MembershipCreateUserException.StatusCode%2A>for den <xref:System.Web.Security.MembershipCreateUserException>som angir hvorfor Brukeroppretting mislyktes.</xref:System.Web.Security.MembershipCreateUserException> </xref:System.Web.Security.MembershipCreateUserException.StatusCode%2A> </xref:System.Web.Security.MembershipCreateStatus>       Når en bruker medlemskap er opprettet, og du har en referanse til en <xref:System.Web.Security.MembershipUser>objekt for denne brukeren, kan du endre innstillingene for denne brukeren med den <xref:System.Web.Security.MembershipUser>offentlige metodene som <xref:System.Web.Security.MembershipUser.ChangePasswordQuestionAndAnswer%2A>for programmer der <xref:System.Web.Security.Membership.RequiresQuestionAndAnswer%2A>er `true`, eller ved å angi egenskapsverdiene for den <xref:System.Web.Security.MembershipUser>objekt og sende dem til i <xref:System.Web.Security.Membership.UpdateUser%2A>metoden.</xref:System.Web.Security.Membership.UpdateUser%2A> </xref:System.Web.Security.MembershipUser> </xref:System.Web.Security.Membership.RequiresQuestionAndAnswer%2A> </xref:System.Web.Security.MembershipUser.ChangePasswordQuestionAndAnswer%2A> </xref:System.Web.Security.MembershipUser> </xref:System.Web.Security.MembershipUser>       Hvis det finnes allerede en bruker i datakilden for programmet, kan du få en <xref:System.Web.Security.MembershipUser>objekt for eksisterende bruker med den <xref:System.Web.Security.Membership.GetUser%2A>metoden.</xref:System.Web.Security.Membership.GetUser%2A> </xref:System.Web.Security.MembershipUser>       Den <xref:System.Web.Security.SqlMembershipProvider>gir mulighet til å kreve en unik e-postadresse for hver bruker.</xref:System.Web.Security.SqlMembershipProvider> Hvis den <xref:System.Web.Security.SqlMembershipProvider.RequiresUniqueEmail%2A>egenskapen `true`, må du bruke en CreateUser overlastingene som lar deg angi e-postadressen til brukeren som opprettet.</xref:System.Web.Security.SqlMembershipProvider.RequiresUniqueEmail%2A> Ellers en <xref:System.Web.Security.MembershipCreateUserException>vil bli utløst.</xref:System.Web.Security.MembershipCreateUserException>       Fjernes innledende og avsluttende mellomrom fra alle parameterverdier."
   example:
   - "The following code example creates a new user for an ASP.NET application configured to use forms authentication and ASP.NET membership. If the user is not created successfully, a message is displayed to the user. Otherwise, the user is redirected to the login page for the application.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[System.Web.Security.Membership#2](~/add/codesnippet/csharp/m-system.web.security.me_0_1.aspx)]\n [!code-vb[System.Web.Security.Membership#2](~/add/codesnippet/visualbasic/m-system.web.security.me_0_1.aspx)]"
   syntax:
@@ -104,18 +104,18 @@ items:
     parameters:
     - id: username
       type: System.String
-      description: "The user name for the new user."
+      description: "Brukernavnet for den nye brukeren."
     - id: password
       type: System.String
-      description: "The password for the new user."
+      description: "Passordet for den nye brukeren."
     return:
       type: System.Web.Security.MembershipUser
-      description: "A <xref:System.Web.Security.MembershipUser> object for the newly created user."
+      description: "En <xref:System.Web.Security.MembershipUser>objekt for nyopprettede brukeren.</xref:System.Web.Security.MembershipUser>"
   overload: System.Web.Security.Membership.CreateUser*
   exceptions:
   - type: System.Web.Security.MembershipCreateUserException
     commentId: T:System.Web.Security.MembershipCreateUserException
-    description: "The user was not created. Check the <xref:System.Web.Security.MembershipCreateUserException.StatusCode*> property for a <xref:System.Web.Security.MembershipCreateStatus> value."
+    description: "Brukeren ble ikke opprettet. Se den <xref:System.Web.Security.MembershipCreateUserException.StatusCode*>egenskapen for en <xref:System.Web.Security.MembershipCreateStatus>verdi.</xref:System.Web.Security.MembershipCreateStatus> </xref:System.Web.Security.MembershipCreateUserException.StatusCode*>"
   platform:
   - net462
 - uid: System.Web.Security.Membership.CreateUser(System.String,System.String,System.String)
@@ -130,8 +130,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Adds a new user with a specified e-mail address to the data store."
-  remarks: "<xref:System.Web.Security.Membership.CreateUser%2A> adds a new user to the data store and returns a <xref:System.Web.Security.MembershipUser> object for the newly created user. If the user creation fails, a <xref:System.Web.Security.MembershipCreateUserException> is thrown. You can retrieve a <xref:System.Web.Security.MembershipCreateStatus> value from the <xref:System.Web.Security.MembershipCreateUserException.StatusCode%2A> property of the <xref:System.Web.Security.MembershipCreateUserException> that indicates why user creation failed.       Once a membership user has been created and you have a reference to a <xref:System.Web.Security.MembershipUser> object for that user, you can modify the settings for that user with the <xref:System.Web.Security.MembershipUser> public methods, such as <xref:System.Web.Security.MembershipUser.ChangePasswordQuestionAndAnswer%2A> for applications where <xref:System.Web.Security.Membership.RequiresQuestionAndAnswer%2A> is `true`, or by setting the property values of the <xref:System.Web.Security.MembershipUser> object and passing them to the <xref:System.Web.Security.Membership.UpdateUser%2A> method.       If a user already exists in the data source for the application, you can obtain a <xref:System.Web.Security.MembershipUser> object for the existing user with the <xref:System.Web.Security.Membership.GetUser%2A> method.       Leading and trailing spaces are trimmed from all parameter values."
+  summary: "Legger til en ny bruker med en angitt e-postadresse i datakilden."
+  remarks: "<xref:System.Web.Security.Membership.CreateUser%2A>legger til en ny bruker i datakilden, og returnerer et <xref:System.Web.Security.MembershipUser>objekt for nyopprettede brukeren.</xref:System.Web.Security.MembershipUser></xref:System.Web.Security.Membership.CreateUser%2A> Hvis Brukeroppretting mislykkes, en <xref:System.Web.Security.MembershipCreateUserException>forårsakes.</xref:System.Web.Security.MembershipCreateUserException> Du kan hente en <xref:System.Web.Security.MembershipCreateStatus>verdi fra den <xref:System.Web.Security.MembershipCreateUserException.StatusCode%2A>for den <xref:System.Web.Security.MembershipCreateUserException>som angir hvorfor Brukeroppretting mislyktes.</xref:System.Web.Security.MembershipCreateUserException> </xref:System.Web.Security.MembershipCreateUserException.StatusCode%2A> </xref:System.Web.Security.MembershipCreateStatus>       Når en bruker medlemskap er opprettet, og du har en referanse til en <xref:System.Web.Security.MembershipUser>objekt for denne brukeren, kan du endre innstillingene for denne brukeren med den <xref:System.Web.Security.MembershipUser>offentlige metodene som <xref:System.Web.Security.MembershipUser.ChangePasswordQuestionAndAnswer%2A>for programmer der <xref:System.Web.Security.Membership.RequiresQuestionAndAnswer%2A>er `true`, eller ved å angi egenskapsverdiene for den <xref:System.Web.Security.MembershipUser>objekt og sende dem til i <xref:System.Web.Security.Membership.UpdateUser%2A>metoden.</xref:System.Web.Security.Membership.UpdateUser%2A> </xref:System.Web.Security.MembershipUser> </xref:System.Web.Security.Membership.RequiresQuestionAndAnswer%2A> </xref:System.Web.Security.MembershipUser.ChangePasswordQuestionAndAnswer%2A> </xref:System.Web.Security.MembershipUser> </xref:System.Web.Security.MembershipUser>       Hvis det finnes allerede en bruker i datakilden for programmet, kan du få en <xref:System.Web.Security.MembershipUser>objekt for eksisterende bruker med den <xref:System.Web.Security.Membership.GetUser%2A>metoden.</xref:System.Web.Security.Membership.GetUser%2A> </xref:System.Web.Security.MembershipUser>       Fjernes innledende og avsluttende mellomrom fra alle parameterverdier."
   example:
   - "The following code example creates a new user for an ASP.NET application configured to use forms authentication and ASP.NET membership. If the user is not created successfully, a message is displayed to the user. Otherwise, the user is redirected to the login page for the application.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-vb[System.Web.Security.Membership#1](~/add/codesnippet/visualbasic/8cf35595-ec0c-4c08-b671-_1.aspx)]\n [!code-cs[System.Web.Security.Membership#1](~/add/codesnippet/csharp/8cf35595-ec0c-4c08-b671-_1.aspx)]"
   syntax:
@@ -139,21 +139,21 @@ items:
     parameters:
     - id: username
       type: System.String
-      description: "The user name for the new user."
+      description: "Brukernavnet for den nye brukeren."
     - id: password
       type: System.String
-      description: "The password for the new user."
+      description: "Passordet for den nye brukeren."
     - id: email
       type: System.String
-      description: "The e-mail address for the new user."
+      description: "E-postadressen for den nye brukeren."
     return:
       type: System.Web.Security.MembershipUser
-      description: "A <xref:System.Web.Security.MembershipUser> object for the newly created user."
+      description: "En <xref:System.Web.Security.MembershipUser>objekt for nyopprettede brukeren.</xref:System.Web.Security.MembershipUser>"
   overload: System.Web.Security.Membership.CreateUser*
   exceptions:
   - type: System.Web.Security.MembershipCreateUserException
     commentId: T:System.Web.Security.MembershipCreateUserException
-    description: "The user was not created. Check the <xref:System.Web.Security.MembershipCreateUserException.StatusCode*> property for a <xref:System.Web.Security.MembershipCreateStatus> value."
+    description: "Brukeren ble ikke opprettet. Se den <xref:System.Web.Security.MembershipCreateUserException.StatusCode*>egenskapen for en <xref:System.Web.Security.MembershipCreateStatus>verdi.</xref:System.Web.Security.MembershipCreateStatus> </xref:System.Web.Security.MembershipCreateUserException.StatusCode*>"
   platform:
   - net462
 - uid: System.Web.Security.Membership.CreateUser(System.String,System.String,System.String,System.String,System.String,System.Boolean,System.Web.Security.MembershipCreateStatus@)
@@ -168,8 +168,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Adds a new user with specified property values to the data store and returns a status parameter indicating that the user was successfully created or the reason the user creation failed."
-  remarks: "CreateUser adds a new user to the data store and returns a <xref:System.Web.Security.MembershipUser> object for the newly created user. If the user creation fails, you can retrieve a <xref:System.Web.Security.MembershipCreateStatus> value from the `status` output parameter that indicates why user creation failed.       The CreateUser method will return `null` if `password` is an empty string or `null`, `username` is an empty string or `null` or contains a comma (,), `passwordQuestion` is not `null` and is an empty string, or `passwordAnswer` is not `null` and contains an empty string.       Once a membership user has been created and you have a reference to a <xref:System.Web.Security.MembershipUser> object for that user, you can modify the settings for that user with the <xref:System.Web.Security.MembershipUser> public methods and by setting the property values of the <xref:System.Web.Security.MembershipUser> object and then passing the <xref:System.Web.Security.MembershipUser> object to the <xref:System.Web.Security.Membership.UpdateUser%2A> method.       If a user already exists in the data source for the application, you can obtain a <xref:System.Web.Security.MembershipUser> object for the existing user with the <xref:System.Web.Security.Membership.GetUser%2A> method.       Leading and trailing spaces are trimmed from all string parameter values."
+  summary: "Legger til en ny bruker med angitt egenskapsverdier i datakilden, og returnerer statusen parameter som angir at brukeren ble opprettet eller årsaken ikke kan opprette brukeren."
+  remarks: "CreateUser legger til en ny bruker i datakilden, og returnerer et <xref:System.Web.Security.MembershipUser>objekt for nyopprettede brukeren.</xref:System.Web.Security.MembershipUser> Hvis Brukeroppretting mislykkes, kan du hente en <xref:System.Web.Security.MembershipCreateStatus>verdi fra den `status` utdataparameter som angir hvorfor Brukeroppretting mislyktes.</xref:System.Web.Security.MembershipCreateStatus>       Metoden CreateUser tilbakestiller `null` Hvis `password` er en tom streng eller `null`, `username` er en tom streng eller `null` eller inneholder et komma (,), `passwordQuestion` er ikke `null` og er en tom streng eller `passwordAnswer` er ikke `null` og inneholder en tom streng.       Når en bruker medlemskap er opprettet, og du har en referanse til en <xref:System.Web.Security.MembershipUser>objekt for denne brukeren, kan du endre innstillingene for denne brukeren med den <xref:System.Web.Security.MembershipUser>offentlige metoder og ved å angi egenskapsverdiene for den <xref:System.Web.Security.MembershipUser>objekt og deretter sende den <xref:System.Web.Security.MembershipUser>objekt i <xref:System.Web.Security.Membership.UpdateUser%2A>metoden.</xref:System.Web.Security.Membership.UpdateUser%2A> </xref:System.Web.Security.MembershipUser> </xref:System.Web.Security.MembershipUser> </xref:System.Web.Security.MembershipUser> </xref:System.Web.Security.MembershipUser>       Hvis det finnes allerede en bruker i datakilden for programmet, kan du få en <xref:System.Web.Security.MembershipUser>objekt for eksisterende bruker med den <xref:System.Web.Security.Membership.GetUser%2A>metoden.</xref:System.Web.Security.Membership.GetUser%2A> </xref:System.Web.Security.MembershipUser>       Fjernes innledende og avsluttende mellomrom fra alle strengverdier for parameteren."
   example:
   - "The following code example creates a new user for an ASP.NET application configured to use forms authentication and ASP.NET membership. If the user is not created successfully, a message is displayed to the user. Otherwise, the user is redirected to the login page for the application.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[System.Web.Security.SqlMembershipProvider#2](~/add/codesnippet/csharp/baa4c01c-297e-4ec6-a9d9-_1.aspx)]\n [!code-vb[System.Web.Security.SqlMembershipProvider#2](~/add/codesnippet/visualbasic/baa4c01c-297e-4ec6-a9d9-_1.aspx)]"
   syntax:
@@ -177,28 +177,28 @@ items:
     parameters:
     - id: username
       type: System.String
-      description: "The user name for the new user."
+      description: "Brukernavnet for den nye brukeren."
     - id: password
       type: System.String
-      description: "The password for the new user."
+      description: "Passordet for den nye brukeren."
     - id: email
       type: System.String
-      description: "The e-mail address for the new user."
+      description: "E-postadressen for den nye brukeren."
     - id: passwordQuestion
       type: System.String
-      description: "The password-question value for the membership user."
+      description: "Passordspørsmålet verdien for medlemskap brukeren."
     - id: passwordAnswer
       type: System.String
-      description: "The password-answer value for the membership user."
+      description: "Passordsvar verdien for medlemskap brukeren."
     - id: isApproved
       type: System.Boolean
-      description: "A Boolean that indicates whether the new user is approved to log on."
+      description: "En boolsk verdi som angir om den nye brukeren er godkjent til å logge på."
     - id: status
       type: System.Web.Security.MembershipCreateStatus
-      description: "A <xref:System.Web.Security.MembershipCreateStatus> indicating that the user was created successfully or the reason that creation failed."
+      description: "En <xref:System.Web.Security.MembershipCreateStatus>som indikerer at brukeren ble opprettet eller årsaken til at oppretting mislyktes.</xref:System.Web.Security.MembershipCreateStatus>"
     return:
       type: System.Web.Security.MembershipUser
-      description: "A <xref:System.Web.Security.MembershipUser> object for the newly created user. If no user was created, this method returns <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "En <xref:System.Web.Security.MembershipUser>objekt for nyopprettede brukeren.</xref:System.Web.Security.MembershipUser> Hvis ingen bruker ble opprettet, metoden returnerer <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.Security.Membership.CreateUser*
   exceptions: []
   platform:
@@ -215,38 +215,38 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Adds a new user with specified property values and a unique identifier to the data store and returns a status parameter indicating that the user was successfully created or the reason the user creation failed."
-  remarks: "CreateUser adds a new user to the data store and returns a <xref:System.Web.Security.MembershipUser> object for the newly created user. If the user creation fails, you can retrieve a <xref:System.Web.Security.MembershipCreateStatus> value from the `status` output parameter that indicates why user creation failed. You can specify a unique identifier for the user, such as a primary key value for a database, by using the `providerUserKey` parameter.       The CreateUser method will return `null` if `password` is an empty string or `null`, `username` is an empty string or `null` or contains a comma (,), `passwordQuestion` is not `null` and contains an empty string, or `passwordAnswer` is not `null` and contains an empty string.       Once a membership user has been created and you have a reference to a <xref:System.Web.Security.MembershipUser> object for that user, you can modify the settings for that user with the <xref:System.Web.Security.MembershipUser> public methods and by setting the property values of the <xref:System.Web.Security.MembershipUser> object and then passing the <xref:System.Web.Security.MembershipUser> object to the <xref:System.Web.Security.Membership.UpdateUser%2A> method.       If a user already exists in the data source for the application, you can obtain a <xref:System.Web.Security.MembershipUser> object for the existing user with the <xref:System.Web.Security.Membership.GetUser%2A> method.       Leading and trailing spaces are trimmed from all string parameter values."
+  summary: "Legger til en ny bruker med angitt egenskapsverdier og en unik identifikator i datakilden, og returnerer statusen parameter som angir at brukeren ble opprettet eller årsaken ikke kan opprette brukeren."
+  remarks: "CreateUser legger til en ny bruker i datakilden, og returnerer et <xref:System.Web.Security.MembershipUser>objekt for nyopprettede brukeren.</xref:System.Web.Security.MembershipUser> Hvis Brukeroppretting mislykkes, kan du hente en <xref:System.Web.Security.MembershipCreateStatus>verdi fra den `status` utdataparameter som angir hvorfor Brukeroppretting mislyktes.</xref:System.Web.Security.MembershipCreateStatus> Du kan angi en unik identifikator for brukeren, for eksempel verdien for en primærnøkkel for en database ved hjelp av `providerUserKey` parameteren.       Metoden CreateUser tilbakestiller `null` Hvis `password` er en tom streng eller `null`, `username` er en tom streng eller `null` eller inneholder et komma (,), `passwordQuestion` er ikke `null` og inneholder en tom streng eller `passwordAnswer` er ikke `null` og inneholder en tom streng.       Når en bruker medlemskap er opprettet, og du har en referanse til en <xref:System.Web.Security.MembershipUser>objekt for denne brukeren, kan du endre innstillingene for denne brukeren med den <xref:System.Web.Security.MembershipUser>offentlige metoder og ved å angi egenskapsverdiene for den <xref:System.Web.Security.MembershipUser>objekt og deretter sende den <xref:System.Web.Security.MembershipUser>objekt i <xref:System.Web.Security.Membership.UpdateUser%2A>metoden.</xref:System.Web.Security.Membership.UpdateUser%2A> </xref:System.Web.Security.MembershipUser> </xref:System.Web.Security.MembershipUser> </xref:System.Web.Security.MembershipUser> </xref:System.Web.Security.MembershipUser>       Hvis det finnes allerede en bruker i datakilden for programmet, kan du få en <xref:System.Web.Security.MembershipUser>objekt for eksisterende bruker med den <xref:System.Web.Security.Membership.GetUser%2A>metoden.</xref:System.Web.Security.Membership.GetUser%2A> </xref:System.Web.Security.MembershipUser>       Fjernes innledende og avsluttende mellomrom fra alle strengverdier for parameteren."
   syntax:
     content: public static System.Web.Security.MembershipUser CreateUser (string username, string password, string email, string passwordQuestion, string passwordAnswer, bool isApproved, object providerUserKey, out System.Web.Security.MembershipCreateStatus status);
     parameters:
     - id: username
       type: System.String
-      description: "The user name for the new user."
+      description: "Brukernavnet for den nye brukeren."
     - id: password
       type: System.String
-      description: "The password for the new user."
+      description: "Passordet for den nye brukeren."
     - id: email
       type: System.String
-      description: "The e-mail address for the new user."
+      description: "E-postadressen for den nye brukeren."
     - id: passwordQuestion
       type: System.String
-      description: "The password-question value for the membership user."
+      description: "Passordspørsmålet verdien for medlemskap brukeren."
     - id: passwordAnswer
       type: System.String
-      description: "The password-answer value for the membership user."
+      description: "Passordsvar verdien for medlemskap brukeren."
     - id: isApproved
       type: System.Boolean
-      description: "A Boolean that indicates whether the new user is approved to log on."
+      description: "En boolsk verdi som angir om den nye brukeren er godkjent til å logge på."
     - id: providerUserKey
       type: System.Object
-      description: "The user identifier for the user that should be stored in the membership data store."
+      description: "Bruker-ID for brukeren som skal lagres i datalageret medlemskap."
     - id: status
       type: System.Web.Security.MembershipCreateStatus
-      description: "A <xref:System.Web.Security.MembershipCreateStatus> indicating that the user was created successfully or the reason creation failed."
+      description: "En <xref:System.Web.Security.MembershipCreateStatus>som angir at brukeren ble opprettet eller ikke kan opprette årsak.</xref:System.Web.Security.MembershipCreateStatus>"
     return:
       type: System.Web.Security.MembershipUser
-      description: "A <xref:System.Web.Security.MembershipUser> object for the newly created user. If no user was created, this method returns <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "En <xref:System.Web.Security.MembershipUser>objekt for nyopprettede brukeren.</xref:System.Web.Security.MembershipUser> Hvis ingen bruker ble opprettet, metoden returnerer <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.Security.Membership.CreateUser*
   exceptions: []
   platform:
@@ -263,8 +263,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Deletes a user and any related user data from the database."
-  remarks: "User data stored in the database for the <xref:System.Web.Security.Roles>, <xref:System.Web.HttpContext.Profile%2A>, or <xref:System.Web.UI.WebControls.WebParts.WebPart> personalization is also deleted when you are using the <xref:System.Web.Security.SqlRoleProvider>, <xref:System.Web.Profile.SqlProfileProvider>, and <xref:System.Web.UI.WebControls.WebParts.SqlPersonalizationProvider> objects for data storage."
+  summary: "Sletter en bruker og relaterte brukerdata fra databasen."
+  remarks: "Dataene for brukeren som er lagret i databasen for den <xref:System.Web.Security.Roles>, <xref:System.Web.HttpContext.Profile%2A>, eller <xref:System.Web.UI.WebControls.WebParts.WebPart>personlige data slettes også når du bruker den <xref:System.Web.Security.SqlRoleProvider>, <xref:System.Web.Profile.SqlProfileProvider>, og <xref:System.Web.UI.WebControls.WebParts.SqlPersonalizationProvider>objekter for lagring av data.</xref:System.Web.UI.WebControls.WebParts.SqlPersonalizationProvider> </xref:System.Web.Profile.SqlProfileProvider> </xref:System.Web.Security.SqlRoleProvider> </xref:System.Web.UI.WebControls.WebParts.WebPart> </xref:System.Web.HttpContext.Profile%2A> </xref:System.Web.Security.Roles>"
   example:
   - "The following code example deletes the currently logged-on user and all related data.  \n  \n [!code-vb[System.Web.Security.Membership#8](~/add/codesnippet/visualbasic/m-system.web.security.me_11_1.aspx)]\n [!code-cs[System.Web.Security.Membership#8](~/add/codesnippet/csharp/m-system.web.security.me_11_1.aspx)]"
   syntax:
@@ -272,18 +272,18 @@ items:
     parameters:
     - id: username
       type: System.String
-      description: "The name of the user to delete."
+      description: "Navnet på brukeren som skal slettes."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the user was deleted; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis brukeren ble slettet; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.Security.Membership.DeleteUser*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>username</code> is an empty string or contains a comma (,)."
+    description: "<code>username</code>er en tom streng eller inneholder et komma (,)."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>username</code> is <xref uid=&quot;langword_csharp_null.&quot; name=&quot;null.&quot; href=&quot;&quot;></xref>"
+    description: "<code>username</code>er<xref uid=&quot;langword_csharp_null.&quot; name=&quot;null.&quot; href=&quot;&quot;></xref>"
   platform:
   - net462
 - uid: System.Web.Security.Membership.DeleteUser(System.String,System.Boolean)
@@ -298,8 +298,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Deletes a user from the database."
-  remarks: "Users deleted from the database are only deleted from the configured `applicationName`.       If `deleteAllRelatedData` is `true`, user data stored in the database for the <xref:System.Web.Security.Roles>, <xref:System.Web.HttpContext.Profile%2A>, or <xref:System.Web.UI.WebControls.WebParts.WebPart> personalization is also deleted when you are using the <xref:System.Web.Security.SqlRoleProvider>, <xref:System.Web.Profile.SqlProfileProvider>, and <xref:System.Web.UI.WebControls.WebParts.SqlPersonalizationProvider> objects for data storage."
+  summary: "Sletter en bruker fra databasen."
+  remarks: "Brukere ble slettet fra databasen, blir bare slettet fra den konfigurerte `applicationName`.       Hvis `deleteAllRelatedData` er `true`, brukerdata som er lagret i databasen for den <xref:System.Web.Security.Roles>, <xref:System.Web.HttpContext.Profile%2A>, eller <xref:System.Web.UI.WebControls.WebParts.WebPart>personlige data slettes også når du bruker den <xref:System.Web.Security.SqlRoleProvider>, <xref:System.Web.Profile.SqlProfileProvider>, og <xref:System.Web.UI.WebControls.WebParts.SqlPersonalizationProvider>objekter for lagring av data.</xref:System.Web.UI.WebControls.WebParts.SqlPersonalizationProvider> </xref:System.Web.Profile.SqlProfileProvider> </xref:System.Web.Security.SqlRoleProvider> </xref:System.Web.UI.WebControls.WebParts.WebPart> </xref:System.Web.HttpContext.Profile%2A> </xref:System.Web.Security.Roles>"
   example:
   - "The following code example deletes the currently logged-on user and all related data.  \n  \n [!code-cs[System.Web.Security.SqlMembershipProvider#6](~/add/codesnippet/csharp/m-system.web.security.me_12_1.aspx)]\n [!code-vb[System.Web.Security.SqlMembershipProvider#6](~/add/codesnippet/visualbasic/m-system.web.security.me_12_1.aspx)]"
   syntax:
@@ -307,21 +307,21 @@ items:
     parameters:
     - id: username
       type: System.String
-      description: "The name of the user to delete."
+      description: "Navnet på brukeren som skal slettes."
     - id: deleteAllRelatedData
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to delete data related to the user from the database; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to leave data related to the user in the database."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>slette data relatert til brukeren fra databasen. <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> forlate data relatert til brukeren i databasen."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the user was deleted; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis brukeren ble slettet; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.Security.Membership.DeleteUser*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>username</code> is an empty string or contains a comma (,)."
+    description: "<code>username</code>er en tom streng eller inneholder et komma (,)."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>username</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>username</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Web.Security.Membership.EnablePasswordReset
@@ -336,15 +336,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Gets a value indicating whether the current membership provider is configured to allow users to reset their passwords."
-  remarks: "Password reset is the ability for ASP.NET membership to replace the current password for a user name with a new, randomly generated password when a user has forgotten their password or the current password is no longer valid. This is especially useful when password format is set to <xref:System.Web.Security.MembershipPasswordFormat>, as users cannot retrieve hashed password values."
+  summary: "Henter en verdi som angir om den gjeldende Medlemskapsleverandøren er konfigurert slik at brukere kan tilbakestille passordene sine."
+  remarks: "Passord tilbakestilling er mulighet for ASP.NET-medlemskap erstatte gjeldende passord for et brukernavn med et nytt, tilfeldig generert passord når en bruker har glemt passordet, eller gjeldende passord er ikke gyldig lenger. Dette er nyttig når passord format er satt til <xref:System.Web.Security.MembershipPasswordFormat>, som brukere ikke kan hente kontrollsummert passord verdier.</xref:System.Web.Security.MembershipPasswordFormat>"
   example:
   - "The following code example shows the  element in the `system.web` section of the Web.config file for an ASP.NET application. It specifies that the application use an instance of the <xref:System.Web.Security.SqlMembershipProvider> and enables password reset.  \n  \n```  \n<membership defaultProvider=\"SqlProvider\" userIsOnlineTimeWindow=\"20\">  \n  <providers>  \n    <add name=\"SqlProvider\"  \n      type=\"System.Web.Security.SqlMembershipProvider\"  \n      connectionStringName=\"SqlServices\"  \n      enablePasswordRetrieval=\"false\"  \n      enablePasswordReset=\"true\"  \n      requiresQuestionAndAnswer=\"true\"  \n      passwordFormat=\"Hashed\"  \n      applicationName=\"MyApplication\" />  \n  </providers>  \n</membership>  \n```  \n  \n The following code example first verifies that EnablePasswordReset is `true`, then resets a user's password and returns the new, automatically generated password.  \n  \n [!code-cs[System.Web.Security.SqlMembershipProvider#8](~/add/codesnippet/csharp/p-system.web.security.me_2_1.aspx)]\n [!code-vb[System.Web.Security.SqlMembershipProvider#8](~/add/codesnippet/visualbasic/p-system.web.security.me_2_1.aspx)]"
   syntax:
     content: public static bool EnablePasswordReset { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the membership provider supports password reset; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis leverandøren av medlemskapet støtter tilbakestilling av passord; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.Security.Membership.EnablePasswordReset*
   exceptions: []
   platform:
@@ -361,15 +361,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Gets a value indicating whether the current membership provider is configured to allow users to retrieve their passwords."
-  remarks: "If EnablePasswordRetrieval is `false`, the underlying membership provider may throw a <xref:System.Web.HttpException>.       The providers that are included with the .NET Framework support multiple password formats to enhance password security. If the password format is set to <xref:System.Web.Security.MembershipPasswordFormat>, then users will not be able to retrieve their existing password from the database. The <xref:System.Web.Security.MembershipPasswordFormat> password format provides one-way encoding of password values. Passwords are &quot;hashed&quot; and compared to values stored in the database for authentication. &quot;Hashed&quot; values cannot be un-encoded to retrieve the original password value. For more information, see <xref:System.Web.Security.MembershipPasswordFormat>."
+  summary: "Henter en verdi som angir om den gjeldende Medlemskapsleverandøren er konfigurert slik at brukere kan hente passordene."
+  remarks: "Hvis EnablePasswordRetrieval `false`, den underliggende Medlemskapsleverandøren kan throw <xref:System.Web.HttpException>.</xref:System.Web.HttpException>       Leverandører som er inkludert i .NET Framework støtter flere passord formater for å forbedre sikkerheten for passordet. Hvis Passordformatet er satt til <xref:System.Web.Security.MembershipPasswordFormat>, og deretter brukere vil ikke kunne ikke hente eksisterende passordet fra databasen.</xref:System.Web.Security.MembershipPasswordFormat> Den <xref:System.Web.Security.MembershipPasswordFormat>passordformatet gir enveis kodingen for passord verdier.</xref:System.Web.Security.MembershipPasswordFormat> Passord er &quot;bruke hash-kode&quot; og sammenlignet med verdier som er lagret i databasen for godkjenning. &quot;Kontrollsummert&quot; kan ikke være transaksjon kodet til å hente den opprinnelige verdien for passord. Hvis du vil ha mer informasjon, kan du se <xref:System.Web.Security.MembershipPasswordFormat>.</xref:System.Web.Security.MembershipPasswordFormat>"
   example:
   - "The following code example shows the  element in the `system.web` section of the Web.config file for an ASP.NET application. It specifies that the application use an instance of the <xref:System.Web.Security.SqlMembershipProvider> and enables password retrieval.  \n  \n```  \n<membership defaultProvider=\"SqlProvider\" userIsOnlineTimeWindow=\"20\">  \n  <providers>  \n    <add name=\"SqlProvider\"  \n      type=\"System.Web.Security.SqlMembershipProvider\"  \n      connectionStringName=\"SqlServices\"  \n      enablePasswordRetrieval=\"true\"  \n      enablePasswordReset=\"false\"  \n      requiresQuestionAndAnswer=\"false\"  \n      passwordFormat=\"Encrypted\"  \n      applicationName=\"MyApplication\" />  \n  </providers>  \n</membership>  \n```  \n  \n The following code example first verifies that EnablePasswordRetrieval is `true`, then retrieves the password for a specified user name and sends it to the e-mail address for the specified user.  \n  \n> [!IMPORTANT]\n>  Returning a password in clear text using e-mail is not recommended for sites that require a high level of security. For high-security sites, we recommend that you return passwords using encryption, such as SSL.  \n>   \n>  This example includes a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-vb[System.Web.Security.SqlMembershipProvider#4](~/add/codesnippet/visualbasic/p-system.web.security.me_4_1.aspx)]\n [!code-cs[System.Web.Security.SqlMembershipProvider#4](~/add/codesnippet/csharp/p-system.web.security.me_4_1.aspx)]"
   syntax:
     content: public static bool EnablePasswordRetrieval { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the membership provider supports password retrieval; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis leverandøren av medlemskapet støtter henting av passord; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.Security.Membership.EnablePasswordRetrieval*
   exceptions: []
   platform:
@@ -386,8 +386,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Gets a collection of membership users where the e-mail address contains the specified e-mail address to match."
-  remarks: "FindUsersByEmail returns a list of membership users where the e-mail address matches the supplied `emailToMatch` for the configured `applicationName`.       The <xref:System.Web.Security.SqlMembershipProvider> performs its search using a LIKE clause against the `emailToMatch` parameter. Any wildcards that are supported by SQL Server in LIKE clauses can be used in the `emailToMatch` parameter value."
+  summary: "Henter en samling av medlemskapsbrukere der e-postadressen inneholder den angitte e-postadressen samsvarer."
+  remarks: "FindUsersByEmail returnerer en liste over medlemskapsbrukere der e-postadressen samsvarer med den angitte `emailToMatch` for den konfigurerte `applicationName`.       Den <xref:System.Web.Security.SqlMembershipProvider>utfører søket ved hjelp av en LIKE-setningsdel mot den `emailToMatch` parameteren.</xref:System.Web.Security.SqlMembershipProvider> Jokertegn som støttes av SQL Server i som setningsdeler kan brukes i den `emailToMatch` parameterverdi."
   example:
   - "The following code example uses the FindUsersByEmail method to retrieve membership user information from the membership database based on user input and displays the results in pages of data.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-vb[System.Web.Security.Membership#9](~/add/codesnippet/visualbasic/m-system.web.security.me_10_1.aspx)]\n [!code-cs[System.Web.Security.Membership#9](~/add/codesnippet/csharp/m-system.web.security.me_10_1.aspx)]"
   syntax:
@@ -395,10 +395,10 @@ items:
     parameters:
     - id: emailToMatch
       type: System.String
-      description: "The e-mail address to search for."
+      description: "E-postadressen til å søke etter."
     return:
       type: System.Web.Security.MembershipUserCollection
-      description: "A <xref:System.Web.Security.MembershipUserCollection> that contains all users that match the <code>emailToMatch</code> parameter.       Leading and trailing spaces are trimmed from the <code>emailToMatch</code> parameter value."
+      description: "En <xref:System.Web.Security.MembershipUserCollection>som inneholder alle brukere som samsvarer med den <code> emailToMatch </code> parameteren.</xref:System.Web.Security.MembershipUserCollection>       Innledende og avsluttende mellomrom fjernes fra den <code> emailToMatch </code> parameterverdi."
   overload: System.Web.Security.Membership.FindUsersByEmail*
   exceptions: []
   platform:
@@ -415,8 +415,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Gets a collection of membership users, in a page of data, where the e-mail address contains the specified e-mail address to match."
-  remarks: "FindUsersByEmail returns a list of membership users where the e-mail address matches the supplied `emailToMatch` for the configured `applicationName`.       The <xref:System.Web.Security.SqlMembershipProvider> performs its search using a LIKE clause against the `emailToMatch` parameter. Any wildcards that are supported by SQL Server in LIKE clauses can be used in the `emailToMatch` parameter value.       The results returned by FindUsersByEmail are constrained by the `pageIndex` and `pageSize` parameters. The `pageSize` parameter identifies the maximum number of <xref:System.Web.Security.MembershipUser> objects to return in the <xref:System.Web.Security.MembershipUserCollection>. The `pageIndex` parameter identifies which page of results to return, where 0 identifies the first page. The `totalRecords` parameter is an `out` parameter that is set to the total number of membership users that matched the `emailToMatch` value. For example, if 13 users were found where `emailToMatch` matched part of or the entire e-mail address, and the `pageIndex` value was 1 with a `pageSize` of 5, the <xref:System.Web.Security.MembershipUserCollection> returned would contain the sixth through the tenth users returned. `totalRecords` would be set to 13.       Leading and trailing spaces are trimmed from the `emailToMatch` parameter value."
+  summary: "Henter en samling av medlemskapsbrukere på en side med data, der e-postadressen inneholder den angitte e-postadressen samsvarer."
+  remarks: "FindUsersByEmail returnerer en liste over medlemskapsbrukere der e-postadressen samsvarer med den angitte `emailToMatch` for den konfigurerte `applicationName`.       Den <xref:System.Web.Security.SqlMembershipProvider>utfører søket ved hjelp av en LIKE-setningsdel mot den `emailToMatch` parameteren.</xref:System.Web.Security.SqlMembershipProvider> Jokertegn som støttes av SQL Server i som setningsdeler kan brukes i den `emailToMatch` parameterverdi.       Resultatene som returneres av FindUsersByEmail er begrenset av den `pageIndex` og `pageSize` parametere. Den `pageSize` parameteren identifiserer maksimalt antall <xref:System.Web.Security.MembershipUser>objekter til å returnere i <xref:System.Web.Security.MembershipUserCollection>.</xref:System.Web.Security.MembershipUserCollection> </xref:System.Web.Security.MembershipUser> Den `pageIndex` parameteren identifiserer hvilke siden med resultater skal returneres, der 0 identifiserer den første siden. Den `totalRecords` parameteren er en `out` parameter som er satt til antall medlemskapsbrukere som samsvarer med den `emailToMatch` verdi. Hvis for eksempel, fant 13 brukere where `emailToMatch` samsvarte med en del av eller hele e-postadresse og `pageIndex` verdien er 1 med en `pageSize` 5, den <xref:System.Web.Security.MembershipUserCollection>returnerte inneholder sjette via tiende brukerne returnerte.</xref:System.Web.Security.MembershipUserCollection> `totalRecords`kan settes til 13.       Innledende og avsluttende mellomrom fjernes fra den `emailToMatch` parameterverdi."
   example:
   - "The following code example uses the FindUsersByEmail method to retrieve membership user information from the membership database based on user input and displays the results in pages of data.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[System.Web.Security.SqlMembershipProvider#13](~/add/codesnippet/csharp/1954016c-87a4-4acf-9d54-_1.aspx)]\n [!code-vb[System.Web.Security.SqlMembershipProvider#13](~/add/codesnippet/visualbasic/1954016c-87a4-4acf-9d54-_1.aspx)]"
   syntax:
@@ -424,24 +424,24 @@ items:
     parameters:
     - id: emailToMatch
       type: System.String
-      description: "The e-mail address to search for."
+      description: "E-postadressen til å søke etter."
     - id: pageIndex
       type: System.Int32
-      description: "The index of the page of results to return. `pageIndex` is zero-based."
+      description: "Indeksen for siden for resultatene skal returneres. `pageIndex`er null."
     - id: pageSize
       type: System.Int32
-      description: "The size of the page of results to return."
+      description: "Størrelsen på siden med resultater skal returneres."
     - id: totalRecords
       type: System.Int32
-      description: "The total number of matched users."
+      description: "Totalt antall brukere som samsvarer."
     return:
       type: System.Web.Security.MembershipUserCollection
-      description: "A <xref:System.Web.Security.MembershipUserCollection> that contains a page of <code>pageSize</code><xref:System.Web.Security.MembershipUser> objects beginning at the page specified by <code>pageIndex</code>."
+      description: "En <xref:System.Web.Security.MembershipUserCollection>som inneholder en side med <code> pageSize </code> <xref:System.Web.Security.MembershipUser>objekter som begynner på siden som er angitt av <code> pageIndex </code>.</xref:System.Web.Security.MembershipUser> </xref:System.Web.Security.MembershipUserCollection>"
   overload: System.Web.Security.Membership.FindUsersByEmail*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>pageIndex</code> is less than zero.       -or-       <code>pageSize</code> is less than 1."
+    description: "<code>pageIndex</code>er mindre enn null.       - eller - <code>pageSize</code> er mindre enn 1."
   platform:
   - net462
 - uid: System.Web.Security.Membership.FindUsersByName(System.String)
@@ -456,8 +456,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Gets a collection of membership users where the user name contains the specified user name to match."
-  remarks: "<xref:System.Web.Security.SqlMembershipProvider.FindUsersByName%2A> returns a list of membership users where the user name matches the supplied `usernameToMatch` for the configured `applicationName`.       The <xref:System.Web.Security.SqlMembershipProvider> performs its search using a LIKE clause against the `usernameToMatch` parameter. Any wildcards that are supported by SQL Server in LIKE clauses can be used in the `usernameToMatch` parameter value.       Leading and trailing spaces are trimmed from all parameter values."
+  summary: "Henter en samling av medlemskapsbrukere der brukernavnet inneholder det angitte brukernavnet samsvarer."
+  remarks: "<xref:System.Web.Security.SqlMembershipProvider.FindUsersByName%2A>Returnerer en liste over medlemskapsbrukere der brukernavnet samsvarer med den angitte `usernameToMatch` for den konfigurerte `applicationName`.</xref:System.Web.Security.SqlMembershipProvider.FindUsersByName%2A>       Den <xref:System.Web.Security.SqlMembershipProvider>utfører søket ved hjelp av en LIKE-setningsdel mot den `usernameToMatch` parameteren.</xref:System.Web.Security.SqlMembershipProvider> Jokertegn som støttes av SQL Server i som setningsdeler kan brukes i den `usernameToMatch` parameterverdi.       Fjernes innledende og avsluttende mellomrom fra alle parameterverdier."
   example:
   - "The following code example uses the FindUsersByName method to retrieve membership user information from the membership database based on user input and displays the results in pages of data.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-vb[System.Web.Security.Membership#10](~/add/codesnippet/visualbasic/m-system.web.security.me_6_1.aspx)]\n [!code-cs[System.Web.Security.Membership#10](~/add/codesnippet/csharp/m-system.web.security.me_6_1.aspx)]"
   syntax:
@@ -465,18 +465,18 @@ items:
     parameters:
     - id: usernameToMatch
       type: System.String
-      description: "The user name to search for."
+      description: "Brukernavnet for å søke etter."
     return:
       type: System.Web.Security.MembershipUserCollection
-      description: "A <xref:System.Web.Security.MembershipUserCollection> that contains all users that match the <code>usernameToMatch</code> parameter.       Leading and trailing spaces are trimmed from the <code>usernameToMatch</code> parameter value."
+      description: "En <xref:System.Web.Security.MembershipUserCollection>som inneholder alle brukere som samsvarer med den <code> usernameToMatch </code> parameteren.</xref:System.Web.Security.MembershipUserCollection>       Innledende og avsluttende mellomrom fjernes fra den <code> usernameToMatch </code> parameterverdi."
   overload: System.Web.Security.Membership.FindUsersByName*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>usernameToMatch</code> is an empty string."
+    description: "<code>usernameToMatch</code>er en tom streng."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>usernameToMatch</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>usernameToMatch</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Web.Security.Membership.FindUsersByName(System.String,System.Int32,System.Int32,System.Int32@)
@@ -491,8 +491,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Gets a collection of membership users, in a page of data, where the user name contains the specified user name to match."
-  remarks: "<xref:System.Web.Security.SqlMembershipProvider.FindUsersByName%2A> returns a list of membership users where the user name matches the supplied `usernameToMatch` for the configured `applicationName`.       The <xref:System.Web.Security.SqlMembershipProvider> performs its search using a LIKE clause against the `usernameToMatch` parameter. Any wildcards that are supported by SQL Server in LIKE clauses can be used in the `usernameToMatch` parameter value.       The results returned by FindUsersByName are constrained by the `pageIndex` and `pageSize` parameters. The `pageSize` parameter identifies the maximum number of <xref:System.Web.Security.MembershipUser> objects to return in the <xref:System.Web.Security.MembershipUserCollection>. The `pageIndex` parameter identifies which page of results to return, where 0 identifies the first page. The `totalRecords` parameter is an `out` parameter that is set to the total number of membership users that matched the `usernameToMatch` value. For example, if 13 users were found where `usernameToMatch` matched part of or the entire user name, and the `pageIndex` value was 1 with a `pageSize` of 5, the <xref:System.Web.Security.MembershipUserCollection> returned would contain the sixth through the tenth users returned. `totalRecords` would be set to 13."
+  summary: "Henter en samling av medlemskapsbrukere på en side med data, der brukernavnet inneholder det angitte brukernavnet samsvarer."
+  remarks: "<xref:System.Web.Security.SqlMembershipProvider.FindUsersByName%2A>Returnerer en liste over medlemskapsbrukere der brukernavnet samsvarer med den angitte `usernameToMatch` for den konfigurerte `applicationName`.</xref:System.Web.Security.SqlMembershipProvider.FindUsersByName%2A>       Den <xref:System.Web.Security.SqlMembershipProvider>utfører søket ved hjelp av en LIKE-setningsdel mot den `usernameToMatch` parameteren.</xref:System.Web.Security.SqlMembershipProvider> Jokertegn som støttes av SQL Server i som setningsdeler kan brukes i den `usernameToMatch` parameterverdi.       Resultatene som returneres av FindUsersByName er begrenset av den `pageIndex` og `pageSize` parametere. Den `pageSize` parameteren identifiserer maksimalt antall <xref:System.Web.Security.MembershipUser>objekter til å returnere i <xref:System.Web.Security.MembershipUserCollection>.</xref:System.Web.Security.MembershipUserCollection> </xref:System.Web.Security.MembershipUser> Den `pageIndex` parameteren identifiserer hvilke siden med resultater skal returneres, der 0 identifiserer den første siden. Den `totalRecords` parameteren er en `out` parameter som er satt til antall medlemskapsbrukere som samsvarer med den `usernameToMatch` verdi. Hvis for eksempel, fant 13 brukere where `usernameToMatch` samsvarte med en del av eller hele brukernavnet, og `pageIndex` verdien er 1 med en `pageSize` 5, den <xref:System.Web.Security.MembershipUserCollection>returnerte inneholder sjette via tiende brukerne returnerte.</xref:System.Web.Security.MembershipUserCollection> `totalRecords`kan settes til 13."
   example:
   - "The following code example uses the FindUsersByName method to retrieve membership user information from the membership database based on user input and displays the results in pages of data.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[System.Web.Security.SqlMembershipProvider#12](~/add/codesnippet/csharp/4f01d951-55a8-446c-be57-_1.aspx)]\n [!code-vb[System.Web.Security.SqlMembershipProvider#12](~/add/codesnippet/visualbasic/4f01d951-55a8-446c-be57-_1.aspx)]"
   syntax:
@@ -500,27 +500,27 @@ items:
     parameters:
     - id: usernameToMatch
       type: System.String
-      description: "The user name to search for."
+      description: "Brukernavnet for å søke etter."
     - id: pageIndex
       type: System.Int32
-      description: "The index of the page of results to return. `pageIndex` is zero-based."
+      description: "Indeksen for siden for resultatene skal returneres. `pageIndex`er null."
     - id: pageSize
       type: System.Int32
-      description: "The size of the page of results to return."
+      description: "Størrelsen på siden med resultater skal returneres."
     - id: totalRecords
       type: System.Int32
-      description: "The total number of matched users."
+      description: "Totalt antall brukere som samsvarer."
     return:
       type: System.Web.Security.MembershipUserCollection
-      description: "A <xref:System.Web.Security.MembershipUserCollection> that contains a page of <code>pageSize</code><xref:System.Web.Security.MembershipUser> objects beginning at the page specified by <code>pageIndex</code>.       Leading and trailing spaces are trimmed from the <code>usernameToMatch</code> parameter value."
+      description: "En <xref:System.Web.Security.MembershipUserCollection>som inneholder en side med <code> pageSize </code> <xref:System.Web.Security.MembershipUser>objekter som begynner på siden som er angitt av <code> pageIndex </code>.</xref:System.Web.Security.MembershipUser> </xref:System.Web.Security.MembershipUserCollection>       Innledende og avsluttende mellomrom fjernes fra den <code> usernameToMatch </code> parameterverdi."
   overload: System.Web.Security.Membership.FindUsersByName*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>usernameToMatch</code> is an empty string.       -or-       <code>pageIndex</code> is less than zero.       -or-       <code>pageSize</code> is less than 1."
+    description: "<code>usernameToMatch</code>er en tom streng.       - eller - <code>pageIndex</code> er mindre enn null.       - eller - <code>pageSize</code> er mindre enn 1."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>usernameToMatch</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>usernameToMatch</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Web.Security.Membership.GeneratePassword(System.Int32,System.Int32)
@@ -535,8 +535,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Generates a random password of the specified length."
-  remarks: "The GeneratePassword method is used to generate a random password and is most commonly used by the <xref:System.Web.Security.MembershipProvider.ResetPassword%2A> method implemented by a membership provider to reset the password for a user to a new, temporary password.       The generated password only contains alphanumeric characters and the following punctuation marks: `!@#$%^&*()_-+=[{]};:<>|./?`. No hidden or non-printable control characters are included in the generated password.      > [!NOTE] >  The random password created by the GeneratePassword method is not guaranteed to pass the regular expression in the <xref:System.Web.Security.Membership.PasswordStrengthRegularExpression%2A> property. However, the random password will meet the criteria established by the <xref:System.Web.Security.Membership.MinRequiredPasswordLength%2A> property and the `numberOfNonAlphanumericCharacters` parameter."
+  summary: "Genererer en tilfeldig passordet for den angitte lengden."
+  remarks: "Metoden GeneratePassword brukes til å generere et tilfeldig passord og vanligvis brukes av den <xref:System.Web.Security.MembershipProvider.ResetPassword%2A>metoden implementeres av en leverandør av medlemskap å tilbakestille passordet for en bruker til et nytt midlertidig passord.</xref:System.Web.Security.MembershipProvider.ResetPassword%2A>       Genererte passordet inneholder bare alfanumeriske tegn og følgende skilletegn: `!@#$%^&*()_-+=[{]};:<>|./?`. Ingen skjult eller ikke kan skrives ut kontrolltegn er inkludert i genererte passordet.      > [!NOTE] > Tilfeldig passordet opprettet av metoden GeneratePassword garanteres ikke til å sende det vanlige uttrykket i den <xref:System.Web.Security.Membership.PasswordStrengthRegularExpression%2A>egenskapen.</xref:System.Web.Security.Membership.PasswordStrengthRegularExpression%2A> Tilfeldig passordet vil imidlertid oppfyller kriteriene opprettet av den <xref:System.Web.Security.Membership.MinRequiredPasswordLength%2A>egenskapen og `numberOfNonAlphanumericCharacters` parameteren.</xref:System.Web.Security.Membership.MinRequiredPasswordLength%2A>"
   example:
   - "The following code example creates a new membership user and uses the GeneratePassword method to initialize the password for the new user to a random value, which is displayed to the user.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-vb[System.Web.Security.Membership#5](~/add/codesnippet/visualbasic/m-system.web.security.me_1_1.aspx)]\n [!code-cs[System.Web.Security.Membership#5](~/add/codesnippet/csharp/m-system.web.security.me_1_1.aspx)]"
   syntax:
@@ -544,18 +544,18 @@ items:
     parameters:
     - id: length
       type: System.Int32
-      description: "The number of characters in the generated password. The length must be between 1 and 128 characters."
+      description: "Antallet tegn i genererte passordet. Lengden må være mellom 1 og 128 tegn."
     - id: numberOfNonAlphanumericCharacters
       type: System.Int32
-      description: 'The minimum number of non-alphanumeric characters (such as @, #, !, %, &amp;, and so on) in the generated password.'
+      description: 'Minste antall ikke-alfanumeriske tegn (eksempel @, #,!, %, &amp;og så videre) i genererte passordet.'
     return:
       type: System.String
-      description: "A random password of the specified length."
+      description: "En tilfeldig passordet for den angitte lengden."
   overload: System.Web.Security.Membership.GeneratePassword*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>length</code> is less than 1 or greater than 128 -or-       <code>numberOfNonAlphanumericCharacters</code> is less than 0 or greater than <code>length</code>."
+    description: "<code>length</code>er mindre enn 1 eller større enn 128 - eller - <code>numberOfNonAlphanumericCharacters</code> er mindre enn 0 eller større enn <code>length</code>."
   platform:
   - net462
 - uid: System.Web.Security.Membership.GetAllUsers
@@ -570,8 +570,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Gets a collection of all the users in the database."
-  remarks: "GetAllUsers returns the information for all membership users for an application as a collection of <xref:System.Web.Security.MembershipUser> objects. Be careful when using the GetAllUsers method with very large user databases, as the resulting <xref:System.Web.Security.MembershipUserCollection> in your ASP.NET page may degrade the performance of your application."
+  summary: "Henter en samling av alle brukerne i databasen."
+  remarks: "GetAllUsers returnerer informasjon for alle medlemskapsbrukere for et program som en samling av <xref:System.Web.Security.MembershipUser>objekter.</xref:System.Web.Security.MembershipUser> Vær forsiktig med metoden GetAllUsers med svært brukerdatabaser som den resulterende <xref:System.Web.Security.MembershipUserCollection>siden kan redusere ytelsen til programmet i din ASP.NET.</xref:System.Web.Security.MembershipUserCollection>"
   example:
   - "The following code example returns a list of users with a count of the number of users currently online.  \n  \n [!code-vb[System.Web.Security.SqlMembershipProvider#5](~/add/codesnippet/visualbasic/m-system.web.security.me_4_1.aspx)]\n [!code-cs[System.Web.Security.SqlMembershipProvider#5](~/add/codesnippet/csharp/m-system.web.security.me_4_1.aspx)]"
   syntax:
@@ -579,7 +579,7 @@ items:
     parameters: []
     return:
       type: System.Web.Security.MembershipUserCollection
-      description: "A <xref:System.Web.Security.MembershipUserCollection> of <xref:System.Web.Security.MembershipUser> objects representing all of the users in the database."
+      description: "En <xref:System.Web.Security.MembershipUserCollection>av <xref:System.Web.Security.MembershipUser>objekter som representerer alle brukere i databasen.</xref:System.Web.Security.MembershipUser> </xref:System.Web.Security.MembershipUserCollection>"
   overload: System.Web.Security.Membership.GetAllUsers*
   exceptions: []
   platform:
@@ -596,8 +596,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Gets a collection of all the users in the database in pages of data."
-  remarks: "The results returned by GetAllUsers are constrained by the `pageIndex` and `pageSize` parameters. The `pageSize` parameter identifies the maximum number of <xref:System.Web.Security.MembershipUser> objects to return in the <xref:System.Web.Security.MembershipUserCollection>. The `pageIndex` parameter identifies which page of results to return, where 0 identifies the first page. The `totalRecords` parameter is an `out` parameter that is set to the total number of membership users for the configured `applicationName`. For example, if there are 13 users for the configured `applicationName`, and the `pageIndex` value was 1 with a `pageSize` of 5, the <xref:System.Web.Security.MembershipUserCollection> returned would contain the sixth through the tenth users returned. `totalRecords` would be set to 13."
+  summary: "Henter en samling av alle brukerne i databasen i sider med data."
+  remarks: "Resultatene som returneres av GetAllUsers er begrenset av den `pageIndex` og `pageSize` parametere. Den `pageSize` parameteren identifiserer maksimalt antall <xref:System.Web.Security.MembershipUser>objekter til å returnere i <xref:System.Web.Security.MembershipUserCollection>.</xref:System.Web.Security.MembershipUserCollection> </xref:System.Web.Security.MembershipUser> Den `pageIndex` parameteren identifiserer hvilke siden med resultater skal returneres, der 0 identifiserer den første siden. Den `totalRecords` parameteren er en `out` parameter som er satt til totalt antall medlemskapsbrukere for den konfigurerte `applicationName`. For eksempel hvis det finnes 13 brukere for den konfigurerte `applicationName`, og `pageIndex` verdien er 1 med en `pageSize` 5, den <xref:System.Web.Security.MembershipUserCollection>returnerte inneholder sjette via tiende brukerne returnerte.</xref:System.Web.Security.MembershipUserCollection> `totalRecords`kan settes til 13."
   example:
   - "The following code example returns a list of users in pages of data with a count of the number of users currently online.  \n  \n [!code-vb[System.Web.Security.SqlMembershipProvider#5](~/add/codesnippet/visualbasic/e84b0b6e-963c-4328-843a-_1.aspx)]\n [!code-cs[System.Web.Security.SqlMembershipProvider#5](~/add/codesnippet/csharp/e84b0b6e-963c-4328-843a-_1.aspx)]"
   syntax:
@@ -605,21 +605,21 @@ items:
     parameters:
     - id: pageIndex
       type: System.Int32
-      description: "The index of the page of results to return. Use 0 to indicate the first page."
+      description: "Indeksen for siden for resultatene skal returneres. Bruk 0 for å angi den første siden."
     - id: pageSize
       type: System.Int32
-      description: "The size of the page of results to return. `pageIndex` is zero-based."
+      description: "Størrelsen på siden med resultater skal returneres. `pageIndex`er null."
     - id: totalRecords
       type: System.Int32
-      description: "The total number of users."
+      description: "Totalt antall brukere."
     return:
       type: System.Web.Security.MembershipUserCollection
-      description: "A <xref:System.Web.Security.MembershipUserCollection> of <xref:System.Web.Security.MembershipUser> objects representing all the users in the database for the configured <xref uid=&quot;langword_csharp_applicationName&quot; name=&quot;applicationName&quot; href=&quot;&quot;></xref>."
+      description: "En <xref:System.Web.Security.MembershipUserCollection>av <xref:System.Web.Security.MembershipUser>objekter som representerer alle brukerne i databasen for den konfigurerte <xref uid=&quot;langword_csharp_applicationName&quot; name=&quot;applicationName&quot; href=&quot;&quot;> </xref>.</xref:System.Web.Security.MembershipUser> </xref:System.Web.Security.MembershipUserCollection>"
   overload: System.Web.Security.Membership.GetAllUsers*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>pageIndex</code> is less than zero.       -or-       <code>pageSize</code> is less than 1."
+    description: "<code>pageIndex</code>er mindre enn null.       - eller - <code>pageSize</code> er mindre enn 1."
   platform:
   - net462
 - uid: System.Web.Security.Membership.GetNumberOfUsersOnline
@@ -634,8 +634,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Gets the number of users currently accessing an application."
-  remarks: "<xref:System.Web.Security.SqlMembershipProvider.GetNumberOfUsersOnline%2A> returns the number of users for the current <xref:System.Web.Security.Membership.ApplicationName%2A> where the last-activity date is greater than the current time less the <xref:System.Web.Security.Membership.UserIsOnlineTimeWindow%2A>. The last-activity date/time stamp is updated to the current date and time when user credentials are validated by way of the <xref:System.Web.Security.Membership.ValidateUser%2A> or <xref:System.Web.Security.Membership.UpdateUser%2A> method or when a call to a <xref:System.Web.Security.Membership.GetUser%2A> overload that takes no parameters or one that uses the `userIsOnline` parameter to specify that the date/time stamp should be updated."
+  summary: "Henter antallet brukere som har tilgang til en applikasjon."
+  remarks: "<xref:System.Web.Security.SqlMembershipProvider.GetNumberOfUsersOnline%2A>Returnerer antallet brukere for den gjeldende <xref:System.Web.Security.Membership.ApplicationName%2A>der datoen for siste aktivitet er større enn gjeldende klokkeslett mindre <xref:System.Web.Security.Membership.UserIsOnlineTimeWindow%2A>.</xref:System.Web.Security.Membership.UserIsOnlineTimeWindow%2A> </xref:System.Web.Security.Membership.ApplicationName%2A></xref:System.Web.Security.SqlMembershipProvider.GetNumberOfUsersOnline%2A> Den siste-aktiviteten dato/klokkeslett tidsstempel er oppdatert til gjeldende dato og klokkeslett når brukerlegitimasjon, godkjennes ved way av den <xref:System.Web.Security.Membership.ValidateUser%2A>eller <xref:System.Web.Security.Membership.UpdateUser%2A>metoden eller når et kall til en <xref:System.Web.Security.Membership.GetUser%2A>overbelastningen som tar uten parametere eller med den `userIsOnline` å angi at dato-/ tidsstempel skal oppdateres.</xref:System.Web.Security.Membership.GetUser%2A> </xref:System.Web.Security.Membership.UpdateUser%2A> </xref:System.Web.Security.Membership.ValidateUser%2A>"
   example:
   - "The following code example returns a list of users with a count of the number of users currently online.  \n  \n [!code-vb[System.Web.Security.SqlMembershipProvider#5](~/add/codesnippet/visualbasic/m-system.web.security.me_2_1.aspx)]\n [!code-cs[System.Web.Security.SqlMembershipProvider#5](~/add/codesnippet/csharp/m-system.web.security.me_2_1.aspx)]"
   syntax:
@@ -643,7 +643,7 @@ items:
     parameters: []
     return:
       type: System.Int32
-      description: "The number of users currently accessing an application."
+      description: "Antall brukere som har tilgang til en applikasjon."
   overload: System.Web.Security.Membership.GetNumberOfUsersOnline*
   exceptions: []
   platform:
@@ -660,8 +660,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Gets the information from the data source and updates the last-activity date/time stamp for the current logged-on membership user."
-  remarks: "GetUser retrieves the user information from the data source and creates a <xref:System.Web.Security.MembershipUser> object populated with the returned data. If you use one of the GetUser overloads that does not take a `username` parameter, GetUser returns the information for the current logged-on membership user. The current logged-on membership user is identified by the <xref:System.Security.Principal.IIdentity.Name%2A> of the user in the current <xref:System.Web.HttpContext>.       You can also specify whether you want GetUser to update the last-activity date/time stamp for the user being retrieved using the `userIsOnline` parameter. Of the <xref:System.Web.Security.Membership.GetUser%2A> overloads that do not take a `userIsOnline` parameter, `GetUser()` implicitly updates the last-activity date/time stamp for the user. `GetUser(System.String)` and `GetUser(System.Object)` do not."
+  summary: "Henter informasjon fra datakilden og oppdaterer siste-aktiviteten dato-/ tidsstempel for den gjeldende brukeren er logget på medlemskap."
+  remarks: "GetUser henter brukerinformasjonen fra datakilden, og oppretter en <xref:System.Web.Security.MembershipUser>objektet fylles ut med de returnerte dataene.</xref:System.Web.Security.MembershipUser> Hvis du bruker et av GetUser overlastingene som ikke tar en `username` parameteren GetUser returnerer informasjon for den gjeldende brukeren er logget på medlemskap. Gjeldende bruker er logget på medlemskap er identifisert av den <xref:System.Security.Principal.IIdentity.Name%2A>til brukeren i gjeldende <xref:System.Web.HttpContext>.</xref:System.Web.HttpContext> </xref:System.Security.Principal.IIdentity.Name%2A>       Du kan også angi om du vil GetUser å oppdatere den siste-aktiviteten tidsstempel for dato/klokkeslett for brukeren som hentes ved hjelp av den `userIsOnline` parameteren. For den <xref:System.Web.Security.Membership.GetUser%2A>overlastingene som ikke tar en `userIsOnline` parameteren `GetUser()` implisitt oppdateringer siste-aktiviteten dato-/ tidsstempel for brukeren.</xref:System.Web.Security.Membership.GetUser%2A> `GetUser(System.String)`og `GetUser(System.Object)` ikke."
   example:
   - "The following code example updates the last-activity date/time stamp for the current logged-on membership user and displays the user name in the ASP.NET page.  \n  \n [!code-cs[System.Web.Security.Membership#3](~/add/codesnippet/csharp/m-system.web.security.me_14_1.aspx)]\n [!code-vb[System.Web.Security.Membership#3](~/add/codesnippet/visualbasic/m-system.web.security.me_14_1.aspx)]"
   syntax:
@@ -669,12 +669,12 @@ items:
     parameters: []
     return:
       type: System.Web.Security.MembershipUser
-      description: "A <xref:System.Web.Security.MembershipUser> object representing the current logged-on user."
+      description: "En <xref:System.Web.Security.MembershipUser>-objekt som representerer gjeldende påloggede brukeren.</xref:System.Web.Security.MembershipUser>"
   overload: System.Web.Security.Membership.GetUser*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "No membership user is currently logged in."
+    description: "Ingen medlemskap brukeren er pålogget."
   platform:
   - net462
 - uid: System.Web.Security.Membership.GetUser(System.Boolean)
@@ -689,8 +689,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Gets the information from the data source for the current logged-on membership user. Updates the last-activity date/time stamp for the current logged-on membership user, if specified."
-  remarks: "The GetUser method retrieves the user information from the data source and creates a <xref:System.Web.Security.MembershipUser> object populated with the returned data. If you use one of the <xref:System.Web.Security.Membership.GetUser%2A> overloads that does not take a `username` parameter, <xref:System.Web.Security.Membership.GetUser%2A> returns the information for the current logged-on membership user. The current logged-on membership user is identified by the <xref:System.Security.Principal.IIdentity.Name%2A> of the user in the current <xref:System.Web.HttpContext>.       You can also specify whether you want <xref:System.Web.Security.Membership.GetUser%2A> to update the last-activity date/time stamp for the user being retrieved using the `userIsOnline` parameter. Of the <xref:System.Web.Security.Membership.GetUser%2A> overloads that do not take a `userIsOnline` parameter, `GetUser()` implicitly updates the last-activity date/time stamp for the user. `GetUser(System.String)` and `GetUser(System.Object)` do not."
+  summary: "Henter informasjon fra datakilden for den gjeldende brukeren er logget på medlemskap. Oppdateringer for siste-aktiviteten dato/klokkeslett tidsstempel for gjeldende bruker er logget på medlemskap, hvis angitt."
+  remarks: "Metoden GetUser henter brukerinformasjonen fra datakilden, og oppretter en <xref:System.Web.Security.MembershipUser>objektet fylles ut med de returnerte dataene.</xref:System.Web.Security.MembershipUser> Hvis du bruker en av de <xref:System.Web.Security.Membership.GetUser%2A>overlastingene som ikke tar en `username` parameteren <xref:System.Web.Security.Membership.GetUser%2A>returnerer informasjon for den gjeldende brukeren er logget på medlemskap.</xref:System.Web.Security.Membership.GetUser%2A> </xref:System.Web.Security.Membership.GetUser%2A> Gjeldende bruker er logget på medlemskap er identifisert av den <xref:System.Security.Principal.IIdentity.Name%2A>til brukeren i gjeldende <xref:System.Web.HttpContext>.</xref:System.Web.HttpContext> </xref:System.Security.Principal.IIdentity.Name%2A>       Du kan også angi om du vil <xref:System.Web.Security.Membership.GetUser%2A>å oppdatere den siste-aktiviteten tidsstempel for dato/klokkeslett for brukeren som hentes ved hjelp av den `userIsOnline` parameteren.</xref:System.Web.Security.Membership.GetUser%2A> For den <xref:System.Web.Security.Membership.GetUser%2A>overlastingene som ikke tar en `userIsOnline` parameteren `GetUser()` implisitt oppdateringer siste-aktiviteten dato-/ tidsstempel for brukeren.</xref:System.Web.Security.Membership.GetUser%2A> `GetUser(System.String)`og `GetUser(System.Object)` ikke."
   example:
   - "The following code example displays the user name for the current logged-on membership user in the ASP.NET page without updating the last-activity date/time stamp for the user.  \n  \n [!code-cs[System.Web.Security.Membership#4](~/add/codesnippet/csharp/m-system.web.security.me_9_1.aspx)]\n [!code-vb[System.Web.Security.Membership#4](~/add/codesnippet/visualbasic/m-system.web.security.me_9_1.aspx)]"
   syntax:
@@ -698,15 +698,15 @@ items:
     parameters:
     - id: userIsOnline
       type: System.Boolean
-      description: "If <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>, updates the last-activity date/time stamp for the specified user."
+      description: "Hvis <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>, oppdateringer siste-aktiviteten dato/klokkeslett tidsstempel for den angitte brukeren."
     return:
       type: System.Web.Security.MembershipUser
-      description: "A <xref:System.Web.Security.MembershipUser> object representing the current logged-on user."
+      description: "En <xref:System.Web.Security.MembershipUser>-objekt som representerer gjeldende påloggede brukeren.</xref:System.Web.Security.MembershipUser>"
   overload: System.Web.Security.Membership.GetUser*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "No membership user is currently logged in."
+    description: "Ingen medlemskap brukeren er pålogget."
   platform:
   - net462
 - uid: System.Web.Security.Membership.GetUser(System.Object)
@@ -721,22 +721,22 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Gets the information from the data source for the membership user associated with the specified unique identifier."
-  remarks: "The GetUser method retrieves the user information from the data source and creates a <xref:System.Web.Security.MembershipUser> object populated with the returned data. The user is identified using the unique identifier from the data source specified using the `providerUserKey` parameter.       You can also specify whether you want <xref:System.Web.Security.Membership.GetUser%2A> to update the last-activity date/time stamp for the user being retrieved with the `userIsOnline` parameter. Of the <xref:System.Web.Security.Membership.GetUser%2A> overloads that do not take a `userIsOnline` parameter, `GetUser()` implicitly updates the last-activity date/time stamp for the user. `GetUser(System.String)` and `GetUser(System.Object)` do not"
+  summary: "Henter informasjon fra datakilden for medlemskap brukeren som er knyttet til den angitte unike identifikatoren."
+  remarks: "Metoden GetUser henter brukerinformasjonen fra datakilden, og oppretter en <xref:System.Web.Security.MembershipUser>objektet fylles ut med de returnerte dataene.</xref:System.Web.Security.MembershipUser> Brukeren er identifisert ved hjelp av den unike identifikatoren fra datakilden ved hjelp av den `providerUserKey` parameteren.       Du kan også angi om du vil <xref:System.Web.Security.Membership.GetUser%2A>å oppdatere den siste-aktiviteten tidsstempel for dato/klokkeslett for brukeren som hentes med den `userIsOnline` parameteren.</xref:System.Web.Security.Membership.GetUser%2A> For den <xref:System.Web.Security.Membership.GetUser%2A>overlastingene som ikke tar en `userIsOnline` parameteren `GetUser()` implisitt oppdateringer siste-aktiviteten dato-/ tidsstempel for brukeren.</xref:System.Web.Security.Membership.GetUser%2A> `GetUser(System.String)`og `GetUser(System.Object)` ikke"
   syntax:
     content: public static System.Web.Security.MembershipUser GetUser (object providerUserKey);
     parameters:
     - id: providerUserKey
       type: System.Object
-      description: "The unique user identifier from the membership data source for the user."
+      description: "Den unike bruker-IDen fra datakilden for medlemskap for brukeren."
     return:
       type: System.Web.Security.MembershipUser
-      description: "A <xref:System.Web.Security.MembershipUser> object representing the user associated with the specified unique identifier."
+      description: "En <xref:System.Web.Security.MembershipUser>-objekt som representerer brukeren som er knyttet til den angitte unike identifikatoren.</xref:System.Web.Security.MembershipUser>"
   overload: System.Web.Security.Membership.GetUser*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>providerUserKey</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>providerUserKey</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Web.Security.Membership.GetUser(System.String)
@@ -751,8 +751,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Gets the information from the data source for the specified membership user."
-  remarks: "The GetUser method retrieves the user information from the data source and creates a <xref:System.Web.Security.MembershipUser> object populated with the returned data. If you use one of the <xref:System.Web.Security.Membership.GetUser%2A> overloads that does not take a `username` parameter, <xref:System.Web.Security.Membership.GetUser%2A> returns the information for the current logged-on membership user. The current logged-on membership user is identified by the <xref:System.Security.Principal.IIdentity.Name%2A> of the user in the current <xref:System.Web.HttpContext>.       You can also specify whether you want <xref:System.Web.Security.Membership.GetUser%2A> to update the last-activity date/time stamp for the user being retrieved with the `userIsOnline` parameter. Of the <xref:System.Web.Security.Membership.GetUser%2A> overloads that do not take a `userIsOnline` parameter, <xref:System.Web.Security.Membership.GetUser%2A?displayProperty=fullName> implicitly updates the last-activity date/time stamp for the user. GetUser and <xref:System.Web.Security.Membership.GetUser%2A> do not."
+  summary: "Henter informasjon fra datakilden for det angitte medlemskap."
+  remarks: "Metoden GetUser henter brukerinformasjonen fra datakilden, og oppretter en <xref:System.Web.Security.MembershipUser>objektet fylles ut med de returnerte dataene.</xref:System.Web.Security.MembershipUser> Hvis du bruker en av de <xref:System.Web.Security.Membership.GetUser%2A>overlastingene som ikke tar en `username` parameteren <xref:System.Web.Security.Membership.GetUser%2A>returnerer informasjon for den gjeldende brukeren er logget på medlemskap.</xref:System.Web.Security.Membership.GetUser%2A> </xref:System.Web.Security.Membership.GetUser%2A> Gjeldende bruker er logget på medlemskap er identifisert av den <xref:System.Security.Principal.IIdentity.Name%2A>til brukeren i gjeldende <xref:System.Web.HttpContext>.</xref:System.Web.HttpContext> </xref:System.Security.Principal.IIdentity.Name%2A>       Du kan også angi om du vil <xref:System.Web.Security.Membership.GetUser%2A>å oppdatere den siste-aktiviteten tidsstempel for dato/klokkeslett for brukeren som hentes med den `userIsOnline` parameteren.</xref:System.Web.Security.Membership.GetUser%2A> For den <xref:System.Web.Security.Membership.GetUser%2A>overlastingene som ikke tar en `userIsOnline` parameteren <xref:System.Web.Security.Membership.GetUser%2A?displayProperty=fullName>implisitt oppdateringer siste-aktiviteten dato-/ tidsstempel for brukeren.</xref:System.Web.Security.Membership.GetUser%2A?displayProperty=fullName> </xref:System.Web.Security.Membership.GetUser%2A> GetUser og <xref:System.Web.Security.Membership.GetUser%2A>ikke.</xref:System.Web.Security.Membership.GetUser%2A>"
   example:
   - "The following code example uses the GetUser method to return a <xref:System.Web.Security.MembershipUser> object for the current logged-on user and updates the e-mail address for the user.  \n  \n [!code-cs[System.Web.Security.SqlMembershipProvider#11](~/add/codesnippet/csharp/m-system.web.security.me_3_1.aspx)]\n [!code-vb[System.Web.Security.SqlMembershipProvider#11](~/add/codesnippet/visualbasic/m-system.web.security.me_3_1.aspx)]"
   syntax:
@@ -760,18 +760,18 @@ items:
     parameters:
     - id: username
       type: System.String
-      description: "The name of the user to retrieve."
+      description: "Navnet på brukeren å hente."
     return:
       type: System.Web.Security.MembershipUser
-      description: "A <xref:System.Web.Security.MembershipUser> object representing the specified user. If the <code>username</code> parameter does not correspond to an existing user, this method returns <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "En <xref:System.Web.Security.MembershipUser>-objekt som representerer den angitte brukeren.</xref:System.Web.Security.MembershipUser> Hvis den <code> username </code> parameteren ikke samsvarer med en eksisterende bruker, metoden returnerer <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.Security.Membership.GetUser*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>username</code> contains a comma (,)."
+    description: "<code>username</code>inneholder et komma (,)."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>username</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>username</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Web.Security.Membership.GetUser(System.Object,System.Boolean)
@@ -786,25 +786,25 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Gets the information from the data source for the membership user associated with the specified unique identifier. Updates the last-activity date/time stamp for the user, if specified."
-  remarks: "The GetUser method retrieves the user information from the data source and creates a <xref:System.Web.Security.MembershipUser> object populated with the returned data. The user is identified with the unique identifier from the data source specified in the `providerUserKey` parameter."
+  summary: "Henter informasjon fra datakilden for medlemskap brukeren som er knyttet til den angitte unike identifikatoren. Oppdateringer for siste-aktiviteten dato/klokkeslett tidsstempel for brukeren, hvis angitt."
+  remarks: "Metoden GetUser henter brukerinformasjonen fra datakilden, og oppretter en <xref:System.Web.Security.MembershipUser>objektet fylles ut med de returnerte dataene.</xref:System.Web.Security.MembershipUser> Brukeren identifiseres med den unike identifikatoren fra datakilden som er angitt i den `providerUserKey` parameteren."
   syntax:
     content: public static System.Web.Security.MembershipUser GetUser (object providerUserKey, bool userIsOnline);
     parameters:
     - id: providerUserKey
       type: System.Object
-      description: "The unique user identifier from the membership data source for the user."
+      description: "Den unike bruker-IDen fra datakilden for medlemskap for brukeren."
     - id: userIsOnline
       type: System.Boolean
-      description: "If <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>, updates the last-activity date/time stamp for the specified user."
+      description: "Hvis <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>, oppdateringer siste-aktiviteten dato/klokkeslett tidsstempel for den angitte brukeren."
     return:
       type: System.Web.Security.MembershipUser
-      description: "A <xref:System.Web.Security.MembershipUser> object representing the user associated with the specified unique identifier."
+      description: "En <xref:System.Web.Security.MembershipUser>-objekt som representerer brukeren som er knyttet til den angitte unike identifikatoren.</xref:System.Web.Security.MembershipUser>"
   overload: System.Web.Security.Membership.GetUser*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>providerUserKey</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>providerUserKey</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Web.Security.Membership.GetUser(System.String,System.Boolean)
@@ -819,8 +819,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Gets the information from the data source for the specified membership user. Updates the last-activity date/time stamp for the user, if specified."
-  remarks: "The GetUser method retrieves the user information from the data source and creates a <xref:System.Web.Security.MembershipUser> object populated with the returned data.       If you use one of the <xref:System.Web.Security.Membership.GetUser%2A> overloads that does not take a `username` parameter, <xref:System.Web.Security.Membership.GetUser%2A> returns the information for the current logged-on membership user. The current logged-on membership user is identified by the <xref:System.Security.Principal.IIdentity.Name%2A> of the user in the current <xref:System.Web.HttpContext>.       You can also specify whether you want <xref:System.Web.Security.Membership.GetUser%2A> to update the last-activity date/time stamp for the user being retrieved with the `userIsOnline` parameter. Of the <xref:System.Web.Security.Membership.GetUser%2A> overloads that do not take a `userIsOnline` parameter, <xref:System.Web.Security.Membership.GetUser%2A?displayProperty=fullName> implicitly updates the last-activity date/time stamp for the user. <xref:System.Web.Security.Membership.GetUser%2A?displayProperty=fullName> and <xref:System.Web.Security.Membership.GetUser%2A> do not."
+  summary: "Henter informasjon fra datakilden for det angitte medlemskap. Oppdateringer for siste-aktiviteten dato/klokkeslett tidsstempel for brukeren, hvis angitt."
+  remarks: "Metoden GetUser henter brukerinformasjonen fra datakilden, og oppretter en <xref:System.Web.Security.MembershipUser>objektet fylles ut med de returnerte dataene.</xref:System.Web.Security.MembershipUser>       Hvis du bruker en av de <xref:System.Web.Security.Membership.GetUser%2A>overlastingene som ikke tar en `username` parameteren <xref:System.Web.Security.Membership.GetUser%2A>returnerer informasjon for den gjeldende brukeren er logget på medlemskap.</xref:System.Web.Security.Membership.GetUser%2A> </xref:System.Web.Security.Membership.GetUser%2A> Gjeldende bruker er logget på medlemskap er identifisert av den <xref:System.Security.Principal.IIdentity.Name%2A>til brukeren i gjeldende <xref:System.Web.HttpContext>.</xref:System.Web.HttpContext> </xref:System.Security.Principal.IIdentity.Name%2A>       Du kan også angi om du vil <xref:System.Web.Security.Membership.GetUser%2A>å oppdatere den siste-aktiviteten tidsstempel for dato/klokkeslett for brukeren som hentes med den `userIsOnline` parameteren.</xref:System.Web.Security.Membership.GetUser%2A> For den <xref:System.Web.Security.Membership.GetUser%2A>overlastingene som ikke tar en `userIsOnline` parameteren <xref:System.Web.Security.Membership.GetUser%2A?displayProperty=fullName>implisitt oppdateringer siste-aktiviteten dato-/ tidsstempel for brukeren.</xref:System.Web.Security.Membership.GetUser%2A?displayProperty=fullName> </xref:System.Web.Security.Membership.GetUser%2A> <xref:System.Web.Security.Membership.GetUser%2A?displayProperty=fullName>og <xref:System.Web.Security.Membership.GetUser%2A>ikke.</xref:System.Web.Security.Membership.GetUser%2A></xref:System.Web.Security.Membership.GetUser%2A?displayProperty=fullName>"
   example:
   - "The following code example retrieves the password for a specified user name and sends it to the e-mail address for the specified user. The call to <xref:System.Web.Security.Membership.GetUser%2A> specifies that the last-activity date/time stamp for the user not be updated.  \n  \n [!code-vb[System.Web.Security.SqlMembershipProvider#4](~/add/codesnippet/visualbasic/m-system.web.security.me_13_1.aspx)]\n [!code-cs[System.Web.Security.SqlMembershipProvider#4](~/add/codesnippet/csharp/m-system.web.security.me_13_1.aspx)]"
   syntax:
@@ -828,21 +828,21 @@ items:
     parameters:
     - id: username
       type: System.String
-      description: "The name of the user to retrieve."
+      description: "Navnet på brukeren å hente."
     - id: userIsOnline
       type: System.Boolean
-      description: "If <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>, updates the last-activity date/time stamp for the specified user."
+      description: "Hvis <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>, oppdateringer siste-aktiviteten dato/klokkeslett tidsstempel for den angitte brukeren."
     return:
       type: System.Web.Security.MembershipUser
-      description: "A <xref:System.Web.Security.MembershipUser> object representing the specified user. If the <code>username</code> parameter does not correspond to an existing user, this method returns <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "En <xref:System.Web.Security.MembershipUser>-objekt som representerer den angitte brukeren.</xref:System.Web.Security.MembershipUser> Hvis den <code> username </code> parameteren ikke samsvarer med en eksisterende bruker, metoden returnerer <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.Security.Membership.GetUser*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>username</code> contains a comma (,)."
+    description: "<code>username</code>inneholder et komma (,)."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>username</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>username</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Web.Security.Membership.GetUserNameByEmail(System.String)
@@ -857,8 +857,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Gets a user name where the e-mail address for the user matches the specified e-mail address."
-  remarks: "GetUserNameByEmail can be used to retrieve the user name for a membership user in the case where a user does not know their user name, but does know their e-mail address. If more than one user in the data store has the same e-mail address, the first user name encountered is returned.       Leading and trailing spaces are trimmed from all parameter values."
+  summary: "Henter et brukernavn der e-postadresse for brukeren samsvarer med den angitte e-postadressen."
+  remarks: "GetUserNameByEmail kan brukes til å hente brukernavnet for en bruker medlemskap i tilfeller der en bruker ikke kjenner brukernavnet, men vet e-postadressen. Hvis mer enn én bruker i datalageret har samme e-postadressen, returneres det første brukernavnet oppdaget.       Fjernes innledende og avsluttende mellomrom fra alle parameterverdier."
   example:
   - "The following code example retrieves the user name for a specified e-mail address.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[System.Web.Security.SqlMembershipProvider#7](~/add/codesnippet/csharp/m-system.web.security.me_5_1.aspx)]\n [!code-vb[System.Web.Security.SqlMembershipProvider#7](~/add/codesnippet/visualbasic/m-system.web.security.me_5_1.aspx)]"
   syntax:
@@ -866,10 +866,10 @@ items:
     parameters:
     - id: emailToMatch
       type: System.String
-      description: "The e-mail address to search for."
+      description: "E-postadressen til å søke etter."
     return:
       type: System.String
-      description: "The user name where the e-mail address for the user matches the specified e-mail address. If no match is found, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> is returned."
+      description: "Brukernavnet der e-postadresse for brukeren samsvarer med den angitte e-postadressen. Hvis ingen forekomst blir funnet, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> returneres."
   overload: System.Web.Security.Membership.GetUserNameByEmail*
   exceptions: []
   platform:
@@ -886,13 +886,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "The identifier of the algorithm used to hash passwords."
-  remarks: "The HashAlgorithmType property identifies the custom hash algorithm used by the <xref:System.Web.Security.Membership> class. You set the HashAlgorithmType property using the `hashAlgorithmType` attribute of the  element.       The .NET Framework enables you to configure custom cryptography classes using the  element configuration section. The HashAlgorithmType property must match the `name` attribute of the  element in a  element. For more information, see [Mapping Algorithm Names to Cryptography Classes](~/add/includes/ajax-current-ext-md.md).       If the HashAlgorithmType property is not set, the <xref:System.Web.Security.Membership> class uses the hash algorithm set in the `validation` attribute of the  element."
+  summary: "Identifikatoren for algoritmen som brukes til hash-passord."
+  remarks: "Egenskapen HashAlgorithmType identifiserer egendefinerte hash-algoritmen som brukes av <xref:System.Web.Security.Membership>klasse.</xref:System.Web.Security.Membership> Du har angitt HashAlgorithmType-egenskapen ved hjelp av den `hashAlgorithmType` -attributtet for elementet.       .NET Framework, kan du konfigurere egendefinerte kryptografi klasser med konfigurasjonsdelen elementet. Egenskapen HashAlgorithmType må samsvare med den `name` for elementet i et element. Hvis du vil ha mer informasjon, se [tilordning algoritmen navn kryptografi klasser](~/add/includes/ajax-current-ext-md.md).       Hvis egenskapen HashAlgorithmType ikke er angitt, den <xref:System.Web.Security.Membership>klassen bruker nummeralgoritmen som er angitt i den `validation` -attributtet for elementet.</xref:System.Web.Security.Membership>"
   syntax:
     content: public static string HashAlgorithmType { get; }
     return:
       type: System.String
-      description: "The identifier of the algorithm used to hash passwords, or blank to use the default hash algorithm."
+      description: "Identifikatoren av algoritmen som brukes til hash-passord, eller tomme for å bruke standard hash-algoritmen."
   overload: System.Web.Security.Membership.HashAlgorithmType*
   exceptions: []
   platform:
@@ -909,15 +909,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Gets the number of invalid password or password-answer attempts allowed before the membership user is locked out."
-  remarks: "The MaxInvalidPasswordAttempts property works in conjunction with the <xref:System.Web.Security.Membership.PasswordAttemptWindow%2A> property to guard against an unwanted source using repeated attempts to guess the password or password answer of a membership user.       If the number of invalid passwords or password answers entered for a membership user is greater than or equal to the value of the MaxInvalidPasswordAttempts property within the number of minutes specified by the <xref:System.Web.Security.Membership.PasswordAttemptWindow%2A> property, then the user is locked out of the Web site by setting the <xref:System.Web.Security.MembershipUser.IsLockedOut%2A> property to `true` until the user is unlocked by a call to the <xref:System.Web.Security.MembershipUser.UnlockUser%2A> method.       If a valid password or password answer is supplied before the value of the MaxInvalidPasswordAttempts property is reached, the counter that tracks the number of invalid attempts is set to zero.       Invalid password and password answer attempts are tracked separately. For example, if the MaxInvalidPasswordAttempts property is set to 5, the user has up to five attempts to enter a correct password and up to five attempts to enter a correct password answer without being locked out.       The MaxInvalidPasswordAttempts property value is set in the application configuration using the `maxInvalidPasswordAttempts` attribute of the  configuration element.       If the <xref:System.Web.Security.Membership.RequiresQuestionAndAnswer%2A> property is `false`, invalid password-answer attempts are not tracked."
+  summary: "Henter antall ugyldig passord eller passordsvar forsøk tillatt før brukeren medlemskap låses."
+  remarks: "Egenskapen MaxInvalidPasswordAttempts fungerer sammen med den <xref:System.Web.Security.Membership.PasswordAttemptWindow%2A>til å beskytte mot et uønsket datakilde ved hjelp av gjentatte forsøk å gjette passordet eller passordsvar for en bruker medlemskap.</xref:System.Web.Security.Membership.PasswordAttemptWindow%2A>       Hvis antall ugyldige passord eller passord svar angitt for en bruker medlemskap er større enn eller lik verdien for egenskapen MaxInvalidPasswordAttempts i antall minutter angitt av den <xref:System.Web.Security.Membership.PasswordAttemptWindow%2A>egenskap, og deretter brukeren er låst ute fra webområdet ved å angi den <xref:System.Web.Security.MembershipUser.IsLockedOut%2A>egenskapen `true` før brukeren låses opp et kall til den <xref:System.Web.Security.MembershipUser.UnlockUser%2A>metoden.</xref:System.Web.Security.MembershipUser.UnlockUser%2A> </xref:System.Web.Security.MembershipUser.IsLockedOut%2A> </xref:System.Web.Security.Membership.PasswordAttemptWindow%2A>       Hvis et gyldig passord eller passordsvar angis før verdien for egenskapen MaxInvalidPasswordAttempts er nådd, er telleren som sporer antallet Ugyldig forsøk satt til null.       Ugyldig passord og svar passordforsøk spores separat. For eksempel hvis egenskapen MaxInvalidPasswordAttempts er satt til 5, har brukeren fem forsøk på å angi riktig passord og opptil fem forsøk på å skrive inn en riktig passordsvar uten er låst.       Egenskapsverdien MaxInvalidPasswordAttempts er angitt i application-konfigurasjonen ved hjelp av den `maxInvalidPasswordAttempts` for konfigurasjonselementet.       Hvis den <xref:System.Web.Security.Membership.RequiresQuestionAndAnswer%2A>egenskapen `false`, ugyldig passordsvar forsøk er ikke registrert.</xref:System.Web.Security.Membership.RequiresQuestionAndAnswer%2A>"
   example:
   - "The following code example shows the  element in the `system.web` section of an application's Web.config file. It specifies that the application use an instance of the <xref:System.Web.Security.SqlMembershipProvider> class to provide membership services, and sets the `maxInvalidPasswordAttempts` attribute to five invalid attempts and the `passwordAttemptWindow` to 30 minutes.  \n  \n```  \n<membership defaultProvider=\"SqlProvider\"  \n  userIsOnlineTimeWindow = \"20>  \n  <providers>  \n    <add  \n      name=\"SqlProvider\"  \n      type=\"System.Web.Security.SqlMembershipProvider\"  \n      connectionStringName=\"SqlServices\"  \n      requiresQuestionAndAnswer=\"true\"  \n      maxInvalidPasswordAttempts=\"5\"  \n      passwordAttemptWindow=\"30\"  \n      applicationName=\"MyApplication\" />  \n  </providers>  \n</membership>  \n```"
   syntax:
     content: public static int MaxInvalidPasswordAttempts { get; }
     return:
       type: System.Int32
-      description: "The number of invalid password or password-answer attempts allowed before the membership user is locked out."
+      description: "Antall ugyldig passord eller passordsvar forsøk tillatt før brukeren medlemskap låses."
   overload: System.Web.Security.Membership.MaxInvalidPasswordAttempts*
   exceptions: []
   platform:
@@ -934,15 +934,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Gets the minimum number of special characters that must be present in a valid password."
-  remarks: "The MinRequiredNonAlphanumericCharacters property returns the minimum number of special, non-alphanumeric characters that must be entered to create a valid password for the membership provider specified in the <xref:System.Web.Security.Membership.Provider%2A> property.       The MinRequiredNonAlphanumericCharacters property value is set in the application configuration using the `minRequiredNonAlphanumericCharacters` attribute of the  configuration element.       A non-alphanumeric character is a character for which the <xref:System.Char.IsLetterOrDigit%2A> method returns `false`."
+  summary: "Henter minimumsantallet spesialtegn som må være til stede i et gyldig passord."
+  remarks: "Egenskapen MinRequiredNonAlphanumericCharacters returnerer minste antall spesielle, ikke-alfanumeriske tegn som må angis for å opprette et gyldig passord for leverandøren av medlemskapet som er angitt i den <xref:System.Web.Security.Membership.Provider%2A>egenskapen.</xref:System.Web.Security.Membership.Provider%2A>       Egenskapsverdien MinRequiredNonAlphanumericCharacters er angitt i application-konfigurasjonen ved hjelp av den `minRequiredNonAlphanumericCharacters` for konfigurasjonselementet.       Et ikke-alfanumeriske tegn er et tegn som den <xref:System.Char.IsLetterOrDigit%2A>metoden returnerer `false`.</xref:System.Char.IsLetterOrDigit%2A>"
   example:
   - "The following code example shows the  configuration element in the `system.web` section of the application's Web.config file. It specifies that the application use an instance of the <xref:System.Web.Security.SqlMembershipProvider> class to provide membership services, and sets the `minRequiredNonAlphanumericCharacters` attribute to 1 character.  \n  \n```  \n<membership defaultProvider=\"SqlProvider\"  \n  userIsOnlineTimeWindow = \"20>  \n  <providers>  \n    <add  \n      name=\"SqlProvider\"  \n      type=\"System.Web.Security.SqlMembershipProvider\"  \n      connectionStringName=\"SqlServices\"  \n      requiresQuestionAndAnswer=\"true\"  \n      minRequiredNonAlphanumericCharacters=\"1\"  \n      />  \n  </providers>  \n</membership>  \n```"
   syntax:
     content: public static int MinRequiredNonAlphanumericCharacters { get; }
     return:
       type: System.Int32
-      description: "The minimum number of special characters that must be present in a valid password."
+      description: "Minste antall spesialtegn som må være til stede i et gyldig passord."
   overload: System.Web.Security.Membership.MinRequiredNonAlphanumericCharacters*
   exceptions: []
   platform:
@@ -959,15 +959,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Gets the minimum length required for a password."
-  remarks: "The MinRequiredPasswordLength property gets the minimum number of characters that must be entered to create a valid password for the membership provider specified in the <xref:System.Web.Security.Membership.Provider%2A> property.       The MinRequiredPasswordLength property value is set in the application configuration using the `minRequiredPasswordLength` attribute of the  configuration element."
+  summary: "Henter minimumslengden kreves for et passord."
+  remarks: "Egenskapen MinRequiredPasswordLength henter det minste antallet tegn som må angis for å opprette et gyldig passord for leverandøren av medlemskapet som er angitt i den <xref:System.Web.Security.Membership.Provider%2A>egenskapen.</xref:System.Web.Security.Membership.Provider%2A>       Egenskapsverdien MinRequiredPasswordLength er angitt i application-konfigurasjonen ved hjelp av den `minRequiredPasswordLength` for konfigurasjonselementet."
   example:
   - "The following code example shows the  configuration element in the `system.web` section of the application's Web.config file. It specifies that the application use an instance of the <xref:System.Web.Security.SqlMembershipProvider> class to provide membership services, and sets the `minRequiredPasswordLength` attribute to seven characters.  \n  \n```  \n<membership defaultProvider=\"SqlProvider\"  \n  userIsOnlineTimeWindow = \"20>  \n  <providers>  \n    <add  \n      name=\"SqlProvider\"  \n      type=\"System.Web.Security.SqlMembershipProvider\"  \n      connectionStringName=\"SqlServices\"  \n      requiresQuestionAndAnswer=\"true\"  \n      minRequiredPasswordLength=\"7\"  \n      />  \n  </providers>  \n</membership>  \n```"
   syntax:
     content: public static int MinRequiredPasswordLength { get; }
     return:
       type: System.Int32
-      description: "The minimum length required for a password."
+      description: "Minimumslengden som kreves for et passord."
   overload: System.Web.Security.Membership.MinRequiredPasswordLength*
   exceptions: []
   platform:
@@ -984,15 +984,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Gets the time window between which consecutive failed attempts to provide a valid password or password answer are tracked."
-  remarks: "The PasswordAttemptWindow property works in conjunction with the <xref:System.Web.Security.Membership.MaxInvalidPasswordAttempts%2A> property to help guard against an unwanted source guessing the password or password answer of a membership user through repeated attempts. When a user attempts to log in with, change, or reset his or her password, only a certain number of consecutive attempts are allowed within a specified time window. The length of this time window is specified in the PasswordAttemptWindow property, which identifies the number of minutes allowed between invalid attempts.       If the number of consecutive failed attempts that a user makes to reset his or her password equals the value stored in the <xref:System.Web.Security.Membership.MaxInvalidPasswordAttempts%2A> property, and the time elapsed since the last invalid attempt is less than the number of minutes specified in the PasswordAttemptWindow property, then the membership user is locked out. The user is locked out by setting the <xref:System.Web.Security.MembershipUser.IsLockedOut%2A> property to `true` until the user is unlocked by a call to the <xref:System.Web.Security.MembershipUser.UnlockUser%2A> method.       If the interval between the current failed attempt and the last failed attempt is greater than the PasswordAttemptWindow property setting, the current invalid attempt is counted as the first. If a valid password answer is supplied before the maximum number of allowed invalid attempts is reached, the count of invalid password-answer attempts is set to 0 (zero). If a valid password is supplied before the maximum number of allowed invalid attempts is reached, the count of invalid password attempts and the count of invalid password-answer attempts are set to 0 (zero).       Invalid password and password-answer attempts accumulate independently of one another. For example, if the <xref:System.Web.Security.Membership.MaxInvalidPasswordAttempts%2A> is set to 5, and three invalid password attempts are made followed by two invalid password-answer attempts, two more invalid password attempts (or three more invalid password-answer attempts) must be made within PasswordAttemptWindow for the membership user to be locked out.       The PasswordAttemptWindow property value is set in the application configuration by using the `passwordAttemptWindow` attribute of the  configuration-element section.       If the <xref:System.Web.Security.Membership.RequiresQuestionAndAnswer%2A> property is set to `false`, invalid password-answer attempts are not tracked."
+  summary: "Henter tidsvinduet mellom etterfølgende mislykkede forsøk på å angi et gyldig passord eller passordsvar spores."
+  remarks: "Egenskapen PasswordAttemptWindow fungerer sammen med den <xref:System.Web.Security.Membership.MaxInvalidPasswordAttempts%2A>egenskapen for å beskytte mot en uønsket kilde gjette passordet eller passordsvar for en bruker medlemskap via gjentatte forsøk.</xref:System.Web.Security.Membership.MaxInvalidPasswordAttempts%2A> Når en bruker forsøker å logge på med, endre eller tilbakestille passordet sitt, tillates bare et bestemt antall etterfølgende forsøk i en angitt tidsperiode. Lengden på dette tidsvinduet er angitt i egenskapen PasswordAttemptWindow, som identifiserer antallet minutter som er tillatt mellom Ugyldig forsøk.       Hvis hvor mange etterfølgende mislykkede forsøk som en bruker gjør tilbakestille hans eller hennes passord er lik verdien som er lagret i den <xref:System.Web.Security.Membership.MaxInvalidPasswordAttempts%2A>egenskapen og tiden gått siden det siste forsøket på ugyldig er mindre enn antall minutter angitt i egenskapen PasswordAttemptWindow medlemskap brukeren er låst.</xref:System.Web.Security.Membership.MaxInvalidPasswordAttempts%2A> Brukeren er låst ved å angi den <xref:System.Web.Security.MembershipUser.IsLockedOut%2A>egenskapen `true` før brukeren låses opp et kall til den <xref:System.Web.Security.MembershipUser.UnlockUser%2A>metoden.</xref:System.Web.Security.MembershipUser.UnlockUser%2A> </xref:System.Web.Security.MembershipUser.IsLockedOut%2A>       Hvis intervallet mellom den gjeldende mislykkede forsøket på og forrige mislykkede forsøk er større enn innstillingen for PasswordAttemptWindow-egenskapen, telles gjeldende Ugyldig forsøk som først. Hvis et gyldig passordsvar angis før det maksimale antallet tillatte Ugyldig forsøk er nådd, er antall ugyldig passordsvar forsøk satt til 0 (null). Hvis et gyldig passord er oppgitt før det maksimale antallet tillatte Ugyldig forsøk er nådd, antall ugyldig passordforsøk og antall forsøk på ugyldig passordsvar er satt til 0 (null).       Ugyldig forsøk på passord og passordsvar samler uavhengig av hverandre. For eksempel hvis den <xref:System.Web.Security.Membership.MaxInvalidPasswordAttempts%2A>er satt til 5, og tre ugyldig passordforsøk utføres etterfulgt av to ugyldig passordsvar forsøk, to flere ugyldig passordforsøk (eller tre flere ugyldig passordsvar forsøk) må gjøres i PasswordAttemptWindow for brukeren medlemskap låses.</xref:System.Web.Security.Membership.MaxInvalidPasswordAttempts%2A>       Egenskapsverdien PasswordAttemptWindow er angitt i Programkonfigurasjonen ved hjelp av den `passwordAttemptWindow` attributtet for konfigurasjonselementet delen.       Hvis den <xref:System.Web.Security.Membership.RequiresQuestionAndAnswer%2A>er satt til `false`, ugyldig passordsvar forsøk er ikke registrert.</xref:System.Web.Security.Membership.RequiresQuestionAndAnswer%2A>"
   example:
   - "The following code example shows the  element in the `system.web` section of the Web.config file for an ASP.NET application. It specifies that the application use an instance of the <xref:System.Web.Security.SqlMembershipProvider> and sets the `maxInvalidPasswordAttempts` attribute to five invalid attempts and the `passwordAttemptWindow` to 30 minutes.  \n  \n```  \n<membership defaultProvider=\"SqlProvider\"   \n  userIsOnlineTimeWindow=\"20\">  \n  <providers>  \n    <add name=\"SqlProvider\"  \n      type=\"System.Web.Security.SqlMembershipProvider\"  \n      connectionStringName=\"SqlServices\"  \n      requiresQuestionAndAnswer=\"true\"  \n      maxInvalidPasswordAttempts=\"5\"  \n      passwordAttemptWindow=\"30\"  \n      applicationName=\"MyApplication\" />  \n  </providers>  \n</membership>  \n```"
   syntax:
     content: public static int PasswordAttemptWindow { get; }
     return:
       type: System.Int32
-      description: "The time window, in minutes, during which consecutive failed attempts to provide a valid password or password answer are tracked. The default is 10 minutes. If the interval between the current failed attempt and the last failed attempt is greater than the PasswordAttemptWindow property setting, each failed attempt is treated as if it were the first failed attempt."
+      description: "Tidsvinduet, i minutter, som etterfølgende mislyktes under forsøk på å angi et gyldig passord eller passordsvar spores. Standard er 10 minutter. Hvis intervallet mellom den gjeldende mislykkede forsøket på og forrige mislykkede forsøk er større enn innstillingen for PasswordAttemptWindow-egenskapen, behandles hvert mislykkede forsøk som om det er det første forsøket mislykkes."
   overload: System.Web.Security.Membership.PasswordAttemptWindow*
   exceptions: []
   platform:
@@ -1009,15 +1009,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Gets the regular expression used to evaluate a password."
-  remarks: "The PasswordStrengthRegularExpression property gets the regular expression used to evaluate password complexity from the provider specified in the <xref:System.Web.Security.Membership.Provider%2A> property.       The PasswordStrengthRegularExpression property is set in the application configuration using the `passwordStrengthRegularExpression` attribute of the  configuration element.       For more information about regular expressions, see [.NET Framework Regular Expressions](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Henter det vanlige uttrykket som brukes til å evaluere et passord."
+  remarks: "Egenskapen PasswordStrengthRegularExpression henter det vanlige uttrykket som brukes til å evaluere passordkompleksitet av leverandøren som er angitt i den <xref:System.Web.Security.Membership.Provider%2A>egenskapen.</xref:System.Web.Security.Membership.Provider%2A>       Egenskapen PasswordStrengthRegularExpression er angitt i application-konfigurasjonen ved hjelp av den `passwordStrengthRegularExpression` for konfigurasjonselementet.       Du finner mer informasjon om vanlige uttrykk [.NET Framework vanlige uttrykk](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example shows the  configuration element in the `system.web` section of the application's Web.config file. It specifies that the application use an instance of the <xref:System.Web.Security.SqlMembershipProvider> class to provide membership services, and sets the `passwordStrengthRegularExpression` attribute to a regular expression that validates the password meets the following criteria:  \n  \n-   Is greater than seven characters.  \n  \n-   Contains at least one digit.  \n  \n-   Contains at least one special (non-alphanumeric) character.  \n  \n If the password does not meet these criteria, the password is not accepted by the membership provider.  \n  \n```  \n<membership defaultProvider=\"SqlProvider\"  \n  userIsOnlineTimeWindow = \"20>  \n  <providers>  \n    <add  \n      name=\"SqlProvider\"  \n      type=\"System.Web.Security.SqlMembershipProvider\"  \n      connectionStringName=\"SqlServices\"  \n      requiresQuestionAndAnswer=\"true\"  \n      passwordStrengthRegularExpression=\" @\\\"(?=.{6,})(?=(.*\\d){1,})(?=(.*\\W){1,})\"  \n      />  \n   </providers>  \n</membership>  \n```"
   syntax:
     content: public static string PasswordStrengthRegularExpression { get; }
     return:
       type: System.String
-      description: "A regular expression used to evaluate a password."
+      description: "Et vanlig uttrykk som brukes til å evaluere et passord."
   overload: System.Web.Security.Membership.PasswordStrengthRegularExpression*
   exceptions: []
   platform:
@@ -1034,15 +1034,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Gets a reference to the default membership provider for the application."
-  remarks: "The Provider property enables you to reference the default membership provider for an application directly. This is commonly used to access custom members of the membership provider that are not part of the <xref:System.Web.Security.MembershipProvider> abstract base class."
+  summary: "Henter en referanse til medlemskap standardleverandøren for programmet."
+  remarks: "Egenskapen mulig å referere til medlemskap standardleverandøren for et program direkte. Dette brukes vanligvis til å få tilgang til egendefinerte medlemmer av leverandøren av medlemskapet som ikke er en del av <xref:System.Web.Security.MembershipProvider>abstrakt klasse som base.</xref:System.Web.Security.MembershipProvider>"
   example:
   - "The following code example accesses the default <xref:System.Web.Security.SqlMembershipProvider> enabled for the application using the Provider property in order to determine the value of the custom <xref:System.Web.Security.SqlMembershipProvider.RequiresUniqueEmail%2A> property.  \n  \n [!code-vb[System.Web.Security.Membership#6](~/add/codesnippet/visualbasic/p-system.web.security.me_0_1.aspx)]\n [!code-cs[System.Web.Security.Membership#6](~/add/codesnippet/csharp/p-system.web.security.me_0_1.aspx)]"
   syntax:
     content: public static System.Web.Security.MembershipProvider Provider { get; }
     return:
       type: System.Web.Security.MembershipProvider
-      description: "The default membership provider for the application exposed using the <xref:System.Web.Security.MembershipProvider> abstract base class."
+      description: "Medlemskap standardleverandøren for applikasjonen eksponert ved hjelp av <xref:System.Web.Security.MembershipProvider>abstrakt klasse som base.</xref:System.Web.Security.MembershipProvider>"
   overload: System.Web.Security.Membership.Provider*
   exceptions: []
   platform:
@@ -1059,15 +1059,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Gets a collection of the membership providers for the ASP.NET application."
-  remarks: "The Providers property references all of the membership providers enabled for an application, including providers added in the Web.config file for the application and the Machine.config file for all applications. You can control which membership providers are available for an application using the `providers` element of the  section in the configuration for your application. For example, the following sample shows the  section in the Web.config file for an application that removes the <xref:System.Web.Security.SqlMembershipProvider> instance (`AspNetSqlProvider`) specified in the machine configuration file and adds a <xref:System.Web.Security.SqlMembershipProvider> instance named `SqlProvider` as the default membership provider for the application.      ```   <configuration>     <connectionStrings>       <add name=&quot;SqlServices&quot; connectionString=&quot;Data Source=MySqlServer;Integrated Security=SSPI;Initial Catalog=aspnetdb;&quot; />     </connectionStrings>     <system.web>       <membership defaultProvider=&quot;SqlProvider&quot; userIsOnlineTimeWindow=&quot;20&quot;>         <providers>           <remove name=&quot;AspNetSqlProvider&quot; />             <add name=&quot;SqlProvider&quot;               type=&quot;System.Web.Security.SqlMembershipProvider&quot;               connectionStringName=&quot;SqlServices&quot;               enablePasswordRetrieval=&quot;false&quot;               enablePasswordReset=&quot;true&quot;               requiresQuestionAndAnswer=&quot;true&quot;               passwordFormat=&quot;Hashed&quot;               applicationName=&quot;/&quot; />         </providers>       </membership>     </system.web>   </configuration>   ```       When specifying the [membership Element (ASP.NET Settings Schema)](http://msdn.microsoft.com/en-us/b9c1ee8f-33ca-4361-8666-b42a0fe86049) section, you must specify the `defaultProvider` attribute. If you do not specify a [membership Element (ASP.NET Settings Schema)](http://msdn.microsoft.com/en-us/b9c1ee8f-33ca-4361-8666-b42a0fe86049) section in your Web.config, the values from the machine configuration are used and the <xref:System.Web.Security.SqlMembershipProvider> instance named `AspNetSqlProvider` is established as the `defaultProvider`.       You can obtain a strongly typed reference to a provider from the Providers collection by indexing the membership provider by name and casting it as the desired type."
+  summary: "Henter en samling av leverandørene medlemskap for ASP.NET-programmet."
+  remarks: "Egenskapen leverandører refererer til alle medlemskap leverandørene er aktivert for en applikasjon, inkludert leverandører lagt til i Web.config-filen for programmet og Machine.config-filen for alle applikasjoner. Du kan kontrollere hvilke medlemskap leverandører er tilgjengelige for en applikasjon som bruker den `providers` element i delen i konfigurasjonen for programmet. For eksempel følgende eksempel viser delen i Web.config-filen for et program som fjerner det <xref:System.Web.Security.SqlMembershipProvider>forekomsten (`AspNetSqlProvider`) angitt i konfigurasjonsfilen maskinen og legger til en <xref:System.Web.Security.SqlMembershipProvider>forekomst med navnet `SqlProvider` som medlemskap standardleverandøren for applikasjonen.</xref:System.Web.Security.SqlMembershipProvider> </xref:System.Web.Security.SqlMembershipProvider>      ```   <configuration>     <connectionStrings>       <add name=&quot;SqlServices&quot; connectionString=&quot;Data Source=MySqlServer;Integrated Security=SSPI;Initial Catalog=aspnetdb;&quot; />     </connectionStrings>     <system.web>       <membership defaultProvider=&quot;SqlProvider&quot; userIsOnlineTimeWindow=&quot;20&quot;>         <providers>           <remove name=&quot;AspNetSqlProvider&quot; />             <add name=&quot;SqlProvider&quot;               type=&quot;System.Web.Security.SqlMembershipProvider&quot;               connectionStringName=&quot;SqlServices&quot;               enablePasswordRetrieval=&quot;false&quot;               enablePasswordReset=&quot;true&quot;               requiresQuestionAndAnswer=&quot;true&quot;               passwordFormat=&quot;Hashed&quot;               applicationName=&quot;/&quot; />         </providers>       </membership>     </system.web>   </configuration>   ```Ved angivelse av [medlemskap elementet (ASP.NET innstillingsskjemaet)](http://msdn.microsoft.com/en-us/b9c1ee8f-33ca-4361-8666-b42a0fe86049) delen, må du angi den `defaultProvider` attributtet. Hvis du ikke angir en [medlemskap elementet (ASP.NET innstillingsskjemaet)](http://msdn.microsoft.com/en-us/b9c1ee8f-33ca-4361-8666-b42a0fe86049) -delen i Web.config verdiene fra maskinkonfigurasjonen på brukes og <xref:System.Web.Security.SqlMembershipProvider>forekomst med navnet `AspNetSqlProvider` er opprettet som den `defaultProvider`.</xref:System.Web.Security.SqlMembershipProvider>       Du kan få en forespørselsparameter av sterk type referanse til en leverandør fra samlingen av indeksering leverandøren av medlemskapet etter navn og endring som ønsket type."
   example:
   - "The following code example lists the providers enabled for an application and their respective types.  \n  \n [!code-cs[System.Web.Security.Membership#7](~/add/codesnippet/csharp/p-system.web.security.me_1_1.aspx)]\n [!code-vb[System.Web.Security.Membership#7](~/add/codesnippet/visualbasic/p-system.web.security.me_1_1.aspx)]"
   syntax:
     content: public static System.Web.Security.MembershipProviderCollection Providers { get; }
     return:
       type: System.Web.Security.MembershipProviderCollection
-      description: "A <xref:System.Web.Security.MembershipProviderCollection> of the membership providers configured for the ASP.NET application."
+      description: "En <xref:System.Web.Security.MembershipProviderCollection>over medlemskap-leverandører som er konfigurert for ASP.NET-programmet.</xref:System.Web.Security.MembershipProviderCollection>"
   overload: System.Web.Security.Membership.Providers*
   exceptions: []
   platform:
@@ -1084,15 +1084,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Gets a value indicating whether the default membership provider requires the user to answer a password question for password reset and retrieval."
-  remarks: "Requiring a password question and answer provides an additional layer of security when retrieving or resetting a user&quot;s password. Users can supply a question and answer when their user name is created that they can later use to retrieve or reset a forgotten password.       RequiresQuestionAndAnswer is checked when <xref:System.Web.Security.MembershipUser.ResetPassword%2A> or <xref:System.Web.Security.MembershipUser.GetPassword%2A> is called. The provider provided with the .NET Framework throws a <xref:System.NotSupportedException> if RequiresQuestionAndAnswer is `true` and the supplied password answer is `null`.       If <xref:System.Web.Security.Membership.EnablePasswordReset%2A> and <xref:System.Web.Security.Membership.EnablePasswordRetrieval%2A> are both `false`, RequiresQuestionAndAnswer can still be used to enforce the creation of questions and answers when new users are created; however, the question and answer will not be used. You will be able to retrieve the question by using the <xref:System.Web.Security.MembershipUser> class.       For more information, see <xref:System.Web.Security.MembershipUser.ResetPassword%2A> and <xref:System.Web.Security.MembershipUser.GetPassword%2A>."
+  summary: "Henter en verdi som angir om medlemskap standardleverandøren krever at brukeren svare på passordspørsmål for henting og tilbakestilling av passord."
+  remarks: "Å kreve et for passordspørsmål og svar gir et ekstra lag med sikkerhet under henting av eller tilbakestille en brukers passord. Brukere kan gi deg et spørsmål og svar når brukernavn opprettes at de senere kan bruke til å hente eller tilbakestille passordet.       RequiresQuestionAndAnswer kontrolleres når <xref:System.Web.Security.MembershipUser.ResetPassword%2A>eller <xref:System.Web.Security.MembershipUser.GetPassword%2A>kalles.</xref:System.Web.Security.MembershipUser.GetPassword%2A> </xref:System.Web.Security.MembershipUser.ResetPassword%2A> Leverandør gav .NET Framework oppstår en <xref:System.NotSupportedException>Hvis RequiresQuestionAndAnswer `true` og det angitte Passordsvaret er `null`.</xref:System.NotSupportedException>       Hvis <xref:System.Web.Security.Membership.EnablePasswordReset%2A>og <xref:System.Web.Security.Membership.EnablePasswordRetrieval%2A>begge `false`, du kan fremdeles bruke RequiresQuestionAndAnswer implementere oppretting av spørsmål og svar ved oppretting av nye brukere; imidlertid spørsmål og svar vil ikke bli brukt.</xref:System.Web.Security.Membership.EnablePasswordRetrieval%2A> </xref:System.Web.Security.Membership.EnablePasswordReset%2A> Kan ikke hente spørsmålet ved hjelp av <xref:System.Web.Security.MembershipUser>klasse.</xref:System.Web.Security.MembershipUser>       Hvis du vil ha mer informasjon, se <xref:System.Web.Security.MembershipUser.ResetPassword%2A>og <xref:System.Web.Security.MembershipUser.GetPassword%2A>.</xref:System.Web.Security.MembershipUser.GetPassword%2A> </xref:System.Web.Security.MembershipUser.ResetPassword%2A>"
   example:
   - "The following code example shows the  element in the `system.web` section of the Web.config file for an ASP.NET application. It specifies that the application use an instance of the <xref:System.Web.Security.SqlMembershipProvider>, enables password reset, and requires a password answer when performing a reset.  \n  \n```  \n<membership defaultProvider=\"SqlProvider\" userIsOnlineTimeWindow=\"20\">  \n  <providers>  \n    <add name=\"SqlProvider\"  \n      type=\"System.Web.Security.SqlMembershipProvider\"  \n      connectionStringName=\"SqlServices\"  \n      enablePasswordRetrieval=\"false\"  \n      enablePasswordReset=\"true\"  \n      requiresQuestionAndAnswer=\"true\"  \n      passwordFormat=\"Hashed\"  \n      applicationName=\"MyApplication\" />  \n  </providers>  \n</membership>  \n```  \n  \n The following code sample checks the value of RequiresQuestionAndAnswer and adds the necessary controls for a password question and answer to be supplied when creating a user.  \n  \n> [!IMPORTANT]\n>  This example includes a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[System.Web.Security.SqlMembershipProvider#2](~/add/codesnippet/csharp/p-system.web.security.me_3_1.aspx)]\n [!code-vb[System.Web.Security.SqlMembershipProvider#2](~/add/codesnippet/visualbasic/p-system.web.security.me_3_1.aspx)]"
   syntax:
     content: public static bool RequiresQuestionAndAnswer { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a password answer is required for password reset and retrieval; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis et passordsvar er nødvendig for tilbakestilling av passord og henting av; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.Security.Membership.RequiresQuestionAndAnswer*
   exceptions: []
   platform:
@@ -1109,8 +1109,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Updates the database with the information for the specified user."
-  remarks: "UpdateUser takes, as input, a <xref:System.Web.Security.MembershipUser> object populated with current information for the membership user and updates the data source with the property values of the <xref:System.Web.Security.MembershipUser> object. You can construct a new <xref:System.Web.Security.MembershipUser>, or retrieve a <xref:System.Web.Security.MembershipUser> object populated with current values at the data source using the <xref:System.Web.Security.Membership.GetUser%2A>, <xref:System.Web.Security.Membership.GetAllUsers%2A>, <xref:System.Web.Security.Membership.FindUsersByName%2A>, or <xref:System.Web.Security.Membership.FindUsersByEmail%2A> methods."
+  summary: "Oppdaterer databasen med informasjon for den angitte brukeren."
+  remarks: "UpdateUser ta som inndata, en <xref:System.Web.Security.MembershipUser>objektet fylt med gjeldende informasjon for brukeren medlemskap og oppdaterer datakilden med egenskapsverdiene for den <xref:System.Web.Security.MembershipUser>objektet.</xref:System.Web.Security.MembershipUser> </xref:System.Web.Security.MembershipUser> Du kan lage en ny <xref:System.Web.Security.MembershipUser>, eller hente en <xref:System.Web.Security.MembershipUser>objektet fylt med gjeldende verdier i data-datakilde ved hjelp av den <xref:System.Web.Security.Membership.GetUser%2A>, <xref:System.Web.Security.Membership.GetAllUsers%2A>, <xref:System.Web.Security.Membership.FindUsersByName%2A>, eller <xref:System.Web.Security.Membership.FindUsersByEmail%2A>metoder.</xref:System.Web.Security.Membership.FindUsersByEmail%2A> </xref:System.Web.Security.Membership.FindUsersByName%2A> </xref:System.Web.Security.Membership.GetAllUsers%2A> </xref:System.Web.Security.Membership.GetUser%2A> </xref:System.Web.Security.MembershipUser> </xref:System.Web.Security.MembershipUser>"
   example:
   - "The following code example updates the e-mail address for the current logged-on user.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[System.Web.Security.SqlMembershipProvider#11](~/add/codesnippet/csharp/m-system.web.security.me_8_1.aspx)]\n [!code-vb[System.Web.Security.SqlMembershipProvider#11](~/add/codesnippet/visualbasic/m-system.web.security.me_8_1.aspx)]"
   syntax:
@@ -1118,12 +1118,12 @@ items:
     parameters:
     - id: user
       type: System.Web.Security.MembershipUser
-      description: "A <xref:System.Web.Security.MembershipUser> object that represents the user to be updated and the updated information for the user."
+      description: "En <xref:System.Web.Security.MembershipUser>objektet som representerer brukeren som skal oppdateres, og den oppdaterte informasjonen for brukeren.</xref:System.Web.Security.MembershipUser>"
   overload: System.Web.Security.Membership.UpdateUser*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>user</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>user</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Web.Security.Membership.UserIsOnlineTimeWindow
@@ -1138,15 +1138,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Specifies the number of minutes after the last-activity date/time stamp for a user during which the user is considered online."
-  remarks: "The UserIsOnlineTimeWindow property value is checked during the call to <xref:System.Web.Security.Membership.GetNumberOfUsersOnline%2A>. If the <xref:System.Web.Security.MembershipUser.LastActivityDate%2A> for a user is greater than the current date and time minus the UserIsOnlineTimeWindow value in minutes, then the user is considered online. You can determine whether a membership user is considered online with the <xref:System.Web.Security.MembershipUser.IsOnline%2A> property of the <xref:System.Web.Security.MembershipUser> class.       The <xref:System.Web.Security.MembershipUser.LastActivityDate%2A> for a user is updated when a user&quot;s credentials are successfully validated by the <xref:System.Web.Security.Membership.ValidateUser%2A> method. You can also update the <xref:System.Web.Security.MembershipUser.LastActivityDate%2A> for a membership user when you call one of the <xref:System.Web.Security.Membership.GetUser%2A> overloads. If you call a <xref:System.Web.Security.Membership.GetUser%2A> overload that takes a `userIsOnline` parameter, specify a value of `true` to update the <xref:System.Web.Security.MembershipUser.LastActivityDate%2A> for the user."
+  summary: "Angir antall minutter etter siste-aktiviteten dato/klokkeslett tidsstempel for en bruker som brukeren anses som online."
+  remarks: "Egenskapsverdien UserIsOnlineTimeWindow kontrolleres under kall til <xref:System.Web.Security.Membership.GetNumberOfUsersOnline%2A>.</xref:System.Web.Security.Membership.GetNumberOfUsersOnline%2A> Hvis den <xref:System.Web.Security.MembershipUser.LastActivityDate%2A>for en bruker er større enn gjeldende dato og klokkeslett minus UserIsOnlineTimeWindow verdien i minutter, brukeren anses online.</xref:System.Web.Security.MembershipUser.LastActivityDate%2A> Du kan fastslå om en medlemskap bruker anses med <xref:System.Web.Security.MembershipUser.IsOnline%2A>egenskapen for <xref:System.Web.Security.MembershipUser>klassen.</xref:System.Web.Security.MembershipUser> </xref:System.Web.Security.MembershipUser.IsOnline%2A>       Den <xref:System.Web.Security.MembershipUser.LastActivityDate%2A>for en bruker oppdateres når en bruker er validert av den <xref:System.Web.Security.Membership.ValidateUser%2A>metoden.</xref:System.Web.Security.Membership.ValidateUser%2A> </xref:System.Web.Security.MembershipUser.LastActivityDate%2A> Du kan også oppdatere den <xref:System.Web.Security.MembershipUser.LastActivityDate%2A>for en medlemskap bruker når du kaller en av de <xref:System.Web.Security.Membership.GetUser%2A>overlastingene.</xref:System.Web.Security.Membership.GetUser%2A> </xref:System.Web.Security.MembershipUser.LastActivityDate%2A> Hvis du kaller en <xref:System.Web.Security.Membership.GetUser%2A>overbelastningen som tar en `userIsOnline` parameteren angi verdien `true` å oppdatere den <xref:System.Web.Security.MembershipUser.LastActivityDate%2A>for brukeren.</xref:System.Web.Security.MembershipUser.LastActivityDate%2A> </xref:System.Web.Security.Membership.GetUser%2A>"
   example:
   - "The following code example shows the  element in the `system.web` section of the Web.config file for an ASP.NET application. It specifies that the application use an instance of the <xref:System.Web.Security.SqlMembershipProvider> and sets the `userIsOnlineTimeWindow` attribute to 20 minutes.  \n  \n```  \n<membership defaultProvider=\"SqlProvider\"  \n  userIsOnlineTimeWindow=\"20\">  \n  <providers>  \n    <add name=\"SqlProvider\"  \n      type=\"System.Web.Security.SqlMembershipProvider\"  \n      connectionStringName=\"SqlServices\"  \n      enablePasswordRetrieval=\"true\"  \n      enablePasswordReset=\"false\"  \n      requiresQuestionAndAnswer=\"true\"  \n      passwordFormat=\"Encrypted\"  \n      applicationName=\"MyApplication\" />  \n  </providers>  \n</membership>  \n```"
   syntax:
     content: public static int UserIsOnlineTimeWindow { get; }
     return:
       type: System.Int32
-      description: "The number of minutes after the last-activity date/time stamp for a user during which the user is considered online."
+      description: "Antall minutter etter siste-aktiviteten dato/klokkeslett tidsstempel for en bruker som brukeren anses som online."
   overload: System.Web.Security.Membership.UserIsOnlineTimeWindow*
   exceptions: []
   platform:
@@ -1163,8 +1163,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Verifies that the supplied user name and password are valid."
-  remarks: "ValidateUser provides an easy way to verify a user name and password from the data source. Note that, if the `username` parameter is empty or `null`, an <xref:System.Web.HttpException> is thrown."
+  summary: "Kontrollerer at brukernavnet og passordet er ugyldig."
+  remarks: "ValidateUser gir en enkel måte å kontrollere brukernavn og passord fra datakilden. Legg merke til at, hvis den `username` parameter er tom eller `null`, en <xref:System.Web.HttpException>forårsakes.</xref:System.Web.HttpException>"
   example:
   - "The following code example shows the login page for an ASP.NET application configured to use forms authentication and the <xref:System.Web.Security.Membership> class. If the supplied user credentials are invalid, a message is displayed to the user. Otherwise, the user is redirected to the originally requested URL by the <xref:System.Web.Security.FormsAuthentication.RedirectFromLoginPage%2A> method.  \n  \n> [!IMPORTANT]\n>  This example contains a text box that accepts user input, which is a potential security threat. By default, ASP.NET Web pages validate that user input does not include script or HTML elements. For more information, see [Script Exploits Overview](~/add/includes/ajax-current-ext-md.md).  \n  \n [!code-cs[System.Web.Security.SqlMembershipProvider#1](~/add/codesnippet/csharp/m-system.web.security.me_7_1.aspx)]\n [!code-vb[System.Web.Security.SqlMembershipProvider#1](~/add/codesnippet/visualbasic/m-system.web.security.me_7_1.aspx)]"
   syntax:
@@ -1172,13 +1172,13 @@ items:
     parameters:
     - id: username
       type: System.String
-      description: "The name of the user to be validated."
+      description: "Navnet på brukeren valideres."
     - id: password
       type: System.String
-      description: "The password for the specified user."
+      description: "Passordet for brukeren som er angitt."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the supplied user name and password are valid; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis det angitte brukernavnet og passordet er ugyldig. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.Security.Membership.ValidateUser*
   exceptions: []
   platform:
@@ -1195,15 +1195,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Security
-  summary: "Occurs when a user is created, a password is changed, or a password is reset."
-  remarks: "The <xref:System.Web.Security.MembershipProvider.ValidatingPassword> event is raised when the <xref:System.Web.Security.MembershipProvider.CreateUser%2A> method, the <xref:System.Web.Security.MembershipProvider.ChangePassword%2A> method, or the <xref:System.Web.Security.MembershipProvider.ResetPassword%2A> method of a membership provider is called.       You can use the <xref:System.Web.Security.MembershipProvider.ValidatingPassword> event to validate password formats and values for membership users.       You can cancel the current <xref:System.Web.Security.MembershipProvider.CreateUser%2A>, <xref:System.Web.Security.MembershipProvider.ChangePassword%2A>, or <xref:System.Web.Security.MembershipProvider.ResetPassword%2A> action by setting the <xref:System.Web.Security.ValidatePasswordEventArgs.Cancel%2A> property of the supplied <xref:System.Web.Security.ValidatePasswordEventArgs> to `true` during the <xref:System.Web.Security.MembershipProvider.ValidatingPassword> event.       If you cancel the current action by setting the <xref:System.Web.Security.ValidatePasswordEventArgs.Cancel%2A> property to `true`, you can set the <xref:System.Web.Security.ValidatePasswordEventArgs.FailureInformation%2A> property of the supplied <xref:System.Web.Security.ValidatePasswordEventArgs> to an exception that describes the reason for the password-validation failure. The calling method will throw the exception that the <xref:System.Web.Security.ValidatePasswordEventArgs.FailureInformation%2A> property is set to. If the <xref:System.Web.Security.ValidatePasswordEventArgs.FailureInformation%2A> property is `null`, the caller will throw a generic password-validation-failure exception."
+  summary: "Forekommer når en bruker er opprettet en passordet er endret eller et passord er tilbakestilt."
+  remarks: "Den <xref:System.Web.Security.MembershipProvider.ValidatingPassword>denne hendelsen oppstår når den <xref:System.Web.Security.MembershipProvider.CreateUser%2A>-metoden i <xref:System.Web.Security.MembershipProvider.ChangePassword%2A>metode, eller <xref:System.Web.Security.MembershipProvider.ResetPassword%2A>metoden for en leverandør av medlemskap kalles.</xref:System.Web.Security.MembershipProvider.ResetPassword%2A> </xref:System.Web.Security.MembershipProvider.ChangePassword%2A> </xref:System.Web.Security.MembershipProvider.CreateUser%2A> </xref:System.Web.Security.MembershipProvider.ValidatingPassword>       Du kan bruke den <xref:System.Web.Security.MembershipProvider.ValidatingPassword>-hendelsen for å validere passordet formater og verdier for medlemskapsbrukere.</xref:System.Web.Security.MembershipProvider.ValidatingPassword>       Du kan avbryte gjeldende <xref:System.Web.Security.MembershipProvider.CreateUser%2A>, <xref:System.Web.Security.MembershipProvider.ChangePassword%2A>, eller <xref:System.Web.Security.MembershipProvider.ResetPassword%2A>handlingen ved å angi den <xref:System.Web.Security.ValidatePasswordEventArgs.Cancel%2A>for den angitte <xref:System.Web.Security.ValidatePasswordEventArgs>til `true` under den <xref:System.Web.Security.MembershipProvider.ValidatingPassword>hendelsen.</xref:System.Web.Security.MembershipProvider.ValidatingPassword> </xref:System.Web.Security.ValidatePasswordEventArgs> </xref:System.Web.Security.ValidatePasswordEventArgs.Cancel%2A> </xref:System.Web.Security.MembershipProvider.ResetPassword%2A> </xref:System.Web.Security.MembershipProvider.ChangePassword%2A> </xref:System.Web.Security.MembershipProvider.CreateUser%2A>       Hvis du avbryter gjeldende handling ved å angi den <xref:System.Web.Security.ValidatePasswordEventArgs.Cancel%2A>egenskapen `true`, kan du angi den <xref:System.Web.Security.ValidatePasswordEventArgs.FailureInformation%2A>for den angitte <xref:System.Web.Security.ValidatePasswordEventArgs>et unntak som beskriver hvorfor for passord valideringsfeil.</xref:System.Web.Security.ValidatePasswordEventArgs> </xref:System.Web.Security.ValidatePasswordEventArgs.FailureInformation%2A> </xref:System.Web.Security.ValidatePasswordEventArgs.Cancel%2A> Kall metoden vil iverksette unntaket som den <xref:System.Web.Security.ValidatePasswordEventArgs.FailureInformation%2A>er satt til.</xref:System.Web.Security.ValidatePasswordEventArgs.FailureInformation%2A> Hvis den <xref:System.Web.Security.ValidatePasswordEventArgs.FailureInformation%2A>egenskapen `null`, oppkalleren vil iverksette en generisk passord valideringsfeil-unntak.</xref:System.Web.Security.ValidatePasswordEventArgs.FailureInformation%2A>"
   example:
   - "The following code example shows a <xref:System.Web.Security.MembershipProvider.ValidatingPassword> event that validates the format of the password for a user and cancels the action if the password does not match the required format.  \n  \n [!code-cs[System.Web.Security.Membership#11](~/add/codesnippet/csharp/e-system.web.security.me_1.aspx)]\n [!code-vb[System.Web.Security.Membership#11](~/add/codesnippet/visualbasic/e-system.web.security.me_1.aspx)]"
   syntax:
     content: public static event System.Web.Security.MembershipValidatePasswordEventHandler ValidatingPassword;
     return:
       type: System.Web.Security.MembershipValidatePasswordEventHandler
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462

@@ -16,8 +16,8 @@ items:
   nameWithType: IKeyboardInputSink
   fullName: System.Windows.Interop.IKeyboardInputSink
   type: Interface
-  summary: "Provides a keyboard sink for components that manages tabbing, accelerators, and mnemonics across interop boundaries and between HWNDs. This interface implements keyboard message management in [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)]-[!INCLUDE[TLA2#tla_win32](~/add/includes/tla2sharptla-win32-md.md)] interoperation scenarios."
-  remarks: "A keyboard sink handles input from particular subsets of the overall keyboard input model for [!INCLUDE[TLA#tla_win32](~/add/includes/tlasharptla-win32-md.md)] and [!INCLUDE[TLA#tla_winclient](~/add/includes/ajax-current-ext-md.md)], and enables some keyboard input to be processed and directed to HWNDs other than the one with current keyboard focus.       If your component contains other components, and maintains a tab order, your component must also implement <xref:System.Windows.Interop.IKeyboardInputSite> and keep track of which component has focus.       For a discussion of the input architecture specifically implemented for [!INCLUDE[TLA#tla_winforms](~/add/includes/ajax-current-ext-md.md)] interop, see [Windows Forms and WPF Interoperability Input Architecture](~/add/includes/ajax-current-ext-md.md).       <xref:System.Windows.Interop.HwndSource> and <xref:System.Windows.Interop.HwndHost> each implement the IKeyboardInputSink interface, through explicit interface definitions. The explicit definitions supply default behaviors, and can also be accessed if necessary through an IKeyboardInputSink interface cast of <xref:System.Windows.Interop.HwndSource> or <xref:System.Windows.Interop.HwndHost>."
+  summary: "Inneholder en tastatur sink for komponenter som administrerer Bla aktiviteter og mnemoniske på tvers av interop grenser og mellom HWNDs. Implementerer dette grensesnittet for administrasjon av tastatur melding i [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] - [!INCLUDE[TLA2#tla_win32](~/add/includes/tla2sharptla-win32-md.md)] interoperation scenarier."
+  remarks: "En tastatur sink behandler inndata fra bestemt delsett av den totale tastatur inndataene modellen for [!INCLUDE[TLA#tla_win32](~/add/includes/tlasharptla-win32-md.md)] og [!INCLUDE[TLA#tla_winclient](~/add/includes/ajax-current-ext-md.md)], og gjør det mulig for noen tastatur inndataene skal behandles og rettet mot HWNDs enn det med gjeldende tastaturfokus.       Hvis komponenten inneholder andre komponenter, og beholder en kategorien rekkefølge komponenten også må implementere <xref:System.Windows.Interop.IKeyboardInputSite>og holde oversikt over komponent som er i fokus.</xref:System.Windows.Interop.IKeyboardInputSite>       Hvis du vil vite inndata arkitektur implementert spesielt for [!INCLUDE[TLA#tla_winforms](~/add/includes/ajax-current-ext-md.md)] interop, se [Windows Forms og WPF interoperabilitet inndata arkitektur](~/add/includes/ajax-current-ext-md.md).       <xref:System.Windows.Interop.HwndSource>og <xref:System.Windows.Interop.HwndHost>hver implementere grensesnittet IKeyboardInputSink via eksplisitt grensesnitt definisjoner.</xref:System.Windows.Interop.HwndHost></xref:System.Windows.Interop.HwndSource> Eksplisitt definisjonene oppgi standardvirkemåter, og får også hvis nødvendig via et grensesnitt som IKeyboardInputSink endres eller <xref:System.Windows.Interop.HwndSource> <xref:System.Windows.Interop.HwndHost>.</xref:System.Windows.Interop.HwndHost> </xref:System.Windows.Interop.HwndSource>"
   syntax:
     content: public interface IKeyboardInputSink
   implements: []
@@ -35,14 +35,14 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Interop
-  summary: "Gets a value that indicates whether the sink or one of its contained components has focus."
-  remarks: "This method is necessary for forwarding <xref:System.Windows.Interop.IKeyboardInputSink.TranslateAccelerator%2A> calls to child components with focus from within the <xref:System.Windows.Interop.IKeyboardInputSink.TranslateAccelerator%2A> implementation. Call HasFocusWithin recursively until you reach the level of specific focus and forward <xref:System.Windows.Interop.IKeyboardInputSink.TranslateAccelerator%2A> there."
+  summary: "Henter en verdi som angir om mottakeren eller en av komponentene inneholder har fokus."
+  remarks: "Denne metoden er nødvendig for videresending <xref:System.Windows.Interop.IKeyboardInputSink.TranslateAccelerator%2A>kall til underordnede komponenter med fokus fra innenfor den <xref:System.Windows.Interop.IKeyboardInputSink.TranslateAccelerator%2A>implementeringen.</xref:System.Windows.Interop.IKeyboardInputSink.TranslateAccelerator%2A> </xref:System.Windows.Interop.IKeyboardInputSink.TranslateAccelerator%2A> Kall HasFocusWithin rekursivt før nestet eksakte og fremover <xref:System.Windows.Interop.IKeyboardInputSink.TranslateAccelerator%2A>det.</xref:System.Windows.Interop.IKeyboardInputSink.TranslateAccelerator%2A>"
   syntax:
     content: public bool HasFocusWithin ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the sink or one of its contained components has focus; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis mottakeren eller en av komponentene inneholder har fokus. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Interop.IKeyboardInputSink.HasFocusWithin*
   exceptions: []
   platform:
@@ -59,13 +59,13 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Interop
-  summary: "Gets or sets a reference to the component&quot;s container&quot;s <xref href=&quot;System.Windows.Interop.IKeyboardInputSite&quot;></xref> interface."
-  remarks: "This property should initially be set to `null`. Any container that adds the sink to its components list will set KeyboardInputSite before any other methods are called, and it can be set multiple times after that. You should set the property to `null` again before disposal."
+  summary: "Henter eller angir en referanse til komponentens beholder <xref href=&quot;System.Windows.Interop.IKeyboardInputSite&quot;> </xref> grensesnitt."
+  remarks: "Denne egenskapen må være satt til `null`. Beholderen som legger til mottakeren i komponentlisten setter KeyboardInputSite før andre metoder kalles, og du kan angi flere ganger etter som. Du må angi egenskapen til `null` på nytt før salg."
   syntax:
     content: public System.Windows.Interop.IKeyboardInputSite KeyboardInputSite { get; set; }
     return:
       type: System.Windows.Interop.IKeyboardInputSite
-      description: "A reference to the container&quot;s <xref href=&quot;System.Windows.Interop.IKeyboardInputSite&quot;></xref> interface."
+      description: "En referanse til i beholderen <xref href=&quot;System.Windows.Interop.IKeyboardInputSite&quot;> </xref> grensesnitt."
   overload: System.Windows.Interop.IKeyboardInputSink.KeyboardInputSite*
   exceptions: []
   platform:
@@ -82,20 +82,20 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Interop
-  summary: "Called when one of the mnemonics (access keys) for this sink is invoked."
-  remarks: "The [!INCLUDE[TLA#tla_win](~/add/includes/ajax-current-ext-md.md)] message must be WM_CHAR, WM_SYSCHAR, WM_DEADCHAR or WM_SYSDEADCHAR.       If the component has contained components, the message must be passed in your implementation by calling each contained component&quot;s OnMnemonic method.       An interface that returns `true` from <xref:System.Windows.Interop.IKeyboardInputSink.TranslateAccelerator%2A> will not call OnMnemonic. Implementations can choose to perform all specific key combination handling in <xref:System.Windows.Interop.IKeyboardInputSink.TranslateChar%2A>.and bypass OnMnemonic."
+  summary: "Kalles når en av mnemoniske (Microsoft access) for denne sink aktiveres."
+  remarks: "Den [!INCLUDE[TLA#tla_win](~/add/includes/ajax-current-ext-md.md)] meldingen må være WM_CHAR, WM_SYSCHAR, WM_DEADCHAR eller WM_SYSDEADCHAR.       Hvis komponenten har inneholdt komponenter, må få tilsendt meldingen i implementeringen din ved å kalle hver inneholder komponent OnMnemonic-metoden.       Et grensesnitt som returnerer `true` fra <xref:System.Windows.Interop.IKeyboardInputSink.TranslateAccelerator%2A>ikke ringe OnMnemonic.</xref:System.Windows.Interop.IKeyboardInputSink.TranslateAccelerator%2A> Implementeringer kan velge å utføre alle bestemte kombinasjonen behandling i <xref:System.Windows.Interop.IKeyboardInputSink.TranslateChar%2A>og omgå OnMnemonic.</xref:System.Windows.Interop.IKeyboardInputSink.TranslateChar%2A>"
   syntax:
     content: public bool OnMnemonic (ref System.Windows.Interop.MSG msg, System.Windows.Input.ModifierKeys modifiers);
     parameters:
     - id: msg
       type: System.Windows.Interop.MSG
-      description: "The message for the mnemonic and associated data. Do not modify this message structure. It is passed by reference for performance reasons only."
+      description: "Meldingen for etikettens og tilhørende data. Ikke endre denne meldingen-strukturen. Det sendes som referanse hensyn til ytelsen bare."
     - id: modifiers
       type: System.Windows.Input.ModifierKeys
-      description: "Modifier keys."
+      description: "Modifikator nøkler."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the message was handled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis meldingen ble håndtert; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Interop.IKeyboardInputSink.OnMnemonic*
   exceptions: []
   platform:
@@ -112,17 +112,17 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Interop
-  summary: "Registers the <xref href=&quot;System.Windows.Interop.IKeyboardInputSink&quot;></xref> interface of a contained component."
-  remarks: "Components with child components should maintain internal collections of sites and use this method to add a new sink and return the new site. You only need to maintain the site collection, because the sink can be obtained from the site."
+  summary: "Registrerer den <xref href=&quot;System.Windows.Interop.IKeyboardInputSink&quot;> </xref> grensesnittet i en oppbevart komponent."
+  remarks: "Komponenter med underordnet komponenter må opprettholde intern samlinger av områder og bruke denne metoden å legge til en ny sink og returnerer det nye området. Du trenger bare å beholde områdesamlingen fordi mottakeren kan hentes fra området."
   syntax:
     content: public System.Windows.Interop.IKeyboardInputSite RegisterKeyboardInputSink (System.Windows.Interop.IKeyboardInputSink sink);
     parameters:
     - id: sink
       type: System.Windows.Interop.IKeyboardInputSink
-      description: "The <xref href=&quot;System.Windows.Interop.IKeyboardInputSink&quot;></xref> sink of the contained component."
+      description: "Den <xref href=&quot;System.Windows.Interop.IKeyboardInputSink&quot;> </xref> sink av komponenten inneholder."
     return:
       type: System.Windows.Interop.IKeyboardInputSite
-      description: "The <xref href=&quot;System.Windows.Interop.IKeyboardInputSite&quot;></xref> site of the contained component."
+      description: "Den <xref href=&quot;System.Windows.Interop.IKeyboardInputSite&quot;> </xref> området for inneholder komponenten."
   overload: System.Windows.Interop.IKeyboardInputSink.RegisterKeyboardInputSink*
   exceptions: []
   platform:
@@ -139,17 +139,17 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Interop
-  summary: "Sets focus on either the first tab stop or the last tab stop of the sink."
-  remarks: "<xref:System.Windows.Input.FocusNavigationDirection> and <xref:System.Windows.Input.FocusNavigationDirection> are the only relevant values that should be passed to this method in the <xref:System.Windows.Input.TraversalRequest>."
+  summary: "Angir se tabulator første eller siste tabulator for mottakeren."
+  remarks: "<xref:System.Windows.Input.FocusNavigationDirection>og <xref:System.Windows.Input.FocusNavigationDirection>bare relevant verdiene som skal sendes til denne metoden i <xref:System.Windows.Input.TraversalRequest>.</xref:System.Windows.Input.TraversalRequest> </xref:System.Windows.Input.FocusNavigationDirection></xref:System.Windows.Input.FocusNavigationDirection>"
   syntax:
     content: public bool TabInto (System.Windows.Input.TraversalRequest request);
     parameters:
     - id: request
       type: System.Windows.Input.TraversalRequest
-      description: "Specifies whether focus should be set to the first or the last tab stop."
+      description: "Angir om fokus må være satt til først eller siste tabulator."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the focus has been set as requested; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>, if there are no tab stops."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis fokus er angitt som forespurt; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>, hvis det finnes ingen kategorien stopper."
   overload: System.Windows.Interop.IKeyboardInputSink.TabInto*
   exceptions: []
   platform:
@@ -166,20 +166,20 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Interop
-  summary: "Processes keyboard input at the keydown message level."
-  remarks: "The message must either be WM_KEYDOWN or WM_SYSKEYDOWN.       If the component is unable to handle the input translations and has child components that might have translations, it typically calls TranslateAccelerator method on the child component that holds the current focus before returning a result.       If the message cannot be handled immediately, you can re-dispatch it from within the TranslateAccelerator implementation if necessary, and then return `false`.       A primary scenario for translating accelerator keys is handling the VK_TAB keydown message and determining whether to set focus within the component, to call <xref:System.Windows.Interop.IKeyboardInputSink.TabInto%2A> to a child component, or to call <xref:System.Windows.Interop.IKeyboardInputSite.OnNoMoreTabStops%2A> on the parent site because the tab sequence has reached the beginning or end bounds. Certain components may choose to not handle the tab key in this fashion."
+  summary: "Behandler tastaturinndata på keydown meldingsnivå."
+  remarks: "Meldingen må være WM_KEYDOWN eller WM_SYSKEYDOWN.       Hvis komponenten kan ikke behandle inndata oversettelser og har underordnede komponenter som kan ha oversettelser, kaller vanligvis TranslateAccelerator-metoden på underordnet komponenten som inneholder gjeldende fokus før den returnerer et resultat.       Hvis meldingen ikke kan behandles umiddelbart, kan du omfordele den fra i TranslateAccelerator implementeringen om nødvendig, og deretter går tilbake `false`.       Et primære scenario for oversette hurtigtaster behandler meldingen VK_TAB keydown og bestemme om å angi fokus i komponenten å kalle <xref:System.Windows.Interop.IKeyboardInputSink.TabInto%2A>til en underordnet-komponent eller å kalle <xref:System.Windows.Interop.IKeyboardInputSite.OnNoMoreTabStops%2A>i overordnet område fordi kategorien sekvensen har nådd begynnelsen eller slutten grensene.</xref:System.Windows.Interop.IKeyboardInputSite.OnNoMoreTabStops%2A> </xref:System.Windows.Interop.IKeyboardInputSink.TabInto%2A> Enkelte komponenter kan velge å behandle ikke du TAB på denne måten."
   syntax:
     content: public bool TranslateAccelerator (ref System.Windows.Interop.MSG msg, System.Windows.Input.ModifierKeys modifiers);
     parameters:
     - id: msg
       type: System.Windows.Interop.MSG
-      description: "The message and associated data. Do not modify this structure. It is passed by reference for performance reasons only."
+      description: "Melding og tilhørende data. Ikke endre denne strukturen. Det sendes som referanse hensyn til ytelsen bare."
     - id: modifiers
       type: System.Windows.Input.ModifierKeys
-      description: "Modifier keys."
+      description: "Modifikator nøkler."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the message was handled by the method implementation; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis meldingen ble behandlet av metoden implementeringen; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Interop.IKeyboardInputSink.TranslateAccelerator*
   exceptions: []
   platform:
@@ -196,20 +196,20 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Interop
-  summary: "Processes WM_CHAR, WM_SYSCHAR, WM_DEADCHAR, and WM_SYSDEADCHAR input messages before <xref:System.Windows.Interop.IKeyboardInputSink.OnMnemonic*> is called."
-  remarks: "If you implement this method to return `true`, the input architecture will not call <xref:System.Windows.Interop.IKeyboardInputSink.OnMnemonic%2A> for that key message."
+  summary: "Behandler WM_CHAR WM_SYSCHAR, WM_DEADCHAR meldinger, og WM_SYSDEADCHAR inndata før <xref:System.Windows.Interop.IKeyboardInputSink.OnMnemonic*>kalles.</xref:System.Windows.Interop.IKeyboardInputSink.OnMnemonic*>"
+  remarks: "Hvis du Implementer denne metoden til å returnere `true`, inndata arkitekturen ikke ringe <xref:System.Windows.Interop.IKeyboardInputSink.OnMnemonic%2A>for denne nøkkelen meldingen.</xref:System.Windows.Interop.IKeyboardInputSink.OnMnemonic%2A>"
   syntax:
     content: public bool TranslateChar (ref System.Windows.Interop.MSG msg, System.Windows.Input.ModifierKeys modifiers);
     parameters:
     - id: msg
       type: System.Windows.Interop.MSG
-      description: "The message and associated data. Do not modify this structure. It is passed by reference for performance reasons only."
+      description: "Melding og tilhørende data. Ikke endre denne strukturen. Det sendes som referanse hensyn til ytelsen bare."
     - id: modifiers
       type: System.Windows.Input.ModifierKeys
-      description: "Modifier keys."
+      description: "Modifikator nøkler."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the message was processed and <xref:System.Windows.Interop.IKeyboardInputSink.OnMnemonic*> should not be called; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis meldingen ble behandlet og <xref:System.Windows.Interop.IKeyboardInputSink.OnMnemonic*>kan ikke være kall; ellers, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>.</xref:System.Windows.Interop.IKeyboardInputSink.OnMnemonic*>"
   overload: System.Windows.Interop.IKeyboardInputSink.TranslateChar*
   exceptions: []
   platform:

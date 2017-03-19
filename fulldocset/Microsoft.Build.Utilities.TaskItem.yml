@@ -28,8 +28,8 @@ items:
   nameWithType: TaskItem
   fullName: Microsoft.Build.Utilities.TaskItem
   type: Class
-  summary: "Defines a single item of the project as it is passed into a task."
-  remarks: "TaskItem objects do not exactly correspond to item elements in project files. If they did, then tasks would have access to data that was not explicitly passed into the task through the project file. This is not a security issue, but rather an issue with project file clarity and transparency.       This class has to be sealed since the build engine instantiates its own copy of this type. If a third party were to extend this class, then the build engine will yield an undesired behavior."
+  summary: "Definerer ett enkelt element av prosjektet fordi den er sendt til en oppgave."
+  remarks: "TaskItem objektene ikke nøyaktig samsvarer med elementet elementer i project-filer. Hvis de har, vil oppgaver har tilgang til data som ikke ble eksplisitt sendt til oppgaven i prosjektfilen. Dette er ikke et sikkerhetsproblem, men heller et problem med prosjektet filen klarere og gjennomsiktighet.       Denne klassen må være lukket fordi build-motoren starter sin egen kopi av denne typen. Hvis en tredjepart skulle utvide denne klassen, og deretter bygge motoren fører til en klientprogrammet."
   syntax:
     content: 'public sealed class TaskItem : MarshalByRefObject, Microsoft.Build.Framework.ITaskItem2'
   inheritance:
@@ -55,8 +55,8 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Initializes a new instance of the <xref href=&quot;Microsoft.Build.Utilities.TaskItem&quot;></xref> class."
-  remarks: "This constructor enables this type to be COM-creatable."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;Microsoft.Build.Utilities.TaskItem&quot;> </xref> klasse."
+  remarks: "Denne konstruktøren gjør det mulig for denne typen til COM-kunne opprettes."
   syntax:
     content: public TaskItem ();
     parameters: []
@@ -76,13 +76,13 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Initializes a new instance of the <xref href=&quot;Microsoft.Build.Utilities.TaskItem&quot;></xref> class using the specified source <xref href=&quot;Microsoft.Build.Framework.ITaskItem&quot;></xref>."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;Microsoft.Build.Utilities.TaskItem&quot;> </xref> klasse ved hjelp av den angitte kilden <xref href=&quot;Microsoft.Build.Framework.ITaskItem&quot;> </xref>."
   syntax:
     content: public TaskItem (Microsoft.Build.Framework.ITaskItem sourceItem);
     parameters:
     - id: sourceItem
       type: Microsoft.Build.Framework.ITaskItem
-      description: "The item to copy."
+      description: "Elementet du vil kopiere."
   overload: Microsoft.Build.Utilities.TaskItem.#ctor*
   exceptions: []
   platform:
@@ -99,13 +99,13 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Initializes a new instance of the <xref href=&quot;Microsoft.Build.Utilities.TaskItem&quot;></xref> class using the specified item-specification string."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;Microsoft.Build.Utilities.TaskItem&quot;> </xref> klasse med angitt element-spesifikasjon-streng."
   syntax:
     content: public TaskItem (string itemSpec);
     parameters:
     - id: itemSpec
       type: System.String
-      description: "The item specification."
+      description: "Element-spesifikasjon."
   overload: Microsoft.Build.Utilities.TaskItem.#ctor*
   exceptions: []
   platform:
@@ -122,16 +122,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Initializes a new instance of the <xref href=&quot;Microsoft.Build.Utilities.TaskItem&quot;></xref> class using the specified item-specification string and its metadata."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;Microsoft.Build.Utilities.TaskItem&quot;> </xref> klasse ved hjelp av den angitte element-spesifikasjon strengen og metadataene."
   syntax:
     content: public TaskItem (string itemSpec, System.Collections.IDictionary itemMetadata);
     parameters:
     - id: itemSpec
       type: System.String
-      description: "The item specification."
+      description: "Element-spesifikasjon."
     - id: itemMetadata
       type: System.Collections.IDictionary
-      description: "The custom metadata for the item specification."
+      description: "Egendefinert metadataene for elementet-spesifikasjonen."
   overload: Microsoft.Build.Utilities.TaskItem.#ctor*
   exceptions: []
   platform:
@@ -148,14 +148,14 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Clones the collection of custom metadata for the item specification."
-  remarks: "This method does not include built-in metadata."
+  summary: "Kloner samlingen av egendefinerte metadata for elementet-spesifikasjonen."
+  remarks: "Denne metoden inneholder ikke innebygde metadataene."
   syntax:
     content: public System.Collections.IDictionary CloneCustomMetadata ();
     parameters: []
     return:
       type: System.Collections.IDictionary
-      description: "An <xref:System.Collections.IDictionary> that represents a clone of the custom metadata."
+      description: "En <xref:System.Collections.IDictionary>som representerer en kopi av egendefinerte metadataene.</xref:System.Collections.IDictionary>"
   overload: Microsoft.Build.Utilities.TaskItem.CloneCustomMetadata*
   exceptions: []
   platform:
@@ -172,14 +172,14 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Copies the item-specification metadata to the specified destination task item."
-  remarks: "If the metadata already exists on the destination item, then it is not overwritten. The original metadata value supersedes the copied metadata value.       This method does not copy the item specification to the destination task item."
+  summary: "Kopier element-spesifikasjon metadata til det angitte mål oppgaveelementet."
+  remarks: "Hvis metadataene finnes allerede i mål-element, deretter overskrives den ikke. Den opprinnelige verdien for metadata erstatter verdien kopierte metadata.       Denne metoden kopierer ikke spesifikasjonen elementet til målet oppgaveelementet."
   syntax:
     content: public void CopyMetadataTo (Microsoft.Build.Framework.ITaskItem destinationItem);
     parameters:
     - id: destinationItem
       type: Microsoft.Build.Framework.ITaskItem
-      description: "The item that this method will copy metadata to."
+      description: "Elementet som denne metoden kopierer metadata til."
   overload: Microsoft.Build.Utilities.TaskItem.CopyMetadataTo*
   exceptions: []
   platform:
@@ -196,16 +196,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Retrieves the specified metadata on the item."
+  summary: "Henter de angitte metadataene for elementet."
   syntax:
     content: public string GetMetadata (string metadataName);
     parameters:
     - id: metadataName
       type: System.String
-      description: "The name of the metadata to retrieve."
+      description: "Navnet på metadata for å hente."
     return:
       type: System.String
-      description: "A <xref:System.String> that represents the metadata value."
+      description: "En <xref:System.String>som representerer verdien metadata.</xref:System.String>"
   overload: Microsoft.Build.Utilities.TaskItem.GetMetadata*
   exceptions: []
   platform:
@@ -222,14 +222,14 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "When overridden in a derived class, gives task items infinite lease time."
-  remarks: "Otherwise, a limited lease of 5 minutes will result; and task instances can expire if they take a long time to process."
+  summary: "Når overstyrt i en avledet klasse, gir du oppgaven elementer uendelig leietiden."
+  remarks: "Hvis ikke blir en begrenset leasingavtale på 5 minutter; og forekomster av oppgaven utløper hvis de tar lang tid å behandle."
   syntax:
     content: public override object InitializeLifetimeService ();
     parameters: []
     return:
       type: System.Object
-      description: "<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> to specify an infinite lifetime."
+      description: "<xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>for å angi ubegrenset levetid."
   overload: Microsoft.Build.Utilities.TaskItem.InitializeLifetimeService*
   exceptions: []
   platform:
@@ -246,13 +246,13 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets or sets the item specification."
-  remarks: "The <xref:Microsoft.Build.Framework.ITaskItem.ItemSpec%2A> for the following item declaration in a project file is `File.cs`.      ```   <ItemGroup>       <Compile Include=&quot;File.cs&quot;/>   </ItemGroup>   ```"
+  summary: "Henter eller angir element-spesifikasjonen."
+  remarks: "Den <xref:Microsoft.Build.Framework.ITaskItem.ItemSpec%2A>filen er for elementet deklarasjon i et prosjekt `File.cs`.</xref:Microsoft.Build.Framework.ITaskItem.ItemSpec%2A>      ```   <ItemGroup>       <Compile Include=&quot;File.cs&quot;/>   </ItemGroup>   ```"
   syntax:
     content: public string ItemSpec { get; set; }
     return:
       type: System.String
-      description: "A <xref:System.String> that represents the item specification."
+      description: "En <xref:System.String>som representerer element-spesifikasjon.</xref:System.String>"
   overload: Microsoft.Build.Utilities.TaskItem.ItemSpec*
   exceptions: []
   platform:
@@ -269,12 +269,12 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets the number of metadata set on the item."
+  summary: "Henter antall metadata som er angitt for elementet."
   syntax:
     content: public int MetadataCount { get; }
     return:
       type: System.Int32
-      description: "An <xref:System.Int32> that represents the count of metadata set on the item."
+      description: "En <xref:System.Int32>som representerer antall metadata som er angitt for elementet.</xref:System.Int32>"
   overload: Microsoft.Build.Utilities.TaskItem.MetadataCount*
   exceptions: []
   platform:
@@ -291,12 +291,12 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets the names of all the metadata on the item."
+  summary: "Henter navnene på alle metadata på elementet."
   syntax:
     content: public System.Collections.ICollection MetadataNames { get; }
     return:
       type: System.Collections.ICollection
-      description: "An <xref:System.Collections.ICollection> of metadata names."
+      description: "En <xref:System.Collections.ICollection>av metadata navnene.</xref:System.Collections.ICollection>"
   overload: Microsoft.Build.Utilities.TaskItem.MetadataNames*
   exceptions: []
   platform:
@@ -314,13 +314,13 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "<xref href=&quot;Microsoft.Build.Framework.ITaskItem2&quot;></xref> implementation which returns a clone of the metadata on this object. Values returned are in their original escaped form."
+  summary: "<xref href=&quot;Microsoft.Build.Framework.ITaskItem2&quot;></xref>implementering som returnerer en kopi av metadataene for dette objektet. Verdiene som returneres er i det opprinnelige mellom skilletegn skjemaet."
   syntax:
     content: System.Collections.IDictionary ITaskItem2.CloneCustomMetadataEscaped ();
     parameters: []
     return:
       type: System.Collections.IDictionary
-      description: "Returns the cloned metadata, with values&quot; escaping preserved."
+      description: "Returnerer det klonede metadata, med verdier, escaping beholdes."
   overload: Microsoft.Build.Utilities.TaskItem.Microsoft#Build#Framework#ITaskItem2#CloneCustomMetadataEscaped*
   exceptions: []
   platform:
@@ -338,12 +338,12 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "<xref href=&quot;Microsoft.Build.Framework.ITaskItem2&quot;></xref> implementation which gets or sets the item include value.  For disk-based items this would be the file path."
+  summary: "<xref href=&quot;Microsoft.Build.Framework.ITaskItem2&quot;></xref>implementering som henter eller angir elementet inneholde verdi.  Dette er filbanen for diskbaserte elementer."
   syntax:
     content: string Microsoft.Build.Framework.ITaskItem2.EvaluatedIncludeEscaped { get; set; }
     return:
       type: System.String
-      description: "Returns the item include value."
+      description: "Returnerer elementet ta med verdi."
   overload: Microsoft.Build.Utilities.TaskItem.Microsoft#Build#Framework#ITaskItem2#EvaluatedIncludeEscaped*
   exceptions: []
   platform:
@@ -361,16 +361,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "<xref href=&quot;Microsoft.Build.Framework.ITaskItem2&quot;></xref> implementation which allows the values of metadata on the item to be queried."
+  summary: "<xref href=&quot;Microsoft.Build.Framework.ITaskItem2&quot;></xref>implementering der verdiene i metadataene for elementet som spørres."
   syntax:
     content: string ITaskItem2.GetMetadataValueEscaped (string metadataName);
     parameters:
     - id: metadataName
       type: System.String
-      description: "The metadata to be queried"
+      description: "Metadataene som skal spørres"
     return:
       type: System.String
-      description: "Returns the escaped metadata value."
+      description: "Returnerer verdien mellom skilletegn metadata."
   overload: Microsoft.Build.Utilities.TaskItem.Microsoft#Build#Framework#ITaskItem2#GetMetadataValueEscaped*
   exceptions: []
   platform:
@@ -388,16 +388,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "<xref href=&quot;Microsoft.Build.Framework.ITaskItem2&quot;></xref> implementation which allows a piece of custom metadata to be set on the item. Assumes that the value passed in is unescaped, and escapes the value as necessary in order to maintain its value."
+  summary: "<xref href=&quot;Microsoft.Build.Framework.ITaskItem2&quot;></xref>implementering som tillater at en del av egendefinerte metadata skal angis på elementet. Antar at verdien som ble sendt er spørrestrengen og escapes verdien etter behov for å beholde verdien."
   syntax:
     content: void ITaskItem2.SetMetadataValueLiteral (string metadataName, string metadataValue);
     parameters:
     - id: metadataName
       type: System.String
-      description: "The metadata name."
+      description: "Metadatanavnet på."
     - id: metadataValue
       type: System.String
-      description: "The metadata value."
+      description: "Verdien for metadata."
   overload: Microsoft.Build.Utilities.TaskItem.Microsoft#Build#Framework#ITaskItem2#SetMetadataValueLiteral*
   exceptions: []
   platform:
@@ -419,10 +419,10 @@ items:
     parameters:
     - id: taskItemToCast
       type: Microsoft.Build.Utilities.TaskItem
-      description: "To be added."
+      description: "Som skal legges til."
     return:
       type: System.String
-      description: "To be added."
+      description: "Som skal legges til."
   overload: Microsoft.Build.Utilities.TaskItem.op_Explicit*
   exceptions: []
   platform:
@@ -439,13 +439,13 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Removes the specified metadata on the item."
+  summary: "Fjerner de angitte metadataene for elementet."
   syntax:
     content: public void RemoveMetadata (string metadataName);
     parameters:
     - id: metadataName
       type: System.String
-      description: "The name of metadata to remove."
+      description: "Navnet på metadata for å fjerne."
   overload: Microsoft.Build.Utilities.TaskItem.RemoveMetadata*
   exceptions: []
   platform:
@@ -462,16 +462,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Sets or modifies the value of the specified metadata on the item."
+  summary: "Angir eller endrer verdien for de angitte metadataene for elementet."
   syntax:
     content: public void SetMetadata (string metadataName, string metadataValue);
     parameters:
     - id: metadataName
       type: System.String
-      description: "The name of metadata to set or modify."
+      description: "Navnet på metadata for å angi eller endre."
     - id: metadataValue
       type: System.String
-      description: "The new value of metadata."
+      description: "Den nye verdien for metadata."
   overload: Microsoft.Build.Utilities.TaskItem.SetMetadata*
   exceptions: []
   platform:
@@ -488,13 +488,13 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets the item specification."
+  summary: "Henter element-spesifikasjonen."
   syntax:
     content: public override string ToString ();
     parameters: []
     return:
       type: System.String
-      description: "A <xref:System.String> that represents the item specification."
+      description: "En <xref:System.String>som representerer element-spesifikasjon.</xref:System.String>"
   overload: Microsoft.Build.Utilities.TaskItem.ToString*
   exceptions: []
   platform:

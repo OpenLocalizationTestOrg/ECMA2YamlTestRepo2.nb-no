@@ -45,7 +45,7 @@ items:
   nameWithType: FileTracker
   fullName: Microsoft.Build.Utilities.FileTracker
   type: Class
-  summary: "This class contains utility functions to encapsulate launching and logging for the Tracker"
+  summary: "Denne klassen inneholder verktøyfunksjoner for å omfatter starter og ODBC-logging for sporing"
   syntax:
     content: public static class FileTracker
   inheritance:
@@ -66,16 +66,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Given a set of source files in the form of ITaskItem, creates a temporary response file containing the rooting marker that corresponds to those sources."
+  summary: "Oppretter en midlertidig svarfil som inneholder rooting indikatoren som tilsvarer de kildene gitt et sett med kildefiler i form av ITaskItem."
   syntax:
     content: public static string CreateRootingMarkerResponseFile (Microsoft.Build.Framework.ITaskItem[] sources);
     parameters:
     - id: sources
       type: Microsoft.Build.Framework.ITaskItem[]
-      description: "The set of source files."
+      description: "Settet med kildefilene."
     return:
       type: System.String
-      description: "The response file path."
+      description: "Banen til svar."
   overload: Microsoft.Build.Utilities.FileTracker.CreateRootingMarkerResponseFile*
   exceptions: []
   platform:
@@ -92,16 +92,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Given a rooting marker, creates a temporary response file with that rooting marker in it."
+  summary: "Oppretter en midlertidig svarfil med at rooting etiketter i den angitte et rooting merke."
   syntax:
     content: public static string CreateRootingMarkerResponseFile (string rootMarker);
     parameters:
     - id: rootMarker
       type: System.String
-      description: "The rooting marker to put in the response file."
+      description: "Rooting indikatoren å sette i svarfilen."
     return:
       type: System.String
-      description: "The response file path."
+      description: "Banen til svar."
   overload: Microsoft.Build.Utilities.FileTracker.CreateRootingMarkerResponseFile*
   exceptions: []
   platform:
@@ -118,7 +118,7 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Stops tracking file accesses."
+  summary: "Stopper sporing får tilgang til filen."
   syntax:
     content: public static void EndTrackingContext ();
     parameters: []
@@ -138,13 +138,13 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Prepends the path to the appropriate FileTracker assembly to the PATH environment variable. Used for inproc tracking."
+  summary: "Setter inn banen til den riktige FileTracker-samlingen til miljøvariabelen PATH. Brukes for inproc sporing."
   syntax:
     content: public static string EnsureFileTrackerOnPath ();
     parameters: []
     return:
       type: System.String
-      description: "The old value of the PATH environment variable."
+      description: "Gamle verdien til miljøvariabelen PATH."
   overload: Microsoft.Build.Utilities.FileTracker.EnsureFileTrackerOnPath*
   exceptions: []
   platform:
@@ -161,16 +161,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Prepends the path to the appropriate FileTracker assembly to the PATH environment variable. Used for inproc tracking, or when the .NET Framework may not be on the PATH."
+  summary: "Setter inn banen til den riktige FileTracker-samlingen til miljøvariabelen PATH. Brukes for inproc sporing eller .NET Framework er kanskje ikke i banen."
   syntax:
     content: public static string EnsureFileTrackerOnPath (string rootPath);
     parameters:
     - id: rootPath
       type: System.String
-      description: "The root path for FileTracker.dll. Overrides the toolType if specified."
+      description: "Rotbanen for FileTracker.dll. Overstyrer toolType hvis angitt."
     return:
       type: System.String
-      description: "The old value of PATH"
+      description: "Den gamle verdien av banen"
   overload: Microsoft.Build.Utilities.FileTracker.EnsureFileTrackerOnPath*
   exceptions: []
   platform:
@@ -187,16 +187,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Test to see if the specified file is excluded from tracked dependencies"
+  summary: "Test for å se om den angitte filen er ekskludert fra sporede avhengigheter"
   syntax:
     content: public static bool FileIsExcludedFromDependencies (string fileName);
     parameters:
     - id: fileName
       type: System.String
-      description: "Full path of the file to test"
+      description: "Fullstendig bane for å teste"
     return:
       type: System.Boolean
-      description: "Returns true if the file is excluded."
+      description: "Returnerer true Hvis filen er utelatt."
   overload: Microsoft.Build.Utilities.FileTracker.FileIsExcludedFromDependencies*
   exceptions: []
   platform:
@@ -213,19 +213,19 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Test to see if the specified file is under the specified path"
+  summary: "Test for å se om den angitte filen er under den angitte banen"
   syntax:
     content: public static bool FileIsUnderPath (string fileName, string path);
     parameters:
     - id: fileName
       type: System.String
-      description: "Full path of the file to test"
+      description: "Fullstendig bane for å teste"
     - id: path
       type: System.String
-      description: "The path that might contain the file."
+      description: "Banen som kan inneholde filen."
     return:
       type: System.Boolean
-      description: "Returns true if the file is under the path."
+      description: "Returnerer true Hvis filen er i banen."
   overload: Microsoft.Build.Utilities.FileTracker.FileIsUnderPath*
   exceptions: []
   platform:
@@ -242,13 +242,13 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Searches %PATH% for the location of Tracker.exe, and returns the first path that matches.Matching full path to Tracker.exe or null if a matching path is not found."
+  summary: "Søker banen % for plasseringen av Tracker.exe, og returnerer den første banen som samsvarer med. Samsvarende fullstendig bane til Tracker.exe eller null hvis en tilsvarende bane ikke finnes."
   syntax:
     content: public static string FindTrackerOnPath ();
     parameters: []
     return:
       type: System.String
-      description: "Returns the path to Tracker.exe."
+      description: "Returnerer banen til Tracker.exe."
   overload: Microsoft.Build.Utilities.FileTracker.FindTrackerOnPath*
   exceptions: []
   platform:
@@ -265,16 +265,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Determines whether we must track out-of-proc, or whether inproc tracking will work."
+  summary: "Bestemmer om vi må finne ut av proc, eller om inproc sporing vil fungere."
   syntax:
     content: public static bool ForceOutOfProcTracking (Microsoft.Build.Utilities.ExecutableType toolType);
     parameters:
     - id: toolType
       type: Microsoft.Build.Utilities.ExecutableType
-      description: "The executable type for the tool being tracked"
+      description: "Kjørbare typen for verktøyet spores"
     return:
       type: System.Boolean
-      description: "True if we need to track out-of-proc, false if inproc tracking is OK"
+      description: "SANN hvis vi skal spore ut-av-proc, false Hvis inproc sporing OK"
   overload: Microsoft.Build.Utilities.FileTracker.ForceOutOfProcTracking*
   exceptions: []
   platform:
@@ -291,22 +291,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Determines whether we must track out-of-proc, or whether inproc tracking will work."
+  summary: "Bestemmer om vi må finne ut av proc, eller om inproc sporing vil fungere."
   syntax:
     content: public static bool ForceOutOfProcTracking (Microsoft.Build.Utilities.ExecutableType toolType, string dllName, string cancelEventName);
     parameters:
     - id: toolType
       type: Microsoft.Build.Utilities.ExecutableType
-      description: "The executable type for the tool being tracked"
+      description: "Kjørbare typen for verktøyet spores"
     - id: dllName
       type: System.String
-      description: "The tool being tracked."
+      description: "Verktøyet som spores."
     - id: cancelEventName
       type: System.String
-      description: "The name of the cancel event tracker should listen for, or null if there isn&quot;t one"
+      description: "Navnet på hendelsessporing Avbryt skal lytte etter, eller null hvis det ikke finnes"
     return:
       type: System.Boolean
-      description: "True if we need to track out-of-proc, false if inproc tracking is OK"
+      description: "SANN hvis vi skal spore ut-av-proc, false Hvis inproc sporing OK"
   overload: Microsoft.Build.Utilities.FileTracker.ForceOutOfProcTracking*
   exceptions: []
   platform:
@@ -323,16 +323,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Construct a rooting marker string from the ITaskItem array of primary sources."
+  summary: "Lage en rooting merke streng fra ITaskItem matrisen primære kilder."
   syntax:
     content: public static string FormatRootingMarker (Microsoft.Build.Framework.ITaskItem source);
     parameters:
     - id: source
       type: Microsoft.Build.Framework.ITaskItem
-      description: "The primary sources."
+      description: "De primære kildene."
     return:
       type: System.String
-      description: "Returns the marker string."
+      description: "Returnerer strengen indikatoren."
   overload: Microsoft.Build.Utilities.FileTracker.FormatRootingMarker*
   exceptions: []
   platform:
@@ -349,16 +349,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Construct a rooting marker string from the ITaskItem array of primary sources."
+  summary: "Lage en rooting merke streng fra ITaskItem matrisen primære kilder."
   syntax:
     content: public static string FormatRootingMarker (Microsoft.Build.Framework.ITaskItem[] sources);
     parameters:
     - id: sources
       type: Microsoft.Build.Framework.ITaskItem[]
-      description: "ITaskItem array of primary sources."
+      description: "ITaskItem matrise med primære kilder."
     return:
       type: System.String
-      description: "Returns the marker string."
+      description: "Returnerer strengen indikatoren."
   overload: Microsoft.Build.Utilities.FileTracker.FormatRootingMarker*
   exceptions: []
   platform:
@@ -375,19 +375,19 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Construct a rooting marker string from the ITaskItem array of primary sources."
+  summary: "Lage en rooting merke streng fra ITaskItem matrisen primære kilder."
   syntax:
     content: public static string FormatRootingMarker (Microsoft.Build.Framework.ITaskItem source, Microsoft.Build.Framework.ITaskItem output);
     parameters:
     - id: source
       type: Microsoft.Build.Framework.ITaskItem
-      description: "The primary sources."
+      description: "De primære kildene."
     - id: output
       type: Microsoft.Build.Framework.ITaskItem
-      description: "The output files."
+      description: "Output-filer."
     return:
       type: System.String
-      description: "Returns the marker string."
+      description: "Returnerer strengen indikatoren."
   overload: Microsoft.Build.Utilities.FileTracker.FormatRootingMarker*
   exceptions: []
   platform:
@@ -404,19 +404,19 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Construct a rooting marker string from the ITaskItem array of primary sources."
+  summary: "Lage en rooting merke streng fra ITaskItem matrisen primære kilder."
   syntax:
     content: public static string FormatRootingMarker (Microsoft.Build.Framework.ITaskItem[] sources, Microsoft.Build.Framework.ITaskItem[] outputs);
     parameters:
     - id: sources
       type: Microsoft.Build.Framework.ITaskItem[]
-      description: "ITaskItem array of primary sources."
+      description: "ITaskItem matrise med primære kilder."
     - id: outputs
       type: Microsoft.Build.Framework.ITaskItem[]
-      description: "The output files."
+      description: "Output-filer."
     return:
       type: System.String
-      description: "Returns the marker string."
+      description: "Returnerer strengen indikatoren."
   overload: Microsoft.Build.Utilities.FileTracker.FormatRootingMarker*
   exceptions: []
   platform:
@@ -433,16 +433,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Given the ExecutableType of the tool being wrapped and information that we know about our current bitness, figures out and returns the path to the correct FileTracker.dll."
+  summary: "Angitt ExecutableType av verktøyet som står og informasjon som vi kjenne til våre gjeldende bittallet finner ut og returnerer banen til den riktige FileTracker.dll."
   syntax:
     content: public static string GetFileTrackerPath (Microsoft.Build.Utilities.ExecutableType toolType);
     parameters:
     - id: toolType
       type: Microsoft.Build.Utilities.ExecutableType
-      description: "The ExecutableType of the tool being wrapped."
+      description: "ExecutableType av verktøyet som står."
     return:
       type: System.String
-      description: "Returns the path of the tool."
+      description: "Returnerer banen til verktøyet."
   overload: Microsoft.Build.Utilities.FileTracker.GetFileTrackerPath*
   exceptions: []
   platform:
@@ -459,19 +459,19 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Given the ExecutableType of the tool being wrapped and information that we know about our current bitness, figures out and returns the path to the correct FileTracker.dll."
+  summary: "Angitt ExecutableType av verktøyet som står og informasjon som vi kjenne til våre gjeldende bittallet finner ut og returnerer banen til den riktige FileTracker.dll."
   syntax:
     content: public static string GetFileTrackerPath (Microsoft.Build.Utilities.ExecutableType toolType, string rootPath);
     parameters:
     - id: toolType
       type: Microsoft.Build.Utilities.ExecutableType
-      description: "The toolType."
+      description: "ToolType."
     - id: rootPath
       type: System.String
-      description: "The root path for FileTracker.dll. Overrides the toolType if specified."
+      description: "Rotbanen for FileTracker.dll. Overstyrer toolType hvis angitt."
     return:
       type: System.String
-      description: "Returns <xref:System.String>."
+      description: "Returnerer <xref:System.String>.</xref:System.String>"
   overload: Microsoft.Build.Utilities.FileTracker.GetFileTrackerPath*
   exceptions: []
   platform:
@@ -488,16 +488,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Given the ExecutableType of the tool being wrapped and information that we know about our current bitness, figures out and returns the path to the correct Tracker.exe."
+  summary: "Angitt ExecutableType av verktøyet som står og informasjon som vi kjenne til våre gjeldende bittallet finner ut og returnerer banen til den riktige Tracker.exe."
   syntax:
     content: public static string GetTrackerPath (Microsoft.Build.Utilities.ExecutableType toolType);
     parameters:
     - id: toolType
       type: Microsoft.Build.Utilities.ExecutableType
-      description: "The ExecutableType of the tool being wrapped."
+      description: "ExecutableType av verktøyet som står."
     return:
       type: System.String
-      description: "Returns the tracker path."
+      description: "Returnerer sporing-banen."
   overload: Microsoft.Build.Utilities.FileTracker.GetTrackerPath*
   exceptions: []
   platform:
@@ -514,19 +514,19 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Given the ExecutableType of the tool being wrapped and information that we know about our current bitness, figures out and returns the path to the correct Tracker.exe."
+  summary: "Angitt ExecutableType av verktøyet som står og informasjon som vi kjenne til våre gjeldende bittallet finner ut og returnerer banen til den riktige Tracker.exe."
   syntax:
     content: public static string GetTrackerPath (Microsoft.Build.Utilities.ExecutableType toolType, string rootPath);
     parameters:
     - id: toolType
       type: Microsoft.Build.Utilities.ExecutableType
-      description: "The toolType."
+      description: "ToolType."
     - id: rootPath
       type: System.String
-      description: "The root path for Tracker.exe. Overrides the toolType if specified."
+      description: "Rotbanen for Tracker.exe. Overstyrer toolType hvis angitt."
     return:
       type: System.String
-      description: "Returns <xref:System.String>."
+      description: "Returnerer <xref:System.String>.</xref:System.String>"
   overload: Microsoft.Build.Utilities.FileTracker.GetTrackerPath*
   exceptions: []
   platform:
@@ -543,7 +543,7 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Resume tracking file accesses in the current tracking context."
+  summary: "En sporing filen har tilgang til i den gjeldende konteksten for sporing."
   syntax:
     content: public static void ResumeTracking ();
     parameters: []
@@ -563,13 +563,13 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Set the global thread count, and assign that count to the current thread."
+  summary: "Angi antall globale tråder, og tilordne det antallet til gjeldende tråd."
   syntax:
     content: public static void SetThreadCount (int threadCount);
     parameters:
     - id: threadCount
       type: System.Int32
-      description: "The thread count."
+      description: "Antall tråder."
   overload: Microsoft.Build.Utilities.FileTracker.SetThreadCount*
   exceptions: []
   platform:
@@ -586,22 +586,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Start the process; tracking the command."
+  summary: "Starte prosessen. sporing av kommandoen."
   syntax:
     content: public static System.Diagnostics.Process StartProcess (string command, string arguments, Microsoft.Build.Utilities.ExecutableType toolType);
     parameters:
     - id: command
       type: System.String
-      description: "The command to track"
+      description: "Kommandoen for å spore"
     - id: arguments
       type: System.String
-      description: "The command to track&quot;s arguments"
+      description: "Kommandoen for å spore for argumenter"
     - id: toolType
       type: Microsoft.Build.Utilities.ExecutableType
-      description: "The type of executable the wrapped tool is"
+      description: "Kjørbare filen innpakket verktøyet er"
     return:
       type: System.Diagnostics.Process
-      description: "Returns the process instance."
+      description: "Returnerer forekomsten."
   overload: Microsoft.Build.Utilities.FileTracker.StartProcess*
   exceptions: []
   platform:
@@ -618,25 +618,25 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Start the process; tracking the command."
+  summary: "Starte prosessen. sporing av kommandoen."
   syntax:
     content: public static System.Diagnostics.Process StartProcess (string command, string arguments, Microsoft.Build.Utilities.ExecutableType toolType, string rootFiles);
     parameters:
     - id: command
       type: System.String
-      description: "The command to track"
+      description: "Kommandoen for å spore"
     - id: arguments
       type: System.String
-      description: "The command‘s arguments"
+      description: "Argumenter for kommandoen"
     - id: toolType
       type: Microsoft.Build.Utilities.ExecutableType
-      description: "The type of executable the wrapped tool is"
+      description: "Kjørbare filen innpakket verktøyet er"
     - id: rootFiles
       type: System.String
-      description: "Rooting marker"
+      description: "Rooting merke"
     return:
       type: System.Diagnostics.Process
-      description: "Returns the process instance."
+      description: "Returnerer forekomsten."
   overload: Microsoft.Build.Utilities.FileTracker.StartProcess*
   exceptions: []
   platform:
@@ -653,28 +653,28 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Start the process; tracking the command."
+  summary: "Starte prosessen. sporing av kommandoen."
   syntax:
     content: public static System.Diagnostics.Process StartProcess (string command, string arguments, Microsoft.Build.Utilities.ExecutableType toolType, string intermediateDirectory, string rootFiles);
     parameters:
     - id: command
       type: System.String
-      description: "The command to track"
+      description: "Kommandoen for å spore"
     - id: arguments
       type: System.String
-      description: "The command to track&quot;s arguments"
+      description: "Kommandoen for å spore for argumenter"
     - id: toolType
       type: Microsoft.Build.Utilities.ExecutableType
-      description: "The type of executable the wrapped tool is"
+      description: "Kjørbare filen innpakket verktøyet er"
     - id: intermediateDirectory
       type: System.String
-      description: "Intermediate directory where tracking logs will be written"
+      description: "Midlertidig mappe der sporing logger blir skrevet"
     - id: rootFiles
       type: System.String
-      description: "Rooting marker"
+      description: "Rooting merke"
     return:
       type: System.Diagnostics.Process
-      description: "Returns the process instance"
+      description: "Returnerer forekomsten av"
   overload: Microsoft.Build.Utilities.FileTracker.StartProcess*
   exceptions: []
   platform:
@@ -691,31 +691,31 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Start the process; tracking the command."
+  summary: "Starte prosessen. sporing av kommandoen."
   syntax:
     content: public static System.Diagnostics.Process StartProcess (string command, string arguments, Microsoft.Build.Utilities.ExecutableType toolType, string dllName, string intermediateDirectory, string rootFiles);
     parameters:
     - id: command
       type: System.String
-      description: "The command to track"
+      description: "Kommandoen for å spore"
     - id: arguments
       type: System.String
-      description: "The command to track&quot;s arguments"
+      description: "Kommandoen for å spore for argumenter"
     - id: toolType
       type: Microsoft.Build.Utilities.ExecutableType
-      description: "The type of executable the wrapped tool is"
+      description: "Kjørbare filen innpakket verktøyet er"
     - id: dllName
       type: System.String
-      description: "The name of the dll that will do the tracking"
+      description: "Navnet på DLLen som vil spore"
     - id: intermediateDirectory
       type: System.String
-      description: "Intermediate directory where tracking logs will be written"
+      description: "Midlertidig mappe der sporing logger blir skrevet"
     - id: rootFiles
       type: System.String
-      description: "Rooting marker"
+      description: "Rooting merke"
     return:
       type: System.Diagnostics.Process
-      description: "Process instance"
+      description: "Forekomsten"
   overload: Microsoft.Build.Utilities.FileTracker.StartProcess*
   exceptions: []
   platform:
@@ -732,34 +732,34 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Start the process; tracking the command."
+  summary: "Starte prosessen. sporing av kommandoen."
   syntax:
     content: public static System.Diagnostics.Process StartProcess (string command, string arguments, Microsoft.Build.Utilities.ExecutableType toolType, string dllName, string intermediateDirectory, string rootFiles, string cancelEventName);
     parameters:
     - id: command
       type: System.String
-      description: "The command to track"
+      description: "Kommandoen for å spore"
     - id: arguments
       type: System.String
-      description: "The command to track&quot;s arguments"
+      description: "Kommandoen for å spore for argumenter"
     - id: toolType
       type: Microsoft.Build.Utilities.ExecutableType
-      description: "The type of executable the wrapped tool is"
+      description: "Kjørbare filen innpakket verktøyet er"
     - id: dllName
       type: System.String
-      description: "The name of the dll that will do the tracking"
+      description: "Navnet på DLLen som vil spore"
     - id: intermediateDirectory
       type: System.String
-      description: "Intermediate directory where tracking logs will be written"
+      description: "Midlertidig mappe der sporing logger blir skrevet"
     - id: rootFiles
       type: System.String
-      description: "Rooting marker"
+      description: "Rooting merke"
     - id: cancelEventName
       type: System.String
-      description: "If Tracker should be listening on a particular event for cancellation, pass its name here"
+      description: "Hvis sporing skal lytter på en bestemt hendelse annulleringen, sendes navnet her"
     return:
       type: System.Diagnostics.Process
-      description: "Process instance"
+      description: "Forekomsten"
   overload: Microsoft.Build.Utilities.FileTracker.StartProcess*
   exceptions: []
   platform:
@@ -776,16 +776,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Starts tracking file accesses."
+  summary: "Starter sporing får tilgang til filen."
   syntax:
     content: public static void StartTrackingContext (string intermediateDirectory, string taskName);
     parameters:
     - id: intermediateDirectory
       type: System.String
-      description: "The directory into which to write the tracking log files"
+      description: "Mappen som å skrive sporingen loggfiler"
     - id: taskName
       type: System.String
-      description: "The name of the task calling this function, used to determine the names of the tracking log files"
+      description: "Navnet på oppgaven kaller denne funksjonen, som brukes til å bestemme navnene sporingen loggfiler"
   overload: Microsoft.Build.Utilities.FileTracker.StartTrackingContext*
   exceptions: []
   platform:
@@ -802,19 +802,19 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Starts tracking file accesses, using the rooting marker in the response file provided. To automatically generate a response file given a rooting marker, call FileTracker.CreateRootingMarkerResponseFile."
+  summary: "Starter sporing får tilgang til filen, ved hjelp av rooting indikatoren i svarfil som er angitt. Kall FileTracker.CreateRootingMarkerResponseFile automatisk å generere en svarfil som er angitt et rooting merke."
   syntax:
     content: public static void StartTrackingContextWithRoot (string intermediateDirectory, string taskName, string rootMarkerResponseFile);
     parameters:
     - id: intermediateDirectory
       type: System.String
-      description: "The directory into which to write the tracking log files"
+      description: "Mappen som å skrive sporingen loggfiler"
     - id: taskName
       type: System.String
-      description: "The name of the task calling this function, used to determine the names of the tracking log files"
+      description: "Navnet på oppgaven kaller denne funksjonen, som brukes til å bestemme navnene sporingen loggfiler"
     - id: rootMarkerResponseFile
       type: System.String
-      description: "The rooting marker in the response file."
+      description: "Rooting indikatoren i svarfilen."
   overload: Microsoft.Build.Utilities.FileTracker.StartTrackingContextWithRoot*
   exceptions: []
   platform:
@@ -831,7 +831,7 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Stop tracking file accesses and get rid of the current tracking contexts."
+  summary: "Stoppe sporing av filen får tilgang til og fjerne gjeldende sporing kontekster."
   syntax:
     content: public static void StopTrackingAndCleanup ();
     parameters: []
@@ -851,7 +851,7 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Temporarily suspend tracking of file accesses in the current tracking context."
+  summary: "Stoppe sporing av får tilgang til filen i den gjeldende sporingskontekst midlertidig."
   syntax:
     content: public static void SuspendTracking ();
     parameters: []
@@ -871,28 +871,28 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "This method constructs the correct Tracker.exe arguments from its parameters."
+  summary: "Denne metoden bygger riktig Tracker.exe argumentene fra parameterne."
   syntax:
     content: public static string TrackerArguments (string command, string arguments, string dllName, string intermediateDirectory, string rootFiles);
     parameters:
     - id: command
       type: System.String
-      description: "The command to track"
+      description: "Kommandoen for å spore"
     - id: arguments
       type: System.String
-      description: "The command to track&quot;s arguments"
+      description: "Kommandoen for å spore for argumenter"
     - id: dllName
       type: System.String
-      description: "The name of the dll that will do the tracking"
+      description: "Navnet på DLLen som vil spore"
     - id: intermediateDirectory
       type: System.String
-      description: "Intermediate directory where tracking logs will be written"
+      description: "Midlertidig mappe der sporing logger blir skrevet"
     - id: rootFiles
       type: System.String
-      description: "Rooting marker"
+      description: "Rooting merke"
     return:
       type: System.String
-      description: "The arguments as a string"
+      description: "Argumenter som en streng"
   overload: Microsoft.Build.Utilities.FileTracker.TrackerArguments*
   exceptions: []
   platform:
@@ -909,31 +909,31 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "This method constructs the correct Tracker.exe arguments from its parameters."
+  summary: "Denne metoden bygger riktig Tracker.exe argumentene fra parameterne."
   syntax:
     content: public static string TrackerArguments (string command, string arguments, string dllName, string intermediateDirectory, string rootFiles, string cancelEventName);
     parameters:
     - id: command
       type: System.String
-      description: "The command to track"
+      description: "Kommandoen for å spore"
     - id: arguments
       type: System.String
-      description: "The command to track&quot;s arguments"
+      description: "Kommandoen for å spore for argumenter"
     - id: dllName
       type: System.String
-      description: "The name of the dll that will do the tracking"
+      description: "Navnet på DLLen som vil spore"
     - id: intermediateDirectory
       type: System.String
-      description: "Intermediate directory where tracking logs will be written"
+      description: "Midlertidig mappe der sporing logger blir skrevet"
     - id: rootFiles
       type: System.String
-      description: "Rooting marker"
+      description: "Rooting merke"
     - id: cancelEventName
       type: System.String
-      description: "If a cancel event has been created that Tracker should be listening for, its name is passed here"
+      description: "Hvis en Avbryt-hendelse er opprettet som sporing må være lytte, sendes navnet her"
     return:
       type: System.String
-      description: "The arguments as a string"
+      description: "Argumenter som en streng"
   overload: Microsoft.Build.Utilities.FileTracker.TrackerArguments*
   exceptions: []
   platform:
@@ -950,19 +950,19 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "This method constructs the correct Tracker.exe command arguments from its parameters"
+  summary: "Denne metoden bygger riktig argumentene for feilsøkingskommandoen Tracker.exe fra parameterne"
   syntax:
     content: public static string TrackerCommandArguments (string command, string arguments);
     parameters:
     - id: command
       type: System.String
-      description: "The command to track"
+      description: "Kommandoen for å spore"
     - id: arguments
       type: System.String
-      description: "The command to track&quot;s arguments"
+      description: "Kommandoen for å spore for argumenter"
     return:
       type: System.String
-      description: "The arguments as a string"
+      description: "Argumenter som en streng"
   overload: Microsoft.Build.Utilities.FileTracker.TrackerCommandArguments*
   exceptions: []
   platform:
@@ -979,22 +979,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "This method constructs the correct Tracker.exe response file arguments from its parameters."
+  summary: "Denne metoden bygger riktig Tracker.exe svar filen argumentene fra parameterne."
   syntax:
     content: public static string TrackerResponseFileArguments (string dllName, string intermediateDirectory, string rootFiles);
     parameters:
     - id: dllName
       type: System.String
-      description: "The name of the dll that will do the tracking"
+      description: "Navnet på DLLen som vil spore"
     - id: intermediateDirectory
       type: System.String
-      description: "Intermediate directory where tracking logs will be written"
+      description: "Midlertidig mappe der sporing logger blir skrevet"
     - id: rootFiles
       type: System.String
-      description: "Rooting marker"
+      description: "Rooting merke"
     return:
       type: System.String
-      description: "The arguments as a string"
+      description: "Argumenter som en streng"
   overload: Microsoft.Build.Utilities.FileTracker.TrackerResponseFileArguments*
   exceptions: []
   platform:
@@ -1011,25 +1011,25 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "This method constructs the correct Tracker.exe response file arguments from its parameters."
+  summary: "Denne metoden bygger riktig Tracker.exe svar filen argumentene fra parameterne."
   syntax:
     content: public static string TrackerResponseFileArguments (string dllName, string intermediateDirectory, string rootFiles, string cancelEventName);
     parameters:
     - id: dllName
       type: System.String
-      description: "The name of the dll that will do the tracking"
+      description: "Navnet på DLLen som vil spore"
     - id: intermediateDirectory
       type: System.String
-      description: "Intermediate directory where tracking logs will be written"
+      description: "Midlertidig mappe der sporing logger blir skrevet"
     - id: rootFiles
       type: System.String
-      description: "Rooting marker"
+      description: "Rooting merke"
     - id: cancelEventName
       type: System.String
-      description: "If a cancel event has been created that Tracker should be listening for, its name is passed here"
+      description: "Hvis en Avbryt-hendelse er opprettet som sporing må være lytte, sendes navnet her"
     return:
       type: System.String
-      description: "The arguments as a string"
+      description: "Argumenter som en streng"
   overload: Microsoft.Build.Utilities.FileTracker.TrackerResponseFileArguments*
   exceptions: []
   platform:
@@ -1046,16 +1046,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Write tracking logs for all contexts and threads."
+  summary: "Skrive loggene for sporing for alle kontekster og tråder."
   syntax:
     content: public static void WriteAllTLogs (string intermediateDirectory, string taskName);
     parameters:
     - id: intermediateDirectory
       type: System.String
-      description: "The directory into which to write the tracking log files"
+      description: "Mappen som å skrive sporingen loggfiler"
     - id: taskName
       type: System.String
-      description: "The name of the task calling this function, used to determine the names of the tracking log files"
+      description: "Navnet på oppgaven kaller denne funksjonen, som brukes til å bestemme navnene sporingen loggfiler"
   overload: Microsoft.Build.Utilities.FileTracker.WriteAllTLogs*
   exceptions: []
   platform:
@@ -1072,16 +1072,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Write tracking logs corresponding to the current tracking context."
+  summary: "Skrive loggene for sporing tilsvarer gjeldende sporingskontekst."
   syntax:
     content: public static void WriteContextTLogs (string intermediateDirectory, string taskName);
     parameters:
     - id: intermediateDirectory
       type: System.String
-      description: "The directory into which to write the tracking log files"
+      description: "Mappen som å skrive sporingen loggfiler"
     - id: taskName
       type: System.String
-      description: "The name of the task calling this function, used to determine the names of the tracking log files"
+      description: "Navnet på oppgaven kaller denne funksjonen, som brukes til å bestemme navnene sporingen loggfiler"
   overload: Microsoft.Build.Utilities.FileTracker.WriteContextTLogs*
   exceptions: []
   platform:

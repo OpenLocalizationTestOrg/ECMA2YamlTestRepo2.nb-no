@@ -21,8 +21,8 @@ items:
   nameWithType: InertiaProcessor2D
   fullName: System.Windows.Input.Manipulations.InertiaProcessor2D
   type: Class
-  summary: "Implements the extrapolation of a manipulation&quot;s position, orientation, and average radius."
-  remarks: "An InertiaProcessor2D object enables your application to extrapolate an element&quot;s location, orientation, and other properties by simulating real-world behavior.       For instance, when a user moves an element and then releases it, the element can continue moving, decelerate, and then slowly stop. An inertia processor implements this behavior by causing the affine 2-D values (origin, scale, translation, and rotation) to change over a specified time at a specified deceleration rate.       An inertia processor by itself does not cause an element to move and decelerate. Your application receives information from an inertia processor and applies the values as needed to an application-specific element. Typically, an application uses the information received from an inertia processor to change the location, size or orientation of an element.       Inertia processing is typically used in conjunction with manipulation processing. For more information, see the <xref:System.Windows.Input.Manipulations.ManipulationProcessor2D> class."
+  summary: "Implementerer ekstrapolering for en redigeringen posisjon og retning gjennomsnittlig radius."
+  remarks: "Et objekt som InertiaProcessor2D aktiverer programmet til Ekstrapoler elementets plassering, retning og andre egenskaper ved å simulere virkelige virkemåte.       For eksempel når en bruker flytter et element og frigjør den, kan elementet fortsette å flytte farten og sakte stoppe. En treghet prosessor implementerer dette problemet ved å få affinitet 2-D verdiene (kommer fra, skalaen, oversettingen og rotasjon) til å endre over en angitt tidsperiode med en angitt deselerasjon hastighet.       En treghet prosessor alene fører ikke til et element å flytte og farten. Programmet mottar informasjon fra en treghet prosessor og bruker verdiene som kreves for å et programspesifikt-element. Vanligvis bruker et program informasjonen du har mottatt fra en treghet prosessor til å endre plasseringen, størrelsen eller retningen på et element.       Treghet behandling brukes vanligvis sammen med redigeringen behandling. Hvis du vil ha mer informasjon, kan du se <xref:System.Windows.Input.Manipulations.ManipulationProcessor2D>klasse.</xref:System.Windows.Input.Manipulations.ManipulationProcessor2D>"
   syntax:
     content: public class InertiaProcessor2D
   inheritance:
@@ -43,7 +43,7 @@ items:
   assemblies:
   - System.Windows.Input.Manipulations
   namespace: System.Windows.Input.Manipulations
-  summary: "Initializes a new instance of the <xref href=&quot;System.Windows.Input.Manipulations.InertiaProcessor2D&quot;></xref> class."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Windows.Input.Manipulations.InertiaProcessor2D&quot;> </xref> klasse."
   syntax:
     content: public InertiaProcessor2D ();
     parameters: []
@@ -63,8 +63,8 @@ items:
   assemblies:
   - System.Windows.Input.Manipulations
   namespace: System.Windows.Input.Manipulations
-  summary: "Completes final extrapolation by using the specified timestamp and raises the <xref href=&quot;System.Windows.Input.Manipulations.InertiaProcessor2D.Completed&quot;></xref> event."
-  remarks: "Timestamps are in 100-nanosecond units."
+  summary: "Fullført endelig ekstrapolering ved hjelp av det angitte tidsstempelet og opphøyer den <xref href=&quot;System.Windows.Input.Manipulations.InertiaProcessor2D.Completed&quot;> </xref> hendelsen."
+  remarks: "Tidsstempler som er angitt i 100 nanosekunder enheter."
   example:
   - "In the following example, an event handler for the <xref:System.Windows.Input.Manipulations.ManipulationProcessor2D.Started?displayProperty=fullName> event checks to see if inertia processing is running and if so, stops it by calling the Complete method.  \n  \n [!code-cs[ManipulationAPI#_ManipulationItem_OnManipulationStarted](~/add/codesnippet/csharp/build/manipulationitem.xaml.cs#_manipulationitem_onmanipulationstarted)]  \n  \n [!code-cs[ManipulationAPI#_ManipulationItem_Timestamp](~/add/codesnippet/csharp/build/manipulationitem.xaml.cs#_manipulationitem_timestamp)]"
   syntax:
@@ -72,12 +72,12 @@ items:
     parameters:
     - id: timestamp
       type: System.Int64
-      description: "The timestamp to complete extrapolation, in 100-nanosecond ticks."
+      description: "Tidsstempelet for å fullføre ekstrapolering, i 100 nanosekunder merker."
   overload: System.Windows.Input.Manipulations.InertiaProcessor2D.Complete*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The timestamp parameter is less than the initial or previous timestamp."
+    description: "Parameteren tidsstempel er mindre enn tidsstempelet innledende eller tidligere."
   platform:
   - net462
 - uid: System.Windows.Input.Manipulations.InertiaProcessor2D.Completed
@@ -92,12 +92,12 @@ items:
   assemblies:
   - System.Windows.Input.Manipulations
   namespace: System.Windows.Input.Manipulations
-  summary: "Occurs when extrapolation has completed."
+  summary: "Forekommer når ekstrapolering er fullført."
   syntax:
     content: public event EventHandler<System.Windows.Input.Manipulations.Manipulation2DCompletedEventArgs> Completed;
     return:
       type: System.EventHandler{System.Windows.Input.Manipulations.Manipulation2DCompletedEventArgs}
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -113,15 +113,15 @@ items:
   assemblies:
   - System.Windows.Input.Manipulations
   namespace: System.Windows.Input.Manipulations
-  summary: "Occurs when the extrapolation origin has changed or when translation, scaling, or rotation have occurred."
-  remarks: "The Delta event and the <xref:System.Windows.Input.Manipulations.ManipulationProcessor2D.Delta?displayProperty=fullName> event are the same type. Typically, you can use the same event handler for both events."
+  summary: "Inntreffer når ekstrapolering origo er endret, eller når oversettelsen skalering eller rotasjon har oppstått."
+  remarks: "Delta-hendelsen og <xref:System.Windows.Input.Manipulations.ManipulationProcessor2D.Delta?displayProperty=fullName>hendelsen er av samme type.</xref:System.Windows.Input.Manipulations.ManipulationProcessor2D.Delta?displayProperty=fullName> Vanligvis kan du bruke samme hendelsesbehandlingen for begge hendelser."
   example:
   - '[!code-cs[ManipulationAPI#_ManipulationItem_OnManipulationOrInertiaDelta](~/add/codesnippet/csharp/build/manipulationitem.xaml.cs#_manipulationitem_onmanipulationorinertiadelta)]'
   syntax:
     content: public event EventHandler<System.Windows.Input.Manipulations.Manipulation2DDeltaEventArgs> Delta;
     return:
       type: System.EventHandler{System.Windows.Input.Manipulations.Manipulation2DDeltaEventArgs}
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -137,12 +137,12 @@ items:
   assemblies:
   - System.Windows.Input.Manipulations
   namespace: System.Windows.Input.Manipulations
-  summary: "Gets or sets the expansion behavior of the inertia processor."
+  summary: "Henter eller angir utvidelse virkemåten for treghet prosessoren."
   syntax:
     content: public System.Windows.Input.Manipulations.InertiaExpansionBehavior2D ExpansionBehavior { get; set; }
     return:
       type: System.Windows.Input.Manipulations.InertiaExpansionBehavior2D
-      description: "The expansion behavior of the inertia processor."
+      description: "Utvidelse virkemåten for treghet prosessoren."
   overload: System.Windows.Input.Manipulations.InertiaProcessor2D.ExpansionBehavior*
   exceptions: []
   platform:
@@ -159,13 +159,13 @@ items:
   assemblies:
   - System.Windows.Input.Manipulations
   namespace: System.Windows.Input.Manipulations
-  summary: "Gets or sets the x-coordinate for the initial origin, in coordinate units."
-  remarks: "The origin point represented by the InitialOriginX and <xref:System.Windows.Input.Manipulations.InertiaProcessor2D.InitialOriginY%2A> properties is the average position of all manipulators associated with an element.       A valid value for InitialOriginX is any finite number. The default value is 0.0."
+  summary: "Henter eller angir x-koordinaten for den første origo i koordinaten enheter."
+  remarks: "Nullpunktet representert av InitialOriginX og <xref:System.Windows.Input.Manipulations.InertiaProcessor2D.InitialOriginY%2A>Egenskaper er gjennomsnittlig posisjonen for alle manipulators som er knyttet til et element.</xref:System.Windows.Input.Manipulations.InertiaProcessor2D.InitialOriginY%2A>       En gyldig verdi for InitialOriginX er et begrenset tall. Standardverdien er 0,0."
   syntax:
     content: public float InitialOriginX { get; set; }
     return:
       type: System.Single
-      description: "The x-coordinate for the initial origin, in coordinate units."
+      description: "X-koordinaten for den første origo i koordinaten enheter."
   overload: System.Windows.Input.Manipulations.InertiaProcessor2D.InitialOriginX*
   exceptions: []
   platform:
@@ -182,13 +182,13 @@ items:
   assemblies:
   - System.Windows.Input.Manipulations
   namespace: System.Windows.Input.Manipulations
-  summary: "Gets or sets the y-coordinate for the initial origin, in coordinate units."
-  remarks: "The origin point represented by the <xref:System.Windows.Input.Manipulations.InertiaProcessor2D.InitialOriginX%2A> and InitialOriginY properties is the average position of all manipulators associated with an element.       A valid value for InitialOriginY is any finite number. The default value is 0.0."
+  summary: "Henter eller angir y-koordinaten for den første origo i koordinaten enheter."
+  remarks: "Nullpunktet representert av den <xref:System.Windows.Input.Manipulations.InertiaProcessor2D.InitialOriginX%2A>og InitialOriginY egenskaper er gjennomsnittlig posisjonen for alle manipulators som er knyttet til et element.</xref:System.Windows.Input.Manipulations.InertiaProcessor2D.InitialOriginX%2A>       En gyldig verdi for InitialOriginY er et begrenset tall. Standardverdien er 0,0."
   syntax:
     content: public float InitialOriginY { get; set; }
     return:
       type: System.Single
-      description: "The y-coordinate for the initial origin, in coordinate units."
+      description: "Y-koordinaten for den første origo i koordinaten enheter."
   overload: System.Windows.Input.Manipulations.InertiaProcessor2D.InitialOriginY*
   exceptions: []
   platform:
@@ -205,7 +205,7 @@ items:
   assemblies:
   - System.Windows.Input.Manipulations
   namespace: System.Windows.Input.Manipulations
-  summary: "Gets whether inertia is currently in progress."
+  summary: "Henter om treghet pågår."
   remarks: ''
   example:
   - "In the following example, an event handler for the <xref:System.Windows.Input.Manipulations.ManipulationProcessor2D.Started?displayProperty=fullName> event checks to see if inertia processing is running and, if so, stops it by calling the <xref:System.Windows.Input.Manipulations.InertiaProcessor2D.Completed> method.  \n  \n [!code-cs[ManipulationAPI#_ManipulationItem_OnManipulationStarted](~/add/codesnippet/csharp/build/manipulationitem.xaml.cs#_manipulationitem_onmanipulationstarted)]  \n  \n [!code-cs[ManipulationAPI#_ManipulationItem_Timestamp](~/add/codesnippet/csharp/build/manipulationitem.xaml.cs#_manipulationitem_timestamp)]"
@@ -213,7 +213,7 @@ items:
     content: public bool IsRunning { get; }
     return:
       type: System.Boolean
-      description: "A Boolean value indicating whether inertia is currently in progress."
+      description: "En boolsk verdi som angir om treghet pågår."
   overload: System.Windows.Input.Manipulations.InertiaProcessor2D.IsRunning*
   exceptions: []
   platform:
@@ -230,22 +230,22 @@ items:
   assemblies:
   - System.Windows.Input.Manipulations
   namespace: System.Windows.Input.Manipulations
-  summary: "Extrapolates the manipulation&quot;s position, orientation, and average radius at the specified time."
-  remarks: "Timestamps are in 100-nanosecond units."
+  summary: "Extrapolates av redigeringen posisjon og retning gjennomsnittlig radius på det angitte tidspunktet."
+  remarks: "Tidsstempler som er angitt i 100 nanosekunder enheter."
   syntax:
     content: public bool Process (long timestamp);
     parameters:
     - id: timestamp
       type: System.Int64
-      description: "The timestamp to perform extrapolation, in 100-nanosecond ticks."
+      description: "Tidsstempelet til å utføre ekstrapolering, i 100 nanosekunder merker."
     return:
       type: System.Boolean
-      description: "The manipulation&quot;s position, orientation, and average radius at the specified time. <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if extrapolation is in progress; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if extrapolation has completed."
+      description: "Redigeringen posisjon og retning gjennomsnittlig radius på det angitte tidspunktet. <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis ekstrapolering pågår; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> Hvis ekstrapolering er fullført."
   overload: System.Windows.Input.Manipulations.InertiaProcessor2D.Process*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The timestamp parameter is less than the initial or previous timestamp."
+    description: "Parameteren tidsstempel er mindre enn tidsstempelet innledende eller tidligere."
   platform:
   - net462
 - uid: System.Windows.Input.Manipulations.InertiaProcessor2D.RotationBehavior
@@ -260,7 +260,7 @@ items:
   assemblies:
   - System.Windows.Input.Manipulations
   namespace: System.Windows.Input.Manipulations
-  summary: "Gets or sets the rotation behavior of the inertia processor."
+  summary: "Henter eller angir roteringen virkemåten for treghet prosessoren."
   remarks: ''
   example:
   - "In the following example, the <xref:System.Windows.Input.Manipulations.InertiaRotationBehavior2D.DesiredRotation%2A> property is set to enable inertia processing to rotate an object three-and-one-half times from its starting orientation.  \n  \n [!code-cs[ManipulationAPI#_ManipulationItem_SetDesiredRotation](~/add/codesnippet/csharp/build/manipulationitem.xaml.cs#_manipulationitem_setdesiredrotation)]"
@@ -268,7 +268,7 @@ items:
     content: public System.Windows.Input.Manipulations.InertiaRotationBehavior2D RotationBehavior { get; set; }
     return:
       type: System.Windows.Input.Manipulations.InertiaRotationBehavior2D
-      description: "The rotation behavior of the inertia processor."
+      description: "Rotasjon virkemåten for treghet prosessoren."
   overload: System.Windows.Input.Manipulations.InertiaProcessor2D.RotationBehavior*
   exceptions: []
   platform:
@@ -285,13 +285,13 @@ items:
   assemblies:
   - System.Windows.Input.Manipulations
   namespace: System.Windows.Input.Manipulations
-  summary: "Sets parameters on the inertia processor."
+  summary: "Angir parameterne treghet prosessor."
   syntax:
     content: public void SetParameters (System.Windows.Input.Manipulations.InertiaParameters2D parameters);
     parameters:
     - id: parameters
       type: System.Windows.Input.Manipulations.InertiaParameters2D
-      description: "Parameters to set."
+      description: "Angi parameterne."
   overload: System.Windows.Input.Manipulations.InertiaProcessor2D.SetParameters*
   exceptions: []
   platform:
@@ -308,12 +308,12 @@ items:
   assemblies:
   - System.Windows.Input.Manipulations
   namespace: System.Windows.Input.Manipulations
-  summary: "Gets or sets the translation behavior of the inertia processor."
+  summary: "Henter eller angir oversettelsen virkemåten for treghet prosessoren."
   syntax:
     content: public System.Windows.Input.Manipulations.InertiaTranslationBehavior2D TranslationBehavior { get; set; }
     return:
       type: System.Windows.Input.Manipulations.InertiaTranslationBehavior2D
-      description: "The translation behavior of the inertia processor."
+      description: "Oversettelsen virkemåten for treghet prosessoren."
   overload: System.Windows.Input.Manipulations.InertiaProcessor2D.TranslationBehavior*
   exceptions: []
   platform:

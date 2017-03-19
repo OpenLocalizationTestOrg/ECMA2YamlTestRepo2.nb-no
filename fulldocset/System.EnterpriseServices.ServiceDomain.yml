@@ -11,8 +11,8 @@ items:
   nameWithType: ServiceDomain
   fullName: System.EnterpriseServices.ServiceDomain
   type: Class
-  summary: "Allows a code segment identified by <xref:System.EnterpriseServices.ServiceDomain.Enter*> and <xref:System.EnterpriseServices.ServiceDomain.Leave*> to run in its own context and behave as if it were a method that is called on an object created within the context. This class cannot be inherited."
-  remarks: "The <xref:System.EnterpriseServices.ServiceDomain.Enter%2A> and <xref:System.EnterpriseServices.ServiceDomain.Leave%2A> methods are used in pairs to surround code that can then use COM+ services. Code that is enclosed between calls to <xref:System.EnterpriseServices.ServiceDomain.Enter%2A> and <xref:System.EnterpriseServices.ServiceDomain.Leave%2A> runs in its own context and behaves as if it were a method that is called on an object created within the context. The <xref:System.EnterpriseServices.ServiceDomain.Enter%2A> and <xref:System.EnterpriseServices.ServiceDomain.Leave%2A> pairs can be nested. It is up to the user to make sure that pairs of calls are balanced so that every call to <xref:System.EnterpriseServices.ServiceDomain.Leave%2A> matches a previous call to <xref:System.EnterpriseServices.ServiceDomain.Enter%2A>."
+  summary: "Tillater en Kodesegmentet identifisert av <> </> *> og <> </> *> til å kjøre i sin egen konteksten og virker som om det er en metode som kalles for et objekt som er opprettet i konteksten. Denne klassen kan ikke arves."
+  remarks: "Den <xref:System.EnterpriseServices.ServiceDomain.Enter%2A>og <xref:System.EnterpriseServices.ServiceDomain.Leave%2A>metoder som brukes i par for å omgi kode som kan deretter bruke COM +-tjenester.</xref:System.EnterpriseServices.ServiceDomain.Leave%2A> </xref:System.EnterpriseServices.ServiceDomain.Enter%2A> Kode som står mellom kallene til <xref:System.EnterpriseServices.ServiceDomain.Enter%2A>og <xref:System.EnterpriseServices.ServiceDomain.Leave%2A>kjører i sin egen kontekst og virker som om det er en metode som kalles for et objekt som er opprettet i konteksten.</xref:System.EnterpriseServices.ServiceDomain.Leave%2A> </xref:System.EnterpriseServices.ServiceDomain.Enter%2A> Den <xref:System.EnterpriseServices.ServiceDomain.Enter%2A>og <xref:System.EnterpriseServices.ServiceDomain.Leave%2A>par kan nestes.</xref:System.EnterpriseServices.ServiceDomain.Leave%2A> </xref:System.EnterpriseServices.ServiceDomain.Enter%2A> Det er brukeren å kontrollere at par med kall er balanced slik at hvert kall til <xref:System.EnterpriseServices.ServiceDomain.Leave%2A>samsvarer med et tidligere kall til <xref:System.EnterpriseServices.ServiceDomain.Enter%2A>.</xref:System.EnterpriseServices.ServiceDomain.Enter%2A> </xref:System.EnterpriseServices.ServiceDomain.Leave%2A>"
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(false)]
@@ -36,19 +36,19 @@ items:
   assemblies:
   - System.EnterpriseServices
   namespace: System.EnterpriseServices
-  summary: "Creates the context specified by the <xref href=&quot;System.EnterpriseServices.ServiceConfig&quot;></xref> object and pushes it onto the context stack to become the current context."
-  remarks: "Enter first creates a context configured as specified by the <xref:System.EnterpriseServices.ServiceConfig> object that is passed as the `cfg` parameter. Policies on both the client and server sides are then triggered as if a method call had occurred. The new context is then pushed onto a context stack and becomes the current context. Because of their efficient design and because no thread marshaling is involved, using Enter and <xref:System.EnterpriseServices.ServiceDomain.Leave%2A> involves significantly reduced overhead compared to an equivalent method call."
+  summary: "Oppretter kontekst som er angitt av den <xref href=&quot;System.EnterpriseServices.ServiceConfig&quot;> </xref> objekt og pusher den inn i konteksten stakken blir gjeldende kontekst."
+  remarks: "Angi først oppretter du en kontekst som er konfigurert som er angitt av det <xref:System.EnterpriseServices.ServiceConfig>objektet som blir sendt som den `cfg` parameteren.</xref:System.EnterpriseServices.ServiceConfig> Policyer på både klienten og serveren sider utløses deretter som om et metodekall ble utført. Den nye konteksten trykkes deretter inn en konteksten stakken og blir gjeldende kontekst. På grunn av effektiv utformingen og fordi ingen tråd formidling er involvert, bruker du angi og <xref:System.EnterpriseServices.ServiceDomain.Leave%2A>inkluderer redusert betydelig indirekte sammenlignet med et tilsvarende metodekall.</xref:System.EnterpriseServices.ServiceDomain.Leave%2A>"
   syntax:
     content: public static void Enter (System.EnterpriseServices.ServiceConfig cfg);
     parameters:
     - id: cfg
       type: System.EnterpriseServices.ServiceConfig
-      description: "A <xref href=&quot;System.EnterpriseServices.ServiceConfig&quot;></xref> that contains the configuration information for the services to be used within the enclosed code."
+      description: "En <xref href=&quot;System.EnterpriseServices.ServiceConfig&quot;> </xref> som inneholder konfigurasjonsinformasjon for tjenestene som skal brukes i den vedlagte koden."
   overload: System.EnterpriseServices.ServiceDomain.Enter*
   exceptions:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: "<xref href=&quot;System.EnterpriseServices.ServiceConfig&quot;></xref> is not supported on the current platform."
+    description: "<xref href=&quot;System.EnterpriseServices.ServiceConfig&quot;></xref>støttes ikke i den gjeldende plattformen."
   platform:
   - net462
 - uid: System.EnterpriseServices.ServiceDomain.Leave
@@ -63,18 +63,18 @@ items:
   assemblies:
   - System.EnterpriseServices
   namespace: System.EnterpriseServices
-  summary: "Triggers the server and then the client side policies as if a method call were returning. The current context is then popped from the context stack, and the context that was running when <xref:System.EnterpriseServices.ServiceDomain.Enter*> was called becomes the current context."
+  summary: "Utløser serveren og deretter klienten siden policyene som om et metodekall ble returnerer. Den gjeldende konteksten er deretter kontekstmenyen som kommer fra konteksten bunken, og sammenheng som ble kjørt når <xref:System.EnterpriseServices.ServiceDomain.Enter*>ble kalt blir gjeldende kontekst.</xref:System.EnterpriseServices.ServiceDomain.Enter*>"
   syntax:
     content: public static System.EnterpriseServices.TransactionStatus Leave ();
     parameters: []
     return:
       type: System.EnterpriseServices.TransactionStatus
-      description: "One of the <xref href=&quot;System.EnterpriseServices.TransactionStatus&quot;></xref> values."
+      description: "Én av de <xref href=&quot;System.EnterpriseServices.TransactionStatus&quot;> </xref> verdier."
   overload: System.EnterpriseServices.ServiceDomain.Leave*
   exceptions:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: "<xref href=&quot;System.EnterpriseServices.ServiceConfig&quot;></xref> is not supported on the current platform."
+    description: "<xref href=&quot;System.EnterpriseServices.ServiceConfig&quot;></xref>støttes ikke i den gjeldende plattformen."
   platform:
   - net462
 references:

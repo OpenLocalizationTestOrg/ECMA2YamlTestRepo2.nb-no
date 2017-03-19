@@ -14,8 +14,8 @@ items:
   nameWithType: CompressedStack
   fullName: System.Threading.CompressedStack
   type: Class
-  summary: "Provides methods for setting and capturing the compressed stack on the current thread. This class cannot be inherited."
-  remarks: "The compressed stack is a compact representation of all the code access security information on the call stack, such as <xref:System.Security.CodeAccessPermission.Deny%2A> and <xref:System.Security.CodeAccessPermission.Assert%2A> actions. For example, if a <xref:System.Security.CodeAccessPermission.Deny%2A> action is two stack frames up from the current frame and there are no other code access security annotations between there and the current frame, the compressed stack records only that information, without having to serialize the entire call stack.       The CompressedStackclass is used internally by the <xref:System.Security.SecurityContext> class. For example, the <xref:System.Security.SecurityContext.Capture%2A?displayProperty=fullName> method captures the compressed stack for the current call stack, along with impersonation and culture information. The <xref:System.Security.SecurityContext> class is used in turn by the <xref:System.Threading.ExecutionContext> class to flow context across threads, for example when scheduling thread pool tasks.       This class is not used in ordinary application programming."
+  summary: "Inneholder metoder for angivelse og tar komprimert stakken på gjeldende tråd. Denne klassen kan arves."
+  remarks: "Komprimert stakken er en kompakt representasjon av alle kode tilgang til sikkerhetsinformasjonen på kallstakken eksempel <xref:System.Security.CodeAccessPermission.Deny%2A>og <xref:System.Security.CodeAccessPermission.Assert%2A>Handlinger.</xref:System.Security.CodeAccessPermission.Assert%2A> </xref:System.Security.CodeAccessPermission.Deny%2A> For eksempel hvis en <xref:System.Security.CodeAccessPermission.Deny%2A>handling er to stable forhandleren opp fra gjeldende ramme og det finnes ingen kode tilgang sikkerhet merknader mellom der og den gjeldende rammen komprimert stakken registrerer bare denne informasjonen, uten å serialisere hele kallstakken.</xref:System.Security.CodeAccessPermission.Deny%2A>       CompressedStackclass brukes internt <xref:System.Security.SecurityContext>klasse.</xref:System.Security.SecurityContext> For eksempel den <xref:System.Security.SecurityContext.Capture%2A?displayProperty=fullName>metoden fanger komprimert stakken for den gjeldende kall-bunken, sammen med representasjonsnivået og kultur.</xref:System.Security.SecurityContext.Capture%2A?displayProperty=fullName> Den <xref:System.Security.SecurityContext>klassen brukes i sin tur ved den <xref:System.Threading.ExecutionContext>klassen til flyten konteksten på tvers av tråder, for eksempel når du planlegger tråd oppgaver for applikasjonsutvalg.</xref:System.Threading.ExecutionContext> </xref:System.Security.SecurityContext>       Denne klassen brukes ikke i vanlige application programming."
   syntax:
     content: 'public sealed class CompressedStack : System.Runtime.Serialization.ISerializable'
   inheritance:
@@ -37,8 +37,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "Captures the compressed stack from the current thread."
-  remarks: "Captures all the code access security information on the call stack, such as <xref:System.Security.CodeAccessPermission.Deny%2A> and <xref:System.Security.CodeAccessPermission.Assert%2A> actions, in a compressed format. For example, if a <xref:System.Security.CodeAccessPermission.Deny%2A> action is two stack frames up from the current frame and there are no other code access security annotations between there and the current frame, the compressed stack records only that information, without having to serialize the entire call stack.       The captured compressed stack can be applied to another thread."
+  summary: "Registrerer komprimert stakken fra gjeldende tråd."
+  remarks: "Registrerer alle kode tilgang til sikkerhetsinformasjonen på kallstakken eksempel <xref:System.Security.CodeAccessPermission.Deny%2A>og <xref:System.Security.CodeAccessPermission.Assert%2A>Handlinger, i et komprimert format.</xref:System.Security.CodeAccessPermission.Assert%2A> </xref:System.Security.CodeAccessPermission.Deny%2A> For eksempel hvis en <xref:System.Security.CodeAccessPermission.Deny%2A>handling er to stable forhandleren opp fra gjeldende ramme og det finnes ingen kode tilgang sikkerhet merknader mellom der og den gjeldende rammen komprimert stakken registrerer bare denne informasjonen, uten å serialisere hele kallstakken.</xref:System.Security.CodeAccessPermission.Deny%2A>       Opphentede komprimert stakken kan brukes i en annen tråd."
   syntax:
     content: public static System.Threading.CompressedStack Capture ();
     parameters: []
@@ -61,14 +61,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "Creates a copy of the current compressed stack."
-  remarks: "This method is useful for creating a copy of the current compressed stack to apply to another thread."
+  summary: "Oppretter en kopi av den gjeldende komprimert bunken."
+  remarks: "Denne metoden er nyttig for å opprette en kopi av gjeldende komprimert stakkplass til å bruke en annen tråd."
   syntax:
     content: public System.Threading.CompressedStack CreateCopy ();
     parameters: []
     return:
       type: System.Threading.CompressedStack
-      description: "A <xref href=&quot;System.Threading.CompressedStack&quot;></xref> object representing the current compressed stack."
+      description: "En <xref href=&quot;System.Threading.CompressedStack&quot;> </xref> -objekt som representerer gjeldende komprimert bunke."
   overload: System.Threading.CompressedStack.CreateCopy*
   exceptions: []
   platform:
@@ -85,19 +85,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "Gets the compressed stack for the current thread."
-  remarks: "If security is enabled, the current compressed stack is returned. If security is disabled, GetCompressedStack returns an empty <xref:System.Threading.CompressedStack> object.      > [!NOTE] >  This method uses <xref:System.Security.Permissions.SecurityAction?displayProperty=fullName> to prevent it from being called from untrusted code; only the immediate caller is required to have <xref:System.Security.Permissions.SecurityPermissionAttribute.UnmanagedCode%2A?displayProperty=fullName> permission. For important limitations on using the `LinkDemand` member, see [Demand vs. LinkDemand](http://msdn.microsoft.com/en-us/1ab877f2-70f4-4e0d-8116-943999dfe8f5).      > [!NOTE] >  This member also makes a link demand for the ECMA public key, which is not a valid cryptographic key but a pseudo key. Within the .NET Framework the link demand for the ECMA pseudo key is automatically converted to a link demand for the Microsoft public key. The security exception is based on the Microsoft public key, not the ECMA pseudo key."
+  summary: "Henter den komprimerte bunken for gjeldende tråd."
+  remarks: "Hvis sikkerhet er aktivert, returneres den gjeldende komprimert bunken. Hvis sikkerhet er deaktivert, GetCompressedStack returnerer et tomt <xref:System.Threading.CompressedStack>objektet.</xref:System.Threading.CompressedStack>      > [!NOTE] > Denne metoden bruker <xref:System.Security.Permissions.SecurityAction?displayProperty=fullName>vil hindre at den blir kalt fra uklarerte kode; bare umiddelbar Oppkalleren må ha <xref:System.Security.Permissions.SecurityPermissionAttribute.UnmanagedCode%2A?displayProperty=fullName>tillatelse.</xref:System.Security.Permissions.SecurityPermissionAttribute.UnmanagedCode%2A?displayProperty=fullName> </xref:System.Security.Permissions.SecurityAction?displayProperty=fullName> For viktige begrensninger på ved hjelp av den `LinkDemand` medlem, kan du se [krever kontra. LinkDemand](http://msdn.microsoft.com/en-us/1ab877f2-70f4-4e0d-8116-943999dfe8f5).      > [!NOTE] > Dette medlemmet er også en kobling behov for fellesnøkkelen ECMA, som ikke er en gyldig krypteringsnøkkel, men en pseudo-nøkkel. I .NET Framework konverteres koblingen behov for nøkkelen ECMA pseudo til en kobling behov for fellesnøkkelen Microsoft automatisk. Sikkerhetsunntak er basert på Microsoft fellesnøkkelen, ikke ECMA pseudo-nøkkelen."
   syntax:
     content: public static System.Threading.CompressedStack GetCompressedStack ();
     parameters: []
     return:
       type: System.Threading.CompressedStack
-      description: "A <xref href=&quot;System.Threading.CompressedStack&quot;></xref> for the current thread."
+      description: "En <xref href=&quot;System.Threading.CompressedStack&quot;> </xref> for gjeldende tråd."
   overload: System.Threading.CompressedStack.GetCompressedStack*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "A caller in the call chain does not have permission to access unmanaged code.       -or-       The request for <xref href=&quot;System.Security.Permissions.StrongNameIdentityPermission&quot;></xref> failed."
+    description: "En oppringer i kallet kjeden har ikke tilgang til ubehandlet kode.       - eller - forespørselen om <xref href=&quot;System.Security.Permissions.StrongNameIdentityPermission&quot;> </xref> mislyktes."
   platform:
   - net462
 - uid: System.Threading.CompressedStack.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)
@@ -112,22 +112,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "Sets the <xref href=&quot;System.Runtime.Serialization.SerializationInfo&quot;></xref> object with the logical context information needed to recreate an instance of this execution context."
-  remarks: "GetObjectData sets a <xref:System.Runtime.Serialization.SerializationInfo> with the logical call context information. During deserialization, the execution context object is reconstituted from the <xref:System.Runtime.Serialization.SerializationInfo> transmitted over the stream.       For more information, see <xref:System.Runtime.Serialization.SerializationInfo>."
+  summary: "Angir den <xref href=&quot;System.Runtime.Serialization.SerializationInfo&quot;> </xref> objekt med logiske konteksten informasjonen som kreves for å opprette en forekomst av denne utføringskontekst."
+  remarks: "GetObjectData angir en <xref:System.Runtime.Serialization.SerializationInfo>med logisk kalle informasjon om sikkerhetskontekst.</xref:System.Runtime.Serialization.SerializationInfo> Under deserialisering, reconstituted kjøring context-objektet fra den <xref:System.Runtime.Serialization.SerializationInfo>overføres via dataflyten.</xref:System.Runtime.Serialization.SerializationInfo>       Hvis du vil ha mer informasjon, kan du se <xref:System.Runtime.Serialization.SerializationInfo>.</xref:System.Runtime.Serialization.SerializationInfo>"
   syntax:
     content: public void GetObjectData (System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
     parameters:
     - id: info
       type: System.Runtime.Serialization.SerializationInfo
-      description: "The <xref href=&quot;System.Runtime.Serialization.SerializationInfo&quot;></xref> object to be populated with serialization information."
+      description: "Den <xref href=&quot;System.Runtime.Serialization.SerializationInfo&quot;> </xref> objektet som er fylt med serialisering informasjon."
     - id: context
       type: System.Runtime.Serialization.StreamingContext
-      description: "The <xref:System.Runtime.Serialization.StreamingContext> structure representing the destination context of the serialization."
+      description: "Den <xref:System.Runtime.Serialization.StreamingContext>-struktur representerer målet konteksten for serialisering.</xref:System.Runtime.Serialization.StreamingContext>"
   overload: System.Threading.CompressedStack.GetObjectData*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>info</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>info</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Threading.CompressedStack.Run(System.Threading.CompressedStack,System.Threading.ContextCallback,System.Object)
@@ -142,8 +142,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "Runs a method in the specified compressed stack on the current thread."
-  remarks: "The compressed stack is returned to its previous state when the method completes."
+  summary: "Kjører en metode i den angitte komprimerte stakken på gjeldende tråd."
+  remarks: "Komprimert stakken returneres til sin opprinnelige tilstand når metoden er fullført."
   syntax:
     content: public static void Run (System.Threading.CompressedStack compressedStack, System.Threading.ContextCallback callback, object state);
     parameters:
@@ -152,15 +152,15 @@ items:
       description: "The <xref href=&quot;System.Threading.CompressedStack&quot;></xref> to set."
     - id: callback
       type: System.Threading.ContextCallback
-      description: "A <xref:System.Threading.ContextCallback> that represents the method to be run in the specified security context."
+      description: "En <xref:System.Threading.ContextCallback>som representerer metoden kjøres i den angitte sikkerhetskonteksten.</xref:System.Threading.ContextCallback>"
     - id: state
       type: System.Object
-      description: "The object to be passed to the callback method."
+      description: "Objektet som skal sendes til metoden tilbakeringing."
   overload: System.Threading.CompressedStack.Run*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>compressedStack</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>compressedStack</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 references:
