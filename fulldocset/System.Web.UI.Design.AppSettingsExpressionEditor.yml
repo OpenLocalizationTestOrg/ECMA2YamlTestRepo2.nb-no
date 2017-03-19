@@ -12,8 +12,8 @@ items:
   nameWithType: AppSettingsExpressionEditor
   fullName: System.Web.UI.Design.AppSettingsExpressionEditor
   type: Class
-  summary: "Provides properties and methods for evaluating and editing an application setting expression in a configuration file at design time."
-  remarks: "The AppSettingsExpressionEditor class is derived from the <xref:System.Web.UI.Design.ExpressionEditor> class and provides an implementation for evaluating and associating an application setting reference with a control property at design time. For example, you can bind the value of a control property to the application setting expression `AppSettings:mySettingKeyName`, which indicates that the control property value is set using the `mySettingKeyName` value in the `appSettings` section of the Web configuration file.       A visual designer host, such as [!INCLUDE[vsprvslong](~/add/includes/ajax-current-ext-md.md)], uses the AppSettingsExpressionEditor class to select an application setting from the `appSettings` configuration section, and then evaluates the selected expression for design-time rendering.       When you browse to the <xref:System.Web.UI.Design.HtmlControlDesigner.Expressions%2A> property for a control in the design-time properties grid, the visual designer displays a dialog box to set expressions that provide the run-time value for a control property. You can select the expression type based on a list of expression prefixes. When you select the **AppSettings** expression prefix from the list, the visual designer host uses the associated <xref:System.Web.UI.Design.ExpressionEditorSheet> object to provide design-time editing functionality of `appSettings` expressions and uses AppSettingsExpressionEditor methods to evaluate and convert the expression string based on the syntax for an application setting expression. The visual designer host uses the evaluated expression result to assign control property values that are rendered on the design surface.       The <xref:System.Web.UI.Design.ExpressionEditor.ExpressionPrefix%2A> property for an AppSettingsExpressionEditor object returns the string `AppSettings`. The <xref:System.Web.Compilation.AppSettingsExpressionBuilder> class is associated with the expression prefix `AppSettings` and the AppSettingsExpressionEditor implementation.       The <xref:System.Web.UI.Design.AppSettingsExpressionEditor.EvaluateExpression%2A> method evaluates an input application setting expression string. The <xref:System.Web.UI.Design.ExpressionEditor.GetExpressionEditorSheet%2A> method returns the <xref:System.Web.UI.Design.ExpressionEditorSheet> implementation that is used to enter and edit application setting expressions."
+  summary: "Inneholder egenskaper og metoder for å evaluere og redigere programmet innstillingen uttrykk i en konfigurasjonsfil under utformingen."
+  remarks: "AppSettingsExpressionEditor klassen hentes fra det <xref:System.Web.UI.Design.ExpressionEditor>klasse og inneholder en implementering for evaluering og knytte en programmet innstillingen referanse til en kontrollegenskap under utformingen.</xref:System.Web.UI.Design.ExpressionEditor> Du kan for eksempel binde verdien for en kontrollegenskapen til programmet innstillingen uttrykket `AppSettings:mySettingKeyName`, som angir at egenskapsverdien kontrollen angis ved hjelp av den `mySettingKeyName` verdi i den `appSettings` delen av Webkonfigurasjonsfilen.       Visuelle utformeren vert, for eksempel [!INCLUDE[vsprvslong](~/add/includes/ajax-current-ext-md.md)], bruker AppSettingsExpressionEditor klassen for å velge en applikasjonsinnstilling fra den `appSettings` konfigurasjonsdelen, og returnerer uttrykket som er valgt for utforming gjengivelse.       Når du går til det <xref:System.Web.UI.Design.HtmlControlDesigner.Expressions%2A>-egenskapen for en kontroll i rutenettet utformingen egenskaper den visuelle utformeren vises en dialogboks til et angitt uttrykk som yter kjøretid for en kontrollegenskap.</xref:System.Web.UI.Design.HtmlControlDesigner.Expressions%2A> Du kan velge uttrykkstypen basert på en liste over uttrykk prefikser. Når du merker av **AppSettings** uttrykksprefiks fra listen visual designer verten bruker den tilknyttede <xref:System.Web.UI.Design.ExpressionEditorSheet>objektet til å gi utformingen funksjonaliteten for redigering av `appSettings` uttrykk og bruker AppSettingsExpressionEditor metoder for å evaluere og konvertere Uttrykksstrengen basert på syntaksen for et program innstillingsuttrykk.</xref:System.Web.UI.Design.ExpressionEditorSheet> Visuelle designer verten bruker resultatet evaluerte uttrykket til å tilordne kontrollen egenskapsverdiene som gjengis på utformingsoverflaten.       Den <xref:System.Web.UI.Design.ExpressionEditor.ExpressionPrefix%2A>for et objekt for AppSettingsExpressionEditor returnerer strengen `AppSettings`.</xref:System.Web.UI.Design.ExpressionEditor.ExpressionPrefix%2A> Den <xref:System.Web.Compilation.AppSettingsExpressionBuilder>klassen som er knyttet til uttrykket prefikset `AppSettings` og AppSettingsExpressionEditor implementeringen.</xref:System.Web.Compilation.AppSettingsExpressionBuilder>       Den <xref:System.Web.UI.Design.AppSettingsExpressionEditor.EvaluateExpression%2A>metoden evaluerer en inndata programmet innstillingen uttrykk-strengen.</xref:System.Web.UI.Design.AppSettingsExpressionEditor.EvaluateExpression%2A> Den <xref:System.Web.UI.Design.ExpressionEditor.GetExpressionEditorSheet%2A>metoden returnerer den <xref:System.Web.UI.Design.ExpressionEditorSheet>implementering som brukes til å registrere og redigere programmet innstillingen uttrykk.</xref:System.Web.UI.Design.ExpressionEditorSheet> </xref:System.Web.UI.Design.ExpressionEditor.GetExpressionEditorSheet%2A>"
   example:
   - "The following code example demonstrates how to bind the <xref:System.Web.UI.WebControls.HyperLink.NavigateUrl%2A> property of a <xref:System.Web.UI.WebControls.HyperLink> control to an application setting expression using the AppSettingsExpressionEditor object.  \n  \n1.  In a Web Forms project, add `MyHyperLinkSetting` to the `<appSettings>` section of the web.config file.  \n  \n     [!code-xml[ControlsUsingExpressions#5](~/add/codesnippet/xml/t-system.web.ui.design.a_1.xml)]  \n  \n2.  On a Web Forms page, add a <xref:System.Web.UI.WebControls.HyperLink> control.  \n  \n3.  For the `Hyperlink` control, in Properties, click **Expressions**, and then click the ellipsis button (**...**).  \n  \n     The `<Hyperlinkname>`**Expression** dialog box appears.  \n  \n4.  Under **Bindable properties**, click **NavigateUrl**, in the **Expression type** list, click **AppSettings**, and then under **Expression properties**, in the **AppSetting** box, type **MyHyperLinkSetting**.  \n  \n The visual designer uses the AppSettingsExpressionEditor to assign the expression for the `NavigateUrl` property.  \n  \n The following aspx source shows an example of a property value set using an application setting expression.  \n  \n [!code-vb[ControlsUsingExpressions#2](~/add/codesnippet/visualbasic/t-system.web.ui.design.a_2.aspx)]\n [!code-cs[ControlsUsingExpressions#2](~/add/codesnippet/csharp/t-system.web.ui.design.a_2.aspx)]\n [!code-xml[ControlsUsingExpressions#2](~/add/codesnippet/xml/t-system.web.ui.design.a_2.xml)]"
   syntax:
@@ -40,8 +40,8 @@ items:
   assemblies:
   - System.Design
   namespace: System.Web.UI.Design
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.UI.Design.AppSettingsExpressionEditor&quot;></xref> class."
-  remarks: "An instance of the <xref:System.Web.UI.Design.AppSettingsExpressionEditor> class is configured by the base class together with the <xref:System.Web.UI.Design.ExpressionEditor.ExpressionPrefix%2A> property set to `AppSettings`."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Web.UI.Design.AppSettingsExpressionEditor&quot;> </xref> klasse."
+  remarks: "En forekomst av den <xref:System.Web.UI.Design.AppSettingsExpressionEditor>klassen er konfigurert av basisklassen sammen med den <xref:System.Web.UI.Design.ExpressionEditor.ExpressionPrefix%2A>-egenskapen satt til `AppSettings`.</xref:System.Web.UI.Design.ExpressionEditor.ExpressionPrefix%2A> </xref:System.Web.UI.Design.AppSettingsExpressionEditor>"
   syntax:
     content: public AppSettingsExpressionEditor ();
     parameters: []
@@ -61,26 +61,26 @@ items:
   assemblies:
   - System.Design
   namespace: System.Web.UI.Design
-  summary: "Evaluates an application setting expression string and provides the design-time value for a control property."
-  remarks: "The EvaluateExpression method looks up the application setting that is specified by `expression`, and then returns the value of the application setting.       The visual designer uses the EvaluateExpression method to evaluate an application setting expression and provide the design-time value for an associated control property. The visual designer calls the EvaluateExpression method with the expression string, and uses the evaluated expression result to assign control property values that are rendered on the design surface.       At run time, the page parser uses the <xref:System.Web.Compilation.AppSettingsExpressionBuilder.EvaluateExpression%2A> and <xref:System.Web.Compilation.AppSettingsExpressionBuilder.GetCodeExpression%2A> methods of the corresponding <xref:System.Web.Compilation.AppSettingsExpressionBuilder> implementation to evaluate an expression and provide the run-time value for an associated control property."
+  summary: "Evaluerer en programmet innstillingen uttrykksstreng og inneholder verdien for utforming for en kontrollegenskap."
+  remarks: "Metoden EvaluateExpression slår opp applikasjonsinnstilling som er angitt av `expression`, og returnerer verdien for innstillingen programmet.       Den visuelle utformeren bruker EvaluateExpression-metoden til å evaluere programmet innstillingsuttrykk og angi verdien for utforming for en egenskap for tilknyttede kontrollen. Den visuelle utformeren kaller metoden EvaluateExpression med uttrykk-strengen og bruker resultatet evaluerte uttrykket til å tilordne kontrollen egenskapsverdiene som gjengis på utformingsoverflaten.       Siden parseren bruker under kjøring av <xref:System.Web.Compilation.AppSettingsExpressionBuilder.EvaluateExpression%2A>og <xref:System.Web.Compilation.AppSettingsExpressionBuilder.GetCodeExpression%2A>metoder for den tilsvarende <xref:System.Web.Compilation.AppSettingsExpressionBuilder>implementering evaluere et uttrykk for å angi verdien kjøretid for en egenskap for tilknyttede kontrollen.</xref:System.Web.Compilation.AppSettingsExpressionBuilder> </xref:System.Web.Compilation.AppSettingsExpressionBuilder.GetCodeExpression%2A> </xref:System.Web.Compilation.AppSettingsExpressionBuilder.EvaluateExpression%2A>"
   syntax:
     content: public override object EvaluateExpression (string expression, object parseTimeData, Type propertyType, IServiceProvider serviceProvider);
     parameters:
     - id: expression
       type: System.String
-      description: "An application setting expression string to evaluate. `expression` does not include the <xref uid=&quot;langword_csharp_AppSettings&quot; name=&quot;AppSettings&quot; href=&quot;&quot;></xref> expression prefix."
+      description: "En programmet innstillingen uttrykket strengen som skal evalueres. `expression`inneholder ikke den <xref uid=&quot;langword_csharp_AppSettings&quot; name=&quot;AppSettings&quot; href=&quot;&quot;> </xref> uttrykksprefiks."
     - id: parseTimeData
       type: System.Object
-      description: "An object containing additional parsing information for evaluating `expression`."
+      description: "Et objekt som inneholder analyse av tilleggsinformasjon for å evaluere `expression`."
     - id: propertyType
       type: System.Type
-      description: "The control property type."
+      description: "Egenskapen kontrolltypen."
     - id: serviceProvider
       type: System.IServiceProvider
-      description: "A service provider implementation supplied by the designer host, used to obtain additional design-time services."
+      description: "En tjenesten leverandøren implementering angitt av designer verten, brukes til å hente utformingen tilleggstjenester."
     return:
       type: System.Object
-      description: "The object referenced by <code>expression</code>, if the expression evaluation succeeded; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "Objektet som refererer til <code> expression </code>, hvis uttrykket evalueringen lyktes; ellers <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.Design.AppSettingsExpressionEditor.EvaluateExpression*
   exceptions: []
   platform:
@@ -97,20 +97,20 @@ items:
   assemblies:
   - System.Design
   namespace: System.Web.UI.Design
-  summary: "Returns an expression editor sheet for an application setting expression."
-  remarks: "The GetExpressionEditorSheet method returns a simple editor sheet implementation, which uses a single input string to form the expression."
+  summary: "Returnerer et uttrykk redigeringsprogrammet ark for et program innstillingsuttrykk."
+  remarks: "Metoden GetExpressionEditorSheet returnerer et enkelt redigeringsprogram arket implementering, som bruker en enkelt Inndatastrengen for å utgjøre uttrykket."
   syntax:
     content: public override System.Web.UI.Design.ExpressionEditorSheet GetExpressionEditorSheet (string expression, IServiceProvider serviceProvider);
     parameters:
     - id: expression
       type: System.String
-      description: "The expression string set for a control property, used to initialize the expression editor sheet. `expression` does not include the <xref uid=&quot;langword_csharp_AppSettings&quot; name=&quot;AppSettings&quot; href=&quot;&quot;></xref> expression prefix."
+      description: "Uttrykk-strengen er angitt for en kontrollegenskap som brukes til å starte uttrykket redigeringsprogrammet arket. `expression`inneholder ikke den <xref uid=&quot;langword_csharp_AppSettings&quot; name=&quot;AppSettings&quot; href=&quot;&quot;> </xref> uttrykksprefiks."
     - id: serviceProvider
       type: System.IServiceProvider
-      description: "A service provider implementation supplied by the designer host, used to obtain additional design-time services."
+      description: "En tjenesten leverandøren implementering angitt av designer verten, brukes til å hente utformingen tilleggstjenester."
     return:
       type: System.Web.UI.Design.ExpressionEditorSheet
-      description: "An <xref href=&quot;System.Web.UI.Design.ExpressionEditorSheet&quot;></xref> implementation that defines the application setting expression properties."
+      description: "En <xref href=&quot;System.Web.UI.Design.ExpressionEditorSheet&quot;> </xref> implementering som definerer egenskapene for applikasjonen innstillingen uttrykk."
   overload: System.Web.UI.Design.AppSettingsExpressionEditor.GetExpressionEditorSheet*
   exceptions: []
   platform:

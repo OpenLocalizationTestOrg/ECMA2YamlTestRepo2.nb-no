@@ -24,8 +24,8 @@ items:
   nameWithType: AssemblyCatalog
   fullName: System.ComponentModel.Composition.Hosting.AssemblyCatalog
   type: Class
-  summary: "Discovers attributed parts in a managed code assembly."
-  remarks: "An AssemblyCatalog is used to parse all the parts present in a specified assembly. The target assembly can be indicated either by object reference or by path.      > [!IMPORTANT] >  This type implements the <xref:System.IDisposable> interface. When you have finished using the type, you should dispose of it either directly or indirectly. To dispose of the type directly, call its <xref:System.IDisposable.Dispose%2A> method in a `try`/`catch` block. To dispose of it indirectly, use a language construct such as `using` (in C#) or `Using` (in Visual Basic). For more information, see the “Using an Object that Implements IDisposable” section in the <xref:System.IDisposable> interface topic.       This type is thread safe."
+  summary: "Oppdager attributtet delene i en behandlet kode-samlingen."
+  remarks: "En AssemblyCatalog brukes til å analysere alle delene finnes i en angitt samling. Target-samlingen kan angis ved objektreferanse eller banen.      > [!IMPORTANT] > Denne typen implementerer den <xref:System.IDisposable>grensesnittet.</xref:System.IDisposable> Når du er ferdig med å ved hjelp av typen må du fjerne den direkte eller indirekte. Hvis du vil fjerne av typen direkte, kan du kalle den <xref:System.IDisposable.Dispose%2A>metoden i en `try` / `catch` blokken.</xref:System.IDisposable.Dispose%2A> Hvis du vil fjerne den indirekte, bruke et språk som `using` (i C#) eller `Using` (i Visual Basic). For mer informasjon, se &quot;Ved hjelp av et objekt som implementerer IDisposable&quot; i den <xref:System.IDisposable>grensesnittet emnet.</xref:System.IDisposable>       Denne typen er trygt tråd."
   example:
   - "The following code demonstrates the common scenario of an application creating an AssemblyCatalog to parse its own assembly. This is a straightforward way to load parts contained in a single project into the Managed Extensibility Framework (MEF).  \n  \n [!code-cs[Composition.CompositionContainer#1](~/add/codesnippet/csharp/composition.compositioncontainer.consoleapplication1/program.cs#1)]\n [!code-vb[Composition.CompositionContainer#1](~/add/codesnippet/visualbasic/compositioncontainerexample/module1.vb#1)]"
   syntax:
@@ -56,18 +56,18 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Initializes a new instance of the <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;></xref> class with the specified assembly."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;> </xref> klassen med den angitte samlingen."
   syntax:
     content: public AssemblyCatalog (System.Reflection.Assembly assembly);
     parameters:
     - id: assembly
       type: System.Reflection.Assembly
-      description: "The assembly that contains the attributed <xref:System.Type> objects to add to the <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;></xref> object."
+      description: "Samlingen som inneholder den attributed <xref:System.Type>objekter til å legge til den <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;> </xref> objektet.</xref:System.Type>"
   overload: System.ComponentModel.Composition.Hosting.AssemblyCatalog.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>assembly</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>assembly</code> was loaded in the reflection-only context."
+    description: "<code>assembly</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       - eller - <code>assembly</code> ble lastet inn i konteksten bare gjenspeiling."
   platform:
   - net462
 - uid: System.ComponentModel.Composition.Hosting.AssemblyCatalog.#ctor(System.String)
@@ -82,37 +82,37 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Initializes a new instance of the <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;></xref> class with the specified code base."
-  remarks: "The assembly referenced by `codeBase` is loaded into the load context."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;> </xref> klassen med den angitte kodebasen."
+  remarks: "Samlingen henviser til `codeBase` er lastet inn i innlastingskonteksten."
   syntax:
     content: public AssemblyCatalog (string codeBase);
     parameters:
     - id: codeBase
       type: System.String
-      description: "A string that specifies the code base of the assembly (that is, the path to the assembly file) that contains the attributed <xref:System.Type> objects to add to the <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;></xref> object."
+      description: "En streng som angir kodebasen på samlingen (det vil si banen til samlingsfilen) som inneholder den attributed <xref:System.Type>objekter til å legge til den <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;> </xref> objektet.</xref:System.Type>"
   overload: System.ComponentModel.Composition.Hosting.AssemblyCatalog.#ctor*
   exceptions:
   - type: System.BadImageFormatException
     commentId: T:System.BadImageFormatException
-    description: "<code>codeBase</code> is not a valid assembly.       -or-       Version 2.0 or earlier of the common language runtime is currently loaded and <code>codeBase</code> was compiled with a later version."
+    description: "<code>codeBase</code>er ikke en gyldig samling.       - eller - versjon 2.0 eller tidligere av common language runtime som er lastet inn og <code>codeBase</code> ble kompilert med en nyere versjon."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The caller does not have path discovery permission."
+    description: "Oppkalleren har ikke tillatelse for oppdaging av banen."
   - type: System.IO.FileLoadException
     commentId: T:System.IO.FileLoadException
-    description: "<code>codeBase</code> could not be loaded.       -or-       <code>codeBase</code> specified a directory."
+    description: "<code>codeBase</code>kan ikke lastes inn.       - eller - <code>codeBase</code> angitt en mappe."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>codeBase</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>codeBase</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
-    description: "<code>codeBase</code> is not found."
+    description: "<code>codeBase</code>Finner ikke."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>codeBase</code> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <xref:System.IO.Path.InvalidPathChars>."
+    description: "<code>codeBase</code>er en tom streng, inneholder bare mellomrom eller inneholder én eller flere ugyldige tegn som er angitt av <xref:System.IO.Path.InvalidPathChars>."
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
-    description: "The specified path, file name, or both exceed the system-defined maximum length."
+    description: "Den angitte banen, filnavnet eller begge være lengre enn den systemdefinerte maksimumslengden."
   platform:
   - net462
 - uid: System.ComponentModel.Composition.Hosting.AssemblyCatalog.#ctor(System.Reflection.Assembly,System.ComponentModel.Composition.Primitives.ICompositionElement)
@@ -127,21 +127,21 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Initializes a new instance of the <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;></xref> class with the specified assembly."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;> </xref> klassen med den angitte samlingen."
   syntax:
     content: public AssemblyCatalog (System.Reflection.Assembly assembly, System.ComponentModel.Composition.Primitives.ICompositionElement definitionOrigin);
     parameters:
     - id: assembly
       type: System.Reflection.Assembly
-      description: "The assembly that contains the attributed <xref:System.Type> objects to add to the <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;></xref> object."
+      description: "Samlingen som inneholder den attributed <xref:System.Type>objekter til å legge til den <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;> </xref> objektet.</xref:System.Type>"
     - id: definitionOrigin
       type: System.ComponentModel.Composition.Primitives.ICompositionElement
-      description: "The element used by diagnostics to identify the sources of parts."
+      description: "Elementet brukes av diagnostikk for å identifisere datakilder deler."
   overload: System.ComponentModel.Composition.Hosting.AssemblyCatalog.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>assembly</code> or <code>definitionOrigin</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>assembly</code> was loaded in the reflection-only context."
+    description: "<code>assembly</code>or <code>definitionOrigin</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       - eller - <code>assembly</code> ble lastet inn i konteksten bare gjenspeiling."
   platform:
   - net462
 - uid: System.ComponentModel.Composition.Hosting.AssemblyCatalog.#ctor(System.Reflection.Assembly,System.Reflection.ReflectionContext)
@@ -156,21 +156,21 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Initializes a new instance of the <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;></xref> class with the specified assembly and reflection context."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;> </xref> klassen med den angitte samling og gjenspeiling konteksten."
   syntax:
     content: public AssemblyCatalog (System.Reflection.Assembly assembly, System.Reflection.ReflectionContext reflectionContext);
     parameters:
     - id: assembly
       type: System.Reflection.Assembly
-      description: "The assembly that contains the attributed <xref:System.Type> objects to add to the <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;></xref> object."
+      description: "Samlingen som inneholder den attributed <xref:System.Type>objekter til å legge til den <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;> </xref> objektet.</xref:System.Type>"
     - id: reflectionContext
       type: System.Reflection.ReflectionContext
-      description: "The context used by the catalog to interpret types."
+      description: "Konteksten brukes til å tolke typer i katalogen."
   overload: System.ComponentModel.Composition.Hosting.AssemblyCatalog.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>assembly</code> or <code>reflectionContext</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>assembly</code> was loaded in the reflection-only context."
+    description: "<code>assembly</code>or <code>reflectionContext</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       - eller - <code>assembly</code> ble lastet inn i konteksten bare gjenspeiling."
   platform:
   - net462
 - uid: System.ComponentModel.Composition.Hosting.AssemblyCatalog.#ctor(System.String,System.ComponentModel.Composition.Primitives.ICompositionElement)
@@ -185,39 +185,39 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Initializes a new instance of the <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;></xref> class with the specified code base."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;> </xref> klassen med den angitte kodebasen."
   syntax:
     content: public AssemblyCatalog (string codeBase, System.ComponentModel.Composition.Primitives.ICompositionElement definitionOrigin);
     parameters:
     - id: codeBase
       type: System.String
-      description: "A string that specifies the code base of the assembly (that is, the path to the assembly file) that contains the attributed <xref:System.Type> objects to add to the <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;></xref> object."
+      description: "En streng som angir kodebasen på samlingen (det vil si banen til samlingsfilen) som inneholder den attributed <xref:System.Type>objekter til å legge til den <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;> </xref> objektet.</xref:System.Type>"
     - id: definitionOrigin
       type: System.ComponentModel.Composition.Primitives.ICompositionElement
-      description: "The element used by diagnostics to identify the sources of parts."
+      description: "Elementet brukes av diagnostikk for å identifisere datakilder deler."
   overload: System.ComponentModel.Composition.Hosting.AssemblyCatalog.#ctor*
   exceptions:
   - type: System.BadImageFormatException
     commentId: T:System.BadImageFormatException
-    description: "<code>codeBase</code> is not a valid assembly.       -or-       Version 2.0 or later of the common language runtime is currently loaded and <code>codeBase</code> was compiled with a later version."
+    description: "<code>codeBase</code>er ikke en gyldig samling.       - eller - versjon 2.0 eller senere av common language runtime som er lastet inn og <code>codeBase</code> ble kompilert med en nyere versjon."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The caller does not have path discovery permission."
+    description: "Oppkalleren har ikke tillatelse for oppdaging av banen."
   - type: System.IO.FileLoadException
     commentId: T:System.IO.FileLoadException
-    description: "<code>codeBase</code> could not be loaded.       -or-       <code>codeBase</code> specified a directory."
+    description: "<code>codeBase</code>kan ikke lastes inn.       - eller - <code>codeBase</code> angitt en mappe."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>codebase</code> or <code>definitionOrigin</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>codebase</code>or <code>definitionOrigin</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
-    description: "<code>codeBase</code> is not found."
+    description: "<code>codeBase</code>Finner ikke."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>codeBase</code> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <xref:System.IO.Path.InvalidPathChars>."
+    description: "<code>codeBase</code>er en tom streng, inneholder bare mellomrom eller inneholder én eller flere ugyldige tegn som er angitt av <xref:System.IO.Path.InvalidPathChars>."
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
-    description: "The specified path, file name, or both exceed the system-defined maximum length."
+    description: "Den angitte banen, filnavnet eller begge være lengre enn den systemdefinerte maksimumslengden."
   platform:
   - net462
 - uid: System.ComponentModel.Composition.Hosting.AssemblyCatalog.#ctor(System.String,System.Reflection.ReflectionContext)
@@ -232,39 +232,39 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Initializes a new instance of the <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;></xref> class with the specified code base and reflection context."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;> </xref> klassen med den angitte koden base og gjenspeiling konteksten."
   syntax:
     content: public AssemblyCatalog (string codeBase, System.Reflection.ReflectionContext reflectionContext);
     parameters:
     - id: codeBase
       type: System.String
-      description: "A string that specifies the code base of the assembly (that is, the path to the assembly file) that contains the attributed <xref:System.Type> objects to add to the <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;></xref> object."
+      description: "En streng som angir kodebasen på samlingen (det vil si banen til samlingsfilen) som inneholder den attributed <xref:System.Type>objekter til å legge til den <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;> </xref> objektet.</xref:System.Type>"
     - id: reflectionContext
       type: System.Reflection.ReflectionContext
-      description: "The context used by the catalog to interpret types."
+      description: "Konteksten brukes til å tolke typer i katalogen."
   overload: System.ComponentModel.Composition.Hosting.AssemblyCatalog.#ctor*
   exceptions:
   - type: System.BadImageFormatException
     commentId: T:System.BadImageFormatException
-    description: "<code>codeBase</code> is not a valid assembly.       -or-       Version 2.0 or later of the common language runtime is currently loaded and <code>codeBase</code> was compiled with a later version."
+    description: "<code>codeBase</code>er ikke en gyldig samling.       - eller - versjon 2.0 eller senere av common language runtime som er lastet inn og <code>codeBase</code> ble kompilert med en nyere versjon."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The caller does not have path discovery permission."
+    description: "Oppkalleren har ikke tillatelse for oppdaging av banen."
   - type: System.IO.FileLoadException
     commentId: T:System.IO.FileLoadException
-    description: "<code>codeBase</code> could not be loaded.       -or-       <code>codeBase</code> specified a directory."
+    description: "<code>codeBase</code>kan ikke lastes inn.       - eller - <code>codeBase</code> angitt en mappe."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>codebase</code> or <code>reflectionContext</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>codebase</code>or <code>reflectionContext</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
-    description: "<code>codeBase</code> is not found."
+    description: "<code>codeBase</code>Finner ikke."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>codeBase</code> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <xref:System.IO.Path.InvalidPathChars>."
+    description: "<code>codeBase</code>er en tom streng, inneholder bare mellomrom eller inneholder én eller flere ugyldige tegn som er angitt av <xref:System.IO.Path.InvalidPathChars>."
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
-    description: "The specified path, file name, or both exceed the system-defined maximum length."
+    description: "Den angitte banen, filnavnet eller begge være lengre enn den systemdefinerte maksimumslengden."
   platform:
   - net462
 - uid: System.ComponentModel.Composition.Hosting.AssemblyCatalog.#ctor(System.Reflection.Assembly,System.Reflection.ReflectionContext,System.ComponentModel.Composition.Primitives.ICompositionElement)
@@ -279,24 +279,24 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Initializes a new instance of the <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;></xref> class with the specified assembly and reflection context."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;> </xref> klassen med den angitte samling og gjenspeiling konteksten."
   syntax:
     content: public AssemblyCatalog (System.Reflection.Assembly assembly, System.Reflection.ReflectionContext reflectionContext, System.ComponentModel.Composition.Primitives.ICompositionElement definitionOrigin);
     parameters:
     - id: assembly
       type: System.Reflection.Assembly
-      description: "The assembly that contains the attributed <xref:System.Type> objects to add to the <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;></xref> object."
+      description: "Samlingen som inneholder den attributed <xref:System.Type>objekter til å legge til den <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;> </xref> objektet.</xref:System.Type>"
     - id: reflectionContext
       type: System.Reflection.ReflectionContext
-      description: "The context used by the catalog to interpret types."
+      description: "Konteksten brukes til å tolke typer i katalogen."
     - id: definitionOrigin
       type: System.ComponentModel.Composition.Primitives.ICompositionElement
-      description: "The element used by diagnostics to identify the sources of parts."
+      description: "Elementet brukes av diagnostikk for å identifisere datakilder deler."
   overload: System.ComponentModel.Composition.Hosting.AssemblyCatalog.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>assembly</code>, <code>definitionOrigin</code>, or <code>reflectionContext</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>assembly</code> was loaded in the reflection-only context."
+    description: "<code>assembly</code>, <code>definitionOrigin</code>, or <code>reflectionContext</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       - eller - <code>assembly</code> ble lastet inn i konteksten bare gjenspeiling."
   platform:
   - net462
 - uid: System.ComponentModel.Composition.Hosting.AssemblyCatalog.#ctor(System.String,System.Reflection.ReflectionContext,System.ComponentModel.Composition.Primitives.ICompositionElement)
@@ -311,42 +311,42 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Initializes a new instance of the <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;></xref> class with the specified code base and reflection context."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;> </xref> klassen med den angitte koden base og gjenspeiling konteksten."
   syntax:
     content: public AssemblyCatalog (string codeBase, System.Reflection.ReflectionContext reflectionContext, System.ComponentModel.Composition.Primitives.ICompositionElement definitionOrigin);
     parameters:
     - id: codeBase
       type: System.String
-      description: "A string that specifies the code base of the assembly (that is, the path to the assembly file) that contains the attributed <xref:System.Type> objects to add to the <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;></xref> object."
+      description: "En streng som angir kodebasen på samlingen (det vil si banen til samlingsfilen) som inneholder den attributed <xref:System.Type>objekter til å legge til den <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;> </xref> objektet.</xref:System.Type>"
     - id: reflectionContext
       type: System.Reflection.ReflectionContext
-      description: "The context used by the catalog to interpret types."
+      description: "Konteksten brukes til å tolke typer i katalogen."
     - id: definitionOrigin
       type: System.ComponentModel.Composition.Primitives.ICompositionElement
-      description: "The element used by diagnostics to identify the sources of parts."
+      description: "Elementet brukes av diagnostikk for å identifisere datakilder deler."
   overload: System.ComponentModel.Composition.Hosting.AssemblyCatalog.#ctor*
   exceptions:
   - type: System.BadImageFormatException
     commentId: T:System.BadImageFormatException
-    description: "<code>codeBase</code> is not a valid assembly.       -or-       Version 2.0 or later of the common language runtime is currently loaded and <code>codeBase</code> was compiled with a later version."
+    description: "<code>codeBase</code>er ikke en gyldig samling.       - eller - versjon 2.0 eller senere av common language runtime som er lastet inn og <code>codeBase</code> ble kompilert med en nyere versjon."
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The caller does not have path discovery permission."
+    description: "Oppkalleren har ikke tillatelse for oppdaging av banen."
   - type: System.IO.FileLoadException
     commentId: T:System.IO.FileLoadException
-    description: "<code>codeBase</code> could not be loaded.       -or-       <code>codeBase</code> specified a directory."
+    description: "<code>codeBase</code>kan ikke lastes inn.       - eller - <code>codeBase</code> angitt en mappe."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: "<code>codebase</code>, <code>definitionOrigin</code> or <code>reflectionContext</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.IO.FileNotFoundException
     commentId: T:System.IO.FileNotFoundException
-    description: "<code>codeBase</code> is not found."
+    description: "<code>codeBase</code>Finner ikke."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>codeBase</code> is a zero-length string, contains only white space, or contains one or more invalid characters as defined by <xref:System.IO.Path.InvalidPathChars>."
+    description: "<code>codeBase</code>er en tom streng, inneholder bare mellomrom eller inneholder én eller flere ugyldige tegn som er angitt av <xref:System.IO.Path.InvalidPathChars>."
   - type: System.IO.PathTooLongException
     commentId: T:System.IO.PathTooLongException
-    description: "The specified path, file name, or both exceed the system-defined maximum length."
+    description: "Den angitte banen, filnavnet eller begge være lengre enn den systemdefinerte maksimumslengden."
   platform:
   - net462
 - uid: System.ComponentModel.Composition.Hosting.AssemblyCatalog.Assembly
@@ -361,12 +361,12 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Gets the assembly whose attributed types are contained in the assembly catalog."
+  summary: "Henter samlingen der attributed typer finnes i samlingen-katalogen."
   syntax:
     content: public System.Reflection.Assembly Assembly { get; }
     return:
       type: System.Reflection.Assembly
-      description: "The assembly whose attributed <xref:System.Type> objects are contained in the <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;></xref>."
+      description: "Samlingen der attributtet <xref:System.Type>objektene, i den <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;> </xref>.</xref:System.Type>"
   overload: System.ComponentModel.Composition.Hosting.AssemblyCatalog.Assembly*
   exceptions: []
   platform:
@@ -383,13 +383,13 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Releases the unmanaged resources used by the <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;></xref> and optionally releases the managed resources."
+  summary: "Frigir uforvaltede ressursene som brukes av den <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;> </xref> og eventuelt frigir administrerte ressurser."
   syntax:
     content: protected override void Dispose (bool disposing);
     parameters:
     - id: disposing
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to release both managed and unmanaged resources; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to release only unmanaged resources."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Frigi ressurser både administrerte og uforvaltede; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> frigi bare uforvaltede ressurser."
   overload: System.ComponentModel.Composition.Hosting.AssemblyCatalog.Dispose*
   exceptions: []
   platform:
@@ -406,13 +406,13 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Returns an enumerator that iterates through the catalog."
+  summary: "Returnerer en opplisting som går gjennom katalogen."
   syntax:
     content: public override System.Collections.Generic.IEnumerator<System.ComponentModel.Composition.Primitives.ComposablePartDefinition> GetEnumerator ();
     parameters: []
     return:
       type: System.Collections.Generic.IEnumerator{System.ComponentModel.Composition.Primitives.ComposablePartDefinition}
-      description: "An enumerator that can be used to iterate through the catalog."
+      description: "En opplisting som kan brukes til å gå gjennom katalogen."
   overload: System.ComponentModel.Composition.Hosting.AssemblyCatalog.GetEnumerator*
   exceptions: []
   platform:
@@ -429,16 +429,16 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Gets a collection of exports that match the conditions specified by the import definition."
+  summary: "Henter en samling av Eksporter som samsvarer med betingelser som er angitt av import-definisjonen."
   syntax:
     content: public override System.Collections.Generic.IEnumerable<Tuple<System.ComponentModel.Composition.Primitives.ComposablePartDefinition,System.ComponentModel.Composition.Primitives.ExportDefinition>> GetExports (System.ComponentModel.Composition.Primitives.ImportDefinition definition);
     parameters:
     - id: definition
       type: System.ComponentModel.Composition.Primitives.ImportDefinition
-      description: "Conditions that specify which exports to match."
+      description: "Vilkårene som angir hvilken Eksporter samsvarer."
     return:
       type: System.Collections.Generic.IEnumerable{System.Tuple{System.ComponentModel.Composition.Primitives.ComposablePartDefinition,System.ComponentModel.Composition.Primitives.ExportDefinition}}
-      description: "A collection of exports that match the conditions specified by <code>definition</code>."
+      description: "En samling av Eksporter som samsvarer med betingelser som er angitt av <code> definition </code>."
   overload: System.ComponentModel.Composition.Hosting.AssemblyCatalog.GetExports*
   exceptions: []
   platform:
@@ -456,13 +456,13 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Gets the display name of the <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;></xref> object."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.ComponentModel.Composition.Hosting.AssemblyCatalog> instance is cast to an <xref:System.ComponentModel.Composition.Primitives.ICompositionElement> interface."
+  summary: "Henter visningsnavnet for den <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;> </xref> objektet."
+  remarks: "Dette medlemmet er implementering eksplisitt grensesnitt medlem. Den kan brukes bare når den <xref:System.ComponentModel.Composition.Hosting.AssemblyCatalog>forekomsten endres til en <xref:System.ComponentModel.Composition.Primitives.ICompositionElement>grensesnittet.</xref:System.ComponentModel.Composition.Primitives.ICompositionElement> </xref:System.ComponentModel.Composition.Hosting.AssemblyCatalog>"
   syntax:
     content: string System.ComponentModel.Composition.Primitives.ICompositionElement.DisplayName { get; }
     return:
       type: System.String
-      description: "A string that represents the type and assembly of this <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;></xref> object."
+      description: "En streng som representerer typen og samlingen av dette <xref href=&quot;System.ComponentModel.Composition.Hosting.AssemblyCatalog&quot;> </xref> objektet."
   overload: System.ComponentModel.Composition.Hosting.AssemblyCatalog.System#ComponentModel#Composition#Primitives#ICompositionElement#DisplayName*
   exceptions: []
   platform:
@@ -480,8 +480,8 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Gets the composition element that this element originated from."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.ComponentModel.Composition.Hosting.AssemblyCatalog> instance is cast to an <xref:System.ComponentModel.Composition.Primitives.ICompositionElement> interface."
+  summary: "Henter elementet sammensetningen som dette elementet kommer fra."
+  remarks: "Dette medlemmet er implementering eksplisitt grensesnitt medlem. Den kan brukes bare når den <xref:System.ComponentModel.Composition.Hosting.AssemblyCatalog>forekomsten endres til en <xref:System.ComponentModel.Composition.Primitives.ICompositionElement>grensesnittet.</xref:System.ComponentModel.Composition.Primitives.ICompositionElement> </xref:System.ComponentModel.Composition.Hosting.AssemblyCatalog>"
   syntax:
     content: System.ComponentModel.Composition.Primitives.ICompositionElement System.ComponentModel.Composition.Primitives.ICompositionElement.Origin { get; }
     return:
@@ -503,13 +503,13 @@ items:
   assemblies:
   - System.ComponentModel.Composition
   namespace: System.ComponentModel.Composition.Hosting
-  summary: "Gets a string representation of the assembly catalog."
+  summary: "Henter en strengrepresentasjon av samlingen-katalogen."
   syntax:
     content: public override string ToString ();
     parameters: []
     return:
       type: System.String
-      description: "A representation of the assembly catalog."
+      description: "En representasjon av samlingen-katalogen."
   overload: System.ComponentModel.Composition.Hosting.AssemblyCatalog.ToString*
   exceptions: []
   platform:
