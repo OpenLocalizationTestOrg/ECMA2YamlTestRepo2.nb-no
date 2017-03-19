@@ -15,8 +15,8 @@ items:
   nameWithType: RouteUrlExpressionBuilder
   fullName: System.Web.Compilation.RouteUrlExpressionBuilder
   type: Class
-  summary: "Creates a URL that corresponds to specified URL parameter values."
-  remarks: "The RouteUrlExpressionBuilder class makes it possible to set the property of a server control to the URL of a route by providing a list of URL parameter values."
+  summary: "Oppretter en URL-adresse som tilsvarer parameterverdier for angitt URL-adresse."
+  remarks: "Klassen RouteUrlExpressionBuilder gjør det mulig å angi egenskapen for en serverkontroll URL-adressen til en rute ved hjelp av en verdiliste URL-parameteren."
   example:
   - "The following example shows how to create markup that generates a hyperlink with a URL that is formatted for a route. The route is defined by using `http://www.contoso.com/search/{searchterm}` as the URL pattern.  \n  \n```  \n<asp:HyperLink ID=\"HyperLink1\" runat=\"server\"  \n               NavigateUrl=\"<%$ RouteUrl:searchterm=Bicycles %>\">  \n  Search for Bicycles  \n</asp:HyperLink>  \n```  \n  \n The URL generated for this hyperlink would be `http://www.contoso.com/search/Bicycles`.  \n  \n If the URL parameters provided to the `RouteUrl` expression are not sufficient to uniquely identify a route, you must include the route name. For example, if a Web application has two routes with `searchterm` as the sole URL parameter, the routes would have to be defined by using route names, and the hyperlink markup would resemble the following example:  \n  \n```  \n<asp:HyperLink ID=\"HyperLink1\" runat=\"server\"  \n               NavigateUrl=\"<%$ RouteUrl:searchterm=Bicycles,  \n               routename=BasicSearchRoute %>\">  \n  Search for Bicycles  \n</asp:HyperLink>  \n```"
   syntax:
@@ -46,7 +46,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.Compilation.RouteUrlExpressionBuilder&quot;></xref> class."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Web.Compilation.RouteUrlExpressionBuilder&quot;> </xref> klasse."
   syntax:
     content: public RouteUrlExpressionBuilder ();
     parameters: []
@@ -66,26 +66,26 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Creates a URL that corresponds to specified URL parameter values and to a route URL format."
-  remarks: "ASP.NET calls this method when an expression of the following form is encountered in markup:       `<%$ RouteUrl: urlparameter=value %>`       This method generates the appropriate URL for the specified route-key values for the current <xref:System.Web.Routing.Route> object. This method overrides the <xref:System.Web.Compilation.ExpressionBuilder.EvaluateExpression%2A> method. It gets from the `entry` parameter a reference to the control to which the expression is bound, it gets from the `context` parameter the expression to be evaluated, and it calls the <xref:System.Web.Compilation.RouteUrlExpressionBuilder.GetRouteUrl%2A> method to generate the URL."
+  summary: "Oppretter en URL-adresse som svarer til parameterverdier for angitt URL-adresse og et ruten URL-format."
+  remarks: "ASP.NET kaller opp denne metoden når det oppstår et uttrykk i følgende form i markup: `<%$ RouteUrl: urlparameter=value %>` denne metoden, riktig URL-adresse for de angitte rute nøkkelverdier for gjeldende <xref:System.Web.Routing.Route>objektet.</xref:System.Web.Routing.Route> Denne metoden overstyrer den <xref:System.Web.Compilation.ExpressionBuilder.EvaluateExpression%2A>metoden.</xref:System.Web.Compilation.ExpressionBuilder.EvaluateExpression%2A> Det henter fra den `entry` parameteren en referanse til kontrollen uttrykket er bundet til det henter fra den `context` parameteren uttrykk som evalueres, og kaller den <xref:System.Web.Compilation.RouteUrlExpressionBuilder.GetRouteUrl%2A>metode for å generere URL-adressen.</xref:System.Web.Compilation.RouteUrlExpressionBuilder.GetRouteUrl%2A>"
   syntax:
     content: public override object EvaluateExpression (object target, System.Web.UI.BoundPropertyEntry entry, object parsedData, System.Web.Compilation.ExpressionBuilderContext context);
     parameters:
     - id: target
       type: System.Object
-      description: "Not used in this implementation."
+      description: "Ikke brukes i denne implementeringen."
     - id: entry
       type: System.Web.UI.BoundPropertyEntry
-      description: "The property that the expression is bound to."
+      description: "Uttrykket som er bundet til en egenskapen."
     - id: parsedData
       type: System.Object
-      description: "Not used in this implementation."
+      description: "Ikke brukes i denne implementeringen."
     - id: context
       type: System.Web.Compilation.ExpressionBuilderContext
-      description: "Properties for the control or page."
+      description: "Egenskaper for kontrollen eller siden."
     return:
       type: System.Object
-      description: "The URL that corresponds to the specified URL parameter values and to the selected route. The route is selected by matching route URL patterns to the specified list of parameters. In case more than one route matches a specified list of parameters, a route name can also be specified to indicate which route to select."
+      description: "URL-adressen som svarer til de angitte verdiene for URL-parameteren og den valgte ruten. Ruten er merket som samsvarer med rute mønstre for URL-adressen til den angitte listen over parametere. Hvis mer enn én rute samsvarer med en angitt liste over parametere, en rute navnet kan også angis som viser som rute til å velge."
   overload: System.Web.Compilation.RouteUrlExpressionBuilder.EvaluateExpression*
   exceptions: []
   platform:
@@ -102,23 +102,23 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Returns a code expression that is used to perform the property assignment in the generated page class."
-  remarks: "This method is called when the CodeDOM is created for a page or control. The <xref:System.CodeDom.CodeExpression> object that is returned represents the code expression to add to the property assignment in the generated page class."
+  summary: "Returnerer et code-uttrykk som brukes til å utføre egenskapen tilordningen i klassen som er generert siden."
+  remarks: "Denne metoden kalles når CodeDOM er opprettet for sider eller kontrollen. <xref:System.CodeDom.CodeExpression>Objektet som returneres representerer code-uttrykket til å legge til egenskapen tildelingen i genererte siden klasse.</xref:System.CodeDom.CodeExpression>"
   syntax:
     content: public override System.CodeDom.CodeExpression GetCodeExpression (System.Web.UI.BoundPropertyEntry entry, object parsedData, System.Web.Compilation.ExpressionBuilderContext context);
     parameters:
     - id: entry
       type: System.Web.UI.BoundPropertyEntry
-      description: "The property that the expression is bound to."
+      description: "Uttrykket som er bundet til en egenskapen."
     - id: parsedData
       type: System.Object
-      description: "The object that represents parsed data as returned by <xref:System.Web.Compilation.RouteUrlExpressionBuilder.TryParseRouteExpression*>."
+      description: "Objektet som representerer analyseres data som returneres av <xref:System.Web.Compilation.RouteUrlExpressionBuilder.TryParseRouteExpression*>.</xref:System.Web.Compilation.RouteUrlExpressionBuilder.TryParseRouteExpression*>"
     - id: context
       type: System.Web.Compilation.ExpressionBuilderContext
-      description: "Properties for the control or page."
+      description: "Egenskaper for kontrollen eller siden."
     return:
       type: System.CodeDom.CodeExpression
-      description: "A <xref href=&quot;System.CodeDom.CodeExpression&quot;></xref> instance that is used in the property assignment."
+      description: "En <xref href=&quot;System.CodeDom.CodeExpression&quot;> </xref> -forekomst som er brukt i egenskapen tilordningen."
   overload: System.Web.Compilation.RouteUrlExpressionBuilder.GetCodeExpression*
   exceptions: []
   platform:
@@ -135,20 +135,20 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Creates a URL that corresponds to specified route keys for a route URL format."
-  remarks: "This method generates the appropriate value for the URL by calling the <xref:System.Web.Routing.RouteCollection.GetVirtualPath%2A> method of the <xref:System.Web.Routing.RouteCollection> object. It gets the <xref:System.Web.Routing.RequestContext> object from the `control` parameter, and it parses the route name and route parameters from the `expression` parameter."
+  summary: "Oppretter en URL-adresse som samsvarer med angitt rutenøkler for en rute URL-format."
+  remarks: "Denne metoden, riktig verdi for URL-adressen ved å kalle den <xref:System.Web.Routing.RouteCollection.GetVirtualPath%2A>metoden for den <xref:System.Web.Routing.RouteCollection>objektet.</xref:System.Web.Routing.RouteCollection> </xref:System.Web.Routing.RouteCollection.GetVirtualPath%2A> Det henter den <xref:System.Web.Routing.RequestContext>objektet fra den `control` parameteren og analyserer rute navn og en rute fra den `expression` parameteren.</xref:System.Web.Routing.RequestContext>"
   syntax:
     content: public static string GetRouteUrl (System.Web.UI.Control control, string expression);
     parameters:
     - id: control
       type: System.Web.UI.Control
-      description: "The control that the expression is bound to."
+      description: "Kontrollen som uttrykket er bundet til."
     - id: expression
       type: System.String
-      description: "The expression as specified in markup."
+      description: "Uttrykket som er angitt i markup."
     return:
       type: System.String
-      description: "The URL that corresponds to the route URL format of the current <xref:System.Web.Routing.Route> object."
+      description: "URL-adressen som tilsvarer rute URL-formatet for gjeldende <xref:System.Web.Routing.Route>objektet.</xref:System.Web.Routing.Route>"
   overload: System.Web.Compilation.RouteUrlExpressionBuilder.GetRouteUrl*
   exceptions:
   - type: System.ArgumentNullException
@@ -156,7 +156,7 @@ items:
     description: "The <code>control</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The method was unable to parse the expression that was specified in markup. For more information, see <xref:System.Web.Compilation.RouteUrlExpressionBuilder.TryParseRouteExpression*>."
+    description: "Metoden ble kan ikke analysere uttrykket som er angitt i markup. Hvis du vil ha mer informasjon, kan du se <xref:System.Web.Compilation.RouteUrlExpressionBuilder.TryParseRouteExpression*>.</xref:System.Web.Compilation.RouteUrlExpressionBuilder.TryParseRouteExpression*>"
   platform:
   - net462
 - uid: System.Web.Compilation.RouteUrlExpressionBuilder.SupportsEvaluate
@@ -171,8 +171,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Gets a value that indicates whether an expression can be evaluated in a page that is not compiled."
-  remarks: "The SupportsEvaluate property indicates whether the <xref:System.Web.Compilation.RouteUrlExpressionBuilder.EvaluateExpression%2A> method has been implemented in the class and can return a value for the expression in a page that is not compiled. The <xref:System.Web.Compilation.RouteUrlExpressionBuilder> class can evaluate an expression in a page that is not compiled. Therefore, the SupportsEvaluate property always returns `true`."
+  summary: "Henter en verdi som angir om et uttrykk kan evalueres på en side som ikke er kompilert."
+  remarks: "Egenskapen SupportsEvaluate angir om den <xref:System.Web.Compilation.RouteUrlExpressionBuilder.EvaluateExpression%2A>metoden er implementert i klassen og kan returnere en verdi for uttrykket i en side som ikke er kompilert.</xref:System.Web.Compilation.RouteUrlExpressionBuilder.EvaluateExpression%2A> Den <xref:System.Web.Compilation.RouteUrlExpressionBuilder>klassen kan evaluere et uttrykk i en side som ikke er kompilert.</xref:System.Web.Compilation.RouteUrlExpressionBuilder> Derfor egenskapen SupportsEvaluate returnerer alltid `true`."
   syntax:
     content: public override bool SupportsEvaluate { get; }
     return:
@@ -194,23 +194,23 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Parses an expression into a collection of route keys and values, and optionally into a route name."
-  remarks: "The TryParseRouteExpression method strips leading and trailing spaces from the expression, and then splits it into key/value pairs by using commas as delimiters. If the route key named `RouteName` is found, that value is passed back in the `routeName` parameter and not in `routeValues`. Otherwise, `null` is returned for `routeName`. Leading and trailing spaces are also stripped from individual keys and values.       The TryParseRouteExpression method returns `false` if the expression is not composed of at least one key/value pair that is in the format *key*`=`*value*, and that uses commas to separate multiple pairs."
+  summary: "Analyserer et uttrykk i en samling med rutenøkler og verdier, og eventuelt i et rutenavn."
+  remarks: "Metoden TryParseRouteExpression fjerner innledende og avsluttende mellomrom fra uttrykket, og deler den i nøkkel/verdi-par med komma som skilletegn. Hvis nøkkelen ruten navngitt `RouteName` finnes, at verdien er sendt tilbake i `routeName` parameteren og ikke i `routeValues`. Ellers `null` returneres for `routeName`. Også fjernes innledende og avsluttende mellomrom fra individuelle nøkler og verdier.       Metoden TryParseRouteExpression returnerer `false` hvis uttrykket ikke består av minst én nøkkel/verdi-paret er formatet *nøkkelen*`=`*verdien*, og som bruker komma til å skille flere par."
   syntax:
     content: public static bool TryParseRouteExpression (string expression, System.Web.Routing.RouteValueDictionary routeValues, out string routeName);
     parameters:
     - id: expression
       type: System.String
-      description: "The expression as specified in markup."
+      description: "Uttrykket som er angitt i markup."
     - id: routeValues
       type: System.Web.Routing.RouteValueDictionary
-      description: "The collection of route keys and their associated values."
+      description: "Samling av rutenøkler og de tilhørende verdiene."
     - id: routeName
       type: System.String
-      description: "When this method returns, contains a string that represents the name of the route, if `expression` contains a route key named `RouteName`. This parameter is passed uninitialized."
+      description: "Låse denne metoden, inneholder en streng som representerer navnet på ruten, hvis `expression` inneholder en rute nøkkel navnet `RouteName`. Denne parameteren sendes ikke initialisert."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if parsing was successful; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis analyse var vellykket. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.Compilation.RouteUrlExpressionBuilder.TryParseRouteExpression*
   exceptions: []
   platform:

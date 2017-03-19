@@ -21,7 +21,7 @@ items:
   nameWithType: DataProtector
   fullName: System.Security.Cryptography.DataProtector
   type: Class
-  summary: "Provides the base class for data protectors."
+  summary: "Inneholder basisklassen for data beskyttere."
   remarks: "This class protects stored data from viewing and tampering. The access to the protected data is obtained by creating an instance of this class and using the exact purpose strings that were used to protect the data.  The caller does not need a key to either protect or unprotect the data. The key is provided by the encryption algorithm.  \n  \n Derived classes must override the [ProviderProtect(Byte\\[\\])](assetId:///M:System.Security.Cryptography.DataProtector.ProviderProtect(System.Byte[])?qualifyHint=False&autoUpgrade=True) and <xref:System.Security.Cryptography.DataProtector.Unprotect%2A> methods, which the DataProtector base class calls back into. They must also override the <xref:System.Security.Cryptography.DataProtector.IsReprotectRequired%2A> method, which can always return `true` with a  potential small loss of efficiency when applications refresh their database of stored cipher text. Derived classes should provide a constructor that calls the base class constructor, which sets the <xref:System.Security.Cryptography.DataProtector.ApplicationName%2A>, <xref:System.Security.Cryptography.DataProtector.SpecificPurposes%2A>, and <xref:System.Security.Cryptography.DataProtector.PrimaryPurpose%2A> properties."
   example:
   - "The following example demonstrates how to create a data protector that uses a protection class with an option for extra entropy. By default, the DataProtector class prepends the hash of the purpose properties to the data to be encrypted. You can turn that functionality off and use the hashed purpose as extra entropy when calling a data protector with an extra entropy option.  \n  \n [!code-cs[Cryptography.DataProtector#1](~/add/codesnippet/csharp/t-system.security.crypto_7_1.cs)]\n [!code-vb[Cryptography.DataProtector#1](~/add/codesnippet/visualbasic/t-system.security.crypto_7_1.vb)]  \n  \n The following example demonstrates a simple data protector that uses the <xref:System.Security.Cryptography.DataProtector.PrependHashedPurposeToPlaintext%2A> functionality of the DataProtector class.  \n  \n [!code-vb[Cryptography.MemoryProtector#1](~/add/codesnippet/visualbasic/t-system.security.crypto_7_2.vb)]\n [!code-cs[Cryptography.MemoryProtector#1](~/add/codesnippet/csharp/t-system.security.crypto_7_2.cs)]"
@@ -45,25 +45,25 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography
-  summary: "Creates a new instance of the <xref href=&quot;System.Security.Cryptography.DataProtector&quot;></xref> class by using the provided application name, primary purpose, and specific purposes."
-  remarks: "This constructor sets the <xref:System.Security.Cryptography.DataProtector.ApplicationName%2A>, <xref:System.Security.Cryptography.DataProtector.PrimaryPurpose%2A>, and <xref:System.Security.Cryptography.DataProtector.SpecificPurposes%2A> properties. The combination of these three properties must uniquely identify the data you are protecting. If the data is not uniquely identified, you might inadvertently read the wrong data, or other data might be substituted for yours. Examples of primary and specific purpose pairs are “invoice” and invoice number, “gift card” and gift card number, “password” and URL string."
+  summary: "Oppretter en ny forekomst av den <xref href=&quot;System.Security.Cryptography.DataProtector&quot;> </xref> klassen ved hjelp av den angitte programnavnet hovedformål og bestemte formål."
+  remarks: "Denne konstruktøren angir den <xref:System.Security.Cryptography.DataProtector.ApplicationName%2A>, <xref:System.Security.Cryptography.DataProtector.PrimaryPurpose%2A>, og <xref:System.Security.Cryptography.DataProtector.SpecificPurposes%2A>Egenskaper.</xref:System.Security.Cryptography.DataProtector.SpecificPurposes%2A> </xref:System.Security.Cryptography.DataProtector.PrimaryPurpose%2A> </xref:System.Security.Cryptography.DataProtector.ApplicationName%2A> Kombinasjonen av disse tre egenskapene må entydig dataene du beskytter. Hvis dataene ikke identifiseres, kan du ved et uhell lese feil data eller andre data kan erstatte din. Eksempler på primære og bestemt formål par er &quot;faktura&quot; og faktura tall, &quot;gavekort&quot; og gavekort kortnummer, &quot;passord&quot; og URL-strengen."
   syntax:
     content: protected DataProtector (string applicationName, string primaryPurpose, string[] specificPurposes);
     parameters:
     - id: applicationName
       type: System.String
-      description: "The name of the application."
+      description: "Navnet på programmet."
     - id: primaryPurpose
       type: System.String
-      description: "The primary purpose for the protected data. See Remarks for additional important information."
+      description: "Den primære hensikten for de beskyttede dataene. Se kommentarer mer viktig informasjon."
     - id: specificPurposes
       type: System.String[]
-      description: "The specific purposes for the protected data. See Remarks for additional important information."
+      description: "Bestemte formål for de beskyttede dataene. Se kommentarer mer viktig informasjon."
   overload: System.Security.Cryptography.DataProtector.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>applicationName</code> is an empty string or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>primaryPurpose</code> is an empty string or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>specificPurposes</code> contains an empty string or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>applicationName</code>en tom streng eller <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>.       - eller - <code>primaryPurpose</code> er en tom streng eller <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>.       - eller - <code>specificPurposes</code> inneholder en tom streng eller <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   platform:
   - net462
 - uid: System.Security.Cryptography.DataProtector.ApplicationName
@@ -78,12 +78,12 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography
-  summary: "Gets the name of the application."
+  summary: "Henter navnet på programmet."
   syntax:
     content: protected string ApplicationName { get; }
     return:
       type: System.String
-      description: "The name of the application."
+      description: "Navnet på programmet."
   overload: System.Security.Cryptography.DataProtector.ApplicationName*
   exceptions: []
   platform:
@@ -100,30 +100,30 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography
-  summary: "Creates an instance of a data protector implementation by using the specified class name of the data protector, the application name, the primary purpose, and the specific purposes."
+  summary: "Oppretter en forekomst av en data beskytter implementering ved hjelp av angitte klassenavnet for data beskytter, programnavnet, primære formålet og bestemte formål."
   syntax:
     content: public static System.Security.Cryptography.DataProtector Create (string providerClass, string applicationName, string primaryPurpose, string[] specificPurposes);
     parameters:
     - id: providerClass
       type: System.String
-      description: "The class name for the data protector."
+      description: "Klassenavnet for data beskyttelsen."
     - id: applicationName
       type: System.String
-      description: "The name of the application."
+      description: "Navnet på programmet."
     - id: primaryPurpose
       type: System.String
-      description: "The primary purpose for the protected data."
+      description: "Den primære hensikten for de beskyttede dataene."
     - id: specificPurposes
       type: System.String[]
-      description: "The specific purposes for the protected data."
+      description: "Bestemte formål for de beskyttede dataene."
     return:
       type: System.Security.Cryptography.DataProtector
-      description: "A data protector implementation object."
+      description: "En beskytter implementering dataobjektet."
   overload: System.Security.Cryptography.DataProtector.Create*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>providerClass</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>providerClass</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.Cryptography.DataProtector.GetHashedPurpose
@@ -138,8 +138,8 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography
-  summary: "Creates a hash of the property values specified by the constructor."
-  remarks: "GetHashedPurpose computes the hash of the application name and the full purpose.  The full purpose is a concatenation of all the <xref:System.Security.Cryptography.DataProtector.PrimaryPurpose%2A> and <xref:System.Security.Cryptography.DataProtector.SpecificPurposes%2A> properties.  Each of the three parts is prefaced with its length so the hash can be reversed."
+  summary: "Oppretter en hash-kode med verdier som er angitt av konstruktøren."
+  remarks: "GetHashedPurpose beregner hash-koden for programnavnet og fullstendig formålet.  Full formålet er en sammenkobling av alle de <xref:System.Security.Cryptography.DataProtector.PrimaryPurpose%2A>og <xref:System.Security.Cryptography.DataProtector.SpecificPurposes%2A>Egenskaper.</xref:System.Security.Cryptography.DataProtector.SpecificPurposes%2A> </xref:System.Security.Cryptography.DataProtector.PrimaryPurpose%2A>  Hver av de tre delene er innledes med lengden slik hash-koden kan reverseres."
   example:
   - "The following example shows how to use the GetHashedPurpose method to hash the purpose properties for use as extra entropy.  It is part of a larger code example for the <xref:System.Security.Cryptography.DataProtector> class.  \n  \n [!code-cs[Cryptography.DataProtector#3](~/add/codesnippet/csharp/m-system.security.crypto_107_1.cs)]\n [!code-vb[Cryptography.DataProtector#3](~/add/codesnippet/visualbasic/m-system.security.crypto_107_1.vb)]"
   syntax:
@@ -147,7 +147,7 @@ items:
     parameters: []
     return:
       type: System.Byte[]
-      description: "An array of bytes that contain the hash of the <xref:System.Security.Cryptography.DataProtector.ApplicationName*>, <xref:System.Security.Cryptography.DataProtector.PrimaryPurpose*>, and <xref:System.Security.Cryptography.DataProtector.SpecificPurposes*> properties."
+      description: "En bytematrise som inneholder hash-koden for den <> </> *>, <> </> *>, og <xref:System.Security.Cryptography.DataProtector.SpecificPurposes*>Egenskaper.</xref:System.Security.Cryptography.DataProtector.SpecificPurposes*>"
   overload: System.Security.Cryptography.DataProtector.GetHashedPurpose*
   exceptions: []
   platform:
@@ -164,16 +164,16 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography
-  summary: "Determines if re-encryption is required for the specified encrypted data."
+  summary: "Bestemmer om ny kryptering er påkrevd for den angitte krypterte data."
   syntax:
     content: public abstract bool IsReprotectRequired (byte[] encryptedData);
     parameters:
     - id: encryptedData
       type: System.Byte[]
-      description: "The encrypted data to be evaluated."
+      description: "De krypterte dataene som skal evalueres."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the data must be re-encrypted; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis dataene må være kryptert på nytt. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Security.Cryptography.DataProtector.IsReprotectRequired*
   exceptions: []
   platform:
@@ -190,8 +190,8 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography
-  summary: "Specifies whether the hash is prepended to the text array before encryption."
-  remarks: "By default, it is assumed that derived classes will prepend the hash of the <xref:System.Security.Cryptography.DataProtector.ApplicationName%2A>, <xref:System.Security.Cryptography.DataProtector.PrimaryPurpose%2A>, and <xref:System.Security.Cryptography.DataProtector.SpecificPurposes%2A> properties to the plain text before encryption, and will check and verify  the hash during decryption.  If a derived class wants to specify the prepended data on its own (for example as an optional entropy value), this property can be overridden and set to return `false`.  If PrependHashedPurposeToPlaintext is `false`, <xref:System.Security.Cryptography.DataProtector.Protect%2A> and <xref:System.Security.Cryptography.DataProtector.Unprotect%2A> passes directly through to the <xref:System.Security.Cryptography.DataProtector.ProviderProtect%2A> and <xref:System.Security.Cryptography.DataProtector.ProviderUnprotect%2A> overrides without altering the byte array."
+  summary: "Angir om hash-koden er foran teksten matrisen før kryptering."
+  remarks: "Som standard antas det at avledede klasser prepend hash-koden for den <xref:System.Security.Cryptography.DataProtector.ApplicationName%2A>, <xref:System.Security.Cryptography.DataProtector.PrimaryPurpose%2A>, og <xref:System.Security.Cryptography.DataProtector.SpecificPurposes%2A>egenskapene til ren tekst før kryptering, og vil kontroller og hash-koden under dekryptering.</xref:System.Security.Cryptography.DataProtector.SpecificPurposes%2A> </xref:System.Security.Cryptography.DataProtector.PrimaryPurpose%2A> </xref:System.Security.Cryptography.DataProtector.ApplicationName%2A>  Hvis den utledede klassen ønsker å angi prepended dataene på sin egen (for eksempel som en valgfri entropy verdi) denne egenskapen kan overstyres og satt til å returnere `false`.  Hvis PrependHashedPurposeToPlaintext `false`, <xref:System.Security.Cryptography.DataProtector.Protect%2A>og <xref:System.Security.Cryptography.DataProtector.Unprotect%2A>sender direkte via til den <xref:System.Security.Cryptography.DataProtector.ProviderProtect%2A>og <xref:System.Security.Cryptography.DataProtector.ProviderUnprotect%2A>overstyrer uten endring av bytematrise.</xref:System.Security.Cryptography.DataProtector.ProviderUnprotect%2A> </xref:System.Security.Cryptography.DataProtector.ProviderProtect%2A> </xref:System.Security.Cryptography.DataProtector.Unprotect%2A> </xref:System.Security.Cryptography.DataProtector.Protect%2A>"
   syntax:
     content: protected virtual bool PrependHashedPurposeToPlaintext { get; }
     return:
@@ -213,12 +213,12 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography
-  summary: "Gets the primary purpose for the protected data."
+  summary: "Henter det primære formålet for de beskyttede dataene."
   syntax:
     content: protected string PrimaryPurpose { get; }
     return:
       type: System.String
-      description: "The primary purpose for the protected data."
+      description: "Den primære hensikten for de beskyttede dataene."
   overload: System.Security.Cryptography.DataProtector.PrimaryPurpose*
   exceptions: []
   platform:
@@ -235,21 +235,21 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography
-  summary: "Protects the specified user data."
+  summary: "Beskytter angitte brukerdataene."
   syntax:
     content: public byte[] Protect (byte[] userData);
     parameters:
     - id: userData
       type: System.Byte[]
-      description: "The data to be protected."
+      description: "Dataene som skal være beskyttet."
     return:
       type: System.Byte[]
-      description: "A byte array that contains the encrypted data."
+      description: "En bytematrise som inneholder de krypterte dataene."
   overload: System.Security.Cryptography.DataProtector.Protect*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>userData</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>userData</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.Cryptography.DataProtector.ProviderProtect(System.Byte[])
@@ -264,7 +264,7 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography
-  summary: "Specifies the delegate method in the derived class that the <xref:System.Security.Cryptography.DataProtector.Protect*> method in the base class calls back into."
+  summary: "Angir metoden representanten i den utledede klassen som den <xref:System.Security.Cryptography.DataProtector.Protect*>i basisklassen metodekall tilbake til.</xref:System.Security.Cryptography.DataProtector.Protect*>"
   remarks: ''
   example:
   - "The following example shows an implementation of the ProviderProtect method.  It is part of a larger code example for the <xref:System.Security.Cryptography.DataProtector> class.  \n  \n [!code-vb[Cryptography.MemoryProtector#3](~/add/codesnippet/visualbasic/m-system.security.crypto_130_1.vb)]\n [!code-cs[Cryptography.MemoryProtector#3](~/add/codesnippet/csharp/m-system.security.crypto_130_1.cs)]"
@@ -273,10 +273,10 @@ items:
     parameters:
     - id: userData
       type: System.Byte[]
-      description: "The data to be encrypted."
+      description: "Dataene krypteres."
     return:
       type: System.Byte[]
-      description: "A byte array that contains the encrypted data."
+      description: "En bytematrise som inneholder de krypterte dataene."
   overload: System.Security.Cryptography.DataProtector.ProviderProtect*
   exceptions: []
   platform:
@@ -293,7 +293,7 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography
-  summary: "Specifies the delegate method in the derived class that the <xref:System.Security.Cryptography.DataProtector.Unprotect*> method in the base class calls back into."
+  summary: "Angir metoden representanten i den utledede klassen som den <xref:System.Security.Cryptography.DataProtector.Unprotect*>i basisklassen metodekall tilbake til.</xref:System.Security.Cryptography.DataProtector.Unprotect*>"
   remarks: ''
   example:
   - "The following example shows an implementation of the ProviderUnprotect method.  It is part of a larger code example for the <xref:System.Security.Cryptography.DataProtector> class.  \n  \n [!code-vb[Cryptography.MemoryProtector#4](~/add/codesnippet/visualbasic/m-system.security.crypto_20_1.vb)]\n [!code-cs[Cryptography.MemoryProtector#4](~/add/codesnippet/csharp/m-system.security.crypto_20_1.cs)]"
@@ -302,10 +302,10 @@ items:
     parameters:
     - id: encryptedData
       type: System.Byte[]
-      description: "The data to be unencrypted."
+      description: "Dataene som skal være kryptert."
     return:
       type: System.Byte[]
-      description: "The unencrypted data.."
+      description: "Datatypen ukryptert.."
   overload: System.Security.Cryptography.DataProtector.ProviderUnprotect*
   exceptions: []
   platform:
@@ -322,12 +322,12 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography
-  summary: "Gets the specific purposes for the protected data."
+  summary: "Henter de bestemte formålene for de beskyttede dataene."
   syntax:
     content: protected System.Collections.Generic.IEnumerable<string> SpecificPurposes { get; }
     return:
       type: System.Collections.Generic.IEnumerable{System.String}
-      description: "A collection of the specific purposes for the protected data."
+      description: "En samling av bestemte formål for de beskyttede dataene."
   overload: System.Security.Cryptography.DataProtector.SpecificPurposes*
   exceptions: []
   platform:
@@ -344,24 +344,24 @@ items:
   assemblies:
   - System.Security
   namespace: System.Security.Cryptography
-  summary: "Unprotects the specified protected data."
+  summary: "Unprotects de angitte beskyttede dataene."
   syntax:
     content: public byte[] Unprotect (byte[] encryptedData);
     parameters:
     - id: encryptedData
       type: System.Byte[]
-      description: "The encrypted data to be unprotected."
+      description: "De krypterte dataene skal være ubeskyttet."
     return:
       type: System.Byte[]
-      description: "A byte array that contains the plain-text data."
+      description: "En bytematrise som inneholder dataene ren tekst."
   overload: System.Security.Cryptography.DataProtector.Unprotect*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>encryptedData</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>encryptedData</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
-    description: "<code>encryptedData</code> contained an invalid purpose."
+    description: "<code>encryptedData</code>inneholdt en ugyldig formålet."
   platform:
   - net462
 references:

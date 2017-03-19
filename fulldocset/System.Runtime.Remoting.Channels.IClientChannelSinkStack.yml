@@ -11,8 +11,8 @@ items:
   nameWithType: IClientChannelSinkStack
   fullName: System.Runtime.Remoting.Channels.IClientChannelSinkStack
   type: Interface
-  summary: "Provides functionality for a stack of client channel sinks that must be invoked during an asynchronous message response decoding."
-  remarks: "The IClientChannelSinkStack is used during processing of responses to asynchronous calls.       During a synchronous call, the <xref:System.Runtime.Remoting.Channels.IClientChannelSink.ProcessMessage%2A?displayProperty=fullName> method is called when a message is outbound to the server. Each sink in the sink chain calls the <xref:System.Runtime.Remoting.Channels.IClientChannelSink.ProcessMessage%2A> method on the next sink until the call reaches the transport sink at the end of the chain. From there the message is transported to the server.       When the formatter sink is called through the <xref:System.Runtime.Remoting.Messaging.IMessageSink.AsyncProcessMessage%2A> method, it dispatches the call asynchronously by calling <xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessRequest%2A> on the next channel sink. A stack of reply sinks is needed to process the response. Any sink that wants to process the response needs to push itself to the client channel sink stack inside of <xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessRequest%2A>."
+  summary: "Omfatter funksjonalitet i en bunke klienten kanal mottakere som må aktiveres under dekoding av en asynkron melding svar."
+  remarks: "IClientChannelSinkStack brukes under behandling av svar på asynkrone kall.       Under et synkron kall den <xref:System.Runtime.Remoting.Channels.IClientChannelSink.ProcessMessage%2A?displayProperty=fullName>metoden kalles når en melding er utgående til serveren.</xref:System.Runtime.Remoting.Channels.IClientChannelSink.ProcessMessage%2A?displayProperty=fullName> Hver sink i sink kjede kall av <xref:System.Runtime.Remoting.Channels.IClientChannelSink.ProcessMessage%2A>-metoden på neste mottakeren til kallet når transport mottakeren på slutten av kjeden.</xref:System.Runtime.Remoting.Channels.IClientChannelSink.ProcessMessage%2A> Derfra transporterte meldingen til serveren.       Når formatering sink kalles via den <xref:System.Runtime.Remoting.Messaging.IMessageSink.AsyncProcessMessage%2A>metoden, den sender kallet asynkront ved å kalle <xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessRequest%2A>på neste kanal mottakeren.</xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessRequest%2A> </xref:System.Runtime.Remoting.Messaging.IMessageSink.AsyncProcessMessage%2A> En bunke svar mottakere kreves for å behandle svaret. Sink som ønsker å behandle svaret må push selve til klienten kanal sink bunken inne i <xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessRequest%2A>.</xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessRequest%2A>"
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -34,21 +34,21 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Pops the information associated with all the sinks from the sink stack up to and including the specified sink."
+  summary: "Viser informasjon som er forbundet med alle mottakere fra sink stakken opptil og inkludert angitte mottakeren."
   syntax:
     content: public object Pop (System.Runtime.Remoting.Channels.IClientChannelSink sink);
     parameters:
     - id: sink
       type: System.Runtime.Remoting.Channels.IClientChannelSink
-      description: "The sink to remove and return from the sink stack."
+      description: "Mottakeren til å fjerne og returnere fra sink stakken."
     return:
       type: System.Object
-      description: "Information generated on the request side and associated with the specified sink."
+      description: "Informasjon generert på side forespørselen og knyttet til den angitte sink."
   overload: System.Runtime.Remoting.Channels.IClientChannelSinkStack.Pop*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "Umiddelbar oppkalleren har ikke tillatelse for infrastruktur."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Channels.IClientChannelSinkStack.Push(System.Runtime.Remoting.Channels.IClientChannelSink,System.Object)
@@ -63,22 +63,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Channels
-  summary: "Pushes the specified sink and information associated with it onto the sink stack."
-  remarks: "The information generated on the request side and specified in the `state` parameter is returned in the `state` parameter of the <xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessResponse%2A> method on the corresponding sink."
+  summary: "Pusher angitte mottakeren og informasjon som er knyttet til den inn i sink-stakken."
+  remarks: "Informasjonen generert på side forespørselen og angitt i den `state` parameteren returneres i den `state` -parameteren for den <xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessResponse%2A>-metoden på den tilsvarende sink.</xref:System.Runtime.Remoting.Channels.IClientChannelSink.AsyncProcessResponse%2A>"
   syntax:
     content: public void Push (System.Runtime.Remoting.Channels.IClientChannelSink sink, object state);
     parameters:
     - id: sink
       type: System.Runtime.Remoting.Channels.IClientChannelSink
-      description: "The sink to push onto the sink stack."
+      description: "Mottakeren å sende inn sink-stakken."
     - id: state
       type: System.Object
-      description: "Information generated on the request side that is needed on the response side."
+      description: "Informasjon generert på siden som er nødvendig på svar-siden."
   overload: System.Runtime.Remoting.Channels.IClientChannelSinkStack.Push*
   exceptions:
   - type: System.Security.SecurityException
     commentId: T:System.Security.SecurityException
-    description: "The immediate caller does not have infrastructure permission."
+    description: "Umiddelbar oppkalleren har ikke tillatelse for infrastruktur."
   platform:
   - net462
 references:
