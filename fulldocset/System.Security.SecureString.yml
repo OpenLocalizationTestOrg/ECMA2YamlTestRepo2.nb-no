@@ -21,8 +21,8 @@ items:
   nameWithType: SecureString
   fullName: System.Security.SecureString
   type: Class
-  summary: "Represents text that should be kept confidential, such as by deleting it from computer memory when no longer needed. This class cannot be inherited."
-  remarks: "SecureString is a string type that provides a measure of security. It tries to avoid storing potentially sensitive strings in process memory as plain text.  (For limitations, however, see the [How secure is SecureString?](#HowSecure) section.) The value of an instance of SecureString is automatically protected using a mechanism supported by the underlying platform when the instance is initialized or when the value is modified. Your application can render the instance immutable and prevent further modification by invoking the <xref:System.Security.SecureString.MakeReadOnly%2A> method.       The maximum length of a SecureString instance is 65,536 characters.      > [!IMPORTANT] >  This type implements the <xref:System.IDisposable> interface. When you have finished using an instance of the type, you should dispose of it either directly or indirectly. To dispose of the type directly, call its <xref:System.IDisposable.Dispose%2A> method in a `try`/`catch` block. To dispose of it indirectly, use a language construct such as `using` (in C#) or `Using` (in Visual Basic). For more information, see the “Using an Object that Implements IDisposable” section in the <xref:System.IDisposable> interface topic.       The SecureString class and its members are not visible to COM. For more information, see <xref:System.Runtime.InteropServices.ComVisibleAttribute>.       In this section:       [String vs. SecureString](#vsString)     [SecureString operations](#Ops)     [SecureString and interop](#interop)     [How secure is  SecureString?](#HowSecure)      <a name=&quot;vsString&quot;></a>    ## String versus SecureString    An instance of the <xref:System.String?displayProperty=fullName> class is both immutable and, when no longer needed, cannot be programmatically scheduled for garbage collection; that is, the instance is read-only after it is created, and it is not possible to predict when the instance will be deleted from computer memory. Because <xref:System.String?displayProperty=fullName> instances are immutable, operations that appear to modify an existing instance  actually create a copy of it to manipulate. Consequently, if a <xref:System.String> object contains sensitive information such as a password, credit card number, or personal data, there is a risk the information could be revealed after it is used because your application cannot delete the data from computer memory.       A SecureString object is similar to a <xref:System.String> object in that it has a text value. However, the value of a SecureString object is pinned in memory, may use a protection mechanism, such as encryption, provided by the underlying operating system, can be modified until your application marks it as read-only, and can be deleted from computer memory either by your application calling the <xref:System.Security.SecureString.Dispose%2A> method  or by the .NET Framework garbage collector.       For a discussion of the limitations of the SecureString class, see the [How secure is  SecureString?](#HowSecure) section.       [Back to top](#top)      <a name=&quot;Ops&quot;></a>    ## SecureString operations    The SecureString class includes members that allow you to do the following:       Instantiate a SecureString object    You instantiate a SecureString object by calling its parameterless constructor.       Add characters to a SecureString object    You can add a single character at a time to a SecureString object  by calling its <xref:System.Security.SecureString.AppendChar%2A> or <xref:System.Security.SecureString.InsertAt%2A> method.      > [!IMPORTANT] >  A SecureString object should never be constructed from a <xref:System.String>, because the sensitive data is already subject to the memory persistence consequences of the immutable <xref:System.String> class. The best way to construct a SecureString object is from a character-at-a-time unmanaged source, such as the <xref:System.Console.ReadKey%2A?displayProperty=fullName> method.       Remove characters from a SecureString object    You can replace an individual character by calling the <xref:System.Security.SecureString.SetAt%2A> method, remove an individual character by calling the <xref:System.Security.SecureString.RemoveAt%2A> method, or remove all characters from the SecureString instance by calling the  <xref:System.Security.SecureString.Clear%2A> method.       Make the SecureString object read-only    Once you have defined the string that the SecureString object represents, you call its  <xref:System.Security.SecureString.MakeReadOnly%2A> method to make the string read-only.       Get information about the SecureString object    The SecureString class has only two members that provide information about the string: its <xref:System.Security.SecureString.Length%2A> property, which indicates the number of UTF16-encoded code units in the string; and the <xref:System.Security.SecureString.IsReadOnly%2A>, method, which indicates whether the instance is read-only.       Release the memory allocated to the SecureString instance    Because SecureString implements the <xref:System.IDisposable> interface, you release its memory by calling the <xref:System.Security.SecureString.Dispose%2A> method.       The SecureString class has no members that inspect, compare, or convert the value of a SecureString. The absence of such members helps protect the value of the instance from accidental or malicious exposure. Use appropriate members of the <xref:System.Runtime.InteropServices.Marshal?displayProperty=fullName> class, such as the <xref:System.Runtime.InteropServices.Marshal.SecureStringToBSTR%2A> method, to manipulate the value of a SecureString object.       The .NET Framework Class Library commonly uses SecureString instances in the following ways:      -   To provide password information to a process by using the <xref:System.Diagnostics.ProcessStartInfo> structure or by calling an overload of the <xref:System.Diagnostics.Process.Start%2A?displayProperty=fullName> method that has a parameter of type SecureString.      -   To provide network password information by calling a <xref:System.Net.NetworkCredential> class constructor that has a parameter of type SecureString or by using the <xref:System.Net.NetworkCredential.SecurePassword%2A?displayProperty=fullName> property.      -   To provide password information for SQL Server Authentication by calling the <xref:System.Data.SqlClient.SqlCredential.%23ctor%2A?displayProperty=fullName> constructor or retrieving the value of the <xref:System.Data.SqlClient.SqlCredential.Password%2A?displayProperty=fullName> property.      -   To pass a string to unmanaged code. For more information, see the [SecureString and interop](#interop) section.       [Back to top](#top)      <a name=&quot;interop&quot;></a>    ## SecureString and interop    Because the operating system does not  directly support SecureString, you must convert the value of the SecureString object to the required string type before passing the string to a native method.  The <xref:System.Runtime.InteropServices.Marshal> class has five methods that do this:      -   <xref:System.Runtime.InteropServices.Marshal.SecureStringToBSTR%2A?displayProperty=fullName>, which converts the SecureString string value to a binary string (BSTR) recognized by COM.      -   <xref:System.Runtime.InteropServices.Marshal.SecureStringToCoTaskMemAnsi%2A?displayProperty=fullName> and <xref:System.Runtime.InteropServices.Marshal.SecureStringToGlobalAllocAnsi%2A?displayProperty=fullName>, which copy the SecureString string value to an ANSI string in unmanaged memory.      -   <xref:System.Runtime.InteropServices.Marshal.SecureStringToCoTaskMemUnicode%2A?displayProperty=fullName> and <xref:System.Runtime.InteropServices.Marshal.SecureStringToCoTaskMemUnicode%2A?displayProperty=fullName>, which copy the SecureString string value to a Unicode string in unmanaged memory.       Each of these methods creates a clear-text string in unmanaged memory. It is the responsibility of the developer to zero out and free that memory as soon as it is no longer needed. Each of the string conversion and memory allocation methods has a corresponding method to zero out and free the allocated memory:      |Allocation and conversion method|Zero and free method|   |--------------------------------------|--------------------------|   |<xref:System.Runtime.InteropServices.Marshal.SecureStringToBSTR%2A?displayProperty=fullName>|<xref:System.Runtime.InteropServices.Marshal.ZeroFreeBSTR%2A?displayProperty=fullName>|   |<xref:System.Runtime.InteropServices.Marshal.SecureStringToCoTaskMemAnsi%2A?displayProperty=fullName>|<xref:System.Runtime.InteropServices.Marshal.ZeroFreeCoTaskMemAnsi%2A?displayProperty=fullName>|   |<xref:System.Runtime.InteropServices.Marshal.SecureStringToCoTaskMemUnicode%2A?displayProperty=fullName>|<xref:System.Runtime.InteropServices.Marshal.ZeroFreeCoTaskMemUnicode%2A?displayProperty=fullName>|   |<xref:System.Runtime.InteropServices.Marshal.SecureStringToGlobalAllocAnsi%2A?displayProperty=fullName>|<xref:System.Runtime.InteropServices.Marshal.ZeroFreeGlobalAllocAnsi%2A?displayProperty=fullName>|   |<xref:System.Runtime.InteropServices.Marshal.SecureStringToCoTaskMemUnicode%2A?displayProperty=fullName>|<xref:System.Runtime.InteropServices.Marshal.ZeroFreeGlobalAllocUnicode%2A?displayProperty=fullName>|       [Back to top](#top)      <a name=&quot;HowSecure&quot;></a>    ## How secure is SecureString?    When created properly, a SecureString instance provides more data protection than a <xref:System.String>. When creating a string from a character-at-a-time source, <xref:System.String> creates multiple intermediate in memory, whereas  SecureString creates just a single instance.  Garbage collection of <xref:System.String> objects  is non-deterministic. In addition, because its memory is not pinned, the garbage collector will make additional copies of <xref:System.String> values when moving and compacting memory. In contrast, the memory allocated to a SecureString object is pinned,  and that memory can be freed by calling the <xref:System.Security.SecureString.Dispose%2A> method.       Although data stored in a SecureString instance is more secure than data stored in a <xref:System.String> instance, there are significant limitations on how secure a SecureString instance is. These include:       Platform    On the Windows operating system, the contents of a SecureString instance&quot;s internal character array is encrypted. However, whether because of missing APIs or key management issues,  encryption is not available on all platforms. Because of this, SecureString is available on Desktop (Windows only), and not on .NET Core.       Duration    Even if the SecureString implementation is able to take advantage of encryption, the plain text assigned to the SecureString instance may be exposed at various times:      -   Because Windows doesn&quot;t offer a secure string implementation at the operating system level, the .NET Framework still has to convert the secure string value to its plain text representation in order to use it.      -   Whenever the value of the secure string is modified by methods such as <xref:System.Security.SecureString.AppendChar%2A> or <xref:System.Security.SecureString.RemoveAt%2A>, it must be decrypted (i.e., converted back to plain text), modified, and then encrypted again.      -   If the secure string is used in an interop call, it must be converted to an ANSI string, a Unicode string, or a binary string (BSTR). For more information, see the [SecureString and interop](#interop) section.       The time interval for which the SecureString instance&quot;s value is exposed  is merely shortened in comparison to the <xref:System.String> class.       Storage versus usage    More generally, the SecureString class defines a storage mechanism for string values that should be protected or kept confidential. However, outside of the .NET Framework itself, no usage mechanism supports SecureString. This means that the secure string must be converted to a usable form (typically a clear text form) that can be recognized by its target, and     that decryption and conversion must occur in user space.       Overall, SecureString is more secure than <xref:System.String> because it limits the exposure of sensitive string data. However, those strings may still be exposed to any process or operation that has access to raw memory, such as a malicious process running on the host computer, a process dump, or a user-viewable swap file. Instead of using SecureString to protect passwords, the recommended alternative is to use an opaque handle to credentials that are stored outside of the process.       [Back to top](#top)"
+  summary: "Representerer teksten som skal holdes konfidensiell, for eksempel ved å slette den fra minnet når du trenger ikke lenger. Denne klassen kan ikke arves."
+  remarks: "SecureString er en streng som inneholder et mål for sikkerhet. Prøver å unngå å lagre potensielt sensitiv strenger i prosessminnet som ren tekst.  (For begrensninger, men du se den [hvor sikre er SecureString?](#HowSecure) delen.) Verdien for en forekomst av SecureString beskyttes automatisk ved hjelp av en metode som støttes av den underliggende plattformen når forekomsten er initialisert, eller når verdien er endret. Programmet kan gjengi forekomsten uforanderlig og hindre ytterligere redigering ved å bruke den <xref:System.Security.SecureString.MakeReadOnly%2A>metoden.</xref:System.Security.SecureString.MakeReadOnly%2A>       Den maksimale lengden på en forekomst av typen SecureString er 65 536 tegn.      > [!IMPORTANT] > Denne typen implementerer den <xref:System.IDisposable>grensesnittet.</xref:System.IDisposable> Når du er ferdig med en forekomst av typen, må du fjerne den direkte eller indirekte. Hvis du vil fjerne av typen direkte, kan du kalle den <xref:System.IDisposable.Dispose%2A>metoden i en `try` / `catch` blokken.</xref:System.IDisposable.Dispose%2A> Hvis du vil fjerne den indirekte, bruke et språk som `using` (i C#) eller `Using` (i Visual Basic). For mer informasjon, se &quot;Ved hjelp av et objekt som implementerer IDisposable&quot; i den <xref:System.IDisposable>grensesnittet emnet.</xref:System.IDisposable>       Klassen SecureString og medlemmene er ikke synlige for COM. Hvis du vil ha mer informasjon, kan du se <xref:System.Runtime.InteropServices.ComVisibleAttribute>.</xref:System.Runtime.InteropServices.ComVisibleAttribute>       I dette avsnittet: [streng kontra. SecureString](#vsString)[SecureString operasjoner](#Ops)[SecureString og interop](#interop)[hvor sikre er SecureString?               ](#HowSecure)      <a name=&quot;vsString&quot;></a>## Streng sammenlignet SecureString en forekomst av den <xref:System.String?displayProperty=fullName>klassen er begge uforanderlig og, når du ikke lenger trenger, kan planlegges programmatisk for datasanering, som er forekomsten er skrivebeskyttet etter at den er opprettet, og det er ikke mulig å forutse når forekomsten slettes fra minnet.</xref:System.String?displayProperty=fullName> Fordi <xref:System.String?displayProperty=fullName>forekomster er uforanderlig, operasjoner som ser ut til å endre en eksisterende forekomst opprettes en kopi av det til å redigere faktisk.</xref:System.String?displayProperty=fullName> Derfor, hvis en <xref:System.String>objektet inneholder sensitiv informasjon, for eksempel et passord, kredittkortnummer eller personlige data, likevel av informasjon som kan vises når det blir brukt fordi programmet ikke kan slette dataene fra minnet.</xref:System.String>       Et objekt for SecureString ligner en <xref:System.String>objekt ved at den har en tekstverdi.</xref:System.String> Imidlertid verdien for en SecureString objektet er låst i minnet, kan bruke en beskyttelse mekanisme, slik som kryptering, angitt av det underliggende operativsystemet kan endres før programmet som skrivebeskyttet, og kan slettes fra minnet som programmet-kaller den <xref:System.Security.SecureString.Dispose%2A>metoden eller .NET Framework-saneringsoppsamling.</xref:System.Security.SecureString.Dispose%2A>       Hvis du vil vite mer om begrensningene for klassen SecureString, se den [hvor sikre er SecureString?](#HowSecure) delen.       [Tilbake til toppen](#top) <a name=&quot;Ops&quot;> </a> ## SecureString operasjoner i SecureString klassen inneholder medlemmer som kan du gjøre følgende: starte et SecureString objekt du starte et SecureString objekt ved å kalle den parameterløs konstruktøren.             Legg til tegnene til en SecureString objekt du kan legge til et enkelttegn samtidig til et objekt for SecureString ved å kalle den <xref:System.Security.SecureString.AppendChar%2A>eller <xref:System.Security.SecureString.InsertAt%2A>metode.</xref:System.Security.SecureString.InsertAt%2A> </xref:System.Security.SecureString.AppendChar%2A>      > [!IMPORTANT] > En SecureString-objektet må aldri konstruert fra en <xref:System.String>fordi sensitive data er allerede involvert i minnet utholdenhet konsekvensene av uforanderlig <xref:System.String>klasse.</xref:System.String> </xref:System.String> Den beste måten å lage et SecureString objekt er fra en tegn i gangen uforvaltede kilde, for eksempel den <xref:System.Console.ReadKey%2A?displayProperty=fullName>metoden.</xref:System.Console.ReadKey%2A?displayProperty=fullName>       Fjern tegn fra en SecureString objekt du kan erstatte et uavhengig tegn ved å kalle den <xref:System.Security.SecureString.SetAt%2A>metoden fjerne en enkelt tegn ved å kalle den <xref:System.Security.SecureString.RemoveAt%2A>metode, eller Fjern alle tegn fra SecureString forekomst ved å kalle den <xref:System.Security.SecureString.Clear%2A>metoden.</xref:System.Security.SecureString.Clear%2A> </xref:System.Security.SecureString.RemoveAt%2A> </xref:System.Security.SecureString.SetAt%2A>       Angi SecureString objektet skrivebeskyttet når du har angitt streng som representerer SecureString-objekt, du kalle den <xref:System.Security.SecureString.MakeReadOnly%2A>metode for å gjøre strengen skrivebeskyttet.</xref:System.Security.SecureString.MakeReadOnly%2A>       Hent informasjon om SecureString objektet i SecureString klassen har bare to medlemmer som gir informasjon om strengen: den <xref:System.Security.SecureString.Length%2A>egenskap, som angir antall UTF16-kodet kode enheter i strengen; og <xref:System.Security.SecureString.IsReadOnly%2A>, metode, som angir om forekomsten er skrivebeskyttet.</xref:System.Security.SecureString.IsReadOnly%2A> </xref:System.Security.SecureString.Length%2A>       Slipp minnet tilordnet SecureString forekomsten fordi SecureString implementerer den <xref:System.IDisposable>grensesnittet du frigi minnet ved å kalle den <xref:System.Security.SecureString.Dispose%2A>metoden.</xref:System.Security.SecureString.Dispose%2A> </xref:System.IDisposable>       Klassen SecureString har ingen medlemmer som undersøkes, sammenligne eller konvertere verdien for en SecureString. Fravær av slike medlemmer beskytter verdien for forekomsten fra tilfeldig eller skadelig eksponering. Bruk passende medlemmer av den <xref:System.Runtime.InteropServices.Marshal?displayProperty=fullName>class, for eksempel den <xref:System.Runtime.InteropServices.Marshal.SecureStringToBSTR%2A>metode for å endre verdien for et objekt for SecureString.</xref:System.Runtime.InteropServices.Marshal.SecureStringToBSTR%2A> </xref:System.Runtime.InteropServices.Marshal?displayProperty=fullName>       .NET Framework klassen biblioteket bruker vanligvis SecureString forekomster i følgende: - Angi informasjon om passord til en prosess ved hjelp av den <xref:System.Diagnostics.ProcessStartInfo>struktur eller kaller ved overbelastning av den <xref:System.Diagnostics.Process.Start%2A?displayProperty=fullName>metode som har en parameter av typen SecureString.</xref:System.Diagnostics.Process.Start%2A?displayProperty=fullName> </xref:System.Diagnostics.ProcessStartInfo>      -For å angi nettverksinformasjon passord ved å kalle en <xref:System.Net.NetworkCredential>klassekonstruktør som har en parameter av typen SecureString eller ved å bruke den <xref:System.Net.NetworkCredential.SecurePassword%2A?displayProperty=fullName>egenskapen.</xref:System.Net.NetworkCredential.SecurePassword%2A?displayProperty=fullName> </xref:System.Net.NetworkCredential>      -Som inneholder passordinformasjon for SQL Server-godkjenning ved å ringe det <xref:System.Data.SqlClient.SqlCredential.%23ctor%2A?displayProperty=fullName>konstruktøren eller henting av verdien for den <xref:System.Data.SqlClient.SqlCredential.Password%2A?displayProperty=fullName>egenskapen.</xref:System.Data.SqlClient.SqlCredential.Password%2A?displayProperty=fullName> </xref:System.Data.SqlClient.SqlCredential.%23ctor%2A?displayProperty=fullName>      -Skal sendes en streng til ubehandlet kode. Hvis du vil ha mer informasjon, se den [SecureString og interop](#interop) delen.       [Tilbake til toppen](#top) <a name=&quot;interop&quot;> </a> ## SecureString og interop fordi operativsystemet ikke støtter direkte SecureString, må du konvertere verdien for SecureString-objektet til nødvendige strengetypen før sende strengen til en opprinnelig metode.        Den <xref:System.Runtime.InteropServices.Marshal>klassen har metoder som gjøre dette:- <xref:System.Runtime.InteropServices.Marshal.SecureStringToBSTR%2A?displayProperty=fullName>, som konverterer SecureString strengverdien til en binær streng (BSTR) gjenkjent COM.</xref:System.Runtime.InteropServices.Marshal.SecureStringToBSTR%2A?displayProperty=fullName> </xref:System.Runtime.InteropServices.Marshal>      - <xref:System.Runtime.InteropServices.Marshal.SecureStringToCoTaskMemAnsi%2A?displayProperty=fullName>og <xref:System.Runtime.InteropServices.Marshal.SecureStringToGlobalAllocAnsi%2A?displayProperty=fullName>, som kopierer SecureString strengverdien til en ANSI-streng i ubehandlet.</xref:System.Runtime.InteropServices.Marshal.SecureStringToGlobalAllocAnsi%2A?displayProperty=fullName> </xref:System.Runtime.InteropServices.Marshal.SecureStringToCoTaskMemAnsi%2A?displayProperty=fullName>      - <xref:System.Runtime.InteropServices.Marshal.SecureStringToCoTaskMemUnicode%2A?displayProperty=fullName>og <xref:System.Runtime.InteropServices.Marshal.SecureStringToCoTaskMemUnicode%2A?displayProperty=fullName>, som kopierer SecureString strengverdien til en Unicode-streng i ubehandlet.</xref:System.Runtime.InteropServices.Marshal.SecureStringToCoTaskMemUnicode%2A?displayProperty=fullName> </xref:System.Runtime.InteropServices.Marshal.SecureStringToCoTaskMemUnicode%2A?displayProperty=fullName>       Hver av disse metodene oppretter en streng i klartekst i uforvaltede minnet. Det er ansvarlig for utviklere null ut og gratis at fordi den ikke lenger er nødvendig. Hver av streng konvertering og minne tildelingsmetoder har en tilsvarende metode null ut og gratis tildelt minne: | Tildelings- og konvertering metoden | Null og gratis metoden |   |--------------------------------------|--------------------------|   | <xref:System.Runtime.InteropServices.Marshal.SecureStringToBSTR%2A?displayProperty=fullName>| <xref:System.Runtime.InteropServices.Marshal.ZeroFreeBSTR%2A?displayProperty=fullName>|   | <xref:System.Runtime.InteropServices.Marshal.SecureStringToCoTaskMemAnsi%2A?displayProperty=fullName>| <xref:System.Runtime.InteropServices.Marshal.ZeroFreeCoTaskMemAnsi%2A?displayProperty=fullName>|   | <xref:System.Runtime.InteropServices.Marshal.SecureStringToCoTaskMemUnicode%2A?displayProperty=fullName>| <xref:System.Runtime.InteropServices.Marshal.ZeroFreeCoTaskMemUnicode%2A?displayProperty=fullName>|   | <xref:System.Runtime.InteropServices.Marshal.SecureStringToGlobalAllocAnsi%2A?displayProperty=fullName>| <xref:System.Runtime.InteropServices.Marshal.ZeroFreeGlobalAllocAnsi%2A?displayProperty=fullName>|   | <xref:System.Runtime.InteropServices.Marshal.SecureStringToCoTaskMemUnicode%2A?displayProperty=fullName>| <xref:System.Runtime.InteropServices.Marshal.ZeroFreeGlobalAllocUnicode%2A?displayProperty=fullName>|       [Back to top](#top)      <a name=&quot;HowSecure&quot;></a>    ## How secure is SecureString?</xref:System.Runtime.InteropServices.Marshal.ZeroFreeGlobalAllocUnicode%2A?displayProperty=fullName></xref:System.Runtime.InteropServices.Marshal.SecureStringToCoTaskMemUnicode%2A?displayProperty=fullName></xref:System.Runtime.InteropServices.Marshal.ZeroFreeGlobalAllocAnsi%2A?displayProperty=fullName></xref:System.Runtime.InteropServices.Marshal.SecureStringToGlobalAllocAnsi%2A?displayProperty=fullName></xref:System.Runtime.InteropServices.Marshal.ZeroFreeCoTaskMemUnicode%2A?displayProperty=fullName></xref:System.Runtime.InteropServices.Marshal.SecureStringToCoTaskMemUnicode%2A?displayProperty=fullName></xref:System.Runtime.InteropServices.Marshal.ZeroFreeCoTaskMemAnsi%2A?displayProperty=fullName></xref:System.Runtime.InteropServices.Marshal.SecureStringToCoTaskMemAnsi%2A?displayProperty=fullName></xref:System.Runtime.InteropServices.Marshal.ZeroFreeBSTR%2A?displayProperty=fullName></xref:System.Runtime.InteropServices.Marshal.SecureStringToBSTR%2A?displayProperty=fullName>    Når du opprettet på riktig måte, beskytter en forekomst av typen SecureString mer data enn <xref:System.String>.</xref:System.String> Når du oppretter en streng fra et tegn på gangen kilde <xref:System.String>oppretter flere midlertidige i minnet, mens SecureString oppretter en enkelt forekomst.</xref:System.String>  Datasanering for <xref:System.String>objekter er ikke-deterministisk.</xref:System.String> I tillegg fordi minnet ikke er festet, saneringsoppsamlingen gjør flere kopier av <xref:System.String>verdier og flytte komprimering minne.</xref:System.String> I motsetning minnet tilordnet en SecureString-objektet er låst, og at kan bli frigjort ved å kalle den <xref:System.Security.SecureString.Dispose%2A>metoden.</xref:System.Security.SecureString.Dispose%2A>       Selv om data som er lagret i en forekomst av typen SecureString flere sikrere enn data som er lagret i en <xref:System.String>serverforekomsten, er det betydelige begrensninger på hvor sikre en SecureString forekomsten er.</xref:System.String> Disse omfatter: plattformen på Windows operativsystem, innholdet i en SecureString forekomst intern tegnmatrise er kryptert. Imidlertid om på grunn av manglende APIer eller Nøkkelbehandling problemer, er kryptering ikke tilgjengelig på alle plattformer. SecureString er tilgjengelig på skrivebordet (bare Windows), og ikke på .NET kjerner på grunn av dette.       Varighet likt Hvis SecureString implementeringen kan dra nytte av kryptering, ren tekst som er tilordnet til SecureString forekomsten kan vises på ulike tidspunkter: – fordi Windows ikke er en sikker streng på operativsystemet-nivå, .NET Framework fremdeles har til å konvertere sikre strengverdien til representasjonen ren tekst for å bruke den.      -Når verdien for den sikre strengen er endret av metoder som <xref:System.Security.SecureString.AppendChar%2A>eller <xref:System.Security.SecureString.RemoveAt%2A>, må krypteres (det vil si konvertere tilbake til ren tekst), endres, og kryptert på nytt.</xref:System.Security.SecureString.RemoveAt%2A> </xref:System.Security.SecureString.AppendChar%2A>      -Hvis sikre strengen er brukt i en interoperabilitetskall, må den konverteres til en ANSI-streng, en Unicode-streng eller binærstreng (BSTR). Hvis du vil ha mer informasjon, se den [SecureString og interop](#interop) delen.       Tidsintervallet SecureString-forekomsten verdi vises forkortet bare sammenlignet med <xref:System.String>klasse.</xref:System.String>       Eller Bruk flere vanligvis SecureString klassen definerer en lagring mekanisme for strengverdier som skal beskyttet eller konfidensiell. Utenfor .NET Framework seg selv støtter ikke bruk mekanisme SecureString. Dette betyr at den sikre tilkoblingsstrengen må konverteres til et brukes skjema (vanligvis en Fjern tekstform) som kan gjenkjennes av målet og dekryptering og konvertering må være i området for brukeren.       Den totale, SecureString er sikrere enn <xref:System.String>fordi det begrenser eksponering av sensitive strengdata.</xref:System.String> Disse strenger kan imidlertid fortsatt vises til prosesser og operasjon som har tilgang til raw minnet, for eksempel en ondsinnet prosess som kjører på vertsdatamaskinen, Prosessdump eller en bruker kan vises bytte-fil. I stedet for å bruke SecureString til å beskytte passord, er anbefalt alternativ å bruke en ugjennomsiktig referanse til legitimasjonen som er lagret utenfor prosessen.       [Tilbake til toppen](#top)"
   example:
   - "The following example demonstrates how to use a SecureString to secure a user’s password for use as a credential to start a new process.  \n  \n [!code-vb[System.Security.SecureString.Ctor#4](~/add/codesnippet/visualbasic/t-system.security.secure_1.vb)]\n [!code-cs[System.Security.SecureString.Ctor#4](~/add/codesnippet/csharp/t-system.security.secure_1.cs)]"
   syntax:
@@ -46,7 +46,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Initializes a new instance of the <xref href=&quot;System.Security.SecureString&quot;></xref> class."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Security.SecureString&quot;> </xref> klasse."
   remarks: ''
   example:
   - "The following example uses the default (or parameterless) constructor to instantiate a new <xref:System.Security.SecureString> object. It then calls the <xref:System.Security.SecureString.AppendChar%2A> method to add an array of characters to it.  \n  \n [!code-cs[System.Security.SecureString.Ctor#2](~/add/codesnippet/csharp/m-system.security.secure_7_1.cs)]\n [!code-cpp[System.Security.SecureString.Ctor#2](~/add/codesnippet/cpp/m-system.security.secure_7_1.cpp)]\n [!code-vb[System.Security.SecureString.Ctor#2](~/add/codesnippet/visualbasic/m-system.security.secure_7_1.vb)]  \n  \n The following example creates a <xref:System.Security.SecureString> object from the value of a <xref:System.String> object.  \n  \n [!code-vb[System.Security.SecureString.Ctor#3](~/add/codesnippet/visualbasic/m-system.security.secure_7_2.vb)]\n [!code-cpp[System.Security.SecureString.Ctor#3](~/add/codesnippet/cpp/m-system.security.secure_7_2.cpp)]\n [!code-cs[System.Security.SecureString.Ctor#3](~/add/codesnippet/csharp/m-system.security.secure_7_2.cs)]"
@@ -57,10 +57,10 @@ items:
   exceptions:
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
-    description: "An error occurred while protecting or unprotecting the value of this instance."
+    description: "Det oppstod en feil under beskyttelse eller beskyttelsen verdien for denne forekomsten."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "This operation is not supported on this platform."
+    description: "Denne operasjonen støttes ikke på denne plattformen."
   platform:
   - net462
 - uid: System.Security.SecureString.#ctor(System.Char*,System.Int32)
@@ -75,8 +75,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Initializes a new instance of the <xref href=&quot;System.Security.SecureString&quot;></xref> class from a subarray of &lt;xref:System.Char?displayProperty=fullName&gt; objects.       This constructor is not CLS-compliant. The CLS-compliant alternative is &lt;xref:System.Security.SecureString.%23ctor?displayProperty=fullName&gt;."
-  remarks: "This constructor initializes the new <xref:System.Security.SecureString> object to the number of characters in `value` specified by `length`; the value of the instance is then encrypted.       In C#, this constructor is defined only in the context of unsafe code."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Security.SecureString&quot;> </xref> klassen fra en subarray av &lt;xref:System.Char?displayProperty=fullName&gt; objekter.       Denne konstruktøren, er ikke CLS-kompatible. CLS-kompatibel-alternativet er &lt;xref:System.Security.SecureString.%23ctor?displayProperty=fullName&gt;."
+  remarks: "Denne konstruktøren initialiserer den nye <xref:System.Security.SecureString>objektet antallet tegn i `value` angitt av `length`; krypteres deretter verdien for forekomsten.</xref:System.Security.SecureString>       Denne konstruktøren defineres i C#, bare i konteksten for en usikker kode."
   example:
   - "The following example instantiates a new <xref:System.Security.SecureString> object by passing its constructor a pointer to a character array.  \n  \n [!code-cpp[System.Security.SecureString.Ctor2#1](~/add/codesnippet/cpp/m-system.security.secure_3_1.cpp)]\n [!code-cs[System.Security.SecureString.Ctor2#1](~/add/codesnippet/csharp/securestringctor/ctor1.cs#1)]"
   syntax:
@@ -84,24 +84,24 @@ items:
     parameters:
     - id: value
       type: System.Char*
-      description: "A pointer to an array of &lt;xref:System.Char?displayProperty=fullName&gt; objects."
+      description: "En peker til en matrise av &lt;xref:System.Char?displayProperty=fullName&gt; objekter."
     - id: length
       type: System.Int32
-      description: "The number of elements of `value` to include in the new instance."
+      description: "Antall elementer i `value` skal tas med i den nye forekomsten."
   overload: System.Security.SecureString.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>value</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>value</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>length</code> is less than zero or greater than 65,536."
+    description: "<code>length</code>er mindre enn null eller større enn 65 536."
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
-    description: "An error occurred while protecting or unprotecting the value of this secure string."
+    description: "Det oppstod en feil under beskyttelse eller beskyttelsen verdien for denne sikre strengen."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "This operation is not supported on this platform."
+    description: "Denne operasjonen støttes ikke på denne plattformen."
   platform:
   - net462
 - uid: System.Security.SecureString.AppendChar(System.Char)
@@ -116,8 +116,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Appends a character to the end of the current secure string."
-  remarks: "If the implementation uses a protection mechanism, such as encryption, the value of this secure string, if any, is unprotected; `c` is appended; then the new value of the secure string is re-protected."
+  summary: "Legger til et tegn på slutten av gjeldende sikre strengen."
+  remarks: "Hvis implementeringen bruker en beskyttelse mekanisme, for eksempel kryptering, er verdien for denne sikre strengen eventuelt ubeskyttet; `c` føyes; er den nye verdien for den sikre strengen beskyttede på nytt."
   example:
   - "The following example demonstrates how the AppendChar, <xref:System.Security.SecureString.InsertAt%2A>, <xref:System.Security.SecureString.RemoveAt%2A>, <xref:System.Security.SecureString.SetAt%2A>, and <xref:System.Security.SecureString.Clear%2A> methods affect the value of a <xref:System.Security.SecureString> object.  \n  \n [!code-cpp[SecureString.xAt#1](~/add/codesnippet/cpp/m-system.security.secure_6_1.cpp)]\n [!code-cs[SecureString.xAt#1](~/add/codesnippet/csharp/m-system.security.secure_6_1.cs)]\n [!code-vb[SecureString.xAt#1](~/add/codesnippet/visualbasic/m-system.security.secure_6_1.vb)]  \n  \n The following example demonstrates how the AppendChar and <xref:System.Security.SecureString.RemoveAt%2A> methods can be used to collect the characters in a password.  \n  \n [!code-cpp[SecureString.xChar#1](~/add/codesnippet/cpp/m-system.security.secure_6_2.cpp)]\n [!code-vb[SecureString.xChar#1](~/add/codesnippet/visualbasic/m-system.security.secure_6_2.vb)]\n [!code-cs[SecureString.xChar#1](~/add/codesnippet/csharp/m-system.security.secure_6_2.cs)]"
   syntax:
@@ -125,21 +125,21 @@ items:
     parameters:
     - id: c
       type: System.Char
-      description: "A character to append to this secure string."
+      description: "Et tegn som skal føyes til denne sikre strengen."
   overload: System.Security.SecureString.AppendChar*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "This secure string has already been disposed."
+    description: "Denne sikre strengen har allerede blitt fjernet."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "This secure string is read-only."
+    description: "Denne sikre strengen er skrivebeskyttet."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "Performing this operation would make the length of this secure string greater than 65,536 characters."
+    description: "Operasjonen kan gjøre lengden på strengen sikre større enn 65 536 tegn."
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
-    description: "An error occurred while protecting or unprotecting the value of this secure string."
+    description: "Det oppstod en feil under beskyttelse eller beskyttelsen verdien for denne sikre strengen."
   platform:
   - net462
 - uid: System.Security.SecureString.Clear
@@ -154,8 +154,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Deletes the value of the current secure string."
-  remarks: "The computer memory that contains the value of this secure string is zeroed, then the length of the value of this secure string is set to zero."
+  summary: "Sletter verdien for den gjeldende sikre strengen."
+  remarks: "Oppretting av minne som inneholder verdien for denne sikre strengen, og deretter lengden på verdien for denne sikre strengen er satt til null."
   example:
   - "The following example demonstrates how the <xref:System.Security.SecureString.AppendChar%2A>, <xref:System.Security.SecureString.InsertAt%2A>, <xref:System.Security.SecureString.RemoveAt%2A>, <xref:System.Security.SecureString.SetAt%2A>, and Clear methods affect the value of a <xref:System.Security.SecureString> object.  \n  \n [!code-cpp[SecureString.xAt#1](~/add/codesnippet/cpp/m-system.security.secure_5_1.cpp)]\n [!code-cs[SecureString.xAt#1](~/add/codesnippet/csharp/m-system.security.secure_5_1.cs)]\n [!code-vb[SecureString.xAt#1](~/add/codesnippet/visualbasic/m-system.security.secure_5_1.vb)]"
   syntax:
@@ -165,10 +165,10 @@ items:
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "This secure string has already been disposed."
+    description: "Denne sikre strengen har allerede blitt fjernet."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "This secure string is read-only."
+    description: "Denne sikre strengen er skrivebeskyttet."
   platform:
   - net462
 - uid: System.Security.SecureString.Copy
@@ -183,22 +183,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Creates a copy of the current secure string."
-  remarks: "If an instance of a <xref:System.Security.SecureString> is marked read-only, the copy of that instance will not be read-only."
+  summary: "Oppretter en kopi av den gjeldende sikre strengen."
+  remarks: "Hvis en forekomst av en <xref:System.Security.SecureString>er skrivebeskyttet, kopi av den forekomsten vil ikke være skrivebeskyttet.</xref:System.Security.SecureString>"
   syntax:
     content: public System.Security.SecureString Copy ();
     parameters: []
     return:
       type: System.Security.SecureString
-      description: "A duplicate of this secure string."
+      description: "Et duplikat av denne sikre strengen."
   overload: System.Security.SecureString.Copy*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "This secure string has already been disposed."
+    description: "Denne sikre strengen har allerede blitt fjernet."
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
-    description: "An error occurred while protecting or unprotecting the value of this secure string."
+    description: "Det oppstod en feil under beskyttelse eller beskyttelsen verdien for denne sikre strengen."
   platform:
   - net462
 - uid: System.Security.SecureString.Dispose
@@ -213,8 +213,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Releases all resources used by the current <xref href=&quot;System.Security.SecureString&quot;></xref> object."
-  remarks: "The Dispose method writes binary zeroes to the allocated memory that contains the value of this <xref:System.Security.SecureString> object, then frees the allocated memory.       For more information, see [Garbage Collection](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Frigir alle ressursene som brukes av gjeldende <xref href=&quot;System.Security.SecureString&quot;> </xref> objektet."
+  remarks: "Fjerningsmetoden skriver binære nuller til tildelt minnet som inneholder verdien for dette <xref:System.Security.SecureString>objekt og frigjør tildelt minne.</xref:System.Security.SecureString>       Hvis du vil ha mer informasjon, se [datasanering](~/add/includes/ajax-current-ext-md.md)."
   syntax:
     content: public void Dispose ();
     parameters: []
@@ -234,8 +234,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Inserts a character in this secure string at the specified index position."
-  remarks: "The index is zero-based; the first character in this secure string is at index position zero.       If the implementation uses a protection mechanism, such as encryption, the value of the secure string, if any, is unprotected; `c` is inserted at the specified index position; then the new value is re-protected. The InsertAt method yields the same results as the <xref:System.Security.SecureString.AppendChar%2A> method, which inserts a character at the end of a secure string, if the `index` parameter of InsertAt is set to the length of this instance."
+  summary: "Setter inn et tegn i denne sikre strengen ved plasseringen angitt indeks."
+  remarks: "Indeksen er nullbasert; Det første tegnet i denne sikre strengen er i indeksen posisjon null.       Hvis implementeringen bruker en beskyttelse mekanisme, for eksempel kryptering, er verdien for den sikre strengen, eventuelt ubeskyttet; `c` er satt inn i den angitte indeksen posisjonen; er den nye verdien på nytt beskyttet. Metoden InsertAt gir samme resultat som den <xref:System.Security.SecureString.AppendChar%2A>metoden som setter inn et tegn på slutten av en sikker streng, hvis den `index` -parameteren for InsertAt er satt til lengden på denne forekomsten.</xref:System.Security.SecureString.AppendChar%2A>"
   example:
   - "The following example demonstrates how the <xref:System.Security.SecureString.AppendChar%2A>, InsertAt, <xref:System.Security.SecureString.RemoveAt%2A>, <xref:System.Security.SecureString.SetAt%2A>, and <xref:System.Security.SecureString.Clear%2A> methods affect the value of a <xref:System.Security.SecureString> object.  \n  \n [!code-cpp[SecureString.xAt#1](~/add/codesnippet/cpp/m-system.security.secure_0_1.cpp)]\n [!code-cs[SecureString.xAt#1](~/add/codesnippet/csharp/m-system.security.secure_0_1.cs)]\n [!code-vb[SecureString.xAt#1](~/add/codesnippet/visualbasic/m-system.security.secure_0_1.vb)]"
   syntax:
@@ -243,24 +243,24 @@ items:
     parameters:
     - id: index
       type: System.Int32
-      description: "The index position where parameter `c` is inserted."
+      description: "Indeksen Plasser where parameteren `c` er satt inn."
     - id: c
       type: System.Char
-      description: "The character to insert."
+      description: "Tegnet som skal settes inn."
   overload: System.Security.SecureString.InsertAt*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "This secure string has already been disposed."
+    description: "Denne sikre strengen har allerede blitt fjernet."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "This secure string is read-only."
+    description: "Denne sikre strengen er skrivebeskyttet."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>index</code> is less than zero, or greater than the length of this secure string.       -or-       Performing this operation would make the length of this secure string greater than 65,536 characters."
+    description: "<code>index</code>er mindre enn null, eller større enn lengden på denne sikre streng.       - eller - operasjonen kan gjøre lengden på strengen sikre blir større enn 65 536 tegn."
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
-    description: "An error occurred while protecting or unprotecting the value of this secure string."
+    description: "Det oppstod en feil under beskyttelse eller beskyttelsen verdien for denne sikre strengen."
   platform:
   - net462
 - uid: System.Security.SecureString.IsReadOnly
@@ -275,19 +275,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Indicates whether this secure string is marked read-only."
-  remarks: "After an instance of <xref:System.Security.SecureString> is marked read-only by the <xref:System.Security.SecureString.MakeReadOnly%2A> method, any attempt to modify the value of the instance throws an <xref:System.InvalidOperationException>. Use the IsReadOnly method to test whether a <xref:System.Security.SecureString> is read-only before attempting to modify it."
+  summary: "Angir om denne sikre strengen er skrivebeskyttet."
+  remarks: "Etter en forekomst av <xref:System.Security.SecureString>er skrivebeskyttet med <xref:System.Security.SecureString.MakeReadOnly%2A>metoden, forsøk på å endre verdien for de forekomsten kaster en <xref:System.InvalidOperationException>.</xref:System.InvalidOperationException> </xref:System.Security.SecureString.MakeReadOnly%2A> </xref:System.Security.SecureString> Bruk metoden IsReadOnly til å kontrollere om en <xref:System.Security.SecureString>er skrivebeskyttet før du prøver å endre det.</xref:System.Security.SecureString>"
   syntax:
     content: public bool IsReadOnly ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if this secure string is marked read-only; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis denne sikre strengen er merket som skrivebeskyttet. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Security.SecureString.IsReadOnly*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "This secure string has already been disposed."
+    description: "Denne sikre strengen har allerede blitt fjernet."
   platform:
   - net462
 - uid: System.Security.SecureString.Length
@@ -302,18 +302,18 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Gets the number of characters in the current secure string."
-  remarks: "The Length property returns the number of <xref:System.Char> objects in this instance, not the number of Unicode characters. A Unicode character might be represented by more than one <xref:System.Char> object.       The maximum length of a <xref:System.Security.SecureString> instance is 65,536 characters."
+  summary: "Henter antallet tegn i gjeldende sikre strengen."
+  remarks: "Egenskapen lengde returnerer antall <xref:System.Char>objekter i denne forekomsten, ikke antall Unicode-tegn.</xref:System.Char> Et Unicode-tegn som kan vises som flere <xref:System.Char>objektet.</xref:System.Char>       Den maksimale lengden på en <xref:System.Security.SecureString>forekomsten er 65 536 tegn.</xref:System.Security.SecureString>"
   syntax:
     content: public int Length { get; }
     return:
       type: System.Int32
-      description: "The number of &lt;xref:System.Char?displayProperty=fullName&gt; objects in this secure string."
+      description: "Antall &lt;xref:System.Char?displayProperty=fullName&gt; objekter i denne sikre streng."
   overload: System.Security.SecureString.Length*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "This secure string has already been disposed."
+    description: "Denne sikre strengen har allerede blitt fjernet."
   platform:
   - net462
 - uid: System.Security.SecureString.MakeReadOnly
@@ -328,8 +328,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Makes the text value of this secure string read-only."
-  remarks: "Initialize the text value of an instance of the <xref:System.Security.SecureString> class with the <xref:System.Security.SecureString.%23ctor%2A> constructors, and modify the value with the <xref:System.Security.SecureString.Clear%2A>, <xref:System.Security.SecureString.RemoveAt%2A>, <xref:System.Security.SecureString.SetAt%2A>, <xref:System.Security.SecureString.InsertAt%2A>, and <xref:System.Security.SecureString.AppendChar%2A> methods.       After you have made your final modifications, use the MakeReadOnly method to make the value of the instance immutable (read-only). After the value is marked as read-only, any further attempt to modify it throws an <xref:System.InvalidOperationException>.       The effect of invoking MakeReadOnly is permanent because the <xref:System.Security.SecureString> class provides no means to make the secure string modifiable again. Use the <xref:System.Security.SecureString.IsReadOnly%2A> method to test whether an instance of <xref:System.Security.SecureString> is read-only."
+  summary: "Gjør tekstverdien for denne sikre strengen skrivebeskyttet."
+  remarks: "Initialisere tekstverdien for en forekomst av den <xref:System.Security.SecureString>klasse med den <xref:System.Security.SecureString.%23ctor%2A>konstruktører, og endre verdien med den <xref:System.Security.SecureString.Clear%2A>, <xref:System.Security.SecureString.RemoveAt%2A>, <xref:System.Security.SecureString.SetAt%2A>, <xref:System.Security.SecureString.InsertAt%2A>, og <xref:System.Security.SecureString.AppendChar%2A>metoder.</xref:System.Security.SecureString.AppendChar%2A> </xref:System.Security.SecureString.InsertAt%2A> </xref:System.Security.SecureString.SetAt%2A> </xref:System.Security.SecureString.RemoveAt%2A> </xref:System.Security.SecureString.Clear%2A> </xref:System.Security.SecureString.%23ctor%2A> </xref:System.Security.SecureString>       Når du har utført endringene endelig, bruker du metoden MakeReadOnly foreta verdien for forekomsten uforanderlig (skrivebeskyttet). Når verdien er merket som skrivebeskyttet, oppstår flere forsøk på å endre det en <xref:System.InvalidOperationException>.</xref:System.InvalidOperationException>       Aktivering av MakeReadOnly virker permanent fordi den <xref:System.Security.SecureString>klassen gir ingen betyr foreta sikre strengen kan endres på nytt.</xref:System.Security.SecureString> Bruk av <xref:System.Security.SecureString.IsReadOnly%2A>metode til å kontrollere om en forekomst av <xref:System.Security.SecureString>er skrivebeskyttet.</xref:System.Security.SecureString> </xref:System.Security.SecureString.IsReadOnly%2A>"
   example:
   - "The following example demonstrates how the <xref:System.Security.SecureString.AppendChar%2A> and <xref:System.Security.SecureString.RemoveAt%2A> methods can be used to collect the characters in a password. After the password is collected, it is made read-only.  \n  \n [!code-cpp[SecureString.xChar#1](~/add/codesnippet/cpp/m-system.security.secure_1_1.cpp)]\n [!code-vb[SecureString.xChar#1](~/add/codesnippet/visualbasic/m-system.security.secure_1_1.vb)]\n [!code-cs[SecureString.xChar#1](~/add/codesnippet/csharp/m-system.security.secure_1_1.cs)]"
   syntax:
@@ -339,7 +339,7 @@ items:
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "This secure string has already been disposed."
+    description: "Denne sikre strengen har allerede blitt fjernet."
   platform:
   - net462
 - uid: System.Security.SecureString.RemoveAt(System.Int32)
@@ -354,8 +354,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Removes the character at the specified index position from this secure string."
-  remarks: "The index is zero-based; the first character in this instance is at index position zero.       If the implementation uses a protection mechanism, such as encryption, the value of this secure string, if any, is unprotected; the character at the specified index position is removed; then the new value is re-protected."
+  summary: "Fjerner tegnet på den angitte indeks posisjonen fra denne sikre strengen."
+  remarks: "Indeksen er nullbasert; Det første tegnet i denne forekomsten er i indeksen posisjon null.       Hvis implementeringen bruker en beskyttelse mekanisme, for eksempel kryptering, er verdien for denne sikre strengen eventuelt ubeskyttet; tegnet på den angitte indeks posisjonen fjernes; den nye verdien er deretter på nytt beskyttet."
   example:
   - "The following example demonstrates how the <xref:System.Security.SecureString.AppendChar%2A>, <xref:System.Security.SecureString.InsertAt%2A>, RemoveAt, <xref:System.Security.SecureString.SetAt%2A>, and <xref:System.Security.SecureString.Clear%2A> methods affect the value of a <xref:System.Security.SecureString> object.  \n  \n [!code-cpp[SecureString.xAt#1](~/add/codesnippet/cpp/m-system.security.secure_2_1.cpp)]\n [!code-cs[SecureString.xAt#1](~/add/codesnippet/csharp/m-system.security.secure_2_1.cs)]\n [!code-vb[SecureString.xAt#1](~/add/codesnippet/visualbasic/m-system.security.secure_2_1.vb)]  \n  \n The following example demonstrates how the <xref:System.Security.SecureString.AppendChar%2A> and RemoveAt methods can be used to collect the characters in a password.  \n  \n [!code-cpp[SecureString.xChar#1](~/add/codesnippet/cpp/m-system.security.secure_2_2.cpp)]\n [!code-vb[SecureString.xChar#1](~/add/codesnippet/visualbasic/m-system.security.secure_2_2.vb)]\n [!code-cs[SecureString.xChar#1](~/add/codesnippet/csharp/m-system.security.secure_2_2.cs)]"
   syntax:
@@ -363,21 +363,21 @@ items:
     parameters:
     - id: index
       type: System.Int32
-      description: "The index position of a character in this secure string."
+      description: "Indeksen posisjonen til tegnet i denne sikre strengen."
   overload: System.Security.SecureString.RemoveAt*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "This secure string has already been disposed."
+    description: "Denne sikre strengen har allerede blitt fjernet."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "This secure string is read-only."
+    description: "Denne sikre strengen er skrivebeskyttet."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>index</code> is less than zero, or greater than or equal to the length of this secure string."
+    description: "<code>index</code>er mindre enn null, eller større enn eller lik lengden på denne sikre streng."
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
-    description: "An error occurred while protecting or unprotecting the value of this secure string."
+    description: "Det oppstod en feil under beskyttelse eller beskyttelsen verdien for denne sikre strengen."
   platform:
   - net462
 - uid: System.Security.SecureString.SetAt(System.Int32,System.Char)
@@ -392,8 +392,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security
-  summary: "Replaces the existing character at the specified index position with another character."
-  remarks: "The index is zero-based; the first character in this instance is at index position zero.       If the implementation uses a protection mechanism, such as encryption, the value of the secure string, if any, is unprotected; `c` is assigned to the specified index position; then the new value is re-protected."
+  summary: "Erstatter eksisterende tegnet på den angitte indeks posisjonen med et annet tegn."
+  remarks: "Indeksen er nullbasert; Det første tegnet i denne forekomsten er i indeksen posisjon null.       Hvis implementeringen bruker en beskyttelse mekanisme, for eksempel kryptering, er verdien for den sikre strengen, eventuelt ubeskyttet; `c` er tilordnet til den angitte indeks posisjonen; er den nye verdien på nytt beskyttet."
   example:
   - "The following example demonstrates how the <xref:System.Security.SecureString.AppendChar%2A>, <xref:System.Security.SecureString.InsertAt%2A>, <xref:System.Security.SecureString.RemoveAt%2A>, SetAt, and <xref:System.Security.SecureString.Clear%2A> methods affect the value of a <xref:System.Security.SecureString> object.  \n  \n [!code-cpp[SecureString.xAt#1](~/add/codesnippet/cpp/m-system.security.secure_4_1.cpp)]\n [!code-cs[SecureString.xAt#1](~/add/codesnippet/csharp/m-system.security.secure_4_1.cs)]\n [!code-vb[SecureString.xAt#1](~/add/codesnippet/visualbasic/m-system.security.secure_4_1.vb)]"
   syntax:
@@ -401,24 +401,24 @@ items:
     parameters:
     - id: index
       type: System.Int32
-      description: "The index position of an existing character in this secure string"
+      description: "Indeksen posisjonen til et eksisterende tegn i denne sikre strengen"
     - id: c
       type: System.Char
-      description: "A character that replaces the existing character."
+      description: "Et tegn som erstatter eksisterende tegn."
   overload: System.Security.SecureString.SetAt*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "This secure string has already been disposed."
+    description: "Denne sikre strengen har allerede blitt fjernet."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "This secure string is read-only."
+    description: "Denne sikre strengen er skrivebeskyttet."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>index</code> is less than zero, or greater than or equal to the length of this secure string."
+    description: "<code>index</code>er mindre enn null, eller større enn eller lik lengden på denne sikre streng."
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
-    description: "An error occurred while protecting or unprotecting the value of this secure string."
+    description: "Det oppstod en feil under beskyttelse eller beskyttelsen verdien for denne sikre strengen."
   platform:
   - net462
 references:

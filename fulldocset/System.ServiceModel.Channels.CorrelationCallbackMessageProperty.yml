@@ -24,8 +24,8 @@ items:
   nameWithType: CorrelationCallbackMessageProperty
   fullName: System.ServiceModel.Channels.CorrelationCallbackMessageProperty
   type: Class
-  summary: "Provides an abstract base class for deferring correlation key calculation until all of the correlation data is available."
-  remarks: "This is typically used to allow other channels to provide correlation data before a message is sent on the wire."
+  summary: "Inneholder en abstrakt basisklasse for utsetter Korrelasjons for beregning før alle dataene korrelasjon er tilgjengelig."
+  remarks: "Dette brukes vanligvis til å tillate andre kanaler leverer korrelasjonsdata før sendes en melding på nettet."
   syntax:
     content: 'public abstract class CorrelationCallbackMessageProperty : System.ServiceModel.Channels.IMessageProperty'
   inheritance:
@@ -47,13 +47,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Called by derived classes to initialize a new instance of the derived class using the specified collection of correlation data that is required to calculate the correlation."
+  summary: "Kalles av avledede klasser å initialisere en ny forekomst av den utledede klassen ved hjelp av den angitte objektsamlingen korrelasjonsdata som kreves for å beregne korrelasjonen."
   syntax:
     content: protected CorrelationCallbackMessageProperty (System.Collections.Generic.ICollection<string> neededData);
     parameters:
     - id: neededData
       type: System.Collections.Generic.ICollection{System.String}
-      description: "The correlation data required to calculate the correlation."
+      description: "Korrelasjonsdata som kreves for å beregne korrelasjonen."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.#ctor*
   exceptions: []
   platform:
@@ -70,13 +70,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Called by derived classes to initialize a new instance of the derived class using the required correlation data from another <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;></xref> derived class instance."
+  summary: "Kalles av avledede klasser å initialisere en ny forekomst av den utledede klassen med obligatorisk korrelasjonsdata fra en annen <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;> </xref> avledet klasseforekomsten."
   syntax:
     content: protected CorrelationCallbackMessageProperty (System.ServiceModel.Channels.CorrelationCallbackMessageProperty callback);
     parameters:
     - id: callback
       type: System.ServiceModel.Channels.CorrelationCallbackMessageProperty
-      description: "The <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;></xref> derived class instance to copy."
+      description: "Den <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;> </xref> avledet klasseforekomsten skal kopieres."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.#ctor*
   exceptions: []
   platform:
@@ -93,17 +93,17 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Adds required correlation data to the property."
-  remarks: "When required correlation data is added, it is removed from the <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.NeededData%2A> list. When all required data has been added, the <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.NeededData%2A> list is empty and <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.IsFullyDefined%2A> returns `true`."
+  summary: "Legger til nødvendig korrelasjonsdata egenskapen."
+  remarks: "Når du nødvendige korrelasjonsdata, fjernes den fra den <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.NeededData%2A>listen.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.NeededData%2A> Når alle nødvendige data har blitt lagt til, den <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.NeededData%2A>listen er tom og <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.IsFullyDefined%2A>returnerer `true`.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.IsFullyDefined%2A> </xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.NeededData%2A>"
   syntax:
     content: public void AddData (string name, Func<string> value);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the correlation data value."
+      description: "Navnet på Korrelasjons dataverdien."
     - id: value
       type: System.Func{System.String}
-      description: "Provides the value of the correlation data."
+      description: "Angir verdien for korrelasjonsdata."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.AddData*
   exceptions: []
   platform:
@@ -120,26 +120,26 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Called by a correlation protocol when all of the correlation information is available to asynchronously construct the correlation."
-  remarks: "This method calls <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnBeginFinalizeCorrelation%2A> to construct the correlation. Applications must provide an implementation of <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnBeginFinalizeCorrelation%2A>, which asynchronously performs the correlation calculation of the specified message.       To be notified when the asynchronous operation is complete, call <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.EndFinalizeCorrelation%2A> from the `callback` method. If <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.EndFinalizeCorrelation%2A> is called before the asynchronous operation is complete, it blocks until the operation completes. If the operation does not complete within the specified time-out interval a <xref:System.TimeoutException> is thrown.       This method is an asynchronous version of <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.FinalizeCorrelation%2A> using the <xref:System.IAsyncResult> asynchronous design pattern. [!INCLUDE[crdefault](~/add/includes/ajax-current-ext-md.md)][Asynchronous Programming Overview](http://go.microsoft.com/fwlink/?LinkId=141764)."
+  summary: "Kalles etter en Korrelasjons-protokoll når all informasjon korrelasjon er klart til å konstruere asynkront korrelasjonen."
+  remarks: "Denne metoden kaller <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnBeginFinalizeCorrelation%2A>ikke konstruere korrelasjonen.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnBeginFinalizeCorrelation%2A> Programmer må inneholde en implementering av <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnBeginFinalizeCorrelation%2A>, som utfører asynkront Korrelasjons beregning av den angitte meldingen.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnBeginFinalizeCorrelation%2A>       Hvis du vil bli varslet når den asynkrone operasjonen er fullført, kan du kalle <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.EndFinalizeCorrelation%2A>fra den `callback` metoden.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.EndFinalizeCorrelation%2A> Hvis <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.EndFinalizeCorrelation%2A>er kalles før den asynkrone operasjonen er fullført, blokkeres før operasjonen er fullført.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.EndFinalizeCorrelation%2A> Hvis operasjonen ikke fullført innen det angitte tidsavbruddet en <xref:System.TimeoutException>forårsakes.</xref:System.TimeoutException>       Denne metoden er en asynkron versjon av <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.FinalizeCorrelation%2A>ved hjelp av den <xref:System.IAsyncResult>asynkrone utformingen mønsteret.</xref:System.IAsyncResult> </xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.FinalizeCorrelation%2A> [!INCLUDE[crdefault](~/add/includes/ajax-current-ext-md.md)][Oversikt over asynkrone Programming](http://go.microsoft.com/fwlink/?LinkId=141764)."
   syntax:
     content: public IAsyncResult BeginFinalizeCorrelation (System.ServiceModel.Channels.Message message, TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: message
       type: System.ServiceModel.Channels.Message
-      description: "The message to be correlated."
+      description: "Meldingen som skal være samsvarende."
     - id: timeout
       type: System.TimeSpan
-      description: "The interval in which correlation must be finalized or else a <xref:System.TimeoutException> is thrown."
+      description: "Intervallet som Korrelasjons må være ferdigstilt eller andre en <xref:System.TimeoutException>forårsakes.</xref:System.TimeoutException>"
     - id: callback
       type: System.AsyncCallback
-      description: "The method to be called when the correlation calculation is completed."
+      description: "Metoden som skal kalles når Korrelasjons beregningen er fullført."
     - id: state
       type: System.Object
-      description: "An optional application-specific object that contains information about the asynchronous operation."
+      description: "Et valgfritt programspesifikk-objekt som inneholder informasjon om den asynkrone operasjonen."
     return:
       type: System.IAsyncResult
-      description: "A reference to the current asynchronous operation."
+      description: "En referanse til den gjeldende asynkrone operasjonen."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation*
   exceptions: []
   platform:
@@ -156,13 +156,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "When overridden in a derived class, initializes and returns a copy of the derived message property instance."
+  summary: "Når overstyrt i en avledet klasse, initialiserer, og returnerer en kopi av avledede meldingen egenskapen forekomsten."
   syntax:
     content: public abstract System.ServiceModel.Channels.IMessageProperty CreateCopy ();
     parameters: []
     return:
       type: System.ServiceModel.Channels.IMessageProperty
-      description: "A copy of the derived message property instance."
+      description: "En kopi av avledede meldingen egenskapen forekomsten."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.CreateCopy*
   exceptions: []
   platform:
@@ -179,17 +179,17 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Returns the message that was prepared asynchronously for correlation."
-  remarks: "This method calls <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnEndFinalizeCorrelation%2A> to retrieve the message. Applications must provide an implementation of <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnEndFinalizeCorrelation%2A>, which returns the message that was prepared for correlation.       If EndFinalizeCorrelation is called before the asynchronous operation is complete, it blocks until the operation completes. If the operation did not complete within the time-out interval specified in the call to <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation%2A> a <xref:System.TimeoutException> is thrown when this method is called.       This method completes the asynchronous version of <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.FinalizeCorrelation%2A> using the <xref:System.IAsyncResult> asynchronous design pattern. [!INCLUDE[crdefault](~/add/includes/ajax-current-ext-md.md)][Asynchronous Programming Overview](http://go.microsoft.com/fwlink/?LinkId=141764)."
+  summary: "Returnerer meldingen ble klargjort asynkront for Korrelasjons."
+  remarks: "Denne metoden kaller <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnEndFinalizeCorrelation%2A>til å hente meldingen.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnEndFinalizeCorrelation%2A> Programmer må inneholde en implementering av <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnEndFinalizeCorrelation%2A>, som returnerer meldingen ble klargjort for Korrelasjons.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnEndFinalizeCorrelation%2A>       Hvis EndFinalizeCorrelation kalles før den asynkrone operasjonen er fullført, blokkeres før operasjonen er fullført. Hvis operasjonen ikke ble fullført innen tidsavbruddet som er angitt i kallet til <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation%2A>en <xref:System.TimeoutException>forårsakes når denne metoden kalles.</xref:System.TimeoutException> </xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation%2A>       Denne metoden er fullført asynkrone versjonen av <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.FinalizeCorrelation%2A>ved hjelp av den <xref:System.IAsyncResult>asynkrone utformingen mønsteret.</xref:System.IAsyncResult> </xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.FinalizeCorrelation%2A> [!INCLUDE[crdefault](~/add/includes/ajax-current-ext-md.md)][Oversikt over asynkrone Programming](http://go.microsoft.com/fwlink/?LinkId=141764)."
   syntax:
     content: public System.ServiceModel.Channels.Message EndFinalizeCorrelation (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The <xref:System.IAsyncResult> that references the asynchronous <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation*> operation."
+      description: "Den <xref:System.IAsyncResult>som refererer til den asynkrone <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation*>operasjonen.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation*> </xref:System.IAsyncResult>"
     return:
       type: System.ServiceModel.Channels.Message
-      description: "The message that was prepared for correlation."
+      description: "Meldingen som ble klargjort for Korrelasjons."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.EndFinalizeCorrelation*
   exceptions: []
   platform:
@@ -206,20 +206,20 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Called by a correlation protocol when all of the correlation information is available to construct the correlation."
-  remarks: "This method calls <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnFinalizeCorrelation%2A> to construct the correlation. Applications must provide an implementation of <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnFinalizeCorrelation%2A>, which performs the correlation calculation of the specified message."
+  summary: "Kalles etter en Korrelasjons-protokoll når all informasjon korrelasjon er klart til å konstruere korrelasjonen."
+  remarks: "Denne metoden kaller <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnFinalizeCorrelation%2A>ikke konstruere korrelasjonen.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnFinalizeCorrelation%2A> Programmer må inneholde en implementering av <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnFinalizeCorrelation%2A>, som utfører Korrelasjons beregning av den angitte meldingen.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnFinalizeCorrelation%2A>"
   syntax:
     content: public System.ServiceModel.Channels.Message FinalizeCorrelation (System.ServiceModel.Channels.Message message, TimeSpan timeout);
     parameters:
     - id: message
       type: System.ServiceModel.Channels.Message
-      description: "The message to be correlated."
+      description: "Meldingen som skal være samsvarende."
     - id: timeout
       type: System.TimeSpan
-      description: "The interval in which the correlation calculation must be completed or else a <xref:System.TimeoutException> is thrown."
+      description: "Intervallet som Korrelasjons beregningen må være fullført eller andre en <xref:System.TimeoutException>forårsakes.</xref:System.TimeoutException>"
     return:
       type: System.ServiceModel.Channels.Message
-      description: "The correlated message."
+      description: "Korrelaterte meldingen."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.FinalizeCorrelation*
   exceptions: []
   platform:
@@ -236,13 +236,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Determines whether the <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;></xref> has all of the required correlation data."
-  remarks: "When all required data has been added, the <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.NeededData%2A> list is empty and IsFullyDefined returns `true`."
+  summary: "Bestemmer om den <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;> </xref> har alle nødvendige Korrelasjons-dataene."
+  remarks: "Når alle nødvendige data har blitt lagt til, den <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.NeededData%2A>listen er tom og IsFullyDefined returnerer `true`.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.NeededData%2A>"
   syntax:
     content: public bool IsFullyDefined { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if all of the required correlation data is present; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis alle nødvendige Korrelasjons dataene det finnes; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.IsFullyDefined*
   exceptions: []
   platform:
@@ -259,12 +259,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: 'Gets the name of this message property: “CorrelationCallbackMessageProperty”.'
+  summary: 'Henter navnet på denne meldingsegenskapen: &quot;CorrelationCallbackMessageProperty&quot;.'
   syntax:
     content: public static string Name { get; }
     return:
       type: System.String
-      description: "The string value “CorrelationCallbackMessageProperty”."
+      description: "Strengverdien &quot;CorrelationCallbackMessageProperty&quot;."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.Name*
   exceptions: []
   platform:
@@ -281,12 +281,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Gets a list of correlation data that is required before correlation can be applied."
+  summary: "Henter en liste over korrelasjonsdata før Korrelasjons kan brukes."
   syntax:
     content: public System.Collections.Generic.IEnumerable<string> NeededData { get; }
     return:
       type: System.Collections.Generic.IEnumerable{System.String}
-      description: "A list of required correlation data."
+      description: "En liste over nødvendige korrelasjonsdata."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.NeededData*
   exceptions: []
   platform:
@@ -303,26 +303,26 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "When overridden in a derived class, asynchronously performs the correlation calculation for the specified message."
-  remarks: "This method is called by <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation%2A>."
+  summary: "Når overstyrt i en avledet klasse, utfører asynkront Korrelasjons beregningen for den angitte meldingen."
+  remarks: "Denne metoden kalles av <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation%2A>.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation%2A>"
   syntax:
     content: protected abstract IAsyncResult OnBeginFinalizeCorrelation (System.ServiceModel.Channels.Message message, TimeSpan timeout, AsyncCallback callback, object state);
     parameters:
     - id: message
       type: System.ServiceModel.Channels.Message
-      description: "The message to be correlated."
+      description: "Meldingen som skal være samsvarende."
     - id: timeout
       type: System.TimeSpan
-      description: "The interval in which the correlation calculation must be completed or else a <xref:System.TimeoutException> is thrown."
+      description: "Intervallet som Korrelasjons beregningen må være fullført eller andre en <xref:System.TimeoutException>forårsakes.</xref:System.TimeoutException>"
     - id: callback
       type: System.AsyncCallback
-      description: "The method to be called when the correlation calculation has been completed."
+      description: "Metoden som skal kalles når Korrelasjons beregningen er fullført."
     - id: state
       type: System.Object
-      description: "An optional application-specific object that contains information about the asynchronous operation."
+      description: "Et valgfritt programspesifikk-objekt som inneholder informasjon om den asynkrone operasjonen."
     return:
       type: System.IAsyncResult
-      description: "A reference to the current asynchronous operation."
+      description: "En referanse til den gjeldende asynkrone operasjonen."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnBeginFinalizeCorrelation*
   exceptions: []
   platform:
@@ -339,17 +339,17 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "When overridden in a derived class, returns the message that was prepared asynchronously for correlation."
-  remarks: "This method is called by <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.EndFinalizeCorrelation%2A>."
+  summary: "Returnerer meldingen ble klargjort asynkront for Korrelasjons når overstyres i en avledet klasse."
+  remarks: "Denne metoden kalles av <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.EndFinalizeCorrelation%2A>.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.EndFinalizeCorrelation%2A>"
   syntax:
     content: protected abstract System.ServiceModel.Channels.Message OnEndFinalizeCorrelation (IAsyncResult result);
     parameters:
     - id: result
       type: System.IAsyncResult
-      description: "The <xref:System.IAsyncResult> that references the asynchronous <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation*> operation."
+      description: "Den <xref:System.IAsyncResult>som refererer til den asynkrone <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation*>operasjonen.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.BeginFinalizeCorrelation*> </xref:System.IAsyncResult>"
     return:
       type: System.ServiceModel.Channels.Message
-      description: "The correlated message."
+      description: "Korrelaterte meldingen."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnEndFinalizeCorrelation*
   exceptions: []
   platform:
@@ -366,20 +366,20 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "When overridden in a derived class, performs the correlation calculation for the specified message."
-  remarks: "This method is called by <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.FinalizeCorrelation%2A>."
+  summary: "Når overstyrt i en avledet klasse, utfører du Korrelasjons beregningen for den angitte meldingen."
+  remarks: "Denne metoden kalles av <xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.FinalizeCorrelation%2A>.</xref:System.ServiceModel.Channels.CorrelationCallbackMessageProperty.FinalizeCorrelation%2A>"
   syntax:
     content: protected abstract System.ServiceModel.Channels.Message OnFinalizeCorrelation (System.ServiceModel.Channels.Message message, TimeSpan timeout);
     parameters:
     - id: message
       type: System.ServiceModel.Channels.Message
-      description: "The message to be correlated."
+      description: "Meldingen som skal være samsvarende."
     - id: timeout
       type: System.TimeSpan
-      description: "The interval in which the correlation calculation must be completed or else a <xref:System.TimeoutException> is thrown."
+      description: "Intervallet som Korrelasjons beregningen må være fullført eller andre en <xref:System.TimeoutException>forårsakes.</xref:System.TimeoutException>"
     return:
       type: System.ServiceModel.Channels.Message
-      description: "The correlated message."
+      description: "Korrelaterte meldingen."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.OnFinalizeCorrelation*
   exceptions: []
   platform:
@@ -396,19 +396,19 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Attempts to get a <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;></xref> from the specified message’s <xref:System.ServiceModel.Channels.Message.Properties*>."
+  summary: "Forsøk på å hente en <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;> </xref> fra angitte meldingens <xref:System.ServiceModel.Channels.Message.Properties*>.</xref:System.ServiceModel.Channels.Message.Properties*>"
   syntax:
     content: public static bool TryGet (System.ServiceModel.Channels.Message message, out System.ServiceModel.Channels.CorrelationCallbackMessageProperty property);
     parameters:
     - id: message
       type: System.ServiceModel.Channels.Message
-      description: "The message that contains the <xref:System.ServiceModel.Channels.Message.Properties*> to inspect."
+      description: "Meldingen som inneholder den <xref:System.ServiceModel.Channels.Message.Properties*>skal undersøkes.</xref:System.ServiceModel.Channels.Message.Properties*>"
     - id: property
       type: System.ServiceModel.Channels.CorrelationCallbackMessageProperty
-      description: "When this method returns, contains the <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;></xref> contained in the specified message’s <xref:System.ServiceModel.Channels.Message.Properties*>; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>. This parameter is passed uninitialized."
+      description: "Låse denne metoden, inneholder den <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;> </xref> i den angitte meldingen <xref:System.ServiceModel.Channels.Message.Properties*>; ellers <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>.</xref:System.ServiceModel.Channels.Message.Properties*> Denne parameteren sendes ikke initialisert."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the message’s <xref:System.ServiceModel.Channels.Message.Properties*> contain a <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;></xref>; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis meldingens <xref:System.ServiceModel.Channels.Message.Properties*>inneholder en <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;> </xref>; ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>.</xref:System.ServiceModel.Channels.Message.Properties*>"
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.TryGet*
   exceptions: []
   platform:
@@ -425,19 +425,19 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Channels
-  summary: "Attempts to get a <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;></xref> from the specified message properties."
+  summary: "Forsøk på å hente en <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;> </xref> fra de angitte meldingsegenskapene."
   syntax:
     content: public static bool TryGet (System.ServiceModel.Channels.MessageProperties properties, out System.ServiceModel.Channels.CorrelationCallbackMessageProperty property);
     parameters:
     - id: properties
       type: System.ServiceModel.Channels.MessageProperties
-      description: "The message properties to inspect."
+      description: "Meldingsegenskaper skal undersøkes."
     - id: property
       type: System.ServiceModel.Channels.CorrelationCallbackMessageProperty
-      description: "When this method returns, contains the <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;></xref> contained in the specified message properties; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>. This parameter is passed uninitialized."
+      description: "Låse denne metoden, inneholder den <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;> </xref> befinner seg i de angitte meldingsegenskapene; ellers, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>. Denne parameteren sendes ikke initialisert."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the message properties contain a <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;></xref>; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis meldingsegenskaper inneholder en <xref href=&quot;System.ServiceModel.Channels.CorrelationCallbackMessageProperty&quot;> </xref>; ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.Channels.CorrelationCallbackMessageProperty.TryGet*
   exceptions: []
   platform:

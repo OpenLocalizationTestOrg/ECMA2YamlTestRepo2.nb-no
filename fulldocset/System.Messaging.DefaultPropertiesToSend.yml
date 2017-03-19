@@ -29,8 +29,8 @@ items:
   nameWithType: DefaultPropertiesToSend
   fullName: System.Messaging.DefaultPropertiesToSend
   type: Class
-  summary: "Specifies the default property values that will be used when sending objects other than <xref href=&quot;System.Messaging.Message&quot;></xref> instances to a message queue."
-  remarks: "You can set default values on selected properties for messages sent to a <xref:System.Messaging.MessageQueue>. DefaultPropertiesToSend is used to specify default property values of the message being sent when objects other than <xref:System.Messaging.Message> instances are sent to a queue, for example, the string argument passed into the <xref:System.Messaging.MessageQueue.Send%2A> method in the code fragment, `myMessageQueue.Send(&quot;hello&quot;)`. The <xref:System.Messaging.Message> class has corresponding, identically named properties to those in DefaultPropertiesToSend that provide the values when sending a <xref:System.Messaging.Message> instance specifically. Even if you have specified <xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A?displayProperty=fullName> for a queue, sending a <xref:System.Messaging.Message> object to that queue will cause the values for the identically named <xref:System.Messaging.Message> properties to override the queue&quot;s <xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A> values.       Properties that you do not set explicitly default to the values specified by the constructor, <xref:System.Messaging.DefaultPropertiesToSend.%23ctor%2A>.       For a list of initial property values for an instance of DefaultPropertiesToSend, see the DefaultPropertiesToSend constructor."
+  summary: "Angir standard egenskapsverdier som skal brukes når du sender objekter enn <xref href=&quot;System.Messaging.Message&quot;> </xref> forekomster til en meldingskøen."
+  remarks: "Du kan angi standardverdier for valgte egenskaper for meldinger som sendes til en <xref:System.Messaging.MessageQueue>.</xref:System.Messaging.MessageQueue> DefaultPropertiesToSend brukes til å angi standard egenskapsverdiene for meldingen sendes når objekter enn <xref:System.Messaging.Message>forekomster som sendes til en kø, for eksempel strengargumentet ble sendt til den <xref:System.Messaging.MessageQueue.Send%2A>metoden i code-fragmentet `myMessageQueue.Send(&quot;hello&quot;)`.</xref:System.Messaging.MessageQueue.Send%2A> </xref:System.Messaging.Message> Den <xref:System.Messaging.Message>klassen har tilsvarende identiske navn egenskaper som i DefaultPropertiesToSend som inneholder verdiene ved sending av en <xref:System.Messaging.Message>serverforekomsten spesielt.</xref:System.Messaging.Message> </xref:System.Messaging.Message> Selv om du har angitt <xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A?displayProperty=fullName>for en kø sending av en <xref:System.Messaging.Message>-objekt til køen vil føre til at verdiene for identiske navn <xref:System.Messaging.Message>Egenskaper for å overstyre køens <xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A>verdier.</xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A> </xref:System.Messaging.Message> </xref:System.Messaging.Message> </xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A?displayProperty=fullName>       Egenskaper som du ikke angir eksplisitt standard til verdiene som er angitt av konstruktøren <xref:System.Messaging.DefaultPropertiesToSend.%23ctor%2A>.</xref:System.Messaging.DefaultPropertiesToSend.%23ctor%2A>       Hvis du vil se en liste med opprinnelige verdier for en forekomst av DefaultPropertiesToSend, kan du se DefaultPropertiesToSend-konstruktøren."
   example:
   - "The following code example uses the priority of a message to determine default properties to send for the message.  \n  \n [!code-cpp[MessageQueue.DefaultPropertiesToSend#1](~/add/codesnippet/cpp/t-system.messaging.defau_1.cpp)]\n [!code-cs[MessageQueue.DefaultPropertiesToSend#1](~/add/codesnippet/csharp/t-system.messaging.defau_1.cs)]\n [!code-vb[MessageQueue.DefaultPropertiesToSend#1](~/add/codesnippet/visualbasic/t-system.messaging.defau_1.vb)]"
   syntax:
@@ -56,8 +56,8 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Initializes a new instance of the <xref href=&quot;System.Messaging.DefaultPropertiesToSend&quot;></xref> class."
-  remarks: "You can create a new instance of <xref:System.Messaging.DefaultPropertiesToSend> to define default property values to associate with objects sent to a queue that are not of type <xref:System.Messaging.Message>. When working with <xref:System.Messaging.MessageQueue> objects, a <xref:System.Messaging.DefaultPropertiesToSend> instance is created for you and associated with the <xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A?displayProperty=fullName> member of the <xref:System.Messaging.MessageQueue>.       There are two ways to define a queue&quot;s default properties to send, as shown in the following C# code. You can set values for this instance of <xref:System.Messaging.DefaultPropertiesToSend> and associate it with the queue&quot;s <xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A?displayProperty=fullName> property:      ```   DefaultPropertiesToSend myDefaultProperties = new DefaultPropertiesToSend();     // Set default values for the properties.     myDefaultProperties.Label = &quot;myLabel&quot;;     myDefaultProperties.Recoverable = false;    ...     myMessageQueue.DefaultPropertiesToSend = myDefaultProperties;     myMessageQueue.Send(&quot;hello&quot;);   ```       Or, you can individually assign values to the <xref:System.Messaging.MessageQueue> instance&quot;s <xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A> property directly:      ```   myMessageQueue.DefaultPropertiesToSend.Label = &quot;myLabel&quot;;     myMessageQueue.DefaultPropertiesToSend.Recoverable = false;   ...     myMessageQueue.Send(&quot;hello&quot;);   ```       If you choose the second of these options, you do not need to call the DefaultPropertiesToSend constructor explicitly. You might want to create instances of <xref:System.Messaging.DefaultPropertiesToSend>, for example, if the properties&quot; default values depend on some criterion of the message being sent. You can create multiple <xref:System.Messaging.DefaultPropertiesToSend> instances and assign one to the queue&quot;s <xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A?displayProperty=fullName> property before sending the message to the queue.       The following table shows initial property values for an instance of <xref:System.Messaging.DefaultPropertiesToSend>.      |Property|Initial value|   |--------------|-------------------|   |<xref:System.Messaging.DefaultPropertiesToSend.AcknowledgeType%2A>|`AcknowledgeTypes.None`|   |<xref:System.Messaging.DefaultPropertiesToSend.AdministrationQueue%2A>|`null`|   |<xref:System.Messaging.DefaultPropertiesToSend.AppSpecific%2A>|0|   |<xref:System.Messaging.DefaultPropertiesToSend.AttachSenderId%2A>|`true`|   |<xref:System.Messaging.DefaultPropertiesToSend.EncryptionAlgorithm%2A>|`EncryptionAlgorithm.RC2`|   |<xref:System.Messaging.DefaultPropertiesToSend.Extension%2A>|A zero-length array of bytes|   |<xref:System.Messaging.DefaultPropertiesToSend.HashAlgorithm%2A>|`HashAlgorithm.MD5`|   |<xref:System.Messaging.DefaultPropertiesToSend.Label%2A>|An empty string (&quot;&quot;)|   |<xref:System.Messaging.DefaultPropertiesToSend.Priority%2A>|`MessagePriority.Normal`|   |<xref:System.Messaging.DefaultPropertiesToSend.Recoverable%2A>|`false`|   |<xref:System.Messaging.DefaultPropertiesToSend.ResponseQueue%2A>|`null`|   |<xref:System.Messaging.DefaultPropertiesToSend.TimeToBeReceived%2A>|`Message.InfiniteTimeout`|   |<xref:System.Messaging.DefaultPropertiesToSend.TimeToReachQueue%2A>|`Message.InfiniteTimeout`|   |<xref:System.Messaging.DefaultPropertiesToSend.TransactionStatusQueue%2A>|`null`|   |<xref:System.Messaging.DefaultPropertiesToSend.UseAuthentication%2A>|`false`|   |<xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A>|`false`|   |<xref:System.Messaging.DefaultPropertiesToSend.UseEncryption%2A>|`false`|   |<xref:System.Messaging.DefaultPropertiesToSend.UseJournalQueue%2A>|`false`|   |<xref:System.Messaging.DefaultPropertiesToSend.UseTracing%2A>|`false`|"
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Messaging.DefaultPropertiesToSend&quot;> </xref> klasse."
+  remarks: "Du kan opprette en ny forekomst av <xref:System.Messaging.DefaultPropertiesToSend>for å definere standard egenskapsverdier som skal knyttes til objekter som er sendt til en kø som er ikke av typen <xref:System.Messaging.Message>.</xref:System.Messaging.Message> </xref:System.Messaging.DefaultPropertiesToSend> Når du arbeider med <xref:System.Messaging.MessageQueue>objekter, en <xref:System.Messaging.DefaultPropertiesToSend>forekomst er opprettet for deg og knyttet til <xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A?displayProperty=fullName>medlem av <xref:System.Messaging.MessageQueue>.</xref:System.Messaging.MessageQueue> </xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A?displayProperty=fullName> </xref:System.Messaging.DefaultPropertiesToSend> </xref:System.Messaging.MessageQueue>       Det er to måter å definere en kø standardegenskaper å sende, som vist i C# koden nedenfor. Du kan angi verdier for denne forekomsten av <xref:System.Messaging.DefaultPropertiesToSend>og knytt det til køens <xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A?displayProperty=fullName>egenskapen: ```   DefaultPropertiesToSend myDefaultProperties = new DefaultPropertiesToSend();     // Set default values for the properties.     myDefaultProperties.Label = &quot;myLabel&quot;;     myDefaultProperties.Recoverable = false;    ...     myMessageQueue.DefaultPropertiesToSend = myDefaultProperties;     myMessageQueue.Send(&quot;hello&quot;);   ``` eller du kan tilordne verdier til seg av <xref:System.Messaging.MessageQueue>forekomstens <xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A>egenskapen direkte: ```   myMessageQueue.DefaultPropertiesToSend.Label = &quot;myLabel&quot;;     myMessageQueue.DefaultPropertiesToSend.Recoverable = false;   ...     myMessageQueue.Send(&quot;hello&quot;);   ``` Hvis du velger andre av disse alternativene, trenger du ikke kalle konstruktøren DefaultPropertiesToSend eksplisitt.</xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A> </xref:System.Messaging.MessageQueue> </xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A?displayProperty=fullName> </xref:System.Messaging.DefaultPropertiesToSend> Du vil opprette forekomster av <xref:System.Messaging.DefaultPropertiesToSend>, for eksempel hvis de egenskapene standardverdier er avhengige av noen vilkår for meldingen sendes.</xref:System.Messaging.DefaultPropertiesToSend> Du kan opprette flere <xref:System.Messaging.DefaultPropertiesToSend>forekomster og tilordne en til køens <xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A?displayProperty=fullName>egenskapen før du sender meldingen til køen.</xref:System.Messaging.MessageQueue.DefaultPropertiesToSend%2A?displayProperty=fullName> </xref:System.Messaging.DefaultPropertiesToSend>       Tabellen nedenfor viser første egenskapsverdier for en forekomst av <xref:System.Messaging.DefaultPropertiesToSend>.</xref:System.Messaging.DefaultPropertiesToSend>      | Egenskapen | Standardverdi |   |--------------|-------------------|   | <xref:System.Messaging.DefaultPropertiesToSend.AcknowledgeType%2A>| `AcknowledgeTypes.None`|   | <xref:System.Messaging.DefaultPropertiesToSend.AdministrationQueue%2A>| `null`|   | <xref:System.Messaging.DefaultPropertiesToSend.AppSpecific%2A>|0|   | <xref:System.Messaging.DefaultPropertiesToSend.AttachSenderId%2A>| `true`|   | <xref:System.Messaging.DefaultPropertiesToSend.EncryptionAlgorithm%2A>| `EncryptionAlgorithm.RC2`|   | <xref:System.Messaging.DefaultPropertiesToSend.Extension%2A>| En tom streng bytematrise |   | <xref:System.Messaging.DefaultPropertiesToSend.HashAlgorithm%2A>| `HashAlgorithm.MD5`|   | <xref:System.Messaging.DefaultPropertiesToSend.Label%2A>| En tom streng (&quot;&quot;) |   | <xref:System.Messaging.DefaultPropertiesToSend.Priority%2A>| `MessagePriority.Normal`|   | <xref:System.Messaging.DefaultPropertiesToSend.Recoverable%2A>| `false`|   | <xref:System.Messaging.DefaultPropertiesToSend.ResponseQueue%2A>| `null`|   | <xref:System.Messaging.DefaultPropertiesToSend.TimeToBeReceived%2A>| `Message.InfiniteTimeout`|   | <xref:System.Messaging.DefaultPropertiesToSend.TimeToReachQueue%2A>| `Message.InfiniteTimeout`|   | <xref:System.Messaging.DefaultPropertiesToSend.TransactionStatusQueue%2A>| `null`|   | <xref:System.Messaging.DefaultPropertiesToSend.UseAuthentication%2A>| `false`|   | <xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A>| `false`|   | <xref:System.Messaging.DefaultPropertiesToSend.UseEncryption%2A>| `false`|   | <xref:System.Messaging.DefaultPropertiesToSend.UseJournalQueue%2A>| `false`|   | <xref:System.Messaging.DefaultPropertiesToSend.UseTracing%2A>| `false`|</xref:System.Messaging.DefaultPropertiesToSend.UseTracing%2A></xref:System.Messaging.DefaultPropertiesToSend.UseJournalQueue%2A></xref:System.Messaging.DefaultPropertiesToSend.UseEncryption%2A></xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A></xref:System.Messaging.DefaultPropertiesToSend.UseAuthentication%2A></xref:System.Messaging.DefaultPropertiesToSend.TransactionStatusQueue%2A></xref:System.Messaging.DefaultPropertiesToSend.TimeToReachQueue%2A></xref:System.Messaging.DefaultPropertiesToSend.TimeToBeReceived%2A></xref:System.Messaging.DefaultPropertiesToSend.ResponseQueue%2A></xref:System.Messaging.DefaultPropertiesToSend.Recoverable%2A></xref:System.Messaging.DefaultPropertiesToSend.Priority%2A></xref:System.Messaging.DefaultPropertiesToSend.Label%2A></xref:System.Messaging.DefaultPropertiesToSend.HashAlgorithm%2A></xref:System.Messaging.DefaultPropertiesToSend.Extension%2A></xref:System.Messaging.DefaultPropertiesToSend.EncryptionAlgorithm%2A></xref:System.Messaging.DefaultPropertiesToSend.AttachSenderId%2A></xref:System.Messaging.DefaultPropertiesToSend.AppSpecific%2A></xref:System.Messaging.DefaultPropertiesToSend.AdministrationQueue%2A></xref:System.Messaging.DefaultPropertiesToSend.AcknowledgeType%2A>"
   syntax:
     content: public DefaultPropertiesToSend ();
     parameters: []
@@ -77,13 +77,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets the type of acknowledgement message to be returned to the sending application."
-  remarks: "The AcknowledgeType property specifies the type of acknowledgment messages to return to the sending application. For example, set the AcknowledgeType property to request notification when a message reaches its destination, when it is retrieved, or whether a time-out has prevented the message from reaching or being retrieved from the destination queue."
+  summary: "Henter eller angir typen bekreftelsesmelding skal returneres til avsenderprogrammet."
+  remarks: "Egenskapen AcknowledgeType angir typen bekreftelsesmeldinger for å gå tilbake til avsenderprogrammet. For eksempel ikke angi egenskapen AcknowledgeType å be om varsling når en melding når målet, når de hentes, eller om et tidsavbrudd er forhindret meldingen nådde eller hentes fra målkøen."
   syntax:
     content: public System.Messaging.AcknowledgeTypes AcknowledgeType { get; set; }
     return:
       type: System.Messaging.AcknowledgeTypes
-      description: "One of the <xref href=&quot;System.Messaging.AcknowledgeTypes&quot;></xref> enumeration values. This value is used to determine the type of acknowledgment messages the system posts in the administration queue and when acknowledgments are returned to the sending application. The default is <xref uid=&quot;langword_csharp_AcknowledgeTypes.None&quot; name=&quot;AcknowledgeTypes.None&quot; href=&quot;&quot;></xref>."
+      description: "Én av de <xref href=&quot;System.Messaging.AcknowledgeTypes&quot;> </xref> nummereringsverdier. Denne verdien brukes til å finne ut hvilken type bekreftelsesmeldinger systemet legger inn i administrasjonskøen og bekreftelser returneres til avsenderprogrammet. Standard <xref uid=&quot;langword_csharp_AcknowledgeTypes.None&quot; name=&quot;AcknowledgeTypes.None&quot; href=&quot;&quot;> </xref>."
   overload: System.Messaging.DefaultPropertiesToSend.AcknowledgeType*
   exceptions: []
   platform:
@@ -100,13 +100,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets the queue that receives acknowledgement messages generated by Message Queuing."
-  remarks: "The queue specified in the AdministrationQueue property can be any non-transactional queue. The acknowledgment messages sent to the administration queue can indicate whether or not the original message reached its destination queue, and whether or not it was removed from the queue.       When the <xref:System.Messaging.DefaultPropertiesToSend.AcknowledgeType%2A> property has any value other than `None`, the sending application must specify the queue to be used as the administration queue."
+  summary: "Henter eller angir køen som mottar bekreftelsesmeldinger som ble generert av Message Queuing."
+  remarks: "Køen som er angitt i egenskapen AdministrationQueue kan være en ikke-transaksjonskø. Bekreftelsesmeldinger som sendes til administrasjonskøen kan angi om den opprinnelige meldingen ankom målkøen, og om det ble fjernet fra køen.       Når den <xref:System.Messaging.DefaultPropertiesToSend.AcknowledgeType%2A>egenskapen har en annen verdi enn `None`, avsenderprogrammet må angi køen som skal brukes som administrasjonskøen.</xref:System.Messaging.DefaultPropertiesToSend.AcknowledgeType%2A>"
   syntax:
     content: public System.Messaging.MessageQueue AdministrationQueue { get; set; }
     return:
       type: System.Messaging.MessageQueue
-      description: "The <xref href=&quot;System.Messaging.MessageQueue&quot;></xref> that specifies the administration queue used for system-generated acknowledgment messages. The default is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "Den <xref href=&quot;System.Messaging.MessageQueue&quot;> </xref> som angir administrasjonskøen brukt for systemgenererte av bekreftelsesmeldinger. Standard <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.Messaging.DefaultPropertiesToSend.AdministrationQueue*
   exceptions: []
   platform:
@@ -123,13 +123,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets additional, application-specific information."
-  remarks: "The AppSpecific property contains additional, application-specific information that can be used to organize different types of messages, for example, using application-specific indexes. It is the responsibility of the application to interpret AppSpecific information.       Where possible, message data should be included in the body of the message rather than in the AppSpecific property.       When working with foreign queues, use the <xref:System.Messaging.DefaultPropertiesToSend.Extension%2A> property to specify non-Message Queuing message properties. As with AppSpecific, it is the responsibility of the application to understand the content of the <xref:System.Messaging.DefaultPropertiesToSend.Extension%2A> property."
+  summary: "Henter eller angir ekstra, programspesifikk informasjon."
+  remarks: "Egenskapen AppSpecific inneholder flere, programspesifikk informasjon som kan brukes til å organisere forskjellige typer meldinger, for eksempel ved hjelp av programspesifikk indekser. Det er ansvarlig for applikasjonen som skal tolke AppSpecific informasjonen.       Meldingsdata skal være med i brødteksten i meldingen i stedet for i egenskapen AppSpecific, der det er mulig.       Når du arbeider med eksterne køer, kan du bruke den <xref:System.Messaging.DefaultPropertiesToSend.Extension%2A>til å angi meldingsegenskaper, som ikke er Message Queuing.</xref:System.Messaging.DefaultPropertiesToSend.Extension%2A> Som med AppSpecific, er det ansvaret for applikasjonen som skal forstå innholdet i den <xref:System.Messaging.DefaultPropertiesToSend.Extension%2A>egenskapen.</xref:System.Messaging.DefaultPropertiesToSend.Extension%2A>"
   syntax:
     content: public int AppSpecific { get; set; }
     return:
       type: System.Int32
-      description: "Information specific to the application. The default is 0."
+      description: "Informasjon som er spesifikke for programmet. Standardverdien er 0."
   overload: System.Messaging.DefaultPropertiesToSend.AppSpecific*
   exceptions: []
   platform:
@@ -146,13 +146,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets a value that indicates whether the sender ID should be attached to the message."
-  remarks: "The sender ID is an array of bytes that represents the identifier of the sending user. The sender ID is set by Message Queuing and is used by the receiving Queue Manager to verify whether the sender has access rights to a queue. The sender ID is only trustworthy if the message was authenticated when it reached the destination queue.       When the sender ID is not attached to the message, the sending application is indicating that Message Queuing should not validate the message&quot;s sender when the message is sent to the destination queue. If the destination queue only accepts authenticated messages, and either <xref:System.Messaging.DefaultPropertiesToSend.UseAuthentication%2A> or AttachSenderId is `false`, the message will be rejected when it reaches the queue."
+  summary: "Henter eller angir en verdi som angir om avsender-ID må være knyttet til meldingen."
+  remarks: "Avsender-IDen er en bytematrise som representerer identifikator for sending brukeren. Sender-IDen er angitt av Message Queuing og brukes av mottak købehandlingen til å bekrefte om avsenderen har tilgangsrettigheter til en kø. Sender-IDen er bare stole Hvis meldingen ble godkjent når den har nådd målkøen.       Når du sender-IDen ikke er knyttet til meldingen, er avsenderprogrammet som indikerer at Message Queuing ikke kan validere meldingens avsenderen når meldingen sendes til målkøen. Hvis målkøen godtar bare godkjente meldinger, og enten <xref:System.Messaging.DefaultPropertiesToSend.UseAuthentication%2A>eller AttachSenderId `false`, meldingen vil bli avvist når køen.</xref:System.Messaging.DefaultPropertiesToSend.UseAuthentication%2A>"
   syntax:
     content: public bool AttachSenderId { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if sender ID should be attached to the message; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis avsender-ID må være knyttet til meldingen. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Standard <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   overload: System.Messaging.DefaultPropertiesToSend.AttachSenderId*
   exceptions: []
   platform:
@@ -169,13 +169,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets the encryption algorithm used to encrypt the body of a private message."
-  remarks: "If a message is private, it is encrypted before it is sent and is decrypted when it is received. The EncryptionAlgorithm property specifies the algorithm used to encrypt the message body of a private message.       A queue can require that incoming messages be encrypted. If a non-encrypted (non-private) message is sent to a queue that only accepts private messages, or if a private message is sent to a queue that only accepts non-private messages, the message is rejected by the queue. The sending application can request a negative acknowledgment message be returned to the sending application if a message was rejected."
+  summary: "Henter eller angir krypteringsalgoritmen som brukes til å kryptere meldingsteksten i en privat melding."
+  remarks: "Hvis en melding er privat, krypteres før den sendes og dekrypteres når det mottas. Egenskapen EncryptionAlgorithm angir algoritmen som brukes til kryptering av meldingsteksten i en privat melding.       En kø kan kreve at innkommende meldinger krypteres. Hvis en kryptert (ikke-private) melding sendes til en kø som godtar bare private meldinger, eller hvis en privat melding sendes til en kø som godtar bare ikke-private meldinger, meldingen ble avvist av køen. Avsenderprogrammet kan be om en negativ bekreftelsesmelding returneres til avsenderprogrammet Hvis en meldingen ble avvist."
   syntax:
     content: public System.Messaging.EncryptionAlgorithm EncryptionAlgorithm { get; set; }
     return:
       type: System.Messaging.EncryptionAlgorithm
-      description: "One of the <xref href=&quot;System.Messaging.EncryptionAlgorithm&quot;></xref> enumeration values. The default is <xref uid=&quot;langword_csharp_RC2&quot; name=&quot;RC2&quot; href=&quot;&quot;></xref>."
+      description: "Én av de <xref href=&quot;System.Messaging.EncryptionAlgorithm&quot;> </xref> nummereringsverdier. Standard <xref uid=&quot;langword_csharp_RC2&quot; name=&quot;RC2&quot; href=&quot;&quot;> </xref>."
   overload: System.Messaging.DefaultPropertiesToSend.EncryptionAlgorithm*
   exceptions: []
   platform:
@@ -192,13 +192,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets additional information associated with the message."
-  remarks: "The Extension property provides for additional application-defined information that is associated with the message, such as a large binary object. It is the responsibility of the receiving application to interpret the contents of the Extension.       Where possible, message data should be included in the body of the message rather than in the extension.       When working with foreign queues, use the Extension property to specify non-Message Queuing message properties.       A foreign queue exists in a queuing system other than Microsoft Message Queuing. Microsoft Message Queuing communicates with such queues through a connector application."
+  summary: "Henter eller angir tilleggsinformasjon som er forbundet med meldingen."
+  remarks: "Egenskapen Extension gir for ekstra Programdefinert informasjon som er forbundet med meldingen, for eksempel et stort binære objekt. Det er ansvarlig for mottaksprogrammet ikke tolke innholdet av filtypen.       Der det er mulig bør meldingsdata inkluderes i meldingsteksten i meldingen i stedet for filtypen.       Når du arbeider med eksterne køer, kan du bruke egenskapen utvidelse til å angi meldingsegenskaper, som ikke er Message Queuing.       Det finnes en sekundærnøkkel kø i et queuing system enn Microsoft Message Queuing. Microsoft Message Queuing kommuniserer med slike køer via et tilkoblingsprogram."
   syntax:
     content: public byte[] Extension { get; set; }
     return:
       type: System.Byte[]
-      description: "An array of bytes that provides additional, application-defined information associated with the message. The default is a zero-length array."
+      description: "En bytematrise som inneholder ekstra Programdefinert informasjon som er forbundet med meldingen. Standarden er en tom matrise."
   overload: System.Messaging.DefaultPropertiesToSend.Extension*
   exceptions: []
   platform:
@@ -215,13 +215,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets the hashing algorithm used when authenticating messages or creating a digital signature for a message."
-  remarks: "The HashAlgorithm property identifies the hashing algorithm Message Queuing uses when authenticating messages or when creating a digital signature for a message.       Message Queuing on the source computer uses the hashing algorithm when creating a digital signature for a message. The target Queue Manager then uses the same hashing algorithm to authenticate the message when it is received."
+  summary: "Henter eller angir nummer algoritmen som brukes under godkjenning av meldinger eller opprette en digital signatur for en melding."
+  remarks: "Egenskapen nummeralgoritme identifiserer nummeralgoritmen som Message Queuing bruker under godkjenning av meldinger, eller når du oppretter en digital signatur for en melding.       Message Queuing på kildedatamaskinen bruker nummeralgoritmen som når du oppretter en digital signatur for en melding. Målet købehandlingen bruker deretter samme nummeralgoritmen til å godkjenne meldingen når det mottas."
   syntax:
     content: public System.Messaging.HashAlgorithm HashAlgorithm { get; set; }
     return:
       type: System.Messaging.HashAlgorithm
-      description: "One of the <xref href=&quot;System.Messaging.HashAlgorithm&quot;></xref> enumeration values. The default is <xref uid=&quot;langword_csharp_MD5&quot; name=&quot;MD5&quot; href=&quot;&quot;></xref>."
+      description: "Én av de <xref href=&quot;System.Messaging.HashAlgorithm&quot;> </xref> nummereringsverdier. Standard <xref uid=&quot;langword_csharp_MD5&quot; name=&quot;MD5&quot; href=&quot;&quot;> </xref>."
   overload: System.Messaging.DefaultPropertiesToSend.HashAlgorithm*
   exceptions: []
   platform:
@@ -238,13 +238,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets an application-defined string that describes the message."
-  remarks: "A message label can be used for display purposes, for example, or to selectively process messages based on the label value. The maximum length for a message label is 249 Unicode characters. The label does not need to be unique across messages.       Message queue and message labels represent an application-defined value that can help to identify the queue or message in human-readable terms. It is the responsibility of the application to interpret label contents; they have no intrinsic meaning to the Message Queuing application."
+  summary: "Henter eller angir en Programdefinert streng som beskriver meldingen."
+  remarks: "En meldingsetiketten kan brukes for visningsformål, for eksempel eller selektivt prosessen meldinger basert på etikettverdien for. Maksimal lengde for en Meldingsetiketten er 249 Unicode-tegn. Etiketten må ikke være unik for meldinger.       Representerer en Programdefinert verdi som kan bidra til å identifisere køen eller melding i lesbar vilkårene meldingskøen og meldingen etiketter. Det er ansvarlig for programmet til å tolke innholdet i den etiketten. de har ingen indre betydning for Message Queuing-programmet."
   syntax:
     content: public string Label { get; set; }
     return:
       type: System.String
-      description: "The label of the message. The default is an empty string (&quot;&quot;)."
+      description: "Etikett for meldingen. Standarden er en tom streng (&quot;&quot;)."
   overload: System.Messaging.DefaultPropertiesToSend.Label*
   exceptions: []
   platform:
@@ -261,13 +261,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets the message priority, which is used to determine where the message is placed in the queue."
-  remarks: "The Priority property affects how Message Queuing handles the message while it is en route, as well as where the message is placed in the queue when it reaches its destination. Higher priority messages are given preference during routing and inserted toward the front of the queue. Messages with the same priority are placed in the queue according to their arrival time.       Message priority can only be set meaningfully for non-transactional messages. The priority for transactional messages is automatically set to `Lowest`, which causes transactional message priority to be ignored."
+  summary: "Henter eller angir Meldingsprioriteten som brukes til å fastsette der meldingen er plassert i køen."
+  remarks: "Egenskapen for prioritet påvirker hvordan Message Queuing behandler meldingen mens den er underveis, i tillegg der meldingen plasseres i køen når det når målet. Meldinger med høyere prioritet er gitt preferanser under ruting og inn mot starten av køen. Meldinger med samme prioritet plasseres i kø i henhold til ankomsttid.       Meldingsprioritet kan bare angis hverandre for ikke-transaksjonell meldinger. Prioriteten for transaksjonsmeldinger automatisk er satt til `Lowest`, som fører til at transaksjonsmeldinger prioritet skal ignoreres."
   syntax:
     content: public System.Messaging.MessagePriority Priority { get; set; }
     return:
       type: System.Messaging.MessagePriority
-      description: "One of the <xref href=&quot;System.Messaging.MessagePriority&quot;></xref> enumeration values that represents the priority level of a non-transactional message. The default is <xref uid=&quot;langword_csharp_Normal&quot; name=&quot;Normal&quot; href=&quot;&quot;></xref>."
+      description: "Én av de <xref href=&quot;System.Messaging.MessagePriority&quot;> </xref> nummereringsverdier som representerer prioriteringsnivå for en ikke-transaksjonell melding. Standard <xref uid=&quot;langword_csharp_Normal&quot; name=&quot;Normal&quot; href=&quot;&quot;> </xref>."
   overload: System.Messaging.DefaultPropertiesToSend.Priority*
   exceptions: []
   platform:
@@ -284,13 +284,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets a value that indicates whether the message is guaranteed to be delivered in the event of a computer failure or network problem."
-  remarks: "The Recoverable property indicates whether delivery of a message is guaranteed, even if a computer crashes while the message is en route to the destination queue.       If delivery of a message is guaranteed, the message is stored locally at every step along the route until the message is successfully forwarded to the next computer. Setting Recoverable to `true` on <xref:System.Messaging.DefaultPropertiesToSend> could affect the throughput.       If the message is transactional, Message Queuing automatically treats the message as recoverable, regardless of whether Recoverable is set to `true`."
+  summary: "Henter eller angir en verdi som angir om meldingen garanteres skal bli levert Hvis det oppstår et problem med datamaskinen feil eller nettverket."
+  remarks: "Egenskapen gjenopprettes angir om garanteres levering av en melding, selv om datamaskinen krasjer mens meldingen er på vei til målkøen.       Hvis levering av en melding garanteres, lagres meldingen lokalt på hver trinn i ruten til meldingen ble videresendt til den neste datamaskinen. Angi Ugjenopprettbar til `true` på <xref:System.Messaging.DefaultPropertiesToSend>kan påvirke enhetstimer.</xref:System.Messaging.DefaultPropertiesToSend>       Hvis dette er en transaksjonskø meldingen, Message Queuing automatisk behandler meldingen som gjenopprettes, uavhengig om Ugjenopprettbar er satt til `true`."
   syntax:
     content: public bool Recoverable { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the message is guaranteed delivery by saving it to disk while en route; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if delivery is not assured. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis meldingen garanteres levering ved å lagre den på disken underveis; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> Hvis levering ikke er sikret. Standard <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Messaging.DefaultPropertiesToSend.Recoverable*
   exceptions: []
   platform:
@@ -307,13 +307,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets the queue that receives application-generated response messages."
-  remarks: "The ResponseQueue property identifies the queue that receives application-generated response messages that are returned to the sending application by the receiving application. Response queues are specified by the sending application when the application sends its messages. Any available queue can be specified as a response queue.       Messages returned to the response queue are application-specific. The application must define what is in the messages as well as what is to be done when a message is received."
+  summary: "Henter eller angir køen som mottar programgenererte svarmeldinger."
+  remarks: "Egenskapen ResponseQueue identifiserer køen som mottar programgenererte svarmeldinger som returneres til avsenderprogrammet applikasjon. Køer er angitt av avsenderprogrammet når programmet sender meldingene. Alle tilgjengelige køer kan angis som en svarkø.       Meldinger som returneres til svarkøen er programspesifikk. Programmet må definere hva som er i meldingene og hva som skal utføres når en melding er mottatt."
   syntax:
     content: public System.Messaging.MessageQueue ResponseQueue { get; set; }
     return:
       type: System.Messaging.MessageQueue
-      description: "The <xref href=&quot;System.Messaging.MessageQueue&quot;></xref> to which application-generated response messages are returned. The default is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "Den <xref href=&quot;System.Messaging.MessageQueue&quot;> </xref> meldinger returneres til som programgenererte svar. Standard <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.Messaging.DefaultPropertiesToSend.ResponseQueue*
   exceptions: []
   platform:
@@ -330,13 +330,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets the time limit for the message to be retrieved from the destination queue."
-  remarks: "The TimeToBeReceived property specifies the total time in seconds for a sent message to be received from the destination queue. This time limit includes the time spent getting to the destination queue, plus the time spent waiting in the queue before the message is retrieved by an application.      > [!CAUTION] >  When using dependent client computers, synchronize the clock on the client computer with the clock on the server running Message Queuing. If the two clocks are not synchronized, you might see unpredictable behavior when sending messages when TimeToBeReceived is not <xref:System.Messaging.Message.InfiniteTimeout>.       If the TimeToBeReceived interval expires before the message is removed from the queue, the Message Queuing application discards the message. The message is either sent to the dead-letter queue, if the message&quot;s <xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A> property is set to `true`, or ignored, if <xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A> is `false`. If TimeToBeReceived is less than <xref:System.Messaging.DefaultPropertiesToSend.TimeToReachQueue%2A>, TimeToBeReceived takes precedence.       The message&quot;s <xref:System.Messaging.DefaultPropertiesToSend.AcknowledgeType%2A> property can be set to request that Message Queuing send a negative acknowledgment message back to the sending application if the message is not retrieved before the timer expires.      > [!CAUTION] >  If you have specified to receive <xref:System.Messaging.DefaultPropertiesToSend.TimeToReachQueue%2A> negative acknowledgments, you will not receive them when the value of TimeToBeReceived is less than the value of <xref:System.Messaging.DefaultPropertiesToSend.TimeToReachQueue%2A>.       When several messages are sent in a transaction, Message Queuing uses the value of the first message&quot;s TimeToBeReceived property."
+  summary: "Henter eller angir tidsgrensen for meldingen som skal hentes fra målkøen."
+  remarks: "Egenskapen TimeToBeReceived angir tiden i sekunder for en sendt melding mottas fra målkøen. Denne tidsgrensen inkluderer tiden som brukes til å få tilgang til målkøen, pluss tiden brukes på å vente i køen før meldingen hentes av en applikasjon.      > [!CAUTION] > Ved avhengige klientdatamaskiner, synkronisere klokken på klientdatamaskinen med klokken på serveren som kjører Message Queuing. Hvis to klokkene ikke er synkronisert, kan du se uforutsigbart virkemåte under sending av meldinger når TimeToBeReceived ikke <xref:System.Messaging.Message.InfiniteTimeout>.</xref:System.Messaging.Message.InfiniteTimeout>       Hvis TimeToBeReceived intervallet utløper før den fjernes fra køen, forkastes Message Queuing-programmet meldingen. Meldingen er enten sendt til blindkøen, Hvis meldingens <xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A>er satt til `true`, eller ignorert, hvis <xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A>er `false`.</xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A> </xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A> Hvis TimeToBeReceived er mindre enn <xref:System.Messaging.DefaultPropertiesToSend.TimeToReachQueue%2A>, TimeToBeReceived prioriteres.</xref:System.Messaging.DefaultPropertiesToSend.TimeToReachQueue%2A>       Meldingens <xref:System.Messaging.DefaultPropertiesToSend.AcknowledgeType%2A>egenskapen kan angis til å be om at Message Queuing sende en negativ bekreftelsesmelding tilbake til avsenderprogrammet Hvis meldingen ikke hentes før tidtakeren utløper.</xref:System.Messaging.DefaultPropertiesToSend.AcknowledgeType%2A>      > [!CAUTION] > Hvis du har angitt til å motta <xref:System.Messaging.DefaultPropertiesToSend.TimeToReachQueue%2A>negative bekreftelser, vil du ikke motta dem når verdien for TimeToBeReceived er mindre enn verdien for <xref:System.Messaging.DefaultPropertiesToSend.TimeToReachQueue%2A>.</xref:System.Messaging.DefaultPropertiesToSend.TimeToReachQueue%2A> </xref:System.Messaging.DefaultPropertiesToSend.TimeToReachQueue%2A>       Når flere meldinger sendt i en transaksjon, bruker Message Queuing verdien for den første meldingen TimeToBeReceived egenskapen."
   syntax:
     content: public TimeSpan TimeToBeReceived { get; set; }
     return:
       type: System.TimeSpan
-      description: "The total time, in seconds, for a sent message to be received from the destination queue. The default is <xref href=&quot;System.Messaging.Message.InfiniteTimeout&quot;></xref>."
+      description: "Den totale tiden, i sekunder for en sendt melding mottas fra målkøen. Standard <xref href=&quot;System.Messaging.Message.InfiniteTimeout&quot;> </xref>."
   overload: System.Messaging.DefaultPropertiesToSend.TimeToBeReceived*
   exceptions: []
   platform:
@@ -353,13 +353,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets the time limit for the message to reach the queue."
-  remarks: "If the TimeToReachQueue interval expires before the message reaches its destination, the Message Queuing application discards the message. The message is either sent to the dead-letter queue, if the message&quot;s <xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A> property is set to `true`, or ignored, if <xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A> is `false`. If TimeToReachQueue is greater than <xref:System.Messaging.DefaultPropertiesToSend.TimeToBeReceived%2A>, <xref:System.Messaging.DefaultPropertiesToSend.TimeToBeReceived%2A> takes precedence.       The message&quot;s <xref:System.Messaging.DefaultPropertiesToSend.AcknowledgeType%2A> property can be set to request that Message Queuing send a negative acknowledgment message back to the sending application if the message does not arrive before the timer expires.       If TimeToReachQueue is 0 seconds, Message Queuing tries once to send the message to its destination if the queue is waiting for the message. If the queue is local, the message always reaches the queue.       When several messages are sent in a transaction, Message Queuing uses the value of the first message&quot;s TimeToReachQueue property."
+  summary: "Henter eller angir tidsgrensen for å nå køen meldingen."
+  remarks: "Hvis TimeToReachQueue intervallet utløper før meldingen når målet, forkastes Message Queuing-programmet meldingen. Meldingen er enten sendt til blindkøen, Hvis meldingens <xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A>er satt til `true`, eller ignorert, hvis <xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A>er `false`.</xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A> </xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A> Hvis TimeToReachQueue er større enn <xref:System.Messaging.DefaultPropertiesToSend.TimeToBeReceived%2A>, <xref:System.Messaging.DefaultPropertiesToSend.TimeToBeReceived%2A>prioriteres.</xref:System.Messaging.DefaultPropertiesToSend.TimeToBeReceived%2A> </xref:System.Messaging.DefaultPropertiesToSend.TimeToBeReceived%2A>       Meldingens <xref:System.Messaging.DefaultPropertiesToSend.AcknowledgeType%2A>egenskapen kan angis til å be om at Message Queuing sende en negativ bekreftelsesmelding tilbake til avsenderprogrammet Hvis meldingen ikke ankommer før tidtakeren utløper.</xref:System.Messaging.DefaultPropertiesToSend.AcknowledgeType%2A>       Hvis TimeToReachQueue er 0 sekunder, prøver Message Queuing ganger å sende meldingen til målet hvis køen venter for meldingen. Hvis køen lokale, når meldingen alltid køen.       Når flere meldinger sendt i en transaksjon, bruker Message Queuing verdien for den første meldingen TimeToReachQueue egenskapen."
   syntax:
     content: public TimeSpan TimeToReachQueue { get; set; }
     return:
       type: System.TimeSpan
-      description: "The time limit in seconds for a message to reach the destination queue, from the time the message is sent. The default is <xref href=&quot;System.Messaging.Message.InfiniteTimeout&quot;></xref>."
+      description: "Tidsgrensen i sekunder for en melding der du nå målkøen etter meldingen sendes. Standard <xref href=&quot;System.Messaging.Message.InfiniteTimeout&quot;> </xref>."
   overload: System.Messaging.DefaultPropertiesToSend.TimeToReachQueue*
   exceptions: []
   platform:
@@ -376,13 +376,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets the transaction status queue on the source computer."
-  remarks: "The TransactionStatusQueue property identifies the transaction status queue on the source computer. The property is set by Message Queuing, and is used by connector applications when retrieving transactional messages sent to a foreign queue.       A foreign queue exists in a queuing system other than Microsoft Message Queuing. Microsoft Message Queuing communicates with such queues through a connector application.       The connector application can use the transaction status queue to send acknowledgment messages back to the sending application. The transaction status queue should receive these acknowledgments even if the sending application does not request other acknowledgments."
+  summary: "Henter transaksjonsstatuskøen på kildedatamaskinen."
+  remarks: "Egenskapen TransactionStatusQueue identifiserer transaksjonsstatuskøen på kildedatamaskinen. Egenskapen er angitt av Message Queuing, og brukes av koblingen under henting av transaksjonelle meldinger sendt til en ekstern kø.       Det finnes en sekundærnøkkel kø i et queuing system enn Microsoft Message Queuing. Microsoft Message Queuing kommuniserer med slike køer via et tilkoblingsprogram.       Connector-programmet kan bruke transaksjonsstatuskøen sender bekreftelsesmeldinger tilbake til avsenderprogrammet. Transaksjonsstatuskøen skal få tilsendt disse bekreftelser selv om avsenderprogrammet ikke ber om andre bekreftelser."
   syntax:
     content: public System.Messaging.MessageQueue TransactionStatusQueue { get; set; }
     return:
       type: System.Messaging.MessageQueue
-      description: "The transaction status queue on the source computer, which is used for sending acknowledgement messages back to the sending application. The default is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "Transaksjonsstatuskøen på kildedatamaskinen som brukes for å sende bekreftelsesmeldinger til avsenderprogrammet. Standard <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.Messaging.DefaultPropertiesToSend.TransactionStatusQueue*
   exceptions: []
   platform:
@@ -399,13 +399,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets a value that indicates whether the message must be authenticated before being sent."
-  remarks: "The UseAuthentication property specifies whether the message needs to be authenticated. If the sending application requests authentication, Message Queuing creates a digital signature and uses it to sign the message when it is sent and to authenticate the message when it is received.       If a message is sent to a queue that only accepts authenticated messages, the message will be rejected when it reaches the queue if UseAuthentication is set to `false`.       It is not possible to look at the properties of a message and determine whether a message failed authentication. Messages that fail authentication are discarded and are not delivered to the queue."
+  summary: "Henter eller angir en verdi som angir om meldingen må godkjennes før sendes."
+  remarks: "Egenskapen UseAuthentication angir om meldingen må godkjennes. Hvis avsenderprogrammet ber om godkjenning, Message Queuing oppretter en digital signatur og bruker den til å logge meldingen når det er sendt og godkjenne meldingen når det mottas.       Hvis en melding sendes til en kø som godtar bare godkjente meldinger, meldingen vil bli avvist når køen Hvis UseAuthentication er satt til `false`.       Det er ikke mulig å se på Egenskaper for en melding og finne ut om en melding ble ikke godkjent. Meldinger som ikke godkjenning går tapt, og er levert ikke til køen."
   syntax:
     content: public bool UseAuthentication { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the sending application requested authentication for the message; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>anmodning avsenderprogrammet godkjenning for meldingen. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Standard <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Messaging.DefaultPropertiesToSend.UseAuthentication*
   exceptions: []
   platform:
@@ -422,13 +422,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets a value that indicates whether a copy of the message that could not be delivered should be sent to a dead-letter queue."
-  remarks: "<xref:System.Messaging.DefaultPropertiesToSend.UseJournalQueue%2A> and UseDeadLetterQueue specify how Message Queuing will track a message. If UseDeadLetterQueue is `true`, then in case of delivery failure (for non-transactional messages), the message is sent to the non-transactional dead-letter queue on the computer that could not deliver the message (for example, if a message timer expires).       In the case of delivery failure for transactional messages, the message is sent to the transactional dead-letter queue on the source computer in all negative and in-doubt cases.       When you store messages in a dead-letter queue, empty the queue periodically to remove messages that are no longer needed. Messages stored in dead-letter queues count against the size quota for the computer where the queue resides. The computer quota is set by the administrator and refers to the total size allocated for storing messages on a computer, not just in a single queue.       You do not create a journal or dead-letter queue. These are both system queues that are generated by Message Queuing."
+  summary: "Henter eller angir en verdi som angir om en kopi av meldingen ikke kan leveres skal sendes til en blindkø."
+  remarks: "<xref:System.Messaging.DefaultPropertiesToSend.UseJournalQueue%2A>og UseDeadLetterQueue angi hvordan Message Queuing vil spore en melding.</xref:System.Messaging.DefaultPropertiesToSend.UseJournalQueue%2A> Hvis UseDeadLetterQueue `true`, og deretter i levering mislyktes (for ikke-transaksjonell meldinger), meldingen er sendt til ikke-transaksjonell blindkø på datamaskinen som ikke kan levere meldingen (for eksempel hvis en melding tidtaker utløper).       Når det gjelder levering mislyktes for transaksjonsmeldinger sendes meldingen til transaksjons-blindkøen på kildedatamaskinen i alle negative og tvilsomme tilfeller.       Når du lagrer meldinger i en blindkø, tømme køen regelmessig for å fjerne meldinger som ikke lenger er nødvendige. Meldinger som er lagret i blindkøer antall kvoten størrelsen på datamaskinen der køen finnes. Datamaskin som er angitt av administratoren og refererer til den totale størrelsen som er tildelt for lagring av meldinger på en datamaskin, ikke bare i én enkelt kø.       Du oppretter ikke en kladd eller en blindkø. Dette er både systemkøer som er generert av Message Queuing."
   syntax:
     content: public bool UseDeadLetterQueue { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if message delivery failure should result in a copy of the message being sent to a dead-letter queue; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis feil ved levering av meldingen skal føre til en kopi av meldinger som sendes til en blindkø; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Standard <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue*
   exceptions: []
   platform:
@@ -445,13 +445,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets a value that indicates whether to make the message private."
-  remarks: "If a message is private, its body is encrypted before it is sent and is decrypted when it is received. To send a private message, the sending application must specify that encryption be used and, optionally, which encryption algorithm to apply.       When sending private messages, it is not necessary that your application perform the message encryption. Message Queuing can encrypt the message body for you when your application sends messages within a Microsoft Windows 2000 enterprise where there is access to the directory service. When receiving private messages, it is always the receiving Queue Manager that decrypts the message body."
+  summary: "Henter eller angir en verdi som angir om å gjøre det private meldingen."
+  remarks: "Hvis en melding er privat, krypteres body før den sendes og dekrypteres når det mottas. Avsenderprogrammet må angis som kryptering brukes til å sende en privat melding, og eventuelt hvilken krypteringsalgoritme som skal brukes.       Når du sender private meldinger, er det ikke nødvendig programmet utføre meldingskryptering. Message Queuing kan kryptering av meldingsteksten for deg når programmet sender meldinger i en Microsoft Windows 2000 enterprise der det er tilgang til katalogtjenesten. Det er alltid mottak købehandlingen som dekrypterer meldingsteksten under mottak av private meldinger."
   syntax:
     content: public bool UseEncryption { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to require Message Queuing to encrypt the message; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>å kreve at Message Queuing til å kryptere meldingen. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Standard <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Messaging.DefaultPropertiesToSend.UseEncryption*
   exceptions: []
   platform:
@@ -468,13 +468,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets a value that indicates whether a copy of the message should be kept in a machine journal on the originating computer."
-  remarks: "UseJournalQueue and <xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A> specify how Message Queuing will track a message. If UseJournalQueue is `true`, then at each step that a message is transmitted, a copy is kept in the computer journal on the originating computer.       The sent message will only be copied to the journal queue if the destination queue is on a remote computer. If the destination is on the local computer, the message is sent directly to the queue; there are no intermediate steps to require journaling.       When you store messages in a journal queue, empty the queue periodically to remove messages that are no longer needed. Messages stored in journal queues count against the quota for the computer where the queue resides (the computer quota is set by the administrator).       You do not create a journal or dead-letter queue. These are both system queues that are generated by Message Queuing.       Journaling can be specified by both the message and the queue. When UseJournalQueue is `true`, the message is journaled when it is sent. When <xref:System.Messaging.MessageQueue.UseJournalQueue%2A?displayProperty=fullName> is `true`, the message is journaled when it is received."
+  summary: "Henter eller angir en verdi som angir om en kopi av meldingen skal beholdes i en maskinen kladd på kildedatamaskinen."
+  remarks: "UseJournalQueue og <xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A>Angi hvordan Message Queuing vil spore en melding.</xref:System.Messaging.DefaultPropertiesToSend.UseDeadLetterQueue%2A> Hvis UseJournalQueue `true`, og deretter en kopi beholdes i en melding overføres hvert trinn datamaskinloggen på kildedatamaskinen.       Den sendte meldingen kopieres bare journalkøen hvis målkøen er på en ekstern datamaskin. Hvis målet er på den lokale datamaskinen, sendes meldingen direkte til køen. Det finnes ingen mellomliggende trinn for å kreve loggføringsnivåene.       Når du lagrer meldinger i en loggkø, tømme køen regelmessig for å fjerne meldinger som ikke lenger er nødvendige. Meldinger som er lagret i loggen køer antall kvoten for datamaskinen der køen ligger (datamaskin er angitt av administratoren).       Du oppretter ikke en kladd eller en blindkø. Dette er både systemkøer som er generert av Message Queuing.       Loggføringsnivåene kan være angitt både meldingen og køen. Når UseJournalQueue er `true`, meldingen er journaled når det er sendt. Når <xref:System.Messaging.MessageQueue.UseJournalQueue%2A?displayProperty=fullName>er `true`, meldingen er journaled når det mottas.</xref:System.Messaging.MessageQueue.UseJournalQueue%2A?displayProperty=fullName>"
   syntax:
     content: public bool UseJournalQueue { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to require that a copy of a message be kept in the originating computer&quot;s machine journal after it has been successfully transmitted from the originating computer to the next step; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis du vil kreve at en kopi av en melding holdes i den opprinnelige datamaskinen maskinen loggen etter den har blitt ble sendt fra kildedatamaskinen til neste trinn; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Standard <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Messaging.DefaultPropertiesToSend.UseJournalQueue*
   exceptions: []
   platform:
@@ -491,13 +491,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets a value that indicates whether to trace a message as it moves toward its destination queue."
-  remarks: "The UseTracing property specifies whether to track the route of a message as it moves toward its destination queue. If `true`, a Message Queuing-generated report message is sent to a report queue each time the message passes through a Message Queuing routing server. The report queue is specified by the source Queue Manager. Report queues are not limited to Message Queuing-generated report messages. Your application-generated messages can be sent to report queues as well.       Using tracing involves setting up Active Directory and specifying a report queue for the Message Queuing enterprise. These settings are configured by the administrator."
+  summary: "Henter eller angir en verdi som angir om du vil spore en melding som flyttes med målkøen."
+  remarks: "Egenskapen UseTracing angir om du vil spore ruten for en melding som flyttes med målkøen. Hvis `true`, Message Queuing-genererte sendes en rapportmelding til en rapportkø hver gang meldingen går gjennom Message Queuing ruting-server. Rapportkøen er angitt av kilden købehandlingen. Rapportkøer er begrenset til rapportmeldinger for Message Queuing-genererte. Meldingene programgenererte kan sendes til rapportkøer samt.       Ved hjelp av sporing innebærer å konfigurere Active Directory og angi en rapportkø for Message Queuing-organisasjon. Innstillingene er konfigurert av administratoren."
   syntax:
     content: public bool UseTracing { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if each intermediate step made by the original message en route to the destination queue will generate a report to be sent to the system&quot;s report queue; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis hvert mellomliggende trinn gjort av underveis den opprinnelige meldingen til målkøen genererer en rapport som skal sendes til systemets rapportkø; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Standard <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Messaging.DefaultPropertiesToSend.UseTracing*
   exceptions: []
   platform:
