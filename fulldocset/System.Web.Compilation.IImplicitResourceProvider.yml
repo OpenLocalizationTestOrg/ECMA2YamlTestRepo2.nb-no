@@ -11,8 +11,8 @@ items:
   nameWithType: IImplicitResourceProvider
   fullName: System.Web.Compilation.IImplicitResourceProvider
   type: Interface
-  summary: "Defines methods a class implements to act as an implicit resource provider."
-  remarks: "Resources can be declared explicitly or implicitly within a page. Implicit resources allow the developer to assign a collection of resource values to a control in one statement rather than assigning each value individually. When the page parser encounters an implicit resource in the form of `meta:resourcekey=&quot;WelcomeLabel&quot;`, it assigns all the values with the `WelcomeLabel` resource key prefix to the corresponding values in the control. For example, if a resource file defines values for `WelcomeLabel.Text` and `WelcomeLabel.ToolTip`, those values would be assigned to a `Label` control with an implicit reference to `WelcomeLabel`.       The IImplicitResourceProvider interface defines the methods a resource provider implements to access implicit resources. You can obtain a particular value using the <xref:System.Web.Compilation.IImplicitResourceProvider.GetObject%2A> method.       If you create a custom resource provider, you do not need to provide customized support for implicit resource localization. Implicit localization will work with your resource provider."
+  summary: "Definerer metoder implementerer en klasse som en implisitt ressursen-leverandør."
+  remarks: "Ressurser kan deklareres implisitt eller eksplisitt i en side. Implisitte ressurser tillater utviklere å tilordne en samling av ressursen verdier til en kontroll i én setning i stedet for å tilordne hver verdi seg. Når siden parseren støter på en implisitt ressurs i form av `meta:resourcekey=&quot;WelcomeLabel&quot;`, tilordne alle verdier med den `WelcomeLabel` ressursen key prefiks til de tilsvarende verdiene i kontrollen. For eksempel en ressursfil definerer verdier for `WelcomeLabel.Text` og `WelcomeLabel.ToolTip`, verdiene vil være tilordnet en `Label` kontroll med en implisitt referanse til `WelcomeLabel`.       Grensesnittet IImplicitResourceProvider definerer metodene ressursen leverandør implementerer til å få tilgang til implisitt ressurser. Du kan få en bestemt verdi ved hjelp av <xref:System.Web.Compilation.IImplicitResourceProvider.GetObject%2A>metode.</xref:System.Web.Compilation.IImplicitResourceProvider.GetObject%2A>       Hvis du oppretter en egendefinert ressurs-leverandør, trenger du ikke oppgi tilpasset støtte for implisitt ressursen lokalisering. Implisitte lokalisering fungerer med ressurs-leverandør."
   syntax:
     content: public interface IImplicitResourceProvider
   implements: []
@@ -30,17 +30,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Gets a collection of implicit resource keys as specified by the prefix."
-  remarks: "When implemented, the method returns a collection of implicit resource keys for a particular prefix. For example, `WelcomeLabel` is specified as the prefix in the expression `meta:resourcekey=&quot;WelcomeLabel&quot;`. Any properties in a local resource file with `WelcomeLabel` as a prefix should be returned with this method."
+  summary: "Henter en samling av implisitt ressursen nøkler som er angitt av prefikset."
+  remarks: "Når implementert, returnerer metoden en samling av implisitt ressursen nøkler for et bestemt prefiks. For eksempel `WelcomeLabel` er angitt som prefiks i uttrykket `meta:resourcekey=&quot;WelcomeLabel&quot;`. En egenskap i en lokal ressursfil med `WelcomeLabel` som skal returneres et prefiks med denne metoden."
   syntax:
     content: public System.Collections.ICollection GetImplicitResourceKeys (string keyPrefix);
     parameters:
     - id: keyPrefix
       type: System.String
-      description: "The prefix of the implicit resource keys to be collected."
+      description: "Prefikset av nøklene implisitt ressursen skal samles."
     return:
       type: System.Collections.ICollection
-      description: "An <xref:System.Collections.ICollection> of implicit resource keys."
+      description: "En <xref:System.Collections.ICollection>implisitt ressursen nøkkellisten.</xref:System.Collections.ICollection>"
   overload: System.Web.Compilation.IImplicitResourceProvider.GetImplicitResourceKeys*
   exceptions: []
   platform:
@@ -57,20 +57,20 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Gets an object representing the value of the specified resource key."
-  remarks: "When implemented, the method returns the object for the value represented by the implicit resource key."
+  summary: "Henter et objekt som representerer verdien for den angitte ressurs-nøkkelen."
+  remarks: "Når implementert, returnerer metoden objekt for verdien som er representert av Ressursnøkkelen for implisitt."
   syntax:
     content: public object GetObject (System.Web.Compilation.ImplicitResourceKey key, System.Globalization.CultureInfo culture);
     parameters:
     - id: key
       type: System.Web.Compilation.ImplicitResourceKey
-      description: "The resource key containing the prefix, filter, and property."
+      description: "Ressursnøkkelen som inneholder prefiks, filteret og egenskapen."
     - id: culture
       type: System.Globalization.CultureInfo
-      description: "The <xref:System.Globalization.CultureInfo> that represents the culture for which the resource is localized."
+      description: "Den <xref:System.Globalization.CultureInfo>som representerer kulturen som ressursen er lokalisert.</xref:System.Globalization.CultureInfo>"
     return:
       type: System.Object
-      description: "An <xref:System.Object> representing the localized value of an implicit resource key."
+      description: "En <xref:System.Object>som representerer den oversatte verdien for en implisitt ressursen nøkkel.</xref:System.Object>"
   overload: System.Web.Compilation.IImplicitResourceProvider.GetObject*
   exceptions: []
   platform:

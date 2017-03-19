@@ -13,8 +13,8 @@ items:
   nameWithType: CollectionConverter
   fullName: System.ComponentModel.CollectionConverter
   type: Class
-  summary: "Provides a type converter to convert collection objects to and from various other representations."
-  remarks: "The <xref:System.ComponentModel.CollectionConverter.GetProperties%2A> method for this type converter always returns `null`, and the <xref:System.ComponentModel.TypeConverter.GetPropertiesSupported%2A> method always returns `false`.       For more information about type converters, see the <xref:System.ComponentModel.TypeConverter> base class and [How to: Implement a Type Converter](~/add/includes/ajax-current-ext-md.md).      > [!NOTE] >  You should never create an instance of the CollectionConverter class. Instead, call the <xref:System.ComponentModel.TypeDescriptor.GetConverter%2A> method of the <xref:System.ComponentModel.TypeDescriptor> class. For more information, see the examples in the <xref:System.ComponentModel.TypeConverter> base class."
+  summary: "Gir et typen konverteringsprogram for å konvertere samling objekter til og fra ulike representasjoner."
+  remarks: "Den <xref:System.ComponentModel.CollectionConverter.GetProperties%2A>metode for denne typen konverteringsprogram returnerer alltid `null`, og <xref:System.ComponentModel.TypeConverter.GetPropertiesSupported%2A>metoden returnerer alltid `false`.</xref:System.ComponentModel.TypeConverter.GetPropertiesSupported%2A> </xref:System.ComponentModel.CollectionConverter.GetProperties%2A>       Du finner mer informasjon om typen konverteringsprogrammer i <xref:System.ComponentModel.TypeConverter>basisklasse og [slik: implementere et konverteringsprogram av typen](~/add/includes/ajax-current-ext-md.md).</xref:System.ComponentModel.TypeConverter>      > [!NOTE] > Du aldri må opprette en forekomst av klassen CollectionConverter. I stedet kalle <xref:System.ComponentModel.TypeDescriptor.GetConverter%2A>metoden for <xref:System.ComponentModel.TypeDescriptor>klasse.</xref:System.ComponentModel.TypeDescriptor> </xref:System.ComponentModel.TypeDescriptor.GetConverter%2A> For mer informasjon, kan du se eksemplene i <xref:System.ComponentModel.TypeConverter>basistabellen klasse.</xref:System.ComponentModel.TypeConverter>"
   syntax:
     content: 'public class CollectionConverter : System.ComponentModel.TypeConverter'
   inheritance:
@@ -71,7 +71,7 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Initializes a new instance of the <xref href=&quot;System.ComponentModel.CollectionConverter&quot;></xref> class."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.ComponentModel.CollectionConverter&quot;> </xref> klasse."
   syntax:
     content: public CollectionConverter ();
     parameters: []
@@ -91,34 +91,34 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Converts the given value object to the specified destination type."
-  remarks: "The `context` parameter can be used to extract additional information about the environment this converter is being invoked from. This can be `null`, so always check. Also, properties on the context object can return `null`.      > [!NOTE] >  The converted result will be shown in the property browser. For example, if you are converting a char collection into a string, it will be displayed as `char[] collection`."
+  summary: "Konverterer gitt verdi-objektet til den angitte måltypen."
+  remarks: "Den `context` parameter kan brukes til å trekke ut tilleggsinformasjon om denne konverteringsprogram aktiveres fra miljøet. Dette kan være `null`, så kontroller. Også egenskapene context-objektet kan returnere `null`.      > [!NOTE] > Konverterte resultatet som skal vises i egenskapen nettleseren. For eksempel hvis du konverterer en char-samling til en streng, den vises som `char[] collection`."
   syntax:
     content: public override object ConvertTo (System.ComponentModel.ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, Type destinationType);
     parameters:
     - id: context
       type: System.ComponentModel.ITypeDescriptorContext
-      description: "An <xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;></xref> that provides a format context."
+      description: "En <xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;> </xref> som gir en format-kontekst."
     - id: culture
       type: System.Globalization.CultureInfo
-      description: "The culture to which `value` will be converted."
+      description: "Kulturen som `value` konverteres."
     - id: value
       type: System.Object
-      description: "The <xref:System.Object> to convert. This parameter must inherit from <xref:System.Collections.ICollection>."
+      description: "Den <xref:System.Object>til å konvertere.</xref:System.Object> Denne parameteren må arve fra <xref:System.Collections.ICollection>.</xref:System.Collections.ICollection>"
     - id: destinationType
       type: System.Type
-      description: "The <xref:System.Type> to convert the value to."
+      description: "Den <xref:System.Type>ikke konvertere verdien til.</xref:System.Type>"
     return:
       type: System.Object
-      description: "An <xref:System.Object> that represents the converted value."
+      description: "En <xref:System.Object>som representerer konverterte verdien.</xref:System.Object>"
   overload: System.ComponentModel.CollectionConverter.ConvertTo*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>destinationType</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>destinationType</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The conversion cannot be performed."
+    description: "Konverteringen kan ikke utføres."
   platform:
   - net462
 - uid: System.ComponentModel.CollectionConverter.GetProperties(System.ComponentModel.ITypeDescriptorContext,System.Object,System.Attribute[])
@@ -133,23 +133,23 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Gets a collection of properties for the type of array specified by the value parameter using the specified context and attributes."
-  remarks: "The `context` parameter can be used to extract additional information about the environment this converter is being invoked from. This can be `null`, so always check. Also, properties on the context object can return `null`.       The attributes array that you pass in will be used to filter the array. The attributes can have a mix of <xref:System.Type> and <xref:System.Attribute> objects. Filtering is defined by the following rules:      -   A <xref:System.Type> object will be treated as a wildcard; it will match any property that has the <xref:System.Type> in its set of attributes.      -   If a property does not have an <xref:System.Attribute> of the same class, the property will not be included in the returned array.      -   If the attribute is an instance of <xref:System.Attribute>, the property must be an exact match or it will not be included in the returned array.      -   If an <xref:System.Attribute> instance is specified and it is the default property, it will be included in the returned array even if there is no instance of the <xref:System.Attribute> in the property.       Collections do not support properties; therefore, this method always returns `null`."
+  summary: "Henter en samling med egenskaper for typen matrise som er angitt av parameteren verdi ved hjelp av angitte konteksten og attributter."
+  remarks: "Den `context` parameter kan brukes til å trekke ut tilleggsinformasjon om denne konverteringsprogram aktiveres fra miljøet. Dette kan være `null`, så kontroller. Også egenskapene context-objektet kan returnere `null`.       Attributter matrisen du overfører i brukes til å filtrere matrisen. Attributtene kan ha en blanding av <xref:System.Type>og <xref:System.Attribute>objekter.</xref:System.Attribute> </xref:System.Type> Filtrering er definert av følgende regler: – en <xref:System.Type>objektet behandles som jokertegn; den blir samsvarer med en egenskap som har den <xref:System.Type>i et sett med attributter.</xref:System.Type> </xref:System.Type>      -Hvis en egenskap ikke har en <xref:System.Attribute>av den samme klassen egenskapen inkluderes ikke i den returnerte matrisen.</xref:System.Attribute>      -Hvis attributtet er en forekomst av <xref:System.Attribute>, egenskapen må være nøyaktig samsvar eller kan ikke inkluderes i den returnerte matrisen.</xref:System.Attribute>      -Hvis en <xref:System.Attribute>forekomsten er angitt, og den er egenskapen default, den skal inkluderes i den returnerte matrisen selv om det finnes ingen forekomst av den <xref:System.Attribute>i egenskapen.</xref:System.Attribute> </xref:System.Attribute>       Samlinger støtter ikke egenskaper; Derfor denne metoden returnerer alltid `null`."
   syntax:
     content: public override System.ComponentModel.PropertyDescriptorCollection GetProperties (System.ComponentModel.ITypeDescriptorContext context, object value, Attribute[] attributes);
     parameters:
     - id: context
       type: System.ComponentModel.ITypeDescriptorContext
-      description: "An <xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;></xref> that provides a format context."
+      description: "En <xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;> </xref> som gir en format-kontekst."
     - id: value
       type: System.Object
-      description: "An <xref:System.Object> that specifies the type of array to get the properties for."
+      description: "En <xref:System.Object>som angir hvilken type matrise ikke hente egenskaper for setningen for.</xref:System.Object>"
     - id: attributes
       type: System.Attribute[]
-      description: "An array of type <xref:System.Attribute> that will be used as a filter."
+      description: "En matrise av typen <xref:System.Attribute>som skal brukes som et filter.</xref:System.Attribute>"
     return:
       type: System.ComponentModel.PropertyDescriptorCollection
-      description: "A <xref href=&quot;System.ComponentModel.PropertyDescriptorCollection&quot;></xref> with the properties that are exposed for this data type, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if there are no properties. This method always returns <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "En <xref href=&quot;System.ComponentModel.PropertyDescriptorCollection&quot;> </xref> egenskaper som vises for denne datatypen eller <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Hvis det finnes ingen egenskaper. Denne metoden returnerer alltid <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.ComponentModel.CollectionConverter.GetProperties*
   exceptions: []
   platform:
@@ -166,17 +166,17 @@ items:
   assemblies:
   - System
   namespace: System.ComponentModel
-  summary: "Gets a value indicating whether this object supports properties."
-  remarks: "The `context` parameter can be used to extract additional information about the environment this converter is being invoked from. This can be `null`, so always check. Also, properties on the context object can return `null`.       Collections do not support properties; therefore, this method always returns `false`."
+  summary: "Henter en verdi som angir om dette objektet støtter egenskaper."
+  remarks: "Den `context` parameter kan brukes til å trekke ut tilleggsinformasjon om denne konverteringsprogram aktiveres fra miljøet. Dette kan være `null`, så kontroller. Også egenskapene context-objektet kan returnere `null`.       Samlinger støtter ikke egenskaper; Derfor denne metoden returnerer alltid `false`."
   syntax:
     content: public override bool GetPropertiesSupported (System.ComponentModel.ITypeDescriptorContext context);
     parameters:
     - id: context
       type: System.ComponentModel.ITypeDescriptorContext
-      description: "An <xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;></xref> that provides a format context."
+      description: "En <xref href=&quot;System.ComponentModel.ITypeDescriptorContext&quot;> </xref> som gir en format-kontekst."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> because <xref:System.ComponentModel.CollectionConverter.GetProperties*> should not be called to find the properties of this object. This method never returns <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>fordi <xref:System.ComponentModel.CollectionConverter.GetProperties*>skal ikke kalles for å finne egenskaper for dette objektet.</xref:System.ComponentModel.CollectionConverter.GetProperties*> Denne metoden returnerer aldri <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   overload: System.ComponentModel.CollectionConverter.GetPropertiesSupported*
   exceptions: []
   platform:

@@ -27,7 +27,7 @@ items:
   nameWithType: Context
   fullName: System.Runtime.Remoting.Contexts.Context
   type: Class
-  summary: "Defines an environment for the objects that are resident inside it and for which a policy can be enforced."
+  summary: "Definerer et miljø for objekter som finnes i den og en policy kan fremtvinges."
   remarks: "A context is an ordered sequence of properties that define an environment for the objects resident inside it. Contexts get created during the activation process for objects that are configured to require certain automatic services, such as synchronization, transactions, just-in-time activation, security, and so on. Multiple objects can live inside a context.  \n  \n Classes are marked with an instance of the <xref:System.Runtime.Remoting.Contexts.ContextAttribute> class, which provides the usage rules. Whenever a new object is instantiated, the .NET Framework finds a compatible or creates a new instance of the Context class for the object. Once an object is placed in a context, it stays in it for life. Classes that can be bound to a context are called context-bound classes. When accessed from another context, such classes are referenced directly by using a proxy. Any call from an object in one context to an object in another context will go through a context proxy and be affected by the policy that the combined context properties enforce.  \n  \n A new object's context is generally chosen based on meta-data attributes on the class. This mechanism is extensible through custom attributes. These are known as static-context properties, which are compiled into the class meta-data. Dynamic-context properties (also known as configuration properties) can be applied and configured by administrators.  \n  \n For more information on contexts, see [&#91;\\<topic://cpconboundariesprocessesapplicationdomainscontexts>&#93;](http://msdn.microsoft.com/en-us/7574180d-70df-44b8-8b78-55a119f2c96d)."
   syntax:
     content: >-
@@ -52,7 +52,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Initializes a new instance of the <xref href=&quot;System.Runtime.Remoting.Contexts.Context&quot;></xref> class."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Runtime.Remoting.Contexts.Context&quot;> </xref> klasse."
   syntax:
     content: public Context ();
     parameters: []
@@ -72,14 +72,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Allocates an unnamed data slot."
-  remarks: "The slot is allocated on all the contexts."
+  summary: "Tildeler spor en uten navn data."
+  remarks: "Sporet er tildelt i alle kontekster."
   syntax:
     content: public static LocalDataStoreSlot AllocateDataSlot ();
     parameters: []
     return:
       type: System.LocalDataStoreSlot
-      description: "A local data slot."
+      description: "En sporet i lokale data."
   overload: System.Runtime.Remoting.Contexts.Context.AllocateDataSlot*
   exceptions: []
   platform:
@@ -96,17 +96,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Allocates a named data slot."
-  remarks: "The slot is allocated on all the contexts. Named data slots are public and can be manipulated by anyone."
+  summary: "Tildeler et navngitt data spor."
+  remarks: "Sporet er tildelt i alle kontekster. Navngitt data spor er offentlig og kan redigeres av alle."
   syntax:
     content: public static LocalDataStoreSlot AllocateNamedDataSlot (string name);
     parameters:
     - id: name
       type: System.String
-      description: "The required name for the data slot."
+      description: "Data-spor nødvendige navnet."
     return:
       type: System.LocalDataStoreSlot
-      description: "A local data slot object."
+      description: "En lokal spor dataobjektet."
   overload: System.Runtime.Remoting.Contexts.Context.AllocateNamedDataSlot*
   exceptions: []
   platform:
@@ -123,12 +123,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Gets the context ID for the current context."
+  summary: "Henter hjelp-IDen for gjeldende kontekst."
   syntax:
     content: public virtual int ContextID { get; }
     return:
       type: System.Int32
-      description: "The context ID for the current context."
+      description: "IDen for gjeldende kontekst."
   overload: System.Runtime.Remoting.Contexts.Context.ContextID*
   exceptions: []
   platform:
@@ -145,12 +145,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Gets the array of the current context properties."
+  summary: "Henter en rekke kontekstegenskapene for gjeldende."
   syntax:
     content: public virtual System.Runtime.Remoting.Contexts.IContextProperty[] ContextProperties { get; }
     return:
       type: System.Runtime.Remoting.Contexts.IContextProperty[]
-      description: "The current context properties array; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the context does not have any properties attributed to it."
+      description: "Den gjeldende konteksten egenskaper matrisen. Ellers <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Hvis konteksten ikke har noen egenskaper som er knyttet til den."
   overload: System.Runtime.Remoting.Contexts.Context.ContextProperties*
   exceptions: []
   platform:
@@ -167,13 +167,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Gets the default context for the current application domain."
-  remarks: "Every thread in an application domain for which a context is not explicitly set is considered to be running in the default context."
+  summary: "Henter standardkonteksten for gjeldende programdomenet."
+  remarks: "Hver tråd i et programdomene som en kontekst som ikke er eksplisitt angitt anses å kjøre i default-kontekst."
   syntax:
     content: public static System.Runtime.Remoting.Contexts.Context DefaultContext { get; }
     return:
       type: System.Runtime.Remoting.Contexts.Context
-      description: "The default context for the <xref href=&quot;System.AppDomain&quot;></xref> namespace."
+      description: "Standardkonteksten for den <xref href=&quot;System.AppDomain&quot;> </xref> navneområde."
   overload: System.Runtime.Remoting.Contexts.Context.DefaultContext*
   exceptions: []
   platform:
@@ -190,14 +190,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Executes code in another context."
-  remarks: "A callback can be done by calling the DoCallBack method on it by passing in a delegate. The delegate is used to request a callback. The delegate must be a <xref:System.Runtime.Remoting.Contexts.CrossContextDelegate> class type."
+  summary: "Utfører kode i en annen kontekst."
+  remarks: "En tilbakeringing kan gjøres ved å kalle metoden DoCallBack kalles på den ved å sende i en representant. Representanten brukes til å be om en tilbakeringing. Representanten må være en <xref:System.Runtime.Remoting.Contexts.CrossContextDelegate>klassetypen.</xref:System.Runtime.Remoting.Contexts.CrossContextDelegate>"
   syntax:
     content: public void DoCallBack (System.Runtime.Remoting.Contexts.CrossContextDelegate deleg);
     parameters:
     - id: deleg
       type: System.Runtime.Remoting.Contexts.CrossContextDelegate
-      description: "The delegate used to request the callback."
+      description: "Representanten brukes til å be om tilbakeringing."
   overload: System.Runtime.Remoting.Contexts.Context.DoCallBack*
   exceptions: []
   platform:
@@ -214,8 +214,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Cleans up the backing objects for the nondefault contexts."
-  remarks: "For default contexts, backing objects are cleaned up during shut down of the <xref:System.AppDomain> class."
+  summary: "Rydder opp sikkerhetskopiering-objekter for ikke-standard kontekster."
+  remarks: "For standard kontekster ryddet sikkerhetskopiering objekter under avslutning av <xref:System.AppDomain>klasse.</xref:System.AppDomain>"
   syntax:
     content: ~Context ();
     parameters: []
@@ -235,14 +235,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Frees a named data slot on all the contexts."
-  remarks: "Named data slots are public and can be manipulated by anyone."
+  summary: "Frigjør plass en navngitt data på alle kontekster."
+  remarks: "Navngitt data spor er offentlig og kan redigeres av alle."
   syntax:
     content: public static void FreeNamedDataSlot (string name);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the data slot to free."
+      description: "Navnet på data plass til gratis."
   overload: System.Runtime.Remoting.Contexts.Context.FreeNamedDataSlot*
   exceptions: []
   platform:
@@ -259,8 +259,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Freezes the context, making it impossible to add or remove context properties from the current context."
-  remarks: "Context properties cannot be added after the context has been frozen."
+  summary: "Låser konteksten, slik at det ikke mulig å legge til eller fjern Kontekstegenskaper fra gjeldende kontekst."
+  remarks: "Kontekstegenskaper kan ikke legges etter konteksten har blitt låst."
   syntax:
     content: public virtual void Freeze ();
     parameters: []
@@ -268,7 +268,7 @@ items:
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The context is already frozen."
+    description: "Konteksten er allerede låst."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Contexts.Context.GetData(System.LocalDataStoreSlot)
@@ -283,16 +283,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Retrieves the value from the specified slot on the current context."
+  summary: "Henter verdien fra det angitte sporet i gjeldende kontekst."
   syntax:
     content: public static object GetData (LocalDataStoreSlot slot);
     parameters:
     - id: slot
       type: System.LocalDataStoreSlot
-      description: "The data slot that contains the data."
+      description: "Datasporet som inneholder dataene."
     return:
       type: System.Object
-      description: "Returns the data associated with <code>slot</code>."
+      description: "Returnerer dataene som er forbundet med <code> slot </code>."
   overload: System.Runtime.Remoting.Contexts.Context.GetData*
   exceptions: []
   platform:
@@ -309,17 +309,17 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Looks up a named data slot."
-  remarks: "If the name has not been used, a new slot is allocated. Named data slots are public and can be manipulated by anyone."
+  summary: "Søker etter et navngitt data spor."
+  remarks: "Hvis navnet ikke er brukt, er en ny spor tildelt. Navngitt data spor er offentlig og kan redigeres av alle."
   syntax:
     content: public static LocalDataStoreSlot GetNamedDataSlot (string name);
     parameters:
     - id: name
       type: System.String
-      description: "The data slot name."
+      description: "Navnet for plass."
     return:
       type: System.LocalDataStoreSlot
-      description: "Returns a local data slot."
+      description: "Returnerer et spor lokale data."
   overload: System.Runtime.Remoting.Contexts.Context.GetNamedDataSlot*
   exceptions: []
   platform:
@@ -336,16 +336,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Returns a specific context property, specified by name."
+  summary: "Returnerer en bestemt kontekst-egenskap angitt etter navn."
   syntax:
     content: public virtual System.Runtime.Remoting.Contexts.IContextProperty GetProperty (string name);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the property."
+      description: "Navnet på egenskapen."
     return:
       type: System.Runtime.Remoting.Contexts.IContextProperty
-      description: "The specified context property."
+      description: "Egenskapen angitt kontekst."
   overload: System.Runtime.Remoting.Contexts.Context.GetProperty*
   exceptions: []
   platform:
@@ -362,31 +362,31 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Registers a dynamic property implementing the <xref href=&quot;System.Runtime.Remoting.Contexts.IDynamicProperty&quot;></xref> interface with the remoting service."
-  remarks: "Based on `obj` and `ctx`, `prop` is asked to contribute a sink that is placed at some location in the path of remoting calls. If multiple properties are registered, their sinks will be called in an arbitrary order that can change between calls.       If `obj` is not `null`, and then if it is a proxy, all calls made on the proxy are intercepted. Otherwise, if `obj` is a real object, all calls on the object are intercepted. The `ctx` parameter must be `null`.       If `ctx` is not `null`, `obj` must be `null` and all calls entering and leaving the context are intercepted.       If both `ctx` and `obj` are `null`, all calls entering and leaving all contexts are intercepted."
+  summary: "Registrerer en dynamisk egenskapen implementering av <xref href=&quot;System.Runtime.Remoting.Contexts.IDynamicProperty&quot;> </xref> grensesnittet med tjenestene."
+  remarks: "Basert på `obj` og `ctx`, `prop` blir bedt om å bidrar sink som er plassert på en plassering i banen av ekstern kommunikasjon anrop. Hvis flere egenskaper er registrert, kalles til mottakere i en tilfeldig rekkefølge kan endre mellom samtaler.       Hvis `obj` er ikke `null`, og deretter Hvis det er en proxy, alle samtaler i proxyen er oppfanget. Ellers, hvis `obj` er en virkelig objekt alle samtaler i objektet er oppfanget. Den `ctx` -parameteren må være `null`.       Hvis `ctx` er ikke `null`, `obj` må være `null` og alle samtaler registrering og avslutter konteksten er oppfanget.       Hvis både `ctx` og `obj` er `null`, alle samtaler registrering og avslutter alle kontekster er oppfanget."
   syntax:
     content: public static bool RegisterDynamicProperty (System.Runtime.Remoting.Contexts.IDynamicProperty prop, ContextBoundObject obj, System.Runtime.Remoting.Contexts.Context ctx);
     parameters:
     - id: prop
       type: System.Runtime.Remoting.Contexts.IDynamicProperty
-      description: "The dynamic property to register."
+      description: "Den dynamiske til å registrere."
     - id: obj
       type: System.ContextBoundObject
-      description: "The object/proxy for which the `property` is registered."
+      description: "Objektet/proxyen for den `property` er registrert."
     - id: ctx
       type: System.Runtime.Remoting.Contexts.Context
-      description: "The context for which the `property` is registered."
+      description: "Konteksten for den `property` er registrert."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the property was successfully registered; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis egenskapen ble registrert; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Runtime.Remoting.Contexts.Context.RegisterDynamicProperty*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "Either <code>prop</code> or its name is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, or it is not dynamic (it does not implement <xref href=&quot;System.Runtime.Remoting.Contexts.IDynamicProperty&quot;></xref>)."
+    description: "Enten <code> prop </code> eller navnet er <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>, eller det er ikke dynamisk (implementerer ikke <xref href=&quot;System.Runtime.Remoting.Contexts.IDynamicProperty&quot;> </xref>)."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "Both an object as well as a context are specified (both <code>obj</code> and <code>ctx</code> are not <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>)."
+    description: "Både et objekt i tillegg til en kontekst som er angitt (begge <code> obj </code> og <code> ctx </code> ikke <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>)."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Contexts.Context.SetData(System.LocalDataStoreSlot,System.Object)
@@ -401,16 +401,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Sets the data in the specified slot on the current context."
+  summary: "Angir dataene i det angitte sporet i gjeldende kontekst."
   syntax:
     content: public static void SetData (LocalDataStoreSlot slot, object data);
     parameters:
     - id: slot
       type: System.LocalDataStoreSlot
-      description: "The data slot where the data is to be added."
+      description: "Datasporet hvor er dataene som skal legges til."
     - id: data
       type: System.Object
-      description: "The data that is to be added."
+      description: "Dataene som skal legges til."
   overload: System.Runtime.Remoting.Contexts.Context.SetData*
   exceptions: []
   platform:
@@ -427,22 +427,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Sets a specific context property by name."
-  remarks: "Adding properties to the default context is not allowed."
+  summary: "Angir en bestemt kontekstegenskap med navnet."
+  remarks: "Er ikke tillatt å legge til egenskaper i default-kontekst."
   syntax:
     content: public virtual void SetProperty (System.Runtime.Remoting.Contexts.IContextProperty prop);
     parameters:
     - id: prop
       type: System.Runtime.Remoting.Contexts.IContextProperty
-      description: "The actual context property."
+      description: "Faktiske context-egenskapen."
   overload: System.Runtime.Remoting.Contexts.Context.SetProperty*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The context is frozen."
+    description: "Konteksten er låst."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "The property or the property name is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "Egenskapen eller egenskapsnavnet <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   platform:
   - net462
 - uid: System.Runtime.Remoting.Contexts.Context.ToString
@@ -457,13 +457,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Returns a <xref:System.String> class representation of the current context."
+  summary: "Returnerer en <xref:System.String>klasse representasjon av gjeldende kontekst.</xref:System.String>"
   syntax:
     content: public override string ToString ();
     parameters: []
     return:
       type: System.String
-      description: "A <xref:System.String> class representation of the current context."
+      description: "En <xref:System.String>klasse representasjon av gjeldende kontekst.</xref:System.String>"
   overload: System.Runtime.Remoting.Contexts.Context.ToString*
   exceptions: []
   platform:
@@ -480,22 +480,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Unregisters a dynamic property implementing the <xref href=&quot;System.Runtime.Remoting.Contexts.IDynamicProperty&quot;></xref> interface."
+  summary: "Fjerner registreringer av en dynamisk egenskapen implementering av <xref href=&quot;System.Runtime.Remoting.Contexts.IDynamicProperty&quot;> </xref> grensesnitt."
   syntax:
     content: public static bool UnregisterDynamicProperty (string name, ContextBoundObject obj, System.Runtime.Remoting.Contexts.Context ctx);
     parameters:
     - id: name
       type: System.String
-      description: "The name of the dynamic property to unregister."
+      description: "Navnet på egenskapen dynamiske ikke avregistrere."
     - id: obj
       type: System.ContextBoundObject
-      description: "The object/proxy for which the `property` is registered."
+      description: "Objektet/proxyen for den `property` er registrert."
     - id: ctx
       type: System.Runtime.Remoting.Contexts.Context
-      description: "The context for which the `property` is registered."
+      description: "Konteksten for den `property` er registrert."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the object was successfully unregistered; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis objektet ble avregistrert; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Runtime.Remoting.Contexts.Context.UnregisterDynamicProperty*
   exceptions:
   - type: System.ArgumentNullException
@@ -503,7 +503,7 @@ items:
     description: "The <code>name</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "Both an object as well as a context are specified (both <code>obj</code> and <code>ctx</code> are not <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>)."
+    description: "Både et objekt i tillegg til en kontekst som er angitt (begge <code> obj </code> og <code> ctx </code> ikke <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>)."
   platform:
   - net462
 references:

@@ -14,7 +14,7 @@ items:
   nameWithType: ConfigurationBasedIssuerNameRegistry
   fullName: System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry
   type: Class
-  summary: "Represents an issuer name registry that maintains a list of trusted issuers loaded from elements in the application configuration file that associate each issuer name to the X.509 certificate that is needed to verify the signature of tokens produced by the issuer."
+  summary: "Representerer en utsteder navnet registret som inneholder en liste over godkjente leverandører er lastet inn fra elementer i programmets konfigurasjonsfil som knytter hver utstedernavn X.509-sertifikatet som trengs for å verifisere filens signatur med token fra utstederen."
   remarks: "The ConfigurationBasedIssuerNameRegistry class maintains a dictionary of trusted issuers by mapping the certificate of each trusted issuer to a name that refers to that issuer. The certificates are specified using the ASN.1 encoded form of the thumbprint. The issuer name can be any string, as long as it is unique within the scope of the application. This dictionary can be accessed through the <xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.ConfiguredTrustedIssuers%2A> property. The class can only resolve X.509 certificates.  \n  \n The map of trusted issuers is specified in a configuration file by adding entries under the [\\&lt;trustedIssuers\\&gt;](../Topic/%3CtrustedIssuers%3E.md) element. The `<trustedIssuers>` element is a child element of the [\\&lt;issuerNameRegistry\\&gt;](../Topic/%3CissuerNameRegistry%3E.md) element and it is valid when the ConfigurationBasedIssuerNameRegistry class is specified in the `type` attribute of that element. For more information, see the documentation for each of these elements in the [WIF Configuration Schema](~/add/includes/ajax-current-ext-md.md). For more information about issuer name registries, see the <xref:System.IdentityModel.Tokens.IssuerNameRegistry> class.  \n  \n You can derive from ConfigurationBasedIssuerNameRegistry to implement your own configuration based issuer name registry. Which methods you override will depend upon your implementation. For example, you can override the <xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.LoadCustomConfiguration%2A> method to load configuration from a custom configuration schema."
   example:
   - "The following XML shows configuration for a ConfigurationBasedIssuerNameRegistry added for a collection of security token handlers. The `<trustedIssuers>` element behaves like a classic .NET configuration collection, allowing the `<add>`, `<delete>` and `<clear>` elements as child elements.  \n  \n```  \n<system.identityModel>  \n  <identityConfiguration>  \n    <securityTokenHandlersCollection>  \n      <securityTokenHandlerConfiguration>  \n        <issuerNameRegistry type=\"System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry, System.IdentityModel\">  \n          <trustedIssuers>  \n             <add thumbprint=\"97249e … 158de\" name=\"contoso.com\" />  \n         </trustedIssuers>  \n        </issuerNameRegistry>  \n      </securityTokenHandlerConfiguration>  \n  </identityConfiguration>  \n</system.identityModel>  \n```"
@@ -41,7 +41,7 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Initializes a new instance of the <xref href=&quot;System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry&quot;></xref> class."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry&quot;> </xref> klasse."
   syntax:
     content: public ConfigurationBasedIssuerNameRegistry ();
     parameters: []
@@ -61,25 +61,25 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Adds an issuer to the dictionary of trusted issuers."
-  remarks: "You can call this method to add issuers to the <xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.ConfiguredTrustedIssuers%2A> dictionary. In derived classes, you can call this method from the <xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.LoadCustomConfiguration%2A> method to add issuers to the dictionary."
+  summary: "Legger til en utsteder liste over godkjente leverandører."
+  remarks: "Du kan kalle denne metoden for å legge til malutstedere til den <xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.ConfiguredTrustedIssuers%2A>ordlisten.</xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.ConfiguredTrustedIssuers%2A> I avledede klasser, kan du kalle denne metoden fra den <xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.LoadCustomConfiguration%2A>metode for å legge til malutstedere i ordlisten.</xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.LoadCustomConfiguration%2A>"
   syntax:
     content: public void AddTrustedIssuer (string certificateThumbprint, string name);
     parameters:
     - id: certificateThumbprint
       type: System.String
-      description: "ASN.1 encoded form of the issuer&quot;s certificate thumbprint."
+      description: "ASN.1 kodet form av den utsteder sertifikatavtrykk."
     - id: name
       type: System.String
-      description: "The name of the issuer."
+      description: "Navnet på utstederen."
   overload: System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.AddTrustedIssuer*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>certificateThumbprint</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or empty.       -or-       <code>name</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or empty."
+    description: "<code>certificateThumbprint</code>er <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> eller tom.       -or-       <code>name</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or empty."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The issuer specified by <code>certificateThumbprint</code> has already been configured. (The issuer already exists in the <xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.ConfiguredTrustedIssuers*> dictionary.)"
+    description: "Utsteder angitt av <code> certificateThumbprint </code> er allerede konfigurert. (Utstederen finnes allerede i den <xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.ConfiguredTrustedIssuers*>ordlisten.)</xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.ConfiguredTrustedIssuers*>"
   platform:
   - net462
 - uid: System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.ConfiguredTrustedIssuers
@@ -94,13 +94,13 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Gets the dictionary of trusted issuers that have been configured for this instance."
-  remarks: "The key to the dictionary is the ASN.1 encoded form of the thumbprint of the trusted issuer&quot;s certificate and the value is the issuer name. The dictionary contains the issuers that were specified in configuration and any additional issuers that have been added with the <xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.AddTrustedIssuer%2A> method."
+  summary: "Henter liste over godkjente leverandører som er konfigurert for denne forekomsten."
+  remarks: "Nøkkelen i ordlisten er ASN.1 kodet form av avtrykk for det klarerte utsteder sertifikatet og verdien er navnet på utsteder. Ordlisten inneholder malutstedere som ble angitt i konfigurasjonen og ekstra malutstedere som har blitt lagt til med den <xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.AddTrustedIssuer%2A>metoden.</xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.AddTrustedIssuer%2A>"
   syntax:
     content: public System.Collections.Generic.IDictionary<string,string> ConfiguredTrustedIssuers { get; }
     return:
       type: System.Collections.Generic.IDictionary{System.String,System.String}
-      description: "A dictionary that contains the trusted issuers."
+      description: "En liste som inneholder de klarerte malutstedere."
   overload: System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.ConfiguredTrustedIssuers*
   exceptions: []
   platform:
@@ -117,22 +117,22 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Returns the issuer name associated with the specified <xref href=&quot;System.IdentityModel.Tokens.X509SecurityToken&quot;></xref> by mapping the certificate thumbprint to a name in the trusted issuers dictionary."
-  remarks: "The default implementation searches the <xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.ConfiguredTrustedIssuers%2A> dictionary for the thumbprint of the X.509 certificate specified in `securityToken`. If an entry is found, the issuer name is returned; otherwise, `null` is returned. If `securityToken` is not assignable from <xref:System.IdentityModel.Tokens.X509SecurityToken>, `null` is returned."
+  summary: "Returnerer utstedernavn som er knyttet til den angitte <xref href=&quot;System.IdentityModel.Tokens.X509SecurityToken&quot;> </xref> ved å tilordne sertifikatavtrykket navnet i ordlisten klarerte malutstedere."
+  remarks: "Standard implementering Søk i <xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.ConfiguredTrustedIssuers%2A>ordliste for avtrykk for det X.509-sertifikatet som er angitt i `securityToken`.</xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.ConfiguredTrustedIssuers%2A> Hvis en oppføring er funnet, returneres utstedernavn; Ellers `null` returneres. Hvis `securityToken` kan ikke tilordnes fra <xref:System.IdentityModel.Tokens.X509SecurityToken>, `null` returneres.</xref:System.IdentityModel.Tokens.X509SecurityToken>"
   syntax:
     content: public override string GetIssuerName (System.IdentityModel.Tokens.SecurityToken securityToken);
     parameters:
     - id: securityToken
       type: System.IdentityModel.Tokens.SecurityToken
-      description: "The security token for which the issuer name is requested. Should be assignable as <xref href=&quot;System.IdentityModel.Tokens.X509SecurityToken&quot;></xref>."
+      description: "Sikkerhetstokenet navnet utsteder forespørres. Skal tilordnes som <xref href=&quot;System.IdentityModel.Tokens.X509SecurityToken&quot;> </xref>."
     return:
       type: System.String
-      description: "The issuer name if an entry for the certificate thumbprint of the token exists in the <xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.ConfiguredTrustedIssuers*> dictionary; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "Utstedernavn Hvis en oppføring for sertifikatavtrykket for tokenet finnes i den <xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.ConfiguredTrustedIssuers*>ordlisten; ellers <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>.</xref:System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.ConfiguredTrustedIssuers*>"
   overload: System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.GetIssuerName*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>securityToken</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>securityToken</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.LoadCustomConfiguration(System.Xml.XmlNodeList)
@@ -147,22 +147,22 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Loads the trusted issuers from configuration."
+  summary: "Laster inn klarerte malutstedere fra konfigurasjonen."
   remarks: "The LoadCustomConfiguration method is called by the configuration infrastructure. When this method is called, the `nodelist` will contain the top-level child elements of the [\\&lt;issuerNameRegistry\\&gt;](../Topic/%3CissuerNameRegistry%3E.md) element from the configuration file. Each of these may, in turn, contain attributes or child elements depending on the configuration schema you define for your derived class.  \n  \n This method is called by the configuration infrastructure. The default implementation loads configuration from a [\\&lt;trustedIssuers\\&gt;](../Topic/%3CtrustedIssuers%3E.md) element (configured under the [\\&lt;issuerNameRegistry\\&gt;](../Topic/%3CissuerNameRegistry%3E.md) element). You can override this method to provide support for your own custom configuration elements in derived classes."
   syntax:
     content: public override void LoadCustomConfiguration (System.Xml.XmlNodeList customConfiguration);
     parameters:
     - id: customConfiguration
       type: System.Xml.XmlNodeList
-      description: "The XML that represents the map of trusted issuers that is specified in the configuration file."
+      description: "XML-filen som representerer kartet over godkjente leverandører som er angitt i konfigurasjonsfilen."
   overload: System.IdentityModel.Tokens.ConfigurationBasedIssuerNameRegistry.LoadCustomConfiguration*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>customConfiguration</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>customConfiguration</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The configuration contains one or more elements that are not recognized."
+    description: "Konfigurasjonen inneholder ett eller flere elementer som ikke gjenkjennes."
   platform:
   - net462
 references:
