@@ -12,8 +12,8 @@ items:
   nameWithType: GenerateScriptTypeAttribute
   fullName: System.Web.Script.Services.GenerateScriptTypeAttribute
   type: Class
-  summary: "Specifies that the server type must be generated in the proxy object. This class cannot be inherited."
-  remarks: "In AJAX-enabled ASP.NET Web sites, ASP.NET can automatically generate proxy objects for methods of a Web service class. It does this for most top-level types for the input parameters and return values of any Web methods that are marked with <xref:System.Web.Script.Services.ScriptServiceAttribute>.       In other cases, if you proxy objects generated for server types, you must apply GenerateScriptTypeAttribute manually. You can apply GenerateScriptTypeAttribute to the Web service itself or to any Web service method or `static` page method marked with <xref:System.Web.Services.WebMethodAttribute>.       In some cases, even if the type corresponds to an input parameter or return value of a Web service method, the proxy will not be generated automatically. In that case, you must use the GenerateScriptTypeAttribute attribute to generate the proxy object for the type. This occurs for generic types and arrays that have more than one argument, such as `Dictionary<string,<T>>`.       One or more instances of GenerateScriptTypeAttribute can be applied to a Web service class or method. ASP.NET will then generate an ECMAScript (JavaScript) proxy class for each top-level type that is referenced by each declaration of GenerateScriptTypeAttribute.      > [!NOTE] >  If you want to generate proxy objects for nested types, you must manually apply GenerateScriptTypeAttribute to each nested type. ASP.NET generates proxies only for top-level types and does not automatically recursively apply the attribute to nested types.       For more information about how to use attributes, see [Attributes](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Angir at servertype må genereres i proxy-objektet. Denne klassen kan ikke arves."
+  remarks: "AJAX-aktiverte ASP.NET-webområder, kan ASP.NET automatisk generere proxy-objekter for metoder for en tjeneste-klasse. Det gjøres for de fleste på øverste nivå typer for inndataparametere og returverdier av en hvilken som helst webmetoder som er merket med <xref:System.Web.Script.Services.ScriptServiceAttribute>.</xref:System.Web.Script.Services.ScriptServiceAttribute>       I andre tilfeller Hvis du proxy-objekter som genereres for servertyper, må du bruke GenerateScriptTypeAttribute manuelt. Du kan bruke GenerateScriptTypeAttribute til webtjenesten seg selv eller en tjeneste-metode eller `static` siden metoden som er merket med <xref:System.Web.Services.WebMethodAttribute>.</xref:System.Web.Services.WebMethodAttribute>       I noen tilfeller, selv om typen tilsvarer en inndataparameter eller returverdien for en tjeneste-metode, genereres proxyen ikke automatisk. I så fall må du bruke attributtet GenerateScriptTypeAttribute til å generere proxy-objekt for typen. Dette skjer for generiske typer og matriser som har mer enn ett argument, for eksempel `Dictionary<string,<T>>`.       Én eller flere forekomster av GenerateScriptTypeAttribute kan brukes i en service-klasse eller metode. ASP.NET vil så generere en ECMAScript (JavaScript) proxy-klassen for hver på øverste nivå som det refereres til hver GenerateScriptTypeAttribute-deklarasjon.      > [!NOTE] > Hvis du vil generere proxy-objekter for nestet typer, må du manuelt bruke GenerateScriptTypeAttribute for hver nestet type. ASP.NET genererer proxyer bare for på øverste nivå typer og automatisk rekursivt gjelder ikke attributtet nestede typer.       Du finner mer informasjon om hvordan du bruker attributter [attributter](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following example shows how to apply GenerateScriptTypeAttribute to a Web service class and to a Web method. As a result, the `ColorObject` type and its nested type `FavoriteColors` are included in the proxy object.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
   syntax:
@@ -39,8 +39,8 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.Script.Services
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.Script.Services.GenerateScriptTypeAttribute&quot;></xref> class for the specified type."
-  remarks: "The <xref:System.Web.Script.Services.GenerateScriptTypeAttribute.ScriptTypeId%2A> property is an optional named parameter for this constructor."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Web.Script.Services.GenerateScriptTypeAttribute&quot;> </xref> klasse for den angitte typen."
+  remarks: "Den <xref:System.Web.Script.Services.GenerateScriptTypeAttribute.ScriptTypeId%2A>egenskapen er en valgfri navngitte parameteren for denne konstruktøren.</xref:System.Web.Script.Services.GenerateScriptTypeAttribute.ScriptTypeId%2A>"
   example:
   - "The following example shows how to use <xref:System.Web.Script.Services.GenerateScriptTypeAttribute> to generate a proxy object for the specified type that uses a specific type identifier for the metadata marker.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
   syntax:
@@ -48,12 +48,12 @@ items:
     parameters:
     - id: type
       type: System.Type
-      description: "The type to include in the proxy class."
+      description: "Typen som skal inkluderes i proxy-klassen."
   overload: System.Web.Script.Services.GenerateScriptTypeAttribute.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>type</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>type</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Web.Script.Services.GenerateScriptTypeAttribute.ScriptTypeId
@@ -68,13 +68,13 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.Script.Services
-  summary: "Gets or sets the type identifier for the type metadata marker."
-  remarks: "This is an optional property. If specified, the value of ScriptTypeId is used for the type metadata marker (&quot;__type&quot;) on the serialized JSON string instead of the assembly-qualified name of the type. During deserialization, the type resolver that is associated with the <xref:System.Web.Script.Serialization.JavaScriptSerializer> object will use the type metadata marker value to map back to the appropriate managed type."
+  summary: "Henter eller angir typeidentifikatoren for metadata Markørtype."
+  remarks: "Dette er en valgfri egenskap. Hvis angitt, brukes verdien for ScriptTypeId for metadata Markørtype (&quot;__type&quot;) på den serialiserte JSON-strengen i stedet for navnet på samlingen kvalifisert av typen. Under deserialisering, av typen løseren som er knyttet til den <xref:System.Web.Script.Serialization.JavaScriptSerializer>objektet bruker typeverdi for metadata merke til å tilordne tilbake til den aktuelle administrerte typen.</xref:System.Web.Script.Serialization.JavaScriptSerializer>"
   syntax:
     content: public string ScriptTypeId { get; set; }
     return:
       type: System.String
-      description: "The type identifier for the type metadata marker on the serialized JavaScript Object Notation (JSON) string. The default value is the assembly-qualified name of the type."
+      description: "Type-IDen for metadataene Markørtype på serialiserte JavaScript objektet notasjon (JSON) strengen. Standardverdien er navnet på samlingen kvalifisert av typen."
   overload: System.Web.Script.Services.GenerateScriptTypeAttribute.ScriptTypeId*
   exceptions: []
   platform:
@@ -91,12 +91,12 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.Script.Services
-  summary: "Gets the type that is included in the proxy object."
+  summary: "Henter typen som er inkludert i proxy-objekt."
   syntax:
     content: public Type Type { get; }
     return:
       type: System.Type
-      description: "The type object that is included in the generated proxy object."
+      description: "Type-objekt som er inkludert i generert proxy-objektet."
   overload: System.Web.Script.Services.GenerateScriptTypeAttribute.Type*
   exceptions: []
   platform:

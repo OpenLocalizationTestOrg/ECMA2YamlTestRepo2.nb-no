@@ -20,8 +20,8 @@ items:
   nameWithType: ComponentDispatcher
   fullName: System.Windows.Interop.ComponentDispatcher
   type: Class
-  summary: "Enables shared control of the message pump between [!INCLUDE[TLA2#tla_win32](~/add/includes/tla2sharptla-win32-md.md)] and [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] in interoperation scenarios."
-  remarks: "Although the class itself is static, all members of ComponentDispatcher are specific to a particular thread. For example, if you examine the value of <xref:System.Windows.Interop.ComponentDispatcher.IsThreadModal%2A> on two different threads, you might get different values.       The methods are static but they are backed by per-thread data structures.  The static methods allow singleton access but the ComponentDispatcher is sorting out the appropriate per-thread operations.       The owner of the message pump is defined by the code that calls the [!INCLUDE[TLA2#tla_win32](~/add/includes/tla2sharptla-win32-md.md)] function  [GetMessage](http://msdn.microsoft.com/library/ms644936.aspx). The owner calls <xref:System.Windows.Interop.ComponentDispatcher.RaiseThreadMessage%2A> for every keyboard message. This method raises the <xref:System.Windows.Interop.ComponentDispatcher.ThreadFilterMessage> event with the messages contained in the event data. If that event is not handled, the owner raises the <xref:System.Windows.Interop.ComponentDispatcher.ThreadPreprocessMessage> event with the messages contained in the event argument.      > [!NOTE] >  Only keyboard messages are supported."
+  summary: "Aktiverer delt kontroll over meldingen pumpe mellom [!INCLUDE[TLA2#tla_win32](~/add/includes/tla2sharptla-win32-md.md)] og [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] i interoperation tilfeller."
+  remarks: "Selv om selve klassen er statisk, er alle medlemmer av ComponentDispatcher spesifikke for en bestemt tråd. Hvis du undersøke verdien for eksempel <xref:System.Windows.Interop.ComponentDispatcher.IsThreadModal%2A>på to forskjellige tråder, kan du få ulike verdier.</xref:System.Windows.Interop.ComponentDispatcher.IsThreadModal%2A>       Metodene som er statisk, men de støttes av per tråd datastrukturer.  Statiske metoder singleton adgang, men ComponentDispatcher sortering av passende per tråd-operasjoner.       Eieren av meldingen pumpe er definert av koden som kaller den [!INCLUDE[TLA2#tla_win32](~/add/includes/tla2sharptla-win32-md.md)] funksjonen [GetMessage](http://msdn.microsoft.com/library/ms644936.aspx). Kall eieren <xref:System.Windows.Interop.ComponentDispatcher.RaiseThreadMessage%2A>for hver tastatur-melding.</xref:System.Windows.Interop.ComponentDispatcher.RaiseThreadMessage%2A> Denne metoden opphøyer den <xref:System.Windows.Interop.ComponentDispatcher.ThreadFilterMessage>hendelsen med meldinger inneholdt i data.</xref:System.Windows.Interop.ComponentDispatcher.ThreadFilterMessage> Hvis hendelsen ikke behandles, opphøyer eieren av <xref:System.Windows.Interop.ComponentDispatcher.ThreadPreprocessMessage>hendelsen meldingene finnes i argumentet.</xref:System.Windows.Interop.ComponentDispatcher.ThreadPreprocessMessage>      > [!NOTE] > Bare tastatur meldinger støttes."
   syntax:
     content: public static class ComponentDispatcher
   inheritance:
@@ -42,12 +42,12 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Interop
-  summary: "Gets the last message that was raised."
+  summary: "Henter den siste meldingen som oppstod."
   syntax:
     content: public static System.Windows.Interop.MSG CurrentKeyboardMessage { get; }
     return:
       type: System.Windows.Interop.MSG
-      description: "The last message."
+      description: "Den siste meldingen."
   overload: System.Windows.Interop.ComponentDispatcher.CurrentKeyboardMessage*
   exceptions: []
   platform:
@@ -64,12 +64,12 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Interop
-  summary: "Occurs when a thread becomes modal."
+  summary: "Forekommer når en tråd blir modal."
   syntax:
     content: public static event EventHandler EnterThreadModal;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -85,12 +85,12 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Interop
-  summary: "Gets a value that indicates whether the thread is modal."
+  summary: "Henter en verdi som angir om tråden er modal."
   syntax:
     content: public static bool IsThreadModal { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the thread is modal; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis tråden modal; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Windows.Interop.ComponentDispatcher.IsThreadModal*
   exceptions: []
   platform:
@@ -107,12 +107,12 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Interop
-  summary: "Occurs when a modal thread becomes nonmodal."
+  summary: "Forekommer når en modal tråd blir nonmodal."
   syntax:
     content: public static event EventHandler LeaveThreadModal;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -128,7 +128,7 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Interop
-  summary: "Called to indicate that a modal thread is no longer modal."
+  summary: "Kalles for å angi at en modal tråd lenger modal."
   syntax:
     content: public static void PopModal ();
     parameters: []
@@ -148,7 +148,7 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Interop
-  summary: "Called to indicate that the thread is modal."
+  summary: "Kalles for å angi at tråden modal."
   syntax:
     content: public static void PushModal ();
     parameters: []
@@ -168,7 +168,7 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Interop
-  summary: "Called to indicate that a thread is idle."
+  summary: "Kalles for å angi at en tråd er inaktiv."
   syntax:
     content: public static void RaiseIdle ();
     parameters: []
@@ -188,17 +188,17 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Interop
-  summary: "Indicates that a new message is available for possible handling."
-  remarks: "The owner of the message pump should call this method for every keyboard message."
+  summary: "Angir at det finnes en ny melding for mulige behandling."
+  remarks: "Eieren av meldingen pumpe må kalle denne metoden for hver tastatur-melding."
   syntax:
     content: public static bool RaiseThreadMessage (ref System.Windows.Interop.MSG msg);
     parameters:
     - id: msg
       type: System.Windows.Interop.MSG
-      description: "The message and its associated data."
+      description: "Meldingen, og de tilknyttede dataene."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>, if one of the modules listening to the message loop processed the message. The owner of the message loop should ignore the message. <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>, if the message was not processed. In this case, the owner of the message pump should call the [!INCLUDE[TLA2#tla_win32](~/add/includes/tla2sharptla-win32-md.md)] function [TranslateMessage](http://msdn.microsoft.com/library/ms644955.aspx) followed by [DispatchMessage](http://msdn.microsoft.com/library/ms644934.aspx)."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>, hvis ett av modulene lyttet til meldingen sløyfen behandlet meldingen. Eieren av meldingen sløyfen skal ignorere meldingen. <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>, Hvis meldingen ikke ble behandlet. I dette tilfellet eieren av meldingen pumpe må kalle den [!INCLUDE[TLA2#tla_win32](~/add/includes/tla2sharptla-win32-md.md)] funksjonen [TranslateMessage](http://msdn.microsoft.com/library/ms644955.aspx) etterfulgt av [DispatchMessage](http://msdn.microsoft.com/library/ms644934.aspx)."
   overload: System.Windows.Interop.ComponentDispatcher.RaiseThreadMessage*
   exceptions: []
   platform:
@@ -215,12 +215,12 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Interop
-  summary: "Occurs when the message pump receives a keyboard message."
+  summary: "Skjer når meldingen pumpe mottar en tastatur-melding."
   syntax:
     content: public static event System.Windows.Interop.ThreadMessageEventHandler ThreadFilterMessage;
     return:
       type: System.Windows.Interop.ThreadMessageEventHandler
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -236,13 +236,13 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Interop
-  summary: "Occurs when the thread is idle."
-  remarks: "If there are no messages in the queue, then the idle state announced by the ThreadIdle event is an efficient time to do processing."
+  summary: "Forekommer når tråden er inaktiv."
+  remarks: "Hvis det finnes ingen meldinger i køen, er inaktiv annonseres av hendelsen ThreadIdle en effektiv tid til å gjøre behandling."
   syntax:
     content: public static event EventHandler ThreadIdle;
     return:
       type: System.EventHandler
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -258,13 +258,13 @@ items:
   assemblies:
   - WindowsBase
   namespace: System.Windows.Interop
-  summary: "Occurs when the message pump receives a keyboard message."
-  remarks: "This event should be raised after <xref:System.Windows.Interop.ComponentDispatcher.ThreadFilterMessage>, if that event is not handled."
+  summary: "Skjer når meldingen pumpe mottar en tastatur-melding."
+  remarks: "Denne hendelsen skal oppstå etter <xref:System.Windows.Interop.ComponentDispatcher.ThreadFilterMessage>, hvis hendelsen ikke behandles.</xref:System.Windows.Interop.ComponentDispatcher.ThreadFilterMessage>"
   syntax:
     content: public static event System.Windows.Interop.ThreadMessageEventHandler ThreadPreprocessMessage;
     return:
       type: System.Windows.Interop.ThreadMessageEventHandler
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
