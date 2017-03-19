@@ -17,8 +17,8 @@ items:
   nameWithType: WSHttpBindingElement
   fullName: System.ServiceModel.Configuration.WSHttpBindingElement
   type: Class
-  summary: "Represents an interoperable binding that supports distributed transactions and secure, reliable sessions."
-  remarks: 'The wsHttpBinding is a secure, reliable, interoperable binding suitable for non-duplex service contracts. The binding implements the following specifications: WS-ReliableMessaging for reliability and WS-Security for message security and authentication. The transport is HTTP and message encoding is Text/XML encoding.'
+  summary: "Representerer en brukes sammen binding som støtter distribuerte transaksjoner og sikker, pålitelig økter."
+  remarks: 'WsHttpBinding er en sikker, pålitelig, brukes sammen binding som passer for ikke-dupleks tjenesten avtaler. Bindingen implementerer følgende spesifikasjoner: WS-ReliableMessaging for pålitelighet og WS-Security for sikkerhet for melding og godkjenning. Transport er HTTP og meldingskoding Text/XML-koding.'
   syntax:
     content: 'public class WSHttpBindingElement : System.ServiceModel.Configuration.WSHttpBindingBaseElement'
   inheritance:
@@ -95,7 +95,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Configuration
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Configuration.WSHttpBindingElement&quot;></xref> class."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.ServiceModel.Configuration.WSHttpBindingElement&quot;> </xref> klasse."
   syntax:
     content: public WSHttpBindingElement ();
     parameters: []
@@ -115,13 +115,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Configuration
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Configuration.WSHttpBindingElement&quot;></xref> class."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.ServiceModel.Configuration.WSHttpBindingElement&quot;> </xref> klasse."
   syntax:
     content: public WSHttpBindingElement (string name);
     parameters:
     - id: name
       type: System.String
-      description: "The configuration name of the binding. This value should be unique because it is used as identification for the binding."
+      description: "Navnet på av konfigurasjonen for bindingen. Denne verdien må være unike fordi den brukes som identifikasjon for bindingen."
   overload: System.ServiceModel.Configuration.WSHttpBindingElement.#ctor*
   exceptions: []
   platform:
@@ -138,13 +138,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Configuration
-  summary: "Gets or sets a value that indicates whether the WCF client will automatically store and resend any cookies sent by a single web service."
-  remarks: "Setting AllowCookies to `true` is useful when a client is interacting with one web service that uses cookies.  If you are accessing multiple services with the same cookie, set AllowCookies to `false` and you will have to manually add the cookie header to each outgoing message. The following code shows how to do this:      ```c#   MyWebServiceClient client = new MyWebServiceClient();              using (new OperationContextScope(client.InnerChannel))           {               client.DoSomething();                  // Extract the cookie embedded in the received web service response               // and stores it locally               HttpResponseMessageProperty response = (HttpResponseMessageProperty)               OperationContext.Current.IncomingMessageProperties[                   HttpResponseMessageProperty.Name];               sharedCookie = response.Headers[&quot;Set-Cookie&quot;];           }              MyOtherWebServiceClient otherClient = new MyOtherWebServiceClient();              using (new OperationContextScope(otherClient.InnerChannel))           {               // Embeds the extracted cookie in the next web service request               // Note that we manually have to create the request object since               // since it doesn&quot;t exist yet at this stage                HttpRequestMessageProperty request = new HttpRequestMessageProperty();               request.Headers[&quot;Cookie&quot;] = sharedCookie;               OperationContext.Current.OutgoingMessageProperties[                   HttpRequestMessageProperty.Name] = request;                  otherClient.DoSomethingElse();           }      ```"
+  summary: "Henter eller angir en verdi som angir om WCF-klienten automatisk lagre og sende informasjonskapsler som er sendt av en enkelt webtjeneste på nytt."
+  remarks: "Angi AllowCookies til `true` er nyttig når en klient samhandling med en webtjeneste som bruker informasjonskapsler.  Hvis du får tilgang til flere tjenester med samme informasjonskapsel (cookie), WantDestinationQueue AllowCookies `false` og du må legge til manuelt overskriften informasjonskapsel hver utgående melding. Følgende kode viser hvordan du gjør dette:```c#   MyWebServiceClient client = new MyWebServiceClient();              using (new OperationContextScope(client.InnerChannel))           {               client.DoSomething();                  // Extract the cookie embedded in the received web service response               // and stores it locally               HttpResponseMessageProperty response = (HttpResponseMessageProperty)               OperationContext.Current.IncomingMessageProperties[                   HttpResponseMessageProperty.Name];               sharedCookie = response.Headers[&quot;Set-Cookie&quot;];           }              MyOtherWebServiceClient otherClient = new MyOtherWebServiceClient();              using (new OperationContextScope(otherClient.InnerChannel))           {               // Embeds the extracted cookie in the next web service request               // Note that we manually have to create the request object since               // since it doesn&quot;t exist yet at this stage                HttpRequestMessageProperty request = new HttpRequestMessageProperty();               request.Headers[&quot;Cookie&quot;] = sharedCookie;               OperationContext.Current.OutgoingMessageProperties[                   HttpRequestMessageProperty.Name] = request;                  otherClient.DoSomethingElse();           }      ```"
   syntax:
     content: public bool AllowCookies { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_True&quot; name=&quot;True&quot; href=&quot;&quot;></xref> if automatic cookies processing is required; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_True&quot; name=&quot;True&quot; href=&quot;&quot;></xref>Hvis automatisk informasjonskapsler behandling er påkrevd. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.Configuration.WSHttpBindingElement.AllowCookies*
   exceptions: []
   platform:
@@ -161,12 +161,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Configuration
-  summary: "Gets the type of this binding element."
+  summary: "Henter elementtypen denne bindingen."
   syntax:
     content: protected override Type BindingElementType { get; }
     return:
       type: System.Type
-      description: "The <xref:System.Type> of this binding element."
+      description: "Den <xref:System.Type>for denne bindingselementet.</xref:System.Type>"
   overload: System.ServiceModel.Configuration.WSHttpBindingElement.BindingElementType*
   exceptions: []
   platform:
@@ -183,13 +183,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Configuration
-  summary: "Initializes this binding configuration element with the content of the specified binding element."
+  summary: "Initialiserer konfigurasjonselementet denne bindingen til innholdet i det angitte bindingen-elementet."
   syntax:
     content: protected override void InitializeFrom (System.ServiceModel.Channels.Binding binding);
     parameters:
     - id: binding
       type: System.ServiceModel.Channels.Binding
-      description: "A binding element."
+      description: "En Bindingselement."
   overload: System.ServiceModel.Configuration.WSHttpBindingElement.InitializeFrom*
   exceptions: []
   platform:
@@ -206,13 +206,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Configuration
-  summary: "Called when the content of a specified binding collection is applied to this binding configuration element."
+  summary: "Kalles når innholdet i en samling av angitte bindingen brukes for konfigurasjonselementet denne bindingen."
   syntax:
     content: protected override void OnApplyConfiguration (System.ServiceModel.Channels.Binding binding);
     parameters:
     - id: binding
       type: System.ServiceModel.Channels.Binding
-      description: "A collection of binding elements."
+      description: "En samling av binding elementer."
   overload: System.ServiceModel.Configuration.WSHttpBindingElement.OnApplyConfiguration*
   exceptions: []
   platform:
@@ -229,12 +229,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Configuration
-  summary: "Gets a <xref href=&quot;System.Configuration.ConfigurationPropertyCollection&quot;></xref> instance that contains a collection of <xref href=&quot;System.Configuration.ConfigurationProperty&quot;></xref> objects that can be attributes or <xref href=&quot;System.Configuration.ConfigurationElement&quot;></xref> objects of this configuration element."
+  summary: "Henter en <xref href=&quot;System.Configuration.ConfigurationPropertyCollection&quot;> </xref> -forekomst som inneholder en samling av <xref href=&quot;System.Configuration.ConfigurationProperty&quot;> </xref> objekter som kan være attributter eller <xref href=&quot;System.Configuration.ConfigurationElement&quot;> </xref> objekter av denne konfigurasjonselementet."
   syntax:
     content: protected override System.Configuration.ConfigurationPropertyCollection Properties { get; }
     return:
       type: System.Configuration.ConfigurationPropertyCollection
-      description: "A <xref href=&quot;System.Configuration.ConfigurationPropertyCollection&quot;></xref> instance that contains a collection of <xref href=&quot;System.Configuration.ConfigurationProperty&quot;></xref> objects that can be attributes or <xref href=&quot;System.Configuration.ConfigurationElement&quot;></xref> objects of this configuration element."
+      description: "En <xref href=&quot;System.Configuration.ConfigurationPropertyCollection&quot;> </xref> -forekomst som inneholder en samling av <xref href=&quot;System.Configuration.ConfigurationProperty&quot;> </xref> objekter som kan være attributter eller <xref href=&quot;System.Configuration.ConfigurationElement&quot;> </xref> objekter av denne konfigurasjonselementet."
   overload: System.ServiceModel.Configuration.WSHttpBindingElement.Properties*
   exceptions: []
   platform:
@@ -251,12 +251,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Configuration
-  summary: "Gets the type of security to be used with this binding."
+  summary: "Henter type sikkerhet som skal brukes med denne bindingen."
   syntax:
     content: public System.ServiceModel.Configuration.WSHttpSecurityElement Security { get; }
     return:
       type: System.ServiceModel.Configuration.WSHttpSecurityElement
-      description: "The <xref href=&quot;System.ServiceModel.Configuration.WSHttpSecurityElement&quot;></xref> that is used with this binding."
+      description: "Den <xref href=&quot;System.ServiceModel.Configuration.WSHttpSecurityElement&quot;> </xref> som brukes med denne bindingen."
   overload: System.ServiceModel.Configuration.WSHttpBindingElement.Security*
   exceptions: []
   platform:

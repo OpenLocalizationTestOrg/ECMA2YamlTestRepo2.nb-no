@@ -25,8 +25,8 @@ items:
   nameWithType: Receive
   fullName: System.ServiceModel.Activities.Receive
   type: Class
-  summary: "An activity that receives a message."
-  remarks: "The Receive activity can receive a single item or multiple items depending on the type of receive content used.      > [!WARNING] >  When a workflow contains multiple Receive activities with the same operation name, the <xref:System.ServiceModel.Activities.Receive.CorrelatesOn%2A> property must be set to the same set of correlation queries."
+  summary: "En aktivitet som mottar en melding."
+  remarks: "Aktiviteten motta kan motta ett enkelt element eller flere elementer avhengig av motta innhold brukes.      > [!WARNING] > Når en arbeidsflyt inneholder flere Receive-aktiviteter med samme operasjonsnavn i <xref:System.ServiceModel.Activities.Receive.CorrelatesOn%2A>egenskapen må være satt til det samme settet med korrelasjons spørringer.</xref:System.ServiceModel.Activities.Receive.CorrelatesOn%2A>"
   example:
   - "The following example shows how to create a Receive activity and add it to a workflow in code.  \n  \n [!code-cs[SendReceiveParameters#0](~/add/codesnippet/csharp/echoworkflowservice/program.cs#0)]  \n  \n The following example shows how to create a Receive activity and add it to a workflow service in XAML.  \n  \n```xaml  \n<WorkflowService mc:Ignorable=\"sap\" ConfigurationName=\"Service1\" Name=\"Service1\" mva:VisualBasic.Settings=\"Assembly references and imported namespaces serialized as XML namespaces\" xmlns=\"http://schemas.microsoft.com/netfx/2009/xaml/servicemodel\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mv=\"clr-namespace:Microsoft.VisualBasic;assembly=System\" xmlns:mva=\"clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities\" xmlns:p=\"http://schemas.microsoft.com/netfx/2009/xaml/activities\" xmlns:s=\"clr-namespace:System;assembly=mscorlib\" xmlns:s1=\"clr-namespace:System;assembly=System\" xmlns:s2=\"clr-namespace:System;assembly=System.Xml\" xmlns:s3=\"clr-namespace:System;assembly=System.Core\" xmlns:sad=\"clr-namespace:System.Activities.Debugger;assembly=System.Activities\" xmlns:sap=\"http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation\" xmlns:scg=\"clr-namespace:System.Collections.Generic;assembly=System\" xmlns:scg1=\"clr-namespace:System.Collections.Generic;assembly=System.ServiceModel\" xmlns:scg2=\"clr-namespace:System.Collections.Generic;assembly=System.Core\" xmlns:scg3=\"clr-namespace:System.Collections.Generic;assembly=mscorlib\" xmlns:sd=\"clr-namespace:System.Data;assembly=System.Data\" xmlns:sl=\"clr-namespace:System.Linq;assembly=System.Core\" xmlns:ssa=\"clr-namespace:System.ServiceModel.Activities;assembly=System.ServiceModel.Activities\" xmlns:st=\"clr-namespace:System.Text;assembly=mscorlib\" xmlns:x=\"http://schemas.microsoft.com/winfx/2006/xaml\">  \n  <p:Sequence sad:XamlDebuggerXmlReader.FileName=\"c:\\Projects\\WFServiceSnippets\\WFServiceSnippets\\Service1.xamlx\" sap:VirtualizedContainerService.HintSize=\"277,644\" mva:VisualBasic.Settings=\"Assembly references and imported namespaces serialized as XML namespaces\">  \n    <p:Sequence.Variables>  \n      <p:Variable x:TypeArguments=\"CorrelationHandle\" Name=\"__handle1\" />  \n      <p:Variable x:TypeArguments=\"x:String\" Name=\"Message\" />  \n      <p:Variable x:TypeArguments=\"x:String\" Name=\"Echo\" />  \n    </p:Sequence.Variables>  \n    <sap:WorkflowViewStateService.ViewState>  \n      <scg3:Dictionary x:TypeArguments=\"x:String, x:Object\">  \n        <x:Boolean x:Key=\"IsExpanded\">True</x:Boolean>  \n      </scg3:Dictionary>  \n    </sap:WorkflowViewStateService.ViewState>  \n    <Receive x:Name=\"__ReferenceID0\" CanCreateInstance=\"True\" DisplayName=\"ReceiveString\" sap:VirtualizedContainerService.HintSize=\"255,90\" OperationName=\"Echo\" ServiceContractName=\"Echo\">  \n      <Receive.CorrelationInitializers>  \n        <RequestReplyCorrelationInitializer CorrelationHandle=\"[__handle1]\" />  \n      </Receive.CorrelationInitializers>  \n      <ReceiveParametersContent>  \n        <p:OutArgument x:TypeArguments=\"x:String\" x:Key=\"message\">[Message]</p:OutArgument>  \n      </ReceiveParametersContent>  \n    </Receive>  \n    <p:WriteLine sap:VirtualizedContainerService.HintSize=\"255,61\" Text=\"[\"Message received: \" + Message]\" />  \n    <p:Assign sap:VirtualizedContainerService.HintSize=\"255,58\">  \n      <p:Assign.To>  \n        <p:OutArgument x:TypeArguments=\"x:String\">[Echo]</p:OutArgument>  \n      </p:Assign.To>  \n      <p:Assign.Value>  \n        <p:InArgument x:TypeArguments=\"x:String\">[\"<echo> \" + Message]</p:InArgument>  \n      </p:Assign.Value>  \n    </p:Assign>  \n    <SendReply Request=\"{x:Reference __ReferenceID0}\" DisplayName=\"SendReply\" sap:VirtualizedContainerService.HintSize=\"255,90\">  \n      <SendParametersContent>  \n        <p:InArgument x:TypeArguments=\"x:String\" x:Key=\"echo\">[Echo]</p:InArgument>  \n      </SendParametersContent>  \n    </SendReply>  \n    <p:WriteLine sap:VirtualizedContainerService.HintSize=\"255,61\" Text=\"[\"Message sent: \" + Echo]\" />  \n  </p:Sequence>  \n</WorkflowService>  \n  \n```"
   syntax:
@@ -61,7 +61,7 @@ items:
   assemblies:
   - System.ServiceModel.Activities
   namespace: System.ServiceModel.Activities
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Activities.Receive&quot;></xref> class."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.ServiceModel.Activities.Receive&quot;> </xref> klasse."
   remarks: ''
   example:
   - "The following example shows how to use this constructor.  \n  \n [!code-cs[SendReceiveParameters#1](~/add/codesnippet/csharp/echoworkflowservice/program.cs#1)]"
@@ -84,13 +84,13 @@ items:
   assemblies:
   - System.ServiceModel.Activities
   namespace: System.ServiceModel.Activities
-  summary: "Gets or sets the value of the action header of the message."
-  remarks: 'If the Action property is not explicitly set, its value defaults to: `https://tempuri.org/{service contract namespace}/{service contract name}/{operation name}`.'
+  summary: "Henter eller angir verdien for den handlingen meldingshodet."
+  remarks: 'Hvis egenskapen ikke eksplisitt er angitt, verdien som standard: `https://tempuri.org/{service contract namespace}/{service contract name}/{operation name}`.'
   syntax:
     content: public string Action { get; set; }
     return:
       type: System.String
-      description: "The action URI of the message."
+      description: "Handlingen URI for meldingen."
   overload: System.ServiceModel.Activities.Receive.Action*
   exceptions: []
   platform:
@@ -112,7 +112,7 @@ items:
     parameters:
     - id: metadata
       type: System.Activities.ActivityMetadata
-      description: "To be added."
+      description: "Som skal legges til."
   overload: System.ServiceModel.Activities.Receive.CacheMetadata*
   exceptions: []
   platform:
@@ -129,13 +129,13 @@ items:
   assemblies:
   - System.ServiceModel.Activities
   namespace: System.ServiceModel.Activities
-  summary: "Gets or sets a value that indicates whether a new workflow instance is created to process the message if the message does not correlate to an existing workflow instance.."
-  remarks: "If `true`, a new workflow instance is created to process the message if the message does not correlate with an existing workflow instance."
+  summary: "Henter eller angir en verdi som angir om det er opprettet en ny arbeidsflytforekomst for å behandle meldingen om meldingen ikke koordinere til en eksisterende arbeidsflytforekomst.."
+  remarks: "Hvis `true`, opprettes en ny arbeidsflytforekomst for å behandle meldingen hvis meldingen ikke samsvarer med en eksisterende arbeidsflytforekomsten."
   syntax:
     content: public bool CanCreateInstance { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a new workflow instance is created to process the message, otherwise <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis du har opprettet en ny arbeidsflytforekomst for å behandle meldingen, ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.ServiceModel.Activities.Receive.CanCreateInstance*
   exceptions: []
   platform:
@@ -152,12 +152,12 @@ items:
   assemblies:
   - System.ServiceModel.Activities
   namespace: System.ServiceModel.Activities
-  summary: "Gets or sets the data to receive. The content can be either a <xref href=&quot;System.ServiceModel.Activities.ReceiveMessageContent&quot;></xref> or a <xref href=&quot;System.ServiceModel.Activities.ReceiveParametersContent&quot;></xref>."
+  summary: "Henter eller angir dataene som skal motta. Innholdet kan være enten en <xref href=&quot;System.ServiceModel.Activities.ReceiveMessageContent&quot;> </xref> eller <xref href=&quot;System.ServiceModel.Activities.ReceiveParametersContent&quot;> </xref>."
   syntax:
     content: public System.ServiceModel.Activities.ReceiveContent Content { get; set; }
     return:
       type: System.ServiceModel.Activities.ReceiveContent
-      description: "The data to receive."
+      description: "Dataene som skal motta."
   overload: System.ServiceModel.Activities.Receive.Content*
   exceptions: []
   platform:
@@ -174,12 +174,12 @@ items:
   assemblies:
   - System.ServiceModel.Activities
   namespace: System.ServiceModel.Activities
-  summary: "Gets or sets the <xref href=&quot;System.ServiceModel.MessageQuerySet&quot;></xref> used to query the message to extract correlation data."
+  summary: "Henter eller angir den <xref href=&quot;System.ServiceModel.MessageQuerySet&quot;> </xref> brukes til å spørre meldingen for å trekke ut korrelasjonsdata."
   syntax:
     content: public System.ServiceModel.MessageQuerySet CorrelatesOn { get; set; }
     return:
       type: System.ServiceModel.MessageQuerySet
-      description: "A set of message queries used to extract correlation data from the incoming message."
+      description: "Et sett med spørringer for statusmeldinger brukes til å trekke ut korrelasjonsdata fra den innkommende meldingen."
   overload: System.ServiceModel.Activities.Receive.CorrelatesOn*
   exceptions: []
   platform:
@@ -196,12 +196,12 @@ items:
   assemblies:
   - System.ServiceModel.Activities
   namespace: System.ServiceModel.Activities
-  summary: "Gets or sets a correlation handle that is used to route the message to the appropriate workflow instance."
+  summary: "Henter eller angir et Korrelasjons-håndtak som brukes til å distribuere meldingen til arbeidsflytforekomsten som er nødvendig."
   syntax:
     content: public System.Activities.InArgument<System.ServiceModel.Activities.CorrelationHandle> CorrelatesWith { get; set; }
     return:
       type: System.Activities.InArgument{System.ServiceModel.Activities.CorrelationHandle}
-      description: "The correlation handle."
+      description: "Korrelasjons-referanse."
   overload: System.ServiceModel.Activities.Receive.CorrelatesWith*
   exceptions: []
   platform:
@@ -218,12 +218,12 @@ items:
   assemblies:
   - System.ServiceModel.Activities
   namespace: System.ServiceModel.Activities
-  summary: "Gets a collection of correlation initializers that initialize query-based, context, callback context, or request-reply correlations with a <xref href=&quot;System.ServiceModel.Activities.Send&quot;></xref> activity runs."
+  summary: "Henter en samling av Korrelasjons-startere initialisere basert på spørringen, konteksten, tilbakeringing kontekst eller forespørsel-svar korrelasjoner med en <xref href=&quot;System.ServiceModel.Activities.Send&quot;> </xref> aktiviteten kjører."
   syntax:
     content: public System.Collections.ObjectModel.Collection<System.ServiceModel.Activities.CorrelationInitializer> CorrelationInitializers { get; }
     return:
       type: System.Collections.ObjectModel.Collection{System.ServiceModel.Activities.CorrelationInitializer}
-      description: "A collection of correlation initializers."
+      description: "En samling av Korrelasjons startere."
   overload: System.ServiceModel.Activities.Receive.CorrelationInitializers*
   exceptions: []
   platform:
@@ -240,16 +240,16 @@ items:
   assemblies:
   - System.ServiceModel.Activities
   namespace: System.ServiceModel.Activities
-  summary: "Returns the receive activity from the given contract operation description."
+  summary: "Returnerer mottaksaktiviteten fra angitte kontrakten operasjonen beskrivelsen."
   syntax:
     content: public static System.ServiceModel.Activities.Receive FromOperationDescription (System.ServiceModel.Description.OperationDescription operation);
     parameters:
     - id: operation
       type: System.ServiceModel.Description.OperationDescription
-      description: "The contract operation description."
+      description: "Beskrivelse av kontrakten-operasjonen."
     return:
       type: System.ServiceModel.Activities.Receive
-      description: "A <xref href=&quot;System.ServiceModel.Activities.Receive&quot;></xref> object from the given contract operation description."
+      description: "En <xref href=&quot;System.ServiceModel.Activities.Receive&quot;> </xref> objektet fra den angitte kontrakt operasjonen beskrivelsen."
   overload: System.ServiceModel.Activities.Receive.FromOperationDescription*
   exceptions: []
   platform:
@@ -266,13 +266,13 @@ items:
   assemblies:
   - System.ServiceModel.Activities
   namespace: System.ServiceModel.Activities
-  summary: "Gets a collection of known types for the operation."
-  remarks: "This property should be used in conjunction with the <xref:System.Runtime.Serialization.DataContractSerializer>. It is ignored if <xref:System.Xml.Serialization.XmlSerializer> is used. [!INCLUDE[crabout](~/add/includes/ajax-current-ext-md.md)] known types, see [Data Contract Known Types](~/add/includes/ajax-current-ext-md.md). Known types specified in this property will be added to the <xref:System.ServiceModel.Description.OperationDescription.KnownTypes%2A> collection of the corresponding <xref:System.ServiceModel.Description.OperationDescription> for this operation."
+  summary: "Henter en samling av kjente typer for operasjonen."
+  remarks: "Denne egenskapen må brukes sammen med <xref:System.Runtime.Serialization.DataContractSerializer>.</xref:System.Runtime.Serialization.DataContractSerializer> Ignoreres hvis <xref:System.Xml.Serialization.XmlSerializer>brukes.</xref:System.Xml.Serialization.XmlSerializer> [!INCLUDE[crabout](~/add/includes/ajax-current-ext-md.md)]kjente typer, se [kontrakten kjent datatyper](~/add/includes/ajax-current-ext-md.md). Kjente typer som er angitt i denne egenskapen vil bli lagt til i <xref:System.ServiceModel.Description.OperationDescription.KnownTypes%2A>samling med den tilsvarende <xref:System.ServiceModel.Description.OperationDescription>for denne operasjonen.</xref:System.ServiceModel.Description.OperationDescription> </xref:System.ServiceModel.Description.OperationDescription.KnownTypes%2A>"
   syntax:
     content: public System.Collections.ObjectModel.Collection<Type> KnownTypes { get; }
     return:
       type: System.Collections.ObjectModel.Collection{System.Type}
-      description: "A collection of known types."
+      description: "En samling av kjente typer."
   overload: System.ServiceModel.Activities.Receive.KnownTypes*
   exceptions: []
   platform:
@@ -294,10 +294,10 @@ items:
     parameters:
     - id: metadata
       type: System.Activities.DynamicUpdate.UpdateMapMetadata
-      description: "To be added."
+      description: "Som skal legges til."
     - id: originalActivity
       type: System.Activities.Activity
-      description: "To be added."
+      description: "Som skal legges til."
   overload: System.ServiceModel.Activities.Receive.OnCreateDynamicUpdateMap*
   exceptions: []
   platform:
@@ -314,13 +314,13 @@ items:
   assemblies:
   - System.ServiceModel.Activities
   namespace: System.ServiceModel.Activities
-  summary: "Gets or sets the name of the operation implemented by the <xref href=&quot;System.ServiceModel.Activities.Receive&quot;></xref>."
-  remarks: "If the OperationName property is not set, an exception is thrown. The operation name is used to construct the default value for the <xref:System.ServiceModel.Activities.Receive.Action%2A> property if the <xref:System.ServiceModel.Activities.Receive.Action%2A> property is not explicitly set. OperationName is the <xref:System.ServiceModel.Description.OperationDescription.Name%2A> of the <xref:System.ServiceModel.Description.OperationDescription> for this operation."
+  summary: "Henter eller angir navnet på operasjonen implementeres av den <xref href=&quot;System.ServiceModel.Activities.Receive&quot;> </xref>."
+  remarks: "Hvis egenskapen OperationName ikke er angitt, er det et unntak som er registrert. Operasjonsnavnet på brukes til å konstruere standardverdien for den <xref:System.ServiceModel.Activities.Receive.Action%2A>egenskapen hvis den <xref:System.ServiceModel.Activities.Receive.Action%2A>egenskap ikke er eksplisitt satt.</xref:System.ServiceModel.Activities.Receive.Action%2A> </xref:System.ServiceModel.Activities.Receive.Action%2A> OperationName er den <xref:System.ServiceModel.Description.OperationDescription.Name%2A>av den <xref:System.ServiceModel.Description.OperationDescription>for denne operasjonen.</xref:System.ServiceModel.Description.OperationDescription> </xref:System.ServiceModel.Description.OperationDescription.Name%2A>"
   syntax:
     content: public string OperationName { get; set; }
     return:
       type: System.String
-      description: "The name of the operation."
+      description: "Navnet på operasjonen."
   overload: System.ServiceModel.Activities.Receive.OperationName*
   exceptions: []
   platform:
@@ -337,13 +337,13 @@ items:
   assemblies:
   - System.ServiceModel.Activities
   namespace: System.ServiceModel.Activities
-  summary: "Gets or sets a value that indicates the protection level for the operation."
-  remarks: "This property is set to one of the <xref:System.Net.Security.ProtectionLevel> enumeration values."
+  summary: "Henter eller angir en verdi som angir beskyttelsesnivået for operasjonen."
+  remarks: "Denne egenskapen er satt til en av de <xref:System.Net.Security.ProtectionLevel>nummereringsverdier.</xref:System.Net.Security.ProtectionLevel>"
   syntax:
     content: public Nullable<System.Net.Security.ProtectionLevel> ProtectionLevel { get; set; }
     return:
       type: System.Nullable{System.Net.Security.ProtectionLevel}
-      description: "The protection level for the operation."
+      description: "Beskyttelsesnivået for operasjonen."
   overload: System.ServiceModel.Activities.Receive.ProtectionLevel*
   exceptions: []
   platform:
@@ -360,13 +360,13 @@ items:
   assemblies:
   - System.ServiceModel.Activities
   namespace: System.ServiceModel.Activities
-  summary: "Gets or sets a value that specifies the serializer to use for this operation."
-  remarks: "The default serializer is the <xref:System.Runtime.Serialization.DataContractSerializer>."
+  summary: "Henter eller angir en verdi som angir serialiseringen skal brukes for denne operasjonen."
+  remarks: "Standard serialiseringen er <xref:System.Runtime.Serialization.DataContractSerializer>.</xref:System.Runtime.Serialization.DataContractSerializer>"
   syntax:
     content: public System.ServiceModel.Activities.SerializerOption SerializerOption { get; set; }
     return:
       type: System.ServiceModel.Activities.SerializerOption
-      description: "The serializer to use."
+      description: "Serialiserer skal brukes."
   overload: System.ServiceModel.Activities.Receive.SerializerOption*
   exceptions: []
   platform:
@@ -383,13 +383,13 @@ items:
   assemblies:
   - System.ServiceModel.Activities
   namespace: System.ServiceModel.Activities
-  summary: "Gets or sets the name of the service contract."
-  remarks: "This property is used to group service operations into individual service contracts. All <xref:System.ServiceModel.Activities.Receive> activities that have the same ServiceContractName are grouped into the same service contract (WSDL PortType). This property defaults to the name of the workflow service."
+  summary: "Henter eller angir navnet på servicekontrakten."
+  remarks: "Denne egenskapen brukes til å gruppere tjenesteoperasjoner i individuelle servicekontrakter. Alle <xref:System.ServiceModel.Activities.Receive>aktiviteter med samme ServiceContractName grupperes i samme servicekontrakten (WSDL PortType).</xref:System.ServiceModel.Activities.Receive> Som standard denne egenskapen til navnet på Arbeidsflyttjenesten."
   syntax:
     content: public System.Xml.Linq.XName ServiceContractName { get; set; }
     return:
       type: System.Xml.Linq.XName
-      description: "The service contract name."
+      description: "Navnet på servicekontrakten."
   overload: System.ServiceModel.Activities.Receive.ServiceContractName*
   exceptions: []
   platform:
@@ -406,13 +406,13 @@ items:
   assemblies:
   - System.ServiceModel.Activities
   namespace: System.ServiceModel.Activities
-  summary: "Returns a value that indicates whether the <xref:System.ServiceModel.Activities.Receive.CorrelatesOn*> property has changed from its default value and should be serialized."
+  summary: "Returnerer en verdi som angir om den <xref:System.ServiceModel.Activities.Receive.CorrelatesOn*>egenskapen er endret fra standardverdien og skal serialiseres.</xref:System.ServiceModel.Activities.Receive.CorrelatesOn*>"
   syntax:
     content: public bool ShouldSerializeCorrelatesOn ();
     parameters: []
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref:System.ServiceModel.Activities.Receive.CorrelatesOn*> property value should be serialized; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis den <xref:System.ServiceModel.Activities.Receive.CorrelatesOn*>egenskapsverdi må være serialiserte; ellers, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>.</xref:System.ServiceModel.Activities.Receive.CorrelatesOn*>"
   overload: System.ServiceModel.Activities.Receive.ShouldSerializeCorrelatesOn*
   exceptions: []
   platform:

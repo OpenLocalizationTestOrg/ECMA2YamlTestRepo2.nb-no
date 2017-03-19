@@ -19,8 +19,8 @@ items:
   nameWithType: CommittableTransaction
   fullName: System.Transactions.CommittableTransaction
   type: Class
-  summary: "Describes a committable transaction."
-  remarks: "The CommittableTransaction class provides an explicit way for applications to use a transaction, as opposed to using the <xref:System.Transactions.TransactionScope> class implicitly. Unlike the <xref:System.Transactions.TransactionScope> class, the application writer needs to specifically call the <xref:System.Transactions.CommittableTransaction.Commit%2A> and <xref:System.Transactions.Transaction.Rollback%2A> methods in order to commit or abort the transaction. However, only the creator of a transaction can commit the transaction. Therefore, copies of a committable transaction, obtained through the <xref:System.Transactions.Transaction.Clone%2A> method are not committable.      > [!NOTE] >  It is recommended that you create implicit transactions using the <xref:System.Transactions.TransactionScope> class, so that the ambient transaction context is automatically managed for you. You should also use the <xref:System.Transactions.TransactionScope> and <xref:System.Transactions.DependentTransaction> class for applications that require the use of the same transaction across multiple function calls or multiple thread calls. For more information on this model, see the [Implementing An Implicit Transaction Using Transaction Scope](http://msdn.microsoft.com/en-us/1ddba95e-7587-48b2-8838-708c275e7199) topic.       Creating a CommittableTransaction does not automatically set the ambient transaction, which is the transaction your code executes in. You can get or set the ambient transaction by calling the static <xref:System.Transactions.Transaction.Current%2A> property of the global <xref:System.Transactions.Transaction> object. For more information on ambient transactions, see the &quot; Managing Transaction Flow using TransactionScopeOption&quot; section of the [Implementing An Implicit Transaction Using Transaction Scope](http://msdn.microsoft.com/en-us/1ddba95e-7587-48b2-8838-708c275e7199) topic. If the ambient transaction is not set, any operation on a resource manager is not part of that transaction. You need to explicitly set and reset the ambient transaction, to ensure that resource managers operate under the right transaction context.       Until a CommittableTransaction has been committed, all the resources involved with the transaction are still locked.       A CommittableTransaction object cannot be reused. Once it has been committed or rolled back, it cannot be used again in a transaction or set as the current ambient transaction context."
+  summary: "Beskriver en transaksjon som ikke kan lagres."
+  remarks: "Klassen CommittableTransaction inneholder en eksplisitt metode for programmer å bruke en transaksjon, i motsetning til ved hjelp av den <xref:System.Transactions.TransactionScope>klasse implisitt.</xref:System.Transactions.TransactionScope> I motsetning til det <xref:System.Transactions.TransactionScope>klassen, program-skriveren må kalle spesielt den <xref:System.Transactions.CommittableTransaction.Commit%2A>og <xref:System.Transactions.Transaction.Rollback%2A>metoder for å lagre eller avbryte transaksjonen.</xref:System.Transactions.Transaction.Rollback%2A> </xref:System.Transactions.CommittableTransaction.Commit%2A> </xref:System.Transactions.TransactionScope> Bare oppretteren av en transaksjon kan imidlertid gjennomføre transaksjonen. Derfor kopier av en transaksjon som ikke kan lagres, som er anskaffet via den <xref:System.Transactions.Transaction.Clone%2A>metoden er ikke som ikke kan lagres.</xref:System.Transactions.Transaction.Clone%2A>      > [!NOTE] > Det anbefales at du oppretter implisitte transaksjoner ved hjelp av <xref:System.Transactions.TransactionScope>class, slik at de omkringliggende Transaksjonskonteksten administreres automatisk for deg.</xref:System.Transactions.TransactionScope> Du bør også bruke den <xref:System.Transactions.TransactionScope>og <xref:System.Transactions.DependentTransaction>klasse for programmer som krever bruk av den samme transaksjonen på tvers av flere funksjonskall eller flere tråd anrop.</xref:System.Transactions.DependentTransaction> </xref:System.Transactions.TransactionScope> For mer informasjon om denne modellen, kan du se den [implementere en implisitt transaksjon ved hjelp av transaksjonsområdet](http://msdn.microsoft.com/en-us/1ddba95e-7587-48b2-8838-708c275e7199) emnet.       Oppretter en CommittableTransaction er satt av omkringliggende transaksjonen, som utfører koden i transaksjonen. Du kan hente eller angi omkringliggende transaksjonen ved å kalle statiske <xref:System.Transactions.Transaction.Current%2A>-egenskapen til den globale <xref:System.Transactions.Transaction>objektet.</xref:System.Transactions.Transaction> </xref:System.Transactions.Transaction.Current%2A> For mer informasjon om omkringliggende transaksjoner, i avsnittet &quot;Behandle transaksjonen flyten ved hjelp av TransactionScopeOption&quot; for den [implementere en implisitt transaksjon ved hjelp av transaksjonsområdet](http://msdn.microsoft.com/en-us/1ddba95e-7587-48b2-8838-708c275e7199) emnet. Hvis omkringliggende transaksjonen ikke er angitt er noen operasjon på en ressursansvarlig ikke del av transaksjonen. Du må angi og tilbakestille den omsluttende transaksjonen, for å sikre at ressursbehandlinger fungere i den høyre Transaksjonskonteksten eksplisitt.       Før en CommittableTransaction har blitt lagret, låses fortsatt alle ressurser som er involvert i transaksjonen.       Et CommittableTransaction-objekt kan ikke brukes på nytt. Når den er iverksatt eller rullet tilbake, kan ikke brukes på nytt i en transaksjon eller angitt som omkringliggende Transaksjonskonteksten."
   example:
   - "The following sample creates two new instances of CommittableTransaction, commits and rolls back them respectively.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
   syntax:
@@ -69,7 +69,7 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Initializes a new instance of the <xref href=&quot;System.Transactions.CommittableTransaction&quot;></xref> class."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Transactions.CommittableTransaction&quot;> </xref> klasse."
   remarks: ''
   example:
   - "The following sample creates a new instance of <xref:System.Transactions.CommittableTransaction> and commits it.  \n  \n [!code-cs[Tx_CommittableTx#1](~/add/codesnippet/csharp/m-system.transactions.co_1.cs)]\n [!code-vb[Tx_CommittableTx#1](~/add/codesnippet/visualbasic/m-system.transactions.co_1.vb)]"
@@ -80,7 +80,7 @@ items:
   exceptions:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: "An attempt to create a transaction under Windows 98, Windows 98 Second Edition or Windows Millennium Edition."
+    description: "Et forsøk på å opprette en transaksjon under Windows 98, Windows 98 Second Edition eller installasjonen."
   platform:
   - net462
 - uid: System.Transactions.CommittableTransaction.#ctor(System.TimeSpan)
@@ -95,18 +95,18 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Initializes a new instance of the <xref href=&quot;System.Transactions.CommittableTransaction&quot;></xref> class with the specified <code>timeout</code> value."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Transactions.CommittableTransaction&quot;> </xref> klassen med den angitte <code> timeout </code> verdi."
   syntax:
     content: public CommittableTransaction (TimeSpan timeout);
     parameters:
     - id: timeout
       type: System.TimeSpan
-      description: "The maximum amount of time the transaction can exist, before it is aborted."
+      description: "Maksimum tid transaksjonen kan eksistere før den ble avbrutt."
   overload: System.Transactions.CommittableTransaction.#ctor*
   exceptions:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: "An attempt to create a transaction under Windows 98, Windows 98 Second Edition or Windows Millennium Edition."
+    description: "Et forsøk på å opprette en transaksjon under Windows 98, Windows 98 Second Edition eller installasjonen."
   platform:
   - net462
 - uid: System.Transactions.CommittableTransaction.#ctor(System.Transactions.TransactionOptions)
@@ -121,7 +121,7 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Initializes a new instance of the <xref href=&quot;System.Transactions.CommittableTransaction&quot;></xref> class with the specified transaction options."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Transactions.CommittableTransaction&quot;> </xref> angitte transaksjonsalternativene klasse."
   remarks: ''
   example:
   - "The following sample creates a new instance of <xref:System.Transactions.CommittableTransaction> with options, and aborts it.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
@@ -130,15 +130,15 @@ items:
     parameters:
     - id: options
       type: System.Transactions.TransactionOptions
-      description: "A <xref href=&quot;System.Transactions.TransactionOptions&quot;></xref> structure that describes the transaction options to use for the new transaction."
+      description: "En <xref href=&quot;System.Transactions.TransactionOptions&quot;> </xref> -strukturen som beskriver transaksjonsalternativene skal brukes for den nye transaksjonen."
   overload: System.Transactions.CommittableTransaction.#ctor*
   exceptions:
   - type: System.PlatformNotSupportedException
     commentId: T:System.PlatformNotSupportedException
-    description: "An attempt to create a transaction under Windows 98, Windows 98 Second Edition or Windows Millennium Edition."
+    description: "Et forsøk på å opprette en transaksjon under Windows 98, Windows 98 Second Edition eller installasjonen."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>options</code> is invalid."
+    description: "<code>options</code>er ugyldig."
   platform:
   - net462
 - uid: System.Transactions.CommittableTransaction.BeginCommit(System.AsyncCallback,System.Object)
@@ -153,20 +153,20 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Begins an attempt to commit the transaction asynchronously."
-  remarks: "This method returns immediately, before the transaction has been completed. The transaction then commits on a different thread, and the `asyncCallback` delegate is invoked when it has completed. After this method is called, you do not receive the outcome of the transaction until you call <xref:System.Transactions.CommittableTransaction.EndCommit%2A>.      > [!NOTE] >  The commit process may complete synchronously inside this method call."
+  summary: "Starter et forsøk på å utføre transaksjonen asynkront."
+  remarks: "Denne metoden returnerer umiddelbart før transaksjonen er fullført. Transaksjonen deretter utfører på en annen tråd og `asyncCallback` representanten aktiveres når den er fullført. Når denne metoden kalles, mottar du ikke resultatet av transaksjonen før du kaller <xref:System.Transactions.CommittableTransaction.EndCommit%2A>.</xref:System.Transactions.CommittableTransaction.EndCommit%2A>      > [!NOTE] > Commit-prosessen kan fullføre synkront i metodekallet."
   syntax:
     content: public IAsyncResult BeginCommit (AsyncCallback asyncCallback, object asyncState);
     parameters:
     - id: asyncCallback
       type: System.AsyncCallback
-      description: "The <xref:System.AsyncCallback> delegate that is invoked when the transaction completes. This parameter can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, in which case the application is not notified of the transaction&quot;s completion. Instead, the application must use the <xref:System.IAsyncResult> interface to check for completion and wait accordingly, or call <xref:System.Transactions.CommittableTransaction.EndCommit*> to wait for completion."
+      description: "Den <xref:System.AsyncCallback>representanten aktiveres når transaksjonen er fullført.</xref:System.AsyncCallback> Denne parameteren kan være <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>, da programmet ikke blir varslet om transaksjonen er fullført. I stedet programmet må bruke den <xref:System.IAsyncResult>grensesnitt for å se etter fullføring og vent tilsvarende, eller ring <xref:System.Transactions.CommittableTransaction.EndCommit*>ikke vente på fullføring.</xref:System.Transactions.CommittableTransaction.EndCommit*> </xref:System.IAsyncResult>"
     - id: asyncState
       type: System.Object
-      description: "An object, which might contain arbitrary state information, associated with the asynchronous commitment. This object is passed to the callback, and is not interpreted by <xref href=&quot;System.Transactions&quot;></xref>. A null reference is permitted."
+      description: "Et objekt som kan inneholde tilfeldig statusinformasjon, som er tilknyttet den asynkrone avtale. Dette objektet er sendt til tilbakeringing, og ikke tolkes av <xref href=&quot;System.Transactions&quot;> </xref>. En nullreferanse er tillatt."
     return:
       type: System.IAsyncResult
-      description: "An <xref:System.IAsyncResult> interface that can be used by the caller to check the status of the asynchronous operation, or to wait for the operation to complete."
+      description: "En <xref:System.IAsyncResult>grensesnitt som kan brukes av oppkalleren Kontroller statusen for den asynkrone operasjonen eller vente for å fullføre operasjonen.</xref:System.IAsyncResult>"
   overload: System.Transactions.CommittableTransaction.BeginCommit*
   exceptions: []
   platform:
@@ -183,8 +183,8 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Attempts to commit the transaction."
-  remarks: "When this method is called, all objects that have registered to participate in the transaction are polled and can independently indicate their vote to either commit or roll back the transaction. If any participant votes to roll back the transaction, it is rolled back and this method throws a <xref:System.Transactions.TransactionException> exception. This is a normal occurrence for a transaction and your code should catch and process such exceptions.       Commit and <xref:System.Transactions.CommittableTransaction.EndCommit%2A> block until the first phase of transaction processing is complete. The first phase ends after all resource managers and enlistments in the transaction have voted on the transaction outcome and the <xref:System.Transactions.TransactionManager> has durably decided to commit or abort the transaction. The second phase of processing is always asynchronous. Therefore, there is no guarantee that data just committed from within a given transaction will be immediately available afterwards when not using another transaction to view this data.       Because this method blocks until the first phase of transaction processing is complete, you should be extremely careful when using this method in a Windows Form (WinForm) application, or a deadlock can occur. If you call this method inside one WinForm Control event (for example, clicking a button), and use the synchronous <xref:System.Windows.Forms.Control.Invoke%2A> method to direct the control to perform some UI tasks (for example, changing colors) in the middle of processing the transaction, a deadlock will happen. This is because the <xref:System.Windows.Forms.Control.Invoke%2A> method is synchronous and blocks the worker thread until the UI thread finishes its job. However, in our scenario, the UI thread is also waiting for the worker thread to commit the transaction. The result is that none is able to proceed and the scope waits indefinitely for the Commit to finish. You should use <xref:System.Windows.Forms.Control.BeginInvoke%2A> rather than <xref:System.Windows.Forms.Control.Invoke%2A> wherever possible, because it is asynchronous and thus less prone to deadlock."
+  summary: "Forsøk på å utføre transaksjonen."
+  remarks: "Når denne metoden kalles, alle objekter som er registrert for å delta i transaksjonen er forespurt og uavhengig kan tyde på deres stemme til lagre eller rulle tilbake transaksjonen. Hvis deltakeren anser å rulle tilbake transaksjonen, den er rullet tilbake, og denne metoden oppstår en <xref:System.Transactions.TransactionException>unntak.</xref:System.Transactions.TransactionException> Dette er en vanlig forekomst for en transaksjon og koden skal opp og behandle slike unntak.       Lagre og <xref:System.Transactions.CommittableTransaction.EndCommit%2A>blokkeres til den første fasen av transaksjonsbehandling er fullført.</xref:System.Transactions.CommittableTransaction.EndCommit%2A> Den første fasen slutter etter alle ressursbehandlinger og opplistinger i transaksjonen har stemte på transaksjonsutfallet og <xref:System.Transactions.TransactionManager>robust har valgt å lagre eller avbryte transaksjonen.</xref:System.Transactions.TransactionManager> Fase av behandlingen er alltid asynkront. Det er derfor ikke garantere at data skrevet bare fra i en gitt transaksjon blir umiddelbart tilgjengelige etterpå når du ikke bruker en annen transaksjon for å vise disse dataene.       Fordi denne metoden blokker til den første fasen av transaksjonsbehandling er fullført, bør du passe ekstremt ved bruk av denne metoden i en Windows-skjema (WinForm)-applikasjon, eller en vranglås kan oppstå. Hvis du kalle denne metoden i en WinForm kontrollhendelsen (for eksempel en knappen), og bruker den synkron <xref:System.Windows.Forms.Control.Invoke%2A>metoden direkte kontrollen for å utføre noen UI-aktiviteter (for eksempel endre farger) mens transaksjonen, skjer en vranglås.</xref:System.Windows.Forms.Control.Invoke%2A> Fordi den <xref:System.Windows.Forms.Control.Invoke%2A>metoden er synkron og blokkerer Arbeidstråden til UI-tråden er ferdig med jobben.</xref:System.Windows.Forms.Control.Invoke%2A> Imidlertid i scenariet vårt venter UI-tråden også Arbeidstråden ikke gjennomføre transaksjonen. Resultatet er at ingen kan fortsette og omfanget venter på ubestemt tid å fullføre transaksjonen. Du må bruke <xref:System.Windows.Forms.Control.BeginInvoke%2A>snarere enn <xref:System.Windows.Forms.Control.Invoke%2A>der det er mulig, fordi den er asynkront og dermed mindre utsatt for vranglås.</xref:System.Windows.Forms.Control.Invoke%2A> </xref:System.Windows.Forms.Control.BeginInvoke%2A>"
   syntax:
     content: public void Commit ();
     parameters: []
@@ -192,10 +192,10 @@ items:
   exceptions:
   - type: System.Transactions.TransactionInDoubtException
     commentId: T:System.Transactions.TransactionInDoubtException
-    description: "Commit is called on a transaction and the transaction becomes <xref href=&quot;System.Transactions.TransactionStatus&quot;></xref>."
+    description: "Lagre kalles på en transaksjon, og transaksjonen blir <xref href=&quot;System.Transactions.TransactionStatus&quot;> </xref>."
   - type: System.Transactions.TransactionAbortedException
     commentId: T:System.Transactions.TransactionAbortedException
-    description: "Commit is called and the transaction rolls back for the first time."
+    description: "Lagre kalles, og transaksjonen ruller tilbake for første gang."
   platform:
   - net462
 - uid: System.Transactions.CommittableTransaction.EndCommit(System.IAsyncResult)
@@ -210,19 +210,19 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Ends an attempt to commit the transaction asynchronously."
-  remarks: "You should call this method in the callback delegate specified as a parameter to the <xref:System.Transactions.CommittableTransaction.BeginCommit%2A> method, when you have finished any cleanup work associated with the asynchronous commitment. You can also call this method early without waiting for the delegate. If, by the time you call this method, the transaction has not completed, this method waits for its completion.      > [!CAUTION] >  The <xref:System.IAsyncResult.CompletedSynchronously%2A> property returned by `asyncResult` is always `false`, even if the operation completed synchronously.       <xref:System.Transactions.CommittableTransaction.Commit%2A> and EndCommit block until the first phase of transaction processing is complete. The first phase ends after all resource managers and enlistments in the transaction have voted on the transaction outcome and the <xref:System.Transactions.TransactionManager> has durably decided to commit or abort the transaction. The second phase of processing is always asynchronous. Therefore, there is no guarantee that data just committed from within a given transaction will be immediately available afterwards when not using another transaction to view this data."
+  summary: "Avslutter et forsøk på å utføre transaksjonen asynkront."
+  remarks: "Du må kalle denne metoden i tilbakeringing representant som er angitt som en parameter i <xref:System.Transactions.CommittableTransaction.BeginCommit%2A>metoden når du er ferdig oppryddingsarbeid knyttet til den asynkrone forpliktelsen.</xref:System.Transactions.CommittableTransaction.BeginCommit%2A> Du kan også kalle denne metoden tidlig uten å vente på representanten. Hvis transaksjonen ikke er fullført før du kalle denne metoden, venter denne metoden på at den er fullføringen.      > [!CAUTION] > Den <xref:System.IAsyncResult.CompletedSynchronously%2A>egenskapen som er returnert av `asyncResult` alltid `false`, selv om operasjonen fullføres synkront.</xref:System.IAsyncResult.CompletedSynchronously%2A>       <xref:System.Transactions.CommittableTransaction.Commit%2A>og EndCommit blokkerer til den første fasen av transaksjonsbehandling er fullført.</xref:System.Transactions.CommittableTransaction.Commit%2A> Den første fasen slutter etter alle ressursbehandlinger og opplistinger i transaksjonen har stemte på transaksjonsutfallet og <xref:System.Transactions.TransactionManager>robust har valgt å lagre eller avbryte transaksjonen.</xref:System.Transactions.TransactionManager> Fase av behandlingen er alltid asynkront. Det er derfor ikke garantere at data skrevet bare fra i en gitt transaksjon blir umiddelbart tilgjengelige etterpå når du ikke bruker en annen transaksjon for å vise disse dataene."
   syntax:
     content: public void EndCommit (IAsyncResult asyncResult);
     parameters:
     - id: asyncResult
       type: System.IAsyncResult
-      description: "The <xref:System.IAsyncResult> object associated with the asynchronous commitment."
+      description: "Den <xref:System.IAsyncResult>tilknyttet den asynkrone forpliktelsen.</xref:System.IAsyncResult>"
   overload: System.Transactions.CommittableTransaction.EndCommit*
   exceptions:
   - type: System.Transactions.TransactionAbortedException
     commentId: T:System.Transactions.TransactionAbortedException
-    description: "<xref:System.Transactions.CommittableTransaction.BeginCommit*> is called and the transaction rolls back for the first time."
+    description: "<xref:System.Transactions.CommittableTransaction.BeginCommit*>kalles og transaksjonen ruller tilbake for første gang.</xref:System.Transactions.CommittableTransaction.BeginCommit*>"
   platform:
   - net462
 - uid: System.Transactions.CommittableTransaction.System#IAsyncResult#AsyncState
@@ -238,12 +238,12 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Gets the object provided as the last parameter of the <xref:System.Transactions.CommittableTransaction.BeginCommit*> method call."
+  summary: "Henter objektet som ble angitt som den siste parameteren i <xref:System.Transactions.CommittableTransaction.BeginCommit*>metodekallet.</xref:System.Transactions.CommittableTransaction.BeginCommit*>"
   syntax:
     content: object System.IAsyncResult.AsyncState { get; }
     return:
       type: System.Object
-      description: "The object provided as the last parameter of the <xref:System.Transactions.CommittableTransaction.BeginCommit*> method call."
+      description: "Objektet som ble angitt som den siste parameteren i <xref:System.Transactions.CommittableTransaction.BeginCommit*>metodekallet.</xref:System.Transactions.CommittableTransaction.BeginCommit*>"
   overload: System.Transactions.CommittableTransaction.System#IAsyncResult#AsyncState*
   exceptions: []
   platform:
@@ -261,12 +261,12 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Gets a <xref:System.Threading.WaitHandle> that is used to wait for an asynchronous operation to complete."
+  summary: "Henter en <xref:System.Threading.WaitHandle>som brukes til å vente på en asynkron operasjon skal bli fullført.</xref:System.Threading.WaitHandle>"
   syntax:
     content: System.Threading.WaitHandle System.IAsyncResult.AsyncWaitHandle { get; }
     return:
       type: System.Threading.WaitHandle
-      description: "A <xref:System.Threading.WaitHandle> that is used to wait for an asynchronous operation to complete."
+      description: "En <xref:System.Threading.WaitHandle>som brukes til å vente på en asynkron operasjon skal bli fullført.</xref:System.Threading.WaitHandle>"
   overload: System.Transactions.CommittableTransaction.System#IAsyncResult#AsyncWaitHandle*
   exceptions: []
   platform:
@@ -284,12 +284,12 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Gets an indication of whether the asynchronous commit operation completed synchronously."
+  summary: "Henter en angivelse av om asynkrone bekreftelsesoperasjonen fullført synkront."
   syntax:
     content: bool System.IAsyncResult.CompletedSynchronously { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the asynchronous commit operation completed synchronously; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. This property always returns <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> even if the operation completed synchronously."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis den asynkrone bekreftelsesoperasjonen fullført synkront; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Denne egenskapen returnerer alltid <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> selv om synkront fullføre operasjonen."
   overload: System.Transactions.CommittableTransaction.System#IAsyncResult#CompletedSynchronously*
   exceptions: []
   platform:
@@ -307,12 +307,12 @@ items:
   assemblies:
   - System.Transactions
   namespace: System.Transactions
-  summary: "Gets an indication whether the asynchronous commit operation has completed."
+  summary: "Henter en indikasjon på om den asynkrone bekreftelsesoperasjonen er fullført."
   syntax:
     content: bool System.IAsyncResult.IsCompleted { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the operation is complete; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis operasjonen er fullført; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Transactions.CommittableTransaction.System#IAsyncResult#IsCompleted*
   exceptions: []
   platform:

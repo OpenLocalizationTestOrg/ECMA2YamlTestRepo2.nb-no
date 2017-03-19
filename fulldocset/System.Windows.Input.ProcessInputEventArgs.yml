@@ -13,8 +13,8 @@ items:
   nameWithType: ProcessInputEventArgs
   fullName: System.Windows.Input.ProcessInputEventArgs
   type: Class
-  summary: "Provides data for postprocess input events."
-  remarks: "Process input events enable access to the <xref:System.Windows.Input.InputManager> staging area.       The input staging area processes raw input into [!INCLUDE[TLA2#tla_wpf](~/add/includes/ajax-current-ext-md.md)] events.       ProcessInputEventArgs is used with the <xref:System.Windows.Input.InputManager.PostProcessInput> event.       Input is processed in [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] in the follow stages:      1.  Pre-process stage.  The input manager raises the <xref:System.Windows.Input.InputManager.PreProcessInput> event.      2.  Pre-notify stage.  The input manager raises the <xref:System.Windows.Input.InputManager.PreNotifyInput> event.      3.  The [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] input event or events are raised.      4.  Post-notify stage.  The input manager raises the <xref:System.Windows.Input.InputManager.PostNotifyInput> event.      5.  Post-process stage.  The input manager raises the <xref:System.Windows.Input.InputManager.PostProcessInput> event."
+  summary: "Inneholder data for postprocess inndata hendelser."
+  remarks: "Behandle inndata hendelser aktivere tilgang til den <xref:System.Windows.Input.InputManager>midlertidig område.</xref:System.Windows.Input.InputManager>       Inndata området i oppsamling behandler Rå inndata i [!INCLUDE[TLA2#tla_wpf](~/add/includes/ajax-current-ext-md.md)] hendelser.       ProcessInputEventArgs brukes med den <xref:System.Windows.Input.InputManager.PostProcessInput>hendelsen.</xref:System.Windows.Input.InputManager.PostProcessInput>       Inndataene behandles i [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] i Følg trinnene: 1.  Behandle over fase.  Inndata manager hever den <xref:System.Windows.Input.InputManager.PreProcessInput>hendelsen.</xref:System.Windows.Input.InputManager.PreProcessInput>      2.  Varsle før fase.  Inndata manager hever den <xref:System.Windows.Input.InputManager.PreNotifyInput>hendelsen.</xref:System.Windows.Input.InputManager.PreNotifyInput>      3.  Den [!INCLUDE[TLA2#tla_winclient](~/add/includes/tla2sharptla-winclient-md.md)] inndata hendelsen eller hendelsene aktiveres.      4.  Varsle etter fase.  Inndata manager hever den <xref:System.Windows.Input.InputManager.PostNotifyInput>hendelsen.</xref:System.Windows.Input.InputManager.PostNotifyInput>      5.  Behandle etter fase.  Inndata manager hever den <xref:System.Windows.Input.InputManager.PostProcessInput>hendelsen.</xref:System.Windows.Input.InputManager.PostProcessInput>"
   syntax:
     content: 'public class ProcessInputEventArgs : System.Windows.Input.NotifyInputEventArgs'
   inheritance:
@@ -38,14 +38,14 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Input
-  summary: "Gets, but does not pop, the input event on the top of the staging area stack."
-  remarks: "The return value will be `null` if the staging area is empty."
+  summary: "Henter, men ta ikke, hendelsen inndata på toppen av midlertidig område-bunke."
+  remarks: "Verdien som returneres blir `null` Hvis området oppsamling er tom."
   syntax:
     content: public System.Windows.Input.StagingAreaInputItem PeekInput ();
     parameters: []
     return:
       type: System.Windows.Input.StagingAreaInputItem
-      description: "The input event that is on the top of the staging area stack."
+      description: "Inndata hendelsen som er på toppen av midlertidig område-bunke."
   overload: System.Windows.Input.ProcessInputEventArgs.PeekInput*
   exceptions: []
   platform:
@@ -62,13 +62,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Input
-  summary: "Removes the input event off the top of the staging area stack."
+  summary: "Fjerner inndata hendelsen øverst i oppsamling området bunken."
   syntax:
     content: public System.Windows.Input.StagingAreaInputItem PopInput ();
     parameters: []
     return:
       type: System.Windows.Input.StagingAreaInputItem
-      description: "The input event that was on the top of the staging area stack. This will be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the staging area is empty."
+      description: "Inndata hendelsen som var på toppen av midlertidig område-bunke. Dette vil være <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Hvis området oppsamling er tom."
   overload: System.Windows.Input.ProcessInputEventArgs.PopInput*
   exceptions: []
   platform:
@@ -85,17 +85,17 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Input
-  summary: "Puts the specified input event onto the top of the staging area stack."
-  remarks: '`input` cannot be `null` and it cannot already exist in the staging area.'
+  summary: "Plasserer inndata hendelsen på øverst i oppsamling området bunken."
+  remarks: '`input`kan ikke være `null` og den kan ikke finnes i oppsamling-området.'
   syntax:
     content: public System.Windows.Input.StagingAreaInputItem PushInput (System.Windows.Input.StagingAreaInputItem input);
     parameters:
     - id: input
       type: System.Windows.Input.StagingAreaInputItem
-      description: "The input event to put on the staging area stack."
+      description: "Inndata hendelsen å sette i oppsamling området stakken."
     return:
       type: System.Windows.Input.StagingAreaInputItem
-      description: "The staging area input item."
+      description: "Midlertidig område inndata-element."
   overload: System.Windows.Input.ProcessInputEventArgs.PushInput*
   exceptions: []
   platform:
@@ -112,20 +112,20 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Input
-  summary: "Puts the specified input event onto the top of the specified staging area stack."
-  remarks: '`input` cannot be `null` and it cannot already exist in the staging area.'
+  summary: "Plasserer inndata hendelsen på toppen av den angitte område i oppsamling bunken."
+  remarks: '`input`kan ikke være `null` og den kan ikke finnes i oppsamling-området.'
   syntax:
     content: public System.Windows.Input.StagingAreaInputItem PushInput (System.Windows.Input.InputEventArgs input, System.Windows.Input.StagingAreaInputItem promote);
     parameters:
     - id: input
       type: System.Windows.Input.InputEventArgs
-      description: "The input event to put on the staging area stack."
+      description: "Inndata hendelsen å sette i oppsamling området stakken."
     - id: promote
       type: System.Windows.Input.StagingAreaInputItem
-      description: "An existing staging area item to promote the state from."
+      description: "Midlertidig område med et eksisterende element for å fremme tilstanden fra."
     return:
       type: System.Windows.Input.StagingAreaInputItem
-      description: "The staging area input item that wraps the specified input."
+      description: "Området oppsamling inndata elementet som bryter de angitte inndataene."
   overload: System.Windows.Input.ProcessInputEventArgs.PushInput*
   exceptions: []
   platform:

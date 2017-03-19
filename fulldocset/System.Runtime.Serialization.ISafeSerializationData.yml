@@ -10,8 +10,8 @@ items:
   nameWithType: ISafeSerializationData
   fullName: System.Runtime.Serialization.ISafeSerializationData
   type: Interface
-  summary: "Enables serialization of custom exception data in security-transparent code."
-  remarks: "In versions previous to.NET Framework 4.0, serialization of custom user data in a security transparent code was accomplished using the <xref:System.Exception.GetObjectData%2A> method. Starting with .NET Framework 4.0, that method is marked with the <xref:System.Security.SecurityCriticalAttribute> attribute which prevents execution in security-transparent code. To work around this condition, implement the ISafeSerializationData interface and add custom data as shown in the example below.       The <xref:System.Runtime.Serialization.ISafeSerializationData.CompleteDeserialization%2A> method is called after serialization, and uses the <xref:System.Runtime.Serialization.SafeSerializationEventArgs> to restore the custom data."
+  summary: "Gjør det mulig for serialisering av egendefinerte unntaksdataene i sikkerhet-gjennomsiktige kode."
+  remarks: "Serialisering av egendefinerte brukerdata i en gjennomsiktig sikkerhetskode ble oppnådd bruker i versjoner tidligere to.NET Framework 4.0, den <xref:System.Exception.GetObjectData%2A>metoden.</xref:System.Exception.GetObjectData%2A> Starter med .NET Framework 4.0, denne metoden er merket med den <xref:System.Security.SecurityCriticalAttribute>attributt som hindrer kjøring i sikkerhet-gjennomsiktige code.</xref:System.Security.SecurityCriticalAttribute> Implementere grensesnittet ISafeSerializationData Hvis du vil omgå problemet, og Legg til egendefinert dataene som vises i eksemplet nedenfor.       Den <xref:System.Runtime.Serialization.ISafeSerializationData.CompleteDeserialization%2A>kalles etter serialisering, og bruker det <xref:System.Runtime.Serialization.SafeSerializationEventArgs>å gjenopprette tilpassede data.</xref:System.Runtime.Serialization.SafeSerializationEventArgs> </xref:System.Runtime.Serialization.ISafeSerializationData.CompleteDeserialization%2A>"
   example:
   - "The following example contains an implementation of the ISafeSerializationData interface that is used to store custom data that is serialized.  \n  \n [!code-vb[ISafeSerializationData#1](~/add/codesnippet/visualbasic/t-system.runtime.seriali_2_1.vb)]\n [!code-cs[ISafeSerializationData#1](~/add/codesnippet/csharp/t-system.runtime.seriali_2_1.cs)]"
   syntax:
@@ -31,8 +31,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Serialization
-  summary: "This method is called when the instance is deserialized."
-  remarks: "The state object is stored in a private variable defined in the implementation of the <xref:System.Runtime.Serialization.ISafeSerializationData> class."
+  summary: "Denne metoden kalles når forekomsten deserialiseres."
+  remarks: "State-objektet er lagret i en privat variabel som er definert i implementeringen av <xref:System.Runtime.Serialization.ISafeSerializationData>klasse.</xref:System.Runtime.Serialization.ISafeSerializationData>"
   example:
   - "The following example restores the state of the exception after being deserialized.  \n  \n [!code-vb[ISafeSerializationData#2](~/add/codesnippet/visualbasic/6f34c893-b650-4b68-a165-_1.vb)]\n [!code-cs[ISafeSerializationData#2](~/add/codesnippet/csharp/6f34c893-b650-4b68-a165-_1.cs)]"
   syntax:
@@ -40,7 +40,7 @@ items:
     parameters:
     - id: deserialized
       type: System.Object
-      description: "An object that contains the state of the instance."
+      description: "Et objekt som inneholder statusen for forekomsten."
   overload: System.Runtime.Serialization.ISafeSerializationData.CompleteDeserialization*
   exceptions: []
   platform:

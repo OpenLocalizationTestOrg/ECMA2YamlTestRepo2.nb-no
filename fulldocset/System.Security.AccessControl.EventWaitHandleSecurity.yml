@@ -26,8 +26,8 @@ items:
   nameWithType: EventWaitHandleSecurity
   fullName: System.Security.AccessControl.EventWaitHandleSecurity
   type: Class
-  summary: "Represents the Windows access control security applied to a named system wait handle. This class cannot be inherited."
-  remarks: "An EventWaitHandleSecurity object specifies access rights for a named system wait handle, and also specifies the way access attempts are audited. Access rights to the wait handle are expressed as rules, with each access rule represented by an <xref:System.Security.AccessControl.EventWaitHandleAccessRule> object. Each auditing rule is represented by an <xref:System.Security.AccessControl.EventWaitHandleAuditRule> object.       This mirrors the underlying Windows security system, in which each securable object has at most one discretionary access control list (DACL) that controls access to the secured object, and at most one system access control list (SACL) that specifies which access attempts are audited. The DACL and SACL are ordered lists of access control entries (ACE) that specify access and auditing for users and groups. An <xref:System.Security.AccessControl.EventWaitHandleAccessRule> or <xref:System.Security.AccessControl.EventWaitHandleAuditRule> object might represent more than one ACE.      > [!NOTE] >  An <xref:System.Threading.EventWaitHandle> object can represent a local wait handle or a named system wait handle. Windows access control security is meaningful only for named system wait handles.       The EventWaitHandleSecurity, <xref:System.Security.AccessControl.EventWaitHandleAccessRule>, and <xref:System.Security.AccessControl.EventWaitHandleAuditRule> classes hide the implementation details of ACLs and ACEs. They allow you to ignore the seventeen different ACE types and the complexity of correctly maintaining inheritance and propagation of access rights. These objects are also designed to prevent the following common access control errors:      -   Creating a security descriptor with a null DACL. A null reference to a DACL allows any user to add access rules to an object, potentially creating a denial-of-service attack. A new EventWaitHandleSecurity object always starts with an empty DACL, which denies all access for all users.      -   Violating the canonical ordering of ACEs. If the ACE list in the DACL is not kept in the canonical order, users might inadvertently be given access to the secured object. For example, denied access rights must always appear before allowed access rights. EventWaitHandleSecurity objects maintain the correct order internally.      -   Manipulating security descriptor flags, which should be under resource manager control only.      -   Creating invalid combinations of ACE flags.      -   Manipulating inherited ACEs. Inheritance and propagation are handled by the resource manager, in response to changes you make to access and audit rules.      -   Inserting meaningless ACEs into ACLs.       The only capabilities not supported by the .NET security objects are dangerous activities that should be avoided by the majority of application developers, such as the following:      -   Low-level tasks that are normally performed by the resource manager.      -   Adding or removing access control entries in ways that do not maintain the canonical ordering.       To modify Windows access control security for a named wait handle, use the <xref:System.Threading.EventWaitHandle.GetAccessControl%2A?displayProperty=fullName> method to get the EventWaitHandleSecurity object. Modify the security object by adding and removing rules, and then use the <xref:System.Threading.EventWaitHandle.SetAccessControl%2A?displayProperty=fullName> method to reattach it.      > [!IMPORTANT] >  Changes you make to an EventWaitHandleSecurity object do not affect the access levels of the named wait handle until you call the <xref:System.Threading.EventWaitHandle.SetAccessControl%2A?displayProperty=fullName> method to assign the altered security object to the named wait handle.       To copy access control security from one wait handle to another, use the <xref:System.Threading.EventWaitHandle.GetAccessControl%2A?displayProperty=fullName> method to get an EventWaitHandleSecurity object representing the access and audit rules for the first wait handle, and then use the <xref:System.Threading.EventWaitHandle.SetAccessControl%2A?displayProperty=fullName> method, or a constructor that accepts an EventWaitHandleSecurity object, to assign those rules to the second wait handle.       Users with an investment in the security descriptor definition language (SDDL) can use the <xref:System.Security.AccessControl.ObjectSecurity.SetSecurityDescriptorSddlForm%2A> method to set access rules for a named wait handle, and the <xref:System.Security.AccessControl.ObjectSecurity.GetSecurityDescriptorSddlForm%2A> method to obtain a string that represents the access rules in SDDL format. This is not recommended for new development."
+  summary: "Representerer brukes på et navngitt system Vent håndtak Windows tilgang kontroll-sikkerhet. Denne klassen kan ikke arves."
+  remarks: "Et objekt som EventWaitHandleSecurity angir tilgangsrettigheter for et navngitt system Vent håndtak, og angir også mulig forsøk på tilgang overvåkes. Tilgangsrettigheter Vent referansen er uttrykt som regler med hver tilgangsregel representert av en <xref:System.Security.AccessControl.EventWaitHandleAccessRule>objektet.</xref:System.Security.AccessControl.EventWaitHandleAccessRule> Hver overvåking regel representeres av en <xref:System.Security.AccessControl.EventWaitHandleAuditRule>objektet.</xref:System.Security.AccessControl.EventWaitHandleAuditRule>       Dette gjenspeiler de underliggende Windows-sikkerhetssystemet, der hver som kan sikres har mer enn én detaljert tilgangskontrolliste (DACL) som styrer tilgang til sikrede objektet, og maksimalt én systemets tilgangskontrolliste (SACL) som angir hvilken forsøk på tilgang overvåkes. DACL og SACL sorteres lister over tilgangskontrolloppføringer (TILGANGSKONTROLLISTEN) som angir tilgang og overvåking av brukere og grupper. En <xref:System.Security.AccessControl.EventWaitHandleAccessRule>eller <xref:System.Security.AccessControl.EventWaitHandleAuditRule>objekt kan representere flere TILGANGSKONTROLLISTEN.</xref:System.Security.AccessControl.EventWaitHandleAuditRule> </xref:System.Security.AccessControl.EventWaitHandleAccessRule>      > [!NOTE] > En <xref:System.Threading.EventWaitHandle>objekt kan representere en lokal Vent referanse eller et navngitt system Vent referansen.</xref:System.Threading.EventWaitHandle> Windows access control sikkerhet har betydning bare for navngitte system Vent referanser.       EventWaitHandleSecurity, <xref:System.Security.AccessControl.EventWaitHandleAccessRule>, og <xref:System.Security.AccessControl.EventWaitHandleAuditRule>klasser skjule implementeringsdetaljene tilgangskontrollister og tilgangskontrolloppføringer.</xref:System.Security.AccessControl.EventWaitHandleAuditRule> </xref:System.Security.AccessControl.EventWaitHandleAccessRule> De kan du ignorere sytten TILGANGSKONTROLLISTEN ulike og av hvor komplekse opprettholder riktig arv og overføring av tilgangsrettigheter. Disse objektene også er utformet for å forhindre følgende vanlige access control feil:-opprette en sikkerhetsbeskrivelse med en null DACL. En null referanse til en DACL tillater brukerne å legge til tilgangsregler til et objekt, oppretter potensielt avslått for tjenesteforespørsler. Et nytt objekt EventWaitHandleSecurity starter alltid med en tom DACL som nekter tilgang for alle brukere.      -Bryter den kanoniske rekkefølgen på tilgangskontrolloppføringer. Hvis listen TILGANGSKONTROLLISTEN i DACL er ikke i den kanoniske rekkefølgen, kan brukere utilsiktet få tilgang til sikrede objektet. For eksempel må forbudte tilgangsrettigheter alltid vises før tillatte tilgangsrettigheter. EventWaitHandleSecurity objekter har riktig rekkefølge internt.      -Manipulering sikkerhet sikkerhetsbeskrivelse flaggene som skal resource manager kontroll.      – Oppretter ugyldig kombinasjoner av TILGANGSKONTROLLISTEN flagg.      -Manipulering arvede tilgangskontrolloppføringer. Arv og overføring er behandlet av ressursbehandling som svar på endringer i tilgang og audit regler.      -Innsetting meningsløs tilgangskontrolloppføringer i tilgangskontrollister.       Bare funksjoner støttes ikke av .NET sikkerhetsobjektene er skadelige aktivitetene bør unngås av fleste utviklere av programmer, for eksempel følgende:-lavt nivå oppgaver som vanligvis er utført av ressursbehandling.      -Legge til eller fjerne tilgangskontrolloppføringer på en måte som ikke har den kanoniske rekkefølgen.       Hvis du vil endre Windows access control sikkerhet for et navngitt Vent håndtak, kan du bruke den <xref:System.Threading.EventWaitHandle.GetAccessControl%2A?displayProperty=fullName>metode for å hente objektet EventWaitHandleSecurity.</xref:System.Threading.EventWaitHandle.GetAccessControl%2A?displayProperty=fullName> Endre sikkerhetsobjektet ved å legge til og fjerne regler, og bruk <xref:System.Threading.EventWaitHandle.SetAccessControl%2A?displayProperty=fullName>metode for å koble til det.</xref:System.Threading.EventWaitHandle.SetAccessControl%2A?displayProperty=fullName>      > [!IMPORTANT] > Når du endrer til et objekt for EventWaitHandleSecurity påvirker ikke tilgangsnivåene for håndtaket navngitt vente før du kaller den <xref:System.Threading.EventWaitHandle.SetAccessControl%2A?displayProperty=fullName>metode for å tilordne det endrede sikkerhetsobjektet navngitt Vent referansen.</xref:System.Threading.EventWaitHandle.SetAccessControl%2A?displayProperty=fullName>       Hvis du vil kopiere kodetilgangssikkerhet kontrollen fra én Vent referanse til en annen, kan du bruke den <xref:System.Threading.EventWaitHandle.GetAccessControl%2A?displayProperty=fullName>metode for å hente et EventWaitHandleSecurity-objekt som representerer tilgang og audit regler for første Vent håndtaket, og deretter bruke den <xref:System.Threading.EventWaitHandle.SetAccessControl%2A?displayProperty=fullName>metoden eller en konstruktør som godtar for å tilordne disse reglene til andre ventetiden objektets EventWaitHandleSecurity håndtere.</xref:System.Threading.EventWaitHandle.SetAccessControl%2A?displayProperty=fullName> </xref:System.Threading.EventWaitHandle.GetAccessControl%2A?displayProperty=fullName>       Brukere med en investering i sikkerhet sikkerhetsbeskrivelse definition language SDDL kan bruke den <xref:System.Security.AccessControl.ObjectSecurity.SetSecurityDescriptorSddlForm%2A>metode for å angi tilgangsregler for et navngitt Vent håndtak og <xref:System.Security.AccessControl.ObjectSecurity.GetSecurityDescriptorSddlForm%2A>metode for å hente en streng som representerer tilgangsregler i SDDL-format.</xref:System.Security.AccessControl.ObjectSecurity.GetSecurityDescriptorSddlForm%2A> </xref:System.Security.AccessControl.ObjectSecurity.SetSecurityDescriptorSddlForm%2A> Dette anbefales ikke til ny utvikling."
   example:
   - "The following code example demonstrates the separation between <xref:System.Security.AccessControl.AccessControlType> rules and <xref:System.Security.AccessControl.AccessControlType> rules, and shows the combination of rights in compatible rules. The example creates an EventWaitHandleSecurity object, adds rules that allow and deny various rights for the current user, and displays the resulting pair of rules. The example then allows new rights for the current user and displays the result, showing that the new rights are merged with the existing <xref:System.Security.AccessControl.AccessControlType> rule.  \n  \n> [!NOTE]\n>  This example does not attach the security object to a <xref:System.Threading.EventWaitHandle> object. Examples that attach security objects can be found in<xref:System.Threading.EventWaitHandle.GetAccessControl%2A?displayProperty=fullName> and <xref:System.Threading.EventWaitHandle.SetAccessControl%2A?displayProperty=fullName>.  \n  \n [!code-cs[System.Security.AccessControl.EventWaitHandleSecurity.AddAccessRule#1](~/add/codesnippet/csharp/t-system.security.access_14_1.cs)]\n [!code-vb[System.Security.AccessControl.EventWaitHandleSecurity.AddAccessRule#1](~/add/codesnippet/visualbasic/t-system.security.access_14_1.vb)]"
   syntax:
@@ -104,8 +104,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Initializes a new instance of the <xref href=&quot;System.Security.AccessControl.EventWaitHandleSecurity&quot;></xref> class with default values."
-  remarks: "A new <xref:System.Security.AccessControl.EventWaitHandleSecurity> object always starts with an empty discretionary access list (DACL), which denies all access for all users."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Security.AccessControl.EventWaitHandleSecurity&quot;> </xref> klasse standardverdier."
+  remarks: "En ny <xref:System.Security.AccessControl.EventWaitHandleSecurity>objektet alltid starter med en tom liste for detaljert (DACL), som nekter tilgang for alle brukere.</xref:System.Security.AccessControl.EventWaitHandleSecurity>"
   syntax:
     content: public EventWaitHandleSecurity ();
     parameters: []
@@ -113,7 +113,7 @@ items:
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "This class is not supported on Windows 98 or Windows Millennium Edition."
+    description: "Denne klassen støttes ikke i Windows 98 eller installasjonen."
   platform:
   - net462
 - uid: System.Security.AccessControl.EventWaitHandleSecurity.AccessRightType
@@ -128,13 +128,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Gets the enumeration type that the <xref href=&quot;System.Security.AccessControl.EventWaitHandleSecurity&quot;></xref> class uses to represent access rights."
-  remarks: "Classes that derive from the <xref:System.Security.AccessControl.ObjectSecurity> class override the <xref:System.Security.AccessControl.ObjectSecurity.AccessRightType%2A> property and return the type they use to represent access rights. When you work with arrays or collections that contain multiple types of security objects, use this property to determine the correct enumeration type to use with each security object."
+  summary: "Henter opplistingstypen som den <xref href=&quot;System.Security.AccessControl.EventWaitHandleSecurity&quot;> </xref> klasse bruker til å representere tilgangsrettigheter."
+  remarks: "Klasser som er avledet fra den <xref:System.Security.AccessControl.ObjectSecurity>klasse overstyring av <xref:System.Security.AccessControl.ObjectSecurity.AccessRightType%2A>egenskapen og returner typen de bruker til å representere tilgangsrettigheter.</xref:System.Security.AccessControl.ObjectSecurity.AccessRightType%2A> </xref:System.Security.AccessControl.ObjectSecurity> Når du arbeider med matriser eller samlinger som inneholder flere objekttyper sikkerhet, kan du bruke denne egenskapen til å bestemme den riktige opplistingstypen til bruk med hver sikkerhetsobjekt."
   syntax:
     content: public override Type AccessRightType { get; }
     return:
       type: System.Type
-      description: "A <xref:System.Type> object representing the <xref href=&quot;System.Security.AccessControl.EventWaitHandleRights&quot;></xref> enumeration."
+      description: "En <xref:System.Type>objektet som representerer den <xref href=&quot;System.Security.AccessControl.EventWaitHandleRights&quot;> </xref> opplisting.</xref:System.Type>"
   overload: System.Security.AccessControl.EventWaitHandleSecurity.AccessRightType*
   exceptions: []
   platform:
@@ -151,43 +151,43 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Creates a new access control rule for the specified user, with the specified access rights, access control, and flags."
-  remarks: "The recommended way to create access control rules is to use the constructors of the <xref:System.Security.AccessControl.EventWaitHandleAccessRule> class.      > [!NOTE] >  Although inheritance and propagation flags are meaningless for named events, it is still possible to specify them. This is not recommended, because it needlessly complicates the maintenance of rules, for example by interfering with the combination of rules that would otherwise be compatible."
+  summary: "Oppretter en ny tilgangsregel for kontrollen for den angitte brukeren med den angitte tilgangsrettigheter tilgangskontroll og flagg."
+  remarks: "Den anbefalte måten å opprette tilgangsregler for kontrollen er å bruke konstruktører for <xref:System.Security.AccessControl.EventWaitHandleAccessRule>klasse.</xref:System.Security.AccessControl.EventWaitHandleAccessRule>      > [!NOTE] > Selv om flaggene arv og overføring er meningsløs for navngitte hendelser, er det fremdeles mulig å angi dem. Dette anbefales ikke, fordi den unødvendig klientytelse vedlikehold av regler, for eksempel ved å påvirke kombinasjonen av regler som vil ellers være kompatibel."
   syntax:
     content: public override System.Security.AccessControl.AccessRule AccessRuleFactory (System.Security.Principal.IdentityReference identityReference, int accessMask, bool isInherited, System.Security.AccessControl.InheritanceFlags inheritanceFlags, System.Security.AccessControl.PropagationFlags propagationFlags, System.Security.AccessControl.AccessControlType type);
     parameters:
     - id: identityReference
       type: System.Security.Principal.IdentityReference
-      description: "An <xref href=&quot;System.Security.Principal.IdentityReference&quot;></xref> that identifies the user or group the rule applies to."
+      description: "En <xref href=&quot;System.Security.Principal.IdentityReference&quot;> </xref> som identifiserer brukeren eller gruppen regelen gjelder for."
     - id: accessMask
       type: System.Int32
-      description: "A bitwise combination of <xref href=&quot;System.Security.AccessControl.EventWaitHandleRights&quot;></xref> values specifying the access rights to allow or deny, cast to an integer."
+      description: "En bitvis kombinasjon av <xref href=&quot;System.Security.AccessControl.EventWaitHandleRights&quot;> </xref> verdier som angir tilgangsrettigheter til å gi eller avslå, endres til et heltall."
     - id: isInherited
       type: System.Boolean
-      description: "Meaningless for named wait handles, because they have no hierarchy."
+      description: "Meningsløs for navngitte Vent behandler, fordi de har ikke et hierarki."
     - id: inheritanceFlags
       type: System.Security.AccessControl.InheritanceFlags
-      description: "Meaningless for named wait handles, because they have no hierarchy."
+      description: "Meningsløs for navngitte Vent behandler, fordi de har ikke et hierarki."
     - id: propagationFlags
       type: System.Security.AccessControl.PropagationFlags
-      description: "Meaningless for named wait handles, because they have no hierarchy."
+      description: "Meningsløs for navngitte Vent behandler, fordi de har ikke et hierarki."
     - id: type
       type: System.Security.AccessControl.AccessControlType
-      description: "One of the <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref> values specifying whether the rights are allowed or denied."
+      description: "Én av de <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;> </xref> verdier som angir om rettighetene som er gitt eller nektet."
     return:
       type: System.Security.AccessControl.AccessRule
-      description: "An <xref href=&quot;System.Security.AccessControl.EventWaitHandleAccessRule&quot;></xref> object representing the specified rights for the specified user."
+      description: "En <xref href=&quot;System.Security.AccessControl.EventWaitHandleAccessRule&quot;> </xref> -objekt som representerer angitt rettigheter for den angitte brukeren."
   overload: System.Security.AccessControl.EventWaitHandleSecurity.AccessRuleFactory*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>accessMask</code>, <code>inheritanceFlags</code>, <code>propagationFlags</code>, or <code>type</code> specifies an invalid value."
+    description: "<code>accessMask</code>, <code>inheritanceFlags</code>, <code>propagationFlags</code>, eller <code>type</code> angir en ugyldig verdi."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>identityReference</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>accessMask</code> is zero."
+    description: "<code>identityReference</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       - eller - <code>accessMask</code> er null."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>identityReference</code> is neither of type <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;></xref>, nor of a type such as <xref href=&quot;System.Security.Principal.NTAccount&quot;></xref> that can be converted to type <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;></xref>."
+    description: "<code>identityReference</code>verken typen <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;> </xref>, eller en type som <xref href=&quot;System.Security.Principal.NTAccount&quot;> </xref> som kan konverteres til typen <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;> </xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.EventWaitHandleSecurity.AccessRuleType
@@ -202,13 +202,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Gets the type that the <xref href=&quot;System.Security.AccessControl.EventWaitHandleSecurity&quot;></xref> class uses to represent access rules."
-  remarks: "Classes that derive from the <xref:System.Security.AccessControl.ObjectSecurity> class override the <xref:System.Security.AccessControl.ObjectSecurity.AccessRuleType%2A> property and return the type they use to represent access rules. When you work with arrays or collections that contain multiple types of security objects, use this property to determine the correct access rule type to use with each security object."
+  summary: "Henter typen som den <xref href=&quot;System.Security.AccessControl.EventWaitHandleSecurity&quot;> </xref> klasse bruker til å representere tilgangsregler."
+  remarks: "Klasser som er avledet fra den <xref:System.Security.AccessControl.ObjectSecurity>klasse overstyring av <xref:System.Security.AccessControl.ObjectSecurity.AccessRuleType%2A>egenskapen og returner typen de bruker til å representere tilgangsregler.</xref:System.Security.AccessControl.ObjectSecurity.AccessRuleType%2A> </xref:System.Security.AccessControl.ObjectSecurity> Når du arbeider med matriser eller samlinger som inneholder flere objekttyper sikkerhet, kan du bruke denne egenskapen til å bestemme regeltypen riktig tilgang til bruk med hver sikkerhetsobjekt."
   syntax:
     content: public override Type AccessRuleType { get; }
     return:
       type: System.Type
-      description: "A <xref:System.Type> object representing the <xref href=&quot;System.Security.AccessControl.EventWaitHandleAccessRule&quot;></xref> class."
+      description: "En <xref:System.Type>objektet som representerer den <xref href=&quot;System.Security.AccessControl.EventWaitHandleAccessRule&quot;> </xref> klasse.</xref:System.Type>"
   overload: System.Security.AccessControl.EventWaitHandleSecurity.AccessRuleType*
   exceptions: []
   platform:
@@ -225,8 +225,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Searches for a matching access control rule with which the new rule can be merged. If none are found, adds the new rule."
-  remarks: "The AddAccessRule method searches for rules with the same user or group and the same <xref:System.Security.AccessControl.AccessControlType> as `rule`. If none are found, `rule` is added. If a matching rule is found, the rights in `rule` are merged with the existing rule."
+  summary: "Søker etter en access control søkeregel som den nye regelen kan slås sammen. Hvis ingen blir funnet, legger du til den nye regelen."
+  remarks: "Metoden AddAccessRule søker etter regler med samme bruker eller gruppe, og den samme <xref:System.Security.AccessControl.AccessControlType>som `rule`.</xref:System.Security.AccessControl.AccessControlType> Hvis ingen blir funnet, `rule` er lagt til. Hvis en søkeregel blir funnet, rettigheter i `rule` skal slås sammen med den eksisterende regelen."
   example:
   - "The following code example demonstrates the separation between <xref:System.Security.AccessControl.AccessControlType> rules and <xref:System.Security.AccessControl.AccessControlType> rules, and shows the combination of rights in compatible rules. The example creates an <xref:System.Security.AccessControl.EventWaitHandleSecurity> object, adds rules that allow and deny various rights for the current user, and displays the resulting pair of rules. The example then allows new rights for the current user and displays the result, showing that the new rights are merged with the existing <xref:System.Security.AccessControl.AccessControlType> rule.  \n  \n> [!NOTE]\n>  This example does not attach the security object to a <xref:System.Threading.EventWaitHandle> object. Examples that attach security objects can be found in <xref:System.Threading.EventWaitHandle.GetAccessControl%2A?displayProperty=fullName> and <xref:System.Threading.EventWaitHandle.SetAccessControl%2A?displayProperty=fullName>.  \n  \n [!code-cs[System.Security.AccessControl.EventWaitHandleSecurity.AddAccessRule#1](~/add/codesnippet/csharp/729692a8-5e98-486a-9864-_1.cs)]\n [!code-vb[System.Security.AccessControl.EventWaitHandleSecurity.AddAccessRule#1](~/add/codesnippet/visualbasic/729692a8-5e98-486a-9864-_1.vb)]"
   syntax:
@@ -234,12 +234,12 @@ items:
     parameters:
     - id: rule
       type: System.Security.AccessControl.EventWaitHandleAccessRule
-      description: "The access control rule to add."
+      description: "Kontrollen tilgangsregelen å legge til."
   overload: System.Security.AccessControl.EventWaitHandleSecurity.AddAccessRule*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.EventWaitHandleSecurity.AddAuditRule(System.Security.AccessControl.EventWaitHandleAuditRule)
@@ -254,19 +254,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Searches for an audit rule with which the new rule can be merged. If none are found, adds the new rule."
-  remarks: "The AddAuditRule method searches for rules with the same user or group as `rule`. If none are found, `rule` is added. If a matching rule is found, the flags in `rule` are merged into the existing rule."
+  summary: "Søker etter en regel for sporing av endringer som den nye regelen kan slås sammen. Hvis ingen blir funnet, legger du til den nye regelen."
+  remarks: "Metoden AddAuditRule søker etter regler med samme bruker eller gruppe som `rule`. Hvis ingen blir funnet, `rule` er lagt til. Hvis en søkeregel blir funnet, flaggene i `rule` sammen i den eksisterende regelen."
   syntax:
     content: public void AddAuditRule (System.Security.AccessControl.EventWaitHandleAuditRule rule);
     parameters:
     - id: rule
       type: System.Security.AccessControl.EventWaitHandleAuditRule
-      description: "The audit rule to add. The user specified by this rule determines the search."
+      description: "Audit-regel for å legge til. Brukeren som er angitt av denne regelen bestemmer søket."
   overload: System.Security.AccessControl.EventWaitHandleSecurity.AddAuditRule*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.EventWaitHandleSecurity.AuditRuleFactory(System.Security.Principal.IdentityReference,System.Int32,System.Boolean,System.Security.AccessControl.InheritanceFlags,System.Security.AccessControl.PropagationFlags,System.Security.AccessControl.AuditFlags)
@@ -281,43 +281,43 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Creates a new audit rule, specifying the user the rule applies to, the access rights to audit, and the outcome that triggers the audit rule."
-  remarks: "The recommended way to create audit rules is to use the constructors of the <xref:System.Security.AccessControl.EventWaitHandleAuditRule> class.      > [!NOTE] >  Although inheritance and propagation flags are meaningless for named events, it is still possible to specify them. This is not recommended, because it needlessly complicates the maintenance of rules, for example by interfering with the combination of rules that would otherwise be compatible."
+  summary: "Oppretter en ny regel for sporing av endringer, angi brukeren regelen gjelder for tilgangsrettigheter til å overvåke og resultatet som utløser audit regelen."
+  remarks: "Den anbefalte måten å opprette regler for sporing av endringer er å bruke konstruktører for <xref:System.Security.AccessControl.EventWaitHandleAuditRule>klasse.</xref:System.Security.AccessControl.EventWaitHandleAuditRule>      > [!NOTE] > Selv om flaggene arv og overføring er meningsløs for navngitte hendelser, er det fremdeles mulig å angi dem. Dette anbefales ikke, fordi den unødvendig klientytelse vedlikehold av regler, for eksempel ved å påvirke kombinasjonen av regler som vil ellers være kompatibel."
   syntax:
     content: public override System.Security.AccessControl.AuditRule AuditRuleFactory (System.Security.Principal.IdentityReference identityReference, int accessMask, bool isInherited, System.Security.AccessControl.InheritanceFlags inheritanceFlags, System.Security.AccessControl.PropagationFlags propagationFlags, System.Security.AccessControl.AuditFlags flags);
     parameters:
     - id: identityReference
       type: System.Security.Principal.IdentityReference
-      description: "An <xref href=&quot;System.Security.Principal.IdentityReference&quot;></xref> that identifies the user or group the rule applies to."
+      description: "En <xref href=&quot;System.Security.Principal.IdentityReference&quot;> </xref> som identifiserer brukeren eller gruppen regelen gjelder for."
     - id: accessMask
       type: System.Int32
-      description: "A bitwise combination of <xref href=&quot;System.Security.AccessControl.EventWaitHandleRights&quot;></xref> values specifying the access rights to audit, cast to an integer."
+      description: "En bitvis kombinasjon av <xref href=&quot;System.Security.AccessControl.EventWaitHandleRights&quot;> </xref> verdier som angir tilgangsrettigheter til å overvåke, endres til et heltall."
     - id: isInherited
       type: System.Boolean
-      description: "Meaningless for named wait handles, because they have no hierarchy."
+      description: "Meningsløs for navngitte Vent behandler, fordi de har ikke et hierarki."
     - id: inheritanceFlags
       type: System.Security.AccessControl.InheritanceFlags
-      description: "Meaningless for named wait handles, because they have no hierarchy."
+      description: "Meningsløs for navngitte Vent behandler, fordi de har ikke et hierarki."
     - id: propagationFlags
       type: System.Security.AccessControl.PropagationFlags
-      description: "Meaningless for named wait handles, because they have no hierarchy."
+      description: "Meningsløs for navngitte Vent behandler, fordi de har ikke et hierarki."
     - id: flags
       type: System.Security.AccessControl.AuditFlags
-      description: "A bitwise combination of <xref href=&quot;System.Security.AccessControl.AuditFlags&quot;></xref> values specifying whether to audit successful access, failed access, or both."
+      description: "En bitvis kombinasjon av <xref href=&quot;System.Security.AccessControl.AuditFlags&quot;> </xref> verdier som angir om du vil overvåke vellykket tilgang, mislykket tilgang eller begge deler."
     return:
       type: System.Security.AccessControl.AuditRule
-      description: "An <xref href=&quot;System.Security.AccessControl.EventWaitHandleAuditRule&quot;></xref> object representing the specified audit rule for the specified user. The return type of the method is the base class, <xref href=&quot;System.Security.AccessControl.AuditRule&quot;></xref>, but the return value can be cast safely to the derived class."
+      description: "En <xref href=&quot;System.Security.AccessControl.EventWaitHandleAuditRule&quot;> </xref> -objekt som representerer angitt audit regel for den angitte brukeren. Returtypen for metoden er basisklassen, <xref href=&quot;System.Security.AccessControl.AuditRule&quot;> </xref>, men returverdien kan brukes bare som den utledede klassen."
   overload: System.Security.AccessControl.EventWaitHandleSecurity.AuditRuleFactory*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>accessMask</code>, <code>inheritanceFlags</code>, <code>propagationFlags</code>, or <code>flags</code> specifies an invalid value."
+    description: "<code>accessMask</code>, <code>inheritanceFlags</code>, <code>propagationFlags</code>, eller <code>flags</code> angir en ugyldig verdi."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>identityReference</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       -or-       <code>accessMask</code> is zero."
+    description: "<code>identityReference</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>.       - eller - <code>accessMask</code> er null."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>identityReference</code> is neither of type <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;></xref>, nor of a type such as <xref href=&quot;System.Security.Principal.NTAccount&quot;></xref> that can be converted to type <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;></xref>."
+    description: "<code>identityReference</code>verken typen <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;> </xref>, eller en type som <xref href=&quot;System.Security.Principal.NTAccount&quot;> </xref> som kan konverteres til typen <xref href=&quot;System.Security.Principal.SecurityIdentifier&quot;> </xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.EventWaitHandleSecurity.AuditRuleType
@@ -332,13 +332,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Gets the type that the <xref href=&quot;System.Security.AccessControl.EventWaitHandleSecurity&quot;></xref> class uses to represent audit rules."
-  remarks: "Classes that derive from the <xref:System.Security.AccessControl.ObjectSecurity> class override the <xref:System.Security.AccessControl.ObjectSecurity.AuditRuleType%2A> property and return the type they use to represent audit rights. When you work with arrays or collections that contain multiple types of security objects, use this property to determine the correct audit rule type to use with each security object."
+  summary: "Henter typen som den <xref href=&quot;System.Security.AccessControl.EventWaitHandleSecurity&quot;> </xref> klasse bruker til å representere audit regler."
+  remarks: "Klasser som er avledet fra den <xref:System.Security.AccessControl.ObjectSecurity>klasse overstyring av <xref:System.Security.AccessControl.ObjectSecurity.AuditRuleType%2A>egenskapen og returner typen de bruker til å representere audit rettigheter.</xref:System.Security.AccessControl.ObjectSecurity.AuditRuleType%2A> </xref:System.Security.AccessControl.ObjectSecurity> Når du arbeider med matriser eller samlinger som inneholder flere objekttyper sikkerhet, kan du bruke denne egenskapen for å finne riktig audit regeltypen til bruk med hver sikkerhetsobjekt."
   syntax:
     content: public override Type AuditRuleType { get; }
     return:
       type: System.Type
-      description: "A <xref:System.Type> object representing the <xref href=&quot;System.Security.AccessControl.EventWaitHandleAuditRule&quot;></xref> class."
+      description: "En <xref:System.Type>objektet som representerer den <xref href=&quot;System.Security.AccessControl.EventWaitHandleAuditRule&quot;> </xref> klasse.</xref:System.Type>"
   overload: System.Security.AccessControl.EventWaitHandleSecurity.AuditRuleType*
   exceptions: []
   platform:
@@ -355,8 +355,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Searches for an access control rule with the same user and <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref> (allow or deny) as the specified access rule, and with compatible inheritance and propagation flags; if such a rule is found, the rights contained in the specified access rule are removed from it."
-  remarks: "The current <xref:System.Security.AccessControl.EventWaitHandleSecurity> is searched for a rule that has the same user and the same <xref:System.Security.AccessControl.AccessControlType> value as `rule`. If no such rule is found, no action is taken, and the method returns `false`. If matching rules are found, their inheritance and compatibility flags are checked for compatibility with the flags specified in `rule`. If no compatible rule is found, no action is taken, and the method returns `false`. If a rule with compatible flags is found, the rights specified in `rule` are removed from the compatible rule, and the method returns `true`. If `rule` specifies rights not contained in the compatible rule, no action is taken with respect to those rights. If all rights are removed from the compatible rule, the entire rule is removed from the current <xref:System.Security.AccessControl.EventWaitHandleSecurity> object.      > [!IMPORTANT] >  Although you can specify inheritance and propagation flags for event access rules, by creating them with the <xref:System.Security.AccessControl.EventWaitHandleSecurity.AccessRuleFactory%2A> method, this is not recommended. Inheritance and propagation have no meaning for named events, and they make the maintenance of access rules more complicated."
+  summary: "Søk etter en kontroll tilgangsregel med samme bruker og <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;> </xref> (Tillat eller Nekt) som angitt tilgangsregelen, og kompatibel arv og flagg for overføring; hvis en slik regel finnes, fjernes rettigheter i den angitte tilgangsregelen fra den."
+  remarks: "Gjeldende <xref:System.Security.AccessControl.EventWaitHandleSecurity>søkes for en regel som har den samme brukeren, og den samme <xref:System.Security.AccessControl.AccessControlType>verdi som `rule`.</xref:System.Security.AccessControl.AccessControlType> </xref:System.Security.AccessControl.EventWaitHandleSecurity> Hvis ingen slik regel finnes, ingen handling ble utført, og metoden returnerer `false`. Hvis det finnes like regler, flaggene deres arv og kompatibilitetslag kontrolleres for kompatibilitet med flaggene som er angitt i `rule`. Hvis ingen kompatibel regel finnes, ingen handling ble utført, og metoden returnerer `false`. Hvis en regel med kompatibel flagg blir funnet, rettighetene som er angitt i `rule` fjernes fra en kompatibel regel, og metoden returnerer `true`. Hvis `rule` angir rettigheter som ikke finnes i kompatibel regelen, ingen handling ble utført i forhold til rettighetene. Hvis alle rettigheter fjernes fra kompatibel regel, hele regelen er fjernet fra gjeldende <xref:System.Security.AccessControl.EventWaitHandleSecurity>objektet.</xref:System.Security.AccessControl.EventWaitHandleSecurity>      > [!IMPORTANT] > Selv om du kan angi arv og overføring flagg for hendelsen tilgangsregler, ved å opprette dem med den <xref:System.Security.AccessControl.EventWaitHandleSecurity.AccessRuleFactory%2A>metoden dette anbefales ikke.</xref:System.Security.AccessControl.EventWaitHandleSecurity.AccessRuleFactory%2A> Arv og overføring har ingen betydning for navngitte hendelser, og de foreta vedlikehold av tilgangsregler mer kompliserte."
   example:
   - "The following code example demonstrates the use of the RemoveAccessRule method to remove rights from an <xref:System.Security.AccessControl.AccessControlType> rule in an <xref:System.Security.AccessControl.EventWaitHandleSecurity> object. It also shows that other rights in `rule` are ignored.  \n  \n The example creates an <xref:System.Security.AccessControl.EventWaitHandleSecurity> object and adds rules that allow and deny various rights for the current user. The rights allowed include <xref:System.Security.AccessControl.EventWaitHandleRights>, <xref:System.Security.AccessControl.EventWaitHandleRights>, and <xref:System.Security.AccessControl.EventWaitHandleRights>. The example then creates a new rule for the current user, including <xref:System.Security.AccessControl.EventWaitHandleRights> and <xref:System.Security.AccessControl.EventWaitHandleRights> rights, and uses that rule with the RemoveAccessRule method to remove <xref:System.Security.AccessControl.EventWaitHandleRights> from the <xref:System.Security.AccessControl.AccessControlType> rule in the <xref:System.Security.AccessControl.EventWaitHandleSecurity> object. The <xref:System.Security.AccessControl.EventWaitHandleRights> right in `rule` is ignored.  \n  \n> [!NOTE]\n>  This example does not attach the security object to a <xref:System.Threading.EventWaitHandle> object. Examples that attach security objects can be found in <xref:System.Threading.EventWaitHandle.GetAccessControl%2A?displayProperty=fullName> and <xref:System.Threading.EventWaitHandle.SetAccessControl%2A?displayProperty=fullName>.  \n  \n [!code-cs[System.Security.AccessControl.EventWaitHandleSecurity.RemoveAccessRule#1](~/add/codesnippet/csharp/22dce09a-3e98-48e6-a61f-_1.cs)]\n [!code-vb[System.Security.AccessControl.EventWaitHandleSecurity.RemoveAccessRule#1](~/add/codesnippet/visualbasic/22dce09a-3e98-48e6-a61f-_1.vb)]"
   syntax:
@@ -364,15 +364,15 @@ items:
     parameters:
     - id: rule
       type: System.Security.AccessControl.EventWaitHandleAccessRule
-      description: "An <xref href=&quot;System.Security.AccessControl.EventWaitHandleAccessRule&quot;></xref> that specifies the user and <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref> to search for, and a set of inheritance and propagation flags that a matching rule, if found, must be compatible with. Specifies the rights to remove from the compatible rule, if found."
+      description: "En <xref href=&quot;System.Security.AccessControl.EventWaitHandleAccessRule&quot;> </xref> som angir og <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;> </xref> til å søke etter og et sett med arv og overføring flaggene som en tilsvarende regel, hvis finnes, må være kompatibel med. Angir rettigheter til å fjerne fra kompatibel regelen om."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a compatible rule is found; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis en kompatibel regel finnes. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Security.AccessControl.EventWaitHandleSecurity.RemoveAccessRule*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.EventWaitHandleSecurity.RemoveAccessRuleAll(System.Security.AccessControl.EventWaitHandleAccessRule)
@@ -387,8 +387,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Searches for all access control rules with the same user and <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref> (allow or deny) as the specified rule and, if found, removes them."
-  remarks: "The current <xref:System.Security.AccessControl.EventWaitHandleSecurity> is searched for rules that have the same user and the same <xref:System.Security.AccessControl.AccessControlType> value as `rule`. Any rights specified by `rule` are ignored when performing this search. All matching rules are removed. If no matching rules are found, no action is taken."
+  summary: "Søk etter alle tilgangsregler kontroll med samme bruker og <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;> </xref> (Tillat eller Nekt) som den angitte regel, og hvis finner fjerner dem."
+  remarks: "Gjeldende <xref:System.Security.AccessControl.EventWaitHandleSecurity>søkes for regler som har den samme brukeren, og den samme <xref:System.Security.AccessControl.AccessControlType>verdi som `rule`.</xref:System.Security.AccessControl.AccessControlType> </xref:System.Security.AccessControl.EventWaitHandleSecurity> Tillatelser som er angitt av `rule` ignoreres når du utfører dette søket. Samsvarende reglene fjernes. Hvis det finnes ingen samsvarende regler, ble ingen handling utført."
   example:
   - "The following code example shows that the RemoveAccessRuleAll method removes all rules that match user and <xref:System.Security.AccessControl.AccessControlType>, ignoring rights.  \n  \n The example creates an <xref:System.Security.AccessControl.EventWaitHandleSecurity> object, adds rules that allow and deny various rights for the current user, and then merges additional rights into the <xref:System.Security.AccessControl.AccessControlType> rule. The example then creates a new rule that allows the current user to take ownership, and uses that rule to remove the <xref:System.Security.AccessControl.AccessControlType> rule from the <xref:System.Security.AccessControl.EventWaitHandleSecurity> object.  \n  \n> [!NOTE]\n>  This example does not attach the security object to a <xref:System.Threading.EventWaitHandle> object. Examples that attach security objects can be found in <xref:System.Threading.EventWaitHandle.GetAccessControl%2A?displayProperty=fullName> and <xref:System.Threading.EventWaitHandle.SetAccessControl%2A?displayProperty=fullName>.  \n  \n [!code-vb[System.Security.AccessControl.EventWaitHandleSecurity.RemoveAccessRuleAll#1](~/add/codesnippet/visualbasic/a6ff73cc-4227-4079-abe7-_1.vb)]\n [!code-cs[System.Security.AccessControl.EventWaitHandleSecurity.RemoveAccessRuleAll#1](~/add/codesnippet/csharp/a6ff73cc-4227-4079-abe7-_1.cs)]"
   syntax:
@@ -396,12 +396,12 @@ items:
     parameters:
     - id: rule
       type: System.Security.AccessControl.EventWaitHandleAccessRule
-      description: "An <xref href=&quot;System.Security.AccessControl.EventWaitHandleAccessRule&quot;></xref> that specifies the user and <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref> to search for. Any rights specified by this rule are ignored."
+      description: "En <xref href=&quot;System.Security.AccessControl.EventWaitHandleAccessRule&quot;> </xref> som angir og <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;> </xref> til å søke etter. Tillatelser som er angitt av denne regelen, ignoreres."
   overload: System.Security.AccessControl.EventWaitHandleSecurity.RemoveAccessRuleAll*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.EventWaitHandleSecurity.RemoveAccessRuleSpecific(System.Security.AccessControl.EventWaitHandleAccessRule)
@@ -416,8 +416,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Searches for an access control rule that exactly matches the specified rule and, if found, removes it."
-  remarks: "The rule is removed only if it exactly matches `rule` in all details, including flags. Other rules with the same user and <xref:System.Security.AccessControl.AccessControlType> are not affected.      > [!IMPORTANT] >  A rule represents one or more underlying access control entries (ACE), and these entries are split or combined as necessary when you modify the access security rules for a user. Thus, a rule might no longer exist in the specific form it had when it was added, and in that case the RemoveAccessRuleSpecific method cannot remove it."
+  summary: "Søker etter en tilgangsregel for kontrollen som er lik den angitte regel, og hvis funnet, fjerner den."
+  remarks: "Regelen fjernes hvis du bare nøyaktig `rule` i alle detaljer, inkludert flagg. Andre regler med samme bruker og <xref:System.Security.AccessControl.AccessControlType>påvirkes ikke.</xref:System.Security.AccessControl.AccessControlType>      > [!IMPORTANT] > En regel representerer en eller flere underliggende tilgangskontrolloppføringer (TILGANGSKONTROLLISTEN), og disse postene dele eller kombineres behov når du endrer sikkerhet tilgangsregler for en bruker. En regel finnes kanskje ikke lenger i skjemaet den hadde da den ble lagt til, og derfor i dette tilfellet RemoveAccessRuleSpecific-metoden kan ikke fjernes."
   example:
   - "The following code example shows that the RemoveAccessRuleSpecific method requires an exact match in order to remove a rule, and that rules to allow and deny rights are independent of each other.  \n  \n The example creates an <xref:System.Security.AccessControl.EventWaitHandleSecurity> object, adds rules that allow and deny various rights for the current user, and then merges additional rights into the <xref:System.Security.AccessControl.AccessControlType> access rule. The example then passes the original <xref:System.Security.AccessControl.AccessControlType> rule to the RemoveAccessRuleSpecific method, and displays the results, showing that nothing is deleted. The example then constructs a rule that matches the <xref:System.Security.AccessControl.AccessControlType> rule in the <xref:System.Security.AccessControl.EventWaitHandleSecurity> object, and successfully uses the RemoveAccessRuleSpecific method to remove the rule.  \n  \n> [!NOTE]\n>  This example does not attach the security object to a <xref:System.Threading.EventWaitHandle> object. Examples that attach security objects can be found in <xref:System.Threading.EventWaitHandle.GetAccessControl%2A?displayProperty=fullName> and <xref:System.Threading.EventWaitHandle.SetAccessControl%2A?displayProperty=fullName>.  \n  \n [!code-cs[System.Security.AccessControl.EventWaitHandleSecurity.RemoveAccessRuleSpecific#1](~/add/codesnippet/csharp/4b0413fe-85b1-4175-8dfd-_1.cs)]\n [!code-vb[System.Security.AccessControl.EventWaitHandleSecurity.RemoveAccessRuleSpecific#1](~/add/codesnippet/visualbasic/4b0413fe-85b1-4175-8dfd-_1.vb)]"
   syntax:
@@ -425,12 +425,12 @@ items:
     parameters:
     - id: rule
       type: System.Security.AccessControl.EventWaitHandleAccessRule
-      description: "The <xref href=&quot;System.Security.AccessControl.EventWaitHandleAccessRule&quot;></xref> to remove."
+      description: "Den <xref href=&quot;System.Security.AccessControl.EventWaitHandleAccessRule&quot;> </xref> fjerne."
   overload: System.Security.AccessControl.EventWaitHandleSecurity.RemoveAccessRuleSpecific*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.EventWaitHandleSecurity.RemoveAuditRule(System.Security.AccessControl.EventWaitHandleAuditRule)
@@ -445,22 +445,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Searches for an audit rule with the same user as the specified rule, and with compatible inheritance and propagation flags; if a compatible rule is found, the rights contained in the specified rule are removed from it."
-  remarks: "The current <xref:System.Security.AccessControl.EventWaitHandleSecurity> is searched for an audit rule that has the same user as `rule`. If no such rule is found, no action is taken, and the method returns `false`. If matching rules are found, their inheritance and compatibility flags are checked for compatibility with the flags specified in `rule`. If no compatible rule is found, no action is taken, and the method returns `false`. If a rule with compatible flags is found, the rights specified in `rule` are removed from the compatible rule, and the method returns `true`. If `rule` specifies rights not contained in the compatible rule, no action is taken with respect to those rights. If all rights are removed from the compatible rule, the entire rule is removed from the current <xref:System.Security.AccessControl.EventWaitHandleSecurity> object.      > [!IMPORTANT] >  Although you can specify inheritance and propagation flags for event audit rules, by creating them with the <xref:System.Security.AccessControl.EventWaitHandleSecurity.AuditRuleFactory%2A> method, this is not recommended. Inheritance and propagation have no meaning for named events, and they make the maintenance of audit rules more complicated."
+  summary: "Søk etter en regel for sporing av endringer med den samme brukeren som den angitte regelen og kompatibel arv og overføring flagg. Hvis en kompatibel regel finnes, er rettigheter i den angitte regelen fjernet fra den."
+  remarks: "Gjeldende <xref:System.Security.AccessControl.EventWaitHandleSecurity>søkes for en regel for sporing av endringer som har den samme brukeren som `rule`.</xref:System.Security.AccessControl.EventWaitHandleSecurity> Hvis ingen slik regel finnes, ingen handling ble utført, og metoden returnerer `false`. Hvis det finnes like regler, flaggene deres arv og kompatibilitetslag kontrolleres for kompatibilitet med flaggene som er angitt i `rule`. Hvis ingen kompatibel regel finnes, ingen handling ble utført, og metoden returnerer `false`. Hvis en regel med kompatibel flagg blir funnet, rettighetene som er angitt i `rule` fjernes fra en kompatibel regel, og metoden returnerer `true`. Hvis `rule` angir rettigheter som ikke finnes i kompatibel regelen, ingen handling ble utført i forhold til rettighetene. Hvis alle rettigheter fjernes fra kompatibel regel, hele regelen er fjernet fra gjeldende <xref:System.Security.AccessControl.EventWaitHandleSecurity>objektet.</xref:System.Security.AccessControl.EventWaitHandleSecurity>      > [!IMPORTANT] > Selv om du kan angi arv og overføring flagg for hendelsen audit regler ved å opprette dem med den <xref:System.Security.AccessControl.EventWaitHandleSecurity.AuditRuleFactory%2A>metoden dette anbefales ikke.</xref:System.Security.AccessControl.EventWaitHandleSecurity.AuditRuleFactory%2A> Arv og overføring har ingen betydning for navngitte hendelser, og de foreta vedlikehold av audit regler mer kompliserte."
   syntax:
     content: public bool RemoveAuditRule (System.Security.AccessControl.EventWaitHandleAuditRule rule);
     parameters:
     - id: rule
       type: System.Security.AccessControl.EventWaitHandleAuditRule
-      description: "An <xref href=&quot;System.Security.AccessControl.EventWaitHandleAuditRule&quot;></xref> that specifies the user to search for and a set of inheritance and propagation flags that a matching rule, if found, must be compatible with. Specifies the rights to remove from the compatible rule, if found."
+      description: "En <xref href=&quot;System.Security.AccessControl.EventWaitHandleAuditRule&quot;> </xref> som angir brukeren til å søke etter og et sett med arv og overføring flaggene som en tilsvarende regel, hvis finnes, må være kompatibel med. Angir rettigheter til å fjerne fra kompatibel regelen om."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a compatible rule is found; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis en kompatibel regel finnes. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Security.AccessControl.EventWaitHandleSecurity.RemoveAuditRule*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.EventWaitHandleSecurity.RemoveAuditRuleAll(System.Security.AccessControl.EventWaitHandleAuditRule)
@@ -475,19 +475,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Searches for all audit rules with the same user as the specified rule and, if found, removes them."
-  remarks: "The current <xref:System.Security.AccessControl.EventWaitHandleSecurity> is searched for audit rules that have the same user as `rule`. Any rights specified by `rule` are ignored when performing this search. All matching rules are removed. If no matching rules are found, no action is taken."
+  summary: "Søker for alle audit regler med samme bruker som den angitte regelen, og hvis funnet, fjernet."
+  remarks: "Gjeldende <xref:System.Security.AccessControl.EventWaitHandleSecurity>søkes for audit regler som har samme bruker som `rule`.</xref:System.Security.AccessControl.EventWaitHandleSecurity> Tillatelser som er angitt av `rule` ignoreres når du utfører dette søket. Samsvarende reglene fjernes. Hvis det finnes ingen samsvarende regler, ble ingen handling utført."
   syntax:
     content: public void RemoveAuditRuleAll (System.Security.AccessControl.EventWaitHandleAuditRule rule);
     parameters:
     - id: rule
       type: System.Security.AccessControl.EventWaitHandleAuditRule
-      description: "An <xref href=&quot;System.Security.AccessControl.EventWaitHandleAuditRule&quot;></xref> that specifies the user to search for. Any rights specified by this rule are ignored."
+      description: "En <xref href=&quot;System.Security.AccessControl.EventWaitHandleAuditRule&quot;> </xref> som angir til å søke etter. Tillatelser som er angitt av denne regelen, ignoreres."
   overload: System.Security.AccessControl.EventWaitHandleSecurity.RemoveAuditRuleAll*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.EventWaitHandleSecurity.RemoveAuditRuleSpecific(System.Security.AccessControl.EventWaitHandleAuditRule)
@@ -502,19 +502,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Searches for an audit rule that exactly matches the specified rule and, if found, removes it."
-  remarks: "The rule is removed only if it exactly matches `rule` in all details, including flags. Other audit rules for the same user are not affected.      > [!IMPORTANT] >  A rule represents one or more underlying access control entries (ACE), and these entries are split or combined as necessary when you modify the audit security rules for a user. Thus, a rule might no longer exist in the specific form it had when it was added, and in that case the RemoveAuditRuleSpecific method cannot remove it."
+  summary: "Søker etter en regel for sporing av endringer som er lik den angitte regel, og hvis funnet, fjerner den."
+  remarks: "Regelen fjernes hvis du bare nøyaktig `rule` i alle detaljer, inkludert flagg. Andre audit regler for samme bruker påvirkes ikke.      > [!IMPORTANT] > En regel representerer en eller flere underliggende tilgangskontrolloppføringer (TILGANGSKONTROLLISTEN), og disse postene dele eller kombineres behov når du endrer audit sikkerhetsregler for en bruker. En regel finnes kanskje ikke lenger i skjemaet den hadde da den ble lagt til, og derfor i dette tilfellet RemoveAuditRuleSpecific-metoden kan ikke fjernes."
   syntax:
     content: public void RemoveAuditRuleSpecific (System.Security.AccessControl.EventWaitHandleAuditRule rule);
     parameters:
     - id: rule
       type: System.Security.AccessControl.EventWaitHandleAuditRule
-      description: "The <xref href=&quot;System.Security.AccessControl.EventWaitHandleAuditRule&quot;></xref> to remove."
+      description: "Den <xref href=&quot;System.Security.AccessControl.EventWaitHandleAuditRule&quot;> </xref> fjerne."
   overload: System.Security.AccessControl.EventWaitHandleSecurity.RemoveAuditRuleSpecific*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.EventWaitHandleSecurity.ResetAccessRule(System.Security.AccessControl.EventWaitHandleAccessRule)
@@ -529,8 +529,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Removes all access control rules with the same user as the specified rule, regardless of <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref>, and then adds the specified rule."
-  remarks: "If there are no access rules whose user matches the specified rule, `rule` is added."
+  summary: "Fjerner alle tilgangsregler for kontroll med samme bruker som den angitte regelen uavhengig av <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;> </xref>, og legger til den angitte regelen."
+  remarks: "Hvis det finnes ingen tilgangsregler som bruker samsvarer med den angitte regelen `rule` er lagt til."
   example:
   - "The following code example shows how the ResetAccessRule method replaces all rules for the matching user with the rule specified for the match.  \n  \n The example creates an <xref:System.Security.AccessControl.EventWaitHandleSecurity> object and adds rules that allow and deny various rights for the current user. The example then creates a new rule that allows the current user full control, and uses the ResetAccessRule method to replace both of the existing rules with the new rule.  \n  \n> [!NOTE]\n>  This example does not attach the security object to a <xref:System.Threading.EventWaitHandle> object. Examples that attach security objects can be found in <xref:System.Threading.EventWaitHandle.GetAccessControl%2A?displayProperty=fullName> and <xref:System.Threading.EventWaitHandle.SetAccessControl%2A?displayProperty=fullName>.  \n  \n [!code-cs[System.Security.AccessControl.EventWaitHandleSecurity.ResetAccessRule#1](~/add/codesnippet/csharp/831b1f62-72fc-4f57-bcc7-_1.cs)]\n [!code-vb[System.Security.AccessControl.EventWaitHandleSecurity.ResetAccessRule#1](~/add/codesnippet/visualbasic/831b1f62-72fc-4f57-bcc7-_1.vb)]"
   syntax:
@@ -538,12 +538,12 @@ items:
     parameters:
     - id: rule
       type: System.Security.AccessControl.EventWaitHandleAccessRule
-      description: "The <xref href=&quot;System.Security.AccessControl.EventWaitHandleAccessRule&quot;></xref> to add. The user specified by this rule determines the rules to remove before this rule is added."
+      description: "The <xref href=&quot;System.Security.AccessControl.EventWaitHandleAccessRule&quot;></xref> to add. Brukeren som er angitt av denne regelen bestemmer regler for å fjerne før denne regelen er lagt til."
   overload: System.Security.AccessControl.EventWaitHandleSecurity.ResetAccessRule*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.EventWaitHandleSecurity.SetAccessRule(System.Security.AccessControl.EventWaitHandleAccessRule)
@@ -558,8 +558,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Removes all access control rules with the same user and <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref> (allow or deny) as the specified rule, and then adds the specified rule."
-  remarks: "If the specified rule has <xref:System.Security.AccessControl.AccessControlType>, the effect of this method is to remove all <xref:System.Security.AccessControl.AccessControlType> rules for the specified user, replacing them with the specified rule. If the specified rule has <xref:System.Security.AccessControl.AccessControlType>, all <xref:System.Security.AccessControl.AccessControlType> rules for the specified user are replaced with the specified rule.       If there are no rules whose user and <xref:System.Security.AccessControl.AccessControlType> match the specified rule, `rule` is added."
+  summary: "Fjerner alle tilgangsregler for kontroll med samme bruker og <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;> </xref> (Tillat eller Nekt) som angitt regel, og legger til den angitte regelen."
+  remarks: "Hvis den angitte regelen er <xref:System.Security.AccessControl.AccessControlType>, denne metoden virker å fjerne alle <xref:System.Security.AccessControl.AccessControlType>regler for den angitte brukeren å erstatte dem med den angitte regelen.</xref:System.Security.AccessControl.AccessControlType> </xref:System.Security.AccessControl.AccessControlType> Hvis den angitte regelen er <xref:System.Security.AccessControl.AccessControlType>, alle <xref:System.Security.AccessControl.AccessControlType>regler for den angitte brukeren er erstattet med den angitte regelen.</xref:System.Security.AccessControl.AccessControlType> </xref:System.Security.AccessControl.AccessControlType>       Hvis det er ingen regler som bruker og <xref:System.Security.AccessControl.AccessControlType>samsvarer med den angitte regelen `rule` er lagt til.</xref:System.Security.AccessControl.AccessControlType>"
   example:
   - "The following code example shows how the SetAccessRule method removes all rules that match both the user and the <xref:System.Security.AccessControl.AccessControlType> of `rule`, replacing them with `rule`.  \n  \n The example creates an <xref:System.Security.AccessControl.EventWaitHandleSecurity> object and adds rules that allow and deny various rights for the current user. The example then creates a new rule that allows the current user full control, and uses the SetAccessRule method to replace the existing <xref:System.Security.AccessControl.AccessControlType> rule with the new rule. The rule that denies access is not affected.  \n  \n> [!NOTE]\n>  This example does not attach the security object to a <xref:System.Threading.EventWaitHandle> object. Examples that attach security objects can be found in <xref:System.Threading.EventWaitHandle.GetAccessControl%2A?displayProperty=fullName> and <xref:System.Threading.EventWaitHandle.SetAccessControl%2A?displayProperty=fullName>.  \n  \n [!code-vb[System.Security.AccessControl.EventWaitHandleSecurity.SetAccessRule#1](~/add/codesnippet/visualbasic/2e843fc0-0bf3-426e-ae6b-_1.vb)]\n [!code-cs[System.Security.AccessControl.EventWaitHandleSecurity.SetAccessRule#1](~/add/codesnippet/csharp/2e843fc0-0bf3-426e-ae6b-_1.cs)]"
   syntax:
@@ -567,12 +567,12 @@ items:
     parameters:
     - id: rule
       type: System.Security.AccessControl.EventWaitHandleAccessRule
-      description: "The <xref href=&quot;System.Security.AccessControl.EventWaitHandleAccessRule&quot;></xref> to add. The user and <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;></xref> of this rule determine the rules to remove before this rule is added."
+      description: "The <xref href=&quot;System.Security.AccessControl.EventWaitHandleAccessRule&quot;></xref> to add. Brukeren og <xref href=&quot;System.Security.AccessControl.AccessControlType&quot;> </xref> fastslå regler for å fjerne før denne regelen er lagt til i denne regelen."
   overload: System.Security.AccessControl.EventWaitHandleSecurity.SetAccessRule*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Security.AccessControl.EventWaitHandleSecurity.SetAuditRule(System.Security.AccessControl.EventWaitHandleAuditRule)
@@ -587,19 +587,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.AccessControl
-  summary: "Removes all audit rules with the same user as the specified rule, regardless of the <xref href=&quot;System.Security.AccessControl.AuditFlags&quot;></xref> value, and then adds the specified rule."
-  remarks: "If there are no audit rules whose user matches the specified rule, `rule` is added."
+  summary: "Fjerner alle audit regler med samme bruker som den angitte regelen uavhengig av den <xref href=&quot;System.Security.AccessControl.AuditFlags&quot;> </xref> verdi, og legger til den angitte regelen."
+  remarks: "Hvis det finnes ingen audit regler som bruker samsvarer med den angitte regelen `rule` er lagt til."
   syntax:
     content: public void SetAuditRule (System.Security.AccessControl.EventWaitHandleAuditRule rule);
     parameters:
     - id: rule
       type: System.Security.AccessControl.EventWaitHandleAuditRule
-      description: "The <xref href=&quot;System.Security.AccessControl.EventWaitHandleAuditRule&quot;></xref> to add. The user specified by this rule determines the rules to remove before this rule is added."
+      description: "The <xref href=&quot;System.Security.AccessControl.EventWaitHandleAuditRule&quot;></xref> to add. Brukeren som er angitt av denne regelen bestemmer regler for å fjerne før denne regelen er lagt til."
   overload: System.Security.AccessControl.EventWaitHandleSecurity.SetAuditRule*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>rule</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>rule</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 references:

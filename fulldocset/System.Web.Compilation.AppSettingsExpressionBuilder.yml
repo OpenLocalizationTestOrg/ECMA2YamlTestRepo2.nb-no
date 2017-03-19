@@ -15,8 +15,8 @@ items:
   nameWithType: AppSettingsExpressionBuilder
   fullName: System.Web.Compilation.AppSettingsExpressionBuilder
   type: Class
-  summary: "Retrieves values, as specified in a declarative expression, from the <xref uid=&quot;langword_csharp_&lt;appSettings&gt;&quot; name=&quot;&lt;appSettings&gt;&quot; href=&quot;&quot;></xref> section of the Web.config file."
-  remarks: "The AppSettingsExpressionBuilder class provides access to values in the `<appSettings>` section of the Web.config file. The `<appSettings>` section of the Web.config file contains application-specific values in key/value pairs.       An application value is retrieved by assigning an expression of the form       `<%$ AppSettings: appSettingsKey %>`       to a property in a control declaration. The part of the expression before the colon (:) designates the type of expression to be retrieved, and the part after the colon signifies the key. The preceding expression would retrieve the following value from the Web.config file.       `<appSettings>`       `<add key=&quot;appSettingsKey&quot; value=&quot;appSettingsValue&quot;/>`       `</appSettings>`       When the page parser encounters an expression with the `AppSettings` prefix, it creates an instance of the AppSettingsExpressionBuilder class to handle the expression.       If the expression is encountered in a page that will be compiled, the AppSettingsExpressionBuilder object generates code to retrieve the specified value from the Web.config file. This code is executed during the execution of the generated page class. If the expression is encountered in a page that will not be compiled, the AppSettingsExpressionBuilder object returns the value from the Web.config file when the page is parsed and executed."
+  summary: "Henter verdier, som er angitt i et deklarerende uttrykk fra den <xref uid=&quot;langword_csharp_&lt;appSettings&gt;&quot; name=&quot;&lt;appSettings&gt;&quot; href=&quot;&quot;> </xref> -delen i Web.config-filen."
+  remarks: "Klassen AppSettingsExpressionBuilder gir tilgang til verdiene i den `<appSettings>` -delen i Web.config-filen. Den `<appSettings>` -delen i Web.config-filen inneholder programspesifikk verdiene i nøkkel/verdi-par.       En verdi for applikasjonen som hentes ved å tilordne et uttrykk med formatet `<%$ AppSettings: appSettingsKey %>` til en egenskap i en kontroll-deklarasjon. En del av uttrykket før kolon (:) angir uttrykket som skal hentes og del etter kolon betyr nøkkelen. Foregående uttrykket vil hente følgende verdi fra filen Web.config.       `<appSettings>`       `<add key=&quot;appSettingsKey&quot; value=&quot;appSettingsValue&quot;/>`       `</appSettings>`Når siden parseren støter på et uttrykk med den `AppSettings` prefiks, opprettes en forekomst av klassen AppSettingsExpressionBuilder til å håndtere uttrykket.       Hvis uttrykket i en side som skal kompileres, genererer AppSettingsExpressionBuilder objektet kode for å hente den angitte verdien fra filen Web.config. Denne koden utføres under kjøring av klassen genererte siden. Hvis uttrykket i en side som ikke skal kompileres, returnerer AppSettingsExpressionBuilder objektet verdien fra filen Web.config når siden er analysert, og kjøres."
   example:
   - "The following code example demonstrates how to retrieve an application settings value in a page that is not compiled.  \n  \n [!code-vb[System.Web.Compilation.AppSettingsExpressionBuilder#1](~/add/codesnippet/visualbasic/t-system.web.compilation_6_1.aspx)]\n [!code-cs[System.Web.Compilation.AppSettingsExpressionBuilder#1](~/add/codesnippet/csharp/t-system.web.compilation_6_1.aspx)]  \n  \n This code retrieves the following expression from the Web.config file.  \n  \n `<configuration xmlns=\"http://schemas.microsoft.com/.NetConfiguration/v2.0\">`  \n  \n `<appSettings>`  \n  \n `<add key=\"thisSeason\" value=\"Fall\"/>`  \n  \n `</appSettings>`  \n  \n `</configuration>`"
   syntax:
@@ -46,7 +46,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.Compilation.AppSettingsExpressionBuilder&quot;></xref> class."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Web.Compilation.AppSettingsExpressionBuilder&quot;> </xref> klasse."
   syntax:
     content: public AppSettingsExpressionBuilder ();
     parameters: []
@@ -66,26 +66,26 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Returns a value from the <xref uid=&quot;langword_csharp_&lt;appSettings&gt;&quot; name=&quot;&lt;appSettings&gt;&quot; href=&quot;&quot;></xref> section of the Web.config file."
-  remarks: 'This method is called when an expression of the form `<%$ AppSettings: someApplicationSetting %>` is encountered in a no-compile page. It retrieves the appropriate value from the key/value pairs in the `<appSettings>` section of the Web.config file. This method overrides <xref:System.Web.Compilation.ExpressionBuilder.EvaluateExpression%2A> by calling the <xref:System.Web.Compilation.AppSettingsExpressionBuilder.GetAppSetting%2A> method with the <xref:System.Web.UI.BoundPropertyEntry.Expression%2A> property as the `key` parameter, the <xref:System.Web.UI.PropertyEntry.Name%2A> property on the <xref:System.Web.UI.PropertyEntry.PropertyInfo%2A?displayProperty=fullName> property as the `propertyName` parameter, and the <xref:System.Type> of the `target` parameter as the `targetType` parameter.'
+  summary: "Returnerer en verdi fra den <xref uid=&quot;langword_csharp_&lt;appSettings&gt;&quot; name=&quot;&lt;appSettings&gt;&quot; href=&quot;&quot;> </xref> -delen i Web.config-filen."
+  remarks: 'Denne metoden kalles når et uttrykk med formatet `<%$ AppSettings: someApplicationSetting %>` oppstår i et Nei kompilering. Den henter riktig verdi fra nøkkel/verdi-par i den `<appSettings>` -delen i Web.config-filen. Denne metoden overstyrer <xref:System.Web.Compilation.ExpressionBuilder.EvaluateExpression%2A>ved å kalle den <xref:System.Web.Compilation.AppSettingsExpressionBuilder.GetAppSetting%2A>metoden med den <xref:System.Web.UI.BoundPropertyEntry.Expression%2A>egenskapen som den `key` parameteren den <xref:System.Web.UI.PropertyEntry.Name%2A>egenskap i den <xref:System.Web.UI.PropertyEntry.PropertyInfo%2A?displayProperty=fullName>egenskapen som den `propertyName` parameteren og <xref:System.Type>for den `target` -parameteren som den `targetType` parameteren.</xref:System.Type> </xref:System.Web.UI.PropertyEntry.PropertyInfo%2A?displayProperty=fullName> </xref:System.Web.UI.PropertyEntry.Name%2A> </xref:System.Web.UI.BoundPropertyEntry.Expression%2A> </xref:System.Web.Compilation.AppSettingsExpressionBuilder.GetAppSetting%2A> </xref:System.Web.Compilation.ExpressionBuilder.EvaluateExpression%2A>'
   syntax:
     content: public override object EvaluateExpression (object target, System.Web.UI.BoundPropertyEntry entry, object parsedData, System.Web.Compilation.ExpressionBuilderContext context);
     parameters:
     - id: target
       type: System.Object
-      description: "The object that contains the property entry."
+      description: "Objektet som inneholder egenskapen-oppføringen."
     - id: entry
       type: System.Web.UI.BoundPropertyEntry
-      description: "The property to which the expression is bound.."
+      description: "Egenskapen som uttrykket er bundet.."
     - id: parsedData
       type: System.Object
-      description: "The object that represents parsed data as returned by <xref:System.Web.Compilation.ExpressionBuilder.ParseExpression*>."
+      description: "Objektet som representerer analyseres data som returneres av <xref:System.Web.Compilation.ExpressionBuilder.ParseExpression*>.</xref:System.Web.Compilation.ExpressionBuilder.ParseExpression*>"
     - id: context
       type: System.Web.Compilation.ExpressionBuilderContext
-      description: "Properties for the control or page."
+      description: "Egenskaper for kontrollen eller siden."
     return:
       type: System.Object
-      description: "The <xref:System.Object> associated with a key in the <xref uid=&quot;langword_csharp_&lt;appSettings&gt;&quot; name=&quot;&lt;appSettings&gt;&quot; href=&quot;&quot;></xref> section of the Web.config file."
+      description: "Den <xref:System.Object>knyttet til en nøkkel i den <xref uid=&quot;langword_csharp_&lt;appSettings&gt;&quot; name=&quot;&lt;appSettings&gt;&quot; href=&quot;&quot;> </xref> -delen i Web.config-filen.</xref:System.Object>"
   overload: System.Web.Compilation.AppSettingsExpressionBuilder.EvaluateExpression*
   exceptions: []
   platform:
@@ -102,22 +102,22 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Returns a value from the <xref uid=&quot;langword_csharp_&lt;appSettings&gt;&quot; name=&quot;&lt;appSettings&gt;&quot; href=&quot;&quot;></xref> section of the Web.config file."
-  remarks: "This method retrieves the appropriate value from the key/value pairs in the `<appSettings>` section of the Web.config file. It retrieves the value by getting the <xref:System.Configuration.ConfigurationManager.AppSettings%2A> property with the key as the index. The <xref:System.Object> returned is of the type <xref:System.String>."
+  summary: "Returnerer en verdi fra den <xref uid=&quot;langword_csharp_&lt;appSettings&gt;&quot; name=&quot;&lt;appSettings&gt;&quot; href=&quot;&quot;> </xref> -delen i Web.config-filen."
+  remarks: "Denne metoden henter riktig verdi fra nøkkel/verdi-par i den `<appSettings>` -delen i Web.config-filen. Henting av verdien ved å få den <xref:System.Configuration.ConfigurationManager.AppSettings%2A>egenskapen med nøkkel som indeksen.</xref:System.Configuration.ConfigurationManager.AppSettings%2A> <xref:System.Object>Returnerte er av typen <xref:System.String>.</xref:System.String> </xref:System.Object>"
   syntax:
     content: public static object GetAppSetting (string key);
     parameters:
     - id: key
       type: System.String
-      description: "The key for the value to be retrieved from the configuration file."
+      description: "Nøkkelen for verdien som skal hentes fra konfigurasjonsfilen."
     return:
       type: System.Object
-      description: "The <xref:System.Object> associated with the key in the <xref uid=&quot;langword_csharp_&lt;appSettings&gt;&quot; name=&quot;&lt;appSettings&gt;&quot; href=&quot;&quot;></xref> section of the Web.config file."
+      description: "Den <xref:System.Object>knyttet til nøkkelen i den <xref uid=&quot;langword_csharp_&lt;appSettings&gt;&quot; name=&quot;&lt;appSettings&gt;&quot; href=&quot;&quot;> </xref> -delen i Web.config-filen.</xref:System.Object>"
   overload: System.Web.Compilation.AppSettingsExpressionBuilder.GetAppSetting*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The key is not found in Web.config."
+    description: "Nøkkelen finnes ikke i Web.config."
   platform:
   - net462
 - uid: System.Web.Compilation.AppSettingsExpressionBuilder.GetAppSetting(System.String,System.Type,System.String)
@@ -132,23 +132,23 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Returns a value from the <xref uid=&quot;langword_csharp_&lt;appSettings&gt;&quot; name=&quot;&lt;appSettings&gt;&quot; href=&quot;&quot;></xref> section of the Web.config file with the value converted to a target type."
-  remarks: "This method retrieves the appropriate value from the key/value pairs in the `<appSettings>` section of the Web.config file. The value is retrieved by getting the <xref:System.Configuration.ConfigurationManager.AppSettings%2A> property with the key as the index. The resulting string value is converted to a new type based on the `targetType` and `propertyName` parameters."
+  summary: "Returnerer en verdi fra den <xref uid=&quot;langword_csharp_&lt;appSettings&gt;&quot; name=&quot;&lt;appSettings&gt;&quot; href=&quot;&quot;> </xref> -delen i Web.config-filen med verdien konverteres til en måltypen."
+  remarks: "Denne metoden henter riktig verdi fra nøkkel/verdi-par i den `<appSettings>` -delen i Web.config-filen. Verdien som hentes ved å få den <xref:System.Configuration.ConfigurationManager.AppSettings%2A>egenskapen med nøkkel som indeksen.</xref:System.Configuration.ConfigurationManager.AppSettings%2A> Strengverdien resulterende konverteres til en ny type som er basert på den `targetType` og `propertyName` parametere."
   syntax:
     content: public static object GetAppSetting (string key, Type targetType, string propertyName);
     parameters:
     - id: key
       type: System.String
-      description: "The key for a value to be retrieved from the configuration file."
+      description: "Nøkkel for en verdi som skal hentes fra konfigurasjonsfilen."
     - id: targetType
       type: System.Type
-      description: "The type of the object that contains the property entry."
+      description: "Typen for objektet som inneholder egenskapen-oppføringen."
     - id: propertyName
       type: System.String
-      description: "The name of the property to which the expression is bound."
+      description: "Navnet på egenskapen som uttrykket er bundet."
     return:
       type: System.Object
-      description: "The <xref:System.Object> associated with the key in the <xref uid=&quot;langword_csharp_&lt;appSettings&gt;&quot; name=&quot;&lt;appSettings&gt;&quot; href=&quot;&quot;></xref> section of the Web.config file."
+      description: "Den <xref:System.Object>knyttet til nøkkelen i den <xref uid=&quot;langword_csharp_&lt;appSettings&gt;&quot; name=&quot;&lt;appSettings&gt;&quot; href=&quot;&quot;> </xref> -delen i Web.config-filen.</xref:System.Object>"
   overload: System.Web.Compilation.AppSettingsExpressionBuilder.GetAppSetting*
   exceptions:
   - type: System.InvalidOperationException
@@ -168,23 +168,23 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Returns a code expression that is used to perform the property assignment in the generated page class."
-  remarks: "This method is called during the CodeDOM creation for a page or control. The returned <xref:System.CodeDom.CodeExpression> object represents the code expression to add to the property assignment in the generated page class."
+  summary: "Returnerer et code-uttrykk som brukes til å utføre egenskapen tilordningen i klassen som er generert siden."
+  remarks: "Denne metoden kalles under opprettelse av CodeDOM for sider eller kontrollen. Den returnerte <xref:System.CodeDom.CodeExpression>objektet representerer code-uttrykket til å legge til egenskapen tildelingen i genererte siden klasse.</xref:System.CodeDom.CodeExpression>"
   syntax:
     content: public override System.CodeDom.CodeExpression GetCodeExpression (System.Web.UI.BoundPropertyEntry entry, object parsedData, System.Web.Compilation.ExpressionBuilderContext context);
     parameters:
     - id: entry
       type: System.Web.UI.BoundPropertyEntry
-      description: "The property to which the expression is bound."
+      description: "Uttrykket som er bundet til egenskapen."
     - id: parsedData
       type: System.Object
-      description: "The object that represents parsed data as returned by <xref:System.Web.Compilation.ExpressionBuilder.ParseExpression*>."
+      description: "Objektet som representerer analyseres data som returneres av <xref:System.Web.Compilation.ExpressionBuilder.ParseExpression*>.</xref:System.Web.Compilation.ExpressionBuilder.ParseExpression*>"
     - id: context
       type: System.Web.Compilation.ExpressionBuilderContext
-      description: "Properties for the control or page."
+      description: "Egenskaper for kontrollen eller siden."
     return:
       type: System.CodeDom.CodeExpression
-      description: "A <xref href=&quot;System.CodeDom.CodeExpression&quot;></xref> that is used in the property assignment."
+      description: "En <xref href=&quot;System.CodeDom.CodeExpression&quot;> </xref> som brukes i egenskapen tilordningen."
   overload: System.Web.Compilation.AppSettingsExpressionBuilder.GetCodeExpression*
   exceptions: []
   platform:
@@ -201,13 +201,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Compilation
-  summary: "Returns a value indicating whether an expression can be evaluated in a page that is not compiled."
-  remarks: "The SupportsEvaluate property indicates whether the <xref:System.Web.Compilation.AppSettingsExpressionBuilder.EvaluateExpression%2A> method has been implemented in the class and can return a value for the expression. <xref:System.Web.Compilation.AppSettingsExpressionBuilder.EvaluateExpression%2A> must be implemented within an expression builder for an expression to be evaluated in a page that is not compiled. The <xref:System.Web.Compilation.AppSettingsExpressionBuilder> class supports evaluation of an application setting in a page that is not compiled, so it always returns `true`."
+  summary: "Returnerer en verdi som angir om et uttrykk kan evalueres på en side som ikke er kompilert."
+  remarks: "Egenskapen SupportsEvaluate angir om den <xref:System.Web.Compilation.AppSettingsExpressionBuilder.EvaluateExpression%2A>metoden er implementert i klassen og kan returnere en verdi for uttrykket.</xref:System.Web.Compilation.AppSettingsExpressionBuilder.EvaluateExpression%2A> <xref:System.Web.Compilation.AppSettingsExpressionBuilder.EvaluateExpression%2A>må være implementert i expression-verktøy for et uttrykk som skal evalueres i en side som ikke er kompilert.</xref:System.Web.Compilation.AppSettingsExpressionBuilder.EvaluateExpression%2A> Den <xref:System.Web.Compilation.AppSettingsExpressionBuilder>klassen støtter evalueringen av en applikasjonsinnstilling i en side som ikke er kompilert, slik at den returnerer alltid `true`.</xref:System.Web.Compilation.AppSettingsExpressionBuilder>"
   syntax:
     content: public override bool SupportsEvaluate { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> in all cases."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>i alle tilfeller."
   overload: System.Web.Compilation.AppSettingsExpressionBuilder.SupportsEvaluate*
   exceptions: []
   platform:

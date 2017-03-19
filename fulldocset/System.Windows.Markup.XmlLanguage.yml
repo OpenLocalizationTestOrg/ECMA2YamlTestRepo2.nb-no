@@ -15,8 +15,8 @@ items:
   nameWithType: XmlLanguage
   fullName: System.Windows.Markup.XmlLanguage
   type: Class
-  summary: "Represents a language tag for use in XAML markup."
-  remarks: "The language tag may or may not have a registered <xref:System.Globalization.CultureInfo> present on the system where the XAML is interpreted.       This class is useful for dealing with values represented using `xml:lang` in XML.       Language tags can be specified in two-character form or in a hyphenated language-locale form. See [RFC 3066](http://go.microsoft.com/fwlink/?LinkId=132454).       Note that the XML specification allows the empty string for `xml:lang`, although that is not permitted by RFC 3066; therefore, the XmlLanguage type permits &quot;&quot; (empty attribute string). A default-constructed XmlLanguage behaves as if constructed with &quot;&quot; (empty string).      <a name=&quot;xamlAttributeUsage_XmlLanguage&quot;></a>    ## XAML Attribute Usage      ```   <object property=&quot;prefix&quot;/>   - or -   <object property=&quot;prefix-subcode&quot;/>   ```      <a name=&quot;xamlValues_XmlLanguage&quot;></a>    ## XAML Values    *prefix*    Language prefix, using the ISO 639-1 language prefix values. For example &quot;en&quot;, or &quot;zh&quot;. Uppercase values are accepted and converted to lowercase. This may also be an empty attribute, &quot;&quot;.       *subcode*    If provided, must be preceded by a single hyphen. Then, a subcode as defined by RFC 3066. The most typical usage, and the one which is most likely to properly map to a <xref:System.Globalization.CultureInfo>, is a country or regional designation such as &quot;-us&quot; or &quot;-hk&quot;. Uppercase values are accepted and converted to lowercase."
+  summary: "Representerer en språkkode for bruk i XAML markup."
+  remarks: "Språk-ID kan eller kan ikke ha en registrert <xref:System.Globalization.CultureInfo>på systemet der XAML tolkes.</xref:System.Globalization.CultureInfo>       Denne klassen er nyttig for håndtering av verdiene som er representert ved hjelp av `xml:lang` i XML.       Språket koder kan angis i to tegn eller i et skjema med bindestrek språk. Se [RFC 3066](http://go.microsoft.com/fwlink/?LinkId=132454).       Legg merke til at XML-spesifikasjon tillater en tom streng for `xml:lang`, selv om som ikke er tillatt av RFC 3066; derfor XmlLanguage typen tillater &quot;&quot; (tom attributtet streng). En standard konstruert XmlLanguage fungere som om konstruert med &quot;&quot; (tom streng).      <a name=&quot;xamlAttributeUsage_XmlLanguage&quot;></a>## XAML Attributtbruk ```   <object property=&quot;prefix&quot;/>   - or -   <object property=&quot;prefix-subcode&quot;/>   ``` <a name=&quot;xamlValues_XmlLanguage&quot;> </a> ## XAML verdier *prefikset* språket prefiks, ved hjelp av ISO 639-1 språket prefikset verdiene.       For eksempel &quot;no&quot; eller &quot;zh&quot;. Store verdier er godkjent og konvertert til små bokstaver. Dette kan også være en tom attributtet &quot;&quot;.       *Delkode* hvis angitt, må komme etter en enkelt bindestrek. Deretter en delkode som er definert av RFC 3066. Mest vanlig bruk, og det som er mest sannsynlig vil er riktig tilordnet en <xref:System.Globalization.CultureInfo>, er et land eller regionale angivelsen for eksempel &quot;-oss&quot; eller &quot;-hk&quot;.</xref:System.Globalization.CultureInfo> Store verdier er godkjent og konvertert til små bokstaver."
   syntax:
     content: >-
       [System.ComponentModel.TypeConverter(typeof(System.Windows.Markup.XmlLanguageConverter))]
@@ -40,13 +40,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Markup
-  summary: "Gets a static <xref href=&quot;System.Windows.Markup.XmlLanguage&quot;></xref> instance as would be created by <xref:System.Windows.Markup.XmlLanguage.GetLanguage*> with the language tag as an empty attribute string."
-  remarks: "This value is in effect the <xref:System.Windows.Markup.XmlLanguage> corresponding to <xref:System.String.Empty?displayProperty=fullName>, whose <xref:System.Windows.Markup.XmlLanguage.GetEquivalentCulture%2A> result is <xref:System.Globalization.CultureInfo.InvariantCulture%2A?displayProperty=fullName>."
+  summary: "Henter en statisk <xref href=&quot;System.Windows.Markup.XmlLanguage&quot;> </xref> serverforekomsten som er laget ved <xref:System.Windows.Markup.XmlLanguage.GetLanguage*>med koden språket som en tom attributtet-streng.</xref:System.Windows.Markup.XmlLanguage.GetLanguage*>"
+  remarks: "Denne verdien er i bruk av <xref:System.Windows.Markup.XmlLanguage>tilsvarende til <xref:System.String.Empty?displayProperty=fullName>, <xref:System.Windows.Markup.XmlLanguage.GetEquivalentCulture%2A>resultatet er <xref:System.Globalization.CultureInfo.InvariantCulture%2A?displayProperty=fullName>.</xref:System.Globalization.CultureInfo.InvariantCulture%2A?displayProperty=fullName> </xref:System.Windows.Markup.XmlLanguage.GetEquivalentCulture%2A> </xref:System.String.Empty?displayProperty=fullName> </xref:System.Windows.Markup.XmlLanguage>"
   syntax:
     content: public static System.Windows.Markup.XmlLanguage Empty { get; }
     return:
       type: System.Windows.Markup.XmlLanguage
-      description: "The empty language tag version of <xref href=&quot;System.Windows.Markup.XmlLanguage&quot;></xref>, for use in comparison operations."
+      description: "En tom koden språkversjon av <xref href=&quot;System.Windows.Markup.XmlLanguage&quot;> </xref>, for bruk i sammenligningsoperasjoner."
   overload: System.Windows.Markup.XmlLanguage.Empty*
   exceptions: []
   platform:
@@ -63,19 +63,19 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Markup
-  summary: "Returns the appropriate equivalent <xref:System.Globalization.CultureInfo> for this <xref href=&quot;System.Windows.Markup.XmlLanguage&quot;></xref>, if and only if such a <xref:System.Globalization.CultureInfo> is registered for the <xref:System.Windows.Markup.XmlLanguage.IetfLanguageTag*> value of this <xref href=&quot;System.Windows.Markup.XmlLanguage&quot;></xref>"
-  remarks: "If no equivalent <xref:System.Globalization.CultureInfo> can be produced, this method raises an exception. If you do not wish to handle exceptions, call <xref:System.Windows.Markup.XmlLanguage.GetSpecificCulture%2A> instead."
+  summary: "Returnerer den riktige tilsvarende <xref:System.Globalization.CultureInfo>for denne <xref href=&quot;System.Windows.Markup.XmlLanguage&quot;> </xref>, hvis og bare hvis slike en <xref:System.Globalization.CultureInfo>er registrert for den <xref:System.Windows.Markup.XmlLanguage.IetfLanguageTag*>verdien for dette <xref href=&quot;System.Windows.Markup.XmlLanguage&quot;> </xref> </xref:System.Windows.Markup.XmlLanguage.IetfLanguageTag*> </xref:System.Globalization.CultureInfo> </xref:System.Globalization.CultureInfo>"
+  remarks: "Hvis ingen tilsvarende <xref:System.Globalization.CultureInfo>kan være angitt, denne metoden viser et unntak.</xref:System.Globalization.CultureInfo> Hvis du ikke vil behandle unntak, kaller <xref:System.Windows.Markup.XmlLanguage.GetSpecificCulture%2A>i stedet.</xref:System.Windows.Markup.XmlLanguage.GetSpecificCulture%2A>"
   syntax:
     content: public System.Globalization.CultureInfo GetEquivalentCulture ();
     parameters: []
     return:
       type: System.Globalization.CultureInfo
-      description: "A <xref:System.Globalization.CultureInfo> that can be used for localization-globalization API calls that take that type as an argument."
+      description: "En <xref:System.Globalization.CultureInfo>som kan brukes for lokalisering globalisering API-kall som tar denne typen som argument.</xref:System.Globalization.CultureInfo>"
   overload: System.Windows.Markup.XmlLanguage.GetEquivalentCulture*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "No registered <xref:System.Globalization.CultureInfo> for the provided <xref href=&quot;System.Windows.Markup.XmlLanguage&quot;></xref> exists, as determined by a call to <xref:System.Globalization.CultureInfo.GetCultureInfoByIetfLanguageTag*>."
+    description: "Ingen registrert <xref:System.Globalization.CultureInfo>for den angitte <xref href=&quot;System.Windows.Markup.XmlLanguage&quot;> </xref> finnes, i henhold til et kall til <xref:System.Globalization.CultureInfo.GetCultureInfoByIetfLanguageTag*>.</xref:System.Globalization.CultureInfo.GetCultureInfoByIetfLanguageTag*> </xref:System.Globalization.CultureInfo>"
   platform:
   - net462
 - uid: System.Windows.Markup.XmlLanguage.GetLanguage(System.String)
@@ -90,25 +90,25 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Markup
-  summary: "Returns a <xref href=&quot;System.Windows.Markup.XmlLanguage&quot;></xref> instance, based on a string representing the language per RFC 3066."
-  remarks: "This method is effectively the constructor.       The language string may be empty, or else must conform to [RFC 3066](http://go.microsoft.com/fwlink/?LinkId=132454) rules:      -   The first subtag must consist of only [!INCLUDE[TLA#tla_ascii](~/add/includes/tlasharptla-ascii-md.md)] letters.      -   Additional subtags must consist [!INCLUDE[TLA#tla_ascii](~/add/includes/tlasharptla-ascii-md.md)] letters or numerals.      -   Subtags are separated by a single hyphen character.      -   Every subtag must be 1 to 8 characters long.      -   No leading or trailing hyphens are permitted."
+  summary: "Returnerer en <xref href=&quot;System.Windows.Markup.XmlLanguage&quot;> </xref> forekomsten, basert på en streng som representerer språket per RFC 3066."
+  remarks: "Denne metoden er effektivt konstruktøren.       Språk-streng kan være tom, ellers må samsvare med [RFC 3066](http://go.microsoft.com/fwlink/?LinkId=132454) regler:-første subtag må bestå av bare [!INCLUDE[TLA#tla_ascii](~/add/includes/tlasharptla-ascii-md.md)] bokstaver.      -Flere subtags må bestå [!INCLUDE[TLA#tla_ascii](~/add/includes/tlasharptla-ascii-md.md)] tall.      -Subtags atskilt med et enkelt bindestrek tegn.      -Hver subtag må være 1 til 8 tegn.      -Uten innledende eller avsluttende bindestreker er tillatt."
   syntax:
     content: public static System.Windows.Markup.XmlLanguage GetLanguage (string ietfLanguageTag);
     parameters:
     - id: ietfLanguageTag
       type: System.String
-      description: "An RFC 3066 language string, or empty string."
+      description: "En RFC 3066 språket streng, eller en tom streng."
     return:
       type: System.Windows.Markup.XmlLanguage
-      description: "A new <xref href=&quot;System.Windows.Markup.XmlLanguage&quot;></xref> with the provided string as its <xref:System.Windows.Markup.XmlLanguage.IetfLanguageTag*> value."
+      description: "En ny <xref href=&quot;System.Windows.Markup.XmlLanguage&quot;> </xref> med den angitte strengen som den <xref:System.Windows.Markup.XmlLanguage.IetfLanguageTag*>verdi.</xref:System.Windows.Markup.XmlLanguage.IetfLanguageTag*>"
   overload: System.Windows.Markup.XmlLanguage.GetLanguage*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>ietfLanguageTag</code> parameter cannot be null."
+    description: "<code>ietfLanguageTag</code>parameteren kan ikke være null."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>ietfLanguageTag</code> parameter was non-empty, but did not conform to the syntax specified in RFC 3066. See Remarks."
+    description: "<code>ietfLanguageTag</code>parameteren ble ikke er tom, men samsvarer ikke med kravene syntaksen angitt i RFC 3066. Se kommentarer."
   platform:
   - net462
 - uid: System.Windows.Markup.XmlLanguage.GetSpecificCulture
@@ -123,19 +123,19 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Markup
-  summary: "Returns the most-closely-related non-neutral <xref:System.Globalization.CultureInfo> for this <xref href=&quot;System.Windows.Markup.XmlLanguage&quot;></xref>."
-  remarks: "If this <xref:System.Windows.Markup.XmlLanguage> is equal to <xref:System.Windows.Markup.XmlLanguage.Empty%2A?displayProperty=fullName> then this method will return <xref:System.Globalization.CultureInfo.InvariantCulture%2A?displayProperty=fullName>.       This method finds the registered <xref:System.Globalization.CultureInfo> matching the longest-possible prefix of this <xref:System.Windows.Markup.XmlLanguage>. If that registered <xref:System.Globalization.CultureInfo> is neutral (<xref:System.Globalization.CultureInfo.IsNeutralCulture%2A> is `true`), then this method relies on a call to <xref:System.Globalization.CultureInfo.CreateSpecificCulture%2A> to map from a neutral <xref:System.Globalization.CultureInfo> to a specific one."
+  summary: "Returnerer det nært relaterte ikke nøytralt <xref:System.Globalization.CultureInfo>for denne <xref href=&quot;System.Windows.Markup.XmlLanguage&quot;> </xref>.</xref:System.Globalization.CultureInfo>"
+  remarks: "Hvis dette <xref:System.Windows.Markup.XmlLanguage>er lik <xref:System.Windows.Markup.XmlLanguage.Empty%2A?displayProperty=fullName>deretter denne metoden tilbakestiller <xref:System.Globalization.CultureInfo.InvariantCulture%2A?displayProperty=fullName>.</xref:System.Globalization.CultureInfo.InvariantCulture%2A?displayProperty=fullName> </xref:System.Windows.Markup.XmlLanguage.Empty%2A?displayProperty=fullName> </xref:System.Windows.Markup.XmlLanguage>       Denne metoden finner den registrerte <xref:System.Globalization.CultureInfo>samsvarende lengste mulig prefikset for <xref:System.Windows.Markup.XmlLanguage>.</xref:System.Windows.Markup.XmlLanguage> </xref:System.Globalization.CultureInfo> Hvis som er registrert <xref:System.Globalization.CultureInfo>er nøytral (<xref:System.Globalization.CultureInfo.IsNeutralCulture%2A> er `true`), og denne metoden, avhengig av et kall til <xref:System.Globalization.CultureInfo.CreateSpecificCulture%2A>skal tilordnes fra en nøytral <xref:System.Globalization.CultureInfo>til et bestemt.</xref:System.Globalization.CultureInfo> </xref:System.Globalization.CultureInfo.CreateSpecificCulture%2A> </xref:System.Globalization.CultureInfo.IsNeutralCulture%2A> </xref:System.Globalization.CultureInfo>"
   syntax:
     content: public System.Globalization.CultureInfo GetSpecificCulture ();
     parameters: []
     return:
       type: System.Globalization.CultureInfo
-      description: "A <xref:System.Globalization.CultureInfo> that can be used for localization-globalization [!INCLUDE[TLA2#tla_api](~/add/includes/tla2sharptla-api-md.md)] calls that take that type as an argument."
+      description: "En <xref:System.Globalization.CultureInfo>som kan brukes for lokalisering globalisering [!INCLUDE[TLA2#tla_api](~/add/includes/tla2sharptla-api-md.md)] anrop som tar denne typen som argument.</xref:System.Globalization.CultureInfo>"
   overload: System.Windows.Markup.XmlLanguage.GetSpecificCulture*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "No related non-neutral <xref:System.Globalization.CultureInfo> is registered for the current <xref href=&quot;System.Windows.Markup.XmlLanguage&quot;></xref> <xref:System.Windows.Markup.XmlLanguage.IetfLanguageTag*>."
+    description: "Ingen relaterte ikke nøytral <xref:System.Globalization.CultureInfo>er registrert for gjeldende <xref href=&quot;System.Windows.Markup.XmlLanguage&quot;> </xref> <xref:System.Windows.Markup.XmlLanguage.IetfLanguageTag*>.</xref:System.Windows.Markup.XmlLanguage.IetfLanguageTag*> </xref:System.Globalization.CultureInfo>"
   platform:
   - net462
 - uid: System.Windows.Markup.XmlLanguage.IetfLanguageTag
@@ -150,13 +150,13 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Markup
-  summary: "Gets the string representation of the language tag."
-  remarks: "This property may return a normalized version of the originally-specified string as provided to <xref:System.Windows.Markup.XmlLanguage.GetLanguage%2A>.       This property may also return <xref:System.String.Empty> if an empty string was provided to <xref:System.Windows.Markup.XmlLanguage.GetLanguage%2A>."
+  summary: "Henter strengrepresentasjon av koden språk."
+  remarks: "Denne egenskapen kan returnere en normalisert versjon av strengen som opprinnelig ble angitt som sendes til <xref:System.Windows.Markup.XmlLanguage.GetLanguage%2A>.</xref:System.Windows.Markup.XmlLanguage.GetLanguage%2A>       Denne egenskapen kan også returnere <xref:System.String.Empty>Hvis en tom streng ble oppgitt til <xref:System.Windows.Markup.XmlLanguage.GetLanguage%2A>.</xref:System.Windows.Markup.XmlLanguage.GetLanguage%2A> </xref:System.String.Empty>"
   syntax:
     content: public string IetfLanguageTag { get; }
     return:
       type: System.String
-      description: "The string representation of the language tag."
+      description: "Strengrepresentasjon av koden språk."
   overload: System.Windows.Markup.XmlLanguage.IetfLanguageTag*
   exceptions: []
   platform:
@@ -173,14 +173,14 @@ items:
   assemblies:
   - PresentationCore
   namespace: System.Windows.Markup
-  summary: "Returns a <xref:System.String> that represents the current <xref href=&quot;System.Windows.Markup.XmlLanguage&quot;></xref>."
-  remarks: "This returns the <xref:System.Windows.Markup.XmlLanguage.IetfLanguageTag%2A> value of the current <xref:System.Windows.Markup.XmlLanguage>."
+  summary: "Returnerer en <xref:System.String>som representerer gjeldende <xref href=&quot;System.Windows.Markup.XmlLanguage&quot;> </xref>.</xref:System.String>"
+  remarks: "Dette returnerer <xref:System.Windows.Markup.XmlLanguage.IetfLanguageTag%2A>verdien for gjeldende <xref:System.Windows.Markup.XmlLanguage>.</xref:System.Windows.Markup.XmlLanguage> </xref:System.Windows.Markup.XmlLanguage.IetfLanguageTag%2A>"
   syntax:
     content: public override string ToString ();
     parameters: []
     return:
       type: System.String
-      description: "A <xref:System.String> that represents the current <xref href=&quot;System.Windows.Markup.XmlLanguage&quot;></xref>."
+      description: "En <xref:System.String>som representerer gjeldende <xref href=&quot;System.Windows.Markup.XmlLanguage&quot;> </xref>.</xref:System.String>"
   overload: System.Windows.Markup.XmlLanguage.ToString*
   exceptions: []
   platform:

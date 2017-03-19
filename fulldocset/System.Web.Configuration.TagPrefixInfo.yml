@@ -19,8 +19,8 @@ items:
   nameWithType: TagPrefixInfo
   fullName: System.Web.Configuration.TagPrefixInfo
   type: Class
-  summary: "Defines a configuration element containing tag-related information."
-  remarks: "The TagPrefixInfo class allows you to programmatically access and modify tag-prefix information stored in a configuration file. It provides the same functionality as the ASP.NET `@Register` directive. Tag prefixes associate a &quot;namespace&quot; in ASP.NET to the assemblies and namespaces that must be included for custom controls and user controls to work properly. TagPrefixInfo objects are stored as members of a <xref:System.Web.Configuration.TagPrefixCollection> object. The <xref:System.Web.Configuration.TagPrefixCollection> class allows you to programmatically access and modify the `controls` subsection of the `pages` section of a configuration file.       TagPrefixInfo objects are added to the collection using the `add` element and specifying a value for the `tagPrefix` attribute along with values for other relevant attributes. The other required information varies based on the kind of control you will use with the specified tag prefix:      -   If it is a user control, you must define the <xref:System.Web.Configuration.TagPrefixInfo.TagPrefix%2A>, <xref:System.Web.Configuration.TagPrefixInfo.TagName%2A>, and <xref:System.Web.Configuration.TagPrefixInfo.Source%2A> properties.      -   If it is a custom control, you must define the <xref:System.Web.Configuration.TagPrefixInfo.TagPrefix%2A>, <xref:System.Web.Configuration.TagPrefixInfo.Namespace%2A>, and <xref:System.Web.Configuration.TagPrefixInfo.Assembly%2A> properties. The <xref:System.Web.Configuration.TagPrefixInfo.Assembly%2A> property is not required if the control is in the application code directory.       The same `tagPrefix` value can be used to map to multiple assemblies or namespaces.      > [!NOTE] >  When a source is specified, the user control itself must not be in the same directory as the page. If it is, you get a run-time error when you attempt to load the page."
+  summary: "Definerer en konfigurasjonselementet koden relatert informasjon."
+  remarks: "Klassen TagPrefixInfo lar deg programmatisk tilgang til og endre ID-prefiks informasjon som er lagret i en konfigurasjonsfil. Den fungerer på samme måte som ASP.NET `@Register` direktivet. Koden prefikser knytte et &quot;navneområde&quot; i ASP.NET til samlinger og navneområder som må inkluderes for egendefinerte kontroller og brukerkontroller skal fungere riktig. TagPrefixInfo objekter som er lagret som medlemmer av en <xref:System.Web.Configuration.TagPrefixCollection>objektet.</xref:System.Web.Configuration.TagPrefixCollection> Den <xref:System.Web.Configuration.TagPrefixCollection>klassen gjør det mulig å programmatisk tilgang til og endre den `controls` spørsmål for den `pages` delen av konfigurasjonsfilen.</xref:System.Web.Configuration.TagPrefixCollection>       TagPrefixInfo objekter er lagt til i samlingen ved hjelp av den `add` element og angi en verdi for den `tagPrefix` attributtet sammen med verdier for andre relevante attributter. Den obligatoriske informasjonen varierer avhengig av hvilken type kontroll du vil bruke med det angitte koden prefikset:-Hvis det er en kontroll, må du definere den <xref:System.Web.Configuration.TagPrefixInfo.TagPrefix%2A>, <xref:System.Web.Configuration.TagPrefixInfo.TagName%2A>, og <xref:System.Web.Configuration.TagPrefixInfo.Source%2A>Egenskaper.</xref:System.Web.Configuration.TagPrefixInfo.Source%2A> </xref:System.Web.Configuration.TagPrefixInfo.TagName%2A> </xref:System.Web.Configuration.TagPrefixInfo.TagPrefix%2A>      -Hvis det er en egendefinert kontroll, må du definere den <xref:System.Web.Configuration.TagPrefixInfo.TagPrefix%2A>, <xref:System.Web.Configuration.TagPrefixInfo.Namespace%2A>, og <xref:System.Web.Configuration.TagPrefixInfo.Assembly%2A>Egenskaper.</xref:System.Web.Configuration.TagPrefixInfo.Assembly%2A> </xref:System.Web.Configuration.TagPrefixInfo.Namespace%2A> </xref:System.Web.Configuration.TagPrefixInfo.TagPrefix%2A> Den <xref:System.Web.Configuration.TagPrefixInfo.Assembly%2A>egenskapen er ikke påkrevd hvis kontrollen i koden programkatalogen.</xref:System.Web.Configuration.TagPrefixInfo.Assembly%2A>       Den samme `tagPrefix` verdi kan brukes til å tilordne til flere samlinger eller navneområder.      > [!NOTE] > Når en datakilde er angitt, brukerkontrollen selve kan ikke være i samme mappe som siden. Hvis det er, får du en kjøretidsfeil når du prøver å laste inn siden."
   example:
   - "This example demonstrates how to specify values declaratively for several attributes of the `controls` section, which can also be accessed as members of the TagPrefixInfo class.  \n  \n```  \n  \n<system.web>  \n  <pages>  \n    <controls>  \n      <!—- Searches all linked assemblies for the namespace -->  \n      <add tagPrefix=\"MyTags1\" namespace=\" MyNameSpace \"/>  \n      <!-- Uses a specified assembly -->  \n      <add tagPrefix=\"MyTags2\" namespace=\"MyNameSpace\"   \n        assembly=\"MyAssembly\"/>  \n      <!-- Uses the specified source for the user control -->  \n      <add tagprefix=\"MyTags3\" tagname=\"MyCtrl\" src=\"MyControl.ascx\"/>  \n    </controls>  \n   </pages>  \n</system.web>  \n```  \n  \n The following code example shows how to use the TagPrefixInfo class to programmatically modify tag prefix settings. This code example is part of a larger example provided for the <xref:System.Web.Configuration.PagesSection> class.  \n  \n [!code-cs[System.Web.Configuration.PagesSection#12](~/add/codesnippet/csharp/t-system.web.configurati_48_1.cs)]\n [!code-vb[System.Web.Configuration.PagesSection#12](~/add/codesnippet/visualbasic/t-system.web.configurati_48_1.vb)]"
   syntax:
@@ -75,8 +75,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.Configuration.TagPrefixInfo&quot;></xref> class using the passed values."
-  remarks: "This constructor creates an instance of the <xref:System.Web.Configuration.TagPrefixInfo> class and initializes it using the passed parameters. The parameters for which you specify values depend on the kind of control you refer to with the specified tag prefix. Parameters not required for that tag prefix should be left blank. (Use an empty string.)      -   If the control is a user control, you must specify values for the `tagPrefix`, `tagName`, and `source` parameters.      -   If the control is a custom control, you must specify values for the `tagPrefix` and `nameSpace` parameters. If the control is not in the application code directory, you must also specify the `assembly` parameter."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Web.Configuration.TagPrefixInfo&quot;> </xref> klasse ved hjelp av de angitte verdiene."
+  remarks: "Denne konstruktøren oppretter en forekomst av den <xref:System.Web.Configuration.TagPrefixInfo>klasse og initialiserer den ved hjelp av de angitte parameterne.</xref:System.Web.Configuration.TagPrefixInfo> Parameterne du angir verdier er avhengig av hvilken type kontroll du refererer til den angitte koden prefiks. Parametere som kreves ikke for koden prefikset må være tom. (Bruk en tom streng.)      -Hvis kontrollen er en kontroll, må du angi verdier for den `tagPrefix`, `tagName`, og `source` parametere.      -Hvis kontrollen er en egendefinert kontroll, må du angi verdier for den `tagPrefix` og `nameSpace` parametere. Hvis kontrollen ikke er i koden programkatalogen, må du også angi den `assembly` parameteren."
   example:
   - "The following code example shows how to use the TagPrefixInfo constructor. This code example is part of a larger example provided for the <xref:System.Web.Configuration.PagesSection> class.  \n  \n [!code-cs[System.Web.Configuration.PagesSection#32](~/add/codesnippet/csharp/b70293f7-583b-4b59-b067-_1.cs)]\n [!code-vb[System.Web.Configuration.PagesSection#32](~/add/codesnippet/visualbasic/b70293f7-583b-4b59-b067-_1.vb)]"
   syntax:
@@ -84,19 +84,19 @@ items:
     parameters:
     - id: tagPrefix
       type: System.String
-      description: "The tag prefix being mapped to a source file or namespace and assembly."
+      description: "Koden prefikset blir tilordnet i kildefilen eller navneområde og samlingen."
     - id: nameSpace
       type: System.String
-      description: "The namespace associated with the tag prefix."
+      description: "Navneområdet som er forbundet med ID-prefiks."
     - id: assembly
       type: System.String
-      description: "The assembly where the namespace resides."
+      description: "Samlingen der navneområdet finnes."
     - id: tagName
       type: System.String
-      description: "The name of the control to be used in the page."
+      description: "Navnet på kontrollen som skal brukes på denne siden."
     - id: source
       type: System.String
-      description: "The name of the file that contains the user control."
+      description: "Navnet på filen som inneholder brukerkontrollen."
   overload: System.Web.Configuration.TagPrefixInfo.#ctor*
   exceptions: []
   platform:
@@ -113,15 +113,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: "Gets or sets the name of the assembly containing the control implementation."
-  remarks: "This property specifies the assembly in which the control resides. It applies only to a custom control and is not required if the control is in the application code directory."
+  summary: "Henter eller angir navnet på samlingen som inneholder kontrollen implementeringen."
+  remarks: "Egenskapen angir samlingen som kontrollen finnes. Den gjelder bare for en egendefinert kontroll og er ikke nødvendig hvis kontrollen er i koden programkatalogen."
   example:
   - "The following code example shows how to use the Assembly property. This code example is part of a larger example provided for the <xref:System.Web.Configuration.PagesSection> class.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
   syntax:
     content: public string Assembly { get; set; }
     return:
       type: System.String
-      description: "The name of the assembly (without an extension). The default is an empty string."
+      description: "Navnet på samlingen (uten filtype). Standarden er en tom streng."
   overload: System.Web.Configuration.TagPrefixInfo.Assembly*
   exceptions: []
   platform:
@@ -142,7 +142,7 @@ items:
     content: protected override System.Configuration.ConfigurationElementProperty ElementProperty { get; }
     return:
       type: System.Configuration.ConfigurationElementProperty
-      description: "To be added."
+      description: "Som skal legges til."
   overload: System.Web.Configuration.TagPrefixInfo.ElementProperty*
   exceptions: []
   platform:
@@ -159,16 +159,16 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: "Compares this instance to another object."
+  summary: "Sammenligner denne forekomsten til et annet objekt."
   syntax:
     content: public override bool Equals (object prefix);
     parameters:
     - id: prefix
       type: System.Object
-      description: "Object to compare."
+      description: "Objektet til å sammenligne."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the objects are identical; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis objektene er identiske; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.Configuration.TagPrefixInfo.Equals*
   exceptions: []
   platform:
@@ -185,13 +185,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: "Returns a hash value for the current instance."
+  summary: "Returnerer en hash-verdien for den gjeldende forekomsten."
   syntax:
     content: public override int GetHashCode ();
     parameters: []
     return:
       type: System.Int32
-      description: "A hash value for the current instance."
+      description: "En hash-verdi for den gjeldende forekomsten."
   overload: System.Web.Configuration.TagPrefixInfo.GetHashCode*
   exceptions: []
   platform:
@@ -208,15 +208,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: "Gets or sets the namespace in which the control resides."
-  remarks: "This property specifies the namespace in which the control resides. It applies only to custom controls."
+  summary: "Henter eller angir navneområdet som kontrollen er."
+  remarks: "Egenskapen angir navneområdet som kontrollen er. Dette gjelder bare egendefinerte kontroller."
   example:
   - "The following code example shows how to use the Namespace property. This code example is part of a larger example provided for the <xref:System.Web.Configuration.PagesSection> class.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
   syntax:
     content: public string Namespace { get; set; }
     return:
       type: System.String
-      description: "The name of the namespace. The default is an empty string."
+      description: "Navnet på navneområdet. Standarden er en tom streng."
   overload: System.Web.Configuration.TagPrefixInfo.Namespace*
   exceptions: []
   platform:
@@ -237,7 +237,7 @@ items:
     content: protected override System.Configuration.ConfigurationPropertyCollection Properties { get; }
     return:
       type: System.Configuration.ConfigurationPropertyCollection
-      description: "To be added."
+      description: "Som skal legges til."
   overload: System.Web.Configuration.TagPrefixInfo.Properties*
   exceptions: []
   platform:
@@ -254,15 +254,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: "Gets or sets the name and path of the file containing the user control."
-  remarks: "This property specifies the name and path of the file containing the user control implementation. It applies only to user controls. The path may be relative to the application or the application root.      > [!NOTE] >  The user control itself must not be in the same directory as the page. If it is, you get a run-time error when you attempt to load the page."
+  summary: "Henter eller angir navnet og banen til filen som inneholder brukerkontrollen."
+  remarks: "Egenskapen angir navnet og banen til filen som inneholder bruker kontrollen implementeringen. Dette gjelder bare brukerkontroller. Banen kan være i forhold til programmet eller programmet roten.      > [!NOTE] > Selve brukerkontrollen kan ikke være i samme mappe som siden. Hvis det er, får du en kjøretidsfeil når du prøver å laste inn siden."
   example:
   - "The following code example shows how to use the Source property. This code example is part of a larger example provided for the <xref:System.Web.Configuration.PagesSection> class.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
   syntax:
     content: public string Source { get; set; }
     return:
       type: System.String
-      description: "The name and path of the file containing the user control."
+      description: "Navnet på og banen til filen som inneholder brukerkontrollen."
   overload: System.Web.Configuration.TagPrefixInfo.Source*
   exceptions: []
   platform:
@@ -279,15 +279,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: "Gets or sets the name of the user control."
-  remarks: 'This property specifies the name of the control. It applies only to user controls. This is the value that would follow the tag prefix in the ASP.NET code. For example, &quot;myControl&quot; in `<myTag: myControl />`.'
+  summary: "Henter eller angir navnet på brukerkontroll."
+  remarks: 'Egenskapen angir navnet på kontrollen. Dette gjelder bare brukerkontroller. Dette er verdien som følger prefikset koden i ASP.NET-koden. For eksempel &quot;MinKontroll&quot; for i `<myTag: myControl />`.'
   example:
   - "The following code example shows how to use the TagName property. This code example is part of a larger example provided for the <xref:System.Web.Configuration.PagesSection> class.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]"
   syntax:
     content: public string TagName { get; set; }
     return:
       type: System.String
-      description: "The name of the user control."
+      description: "Navnet på brukerkontrollen."
   overload: System.Web.Configuration.TagPrefixInfo.TagName*
   exceptions: []
   platform:
@@ -304,15 +304,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Configuration
-  summary: "Gets or sets the tag prefix that is being associated with a source file or namespace and assembly."
-  remarks: 'The TagPrefix property defines the alias used for the namespace where the control resides. It applies to user and custom controls. This is the value that would precede the tag name in the ASP.NET code. For example &quot;myTag&quot; in `<myTag: myControl />`.'
+  summary: "Henter eller angir koden prefikset som er er knyttet til en kildefilen eller navneområde og samlingen."
+  remarks: 'Egenskapen TagPrefix definerer aliaset brukes for navneområdet der kontrollen finnes. Den gjelder for bruker og egendefinerte kontroller. Dette er verdien som vil være tidligere enn kodenavnet i ASP.NET-koden. For eksempel &quot;myTag&quot; for i `<myTag: myControl />`.'
   example:
   - "The following code example shows how to use the TagPrefix property. This code example is part of a larger example provided for the <xref:System.Web.Configuration.PagesSection> class.  \n  \n [!code-cs[System.Web.Configuration.PagesSection#30](~/add/codesnippet/csharp/p-system.web.configurati_280_1.cs)]\n [!code-vb[System.Web.Configuration.PagesSection#30](~/add/codesnippet/visualbasic/p-system.web.configurati_280_1.vb)]"
   syntax:
     content: public string TagPrefix { get; set; }
     return:
       type: System.String
-      description: "The tag prefix."
+      description: "ID-prefiks."
   overload: System.Web.Configuration.TagPrefixInfo.TagPrefix*
   exceptions: []
   platform:

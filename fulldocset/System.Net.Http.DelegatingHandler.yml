@@ -14,8 +14,8 @@ items:
   nameWithType: DelegatingHandler
   fullName: System.Net.Http.DelegatingHandler
   type: Class
-  summary: "A type for HTTP handlers that delegate the processing of HTTP response messages to another handler, called the inner handler."
-  remarks: "This application normally instantiate this class and then set the inner handler or provide an inner handler in the constructor.       Note that <xref:System.Net.Http.DelegatingHandler.InnerHandler%2A> property may be a delegating handler too. This approach allows the creation of handler stacks to process the HTTP response messages."
+  summary: "En type for HTTP-behandlingsprogrammer som delegerer behandling av HTTP-svarmeldinger til et annet behandlingsprogram kalles indre behandlingsprogrammet."
+  remarks: "Dette programmet vanligvis starte denne klassen og deretter angi indre behandlingsprogrammet eller oppgi en indre håndterer i konstruktøren.       Legg merke til at <xref:System.Net.Http.DelegatingHandler.InnerHandler%2A>egenskapen kan være et delegering behandlingsprogram for.</xref:System.Net.Http.DelegatingHandler.InnerHandler%2A> Denne fremgangsmåten tillater oppretting av behandlingsprogrammet bunkene for å behandle HTTP-svarmeldinger."
   syntax:
     content: 'public abstract class DelegatingHandler : System.Net.Http.HttpMessageHandler'
   inheritance:
@@ -38,8 +38,8 @@ items:
   assemblies:
   - System.Net.Http
   namespace: System.Net.Http
-  summary: "Creates a new instance of the <xref href=&quot;System.Net.Http.DelegatingHandler&quot;></xref> class."
-  remarks: "The inner handle can be set using the <xref:System.Net.Http.DelegatingHandler.InnerHandler%2A>."
+  summary: "Oppretter en ny forekomst av den <xref href=&quot;System.Net.Http.DelegatingHandler&quot;> </xref> klasse."
+  remarks: "Indre håndtaket kan angis ved hjelp av <xref:System.Net.Http.DelegatingHandler.InnerHandler%2A>.</xref:System.Net.Http.DelegatingHandler.InnerHandler%2A>"
   syntax:
     content: protected DelegatingHandler ();
     parameters: []
@@ -59,13 +59,13 @@ items:
   assemblies:
   - System.Net.Http
   namespace: System.Net.Http
-  summary: "Creates a new instance of the <xref href=&quot;System.Net.Http.DelegatingHandler&quot;></xref> class with a specific inner handler."
+  summary: "Oppretter en ny forekomst av den <xref href=&quot;System.Net.Http.DelegatingHandler&quot;> </xref> klassen med et bestemt indre behandlingsprogram."
   syntax:
     content: protected DelegatingHandler (System.Net.Http.HttpMessageHandler innerHandler);
     parameters:
     - id: innerHandler
       type: System.Net.Http.HttpMessageHandler
-      description: "The inner handler which is responsible for processing the HTTP response messages."
+      description: "Indre behandlingsprogrammet som er ansvarlig for å behandle HTTP-svarmeldinger."
   overload: System.Net.Http.DelegatingHandler.#ctor*
   exceptions: []
   platform:
@@ -82,13 +82,13 @@ items:
   assemblies:
   - System.Net.Http
   namespace: System.Net.Http
-  summary: "Releases the unmanaged resources used by the <xref href=&quot;System.Net.Http.DelegatingHandler&quot;></xref>, and optionally disposes of the managed resources."
+  summary: "Frigir uforvaltede ressursene som brukes av den <xref href=&quot;System.Net.Http.DelegatingHandler&quot;> </xref>, og eventuelt disposes med administrerte ressurser."
   syntax:
     content: protected override void Dispose (bool disposing);
     parameters:
     - id: disposing
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to release both managed and unmanaged resources; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to releases only unmanaged resources."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>å frigjøre både administrerte og uforvaltede ressurser. <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> for utgivelser bare uforvaltet ressurser."
   overload: System.Net.Http.DelegatingHandler.Dispose*
   exceptions: []
   platform:
@@ -105,13 +105,13 @@ items:
   assemblies:
   - System.Net.Http
   namespace: System.Net.Http
-  summary: "Gets or sets the inner handler which processes the HTTP response messages."
-  remarks: "This InnerHandler property can only be set before the class is used (the <xref:System.Net.Http.DelegatingHandler.SendAsync%2A> method is called).       Note that InnerHandler property may be a delegating handler too, although this is uncommon. This approach allows the creation of handler stacks for the HTTP response messages."
+  summary: "Henter eller angir indre behandlingsprogrammet som behandler meldinger for HTTP-svar."
+  remarks: "Denne InnerHandler-egenskapen kan bare angis før klassen brukes (den <xref:System.Net.Http.DelegatingHandler.SendAsync%2A>metoden).</xref:System.Net.Http.DelegatingHandler.SendAsync%2A>       Merk at InnerHandler-egenskapen kan være et delegering behandlingsprogram for, selv om dette er uvanlig. Denne fremgangsmåten tillater oppretting av behandlingsprogrammet bunker for HTTP-svarmeldinger."
   syntax:
     content: public System.Net.Http.HttpMessageHandler InnerHandler { get; set; }
     return:
       type: System.Net.Http.HttpMessageHandler
-      description: "The inner handler for HTTP response messages."
+      description: "Et indre behandlingsprogram for HTTP-svarmeldinger."
   overload: System.Net.Http.DelegatingHandler.InnerHandler*
   exceptions: []
   platform:
@@ -128,20 +128,20 @@ items:
   assemblies:
   - System.Net.Http
   namespace: System.Net.Http
-  summary: "Sends an HTTP request to the inner handler to send to the server as an asynchronous operation."
-  remarks: "This operation does not block. This overridable implementation of <xref:System.Net.Http.HttpClientHandler.SendAsync%2A> method forwards the HTTP request to the inner handler to send to the server as an asynchronous operation.       The SendAsync method is mainly used by the system and not by applications. When this method is called, it calls the SendAsync method on the inner handler."
+  summary: "Sender en HTTP-forespørsel til den interne behandlingsprogrammet sender til serveren som en asynkron operasjon."
+  remarks: "Denne operasjonen blokker ikke. Denne overstyrbare implementeringen av <xref:System.Net.Http.HttpClientHandler.SendAsync%2A>metoden videresender HTTP-forespørselen til indre behandlingsprogrammet skal sendes til serveren som en asynkron operasjon.</xref:System.Net.Http.HttpClientHandler.SendAsync%2A>       Metoden SendAsync brukes hovedsakelig av systemet og ikke av programmer. Når denne metoden kalles, kaller SendAsync-metoden på indre behandlingsprogrammet."
   syntax:
     content: protected override System.Threading.Tasks.Task<System.Net.Http.HttpResponseMessage> SendAsync (System.Net.Http.HttpRequestMessage request, System.Threading.CancellationToken cancellationToken);
     parameters:
     - id: request
       type: System.Net.Http.HttpRequestMessage
-      description: "The HTTP request message to send to the server."
+      description: "HTTP-forespørselen melding sender til serveren."
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: "A cancellation token to cancel operation."
+      description: "En avbryte tokenet, for å avbryte operasjonen."
     return:
       type: System.Threading.Tasks.Task{System.Net.Http.HttpResponseMessage}
-      description: "The task object representing the asynchronous operation."
+      description: "Oppgaveobjektet som representerer den asynkrone operasjonen."
   overload: System.Net.Http.DelegatingHandler.SendAsync*
   exceptions:
   - type: System.ArgumentNullException

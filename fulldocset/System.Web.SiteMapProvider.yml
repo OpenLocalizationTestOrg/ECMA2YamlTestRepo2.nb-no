@@ -37,8 +37,8 @@ items:
   nameWithType: SiteMapProvider
   fullName: System.Web.SiteMapProvider
   type: Class
-  summary: "Provides a common base class for all site map data providers, and a way for developers to implement custom site map data providers that can be used with the ASP.NET site map infrastructure as persistent stores for <xref href=&quot;System.Web.SiteMap&quot;></xref> objects."
-  remarks: "The <xref:System.Web.StaticSiteMapProvider> and <xref:System.Web.XmlSiteMapProvider> classes represent the default implementations of the abstract SiteMapProvider class. The <xref:System.Web.XmlSiteMapProvider> uses an XML file named Web.sitemap to store site map data. For more information on about the Web.sitemap file, see [ASP.NET Site Maps](~/add/includes/ajax-current-ext-md.md).       The SiteMapProvider class supports the concept of a site map provider hierarchy, by declaring the <xref:System.Web.SiteMapProvider.RootProvider%2A> and <xref:System.Web.SiteMapProvider.ParentProvider%2A> properties. A SiteMapProvider can be a child or parent of another provider. This enables scenarios where different content areas of a site are owned or implemented by different development groups that maintain their own site maps and site map providers.       All SiteMapProvider objects are configured in the Web.config files. Any site map providers that are declared in these configuration files are loaded at run time and are used to load and process site navigation data. The <xref:System.Web.SiteMap> object, which keeps track of all the providers that are available to it through its <xref:System.Web.SiteMap.Providers%2A> property collection, provides programmatic access to the navigation data that is managed by the providers. The following code example demonstrates the format that is used to declare a site map provider in a Web.config file.      ```   <siteMap defaultProvider=&quot;<name>&quot;>     <providers>       <add         name=&quot;<friendly name>&quot;         type=&quot;<fully qualified class name>, <assembly name (optional)>&quot;          siteMapFile = &quot;<file name>&quot; />     </providers>   </siteMap>   ```       The site navigation data that is loaded by these providers is used by other components of the site map infrastructure, such as the <xref:System.Web.UI.WebControls.SiteMapPath> and <xref:System.Web.UI.WebControls.TreeView> controls, to display site map information for users.       If you implement your own site map provider, you can place the source file in the App_Code directory of your ASP.NET application, and then the assembly will be compiled automatically. You can also place your own site map provider in the Global Assembly Cache (GAC), and provide a fully-qualified reference to it in the Web.config file. For more information on compiler services, see [Working with Assemblies and the Global Assembly Cache](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Gir en vanlig basisklasse for alle område dataleverandørene for kartet, og en metode for utviklere å implementere egendefinerte området kartet dataleverandørene som kan brukes med ASP.NET området kartet infrastruktur som vedvarende butikker for <xref href=&quot;System.Web.SiteMap&quot;> </xref> objekter."
+  remarks: "Den <xref:System.Web.StaticSiteMapProvider>og <xref:System.Web.XmlSiteMapProvider>klasser representerer standard implementeringer av abstrakt klasse. SiteMapProvider</xref:System.Web.XmlSiteMapProvider> </xref:System.Web.StaticSiteMapProvider> Den <xref:System.Web.XmlSiteMapProvider>bruker en XML-fil med navnet Web.sitemap til å lagre området kartdata.</xref:System.Web.XmlSiteMapProvider> For mer informasjon om filen Web.sitemap, kan du se [ASP.NET områdekart](~/add/includes/ajax-current-ext-md.md).       Klassen SiteMapProvider støtter begrep i et område kartet leverandøren hierarki ved deklarerer den <xref:System.Web.SiteMapProvider.RootProvider%2A>og <xref:System.Web.SiteMapProvider.ParentProvider%2A>Egenskaper.</xref:System.Web.SiteMapProvider.ParentProvider%2A> </xref:System.Web.SiteMapProvider.RootProvider%2A> En SiteMapProvider kan være en underordnet eller overordnet for en annen leverandør. Dette aktiverer scenarier der ulike innhold områder i et område som eies av eller implementeres av forskjellige utvikling grupper som har sine egne områdekart og området kartet leverandører.       Alle objekter som SiteMapProvider er konfigurert i Web.config-filer. Området kartet leverandører som er angitt i disse konfigurasjonsfiler lastes ved kjøretid, og brukes til å laste inn og behandle området navigasjon data. Den <xref:System.Web.SiteMap>-objektet som holder oversikt over leverandører som er tilgjengelige for den via den <xref:System.Web.SiteMap.Providers%2A>egenskapsutvalg, gir programmatisk tilgang til dataene for navigasjon som administreres av leverandørene.</xref:System.Web.SiteMap.Providers%2A> </xref:System.Web.SiteMap> Følgende kodeeksempel viser formatet som brukes til å deklarere en leverandør for tilordning av område i Web.config-filen.      ```   <siteMap defaultProvider=&quot;<name>&quot;>     <providers>       <add         name=&quot;<friendly name>&quot;         type=&quot;<fully qualified class name>, <assembly name (optional)>&quot;          siteMapFile = &quot;<file name>&quot; />     </providers>   </siteMap>   ```Området navigasjon dataene som er lastet inn av disse leverandørene brukes av andre komponenter i området kartet infrastruktur, slik som den <xref:System.Web.UI.WebControls.SiteMapPath>og <xref:System.Web.UI.WebControls.TreeView>Kontroller for å vise området kartet informasjon for brukere.</xref:System.Web.UI.WebControls.TreeView> </xref:System.Web.UI.WebControls.SiteMapPath>       Hvis du implementerer din egen området kartet leverandøren, kan du plassere kildefilen i mappen App_Code ASP.NET-programmet, og deretter samlingen kan kompileres automatisk. Du kan også Plasser leverandør din egen område kartet i den globale samlingsbufferen (GAC), og angi en fullstendig referanse til det i Web.config-filen. Du finner mer informasjon på kompilatoren services [arbeide med samlinger og den globale samlingsbufferen](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates how to write a class that implements the abstract SiteMapProvider class. This example includes only a sample SiteMapProvider and a sample text file that works with it. To run the example you also need an entry in the Web.config file and an .aspx page. You can find these in the documentation for the <xref:System.Web.UI.WebControls.SiteMapDataSource.SiteMapProvider%2A?displayProperty=fullName> property.  \n  \n The example uses a comma-delimited file that follows an expected structure to load sitemap information. The first line of the file represents the root node of the sitemap, and subsequent lines are subnodes. Each subnode identifies its parent node by URL. An example of a file that meets these criteria is shown below.  \n  \n```  \ndefault.aspx,Home,MyCompany Home Page,  \nsale.aspx,Now On Sale,Check Out These Great Deals!,default.aspx  \ncatalog.aspx,Online Catalog,Browse Our Many Great Items!,default.aspx  \n```  \n  \n The `SimpleTextSiteMapProvider` provides example implementations of all the SiteMapProvider properties and methods.  \n  \n [!code-vb[Urtue.Samples.Alexkr.SimpleTextSiteMapProvider_1#1](~/add/codesnippet/visualbasic/t-system.web.sitemapprov_1_1.vb)]\n [!code-cs[Urtue.Samples.Alexkr.SimpleTextSiteMapProvider_1#1](~/add/codesnippet/csharp/t-system.web.sitemapprov_1_1.cs)]"
   syntax:
@@ -64,7 +64,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.SiteMapProvider&quot;></xref> class."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Web.SiteMapProvider&quot;> </xref> klasse."
   remarks: >-
     > [!NOTE]
 
@@ -88,14 +88,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Adds a <xref href=&quot;System.Web.SiteMapNode&quot;></xref> object to the node collection that is maintained by the site map provider."
-  remarks: "Classes deriving from the <xref:System.Web.SiteMapProvider> class can override the AddNode method and provide logic for adding a <xref:System.Web.SiteMapNode> object to the node collection that is maintained by the site map provider. The default implementation of the <xref:System.Web.SiteMapProvider.AddNode%2A> method throws a <xref:System.NotImplementedException> exception."
+  summary: "Legger til en <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> objektet i samlingen noden som vedlikeholdes av området kartet leverandøren."
+  remarks: "Klasser som er avledet fra den <xref:System.Web.SiteMapProvider>klassen kan overstyre metoden AddNode og gi logikken for å legge til en <xref:System.Web.SiteMapNode>objektet i samlingen noden som vedlikeholdes av området kartet leverandøren.</xref:System.Web.SiteMapNode> </xref:System.Web.SiteMapProvider> Standard implementering av den <xref:System.Web.SiteMapProvider.AddNode%2A>metoden kaster en <xref:System.NotImplementedException>unntak.</xref:System.NotImplementedException> </xref:System.Web.SiteMapProvider.AddNode%2A>"
   syntax:
     content: protected virtual void AddNode (System.Web.SiteMapNode node);
     parameters:
     - id: node
       type: System.Web.SiteMapNode
-      description: "The <xref href=&quot;System.Web.SiteMapNode&quot;></xref> to add to the node collection maintained by the provider."
+      description: "Den <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> å legge til i samlingen noden beholdes av leverandøren."
   overload: System.Web.SiteMapProvider.AddNode*
   exceptions: []
   platform:
@@ -112,22 +112,22 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Adds a <xref href=&quot;System.Web.SiteMapNode&quot;></xref> object to the node collection that is maintained by the site map provider and specifies the parent <xref href=&quot;System.Web.SiteMapNode&quot;></xref> object."
-  remarks: "Classes deriving from the <xref:System.Web.SiteMapProvider> class can override the AddNode method and provide logic for adding a <xref:System.Web.SiteMapNode> object with a specified parent to the node collection that is maintained by the site map provider. For example, the <xref:System.Web.XmlSiteMapProvider.AddNode%2A?displayProperty=fullName> method adds the <xref:System.Web.SiteMapNode> object that is specified by `node` to the <xref:System.Web.SiteMapNodeCollection> collection that is maintained by the <xref:System.Web.XmlSiteMapProvider> object and creates a parent/child relationship between the <xref:System.Web.SiteMapNode> object that is specified by `node` and `parentNode`. The default implementation of the <xref:System.Web.SiteMapProvider.AddNode%2A> method throws a <xref:System.NotImplementedException> exception."
+  summary: "Legger til en <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> objektet i samlingen noden som beholdes av området kartet leverandøren og angir overordnet <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> objektet."
+  remarks: "Klasser som er avledet fra den <xref:System.Web.SiteMapProvider>klassen kan overstyre metoden AddNode og gi logikken for å legge til en <xref:System.Web.SiteMapNode>objekt med angitt overordnet node-samlingen beholdes av området kartet leverandøren.</xref:System.Web.SiteMapNode> </xref:System.Web.SiteMapProvider> For eksempel den <xref:System.Web.XmlSiteMapProvider.AddNode%2A?displayProperty=fullName>metoden legger til den <xref:System.Web.SiteMapNode>objektet som er angitt av `node` til den <xref:System.Web.SiteMapNodeCollection>samlingen ivaretas via den <xref:System.Web.XmlSiteMapProvider>objekt og oppretter en overordnet/underordnet-relasjon mellom den <xref:System.Web.SiteMapNode>objektet som er angitt av `node` og `parentNode`.</xref:System.Web.SiteMapNode> </xref:System.Web.XmlSiteMapProvider> </xref:System.Web.SiteMapNodeCollection> </xref:System.Web.SiteMapNode> </xref:System.Web.XmlSiteMapProvider.AddNode%2A?displayProperty=fullName> Standard implementering av den <xref:System.Web.SiteMapProvider.AddNode%2A>metoden kaster en <xref:System.NotImplementedException>unntak.</xref:System.NotImplementedException> </xref:System.Web.SiteMapProvider.AddNode%2A>"
   syntax:
     content: protected virtual void AddNode (System.Web.SiteMapNode node, System.Web.SiteMapNode parentNode);
     parameters:
     - id: node
       type: System.Web.SiteMapNode
-      description: "The <xref href=&quot;System.Web.SiteMapNode&quot;></xref> to add to the node collection maintained by the provider."
+      description: "Den <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> å legge til i samlingen noden beholdes av leverandøren."
     - id: parentNode
       type: System.Web.SiteMapNode
-      description: "The <xref href=&quot;System.Web.SiteMapNode&quot;></xref> that is the parent of `node`."
+      description: "Den <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> som overordnet for `node`."
   overload: System.Web.SiteMapProvider.AddNode*
   exceptions:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
-    description: "In all cases."
+    description: "I alle tilfeller."
   platform:
   - net462
 - uid: System.Web.SiteMapProvider.CurrentNode
@@ -142,15 +142,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the <xref href=&quot;System.Web.SiteMapNode&quot;></xref> object that represents the currently requested page."
-  remarks: "The <xref:System.Web.SiteMapProvider.SiteMapResolve> event is raised before attempting to retrieve a <xref:System.Web.SiteMapNode> object, to enable event subscribers to return an instance of the <xref:System.Web.SiteMapNode> class. If there are no event subscribers, the <xref:System.Web.SiteMapProvider> class calls the <xref:System.Web.SiteMapProvider.FindSiteMapNode%2A> method using the current HTTP context to retrieve a <xref:System.Web.SiteMapNode> that represents the currently requested page.       If the currently requested page does not correspond with a <xref:System.Web.SiteMapNode>, `null` is returned. If security trimming is enabled and the user is not permitted to access the <xref:System.Web.SiteMapNode>, `null` is returned."
+  summary: "Henter den <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> objektet som representerer den forespurte siden."
+  remarks: "<xref:System.Web.SiteMapProvider.SiteMapResolve>Denne hendelsen oppstår før du prøver å hente et <xref:System.Web.SiteMapNode>objekt for å aktivere hendelsen-abonnenter å returnere en forekomst av <xref:System.Web.SiteMapNode>klassen.</xref:System.Web.SiteMapNode> </xref:System.Web.SiteMapNode> </xref:System.Web.SiteMapProvider.SiteMapResolve> Hvis det er ingen hendelsen abonnenter i <xref:System.Web.SiteMapProvider>klasse kall den <xref:System.Web.SiteMapProvider.FindSiteMapNode%2A>metoden bruker gjeldende HTTP-kontekst til å hente en <xref:System.Web.SiteMapNode>som representerer den forespurte siden.</xref:System.Web.SiteMapNode> </xref:System.Web.SiteMapProvider.FindSiteMapNode%2A> </xref:System.Web.SiteMapProvider>       Hvis den forespurte siden ikke samsvarer med en <xref:System.Web.SiteMapNode>, `null` returneres.</xref:System.Web.SiteMapNode> Hvis sikkerhet kutting er aktivert, og brukeren er ikke tillatt å få tilgang til den <xref:System.Web.SiteMapNode>, `null` returneres.</xref:System.Web.SiteMapNode>"
   example:
   - "The following code example demonstrates how to implement the CurrentNode property in a class that implements the abstract <xref:System.Web.SiteMapProvider> class.  \n  \n This code example is part of a larger example provided for the <xref:System.Web.SiteMapProvider> class.  \n  \n [!code-vb[Urtue.Samples.Alexkr.SimpleTextSiteMapProvider_1#2](~/add/codesnippet/visualbasic/p-system.web.sitemapprov_0_1.vb)]\n [!code-cs[Urtue.Samples.Alexkr.SimpleTextSiteMapProvider_1#2](~/add/codesnippet/csharp/p-system.web.sitemapprov_0_1.cs)]"
   syntax:
     content: public virtual System.Web.SiteMapNode CurrentNode { get; }
     return:
       type: System.Web.SiteMapNode
-      description: "A <xref href=&quot;System.Web.SiteMapNode&quot;></xref> that represents the currently requested page; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, if the <xref href=&quot;System.Web.SiteMapNode&quot;></xref> is not found or cannot be returned for the current user."
+      description: "En <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> som representerer den forespurte siden; ellers <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>, hvis den <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> finnes ikke eller kan ikke returneres for gjeldende bruker."
   overload: System.Web.SiteMapProvider.CurrentNode*
   exceptions: []
   platform:
@@ -167,13 +167,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets or sets a Boolean value indicating whether localized values of <xref href=&quot;System.Web.SiteMapNode&quot;></xref> attributes are returned."
-  remarks: "The EnableLocalization property is used for the get accessor of the <xref:System.Web.SiteMapNode.Title%2A> and <xref:System.Web.SiteMapNode.Description%2A> properties, as well as additional <xref:System.Web.SiteMapNode.Attributes%2A> properties of a <xref:System.Web.SiteMapNode> object."
+  summary: "Henter eller angir en boolsk verdi som angir om lokalisert verdiene i <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> attributter returneres."
+  remarks: "Egenskapen EnableLocalization brukes for get-aksessor for den <xref:System.Web.SiteMapNode.Title%2A>og <xref:System.Web.SiteMapNode.Description%2A>Egenskaper, i tillegg til andre <xref:System.Web.SiteMapNode.Attributes%2A>Egenskaper for en <xref:System.Web.SiteMapNode>objektet.</xref:System.Web.SiteMapNode> </xref:System.Web.SiteMapNode.Attributes%2A> </xref:System.Web.SiteMapNode.Description%2A> </xref:System.Web.SiteMapNode.Title%2A>"
   syntax:
     content: public bool EnableLocalization { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if a localized value of the <xref href=&quot;System.Web.SiteMapNode&quot;></xref> attributes are returned; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis en oversatte verdien for den <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> attributter er returnerte; ellers, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Standard <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.SiteMapProvider.EnableLocalization*
   exceptions: []
   platform:
@@ -190,8 +190,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "When overridden in a derived class, retrieves a <xref href=&quot;System.Web.SiteMapNode&quot;></xref> object that represents the page at the specified URL."
-  remarks: "Classes that derive from the <xref:System.Web.SiteMapProvider> class must implement the abstract FindSiteMapNode method.       The URL provided can be a virtual or absolute URL. It might also be a URL that uses application-relative syntax, such as `~/apprelativedirectory`. Ensure that any implementation of the FindSiteMapNode method parse and handle application-relative syntax properly.       The <xref:System.Web.XmlSiteMapProvider> class, which is the default site map provider for ASP.NET, uses the URL of a <xref:System.Web.SiteMapNode> object as a key in the various collections that the classes maintain. Therefore, if a <xref:System.Web.SiteMapNode> provides a URL, it must be unique within the scope of the site map provider. If no URL is provided, a unique identifier is generated to identify the <xref:System.Web.SiteMapNode>."
+  summary: "Når overstyrt i en avledet klasse, henter en <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> objektet som representerer siden den angitte URL-adressen."
+  remarks: "Klasser som er avledet fra den <xref:System.Web.SiteMapProvider>klassen må implementere metoden abstrakt FindSiteMapNode.</xref:System.Web.SiteMapProvider>       URL-adressen kan være en virtuell eller absolutt URL-adresse. Det kan være en URL-adresse som bruker programmet relativ syntaks som `~/apprelativedirectory`. Kontroller at noen implementeringer av FindSiteMapNode metoden spaltes og håndtere programmet relativ syntaksen riktig.       Den <xref:System.Web.XmlSiteMapProvider>klassen som er standardleverandøren for kartet for ASP.NET, bruker URL-adressen til en <xref:System.Web.SiteMapNode>objektet som en nøkkel i de ulike samlingene klassene vedlikehold.</xref:System.Web.SiteMapNode> </xref:System.Web.XmlSiteMapProvider> Derfor Hvis en <xref:System.Web.SiteMapNode>gir en URL-adresse, den må være unike innenfor området for området kartet leverandøren.</xref:System.Web.SiteMapNode> Hvis ingen URL-adresse er angitt, genereres det en unik identifikator for å identifisere <xref:System.Web.SiteMapNode>.</xref:System.Web.SiteMapNode>"
   example:
   - "The following code example demonstrates how to implement the FindSiteMapNode method in a class that implements the abstract <xref:System.Web.SiteMapProvider> class. The `SimpleTextSiteMapProvider` uses a helper method, named `FindUrl`, to get the URL of the currently displayed page from the <xref:System.Web.HttpContext> object.  \n  \n This code example is part of a larger example provided for the <xref:System.Web.SiteMapProvider> class.  \n  \n [!code-vb[Urtue.Samples.Alexkr.SimpleTextSiteMapProvider_1#5](~/add/codesnippet/visualbasic/m-system.web.sitemapprov_1_1.vb)]\n [!code-cs[Urtue.Samples.Alexkr.SimpleTextSiteMapProvider_1#5](~/add/codesnippet/csharp/m-system.web.sitemapprov_1_1.cs)]  \n  \n [!code-vb[Urtue.Samples.Alexkr.SimpleTextSiteMapProvider_1#8](~/add/codesnippet/visualbasic/m-system.web.sitemapprov_1_2.vb)]\n [!code-cs[Urtue.Samples.Alexkr.SimpleTextSiteMapProvider_1#8](~/add/codesnippet/csharp/m-system.web.sitemapprov_1_2.cs)]"
   syntax:
@@ -199,10 +199,10 @@ items:
     parameters:
     - id: rawUrl
       type: System.String
-      description: "A URL that identifies the page for which to retrieve a <xref href=&quot;System.Web.SiteMapNode&quot;></xref>."
+      description: "En URL-adresse som identifiserer siden å hente en <xref href=&quot;System.Web.SiteMapNode&quot;> </xref>."
     return:
       type: System.Web.SiteMapNode
-      description: "A <xref href=&quot;System.Web.SiteMapNode&quot;></xref> that represents the page identified by <code>rawURL</code>; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, if no corresponding <xref href=&quot;System.Web.SiteMapNode&quot;></xref> is found or if security trimming is enabled and the <xref href=&quot;System.Web.SiteMapNode&quot;></xref> cannot be returned for the current user."
+      description: "En <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> som representerer siden identifisert av <code> rawURL </code>; ellers <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>, hvis ingen tilsvarende <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> finnes, eller hvis sikkerhet kutting er aktivert og <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> kan ikke returneres for gjeldende bruker."
   overload: System.Web.SiteMapProvider.FindSiteMapNode*
   exceptions: []
   platform:
@@ -219,17 +219,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Retrieves a <xref href=&quot;System.Web.SiteMapNode&quot;></xref> object that represents the currently requested page using the specified <xref href=&quot;System.Web.HttpContext&quot;></xref> object."
-  remarks: "The FindSiteMapNode method calls the abstract <xref:System.Web.SiteMapProvider.FindSiteMapNode%2A> method to retrieve a <xref:System.Web.SiteMapNode> object for the currently requested page based on the raw URL or the virtual path of the request. If no corresponding <xref:System.Web.SiteMapNode> is found in the <xref:System.Web.SiteMap>, `null` is returned.       The <xref:System.Web.SiteMapProvider.FindSiteMapNode%2A> method does not check whether a <xref:System.Web.SiteMapNode> is accessible to a user, by default."
+  summary: "Henter en <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> objektet som representerer den forespurte siden ved hjelp av den angitte <xref href=&quot;System.Web.HttpContext&quot;> </xref> objektet."
+  remarks: "FindSiteMapNode metodekall abstract <xref:System.Web.SiteMapProvider.FindSiteMapNode%2A>metode for å hente en <xref:System.Web.SiteMapNode>objekt for den forespurte siden basert på de rå URL-adressen eller den virtuelle banen til forespørselen.</xref:System.Web.SiteMapNode> </xref:System.Web.SiteMapProvider.FindSiteMapNode%2A> Hvis ingen tilsvarende <xref:System.Web.SiteMapNode>finnes i den <xref:System.Web.SiteMap>, `null` returneres.</xref:System.Web.SiteMap> </xref:System.Web.SiteMapNode>       Den <xref:System.Web.SiteMapProvider.FindSiteMapNode%2A>metoden ikke kontrollerer om en <xref:System.Web.SiteMapNode>er tilgjengelig for en bruker som standard.</xref:System.Web.SiteMapNode> </xref:System.Web.SiteMapProvider.FindSiteMapNode%2A>"
   syntax:
     content: public virtual System.Web.SiteMapNode FindSiteMapNode (System.Web.HttpContext context);
     parameters:
     - id: context
       type: System.Web.HttpContext
-      description: "The <xref href=&quot;System.Web.HttpContext&quot;></xref> used to match node information with the URL of the requested page."
+      description: "Den <xref href=&quot;System.Web.HttpContext&quot;> </xref> brukes til å samsvare med noden informasjonen med URL-adressen for den forespurte siden."
     return:
       type: System.Web.SiteMapNode
-      description: "A <xref href=&quot;System.Web.SiteMapNode&quot;></xref> that represents the currently requested page; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, if no corresponding <xref href=&quot;System.Web.SiteMapNode&quot;></xref> can be found in the <xref href=&quot;System.Web.SiteMapNode&quot;></xref> or if the page context is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "En <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> som representerer den forespurte siden; ellers <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>, hvis ingen tilsvarende <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> finnes i den <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> , eller hvis siden konteksten <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.SiteMapProvider.FindSiteMapNode*
   exceptions: []
   platform:
@@ -246,17 +246,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Retrieves a <xref href=&quot;System.Web.SiteMapNode&quot;></xref> object based on a specified key."
-  remarks: "The <xref:System.Web.SiteMapProvider> implementation returns `null` in all cases. Classes that derive from the <xref:System.Web.SiteMapProvider> class can override the FindSiteMapNodeFromKey method to provide lookup functionality based on a unique key (instead of a URL, which is used by the <xref:System.Web.SiteMapProvider.FindSiteMapNode%2A> method). Implement the FindSiteMapNodeFromKey method if your site map provider implementation uses the <xref:System.Web.SiteMapNode.Key%2A?displayProperty=fullName> property of a <xref:System.Web.SiteMapNode> object as a primary identifier in a site map structure.       The <xref:System.Web.StaticSiteMapProvider> class provides an implementation that handles searching for site map nodes that do not define a URL.       The <xref:System.Web.XmlSiteMapProvider> class, which is the default site map provider for ASP.NET, uses the URL of a <xref:System.Web.SiteMapNode> as a key in the various collections that the classes maintain. Therefore, if a node provides a URL, it must be unique within the scope of the site map provider. If no URL is provided, a unique identifier is generated to identify the <xref:System.Web.SiteMapNode>."
+  summary: "Henter en <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> objekt basert på en angitt nøkkel."
+  remarks: "Den <xref:System.Web.SiteMapProvider>implementering returnerer `null` i alle tilfellene.</xref:System.Web.SiteMapProvider> Klasser som er avledet fra den <xref:System.Web.SiteMapProvider>klassen kan overstyre metoden FindSiteMapNodeFromKey for å gi oppslag funksjonalitet basert på en unik nøkkel (i stedet for en URL-adresse som brukes av den <xref:System.Web.SiteMapProvider.FindSiteMapNode%2A>metoden).</xref:System.Web.SiteMapProvider.FindSiteMapNode%2A> </xref:System.Web.SiteMapProvider> Implementere metoden FindSiteMapNodeFromKey Hvis området kartet leverandøren implementeringen bruker den <xref:System.Web.SiteMapNode.Key%2A?displayProperty=fullName>for en <xref:System.Web.SiteMapNode>objektet som en primær identifikator i en området kartet struktur.</xref:System.Web.SiteMapNode> </xref:System.Web.SiteMapNode.Key%2A?displayProperty=fullName>       Den <xref:System.Web.StaticSiteMapProvider>klassen gir implementering som behandler søker etter området kartet noder som ikke definerer en URL-adresse.</xref:System.Web.StaticSiteMapProvider>       Den <xref:System.Web.XmlSiteMapProvider>klassen som er standardleverandøren for kartet for ASP.NET, bruker URL-adressen til en <xref:System.Web.SiteMapNode>som en nøkkel i de ulike samlingene klassene vedlikehold.</xref:System.Web.SiteMapNode> </xref:System.Web.XmlSiteMapProvider> Derfor Hvis en node gir en URL-adresse, må den være unike innenfor området for området kartet leverandøren. Hvis ingen URL-adresse er angitt, genereres det en unik identifikator for å identifisere <xref:System.Web.SiteMapNode>.</xref:System.Web.SiteMapNode>"
   syntax:
     content: public virtual System.Web.SiteMapNode FindSiteMapNodeFromKey (string key);
     parameters:
     - id: key
       type: System.String
-      description: "A lookup key with which a <xref href=&quot;System.Web.SiteMapNode&quot;></xref> is created."
+      description: "En lookup-nøkkel som en <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> er opprettet."
     return:
       type: System.Web.SiteMapNode
-      description: "A <xref href=&quot;System.Web.SiteMapNode&quot;></xref> that represents the page identified by <code>key</code>; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, if no corresponding <xref href=&quot;System.Web.SiteMapNode&quot;></xref> is found or if security trimming is enabled and the <xref href=&quot;System.Web.SiteMapNode&quot;></xref> cannot be returned for the current user. The default is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "En <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> som representerer siden identifisert av <code> key </code>; ellers <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>, hvis ingen tilsvarende <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> finnes, eller hvis sikkerhet kutting er aktivert og <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> kan ikke returneres for gjeldende bruker. Standard <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.SiteMapProvider.FindSiteMapNodeFromKey*
   exceptions: []
   platform:
@@ -273,8 +273,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "When overridden in a derived class, retrieves the child nodes of a specific <xref href=&quot;System.Web.SiteMapNode&quot;></xref>."
-  remarks: "Classes that derive from the <xref:System.Web.SiteMapProvider> class must implement the abstract GetChildNodes method."
+  summary: "Når overstyrt i en avledet klasse, henter underordnede noder for en bestemt <xref href=&quot;System.Web.SiteMapNode&quot;> </xref>."
+  remarks: "Klasser som er avledet fra den <xref:System.Web.SiteMapProvider>klassen må implementere metoden abstrakt GetChildNodes.</xref:System.Web.SiteMapProvider>"
   example:
   - "The following code example demonstrates how to implement the GetChildNodes method in a class that implements the abstract <xref:System.Web.SiteMapProvider> class. The `SimpleTextSiteMapProvider` stores the hierarchical parent/child relationships in one <xref:System.Collections.Hashtable> object and all <xref:System.Web.SiteMapNode> objects in another. The GetChildNodes method performs a reverse-lookup using both <xref:System.Collections.ArrayList> objects.  \n  \n This code example is part of a larger example provided for the <xref:System.Web.SiteMapProvider> class.  \n  \n [!code-vb[Urtue.Samples.Alexkr.SimpleTextSiteMapProvider_1#6](~/add/codesnippet/visualbasic/m-system.web.sitemapprov_2_1.vb)]\n [!code-cs[Urtue.Samples.Alexkr.SimpleTextSiteMapProvider_1#6](~/add/codesnippet/csharp/m-system.web.sitemapprov_2_1.cs)]"
   syntax:
@@ -282,10 +282,10 @@ items:
     parameters:
     - id: node
       type: System.Web.SiteMapNode
-      description: "The <xref href=&quot;System.Web.SiteMapNode&quot;></xref> for which to retrieve all child nodes."
+      description: "Den <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> som du vil hente alle underordnede noder."
     return:
       type: System.Web.SiteMapNodeCollection
-      description: "A read-only <xref href=&quot;System.Web.SiteMapNodeCollection&quot;></xref> that contains the immediate child nodes of the specified <xref href=&quot;System.Web.SiteMapNode&quot;></xref>; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> or an empty collection, if no child nodes exist."
+      description: "En skrivebeskyttet <xref href=&quot;System.Web.SiteMapNodeCollection&quot;> </xref> som inneholder umiddelbar underordnede noder av den angitte <xref href=&quot;System.Web.SiteMapNode&quot;> </xref>; ellers <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> eller en tom samling, hvis det finnes ingen underordnede noder."
   overload: System.Web.SiteMapProvider.GetChildNodes*
   exceptions: []
   platform:
@@ -302,22 +302,22 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Provides an optimized lookup method for site map providers when retrieving the node for the currently requested page and fetching the parent and ancestor site map nodes for the current page."
-  remarks: "The default implementation of the GetCurrentNodeAndHintAncestorNodes method returns the <xref:System.Web.SiteMapProvider.CurrentNode%2A> property; however, site map providers can override the GetCurrentNodeAndHintAncestorNodes method and provide an optimized implementation that uses custom caching mechanisms to return the current <xref:System.Web.SiteMapNode>, as well as the parent and ancestor nodes of the parent.       The `upLevel` parameter is used to specify how many levels of parent and ancestor nodes to retrieve. If preferred, the parent and ancestor nodes can be linked to the <xref:System.Web.SiteMapNode> object that is returned by the GetCurrentNodeAndHintAncestorNodes method, using the <xref:System.Web.SiteMapNode.ParentNode%2A> property.       The <xref:System.Web.XmlSiteMapProvider> class, which is the default site map provider for ASP.NET, caches the entire site map in memory, which results in little or no overhead when querying the <xref:System.Web.XmlSiteMapProvider> for specific <xref:System.Web.SiteMapNode> objects."
+  summary: "Inneholder et minneoptimalisert oppslagsmetode for området kartet leverandører under henting av noden for den forespurte siden og henting av webområdet overordnede og overordnet tilordne noder for gjeldende side."
+  remarks: "Standard implementering av metoden GetCurrentNodeAndHintAncestorNodes returnerer den <xref:System.Web.SiteMapProvider.CurrentNode%2A>egenskapen; imidlertid området kartet leverandører kan overstyre metoden GetCurrentNodeAndHintAncestorNodes og angi en minneoptimaliserte implementering som bruker egendefinert hurtigbufring mekanismer til å returnere gjeldende <xref:System.Web.SiteMapNode>, og den overordnede og overordnet noder for overordnede.</xref:System.Web.SiteMapNode> </xref:System.Web.SiteMapProvider.CurrentNode%2A>       Den `upLevel` parameteren brukes til å angi hvor mange nivåer med overordnede og overordnet noder som skal hente. Hvis foretrukket, overordnede og overordnet noder kan kobles til den <xref:System.Web.SiteMapNode>objektet som er returnert av metoden GetCurrentNodeAndHintAncestorNodes ved hjelp av den <xref:System.Web.SiteMapNode.ParentNode%2A>egenskapen.</xref:System.Web.SiteMapNode.ParentNode%2A> </xref:System.Web.SiteMapNode>       Den <xref:System.Web.XmlSiteMapProvider>klassen som er standardleverandøren for kartet for ASP.NET, bufrer kartet hele området i minnet, som fører til lite eller ingen overhead ved spørring av <xref:System.Web.XmlSiteMapProvider>for bestemte <xref:System.Web.SiteMapNode>objekter.</xref:System.Web.SiteMapNode> </xref:System.Web.XmlSiteMapProvider> </xref:System.Web.XmlSiteMapProvider>"
   syntax:
     content: public virtual System.Web.SiteMapNode GetCurrentNodeAndHintAncestorNodes (int upLevel);
     parameters:
     - id: upLevel
       type: System.Int32
-      description: "The number of ancestor site map node generations to get. A value of -1 indicates that all ancestors might be retrieved and cached by the provider."
+      description: "Antall overordnet område kartet noden generasjoner å hente. Verdien -1 angir at alle overordnede kan hentes og bufret av leverandøren."
     return:
       type: System.Web.SiteMapNode
-      description: "A <xref href=&quot;System.Web.SiteMapNode&quot;></xref> that represents the currently requested page; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, if the <xref href=&quot;System.Web.SiteMapNode&quot;></xref> is not found or cannot be returned for the current user."
+      description: "En <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> som representerer den forespurte siden; ellers <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>, hvis den <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> finnes ikke eller kan ikke returneres for gjeldende bruker."
   overload: System.Web.SiteMapProvider.GetCurrentNodeAndHintAncestorNodes*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>upLevel</code> is less than -1."
+    description: "<code>upLevel</code>er mindre enn -1."
   platform:
   - net462
 - uid: System.Web.SiteMapProvider.GetCurrentNodeAndHintNeighborhoodNodes(System.Int32,System.Int32)
@@ -332,25 +332,25 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Provides an optimized lookup method for site map providers when retrieving the node for the currently requested page and fetching the site map nodes in the proximity of the current node."
-  remarks: "The default implementation of the GetCurrentNodeAndHintNeighborhoodNodes method returns the <xref:System.Web.SiteMapProvider.CurrentNode%2A> property; however, site map providers can override the GetCurrentNodeAndHintNeighborhoodNodes method and provide an optimized implementation that uses custom caching mechanisms to return the current <xref:System.Web.SiteMapNode> object, as well as <xref:System.Web.SiteMapNode> objects that are in the proximity of the current <xref:System.Web.SiteMapNode>.       The `upLevel` parameter is used to specify how many levels of parent and ancestor nodes to retrieve and cache, along with their immediate children. The `downLevel` parameter is used to specify how many levels of descendant nodes from the current <xref:System.Web.SiteMapNode> to retrieve. If preferred, the ancestor and descendant nodes can be linked to the <xref:System.Web.SiteMapNode> that is returned by the       GetCurrentNodeAndHintNeighborhoodNodes method, using the <xref:System.Web.SiteMapNode.ParentNode%2A> and <xref:System.Web.SiteMapNode.ChildNodes%2A> properties. If there are fewer ancestor or child node levels than are specified by `upLevel` or `downLevel`, only those that are available are retrieved.       The <xref:System.Web.XmlSiteMapProvider> class, which is the default site map provider for ASP.NET, caches the entire site map in memory, which results in little or no overhead when querying the <xref:System.Web.XmlSiteMapProvider> for specific <xref:System.Web.SiteMapNode> objects."
+  summary: "Inneholder et minneoptimalisert oppslagsmetode for området kartet leverandører under henting av noden for den forespurte siden og henting av området tilordne nodene i nærheten av den gjeldende noden."
+  remarks: "Standard implementering av metoden GetCurrentNodeAndHintNeighborhoodNodes returnerer den <xref:System.Web.SiteMapProvider.CurrentNode%2A>egenskapen; imidlertid området kartet leverandører kan overstyre metoden GetCurrentNodeAndHintNeighborhoodNodes og angi en minneoptimaliserte implementering som bruker egendefinert hurtigbufring mekanismer til å returnere den gjeldende <xref:System.Web.SiteMapNode>objektet, i tillegg til <xref:System.Web.SiteMapNode>objekter som er i nærheten av gjeldende <xref:System.Web.SiteMapNode>.</xref:System.Web.SiteMapNode> </xref:System.Web.SiteMapNode> </xref:System.Web.SiteMapNode> </xref:System.Web.SiteMapProvider.CurrentNode%2A>       Den `upLevel` parameteren brukes til å angi hvor mange nivåer med overordnede og overordnet noder til å hente og hurtigbufring, sammen med umiddelbar underordnede. Den `downLevel` parameteren brukes til å angi hvor mange nivåer av underordnede noder fra gjeldende <xref:System.Web.SiteMapNode>til å hente.</xref:System.Web.SiteMapNode> Hvis foretrukket, overordnet og underordnet nodene kan kobles til den <xref:System.Web.SiteMapNode>som er returnert av metoden GetCurrentNodeAndHintNeighborhoodNodes ved hjelp av den <xref:System.Web.SiteMapNode.ParentNode%2A>og <xref:System.Web.SiteMapNode.ChildNodes%2A>Egenskaper.</xref:System.Web.SiteMapNode.ChildNodes%2A> </xref:System.Web.SiteMapNode.ParentNode%2A> </xref:System.Web.SiteMapNode> Hvis det er færre overordnet eller underordnet node nivåer enn er angitt i `upLevel` eller `downLevel`, bare de som er hentet.       Den <xref:System.Web.XmlSiteMapProvider>klassen som er standardleverandøren for kartet for ASP.NET, bufrer kartet hele området i minnet, som fører til lite eller ingen overhead ved spørring av <xref:System.Web.XmlSiteMapProvider>for bestemte <xref:System.Web.SiteMapNode>objekter.</xref:System.Web.SiteMapNode> </xref:System.Web.XmlSiteMapProvider> </xref:System.Web.XmlSiteMapProvider>"
   syntax:
     content: public virtual System.Web.SiteMapNode GetCurrentNodeAndHintNeighborhoodNodes (int upLevel, int downLevel);
     parameters:
     - id: upLevel
       type: System.Int32
-      description: "The number of ancestor <xref href=&quot;System.Web.SiteMapNode&quot;></xref> generations to fetch. 0 indicates no ancestor nodes are retrieved and -1 indicates that all ancestors might be retrieved and cached by the provider."
+      description: "Antall overordnet <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> generasjoner å hente. 0 angir ingen overordnet noder hentes og -1 angir at alle overordnede kan hentes og bufret av leverandøren."
     - id: downLevel
       type: System.Int32
-      description: "The number of child <xref href=&quot;System.Web.SiteMapNode&quot;></xref> generations to fetch. 0 indicates no descendant nodes are retrieved and a -1 indicates that all descendant nodes might be retrieved and cached by the provider."
+      description: "Antall underordnede <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> generasjoner å hente. 0 angir ingen underordnede noder hentes og -1 angir at alle underordnede noder kan hentes og bufret av leverandøren."
     return:
       type: System.Web.SiteMapNode
-      description: "A <xref href=&quot;System.Web.SiteMapNode&quot;></xref> that represents the currently requested page; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, if the <xref href=&quot;System.Web.SiteMapNode&quot;></xref> is not found or cannot be returned for the current user."
+      description: "En <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> som representerer den forespurte siden; ellers <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>, hvis den <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> finnes ikke eller kan ikke returneres for gjeldende bruker."
   overload: System.Web.SiteMapProvider.GetCurrentNodeAndHintNeighborhoodNodes*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>upLevel</code> or <code>downLevel</code> is less than -1."
+    description: "<code>upLevel</code>eller <code>downLevel</code> er mindre enn -1."
   platform:
   - net462
 - uid: System.Web.SiteMapProvider.GetParentNode(System.Web.SiteMapNode)
@@ -365,7 +365,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "When overridden in a derived class, retrieves the parent node of a specific <xref href=&quot;System.Web.SiteMapNode&quot;></xref> object."
+  summary: "Når overstyrt i en avledet klasse, henter den overordnede noden for en bestemt <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> objektet."
   remarks: ''
   example:
   - "The following code example demonstrates how to implement the GetParentNode method in a class that implements the abstract <xref:System.Web.SiteMapProvider> class. The `SimpleTextSiteMapProvider` stores the hierarchical parent/child relationship between <xref:System.Web.SiteMapNode> objects in an <xref:System.Collections.IList> interface, such as an <xref:System.Collections.ArrayList> object.  \n  \n This code example is part of a larger example provided for the <xref:System.Web.SiteMapProvider> class.  \n  \n [!code-vb[Urtue.Samples.Alexkr.SimpleTextSiteMapProvider_1#6](~/add/codesnippet/visualbasic/m-system.web.sitemapprov_3_1.vb)]\n [!code-cs[Urtue.Samples.Alexkr.SimpleTextSiteMapProvider_1#6](~/add/codesnippet/csharp/m-system.web.sitemapprov_3_1.cs)]"
@@ -374,10 +374,10 @@ items:
     parameters:
     - id: node
       type: System.Web.SiteMapNode
-      description: "The <xref href=&quot;System.Web.SiteMapNode&quot;></xref> for which to retrieve the parent node."
+      description: "Den <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> å hente den overordnede noden."
     return:
       type: System.Web.SiteMapNode
-      description: "A <xref href=&quot;System.Web.SiteMapNode&quot;></xref> that represents the parent of <code>node</code>; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, if the <xref href=&quot;System.Web.SiteMapNode&quot;></xref> has no parent or security trimming is enabled and the parent node is not accessible to the current user.       <div class=&quot;alert NOTE&quot;>    GetParentNode might also return <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the parent node belongs to a different provider. In this case, use the <xref:System.Web.SiteMapNode.ParentNode*> property of <code>node</code> instead.      </div>"
+      description: "En <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> som representerer overordnede <code> node </code>; ellers <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>, hvis den <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> har ingen overordnet eller sikkerhet kutting er aktivert, og den overordnede noden er ikke tilgjengelig for gjeldende bruker.       <div class=&quot;alert NOTE&quot;>    GetParentNode også kan returnere <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> hvis den overordnede noden tilhører en annen leverandør. I dette tilfellet bruker den <xref:System.Web.SiteMapNode.ParentNode*>for <code> node </code> i stedet.</xref:System.Web.SiteMapNode.ParentNode*>      </div>"
   overload: System.Web.SiteMapProvider.GetParentNode*
   exceptions: []
   platform:
@@ -394,25 +394,25 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Provides an optimized lookup method for site map providers when retrieving an ancestor node for the currently requested page and fetching the descendant nodes for the ancestor."
-  remarks: "The default implementation of the <xref:System.Web.SiteMapProvider> class provides a non-optimized implementation of the GetParentNodeRelativeToCurrentNodeAndHintDownFromParent method, calling the <xref:System.Web.SiteMapProvider.GetCurrentNodeAndHintAncestorNodes%2A> and <xref:System.Web.SiteMapProvider.HintNeighborhoodNodes%2A> methods; however, site map providers can override the GetParentNodeRelativeToCurrentNodeAndHintDownFromParent method and provide an optimized implementation that uses custom caching mechanisms to return the ancestor node and perform an optimized lookup of the other <xref:System.Web.SiteMapNode> objects.       The `walkupLevels` parameter is used to specify how many levels of parent and ancestor nodes to traverse when retrieving the target node. If fewer levels exist than are requested, `null` is returned. The `downLevel` parameter is used to specify how many levels of descendant nodes from the target ancestor node to retrieve. If preferred, the ancestor and descendant nodes can be linked to the <xref:System.Web.SiteMapNode> that is returned by the GetParentNodeRelativeToCurrentNodeAndHintDownFromParent method, using the <xref:System.Web.SiteMapNode.ParentNode%2A> and <xref:System.Web.SiteMapNode.ChildNodes%2A> properties."
+  summary: "Inneholder et minneoptimalisert oppslagsmetode for området kartet leverandører under henting av en overordnet node for den forespurte siden og henting av underordnede noder for overordnet."
+  remarks: "Standard implementering av den <xref:System.Web.SiteMapProvider>klassen gir en ikke-optimalisert implementering av metoden GetParentNodeRelativeToCurrentNodeAndHintDownFromParent kaller den <xref:System.Web.SiteMapProvider.GetCurrentNodeAndHintAncestorNodes%2A>og <xref:System.Web.SiteMapProvider.HintNeighborhoodNodes%2A>metoder; imidlertid området kartet leverandører kan overstyre metoden GetParentNodeRelativeToCurrentNodeAndHintDownFromParent og angi en minneoptimaliserte implementering som bruker egendefinert hurtigbufring mekanismer returnere overordnet node for å utføre en minneoptimaliserte oppslag for den andre <xref:System.Web.SiteMapNode>objekter.</xref:System.Web.SiteMapNode> </xref:System.Web.SiteMapProvider.HintNeighborhoodNodes%2A> </xref:System.Web.SiteMapProvider.GetCurrentNodeAndHintAncestorNodes%2A> </xref:System.Web.SiteMapProvider>       Den `walkupLevels` parameteren brukes til å angi hvor mange nivåer med overordnede og overordnet noder som går over under henting av Målnoden. Hvis det finnes færre nivåer enn forespørres, `null` returneres. Den `downLevel` parameteren brukes til å angi hvor mange nivåer av underordnede noder fra overordnet Målnoden til å hente. Hvis foretrukket, overordnet og underordnet nodene kan kobles til den <xref:System.Web.SiteMapNode>som er returnert av metoden GetParentNodeRelativeToCurrentNodeAndHintDownFromParent ved hjelp av den <xref:System.Web.SiteMapNode.ParentNode%2A>og <xref:System.Web.SiteMapNode.ChildNodes%2A>Egenskaper.</xref:System.Web.SiteMapNode.ChildNodes%2A> </xref:System.Web.SiteMapNode.ParentNode%2A> </xref:System.Web.SiteMapNode>"
   syntax:
     content: public virtual System.Web.SiteMapNode GetParentNodeRelativeToCurrentNodeAndHintDownFromParent (int walkupLevels, int relativeDepthFromWalkup);
     parameters:
     - id: walkupLevels
       type: System.Int32
-      description: "The number of ancestor node levels to traverse when retrieving the requested ancestor node."
+      description: "Antall nivåer som overordnet node skal bla gjennom under henting av den forespurte overordnet noden."
     - id: relativeDepthFromWalkup
       type: System.Int32
-      description: "The number of descendant node levels to retrieve from the target ancestor node."
+      description: "Antall underordnede noden nivåer som skal hente fra overordnet Målnoden."
     return:
       type: System.Web.SiteMapNode
-      description: "A <xref href=&quot;System.Web.SiteMapNode&quot;></xref> that represents an ancestor <xref href=&quot;System.Web.SiteMapNode&quot;></xref> of the currently requested page; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, if the current or ancestor <xref href=&quot;System.Web.SiteMapNode&quot;></xref> is not found or cannot be returned for the current user."
+      description: "En <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> som representerer en etterkommer <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> for den forespurte siden; ellers <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>, hvis den gjeldende eller overordnet <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> finnes ikke eller kan ikke returneres for gjeldende bruker."
   overload: System.Web.SiteMapProvider.GetParentNodeRelativeToCurrentNodeAndHintDownFromParent*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>walkupLevels</code> or <code>relativeDepthFromWalkup</code> is less than 0."
+    description: "<code>walkupLevels</code>eller <code>relativeDepthFromWalkup</code> er mindre enn 0."
   platform:
   - net462
 - uid: System.Web.SiteMapProvider.GetParentNodeRelativeToNodeAndHintDownFromParent(System.Web.SiteMapNode,System.Int32,System.Int32)
@@ -427,31 +427,31 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Provides an optimized lookup method for site map providers when retrieving an ancestor node for the specified <xref href=&quot;System.Web.SiteMapNode&quot;></xref> object and fetching its child nodes."
-  remarks: "The default implementation of the <xref:System.Web.SiteMapProvider> class provides a non-optimized implementation of the GetParentNodeRelativeToNodeAndHintDownFromParent method, calling the <xref:System.Web.SiteMapProvider.HintAncestorNodes%2A> and <xref:System.Web.SiteMapProvider.HintNeighborhoodNodes%2A> methods; however, site map providers can override the GetParentNodeRelativeToNodeAndHintDownFromParent method and provide an optimized implementation that uses custom caching mechanisms to return the ancestor node and perform an optimized lookup of the other <xref:System.Web.SiteMapNode> objects.  The GetParentNodeRelativeToNodeAndHintDownFromParent method is very similar to the <xref:System.Web.SiteMapProvider.GetParentNodeRelativeToCurrentNodeAndHintDownFromParent%2A> method.       The `walkupLevels` parameter is used to specify how many levels of parent and ancestor nodes to traverse when retrieving the target node. If fewer levels exist than are requested, `null` is returned. The `downLevel` parameter is used to specify how many levels of descendant nodes from the target ancestor node to retrieve. If preferred, the ancestor and descendant nodes can be linked to the <xref:System.Web.SiteMapNode> that is returned by the GetParentNodeRelativeToNodeAndHintDownFromParent method, using the <xref:System.Web.SiteMapNode.ParentNode%2A> and <xref:System.Web.SiteMapNode.ChildNodes%2A> properties. If there are fewer ancestor node levels than specified by the `upLevel` parameter, `null` is returned.  It is up to the provider implementer to decide how to handle the situation where the number of available descendant node levels is less than the value that is specified by the `downLevel` parameter."
+  summary: "Inneholder et minneoptimalisert oppslagsmetode for området kartet leverandører under henting av en overordnet node for det angitte <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> objekt og henting av underordnet noder."
+  remarks: "Standard implementering av den <xref:System.Web.SiteMapProvider>klassen gir en ikke-optimalisert implementering av metoden GetParentNodeRelativeToNodeAndHintDownFromParent kaller den <xref:System.Web.SiteMapProvider.HintAncestorNodes%2A>og <xref:System.Web.SiteMapProvider.HintNeighborhoodNodes%2A>metoder; imidlertid området kartet leverandører kan overstyre metoden GetParentNodeRelativeToNodeAndHintDownFromParent og angi en minneoptimaliserte implementering som bruker egendefinert hurtigbufring mekanismer returnere overordnet node for å utføre en minneoptimaliserte oppslag for den andre <xref:System.Web.SiteMapNode>objekter.</xref:System.Web.SiteMapNode> </xref:System.Web.SiteMapProvider.HintNeighborhoodNodes%2A> </xref:System.Web.SiteMapProvider.HintAncestorNodes%2A> </xref:System.Web.SiteMapProvider>  Metoden GetParentNodeRelativeToNodeAndHintDownFromParent ligner den <xref:System.Web.SiteMapProvider.GetParentNodeRelativeToCurrentNodeAndHintDownFromParent%2A>metoden.</xref:System.Web.SiteMapProvider.GetParentNodeRelativeToCurrentNodeAndHintDownFromParent%2A>       Den `walkupLevels` parameteren brukes til å angi hvor mange nivåer med overordnede og overordnet noder som går over under henting av Målnoden. Hvis det finnes færre nivåer enn forespørres, `null` returneres. Den `downLevel` parameteren brukes til å angi hvor mange nivåer av underordnede noder fra overordnet Målnoden til å hente. Hvis foretrukket, overordnet og underordnet nodene kan kobles til den <xref:System.Web.SiteMapNode>som er returnert av metoden GetParentNodeRelativeToNodeAndHintDownFromParent ved hjelp av den <xref:System.Web.SiteMapNode.ParentNode%2A>og <xref:System.Web.SiteMapNode.ChildNodes%2A>Egenskaper.</xref:System.Web.SiteMapNode.ChildNodes%2A> </xref:System.Web.SiteMapNode.ParentNode%2A> </xref:System.Web.SiteMapNode> Hvis det finnes færre overordnet node nivåer enn angitt i den `upLevel` parameteren `null` returneres.  Det er leverandøren implementer bestemme hvordan du løser problemet der hvor mange tilgjengelige underordnede noden som er mindre enn verdien som er angitt av den `downLevel` parameteren."
   syntax:
     content: public virtual System.Web.SiteMapNode GetParentNodeRelativeToNodeAndHintDownFromParent (System.Web.SiteMapNode node, int walkupLevels, int relativeDepthFromWalkup);
     parameters:
     - id: node
       type: System.Web.SiteMapNode
-      description: "The <xref href=&quot;System.Web.SiteMapNode&quot;></xref> that acts as a reference point for `walkupLevels` and `relativeDepthFromWalkup`."
+      description: "Den <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> som fungerer som et referansepunkt for `walkupLevels` og `relativeDepthFromWalkup`."
     - id: walkupLevels
       type: System.Int32
-      description: "The number of ancestor node levels to traverse when retrieving the requested ancestor node."
+      description: "Antall nivåer som overordnet node skal bla gjennom under henting av den forespurte overordnet noden."
     - id: relativeDepthFromWalkup
       type: System.Int32
-      description: "The number of descendant node levels to retrieve from the target ancestor node."
+      description: "Antall underordnede noden nivåer som skal hente fra overordnet Målnoden."
     return:
       type: System.Web.SiteMapNode
-      description: "A <xref href=&quot;System.Web.SiteMapNode&quot;></xref> that represents an ancestor of <code>node</code>; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, if the current or ancestor <xref href=&quot;System.Web.SiteMapNode&quot;></xref> is not found or cannot be returned for the current user."
+      description: "En <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> som representerer en etterkommer av <code> node </code>; ellers <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>, hvis den gjeldende eller overordnet <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> finnes ikke eller kan ikke returneres for gjeldende bruker."
   overload: System.Web.SiteMapProvider.GetParentNodeRelativeToNodeAndHintDownFromParent*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The value specified for <code>walkupLevels</code> or <code>relativeDepthFromWalkup</code> is less than 0."
+    description: "Den angitte verdien for <code> walkupLevels </code> eller <code> relativeDepthFromWalkup </code> er mindre enn 0."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>node</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>node</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Web.SiteMapProvider.GetRootNodeCore
@@ -466,8 +466,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "When overridden in a derived class, retrieves the root node of all the nodes that are currently managed by the current provider."
-  remarks: "The GetRootNodeCore method enables a parent provider in a provider hierarchy to obtain a <xref:System.Web.SiteMapNode> object that acts as a frame of reference for building the provider hierarchy and the larger site map node hierarchy that is the sum of the site map data that each provider manages."
+  summary: "Når overstyrt i en avledet klasse, henter rotnoden for alle noder som for øyeblikket administreres av gjeldende leverandør."
+  remarks: "Metoden GetRootNodeCore aktiverer en overordnet leverandør i et hierarki for leverandøren for å hente en <xref:System.Web.SiteMapNode>objektet som fungerer som en referanse for bygging av leverandøren hierarkiet og større området kartet noden hierarkiet som er summen av området kartdata som administrerer hver leverandøren.</xref:System.Web.SiteMapNode>"
   example:
   - >-
     [!code-vb[Urtue.Samples.Alexkr.SimpleTextSiteMapProvider_1#3](~/add/codesnippet/visualbasic/m-system.web.sitemapprov_0_1.vb)]
@@ -477,7 +477,7 @@ items:
     parameters: []
     return:
       type: System.Web.SiteMapNode
-      description: "A <xref href=&quot;System.Web.SiteMapNode&quot;></xref> that represents the root node of the set of nodes that the current provider manages."
+      description: "En <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> som representerer rotnode sett med noder som administrerer for gjeldende leverandør."
   overload: System.Web.SiteMapProvider.GetRootNodeCore*
   exceptions: []
   platform:
@@ -494,17 +494,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Retrieves the root node of all the nodes that are currently managed by the specified site map provider."
-  remarks: "The default implementation calls the abstract <xref:System.Web.SiteMapProvider.GetRootNodeCore%2A> method on the specified `provider`."
+  summary: "Henter rotnoden for alle noder som for øyeblikket administreres av den angitte område kartet leverandøren."
+  remarks: "Standard implementering kaller abstract <xref:System.Web.SiteMapProvider.GetRootNodeCore%2A>-metoden på den angitte `provider`.</xref:System.Web.SiteMapProvider.GetRootNodeCore%2A>"
   syntax:
     content: protected static System.Web.SiteMapNode GetRootNodeCoreFromProvider (System.Web.SiteMapProvider provider);
     parameters:
     - id: provider
       type: System.Web.SiteMapProvider
-      description: "The provider that calls the <xref:System.Web.SiteMapProvider.GetRootNodeCore*>."
+      description: "Leverandøren som kaller <xref:System.Web.SiteMapProvider.GetRootNodeCore*>.</xref:System.Web.SiteMapProvider.GetRootNodeCore*>"
     return:
       type: System.Web.SiteMapNode
-      description: "A <xref href=&quot;System.Web.SiteMapNode&quot;></xref> that represents the root node of the set of nodes that is managed by <code>provider</code>."
+      description: "En <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> som representerer rotnode sett med noder som administreres av <code> provider </code>."
   overload: System.Web.SiteMapProvider.GetRootNodeCoreFromProvider*
   exceptions: []
   platform:
@@ -521,25 +521,25 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Provides a method that site map providers can override to perform an optimized retrieval of one or more levels of parent and ancestor nodes, relative to the specified <xref href=&quot;System.Web.SiteMapNode&quot;></xref> object."
-  remarks: "The default HintAncestorNodes method only checks for an `upLevel` parameter that is less than -1 and a `node` parameter that is `null`. Because the <xref:System.Web.XmlSiteMapProvider> class caches site map information in memory, the HintAncestorNodes method is not used.       Site map providers can override the HintAncestorNodes method to perform an optimized retrieval of parent and ancestor nodes of the specified <xref:System.Web.SiteMapNode> object.       The `upLevel` parameter is used to specify how many levels of parent and ancestor nodes to traverse from the specified <xref:System.Web.SiteMapNode>. If fewer levels exist than are requested, all available ancestor nodes are returned within the specified bound. If preferred, the parent node can be linked to the specified <xref:System.Web.SiteMapNode> using the <xref:System.Web.SiteMapNode.ParentNode%2A> property."
+  summary: "Inneholder en metode som kartet leverandører-område kan overstyre Hvis du vil utføre en minneoptimaliserte henting av én eller flere nivåer overordnede og overordnet noder i forhold til den angitte <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> objektet."
+  remarks: "HintAncestorNodes standardmetoden bare søker etter en `upLevel` parameter som er mindre enn -1 og en `node` parameter som er `null`. Fordi den <xref:System.Web.XmlSiteMapProvider>klassen bufrer informasjon om tilordning av området i minnet, brukes ikke metoden HintAncestorNodes.</xref:System.Web.XmlSiteMapProvider>       Området kartet leverandører kan overstyre metoden HintAncestorNodes for å utføre en minneoptimaliserte henting av overordnede og overordnet noder for det angitte <xref:System.Web.SiteMapNode>objektet.</xref:System.Web.SiteMapNode>       Den `upLevel` parameteren brukes til å angi hvor mange nivåer med overordnede og overordnet noder som går over fra den angitte <xref:System.Web.SiteMapNode>.</xref:System.Web.SiteMapNode> Hvis det finnes færre nivåer enn det er bedt om, returneres alle tilgjengelige overordnet noder i den angitte grensen. Hvis foretrukket, den overordnede noden kan kobles til den angitte <xref:System.Web.SiteMapNode>ved hjelp av den <xref:System.Web.SiteMapNode.ParentNode%2A>egenskapen.</xref:System.Web.SiteMapNode.ParentNode%2A> </xref:System.Web.SiteMapNode>"
   syntax:
     content: public virtual void HintAncestorNodes (System.Web.SiteMapNode node, int upLevel);
     parameters:
     - id: node
       type: System.Web.SiteMapNode
-      description: "The <xref href=&quot;System.Web.SiteMapNode&quot;></xref> that acts as a reference point for `upLevel`."
+      description: "Den <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> som fungerer som et referansepunkt for `upLevel`."
     - id: upLevel
       type: System.Int32
-      description: "The number of ancestor <xref href=&quot;System.Web.SiteMapNode&quot;></xref> generations to fetch. 0 indicates no ancestor nodes are retrieved and -1 indicates that all ancestors might be retrieved and cached."
+      description: "Antall overordnet <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> generasjoner å hente. 0 angir ingen overordnet noder hentes og -1 angir at alle overordnede kan hentes og bufret."
   overload: System.Web.SiteMapProvider.HintAncestorNodes*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>upLevel</code> is less than -1."
+    description: "<code>upLevel</code>er mindre enn -1."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>node</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>node</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Web.SiteMapProvider.HintNeighborhoodNodes(System.Web.SiteMapNode,System.Int32,System.Int32)
@@ -554,28 +554,28 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Provides a method that site map providers can override to perform an optimized retrieval of nodes found in the proximity of the specified node."
-  remarks: "The default HintNeighborhoodNodes method only checks for an `upLevel` and `downLevel` parameters that are less than -1 and a `node` parameter that is `null`. Because the <xref:System.Web.XmlSiteMapProvider> object caches site map information in memory, the HintNeighborhoodNodes method is not used.       Site map providers can override the HintNeighborhoodNodes method to perform an optimized lookup of the <xref:System.Web.SiteMapNode> objects in the proximity of the specified <xref:System.Web.SiteMapNode>. The `upLevel` parameter is used to specify how many levels of parent and ancestor nodes to traverse from the specified <xref:System.Web.SiteMapNode>. The `downLevel` parameter is used to specify how many levels of child nodes from the current node to retrieve. If preferred, the ancestor and descendant nodes can be linked to the <xref:System.Web.SiteMapNode> that is returned by the HintNeighborhoodNodes method, using the <xref:System.Web.SiteMapNode.ParentNode%2A> and <xref:System.Web.SiteMapNode.ChildNodes%2A> properties."
+  summary: "Inneholder en metode som området kartet leverandører kan overstyre Hvis du vil utføre en minneoptimaliserte henting av fant i nærheten av den angitte noden."
+  remarks: "HintNeighborhoodNodes standardmetoden bare søker etter en `upLevel` og `downLevel` parameterne som er mindre enn -1 og en `node` parameter som er `null`. Fordi den <xref:System.Web.XmlSiteMapProvider>objektet bufrer informasjon om tilordning av området i minnet, brukes ikke metoden HintNeighborhoodNodes.</xref:System.Web.XmlSiteMapProvider>       Området kartet leverandører kan overstyre metoden HintNeighborhoodNodes for å utføre en minneoptimaliserte oppslag for <xref:System.Web.SiteMapNode>objekter i nærheten av den angitte <xref:System.Web.SiteMapNode>.</xref:System.Web.SiteMapNode> </xref:System.Web.SiteMapNode> Den `upLevel` parameteren brukes til å angi hvor mange nivåer med overordnede og overordnet noder som går over fra den angitte <xref:System.Web.SiteMapNode>.</xref:System.Web.SiteMapNode> Den `downLevel` parameteren brukes til å angi hvor mange nivåer av underordnede noder fra den gjeldende noden ikke hente. Hvis foretrukket, overordnet og underordnet nodene kan kobles til den <xref:System.Web.SiteMapNode>som er returnert av metoden HintNeighborhoodNodes ved hjelp av den <xref:System.Web.SiteMapNode.ParentNode%2A>og <xref:System.Web.SiteMapNode.ChildNodes%2A>Egenskaper.</xref:System.Web.SiteMapNode.ChildNodes%2A> </xref:System.Web.SiteMapNode.ParentNode%2A> </xref:System.Web.SiteMapNode>"
   syntax:
     content: public virtual void HintNeighborhoodNodes (System.Web.SiteMapNode node, int upLevel, int downLevel);
     parameters:
     - id: node
       type: System.Web.SiteMapNode
-      description: "The <xref href=&quot;System.Web.SiteMapNode&quot;></xref> that acts as a reference point for `upLevel`."
+      description: "Den <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> som fungerer som et referansepunkt for `upLevel`."
     - id: upLevel
       type: System.Int32
-      description: "The number of ancestor <xref href=&quot;System.Web.SiteMapNode&quot;></xref> generations to fetch. 0 indicates no ancestor nodes are retrieved and -1 indicates that all ancestors (and their descendant nodes to the level of `node`) might be retrieved and cached."
+      description: "Antall overordnet <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> generasjoner å hente. 0 angir ingen overordnet noder hentes og -1 angir at alle overordnede (og de underordnede nodene nivå av `node`) kan hentes og hurtigbufres."
     - id: downLevel
       type: System.Int32
-      description: "The number of descendant <xref href=&quot;System.Web.SiteMapNode&quot;></xref> generations to fetch. 0 indicates no descendant nodes are retrieved and -1 indicates that all descendant nodes might be retrieved and cached."
+      description: "Antall etterkommer <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> generasjoner å hente. 0 angir ingen underordnede noder hentes og -1 angir at alle underordnede noder kan hentes og bufret."
   overload: System.Web.SiteMapProvider.HintNeighborhoodNodes*
   exceptions:
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>upLevel</code> or <code>downLevel</code> is less than -1."
+    description: "<code>upLevel</code>eller <code>downLevel</code> er mindre enn -1."
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>node</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>node</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Web.SiteMapProvider.Initialize(System.String,System.Collections.Specialized.NameValueCollection)
@@ -590,8 +590,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Initializes the <xref href=&quot;System.Web.SiteMapProvider&quot;></xref> implementation, including any resources that are needed to load site map data from persistent storage."
-  remarks: "The Initialize method does not actually build a site map, it only prepares the state of the <xref:System.Web.SiteMapProvider> object to do so. The default implementation initializes the <xref:System.Web.SiteMapProvider.SecurityTrimmingEnabled%2A> property for the site map provider from the site navigation configuration.       Classes that derive from the <xref:System.Web.SiteMapProvider> can override the Initialize method to initialize any state and resources that are required to load site map data from persistent storage. For example, if your derived class is using files to store site map data, any file initialization can be performed in the Initialize method. If the derived class uses some other type of data store, such as a relational database, initializing a database connection might be performed.       Additional attributes, such as file names or connection strings, are read by the ASP.NET configuration system and passed to the Initialize method with its <xref:System.Collections.Specialized.NameValueCollection> parameter."
+  summary: "Initialiserer den <xref href=&quot;System.Web.SiteMapProvider&quot;> </xref> implementering, inkludert ressurser som trengs for å laste inn kartdata i området fra vedvarende lager."
+  remarks: "I initialiseringsmetoden å bygge ikke et kart, bare forbereder statusen for <xref:System.Web.SiteMapProvider>objektet som har so.</xref:System.Web.SiteMapProvider> Initialiserer standard implementering av <xref:System.Web.SiteMapProvider.SecurityTrimmingEnabled%2A>-egenskapen for kartet-leverandør for område fra området navigasjon konfigurasjonen.</xref:System.Web.SiteMapProvider.SecurityTrimmingEnabled%2A>       Klasser som er avledet fra den <xref:System.Web.SiteMapProvider>kan overstyre i initialiseringsmetoden for å initialisere en tilstand og ressurser som kreves for å laste inn kartdata i området fra vedvarende lager.</xref:System.Web.SiteMapProvider> Hvis den utledede klassen bruker filer til å lagre kartdata for området, kan for eksempel noen filinitialisering utføres i Initialize-metoden. Hvis den utledede klassen bruker en annen type datalageret, for eksempel en relasjonsdatabase, kan initialiserer en databasetilkobling utføres.       Ekstra attributter, for eksempel filnavn eller tilkoblingsstrenger, leses av ASP.NET Konfigurasjonssystemet og sendt til initialiseringsmetoden med den <xref:System.Collections.Specialized.NameValueCollection>parameteren.</xref:System.Collections.Specialized.NameValueCollection>"
   example:
   - "The following code example demonstrates how to override the Initialize method to prepare a Microsoft Access database connection.  \n  \n The connection string for the <xref:System.Data.OleDb.OleDbConnection> object is passed in the <xref:System.Collections.Specialized.NameValueCollection> parameter of the Initialize method. In this case, the connection string is provided by the provider-specific section in the Web.config file. Here, `accessSiteMapConnectionString` contains a connection string to a Microsoft Access database that hosts the site map data.  \n  \n```  \n<siteMap defaultProvider=\"AccessSiteMapProvider\">  \n  <providers>  \n     <add  \n       name=\"AccessSiteMapProvider\"  \n       type=\"Samples.AspNet.AccessSiteMapProvider,Samples.AspNet\"  \n       accessSiteMapConnectionString=\"PROVIDER=MICROSOFT.JET.OLEDB.4.0;DATA SOURCE=\\\\SomeUNCShare\\\\sitemap.mdb\"/>  \n  </providers>   \n </siteMap>  \n```  \n  \n This code example is part of a larger example provided for the <xref:System.Web.SiteMapProvider> class.  \n  \n [!code-cs[Urtue.Samples.Alexkr.AccessSiteMapProvider_1#2](~/add/codesnippet/csharp/2f9058bd-97d7-46f8-b840-_1.cs)]\n [!code-vb[Urtue.Samples.Alexkr.AccessSiteMapProvider_1#2](~/add/codesnippet/visualbasic/2f9058bd-97d7-46f8-b840-_1.vb)]\n [!code-cpp[Urtue.Samples.Alexkr.AccessSiteMapProvider_1#2](~/add/codesnippet/cpp/2f9058bd-97d7-46f8-b840-_1.cpp)]"
   syntax:
@@ -599,10 +599,10 @@ items:
     parameters:
     - id: name
       type: System.String
-      description: "The <xref:System.Configuration.Provider.ProviderBase.Name*> of the provider to initialize."
+      description: "Den <xref:System.Configuration.Provider.ProviderBase.Name*>av leverandøren initialisere.</xref:System.Configuration.Provider.ProviderBase.Name*>"
     - id: attributes
       type: System.Collections.Specialized.NameValueCollection
-      description: "A <xref href=&quot;System.Collections.Specialized.NameValueCollection&quot;></xref> that can contain additional attributes to help initialize the provider. These attributes are read from the site map provider configuration in the Web.config file."
+      description: "En <xref href=&quot;System.Collections.Specialized.NameValueCollection&quot;> </xref> som kan inneholde ekstra attributter til å initialisere leverandøren. Disse attributtene er lest fra området kartet Leverandørkonfigurasjon i Web.config-filen."
   overload: System.Web.SiteMapProvider.Initialize*
   exceptions: []
   platform:
@@ -619,20 +619,20 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Retrieves a Boolean value indicating whether the specified <xref href=&quot;System.Web.SiteMapNode&quot;></xref> object can be viewed by the user in the specified context."
-  remarks: "The default behavior when security trimming is enabled is as described in the following table.      |Condition|Return Value|   |---------------|------------------|   |The <xref:System.Web.SiteMapNode.Roles%2A> exists on `node` and the current user is in at least one of the specified roles.<br /><br /> - or -<br /><br /> The current thread has an associated `WindowsIdentity` that has file access to the requested URL and the URL is located within the directory structure for the application.<br /><br /> - or -<br /><br /> The current user is authorized specifically for the requested URL in the `authorization` element for the current application and the URL is located within the directory structure for the application.|`true`|   |None of the preceding conditions is met.|`false`|"
+  summary: "Henter en boolsk verdi som angir om den angitte <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> objekt kan vises av brukeren i den angitte konteksten."
+  remarks: "Det er standardvirkemåten når sikkerhet kutting er aktivert som beskrevet i følgende tabell.      | Betingelse | Returverdi |   |---------------|------------------|   | Den <xref:System.Web.SiteMapNode.Roles%2A>finnes på `node` og den nåværende brukeren er i minst én av de angitte rollene.</xref:System.Web.SiteMapNode.Roles%2A><br /><br /> - eller -<br /><br /> Gjeldende tråd har en tilknyttet `WindowsIdentity` som har tilgang til filen til den forespurte URL-adressen og URL-adressen er plassert i mappestruktur for programmet.<br /><br /> - eller -<br /><br /> Gjeldende bruker er godkjent spesielt for den forespurte URLEN i den `authorization` element for dette programmet og URL-adressen er plassert i mappestruktur for applikasjonen. | `true`|   | Ingen av de foregående betingelsene oppfylles. |`false`|"
   syntax:
     content: public virtual bool IsAccessibleToUser (System.Web.HttpContext context, System.Web.SiteMapNode node);
     parameters:
     - id: context
       type: System.Web.HttpContext
-      description: "The <xref href=&quot;System.Web.HttpContext&quot;></xref> that contains user information."
+      description: "Den <xref href=&quot;System.Web.HttpContext&quot;> </xref> som inneholder brukerinformasjon."
     - id: node
       type: System.Web.SiteMapNode
-      description: "The <xref href=&quot;System.Web.SiteMapNode&quot;></xref> that is requested by the user."
+      description: "Den <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> som er forespurt av brukeren."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if security trimming is enabled and <code>node</code> can be viewed by the user or security trimming is not enabled; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis sikkerhet kutting er aktivert og <code> node </code> kan vises av brukeren eller sikkerhet kutting er ikke aktivert; ellers, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.SiteMapProvider.IsAccessibleToUser*
   exceptions:
   - type: System.ArgumentNullException
@@ -652,15 +652,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets or sets the parent <xref href=&quot;System.Web.SiteMapProvider&quot;></xref> object of the current provider."
-  remarks: "All classes that implement the abstract <xref:System.Web.SiteMapProvider> class can support the concept of a site map provider hierarchy. Any hierarchical relationships between providers are maintained outside the scope of a <xref:System.Web.SiteMapProviderCollection> collection by the providers themselves. For an example of a functional provider hierarchy, see <xref:System.Web.XmlSiteMapProvider>."
+  summary: "Henter eller angir overordnet <xref href=&quot;System.Web.SiteMapProvider&quot;> </xref> objekt av gjeldende leverandør."
+  remarks: "Alle klasser som implementerer abstract <xref:System.Web.SiteMapProvider>klassen støtter begrep i et område kartet leverandøren hierarki.</xref:System.Web.SiteMapProvider> Alle hierarkisk relasjoner mellom leverandører opprettholdes utenfor omfanget til en <xref:System.Web.SiteMapProviderCollection>samling av leverandørene seg.</xref:System.Web.SiteMapProviderCollection> Et eksempel på en hierarkiet i funksjonsområdet leverandøren, kan du se <xref:System.Web.XmlSiteMapProvider>.</xref:System.Web.XmlSiteMapProvider>"
   example:
   - "The following code example demonstrates how to implement the ParentProvider property in a class that implements the abstract <xref:System.Web.SiteMapProvider> class.  \n  \n This code example is part of a larger example provided for the <xref:System.Web.SiteMapProvider> class.  \n  \n [!code-vb[Urtue.Samples.Alexkr.SimpleTextSiteMapProvider_1#4](~/add/codesnippet/visualbasic/p-system.web.sitemapprov_3_1.vb)]\n [!code-cs[Urtue.Samples.Alexkr.SimpleTextSiteMapProvider_1#4](~/add/codesnippet/csharp/p-system.web.sitemapprov_3_1.cs)]"
   syntax:
     content: public virtual System.Web.SiteMapProvider ParentProvider { get; set; }
     return:
       type: System.Web.SiteMapProvider
-      description: "The parent provider of the current <xref href=&quot;System.Web.SiteMapProvider&quot;></xref>."
+      description: "Den overordnede leverandøren av gjeldende <xref href=&quot;System.Web.SiteMapProvider&quot;> </xref>."
   overload: System.Web.SiteMapProvider.ParentProvider*
   exceptions: []
   platform:
@@ -677,19 +677,19 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Removes the specified <xref href=&quot;System.Web.SiteMapNode&quot;></xref> object from the node collection that is maintained by the site map provider."
-  remarks: "Classes deriving from the <xref:System.Web.SiteMapProvider> class can override the RemoveNode method and provide logic for removing <xref:System.Web.SiteMapNode> objects from the node collection that is maintained by the site map provider. The default implementation of the RemoveNode method throws a <xref:System.NotImplementedException> exception."
+  summary: "Fjerner det angitte <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> objektet fra samlingen noden som vedlikeholdes av området kartet leverandøren."
+  remarks: "Klasser som er avledet fra den <xref:System.Web.SiteMapProvider>klassen kan overstyre metoden RemoveNode og gi logikken for fjerning av <xref:System.Web.SiteMapNode>objekter fra samlingen noden som vedlikeholdes av området kartet leverandøren.</xref:System.Web.SiteMapNode> </xref:System.Web.SiteMapProvider> Standard implementering av metoden RemoveNode oppstår en <xref:System.NotImplementedException>unntak.</xref:System.NotImplementedException>"
   syntax:
     content: protected virtual void RemoveNode (System.Web.SiteMapNode node);
     parameters:
     - id: node
       type: System.Web.SiteMapNode
-      description: "The <xref href=&quot;System.Web.SiteMapNode&quot;></xref> to remove from the node collection maintained by the provider."
+      description: "Den <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> fjerne fra samlingen noden beholdes av leverandøren."
   overload: System.Web.SiteMapProvider.RemoveNode*
   exceptions:
   - type: System.NotImplementedException
     commentId: T:System.NotImplementedException
-    description: "In all cases."
+    description: "I alle tilfeller."
   platform:
   - net462
 - uid: System.Web.SiteMapProvider.ResolveSiteMapNode(System.Web.HttpContext)
@@ -704,17 +704,17 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Raises the <xref href=&quot;System.Web.SiteMapProvider.SiteMapResolve&quot;></xref> event."
-  remarks: "The `context` parameter and a reference to the provider that called the ResolveSiteMapNode method are passed to the constructor of any associated <xref:System.Web.SiteMapResolveEventArgs> object."
+  summary: "Hever den <xref href=&quot;System.Web.SiteMapProvider.SiteMapResolve&quot;> </xref> hendelsen."
+  remarks: "Den `context` parameteren og en referanse til leverandøren som kalles metoden ResolveSiteMapNode er sendt til konstruktøren for alle tilknyttede <xref:System.Web.SiteMapResolveEventArgs>objektet.</xref:System.Web.SiteMapResolveEventArgs>"
   syntax:
     content: protected System.Web.SiteMapNode ResolveSiteMapNode (System.Web.HttpContext context);
     parameters:
     - id: context
       type: System.Web.HttpContext
-      description: "The <xref href=&quot;System.Web.HttpContext&quot;></xref> for which the site map currently exists."
+      description: "Den <xref href=&quot;System.Web.HttpContext&quot;> </xref> for som områdekartet ikke finnes."
     return:
       type: System.Web.SiteMapNode
-      description: "A <xref href=&quot;System.Web.SiteMapNode&quot;></xref> provided by the event handler delegate that is registered to handle the event or, if more than one delegate is registered to handle the event, the return value of the last delegate in the delegate chain; otherwise, <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "En <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> angitt av hendelsen behandlingsprogrammet representant som er registrert til å håndtere hendelsen eller, hvis mer enn én representanten er registrert til å behandle hendelsen returverdien for siste representanten i representanten-kjede; ellers <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.SiteMapProvider.ResolveSiteMapNode*
   exceptions: []
   platform:
@@ -731,13 +731,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Get or sets the resource key that is used for localizing <xref href=&quot;System.Web.SiteMapNode&quot;></xref> attributes."
-  remarks: "The ResourceKey property is used with the <xref:System.Web.SiteMapNode.GetImplicitResourceString%2A> method of the <xref:System.Web.SiteMapNode> class. For the <xref:System.Web.SiteMapNode.Title%2A> and <xref:System.Web.SiteMapNode.Description%2A> properties, as well as any additional attributes that are defined in the <xref:System.Web.SiteMapNode.Attributes%2A> collection of the <xref:System.Web.SiteMapNode> object, the <xref:System.Web.SiteMapNode.GetImplicitResourceString%2A> method takes precedence over the <xref:System.Web.SiteMapNode.GetExplicitResourceString%2A> when the localization is enabled with the <xref:System.Web.SiteMapProvider.EnableLocalization%2A> property set to `true`."
+  summary: "Får eller angir Ressursnøkkelen som brukes for lokalisering <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> attributter."
+  remarks: "Egenskapen ResourceKey brukes med en <xref:System.Web.SiteMapNode.GetImplicitResourceString%2A>metode i <xref:System.Web.SiteMapNode>klasse.</xref:System.Web.SiteMapNode> </xref:System.Web.SiteMapNode.GetImplicitResourceString%2A> For den <xref:System.Web.SiteMapNode.Title%2A>og <xref:System.Web.SiteMapNode.Description%2A>Egenskaper, i tillegg til eventuelle andre attributter som er definert i den <xref:System.Web.SiteMapNode.Attributes%2A>samling av <xref:System.Web.SiteMapNode>objektet i <xref:System.Web.SiteMapNode.GetImplicitResourceString%2A>metoden overstyrer den <xref:System.Web.SiteMapNode.GetExplicitResourceString%2A>når lokalisering aktiveres med den <xref:System.Web.SiteMapProvider.EnableLocalization%2A>-egenskapen satt til `true`.</xref:System.Web.SiteMapProvider.EnableLocalization%2A> </xref:System.Web.SiteMapNode.GetExplicitResourceString%2A> </xref:System.Web.SiteMapNode.GetImplicitResourceString%2A> </xref:System.Web.SiteMapNode> </xref:System.Web.SiteMapNode.Attributes%2A> </xref:System.Web.SiteMapNode.Description%2A> </xref:System.Web.SiteMapNode.Title%2A>"
   syntax:
     content: public string ResourceKey { get; set; }
     return:
       type: System.String
-      description: "A string containing the resource key name."
+      description: "En streng som inneholder navnet på ressursen."
   overload: System.Web.SiteMapProvider.ResourceKey*
   exceptions: []
   platform:
@@ -754,15 +754,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the root <xref href=&quot;System.Web.SiteMapNode&quot;></xref> object of the site map data that the current provider represents."
-  remarks: "The default implementation calls the abstract <xref:System.Web.SiteMapProvider.GetRootNodeCore%2A> method."
+  summary: "Henter roten <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> objekt av området kartdata som representerer gjeldende leverandør."
+  remarks: "Standard implementering kaller abstract <xref:System.Web.SiteMapProvider.GetRootNodeCore%2A>metode.</xref:System.Web.SiteMapProvider.GetRootNodeCore%2A>"
   example:
   - "The following code example demonstrates how to implement the RootNode property in a class that implements the abstract <xref:System.Web.SiteMapProvider> class.  \n  \n This code example is part of a larger example provided for the <xref:System.Web.SiteMapProvider> class.  \n  \n [!code-vb[Urtue.Samples.Alexkr.SimpleTextSiteMapProvider_1#2](~/add/codesnippet/visualbasic/p-system.web.sitemapprov_4_1.vb)]\n [!code-cs[Urtue.Samples.Alexkr.SimpleTextSiteMapProvider_1#2](~/add/codesnippet/csharp/p-system.web.sitemapprov_4_1.cs)]"
   syntax:
     content: public virtual System.Web.SiteMapNode RootNode { get; }
     return:
       type: System.Web.SiteMapNode
-      description: "The root <xref href=&quot;System.Web.SiteMapNode&quot;></xref> of the current site map data provider. The default implementation performs security trimming on the returned node."
+      description: "Roten <xref href=&quot;System.Web.SiteMapNode&quot;> </xref> for gjeldende område kartet dataleverandøren. Standard implementering utfører sikkerhet kutting på noden returnerte."
   overload: System.Web.SiteMapProvider.RootNode*
   exceptions: []
   platform:
@@ -779,20 +779,20 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets the root <xref href=&quot;System.Web.SiteMapProvider&quot;></xref> object in the current provider hierarchy."
-  remarks: "All classes that implement the <xref:System.Web.SiteMapProvider> class can support the concept of a site map provider hierarchy. Any hierarchical relationships between providers are maintained outside the scope of a <xref:System.Web.SiteMapProviderCollection> collection by the providers themselves. For an example of a functional provider hierarchy, see <xref:System.Web.XmlSiteMapProvider>."
+  summary: "Henter roten <xref href=&quot;System.Web.SiteMapProvider&quot;> </xref> objektet i gjeldende leverandør hierarkiet."
+  remarks: "Alle klasser som implementerer den <xref:System.Web.SiteMapProvider>klassen støtter begrep i et område kartet leverandøren hierarki.</xref:System.Web.SiteMapProvider> Alle hierarkisk relasjoner mellom leverandører opprettholdes utenfor omfanget til en <xref:System.Web.SiteMapProviderCollection>samling av leverandørene seg.</xref:System.Web.SiteMapProviderCollection> Et eksempel på en hierarkiet i funksjonsområdet leverandøren, kan du se <xref:System.Web.XmlSiteMapProvider>.</xref:System.Web.XmlSiteMapProvider>"
   example:
   - "The following code example demonstrates how to implement the RootProvider property in a class that implements the abstract <xref:System.Web.SiteMapProvider> class. The `SimpleTextSiteMapProvider` uses simple logic to determine whether the current provider is part of a provider hierarchy. If the provider is part of a hierarchy, it uses the RootProvider property for the parent provider as its own. If the provider is not part of a hierarchy, the provider is its own root provider.  \n  \n This code example is part of a larger example provided for the <xref:System.Web.SiteMapProvider> class.  \n  \n [!code-vb[Urtue.Samples.Alexkr.SimpleTextSiteMapProvider_1#4](~/add/codesnippet/visualbasic/p-system.web.sitemapprov_2_1.vb)]\n [!code-cs[Urtue.Samples.Alexkr.SimpleTextSiteMapProvider_1#4](~/add/codesnippet/csharp/p-system.web.sitemapprov_2_1.cs)]"
   syntax:
     content: public virtual System.Web.SiteMapProvider RootProvider { get; }
     return:
       type: System.Web.SiteMapProvider
-      description: "An <xref href=&quot;System.Web.SiteMapProvider&quot;></xref> that is the top-level site map provider in the provider hierarchy that the current provider belongs to."
+      description: "En <xref href=&quot;System.Web.SiteMapProvider&quot;> </xref> som området på øverste nivå som kartet leverandøren i leverandøren hierarkiet som tilhører gjeldende leverandør."
   overload: System.Web.SiteMapProvider.RootProvider*
   exceptions:
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
-    description: "There is a circular reference to the current site map provider."
+    description: "Det er en sirkulær referanse til gjeldende område kartleverandør."
   platform:
   - net462
 - uid: System.Web.SiteMapProvider.SecurityTrimmingEnabled
@@ -807,13 +807,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets a Boolean value indicating whether a site map provider filters site map nodes based on a user&quot;s role."
-  remarks: "Security trimming cannot be set programmatically—it is set in the configuration for the provider."
+  summary: "Henter en boolsk verdi som angir om en leverandør for område-kartet filtrerer området kartet noder basert på en brukerrolle."
+  remarks: "Kan ikke angi sikkerhet kutting programmatisk – det er angitt i konfigurasjonen for leverandøren."
   syntax:
     content: public bool SecurityTrimmingEnabled { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the provider is configured to filter nodes based on role; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis leverandøren er konfigurert til å filtrere noder basert på rollen; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.SiteMapProvider.SecurityTrimmingEnabled*
   exceptions: []
   platform:
@@ -830,13 +830,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Occurs when the <xref:System.Web.SiteMapProvider.CurrentNode*> property is called."
-  remarks: "You can create a <xref:System.Web.SiteMapNode> representation of the currently requested page without implementing a custom site map provider by subscribing to the SiteMapResolve event. Subscribers attach a <xref:System.Web.SiteMapResolveEventHandler> object to receive notification when the <xref:System.Web.SiteMapProvider.CurrentNode%2A> property is called and can return a custom <xref:System.Web.SiteMapNode> object instead of the default one that is returned by the <xref:System.Web.SiteMapProvider.CurrentNode%2A> property.       For more information about handling events, see [NIB: Consuming Events](http://msdn.microsoft.com/en-us/01e4f1bc-e55e-413f-98c7-6588493e5f67)."
+  summary: "Forekommer når den <xref:System.Web.SiteMapProvider.CurrentNode*>egenskapen kalles.</xref:System.Web.SiteMapProvider.CurrentNode*>"
+  remarks: "Du kan opprette en <xref:System.Web.SiteMapNode>representasjon av den forespurte siden uten å implementere egendefinerte området kartleverandør ved å abonnere på SiteMapResolve-hendelsen.</xref:System.Web.SiteMapNode> Abonnenter koble en <xref:System.Web.SiteMapResolveEventHandler>-objektet til å bli varslet når den <xref:System.Web.SiteMapProvider.CurrentNode%2A>egenskapen kalles og kan returnere en egendefinert <xref:System.Web.SiteMapNode>objektet i stedet for standard som returneres av den <xref:System.Web.SiteMapProvider.CurrentNode%2A>egenskapen.</xref:System.Web.SiteMapProvider.CurrentNode%2A> </xref:System.Web.SiteMapNode> </xref:System.Web.SiteMapProvider.CurrentNode%2A> </xref:System.Web.SiteMapResolveEventHandler>       Du finner mer informasjon om behandling av hendelser [NIB: bruker hendelser](http://msdn.microsoft.com/en-us/01e4f1bc-e55e-413f-98c7-6588493e5f67)."
   syntax:
     content: public event System.Web.SiteMapResolveEventHandler SiteMapResolve;
     return:
       type: System.Web.SiteMapResolveEventHandler
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462

@@ -27,8 +27,8 @@ items:
   nameWithType: ControlAdapter
   fullName: System.Web.UI.Adapters.ControlAdapter
   type: Class
-  summary: "Customizes rendering for the derived control to which the adapter is attached, to modify the default markup or behavior for specific browsers, and is the base class from which all control adapters inherit."
-  remarks: "Control adapters are components that override certain <xref:System.Web.UI.Control> class methods and events in its execution lifecycle to allow browser or markup-specific handling. The .NET Framework maps a single derived control adapter to a <xref:System.Web.UI.Control> object for each client request.       An adapter modifies a control for a specific browser or class of browsers or acts as an arbitrary filter on some capability. Typically the adapter is defined by the markup language that the browser uses (for example, XHTML or HTML 3.2). Much of the adaptability in rendering behavior can be encapsulated in the specialized classes that derive from the <xref:System.Web.UI.HtmlTextWriter> class. Therefore, it is likely that a single adapter can be used for a number of browser class behaviors or that inclusion of the adaptability in the <xref:System.Web.UI.HtmlTextWriter> classes could make the use of a control adapter unnecessary.       An adapter for a control class applies to all controls that inherit from that class, unless more specialized adapters are present. For example, an adapter for the <xref:System.Web.UI.WebControls.BaseValidator> class can be used for all `Validator` objects.       Adapters typically do not inherit directly from the ControlAdapter class, but from one of the target-specific adapter base classes that provide additional functionality specific to the control type and target browser or the particular rendering required.       Controls themselves do not necessarily require an adapter. If controls are extended through composition, generally the child control adapters are sufficient.       Each control has explicit mappings to adapters through the .browser definition files. Thus, any access to the <xref:System.Web.UI.Control.Adapter%2A?displayProperty=fullName> property uses the <xref:System.Web.HttpBrowserCapabilities> object extracted from the browser definition files to perform the lookup for the mapping of the adapter to control.       During processing, the .NET Framework intercepts calls to the overridable methods of a control that could be target-specific. If a control adapter is attached, the .NET Framework calls the associated adapter methods.       The adapter performs rendering for the control through the <xref:System.Web.UI.Adapters.ControlAdapter.Render%2A> method. If overridden, <xref:System.Web.UI.Adapters.ControlAdapter.Render%2A> potentially should not call the base class implementation because that performs a call back on the <xref:System.Web.UI.Control.Render%2A?displayProperty=fullName> method. This might cause the rendering to occur twice, once by the adapter and once by the control.       The <xref:System.Web.UI.Adapters.ControlAdapter.Render%2A> base method calls back on the <xref:System.Web.UI.Control.Render%2A?displayProperty=fullName> method of the control. Thus, if you override <xref:System.Web.UI.Adapters.ControlAdapter.Render%2A>, you should not call the base class implementation unless the rendering you implement is in addition to that provided by <xref:System.Web.UI.Control.Render%2A?displayProperty=fullName> of the control.       You must ensure that the .NET Framework performs interception for adapters of the child controls. You can do this by calling the <xref:System.Web.UI.Adapters.ControlAdapter.RenderChildren%2A> base method, which calls the <xref:System.Web.UI.Control.RenderChildren%2A?displayProperty=fullName> method of the control, from your <xref:System.Web.UI.Adapters.ControlAdapter.Render%2A> override.       The <xref:System.Web.UI.Adapters.ControlAdapter.BeginRender%2A> and <xref:System.Web.UI.Adapters.ControlAdapter.EndRender%2A> methods are called by the control immediately before and after (respectively) the control calls the <xref:System.Web.UI.Adapters.ControlAdapter.Render%2A> method. If pre- and post-rendering are the only browser-specific processing tasks required, using <xref:System.Web.UI.Adapters.ControlAdapter.BeginRender%2A> and <xref:System.Web.UI.Adapters.ControlAdapter.EndRender%2A> might make it unnecessary to override <xref:System.Web.UI.Adapters.ControlAdapter.Render%2A>. The default behavior of the <xref:System.Web.UI.Adapters.ControlAdapter.BeginRender%2A> and <xref:System.Web.UI.Adapters.ControlAdapter.EndRender%2A> methods is to call the corresponding methods of the <xref:System.Web.UI.HtmlTextWriter>.       To maintain its own state information, a control adapter can override the <xref:System.Web.UI.Adapters.ControlAdapter.SaveAdapterControlState%2A>, <xref:System.Web.UI.Adapters.ControlAdapter.LoadAdapterControlState%2A>, <xref:System.Web.UI.Adapters.ControlAdapter.SaveAdapterViewState%2A>, and <xref:System.Web.UI.Adapters.ControlAdapter.LoadAdapterViewState%2A> methods. <xref:System.Web.UI.Adapters.ControlAdapter.SaveAdapterControlState%2A>, <xref:System.Web.UI.Adapters.ControlAdapter.SaveAdapterViewState%2A>, <xref:System.Web.UI.Adapters.ControlAdapter.LoadAdapterControlState%2A>, and <xref:System.Web.UI.Adapters.ControlAdapter.LoadAdapterViewState%2A> are called when the private control and view states are saved and loaded, respectively.       The <xref:System.Web.UI.Adapters.ControlAdapter.OnInit%2A>, <xref:System.Web.UI.Adapters.ControlAdapter.OnLoad%2A>, <xref:System.Web.UI.Adapters.ControlAdapter.OnPreRender%2A>, and <xref:System.Web.UI.Adapters.ControlAdapter.OnUnload%2A> base methods call back on the corresponding <xref:System.Web.UI.Control> class methods. Thus, any of these ControlAdapter methods that are overridden must call their base methods; otherwise, the event associated with the <xref:System.Web.UI.Control> class method will not be raised.       Controls and adapters optionally implement the <xref:System.Web.UI.IPostBackDataHandler> and <xref:System.Web.UI.IPostBackEventHandler> interfaces. The .NET Framework determines whether an adapter exists and whether the adapter implements these interfaces. If it does, the adapter should override the <xref:System.Web.UI.IPostBackDataHandler.LoadPostData%2A>, <xref:System.Web.UI.IPostBackDataHandler.RaisePostDataChangedEvent%2A>, and <xref:System.Web.UI.IPostBackEventHandler.RaisePostBackEvent%2A> methods, as necessary. If the postback data is not recognized in the adapter, it must call back on the control to process it. Subsequent event handlers also must call back on the control."
+  summary: "Tilpasser gjengivelse for avledede kontrollen som kortet er knyttet til, endre standard markup eller virkemåte for bestemte weblesere og er basisklassen adapterne arve fra som alle kontroll."
+  remarks: "Kontrollen er komponenter som overstyrer visse <xref:System.Web.UI.Control>klasse metoder og hendelser i livssyklusen kjøring å tillate nettleser eller markup-spesifikk behandling.</xref:System.Web.UI.Control> .NET Framework tilordner en enkelt avledede kontroll-adapteren til en <xref:System.Web.UI.Control>objekt for hver klientforespørselen.</xref:System.Web.UI.Control>       Et kort endrer en kontroll for en bestemt leser eller type nettlesere eller fungerer som en tilfeldig filter på noen funksjonen. Adapteren defineres vanligvis av markup language som bruker leseren (for eksempel XHTML eller HTML 3.2). Mye tilpasningsdyktigheten i gjengivelse virkemåte kan innkapsles i spesialiserte klassene som er avledet fra <xref:System.Web.UI.HtmlTextWriter>klassen.</xref:System.Web.UI.HtmlTextWriter> Det er derfor sannsynlig at ett enkelt kort kan brukes til flere nettleseren klassen virkemåter eller at inkludering av tilpasningsdyktigheten i den <xref:System.Web.UI.HtmlTextWriter>klasser kan gjøre bruk av en kontroll-adapteren unødvendige.</xref:System.Web.UI.HtmlTextWriter>       Et kort for en klasse for knappekontrollen gjelder for alle kontroller som arver fra klassen Hvis det finnes flere spesialiserte kort. For eksempel et kort for den <xref:System.Web.UI.WebControls.BaseValidator>klassen kan brukes for alle `Validator` objekter.</xref:System.Web.UI.WebControls.BaseValidator>       Kort vanligvis arver ikke direkte fra klassen ControlAdapter, men fra en av basisklassene målspesifikke kort som gir ekstra funksjonalitet som er spesifikk kontrolltypen og leser eller bestemt gjengivelsen kreves.       Kontroller seg krever ikke nødvendigvis et kort. Hvis Kontroller utvidet via sammensetning, vanligvis er underordnede kontrollen kortene tilstrekkelig.       Hver kontroll har eksplisitt tilordninger til adapterne gjennom .browser definisjonsfilene. Derfor noen tilgang til den <xref:System.Web.UI.Control.Adapter%2A?displayProperty=fullName>bruker den <xref:System.Web.HttpBrowserCapabilities>objektet som er hentet fra de leser filene til å utføre oppslaget for tilordning av kortet styre.</xref:System.Web.HttpBrowserCapabilities> </xref:System.Web.UI.Control.Adapter%2A?displayProperty=fullName>       Under behandling fanger .NET Framework kall til overstyrbare metodene for en kontroll som kan være målspesifikke. Hvis en kontroll-adapteren er tilkoblet, kaller .NET Framework metodene som er tilknyttet kortet.       Gjengivelse adapteren for kontrollen via den <xref:System.Web.UI.Adapters.ControlAdapter.Render%2A>metoden.</xref:System.Web.UI.Adapters.ControlAdapter.Render%2A> Hvis overstyrt, <xref:System.Web.UI.Adapters.ControlAdapter.Render%2A>potensielt kan ikke kalle basisklassen implementeringen fordi som utfører et kall tilbake på den <xref:System.Web.UI.Control.Render%2A?displayProperty=fullName>metoden.</xref:System.Web.UI.Control.Render%2A?displayProperty=fullName> </xref:System.Web.UI.Adapters.ControlAdapter.Render%2A> Dette kan føre til gjengivelse oppstår to ganger, én gang ved adapteren og når kontrollen.       Den <xref:System.Web.UI.Adapters.ControlAdapter.Render%2A>basere metodekall tilbake på den <xref:System.Web.UI.Control.Render%2A?displayProperty=fullName>metoden kontrollens.</xref:System.Web.UI.Control.Render%2A?displayProperty=fullName> </xref:System.Web.UI.Adapters.ControlAdapter.Render%2A> Derfor Hvis du overstyre <xref:System.Web.UI.Adapters.ControlAdapter.Render%2A>, du kan ikke kalle basisklassen implementeringen med mindre gjengivelse du implementere i tillegg til som er angitt av <xref:System.Web.UI.Control.Render%2A?displayProperty=fullName>kontrollens.</xref:System.Web.UI.Control.Render%2A?displayProperty=fullName> </xref:System.Web.UI.Adapters.ControlAdapter.Render%2A>       Du må kontrollere at .NET Framework utfører oppfanging for kort av underordnede-kontroller. Du kan gjøre dette ved å kalle den <xref:System.Web.UI.Adapters.ControlAdapter.RenderChildren%2A>basere metoden som kaller den <xref:System.Web.UI.Control.RenderChildren%2A?displayProperty=fullName>kontrollmetode, fra din <xref:System.Web.UI.Adapters.ControlAdapter.Render%2A>overstyre.</xref:System.Web.UI.Adapters.ControlAdapter.Render%2A> </xref:System.Web.UI.Control.RenderChildren%2A?displayProperty=fullName> </xref:System.Web.UI.Adapters.ControlAdapter.RenderChildren%2A>       Den <xref:System.Web.UI.Adapters.ControlAdapter.BeginRender%2A>og <xref:System.Web.UI.Adapters.ControlAdapter.EndRender%2A>kalles metoder ved kontrollen umiddelbart før og etter (henholdsvis) kontroll-kall i <xref:System.Web.UI.Adapters.ControlAdapter.Render%2A>metode.</xref:System.Web.UI.Adapters.ControlAdapter.Render%2A> </xref:System.Web.UI.Adapters.ControlAdapter.EndRender%2A> </xref:System.Web.UI.Adapters.ControlAdapter.BeginRender%2A> Hvis før og etter gjengivelse er bare nettleseren-spesifikk behandling av oppgavene som kreves, bruker <xref:System.Web.UI.Adapters.ControlAdapter.BeginRender%2A>og <xref:System.Web.UI.Adapters.ControlAdapter.EndRender%2A>kan gjøre det nødvendig å overstyre <xref:System.Web.UI.Adapters.ControlAdapter.Render%2A>.</xref:System.Web.UI.Adapters.ControlAdapter.Render%2A> </xref:System.Web.UI.Adapters.ControlAdapter.EndRender%2A> </xref:System.Web.UI.Adapters.ControlAdapter.BeginRender%2A> Standard virkemåte <xref:System.Web.UI.Adapters.ControlAdapter.BeginRender%2A>, og <xref:System.Web.UI.Adapters.ControlAdapter.EndRender%2A>metoder å kalle de tilsvarende metodene for <xref:System.Web.UI.HtmlTextWriter>.</xref:System.Web.UI.HtmlTextWriter> </xref:System.Web.UI.Adapters.ControlAdapter.EndRender%2A> </xref:System.Web.UI.Adapters.ControlAdapter.BeginRender%2A>       Kontroll-kort kan overstyre Hvis du vil lagre en egen tilstandsinformasjon den <xref:System.Web.UI.Adapters.ControlAdapter.SaveAdapterControlState%2A>, <xref:System.Web.UI.Adapters.ControlAdapter.LoadAdapterControlState%2A>, <xref:System.Web.UI.Adapters.ControlAdapter.SaveAdapterViewState%2A>, og <xref:System.Web.UI.Adapters.ControlAdapter.LoadAdapterViewState%2A>metoder.</xref:System.Web.UI.Adapters.ControlAdapter.LoadAdapterViewState%2A> </xref:System.Web.UI.Adapters.ControlAdapter.SaveAdapterViewState%2A> </xref:System.Web.UI.Adapters.ControlAdapter.LoadAdapterControlState%2A> </xref:System.Web.UI.Adapters.ControlAdapter.SaveAdapterControlState%2A> <xref:System.Web.UI.Adapters.ControlAdapter.SaveAdapterControlState%2A>, <xref:System.Web.UI.Adapters.ControlAdapter.SaveAdapterViewState%2A>, <xref:System.Web.UI.Adapters.ControlAdapter.LoadAdapterControlState%2A>, og <xref:System.Web.UI.Adapters.ControlAdapter.LoadAdapterViewState%2A>kalles når private kontrollen og vise statusene lagret og lastet inn, henholdsvis.</xref:System.Web.UI.Adapters.ControlAdapter.LoadAdapterViewState%2A> </xref:System.Web.UI.Adapters.ControlAdapter.LoadAdapterControlState%2A> </xref:System.Web.UI.Adapters.ControlAdapter.SaveAdapterViewState%2A></xref:System.Web.UI.Adapters.ControlAdapter.SaveAdapterControlState%2A>       Den <xref:System.Web.UI.Adapters.ControlAdapter.OnInit%2A>, <xref:System.Web.UI.Adapters.ControlAdapter.OnLoad%2A>, <xref:System.Web.UI.Adapters.ControlAdapter.OnPreRender%2A>, og <xref:System.Web.UI.Adapters.ControlAdapter.OnUnload%2A>basere metoder kall tilbake på den tilsvarende <xref:System.Web.UI.Control>klasse metoder.</xref:System.Web.UI.Control> </xref:System.Web.UI.Adapters.ControlAdapter.OnUnload%2A> </xref:System.Web.UI.Adapters.ControlAdapter.OnPreRender%2A> </xref:System.Web.UI.Adapters.ControlAdapter.OnLoad%2A> </xref:System.Web.UI.Adapters.ControlAdapter.OnInit%2A> Noen av disse metodene for ControlAdapter som overskrives må derfor kalle base metodene; Ellers hendelsen knyttet til den <xref:System.Web.UI.Control>klassemetoden vil ikke oppstå.</xref:System.Web.UI.Control>       Kontroller og adapterne eventuelt implementere den <xref:System.Web.UI.IPostBackDataHandler>og <xref:System.Web.UI.IPostBackEventHandler>grensesnitt.</xref:System.Web.UI.IPostBackEventHandler> </xref:System.Web.UI.IPostBackDataHandler> .NET Framework bestemmer om det finnes en adapter og om adapteren implementerer disse grensesnitt. Hvis den gjør det, adapteren må overstyre den <xref:System.Web.UI.IPostBackDataHandler.LoadPostData%2A>, <xref:System.Web.UI.IPostBackDataHandler.RaisePostDataChangedEvent%2A>, og <xref:System.Web.UI.IPostBackEventHandler.RaisePostBackEvent%2A>metoder etter behov.</xref:System.Web.UI.IPostBackEventHandler.RaisePostBackEvent%2A> </xref:System.Web.UI.IPostBackDataHandler.RaisePostDataChangedEvent%2A> </xref:System.Web.UI.IPostBackDataHandler.LoadPostData%2A> Hvis sende tilbake dataene ikke gjenkjennes i kortet, må den kaller tilbake kontrollen til å behandle den. Etterfølgende hendelsesbehandling må også kalle tilbake kontrollen."
   syntax:
     content: public abstract class ControlAdapter
   inheritance:
@@ -49,8 +49,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.Adapters
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.UI.Adapters.ControlAdapter&quot;></xref> class."
-  remarks: "The .NET Framework internally constructs this adapter when it creates the corresponding <xref:System.Web.UI.Control> object."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Web.UI.Adapters.ControlAdapter&quot;> </xref> klasse."
+  remarks: ".NET Framework bygger internt dette kortet når det oppretter den tilsvarende <xref:System.Web.UI.Control>objektet.</xref:System.Web.UI.Control>"
   syntax:
     content: protected ControlAdapter ();
     parameters: []
@@ -70,14 +70,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.Adapters
-  summary: "Called prior to the rendering of a control. In a derived adapter class, generates opening tags that are required by a specific target but not needed by HTML browsers."
-  remarks: "The BeginRender method is called just before the <xref:System.Web.UI.Adapters.ControlAdapter.Render%2A> method, and is used to perform target-specific preprocessing before the rendering of the control.       Use the BeginRender method in combination with the <xref:System.Web.UI.Adapters.ControlAdapter.EndRender%2A> method to ensure opening and closing tag consistency."
+  summary: "Kalles før gjengivelse av en kontroll. Genererer åpning-koder som er nødvendig for et bestemt mål, men ikke kreves av HTML nettlesere i en avledet adapterklasse."
+  remarks: "Metoden BeginRender kalles like før den <xref:System.Web.UI.Adapters.ControlAdapter.Render%2A>metoden, og brukes til å utføre målspesifikke forhåndsbehandling før gjengivelse av kontrollen.</xref:System.Web.UI.Adapters.ControlAdapter.Render%2A>       Bruk metoden BeginRender sammen med den <xref:System.Web.UI.Adapters.ControlAdapter.EndRender%2A>metode for å sikre åpner og lukker koden konsekvensfeil.</xref:System.Web.UI.Adapters.ControlAdapter.EndRender%2A>"
   syntax:
     content: protected virtual void BeginRender (System.Web.UI.HtmlTextWriter writer);
     parameters:
     - id: writer
       type: System.Web.UI.HtmlTextWriter
-      description: "The <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;></xref> containing methods to render the target-specific output."
+      description: "Den <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;> </xref> som inneholder metoder for å gjengi målspesifikke utdataene."
   overload: System.Web.UI.Adapters.ControlAdapter.BeginRender*
   exceptions: []
   platform:
@@ -94,15 +94,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.Adapters
-  summary: "Gets a reference to the browser capabilities of the client making the current HTTP request."
-  remarks: "A <xref:System.Web.UI.Adapters.ControlAdapter> object determines the client browser capabilities from the <xref:System.Web.HttpBrowserCapabilities> object that is returned by the Browser property. This enables the <xref:System.Web.UI.Adapters.ControlAdapter> object to render browser-specific markup or otherwise modify the behavior of the <xref:System.Web.UI.Control>."
+  summary: "Henter en referanse til nettleseren mulighetene til klienten som utfører den gjeldende HTTP-forespørsler."
+  remarks: "En <xref:System.Web.UI.Adapters.ControlAdapter>objektet bestemmer klientens nettleser egenskaper fra den <xref:System.Web.HttpBrowserCapabilities>objektet som er returnert av egenskapen nettleseren.</xref:System.Web.HttpBrowserCapabilities> </xref:System.Web.UI.Adapters.ControlAdapter> Dette aktiverer <xref:System.Web.UI.Adapters.ControlAdapter>til å gjengi nettleseren-spesifikke markup eller endre virkemåten for <xref:System.Web.UI.Control>.</xref:System.Web.UI.Control> </xref:System.Web.UI.Adapters.ControlAdapter>"
   example:
   - "The following code example shows how to use the Browser property to access the details of the requesting browser. In this example, the code checks to determine whether the browser is compatible with JavaScript, and then allows the developer to render customized output in that case.  \n  \n [!code-cpp[ControlAdapter_Browser#1](~/add/codesnippet/cpp/p-system.web.ui.adapters_1_1.cpp)]\n [!code-vb[ControlAdapter_Browser#1](~/add/codesnippet/visualbasic/p-system.web.ui.adapters_1_1.vb)]\n [!code-cs[ControlAdapter_Browser#1](~/add/codesnippet/csharp/p-system.web.ui.adapters_1_1.cs)]"
   syntax:
     content: protected System.Web.HttpBrowserCapabilities Browser { get; }
     return:
       type: System.Web.HttpBrowserCapabilities
-      description: "An <xref href=&quot;System.Web.HttpBrowserCapabilities&quot;></xref> specifying client browser and markup capabilities."
+      description: "En <xref href=&quot;System.Web.HttpBrowserCapabilities&quot;> </xref> angir klientens nettleseren og markup egenskaper."
   overload: System.Web.UI.Adapters.ControlAdapter.Browser*
   exceptions: []
   platform:
@@ -119,15 +119,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.Adapters
-  summary: "Gets a reference to the control to which this control adapter is attached."
-  remarks: "When a derived control adapter is attached to a control, the .NET Framework calls certain adapter members instead of the control members."
+  summary: "Henter en referanse til kontrollen som er tilknyttet denne kontrollen adapteren."
+  remarks: "Når et avledet kontrollen kort er knyttet til en kontroll, kaller .NET Framework enkelte adapteren medlemmer i stedet for kontroll-medlemmer."
   example:
   - "The following code example shows how to derive a custom control from the <xref:System.Web.UI.Control> class, and then create a corresponding adapter that inherits from the <xref:System.Web.UI.Adapters.ControlAdapter> class. The adapter overrides the Control property and returns a strongly-typed reference to the control.  \n  \n [!code-cs[ControlAdapter.Control#1](~/add/codesnippet/csharp/p-system.web.ui.adapters_0_1.cs)]\n [!code-vb[ControlAdapter.Control#1](~/add/codesnippet/visualbasic/p-system.web.ui.adapters_0_1.vb)]\n [!code-cpp[ControlAdapter.Control#1](~/add/codesnippet/cpp/p-system.web.ui.adapters_0_1.cpp)]"
   syntax:
     content: protected System.Web.UI.Control Control { get; }
     return:
       type: System.Web.UI.Control
-      description: "The <xref href=&quot;System.Web.UI.Control&quot;></xref> to which this <xref href=&quot;System.Web.UI.Adapters.ControlAdapter&quot;></xref> is attached."
+      description: "Den <xref href=&quot;System.Web.UI.Control&quot;> </xref> som denne <xref href=&quot;System.Web.UI.Adapters.ControlAdapter&quot;> </xref> er koblet."
   overload: System.Web.UI.Adapters.ControlAdapter.Control*
   exceptions: []
   platform:
@@ -144,8 +144,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.Adapters
-  summary: "Creates the target-specific child controls for a composite control."
-  remarks: "If there is a derived control adapter attached to a <xref:System.Web.UI.Control> object and the CreateChildControls method is overridden, the override is called instead of the <xref:System.Web.UI.Control.CreateChildControls%2A?displayProperty=fullName> method. Thus, CreateChildControls can be used to create a target-specific child control set.       For more information about combining controls to create a new control, see [Composite Controls](http://msdn.microsoft.com/en-us/fb174677-d845-467c-8bf3-cc096b2490b0)."
+  summary: "Oppretter målspesifikke underordnede kontroller for en sammensatt kontroll."
+  remarks: "Hvis det er en avledet kontroll-adapteren knyttet til en <xref:System.Web.UI.Control>objekt og av-CreateChildControls metoden overstyres, overstyringen kalles i stedet for den <xref:System.Web.UI.Control.CreateChildControls%2A?displayProperty=fullName>metoden.</xref:System.Web.UI.Control.CreateChildControls%2A?displayProperty=fullName> </xref:System.Web.UI.Control> Av CreateChildControls kan derfor brukes til å opprette et målspesifikke underordnede kontrollsett.       Du finner mer informasjon om å kombinere kontroller for å opprette en ny kontroll [sammensatte Kontroller](http://msdn.microsoft.com/en-us/fb174677-d845-467c-8bf3-cc096b2490b0)."
   syntax:
     content: protected virtual void CreateChildControls ();
     parameters: []
@@ -165,14 +165,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.Adapters
-  summary: "Called after the rendering of a control. In a derived adapter class, generates closing tags that are required by a specific target but not needed by HTML browsers."
-  remarks: "The EndRender method is called just after the <xref:System.Web.UI.Adapters.ControlAdapter.Render%2A> method, and is used to perform target-specific postprocessing after the rendering of the control.       Use the EndRender method in combination with the <xref:System.Web.UI.Adapters.ControlAdapter.BeginRender%2A> method to ensure opening and closing tag consistency."
+  summary: "Kalles etter gjengivelse av en kontroll. Genererer avsluttende-koder som er nødvendig for et bestemt mål, men ikke kreves av HTML nettlesere i en avledet adapterklasse."
+  remarks: "Metoden EndRender kalles like etter den <xref:System.Web.UI.Adapters.ControlAdapter.Render%2A>metoden, og brukes til å utføre målspesifikke postprocessing etter gjengivelse av kontrollen.</xref:System.Web.UI.Adapters.ControlAdapter.Render%2A>       Bruk metoden EndRender sammen med den <xref:System.Web.UI.Adapters.ControlAdapter.BeginRender%2A>metode for å sikre åpner og lukker koden konsekvensfeil.</xref:System.Web.UI.Adapters.ControlAdapter.BeginRender%2A>"
   syntax:
     content: protected virtual void EndRender (System.Web.UI.HtmlTextWriter writer);
     parameters:
     - id: writer
       type: System.Web.UI.HtmlTextWriter
-      description: "The <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;></xref> containing methods to render the target-specific output."
+      description: "Den <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;> </xref> som inneholder metoder for å gjengi målspesifikke utdataene."
   overload: System.Web.UI.Adapters.ControlAdapter.EndRender*
   exceptions: []
   platform:
@@ -189,14 +189,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.Adapters
-  summary: "Loads adapter control state information that was saved by <xref:System.Web.UI.Adapters.ControlAdapter.SaveAdapterControlState*> during a previous request to the page where the control associated with this control adapter resides."
-  remarks: "Control state is the essential state information needed even if view state is disabled. When an adapter needs to maintain its own control state information, it can override the LoadAdapterControlState and <xref:System.Web.UI.Adapters.ControlAdapter.SaveAdapterControlState%2A> methods.       An adapter might need to maintain control state information when there are features that need to have state maintained across requests, independent from the state of the associated control. For example, a composite control consisting of a large textual display and a group of <xref:System.Web.UI.WebControls.RadioButton> controls might render as a single view on desktop computer browsers. On other browsers, it might split its rendering—one view for the textual display and the other for the radio button group. The adapter would need to maintain its own target-specific information about the currently active view.       The LoadAdapterControlState method is called immediately after the <xref:System.Web.UI.Control.LoadControlState%2A?displayProperty=fullName> method, in the `LoadState` lifecycle stage. The adapter control state is separate and in addition to the control state of the control."
+  summary: "Laster inn adapteren kontrollen statusinformasjon som er lagret av <xref:System.Web.UI.Adapters.ControlAdapter.SaveAdapterControlState*>under en tidligere forespørsel til siden der kontrollen som er forbundet med denne kontrollen adapteren er.</xref:System.Web.UI.Adapters.ControlAdapter.SaveAdapterControlState*>"
+  remarks: "Kontroll-tilstanden er viktig tilstand informasjonen som kreves for selv om visningsstatus er deaktivert. Når et kort må til å lagre tilstandsinformasjon sin egen kontrollen, kan det overstyre LoadAdapterControlState og <xref:System.Web.UI.Adapters.ControlAdapter.SaveAdapterControlState%2A>metoder.</xref:System.Web.UI.Adapters.ControlAdapter.SaveAdapterControlState%2A>       Et kort kan må opprettholde kontrollen statusinformasjon når funksjoner som må ha tilstanden beholdes på tvers av forespørsler, uavhengig av status for den tilknyttede kontrollen. For eksempel en sammensatt tillatelser som består av en stor tekstbaserte skjerm og en gruppe med <xref:System.Web.UI.WebControls.RadioButton>Kontroller kan gjengis som én enkelt visning på stasjonær datamaskin nettlesere.</xref:System.Web.UI.WebControls.RadioButton> Den kan dele gjengivelsen på andre lesere – én visning for den tekstbaserte visningen og den andre for alternativknappgruppen. Adapteren må opprettholde sin egen målspesifikke informasjon om den aktive visningen.       Metoden LoadAdapterControlState kalles like etter den <xref:System.Web.UI.Control.LoadControlState%2A?displayProperty=fullName>metoden i den `LoadState` livssyklus fase.</xref:System.Web.UI.Control.LoadControlState%2A?displayProperty=fullName> Tilstanden for kort kontrollen er separate og i tillegg til tilstanden kontroll av kontrollen."
   syntax:
     content: protected virtual void LoadAdapterControlState (object state);
     parameters:
     - id: state
       type: System.Object
-      description: "An <xref:System.Object> that contains the adapter&quot;s control state information as a <xref href=&quot;System.Web.UI.StateBag&quot;></xref>."
+      description: "En <xref:System.Object>som inneholder den adapteren tilstandsinformasjon for kontrollen som en <xref href=&quot;System.Web.UI.StateBag&quot;> </xref>.</xref:System.Object>"
   overload: System.Web.UI.Adapters.ControlAdapter.LoadAdapterControlState*
   exceptions: []
   platform:
@@ -213,14 +213,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.Adapters
-  summary: "Loads adapter view state information that was saved by <xref:System.Web.UI.Adapters.ControlAdapter.SaveAdapterViewState*> during a previous request to the page where the control associated with this control adapter resides."
-  remarks: "When an adapter needs to maintain its own view state information, it can override the LoadAdapterViewState and <xref:System.Web.UI.Adapters.ControlAdapter.SaveAdapterViewState%2A> methods.       An adapter needs to maintain view state information when there is data that must be maintained across requests, independent from the view state of the associated control. For example, a grid control on desktop computer browsers might render as a single view of rows and columns of values. On other browsers, it might split its rendering into multiple separate views, such as a list of rows and details of a single row. The adapter would need to maintain the data for the views that are not currently active in view state.       The LoadAdapterViewState method is called immediately before the <xref:System.Web.UI.Control.LoadViewState%2A?displayProperty=fullName> method in the `LoadState` lifecycle stage. The adapter view state is separate and in addition to the view state of the control."
+  summary: "Laster inn adapteren Vis tilstandsinformasjon som er lagret av <xref:System.Web.UI.Adapters.ControlAdapter.SaveAdapterViewState*>under en tidligere forespørsel til siden der kontrollen som er forbundet med denne kontrollen adapteren er.</xref:System.Web.UI.Adapters.ControlAdapter.SaveAdapterViewState*>"
+  remarks: "Når et kort må til å lagre tilstandsinformasjon sin egen visning, kan det overstyre LoadAdapterViewState og <xref:System.Web.UI.Adapters.ControlAdapter.SaveAdapterViewState%2A>metoder.</xref:System.Web.UI.Adapters.ControlAdapter.SaveAdapterViewState%2A>       Et kort må lagre visningen tilstandsinformasjon når data som må være på tvers av forespørsler, uavhengig av visningsstatusen for den tilknyttede kontrollen. En rutenettkontrollen på stasjonær datamaskin nettlesere kan for eksempel gjengis som én enkelt visning av rader og kolonner med verdier. På andre lesere kan det deles gjengivelsen til flere separate visninger, for eksempel en liste med rader og detaljer om én rad. Adapteren trenger å beholde dataene for visninger som er aktive i visningsstatusen.       Metoden LoadAdapterViewState kalles like før den <xref:System.Web.UI.Control.LoadViewState%2A?displayProperty=fullName>metoden i den `LoadState` livssyklus fase.</xref:System.Web.UI.Control.LoadViewState%2A?displayProperty=fullName> Adapteren visningsstatusen er separate og i tillegg til visningsstatusen for kontrollen."
   syntax:
     content: protected virtual void LoadAdapterViewState (object state);
     parameters:
     - id: state
       type: System.Object
-      description: "An <xref:System.Object> that contains the adapter view state information as a <xref href=&quot;System.Web.UI.StateBag&quot;></xref>."
+      description: "En <xref:System.Object>som inneholder adapteren Vis tilstand informasjon som en <xref href=&quot;System.Web.UI.StateBag&quot;> </xref>.</xref:System.Object>"
   overload: System.Web.UI.Adapters.ControlAdapter.LoadAdapterViewState*
   exceptions: []
   platform:
@@ -237,8 +237,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.Adapters
-  summary: "Overrides the <xref:System.Web.UI.Control.OnInit*> method for the associated control."
-  remarks: "If there is an adapter attached to a <xref:System.Web.UI.Control> object and the OnInit method is overridden, the override method is called instead of the <xref:System.Web.UI.Control.OnInit%2A?displayProperty=fullName> method.       Override OnInit to perform target-specific processing in the `Initialize` stage of the control lifecycle. Typically, these are functions that are performed when a control is created."
+  summary: "Overstyrer den <xref:System.Web.UI.Control.OnInit*>metoden for den tilknyttede kontrollen.</xref:System.Web.UI.Control.OnInit*>"
+  remarks: "Hvis det er et kort knyttet til en <xref:System.Web.UI.Control>objekt og OnInit metoden overstyres av override-metoden i stedet for den <xref:System.Web.UI.Control.OnInit%2A?displayProperty=fullName>metoden.</xref:System.Web.UI.Control.OnInit%2A?displayProperty=fullName> </xref:System.Web.UI.Control>       Overstyre OnInit for å utføre målspesifikke behandling i den `Initialize` fase av kontrollen livssyklus. Dette er vanligvis funksjoner som utføres når en kontroll er opprettet."
   example:
   - "The following code sample derives a custom control adapter from the <xref:System.Web.UI.Adapters.ControlAdapter> class. It then overrides the OnInit method to set a property on the associated control and call the base method to complete the control initialization.  \n  \n [!code-cs[ControlAdapter_OnInit#1](~/add/codesnippet/csharp/m-system.web.ui.adapters_1.cs)]\n [!code-vb[ControlAdapter_OnInit#1](~/add/codesnippet/visualbasic/m-system.web.ui.adapters_1.vb)]\n [!code-cpp[ControlAdapter_OnInit#1](~/add/codesnippet/cpp/m-system.web.ui.adapters_1.cpp)]"
   syntax:
@@ -246,7 +246,7 @@ items:
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "En <xref:System.EventArgs>som inneholder Hendelsesdata.</xref:System.EventArgs>"
   overload: System.Web.UI.Adapters.ControlAdapter.OnInit*
   exceptions: []
   platform:
@@ -263,14 +263,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.Adapters
-  summary: "Overrides the <xref:System.Web.UI.Control.OnLoad*> method for the associated control."
-  remarks: "If there is an adapter attached to a <xref:System.Web.UI.Control> object and the OnLoad method is overridden, the override method is called instead of the <xref:System.Web.UI.Control.OnLoad%2A?displayProperty=fullName> method.       Override the OnLoad method to perform target-specific processing in the `Load` stage of the control lifecycle. Typically, these are functions that should be performed for each client request."
+  summary: "Overstyrer den <xref:System.Web.UI.Control.OnLoad*>metoden for den tilknyttede kontrollen.</xref:System.Web.UI.Control.OnLoad*>"
+  remarks: "Hvis det er et kort knyttet til en <xref:System.Web.UI.Control>objekt og OnLoad metoden overstyres av override-metoden i stedet for den <xref:System.Web.UI.Control.OnLoad%2A?displayProperty=fullName>metoden.</xref:System.Web.UI.Control.OnLoad%2A?displayProperty=fullName> </xref:System.Web.UI.Control>       Overstyr OnLoad-metoden til å utføre målspesifikke behandling i den `Load` fase av kontrollen livssyklus. Dette er vanligvis funksjoner som skal utføres for hver klientforespørselen."
   syntax:
     content: protected virtual void OnLoad (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "En <xref:System.EventArgs>som inneholder Hendelsesdata.</xref:System.EventArgs>"
   overload: System.Web.UI.Adapters.ControlAdapter.OnLoad*
   exceptions: []
   platform:
@@ -287,14 +287,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.Adapters
-  summary: "Overrides the <xref:System.Web.UI.Control.OnPreRender*> method for the associated control."
-  remarks: "If there is an adapter attached to a <xref:System.Web.UI.Control> object and the OnPreRender method is overridden, the override method is called instead of the <xref:System.Web.UI.Control.OnPreRender%2A?displayProperty=fullName> method.       Override the OnPreRender method to perform target-specific processing in the `PreRender` stage of the control lifecycle. Typically, these are functions that immediately precede rendering of the control output."
+  summary: "Overstyrer den <xref:System.Web.UI.Control.OnPreRender*>metoden for den tilknyttede kontrollen.</xref:System.Web.UI.Control.OnPreRender*>"
+  remarks: "Hvis det er et kort knyttet til en <xref:System.Web.UI.Control>objekt og OnPreRender metoden overstyres av override-metoden i stedet for den <xref:System.Web.UI.Control.OnPreRender%2A?displayProperty=fullName>metoden.</xref:System.Web.UI.Control.OnPreRender%2A?displayProperty=fullName> </xref:System.Web.UI.Control>       Overstyr OnPreRender-metoden til å utføre målspesifikke behandling i den `PreRender` fase av kontrollen livssyklus. Dette er vanligvis funksjoner som kommer foran gjengivelse av kontrollen utdataene umiddelbart."
   syntax:
     content: protected virtual void OnPreRender (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "En <xref:System.EventArgs>som inneholder Hendelsesdata.</xref:System.EventArgs>"
   overload: System.Web.UI.Adapters.ControlAdapter.OnPreRender*
   exceptions: []
   platform:
@@ -311,14 +311,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.Adapters
-  summary: "Overrides the <xref:System.Web.UI.Control.OnUnload*> method for the associated control."
-  remarks: "If there is an adapter attached to a <xref:System.Web.UI.Control> object and the OnUnload method is overridden, the override method is called instead of the <xref:System.Web.UI.Control.OnUnload%2A?displayProperty=fullName> method.       Override the OnUnload method to do target-specific processing in the `Unload` stage of the control lifecycle. Typically, these are cleanup functions that precede disposition of the control."
+  summary: "Overstyrer den <xref:System.Web.UI.Control.OnUnload*>metoden for den tilknyttede kontrollen.</xref:System.Web.UI.Control.OnUnload*>"
+  remarks: "Hvis det er et kort knyttet til en <xref:System.Web.UI.Control>objekt og OnUnload metoden overstyres av override-metoden i stedet for den <xref:System.Web.UI.Control.OnUnload%2A?displayProperty=fullName>metoden.</xref:System.Web.UI.Control.OnUnload%2A?displayProperty=fullName> </xref:System.Web.UI.Control>       Overstyr OnUnload-metoden for å gjøre målspesifikke behandling i den `Unload` fase av kontrollen livssyklus. Dette er vanligvis opprydding funksjoner som kommer før fjerning av kontrollen."
   syntax:
     content: protected virtual void OnUnload (EventArgs e);
     parameters:
     - id: e
       type: System.EventArgs
-      description: "An <xref:System.EventArgs> that contains the event data."
+      description: "En <xref:System.EventArgs>som inneholder Hendelsesdata.</xref:System.EventArgs>"
   overload: System.Web.UI.Adapters.ControlAdapter.OnUnload*
   exceptions: []
   platform:
@@ -335,13 +335,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.Adapters
-  summary: "Gets a reference to the page where the control associated with this adapter resides."
-  remarks: "The Page property provides access to the <xref:System.Web.UI.Page?displayProperty=fullName> object where the control is situated."
+  summary: "Henter en referanse til siden der kontrollen som er forbundet med denne adapteren er."
+  remarks: "Egenskapen side gir tilgang til den <xref:System.Web.UI.Page?displayProperty=fullName>objektet der kontrollen er plassert.</xref:System.Web.UI.Page?displayProperty=fullName>"
   syntax:
     content: protected System.Web.UI.Page Page { get; }
     return:
       type: System.Web.UI.Page
-      description: "A <xref href=&quot;System.Web.UI.Page&quot;></xref> that provides access to the page instance where the associated control is situated."
+      description: "En <xref href=&quot;System.Web.UI.Page&quot;> </xref> som gir tilgang til siden-forekomsten der den tilknyttede kontrollen er plassert."
   overload: System.Web.UI.Adapters.ControlAdapter.Page*
   exceptions: []
   platform:
@@ -358,13 +358,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.Adapters
-  summary: "Gets a reference to the page adapter for the page where the associated control resides."
-  remarks: "The PageAdapter property provides access to the <xref:System.Web.UI.Adapters.PageAdapter?displayProperty=fullName> object for the <xref:System.Web.UI.Page> object where the <xref:System.Web.UI.Control> object associated with the current <xref:System.Web.UI.Adapters.ControlAdapter> object is situated.       The PageAdapter property can be used to access other items at the page adapter level, such as common target-specific functions that could apply to several control types on the page."
+  summary: "Henter en referanse til siden adapteren for siden der den tilknyttede kontrollen finnes."
+  remarks: "Egenskapen PageAdapter gir tilgang til den <xref:System.Web.UI.Adapters.PageAdapter?displayProperty=fullName>objekt den <xref:System.Web.UI.Page>objektet der den <xref:System.Web.UI.Control>tilknyttet gjeldende <xref:System.Web.UI.Adapters.ControlAdapter>objektet er plassert.</xref:System.Web.UI.Adapters.ControlAdapter> </xref:System.Web.UI.Control> </xref:System.Web.UI.Page> </xref:System.Web.UI.Adapters.PageAdapter?displayProperty=fullName>       Egenskapen PageAdapter kan brukes til å få tilgang til andre elementer på adapteren sidenivå, for eksempel vanlig målspesifikke-funksjoner som kan bruke flere kontrolltypene på siden."
   syntax:
     content: protected System.Web.UI.Adapters.PageAdapter PageAdapter { get; }
     return:
       type: System.Web.UI.Adapters.PageAdapter
-      description: "A <xref href=&quot;System.Web.UI.Adapters.PageAdapter&quot;></xref> for the page where the control associated with the current <xref href=&quot;System.Web.UI.Adapters.ControlAdapter&quot;></xref> is situated."
+      description: "En <xref href=&quot;System.Web.UI.Adapters.PageAdapter&quot;> </xref> for siden der kontrollen som er forbundet med gjeldende <xref href=&quot;System.Web.UI.Adapters.ControlAdapter&quot;> </xref> er plassert."
   overload: System.Web.UI.Adapters.ControlAdapter.PageAdapter*
   exceptions: []
   platform:
@@ -381,14 +381,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.Adapters
-  summary: "Generates the target-specific markup for the control to which the control adapter is attached."
-  remarks: "Override the Render method to generate target-specific markup to send to the client browser. The Render method is called in place of the <xref:System.Web.UI.Control.Render%2A?displayProperty=fullName> method if a <xref:System.Web.UI.Adapters.ControlAdapter> object is attached to a <xref:System.Web.UI.Control> object."
+  summary: "Genererer målspesifikke markup for kontrollen som er tilknyttet kontroll-adapteren."
+  remarks: "Overstyr gjengivelse-metoden for å generere målspesifikke markup sende til klientleseren. Metoden gjengivelse kalles i stedet for den <xref:System.Web.UI.Control.Render%2A?displayProperty=fullName>metoden hvis en <xref:System.Web.UI.Adapters.ControlAdapter>objekt er knyttet til en <xref:System.Web.UI.Control>objektet.</xref:System.Web.UI.Control> </xref:System.Web.UI.Adapters.ControlAdapter> </xref:System.Web.UI.Control.Render%2A?displayProperty=fullName>"
   syntax:
     content: protected virtual void Render (System.Web.UI.HtmlTextWriter writer);
     parameters:
     - id: writer
       type: System.Web.UI.HtmlTextWriter
-      description: "The <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;></xref> to use to render the target-specific output."
+      description: "Den <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;> </xref> skal brukes til å gjengi målspesifikke utdataene."
   overload: System.Web.UI.Adapters.ControlAdapter.Render*
   exceptions: []
   platform:
@@ -405,14 +405,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.Adapters
-  summary: "Generates the target-specific markup for the child controls in a composite control to which the control adapter is attached."
-  remarks: "Override the RenderChildren method when it is necessary to generate target-specific markup for the child control set of a composite control, in addition to the markup for the individual child controls."
+  summary: "Genererer målspesifikke markup for underordnede kontroller i en sammensatt kontroll som er tilknyttet kontroll-adapteren."
+  remarks: "Overstyre metoden RenderChildren når det kreves for å generere målspesifikke markup underordnede kontrollen oversikt over en sammensatt kontroll, i tillegg til markup for individuelle underordnede-kontroller."
   syntax:
     content: protected virtual void RenderChildren (System.Web.UI.HtmlTextWriter writer);
     parameters:
     - id: writer
       type: System.Web.UI.HtmlTextWriter
-      description: "The <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;></xref> to use to render the target-specific output."
+      description: "Den <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;> </xref> skal brukes til å gjengi målspesifikke utdataene."
   overload: System.Web.UI.Adapters.ControlAdapter.RenderChildren*
   exceptions: []
   platform:
@@ -429,14 +429,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.Adapters
-  summary: "Saves control state information for the control adapter."
-  remarks: "Control state is the essential state information needed even if view state is disabled. When an adapter needs to maintain its own control state information, it can override the SaveAdapterControlState and <xref:System.Web.UI.Adapters.ControlAdapter.LoadAdapterControlState%2A> methods.       An adapter might need to maintain control state information when there are features that need to have state maintained across requests, independent from the state of the associated control. For example, a composite control consisting of a large textual display and a group of <xref:System.Web.UI.WebControls.RadioButton> controls might render as a single view on desktop computer browsers. On other browsers, it might split its rendering—one view for the textual display and the other for the radio button group. The adapter would need to maintain its own target-specific information about the currently active view.       The SaveAdapterControlState method is called immediately after the <xref:System.Web.UI.Control.SaveControlState%2A?displayProperty=fullName> method in the `SaveState` lifecycle stage. The adapter control state is separate and in addition to the control state of the control."
+  summary: "Lagrer Kontroller tilstandsinformasjon for kontroll-kortet."
+  remarks: "Kontroll-tilstanden er viktig tilstand informasjonen som kreves for selv om visningsstatus er deaktivert. Når et kort må til å lagre tilstandsinformasjon sin egen kontrollen, kan det overstyre SaveAdapterControlState og <xref:System.Web.UI.Adapters.ControlAdapter.LoadAdapterControlState%2A>metoder.</xref:System.Web.UI.Adapters.ControlAdapter.LoadAdapterControlState%2A>       Et kort kan må opprettholde kontrollen statusinformasjon når funksjoner som må ha tilstanden beholdes på tvers av forespørsler, uavhengig av status for den tilknyttede kontrollen. For eksempel en sammensatt tillatelser som består av en stor tekstbaserte skjerm og en gruppe med <xref:System.Web.UI.WebControls.RadioButton>Kontroller kan gjengis som én enkelt visning på stasjonær datamaskin nettlesere.</xref:System.Web.UI.WebControls.RadioButton> Den kan dele gjengivelsen på andre lesere – én visning for den tekstbaserte visningen og den andre for alternativknappgruppen. Adapteren må opprettholde sin egen målspesifikke informasjon om den aktive visningen.       Metoden SaveAdapterControlState kalles like etter den <xref:System.Web.UI.Control.SaveControlState%2A?displayProperty=fullName>metoden i den `SaveState` livssyklus fase.</xref:System.Web.UI.Control.SaveControlState%2A?displayProperty=fullName> Tilstanden for kort kontrollen er separate og i tillegg til tilstanden kontroll av kontrollen."
   syntax:
     content: protected virtual object SaveAdapterControlState ();
     parameters: []
     return:
       type: System.Object
-      description: "An <xref:System.Object> that contains the adapter&quot;s control state information as a <xref href=&quot;System.Web.UI.StateBag&quot;></xref>."
+      description: "En <xref:System.Object>som inneholder den adapteren tilstandsinformasjon for kontrollen som en <xref href=&quot;System.Web.UI.StateBag&quot;> </xref>.</xref:System.Object>"
   overload: System.Web.UI.Adapters.ControlAdapter.SaveAdapterControlState*
   exceptions: []
   platform:
@@ -453,14 +453,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.Adapters
-  summary: "Saves view state information for the control adapter."
-  remarks: "When an adapter needs to maintain its own view state information, it can override the SaveAdapterViewState and <xref:System.Web.UI.Adapters.ControlAdapter.LoadAdapterViewState%2A> methods.       An adapter needs to maintain view state information when there is data that must be maintained across requests, independent from the associated view state of the control. For example, a grid control on desktop computer browsers might render as a single view of rows and columns of values. On other browsers, it might split its rendering into multiple separate views, such as a list of rows and details of a single row. The adapter would need to maintain the data for the views that are not currently active in view state.       The SaveAdapterViewState method is called immediately before the <xref:System.Web.UI.Control.SaveViewState%2A?displayProperty=fullName> method in the `SaveState` lifecycle stage. The adapter view state is separate and in addition to the view state of the control."
+  summary: "Lagrer Vis tilstandsinformasjon for kontroll-kortet."
+  remarks: "Når et kort må til å lagre tilstandsinformasjon sin egen visning, kan det overstyre SaveAdapterViewState og <xref:System.Web.UI.Adapters.ControlAdapter.LoadAdapterViewState%2A>metoder.</xref:System.Web.UI.Adapters.ControlAdapter.LoadAdapterViewState%2A>       Et kort må lagre visningen tilstandsinformasjon når data som må være på tvers av forespørsler, uavhengig av tilknyttede visningsstatusen for kontrollen. En rutenettkontrollen på stasjonær datamaskin nettlesere kan for eksempel gjengis som én enkelt visning av rader og kolonner med verdier. På andre lesere kan det deles gjengivelsen til flere separate visninger, for eksempel en liste med rader og detaljer om én rad. Adapteren trenger å beholde dataene for visninger som er aktive i visningsstatusen.       Metoden SaveAdapterViewState kalles like før den <xref:System.Web.UI.Control.SaveViewState%2A?displayProperty=fullName>metoden i den `SaveState` livssyklus fase.</xref:System.Web.UI.Control.SaveViewState%2A?displayProperty=fullName> Adapteren visningsstatusen er separate og i tillegg til visningsstatusen for kontrollen."
   syntax:
     content: protected virtual object SaveAdapterViewState ();
     parameters: []
     return:
       type: System.Object
-      description: "An <xref:System.Object> that contains the adapter view state information as a <xref href=&quot;System.Web.UI.StateBag&quot;></xref>."
+      description: "En <xref:System.Object>som inneholder adapteren Vis tilstand informasjon som en <xref href=&quot;System.Web.UI.StateBag&quot;> </xref>.</xref:System.Object>"
   overload: System.Web.UI.Adapters.ControlAdapter.SaveAdapterViewState*
   exceptions: []
   platform:

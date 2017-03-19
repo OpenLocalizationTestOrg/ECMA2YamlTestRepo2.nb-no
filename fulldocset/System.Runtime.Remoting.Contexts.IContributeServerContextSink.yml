@@ -10,8 +10,8 @@ items:
   nameWithType: IContributeServerContextSink
   fullName: System.Runtime.Remoting.Contexts.IContributeServerContextSink
   type: Interface
-  summary: "Contributes an interception sink at the context boundary on the server end of a remoting call."
-  remarks: "The IContributeServerContextSink interface is implemented by context properties in a <xref:System.Runtime.Remoting.Contexts.Context> class that want to contribute an interception sink at the context boundary on the server end of a remoting call.       The server context chain is composed from those properties in the server context that implement IContributeServerContextSink and which contribute a sink by using the <xref:System.Runtime.Remoting.Contexts.IContributeServerContextSink.GetServerContextSink%2A> method call.       Serialization is an example of such a context property. In this case, the message sink would involve taking a synchronization primitive lock before processing a call any further."
+  summary: "Bidrar en oppfanging sink i kontekstgrense på serversiden av en ekstern kommunikasjon-kall."
+  remarks: "Grensesnittet IContributeServerContextSink implementeres av Kontekstegenskaper i en <xref:System.Runtime.Remoting.Contexts.Context>klasse som vil bidra en oppfanging sink i kontekstgrense på serversiden av en ekstern kommunikasjon-kall.</xref:System.Runtime.Remoting.Contexts.Context>       Serveren konteksten kjeden består fra disse egenskapene i serverkonteksten implementerer IContributeServerContextSink og som bidrar en sink ved hjelp av den <xref:System.Runtime.Remoting.Contexts.IContributeServerContextSink.GetServerContextSink%2A>metodekallet.</xref:System.Runtime.Remoting.Contexts.IContributeServerContextSink.GetServerContextSink%2A>       Serialisering er et eksempel på en slik kontekstegenskap. I dette tilfellet kan meldingen mottakeren få tar en synkronisering primitive Lås før behandling av en oppringing alle videre."
   syntax:
     content: >-
       [System.Runtime.InteropServices.ComVisible(true)]
@@ -32,16 +32,16 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Runtime.Remoting.Contexts
-  summary: "Takes the first sink in the chain of sinks composed so far, and then chains its message sink in front of the chain already formed."
+  summary: "Tar første mottakeren i referansekjeden mottakere består så langt, og knytter den meldingen sink foran kjeden allerede utformet."
   syntax:
     content: public System.Runtime.Remoting.Messaging.IMessageSink GetServerContextSink (System.Runtime.Remoting.Messaging.IMessageSink nextSink);
     parameters:
     - id: nextSink
       type: System.Runtime.Remoting.Messaging.IMessageSink
-      description: "The chain of sinks composed so far."
+      description: "Referansekjeden mottakere komponeres så langt."
     return:
       type: System.Runtime.Remoting.Messaging.IMessageSink
-      description: "The composite sink chain."
+      description: "Sammensatte sink-kjede."
   overload: System.Runtime.Remoting.Contexts.IContributeServerContextSink.GetServerContextSink*
   exceptions: []
   platform:

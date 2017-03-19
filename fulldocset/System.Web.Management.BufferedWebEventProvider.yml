@@ -17,8 +17,8 @@ items:
   nameWithType: BufferedWebEventProvider
   fullName: System.Web.Management.BufferedWebEventProvider
   type: Class
-  summary: "Provides the base functionality for creating event providers that require buffering."
-  remarks: "ASP.NET health monitoring allows production and operations staff to manage deployed Web applications. The <xref:System.Web.Management> namespace contains the health-event types responsible for packaging application health-status data and the provider types responsible for processing this data. It also contains supporting types that help during the management of health events.       If you want to customize the health-event processing, you can derive from the BufferedWebEventProvider class to create your own custom buffered provider.      > [!NOTE] >  In most cases you will be able to use the ASP.NET health-monitoring types as implemented, and you will control the health-monitoring system by specifying values in the `healthMonitoring` configuration section. You can also derive from the health-monitoring types to create your own custom events and providers. For an example of creating a custom provider, see [How to: Implement the Health Monitoring Custom Provider Example](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Gir den grunnleggende funksjonaliteten for oppretting av hendelsen leverandører som krever hurtigbufring."
+  remarks: "ASP.NET helseovervåking gjør det mulig for produksjon og operasjoner for å behandle distribuert webprogrammer. Den <xref:System.Web.Management>navneområdet inneholder health-hendelsestypene ansvarlig for pakke-tilstandsstatusen programdata og leverandøren-typer som er ansvarlig for å behandle disse dataene.</xref:System.Web.Management> Det inneholder støttet typer som hjelper under behandling av hendelser for tilstanden.       Hvis du vil tilpasse tilstanden til hendelsesbehandlingen, kan du være avledet fra klassen BufferedWebEventProvider til å opprette dine egne egendefinerte bufret leverandøren.      > [!NOTE] > I de fleste tilfeller vil du ikke kunne bruke ASP.NET-helseovervåking typene som implementert, og du vil kontrollere helseovervåking systemet ved å angi verdiene i den `healthMonitoring` konfigurasjonsdelen. Du kan også utledet fra typen helseovervåking til å opprette dine egne egendefinerte hendelser og leverandører. Et eksempel på hvordan du oppretter egendefinerte leverandøren, kan du se [slik: implementere tilstanden overvåking egendefinerte leverandøren eksemplet](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example shows how to derive from the BufferedWebEventProvider class to create a custom provider that writes the configured events to a local file for which appropriate access rights must be granted.  \n  \n [!code-cs[System.Web.Management.BufferedWebEventProvider#1](~/add/codesnippet/csharp/t-system.web.management._12_1.cs)]\n [!code-vb[System.Web.Management.BufferedWebEventProvider#1](~/add/codesnippet/visualbasic/t-system.web.management._12_1.vb)]  \n  \n The following configuration file excerpt shows a `healthMonitoring` configuration section that enables ASP.NET to use the custom provider defined above to process all health-monitoring events.  \n  \n```  \n<healthMonitoring    \n  heartBeatInterval=\"0\" enabled=\"true\">  \n  \n  <bufferModes>  \n    <add name =\"Custom Notification\"  \n      maxBufferSize=\"10\"  \n      maxFlushSize=\"5\"  \n      urgentFlushThreshold=\"10\"  \n      regularFlushInterval=\"Infinite\"  \n      urgentFlushInterval=\"00:00:30\"  \n      maxBufferThreads=\"1\"  \n/>  \n  </bufferModes>  \n  \n  <providers>  \n    <clear/>  \n    <add name=\"SampleBufferedWebEventProvider\"   \n      type=\"SamplesAspNet.SampleBufferedWebEventProvider, bufferedwebeventprovider, Version=1.0.1785.14700, Culture=neutral, PublicKeyToken=d31491bf33b55954, processorArchitecture=MSIL\"   \n      buffer=\"true\"  \n      bufferMode=\"Custom Notification\"  \n/>  \n  </providers>  \n  \n  <profiles>  \n    <add name=\"Custom\"   \n      minInstances=\"1\"   \n      maxLimit=\"Infinite\"   \n      minInterval=\"00:00:00\" />  \n  </profiles>  \n  \n  <rules>  \n    <clear />  \n      <add name=\"Custom Buffered Web Event Provider\"   \n        eventName=\"All Events\"  \n        provider=\"SampleBufferedWebEventProvider\"   \n        profile=\"Custom\" />  \n  </rules>  \n  \n</healthMonitoring>  \n```"
   syntax:
@@ -45,8 +45,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.Management.BufferedWebEventProvider&quot;></xref> class."
-  remarks: "This constructor is used internally by the ASP.NET health-monitoring system. You will never use it to instantiate a <xref:System.Web.Management.TraceWebEventProvider> object, but you can call this constructor when implementing your own provider type that inherits from this class."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Web.Management.BufferedWebEventProvider&quot;> </xref> klasse."
+  remarks: "Denne konstruktøren brukes internt av ASP.NET helseovervåking systemet. Du vil aldri bruke den til å starte et <xref:System.Web.Management.TraceWebEventProvider>objekt, men du kan ringe denne konstruktøren ved implementering av dine egne leverandørtypen som arver fra denne klassen.</xref:System.Web.Management.TraceWebEventProvider>"
   example:
   - "The following code example shows how to use this constructor in a custom event provider.  \n  \n [!code-cs[System.Web.Management.BufferedWebEventProvider#8](~/add/codesnippet/csharp/m-system.web.management._2_1.cs)]\n [!code-vb[System.Web.Management.BufferedWebEventProvider#8](~/add/codesnippet/visualbasic/m-system.web.management._2_1.vb)]"
   syntax:
@@ -68,15 +68,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Gets a value indicating the buffering mode used by the provider."
-  remarks: "The BufferMode property contains the value defined by the `bufferMode` attribute in the `providers` element of the `healthMonitoring` section.       The following configuration-file excerpt shows how the name of the buffer mode should be defined in the `healthMonitoring` section.      ```   <bufferModes>     <add name =&quot;Custom Notification&quot; />   </bufferModes>   ```"
+  summary: "Henter en verdi som angir bufring modusen som brukes av leverandøren."
+  remarks: "Egenskapen BufferMode inneholder verdien som er definert av den `bufferMode` attributt i den `providers` element av den `healthMonitoring` delen.       Følgende konfigurasjonsfil utdrag viser hvordan navnet på bufferen modus må være definert i den `healthMonitoring` delen.      ```   <bufferModes>     <add name =&quot;Custom Notification&quot; />   </bufferModes>   ```"
   example:
   - "The following code example shows how to use the BufferMode property.  \n  \n [!code-cs[System.Web.Management.BufferedWebEventProvider#4](~/add/codesnippet/csharp/p-system.web.management._7_1.cs)]\n [!code-vb[System.Web.Management.BufferedWebEventProvider#4](~/add/codesnippet/visualbasic/p-system.web.management._7_1.vb)]"
   syntax:
     content: public string BufferMode { get; }
     return:
       type: System.String
-      description: "The name of the buffering mode."
+      description: "Navnet på bufring modus."
   overload: System.Web.Management.BufferedWebEventProvider.BufferMode*
   exceptions: []
   platform:
@@ -93,8 +93,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Moves the events from the provider&quot;s buffer into the event log."
-  remarks: "When this method is called, all the events in the buffer are immediately moved from the buffer to the log, regardless of how much time has elapsed since last write or how many events are in the buffer. The time of the last write is reset to the time of the flushing action."
+  summary: "Flytter hendelsene fra leverandørens buffer til hendelsesloggen."
+  remarks: "Når denne metoden kalles, kan alle hendelser i bufferen flyttes umiddelbart fra bufferen til loggen, uansett hvor lang tid er gått siden siste skrive eller hvor mange hendelser er i bufferen. Tidspunktet for siste skrive tilbakestilles til tidspunktet for slettebufferdatabasen handlingen."
   example:
   - "The following code example shows how to use the Flush method.  \n  \n [!code-cs[System.Web.Management.BufferedWebEventProvider#9](~/add/codesnippet/csharp/m-system.web.management._6_1.cs)]\n [!code-vb[System.Web.Management.BufferedWebEventProvider#9](~/add/codesnippet/visualbasic/m-system.web.management._6_1.vb)]"
   syntax:
@@ -116,8 +116,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Sets the initial values for this object."
-  remarks: "ASP.NET calls the Initialize method after calling the <xref:System.Web.Management.BufferedWebEventProvider.%23ctor%2A> constructor. This method is called to initialize the <xref:System.Web.Management.BufferedWebEventProvider> with the configuration settings and name specified in the configuration file."
+  summary: "Angir de opprinnelige verdiene for dette objektet."
+  remarks: "ASP.NET-kall i initialiseringsmetoden etter kall av <xref:System.Web.Management.BufferedWebEventProvider.%23ctor%2A>konstruktør.</xref:System.Web.Management.BufferedWebEventProvider.%23ctor%2A> Denne metoden for å starte den <xref:System.Web.Management.BufferedWebEventProvider>med konfigurasjonsinnstillinger og navnet som er angitt i konfigurasjonsfilen.</xref:System.Web.Management.BufferedWebEventProvider>"
   example:
   - "The following code example shows how to use the Initialize method.  \n  \n [!code-cs[System.Web.Management.BufferedWebEventProvider#2](~/add/codesnippet/csharp/71386fb2-b957-416a-92c4-_1.cs)]\n [!code-vb[System.Web.Management.BufferedWebEventProvider#2](~/add/codesnippet/visualbasic/71386fb2-b957-416a-92c4-_1.vb)]"
   syntax:
@@ -125,10 +125,10 @@ items:
     parameters:
     - id: name
       type: System.String
-      description: "The name used in the configuration file to identify this provider."
+      description: "Navnet som brukes i konfigurasjonsfilen for å identifisere denne leverandøren."
     - id: config
       type: System.Collections.Specialized.NameValueCollection
-      description: "A <xref href=&quot;System.Collections.Specialized.NameValueCollection&quot;></xref> that specifies the attributes assigned for this provider in the configuration file."
+      description: "En <xref href=&quot;System.Collections.Specialized.NameValueCollection&quot;> </xref> som angir attributtene tilordnet for denne leverandøren i konfigurasjonsfilen."
   overload: System.Web.Management.BufferedWebEventProvider.Initialize*
   exceptions: []
   platform:
@@ -145,8 +145,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Processes the event passed to the provider."
-  remarks: "This is the method that ASP.NET health monitoring calls to start the processing of the event. If buffering is enabled, the event information is buffered; otherwise, it is dispatched to the current logging mechanism."
+  summary: "Behandler hendelsen ble sendt til leverandøren."
+  remarks: "Dette er metoden at ASP.NET helseovervåking kall for å starte behandling av hendelsen. Hvis hurtigbufring er aktivert, vil informasjonen om hendelsen er bufret; Hvis ikke, den er sendt til gjeldende logging mekanisme."
   example:
   - "The following code example shows how to implement the ProcessEvent method.  \n  \n [!code-cs[System.Web.Management.BufferedWebEventProvider#5](~/add/codesnippet/csharp/1be5baee-de85-48e1-93d3-_1.cs)]\n [!code-vb[System.Web.Management.BufferedWebEventProvider#5](~/add/codesnippet/visualbasic/1be5baee-de85-48e1-93d3-_1.vb)]"
   syntax:
@@ -154,7 +154,7 @@ items:
     parameters:
     - id: eventRaised
       type: System.Web.Management.WebBaseEvent
-      description: "The <xref href=&quot;System.Web.Management.WebBaseEvent&quot;></xref> object to process."
+      description: "Den <xref href=&quot;System.Web.Management.WebBaseEvent&quot;> </xref> objekt prosessen."
   overload: System.Web.Management.BufferedWebEventProvider.ProcessEvent*
   exceptions: []
   platform:
@@ -171,8 +171,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Processes the buffered events."
-  remarks: "The ProcessEventFlush method processes the messages that have been buffered. ASP.NET health monitoring calls the method when the flushing of the buffer is required. The intervals at which flushing is required is determined by the parameter value of the `bufferMode` attribute in the `providers` element in the `healthMonitoring` configuration section."
+  summary: "Behandler bufrede hendelser."
+  remarks: "Metoden ProcessEventFlush behandler meldinger som er bufret. ASP.NET helseovervåking kaller metoden når tømming på bufferen som kreves. Intervallene som tømming kreves avgjøres av parameterverdien for den `bufferMode` attributt i den `providers` elementet i den `healthMonitoring` konfigurasjonsdelen."
   example:
   - "The following code example shows how to implement the ProcessEventFlush method.  \n  \n [!code-cs[System.Web.Management.BufferedWebEventProvider#6](~/add/codesnippet/csharp/91081aab-0c9a-495a-a177-_1.cs)]\n [!code-vb[System.Web.Management.BufferedWebEventProvider#6](~/add/codesnippet/visualbasic/91081aab-0c9a-495a-a177-_1.vb)]"
   syntax:
@@ -180,7 +180,7 @@ items:
     parameters:
     - id: flushInfo
       type: System.Web.Management.WebEventBufferFlushInfo
-      description: "A <xref href=&quot;System.Web.Management.WebEventBufferFlushInfo&quot;></xref> that contains buffering information."
+      description: "En <xref href=&quot;System.Web.Management.WebEventBufferFlushInfo&quot;> </xref> som inneholder bufring informasjon."
   overload: System.Web.Management.BufferedWebEventProvider.ProcessEventFlush*
   exceptions: []
   platform:
@@ -197,8 +197,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Performs tasks associated with shutting down the provider."
-  remarks: "ASP.NET calls the Shutdown method when the application domain hosting the Web application terminates. The method is called to perform tasks that will allow the application to end gracefully, such as closing resources."
+  summary: "Utfører oppgaver som er knyttet til under kontrollert avslutning av leverandøren."
+  remarks: "ASP.NET kaller metoden avsluttet når programdomenet som er vert for webprogrammet avsluttes. Metoden kalles for å utføre oppgaver som gjør at programmet avsluttes webområdet, for eksempel lukker ressurser."
   syntax:
     content: public override void Shutdown ();
     parameters: []
@@ -218,15 +218,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.Management
-  summary: "Gets a value indicating whether the provider is in buffered mode."
-  remarks: "The UseBuffering property contains the value defined by the `buffer` attribute in the `providers` element of the `healthMonitoring` section."
+  summary: "Henter en verdi som angir om leverandøren er i bufret modus."
+  remarks: "Egenskapen UseBuffering inneholder verdien som er definert av den `buffer` attributt i den `providers` element av den `healthMonitoring` delen."
   example:
   - "The following code example shows how to use the UseBuffering property.  \n  \n [!code-cs[System.Web.Management.BufferedWebEventProvider#3](~/add/codesnippet/csharp/p-system.web.management._48_1.cs)]\n [!code-vb[System.Web.Management.BufferedWebEventProvider#3](~/add/codesnippet/visualbasic/p-system.web.management._48_1.vb)]"
   syntax:
     content: public bool UseBuffering { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the provider is in buffered mode; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis leverandøren er bufret modus. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Standard <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.Management.BufferedWebEventProvider.UseBuffering*
   exceptions: []
   platform:

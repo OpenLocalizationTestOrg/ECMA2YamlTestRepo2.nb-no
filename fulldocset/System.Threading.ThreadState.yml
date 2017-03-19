@@ -19,8 +19,8 @@ items:
   nameWithType: ThreadState
   fullName: System.Threading.ThreadState
   type: Enum
-  summary: "Specifies the execution states of a <xref href=&quot;System.Threading.Thread&quot;></xref>."
-  remarks: "The ThreadState enumeration is of interest only in a few debugging scenarios. Your code should never use the thread state to synchronize the activities of threads.       ThreadState defines a set of all possible execution states for threads. Once a thread is created, it is in at least one of the states until it terminates. Threads created within the common language runtime are initially in the `Unstarted` state, while external threads that come into the runtime are already in the `Running` state. An `Unstarted` thread is transitioned into the `Running` state by calling <xref:System.Threading.Thread.Start%2A>. Not all combinations of `ThreadState` values are valid; for example, a thread cannot be in both the `Aborted` and `Unstarted` states.      > [!IMPORTANT] >  There are two thread state enumerations,ThreadState and <xref:System.Diagnostics.ThreadState?displayProperty=fullName>.       The following table shows the actions that cause a change of state.      |Action|ThreadState|   |------------|-----------------|   |A thread is created within the common language runtime.|Unstarted|   |Another thread calls the <xref:System.Threading.Thread.Start%2A?displayProperty=fullName> method on the new thread, and the call returns.<br /><br /> The <xref:System.Threading.Thread.Start%2A> method does not return until the new thread has started running. There is no way to know at what point the new thread will start running, during the call to <xref:System.Threading.Thread.Start%2A>.|Running|   |The thread calls <xref:System.Threading.Thread.Sleep%2A>|WaitSleepJoin|   |The thread calls <xref:System.Threading.Monitor.Wait%2A> on another object.|WaitSleepJoin|   |The thread calls <xref:System.Threading.Thread.Join%2A> on another thread.|WaitSleepJoin|   |Another thread calls <xref:System.Threading.Thread.Interrupt%2A>|Running|   |Another thread calls <xref:System.Threading.Thread.Suspend%2A>|SuspendRequested|   |The thread responds to a <xref:System.Threading.Thread.Suspend%2A> request.|Suspended|   |Another thread calls <xref:System.Threading.Thread.Resume%2A>|Running|   |Another thread calls <xref:System.Threading.Thread.Abort%2A>|AbortRequested|   |The thread responds to a <xref:System.Threading.Thread.Abort%2A> request.|Stopped|   |A thread is terminated.|Stopped|       In addition to the states noted above, there is also the `Background` state, which indicates whether the thread is running in the background or foreground.       A thread can be in more than one state at a given time. For example, if a thread is blocked on a call to <xref:System.Threading.Monitor.Wait%2A>, and another thread calls <xref:System.Threading.Thread.Abort%2A> on the blocked thread, the blocked thread will be in both the `WaitSleepJoin` and the `AbortRequested` states at the same time. In this case, as soon as the thread returns from the call to <xref:System.Threading.Monitor.Wait%2A> or is interrupted, it will receive the <xref:System.Threading.ThreadAbortException> to begin aborting.       The <xref:System.Threading.Thread.ThreadState%2A?displayProperty=fullName> property of a thread provides the current state of a thread. Applications must use a bitmask to determine whether a thread is running. Since the value for `Running` is zero (0), test whether a thread is running by using C# code such as `(myThread.ThreadState & (ThreadState.Stopped | ThreadState.Unstarted)) == 0` or Visual Basic code such as `(myThread.ThreadState And (ThreadState.Stopped Or ThreadState.Unstarted)) = 0`."
+  summary: "Angir kjøring av tilstander for en <xref href=&quot;System.Threading.Thread&quot;> </xref>."
+  remarks: "Opplistingen ThreadState er interessert i noen scenarier-feilsøking. Koden bør aldri bruke tilstanden tråd skal synkroniseres aktiviteter med tråder.       ThreadState definerer et sett med alle mulige kjøring tilstander for tråder. Når en tråd er opprettet, er det i minst én av statuser til det avsluttes. Tråder som er opprettet i common language runtime er først i den `Unstarted` tilstand, under ekstern tråder som kommer inn under kjøring er allerede i den `Running` tilstand. En `Unstarted` tråd er endret i den `Running` tilstand ved å kalle <xref:System.Threading.Thread.Start%2A>.</xref:System.Threading.Thread.Start%2A> Ikke alle kombinasjoner av `ThreadState` verdiene er gyldige; for eksempel en tråd kan ikke være i begge den `Aborted` og `Unstarted` tilstander.      > [!IMPORTANT] > Det er to tråd tilstand opplistinger, ThreadState og <xref:System.Diagnostics.ThreadState?displayProperty=fullName>.</xref:System.Diagnostics.ThreadState?displayProperty=fullName>       Tabellen nedenfor viser handlingene som forårsaker en endring av status.      | Handlingen | ThreadState |   |------------|-----------------|   | En tråd er opprettet i common language runtime. | Ikke er startet |   | Kall til en annen tråd i <xref:System.Threading.Thread.Start%2A?displayProperty=fullName>metoden om ny tråd og kallet returnerer.</xref:System.Threading.Thread.Start%2A?displayProperty=fullName><br /><br /> Den <xref:System.Threading.Thread.Start%2A>metoden returnerer ikke før ny tråd har begynt å kjøre.</xref:System.Threading.Thread.Start%2A> Det er ikke mulig å finne på hvilket tidspunkt ny tråd starter kjører under kall til <xref:System.Threading.Thread.Start%2A>. | Kjører |   | Tråden kall <xref:System.Threading.Thread.Sleep%2A>| WaitSleepJoin |   | Tråden kall <xref:System.Threading.Monitor.Wait%2A>på et annet objekt. | WaitSleepJoin |   | Tråden kall <xref:System.Threading.Thread.Join%2A>på en annen tråd. | WaitSleepJoin |   | En annen tråd kall <xref:System.Threading.Thread.Interrupt%2A>| Kjører |   | En annen tråd kall <xref:System.Threading.Thread.Suspend%2A>| SuspendRequested |   | Tråden svarer på en forespørsel om <xref:System.Threading.Thread.Suspend%2A>. | Utsatt |   | En annen tråd kall <xref:System.Threading.Thread.Resume%2A>| Kjører |   | En annen tråd kall <xref:System.Threading.Thread.Abort%2A>| AbortRequested |   | Tråden svarer på en forespørsel om <xref:System.Threading.Thread.Abort%2A>. | Stoppet |   | En tråd er avsluttet. | Stoppet |       I tillegg til tilstander ovenfor, finnes også i `Background` tilstand, som angir om tråden kjører i bakgrunnen eller forgrunnen.</xref:System.Threading.Thread.Abort%2A> </xref:System.Threading.Thread.Abort%2A> </xref:System.Threading.Thread.Resume%2A> </xref:System.Threading.Thread.Suspend%2A> </xref:System.Threading.Thread.Suspend%2A> </xref:System.Threading.Thread.Interrupt%2A> </xref:System.Threading.Thread.Join%2A> </xref:System.Threading.Monitor.Wait%2A> </xref:System.Threading.Thread.Sleep%2A> </xref:System.Threading.Thread.Start%2A>       En tråd kan ha flere enn én status om gangen. Hvis en tråd er blokkert på et kall til for eksempel <xref:System.Threading.Monitor.Wait%2A>, og en annen tråd samtaler <xref:System.Threading.Thread.Abort%2A>på blokkerte tråd blir blokkert tråden i begge den `WaitSleepJoin` og `AbortRequested` tilstander samtidig.</xref:System.Threading.Thread.Abort%2A> </xref:System.Threading.Monitor.Wait%2A> I dette tilfellet, så tråden returnerer fra kallet til <xref:System.Threading.Monitor.Wait%2A>eller avbrutt, den mottar den <xref:System.Threading.ThreadAbortException>starter avbryter.</xref:System.Threading.ThreadAbortException> </xref:System.Threading.Monitor.Wait%2A>       Den <xref:System.Threading.Thread.ThreadState%2A?displayProperty=fullName>for en tråd gir den gjeldende tilstanden til en tråd.</xref:System.Threading.Thread.ThreadState%2A?displayProperty=fullName> Programmer må bruke en bitmaske for å finne ut om en tråd kjører. Siden verdien for `Running` er null (0), teste om en tråd kjører ved hjelp av C#-kode, for eksempel `(myThread.ThreadState & (ThreadState.Stopped | ThreadState.Unstarted)) == 0` eller kode i Visual Basic som `(myThread.ThreadState And (ThreadState.Stopped Or ThreadState.Unstarted)) = 0`."
   syntax:
     content: >-
       [System.Flags]
@@ -44,12 +44,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "The thread state includes AbortRequested and the thread is now dead, but its state has not yet changed to Stopped."
+  summary: "Tilstanden tråd inkluderer AbortRequested og tråden er nå deaktivert, men tilstanden ennå er endret ikke til stoppet."
   syntax:
     content: Aborted
     return:
       type: System.Threading.ThreadState
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -65,12 +65,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "The &lt;xref:System.Threading.Thread.Abort%2A?displayProperty=fullName&gt; method has been invoked on the thread, but the thread has not yet received the pending <xref href=&quot;System.Threading.ThreadAbortException&quot;></xref> that will attempt to terminate it."
+  summary: "Den &lt;xref:System.Threading.Thread.Abort%2A?displayProperty=fullName&gt; metoden har blitt startet på tråd, men tråden ennå ikke er mottatt av ventende <xref href=&quot;System.Threading.ThreadAbortException&quot;> </xref> som prøver å avslutte den."
   syntax:
     content: AbortRequested
     return:
       type: System.Threading.ThreadState
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -86,12 +86,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "The thread is being executed as a background thread, as opposed to a foreground thread. This state is controlled by setting the &lt;xref:System.Threading.Thread.IsBackground%2A?displayProperty=fullName&gt; property."
+  summary: "Tråden utføres som en bakgrunnstråd, i motsetning til en forgrunnen-tråd. Denne statusen er avhengig av den &lt;xref:System.Threading.Thread.IsBackground%2A?displayProperty=fullName&gt; egenskapen."
   syntax:
     content: Background
     return:
       type: System.Threading.ThreadState
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -107,12 +107,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "The thread has been started, it is not blocked, and there is no pending <xref href=&quot;System.Threading.ThreadAbortException&quot;></xref>."
+  summary: "Tråden er startet, den ikke er blokkert, og det ikke ventende <xref href=&quot;System.Threading.ThreadAbortException&quot;> </xref>."
   syntax:
     content: Running
     return:
       type: System.Threading.ThreadState
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -128,12 +128,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "The thread has stopped."
+  summary: "Tråden har stoppet."
   syntax:
     content: Stopped
     return:
       type: System.Threading.ThreadState
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -149,12 +149,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "The thread is being requested to stop. This is for internal use only."
+  summary: "Tråden er blir bedt om å stoppe. Dette er bare til intern bruk."
   syntax:
     content: StopRequested
     return:
       type: System.Threading.ThreadState
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -170,12 +170,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "The thread has been suspended."
+  summary: "Tråden er stoppet."
   syntax:
     content: Suspended
     return:
       type: System.Threading.ThreadState
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -191,12 +191,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "The thread is being requested to suspend."
+  summary: "Tråden er blir bedt om å stoppe."
   syntax:
     content: SuspendRequested
     return:
       type: System.Threading.ThreadState
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -212,12 +212,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "The &lt;xref:System.Threading.Thread.Start%2A?displayProperty=fullName&gt; method has not been invoked on the thread."
+  summary: "Den &lt;xref:System.Threading.Thread.Start%2A?displayProperty=fullName&gt; metoden er ikke aktivert på tråd."
   syntax:
     content: Unstarted
     return:
       type: System.Threading.ThreadState
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -233,12 +233,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Threading
-  summary: "The thread is blocked. This could be the result of calling &lt;xref:System.Threading.Thread.Sleep%2A?displayProperty=fullName&gt; or &lt;xref:System.Threading.Thread.Join%2A?displayProperty=fullName&gt;, of requesting a lock — for example, by calling &lt;xref:System.Threading.Monitor.Enter%2A?displayProperty=fullName&gt; or &lt;xref:System.Threading.Monitor.Wait%2A?displayProperty=fullName&gt; — or of waiting on a thread synchronization object such as <xref:System.Threading.ManualResetEvent>."
+  summary: "Tråden er blokkert. Dette kan skyldes kaller &lt;xref:System.Threading.Thread.Sleep%2A?displayProperty=fullName&gt; eller &lt;xref:System.Threading.Thread.Join%2A?displayProperty=fullName&gt;, av ber om Lås – for eksempel ved å kalle &lt;xref:System.Threading.Monitor.Enter%2A?displayProperty=fullName&gt; eller &lt;xref:System.Threading.Monitor.Wait%2A?displayProperty=fullName&gt; , eller venter på et synkroniseringsobjekt tråd for eksempel <xref:System.Threading.ManualResetEvent>.</xref:System.Threading.ManualResetEvent>"
   syntax:
     content: WaitSleepJoin
     return:
       type: System.Threading.ThreadState
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462

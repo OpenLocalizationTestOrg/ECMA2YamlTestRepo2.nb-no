@@ -19,8 +19,8 @@ items:
   nameWithType: ControlCachePolicy
   fullName: System.Web.UI.ControlCachePolicy
   type: Class
-  summary: "Provides programmatic access to an ASP.NET user control&quot;s output cache settings."
-  remarks: "The ControlCachePolicy class is used by developers in programmatic user control scenarios to specify output caching settings for user controls (.ascx files). ASP.NET embeds user controls within a <xref:System.Web.UI.BasePartialCachingControl> instance. The <xref:System.Web.UI.BasePartialCachingControl> class represents a user control that has output caching enabled. When you access the <xref:System.Web.UI.BasePartialCachingControl.CachePolicy%2A?displayProperty=fullName> property of a <xref:System.Web.UI.PartialCachingControl> control, you will always receive a valid ControlCachePolicy object. However, if you access the <xref:System.Web.UI.UserControl.CachePolicy%2A?displayProperty=fullName> property of a <xref:System.Web.UI.UserControl> control, you receive a valid ControlCachePolicy object only if the user control is already wrapped by a <xref:System.Web.UI.BasePartialCachingControl> control. If it is not wrapped, the ControlCachePolicy object returned by the property will throw exceptions when you attempt to manipulate it because it does not have an associated <xref:System.Web.UI.BasePartialCachingControl>. To determine whether a <xref:System.Web.UI.UserControl> instance supports caching without generating exceptions, inspect the <xref:System.Web.UI.ControlCachePolicy.SupportsCaching%2A> property.       Using the ControlCachePolicy class is one of several ways you can enable output caching. The following list describes methods you can use to enable output caching:      -   Use the  directive to enable output caching in declarative scenarios.      -   Use the <xref:System.Web.UI.PartialCachingAttribute> attribute to enable caching for a user control in a code-behind file.      -   Use the ControlCachePolicy class to specify cache settings in programmatic scenarios in which you are working with <xref:System.Web.UI.BasePartialCachingControl> instances that have been cache-enabled using one of the previous methods and dynamically loaded using the <xref:System.Web.UI.TemplateControl.LoadControl%2A?displayProperty=fullName> method. A ControlCachePolicy instance can be successfully manipulated only between the `Init` and `PreRender` stages of the control life cycle. If you modify a ControlCachePolicy object after the `PreRender` phase, ASP.NET throws an exception, because any changes made after the control is rendered cannot actually affect cache settings (a control is cached during the `Render` stage). Finally, a user control instance (and therefore its ControlCachePolicy object) is only available for programmatic manipulation when it is actually rendered."
+  summary: "Gir programmatisk tilgang til en ASP.NET bruker kontrollens innstillinger for utdatabuffer."
+  remarks: "Klassen ControlCachePolicy brukes av utviklere i programmatisk bruker kontrollen scenarier til å angi utdata hurtigbufring for brukerkontroller (.ascx-filer). ASP.NET innebygginger brukerkontroller i en <xref:System.Web.UI.BasePartialCachingControl>forekomsten.</xref:System.Web.UI.BasePartialCachingControl> Den <xref:System.Web.UI.BasePartialCachingControl>klassen representerer en brukerkontroll som har sender hurtigbufring aktivert.</xref:System.Web.UI.BasePartialCachingControl> Når du åpner den <xref:System.Web.UI.BasePartialCachingControl.CachePolicy%2A?displayProperty=fullName>for en <xref:System.Web.UI.PartialCachingControl>kontroll, får du alltid et gyldig objekt for ControlCachePolicy.</xref:System.Web.UI.PartialCachingControl> </xref:System.Web.UI.BasePartialCachingControl.CachePolicy%2A?displayProperty=fullName> Imidlertid Hvis du får tilgang til den <xref:System.Web.UI.UserControl.CachePolicy%2A?displayProperty=fullName>for en <xref:System.Web.UI.UserControl>kontroll, du får et gyldig objekt for ControlCachePolicy Hvis brukerkontrollen brytes allerede av et <xref:System.Web.UI.BasePartialCachingControl>kontroll.</xref:System.Web.UI.BasePartialCachingControl> </xref:System.Web.UI.UserControl> </xref:System.Web.UI.UserControl.CachePolicy%2A?displayProperty=fullName> Hvis det ikke er pakket throw ControlCachePolicy-objektet som ble returnert av egenskapen unntak når du prøver å endre den fordi den ikke har en tilknyttet <xref:System.Web.UI.BasePartialCachingControl>.</xref:System.Web.UI.BasePartialCachingControl> Å finne ut om en <xref:System.Web.UI.UserControl>forekomsten støtter hurtigbufring uten å generere unntak, undersøkes den <xref:System.Web.UI.ControlCachePolicy.SupportsCaching%2A>egenskapen.</xref:System.Web.UI.ControlCachePolicy.SupportsCaching%2A> </xref:System.Web.UI.UserControl>       Ved hjelp av ControlCachePolicy klassen er en av flere måter du kan aktivere bufring av utdata. Listen nedenfor beskriver metoder for å aktivere utdatahurtigbufring:-bruke direktivet til å aktivere utdatahurtigbufring i deklarerende scenarier.      -Bruk av <xref:System.Web.UI.PartialCachingAttribute>attributtet for å aktivere hurtigbufring for en brukerkontroll i en fil med bakenforliggende kode.</xref:System.Web.UI.PartialCachingAttribute>      -Bruk klassen ControlCachePolicy til å angi innstillinger for utdatabuffer i programmatisk scenarioer der du arbeider med <xref:System.Web.UI.BasePartialCachingControl>forekomster som er hurtigbufferen aktivert ved hjelp av én av metodene og dynamisk lastes inn ved hjelp av <xref:System.Web.UI.TemplateControl.LoadControl%2A?displayProperty=fullName>metode.</xref:System.Web.UI.TemplateControl.LoadControl%2A?displayProperty=fullName> </xref:System.Web.UI.BasePartialCachingControl> En forekomst av ControlCachePolicy kan ble redigeres bare mellom den `Init` og `PreRender` faser av kontrollen levetid. Hvis du endrer en ControlCachePolicy objekt etter den `PreRender` fasen ASP.NET kaster en unntak, fordi endringer som gjøres når kontrollen gjengis kan påvirke bufferinnstillingene (en kontroll hurtigbufres under den `Render` fase). Til slutt er en kontroll brukerforekomst (og derfor ControlCachePolicy objekt) bare tilgjengelig for programmatisk redigeringen når den gjengis faktisk."
   example:
   - "The following code example demonstrates how a user control can be loaded dynamically and manipulated programmatically at run time. The <xref:System.Web.UI.PartialCachingAttribute> attribute is applied to a user control named `SimpleControl`, which means the user control is wrapped by a <xref:System.Web.UI.PartialCachingControl> control at run time. The `SimpleControl` object's caching settings can be programmatically manipulated through its associated ControlCachePolicy object, which is available through a reference to the <xref:System.Web.UI.PartialCachingControl> control that wraps it. In this example, the <xref:System.Web.UI.ControlCachePolicy.Duration%2A> property is examined during page initialization and changed using the <xref:System.Web.UI.ControlCachePolicy.SetSlidingExpiration%2A> and <xref:System.Web.UI.ControlCachePolicy.SetExpires%2A> methods if some conditions are met.  \n  \n [!code-cs[System.Web.UI.ControlCachePolicy_2#1](~/add/codesnippet/csharp/t-system.web.ui.controlc_1_1.aspx)]\n [!code-vb[System.Web.UI.ControlCachePolicy_2#1](~/add/codesnippet/visualbasic/t-system.web.ui.controlc_1_1.aspx)]  \n  \n The following code example demonstrates using the `SimpleControl` user control from a Web Forms page. To run this example successfully, make sure the user control file (.ascx), its code-behind file (.cs or .vb), and the Web Forms page that hosts the user control (.aspx) are in the same directory.  \n  \n [!code-cs[System.Web.UI.ControlCachePolicy_2#2](~/add/codesnippet/csharp/t-system.web.ui.controlc_1_2.cs)]\n [!code-vb[System.Web.UI.ControlCachePolicy_2#2](~/add/codesnippet/visualbasic/t-system.web.ui.controlc_1_2.vb)]  \n  \n [!code-cs[System.Web.UI.ControlCachePolicy_2#3](~/add/codesnippet/csharp/t-system.web.ui.controlc_1_3.ascx)]\n [!code-vb[System.Web.UI.ControlCachePolicy_2#3](~/add/codesnippet/visualbasic/t-system.web.ui.controlc_1_3.ascx)]"
   syntax:
@@ -43,12 +43,12 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "Gets or sets a value indicating whether fragment caching is enabled for the user control."
+  summary: "Henter eller angir en verdi som angir om fragment hurtigbufring er aktivert for brukerkontrollen som."
   syntax:
     content: public bool Cached { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the user control&quot;s output is cached; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis brukerkontrollen malens utdatanavn er bufret; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.ControlCachePolicy.Cached*
   exceptions:
   - type: System.Web.HttpException
@@ -68,13 +68,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "Gets or sets an instance of the <xref href=&quot;System.Web.Caching.CacheDependency&quot;></xref> class associated with the cached user control output."
-  remarks: "The Dependency property delegates to the <xref:System.Web.UI.BasePartialCachingControl.Dependency%2A> property of the <xref:System.Web.UI.BasePartialCachingControl> control that wraps the user control. When the <xref:System.Web.Caching.CacheDependency> instance is invalidated, the user control is removed from the cache."
+  summary: "Henter eller angir en forekomst av den <xref href=&quot;System.Web.Caching.CacheDependency&quot;> </xref> klassen som er knyttet til bufrede bruker kontrollen utdataene."
+  remarks: "Egenskapen avhengighet delegerer til den <xref:System.Web.UI.BasePartialCachingControl.Dependency%2A>for den <xref:System.Web.UI.BasePartialCachingControl>kontrollen som bryter brukerkontroll.</xref:System.Web.UI.BasePartialCachingControl> </xref:System.Web.UI.BasePartialCachingControl.Dependency%2A> Når den <xref:System.Web.Caching.CacheDependency>forekomsten ikke er gyldig, brukerkontrollen er fjernet fra hurtigbufferen.</xref:System.Web.Caching.CacheDependency>"
   syntax:
     content: public System.Web.Caching.CacheDependency Dependency { get; set; }
     return:
       type: System.Web.Caching.CacheDependency
-      description: "The <xref href=&quot;System.Web.Caching.CacheDependency&quot;></xref> associated with the control. The default is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "Den <xref href=&quot;System.Web.Caching.CacheDependency&quot;> </xref> tilknyttet kontrollen. Standard <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.ControlCachePolicy.Dependency*
   exceptions:
   - type: System.Web.HttpException
@@ -94,15 +94,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "Gets or sets the amount of time that cached items are to remain in the output cache."
-  remarks: "If an absolute expiration policy is set using the <xref:System.Web.UI.ControlCachePolicy.SetSlidingExpiration%2A> method, the Duration property returns the amount of time remaining until cache entry expiration."
+  summary: "Henter eller angir hvor lang tid bufrede elementer som skal beholdes i utdatabufferen."
+  remarks: "Hvis en policy for absolutt utløpsdato angis ved hjelp av den <xref:System.Web.UI.ControlCachePolicy.SetSlidingExpiration%2A>metoden, egenskapen Duration returnerer mengden tid som gjenstår til hurtigbufferen oppføring utløpsdato.</xref:System.Web.UI.ControlCachePolicy.SetSlidingExpiration%2A>"
   example:
   - "The following code example demonstrates how a user control can be loaded dynamically and manipulated programmatically at run time. The <xref:System.Web.UI.PartialCachingAttribute> attribute is applied to a user control named `SimpleControl`, which means it is wrapped by a <xref:System.Web.UI.PartialCachingControl> control at run time. The `SimpleControl` object's caching settings can be programmatically manipulated through its associated <xref:System.Web.UI.ControlCachePolicy> object, which is available through a reference to the <xref:System.Web.UI.PartialCachingControl> control that wraps it. In this example, the Duration property is examined during page initialization and cache expiration is changed if some conditions are met. This example is part of a larger example provided for the <xref:System.Web.UI.ControlCachePolicy> class.  \n  \n [!code-cs[System.Web.UI.ControlCachePolicy_2#1](~/add/codesnippet/csharp/p-system.web.ui.controlc_0_1.aspx)]\n [!code-vb[System.Web.UI.ControlCachePolicy_2#1](~/add/codesnippet/visualbasic/p-system.web.ui.controlc_0_1.aspx)]"
   syntax:
     content: public TimeSpan Duration { get; set; }
     return:
       type: System.TimeSpan
-      description: "A <xref:System.TimeSpan> that represents the amount of time a user control is to remain in the output cache. The default is <xref:System.TimeSpan>."
+      description: "En <xref:System.TimeSpan>som angir hvor lang tid en brukerkontrollen må være i utdatabufferen.</xref:System.TimeSpan> Standard er <xref:System.TimeSpan>.</xref:System.TimeSpan>"
   overload: System.Web.UI.ControlCachePolicy.Duration*
   exceptions:
   - type: System.Web.HttpException
@@ -122,21 +122,21 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "Gets or sets the name of the output-cache provider that is associated with a control instance."
-  remarks: "The ProviderName property enables you to specify the current output-cache provider that is associated with a control, by using the <xref:System.Web.UI.ControlCachePolicy> instance. This property can be set only before the <xref:System.Web.UI.Control.PreRender> event occurs in the control life cycle."
+  summary: "Henter eller angir navnet på utdatabufferen leverandøren som er knyttet til en forekomst av kontrollen."
+  remarks: "Egenskapen ProviderName kan du angi gjeldende utdatabufferen leverandør som er knyttet til en kontroll ved hjelp av den <xref:System.Web.UI.ControlCachePolicy>forekomsten.</xref:System.Web.UI.ControlCachePolicy> Denne egenskapen kan angis bare før den <xref:System.Web.UI.Control.PreRender>inntreffer i kontrollen livssyklus.</xref:System.Web.UI.Control.PreRender>"
   syntax:
     content: public string ProviderName { get; set; }
     return:
       type: System.String
-      description: "The name of the provider."
+      description: "Navnet på leverandøren."
   overload: System.Web.UI.ControlCachePolicy.ProviderName*
   exceptions:
   - type: System.Configuration.Provider.ProviderException
     commentId: T:System.Configuration.Provider.ProviderException
-    description: "The provider name was not found."
+    description: "Leverandørnavn ble ikke funnet."
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "An attempt was made to set the ProviderName property during or after the <xref href=&quot;System.Web.UI.Control.PreRender&quot;></xref> event."
+    description: "Forsøk på å angi egenskapen ProviderName under eller etter den <xref href=&quot;System.Web.UI.Control.PreRender&quot;> </xref> hendelsen."
   platform:
   - net462
 - uid: System.Web.UI.ControlCachePolicy.SetExpires(System.DateTime)
@@ -151,8 +151,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "Instructs the <xref href=&quot;System.Web.UI.BasePartialCachingControl&quot;></xref> control that wraps the user control to expire the cache entry at the specified date and time."
-  remarks: "Use the SetExpires and <xref:System.Web.UI.ControlCachePolicy.SetSlidingExpiration%2A> methods (passing `true`) to instruct the <xref:System.Web.UI.BasePartialCachingControl> control that wraps the user control to use a sliding expiration caching policy instead of an absolute expiration policy. Use the SetExpires method and the <xref:System.Web.UI.ControlCachePolicy.SetSlidingExpiration%2A> method (passing `false`) to specify an absolute expiration policy."
+  summary: "Angir at det <xref href=&quot;System.Web.UI.BasePartialCachingControl&quot;> </xref> kontrollen som bryter brukerkontrollen Hvis du vil utløpe hurtigbufferoppføringen på angitt dato og klokkeslett."
+  remarks: "Bruk av SetExpires og <xref:System.Web.UI.ControlCachePolicy.SetSlidingExpiration%2A>metoder (Kast `true`) til å be den <xref:System.Web.UI.BasePartialCachingControl>kontrollen som bryter brukerkontrollen Hvis du vil bruke en glidende utløp hurtigbufring policyen i stedet for en policy for absolutt utløpsdato.</xref:System.Web.UI.BasePartialCachingControl> </xref:System.Web.UI.ControlCachePolicy.SetSlidingExpiration%2A> Bruk metoden SetExpires og <xref:System.Web.UI.ControlCachePolicy.SetSlidingExpiration%2A>metoden (Kast `false`) til å angi en policy for absolutt utløpsdato.</xref:System.Web.UI.ControlCachePolicy.SetSlidingExpiration%2A>"
   example:
   - "The following code example demonstrates how a user control can be loaded dynamically and manipulated programmatically at run time. The <xref:System.Web.UI.PartialCachingAttribute> attribute is applied to a user control named `SimpleControl`, which means the user control is wrapped by a <xref:System.Web.UI.PartialCachingControl> control at run time. The `SimpleControl` object's caching settings can be programmatically manipulated through its associated <xref:System.Web.UI.ControlCachePolicy> object, which is available through a reference to the <xref:System.Web.UI.PartialCachingControl> control that wraps it. In this example, the <xref:System.Web.UI.ControlCachePolicy.Duration%2A> property is examined during page initialization and changed using the <xref:System.Web.UI.ControlCachePolicy.SetSlidingExpiration%2A> and SetExpires methods if some conditions are met. This example is part of a larger example provided for the <xref:System.Web.UI.ControlCachePolicy> class.  \n  \n [!code-cs[System.Web.UI.ControlCachePolicy_2#1](~/add/codesnippet/csharp/m-system.web.ui.controlc_2_1.aspx)]\n [!code-vb[System.Web.UI.ControlCachePolicy_2#1](~/add/codesnippet/visualbasic/m-system.web.ui.controlc_2_1.aspx)]"
   syntax:
@@ -160,12 +160,12 @@ items:
     parameters:
     - id: expirationTime
       type: System.DateTime
-      description: "A <xref:System.DateTime> after which the cached entry expires."
+      description: "En <xref:System.DateTime>etter den hurtigbufrede oppføringen utløper.</xref:System.DateTime>"
   overload: System.Web.UI.ControlCachePolicy.SetExpires*
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "The user control is not associated with a <xref href=&quot;System.Web.UI.BasePartialCachingControl&quot;></xref> and is not cacheable."
+    description: "Brukeren er ikke knyttet et <xref href=&quot;System.Web.UI.BasePartialCachingControl&quot;> </xref> og er ikke cacheable."
   platform:
   - net462
 - uid: System.Web.UI.ControlCachePolicy.SetSlidingExpiration(System.Boolean)
@@ -180,8 +180,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "Instructs the <xref href=&quot;System.Web.UI.BasePartialCachingControl&quot;></xref> control that wraps the user control to set the user control&quot;s cache entry to use sliding or absolute expiration."
-  remarks: "Use the <xref:System.Web.UI.ControlCachePolicy.SetExpires%2A> and SetSlidingExpiration methods (passing `true`) to instruct the <xref:System.Web.UI.BasePartialCachingControl> control that wraps the user control to use a sliding expiration caching policy instead of an absolute expiration policy. Use the <xref:System.Web.UI.ControlCachePolicy.SetExpires%2A> method and the SetSlidingExpiration method (passing `false`) to specify an absolute expiration policy."
+  summary: "Angir at det <xref href=&quot;System.Web.UI.BasePartialCachingControl&quot;> </xref> kontrollen som bryter brukerkontrollen Hvis du vil angi brukeren kontrollens hurtigbufferoppføringen bruke glidende eller absolutte utløp."
+  remarks: "Bruk av <xref:System.Web.UI.ControlCachePolicy.SetExpires%2A>og SetSlidingExpiration metoder (sending `true`) til å be den <xref:System.Web.UI.BasePartialCachingControl>kontrollen som bryter brukerkontrollen Hvis du vil bruke en glidende utløp hurtigbufring policyen i stedet for en policy for absolutt utløpsdato.</xref:System.Web.UI.BasePartialCachingControl> </xref:System.Web.UI.ControlCachePolicy.SetExpires%2A> Bruk den <xref:System.Web.UI.ControlCachePolicy.SetExpires%2A>metoden og metoden SetSlidingExpiration (Kast `false`) til å angi en policy for absolutt utløpsdato.</xref:System.Web.UI.ControlCachePolicy.SetExpires%2A>"
   example:
   - "The following code example demonstrates how a user control can be loaded dynamically and manipulated programmatically at run time. A user control named `SimpleControl` is decorated with a <xref:System.Web.UI.PartialCachingAttribute> attribute, which means it is wrapped by a <xref:System.Web.UI.PartialCachingControl> control at run time. The `SimpleControl` object's caching settings can be programmatically manipulated through its associated <xref:System.Web.UI.ControlCachePolicy> object, which is available through a reference to the <xref:System.Web.UI.PartialCachingControl> control that wraps it. In this example, caching settings are examined during page initialization and changed if some conditions are met. This example is part of a larger example provided for the <xref:System.Web.UI.ControlCachePolicy> class.  \n  \n [!code-cs[System.Web.UI.ControlCachePolicy_2#1](~/add/codesnippet/csharp/m-system.web.ui.controlc_8_1.aspx)]\n [!code-vb[System.Web.UI.ControlCachePolicy_2#1](~/add/codesnippet/visualbasic/m-system.web.ui.controlc_8_1.aspx)]"
   syntax:
@@ -189,12 +189,12 @@ items:
     parameters:
     - id: useSlidingExpiration
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to use sliding cache expiration instead of absolute expiration; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>bruke glidende hurtigbufferen utløper i stedet for absolutte utløp; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.ControlCachePolicy.SetSlidingExpiration*
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "The user control is not associated with a <xref href=&quot;System.Web.UI.BasePartialCachingControl&quot;></xref> and is not cacheable."
+    description: "Brukeren er ikke knyttet et <xref href=&quot;System.Web.UI.BasePartialCachingControl&quot;> </xref> og er ikke cacheable."
   platform:
   - net462
 - uid: System.Web.UI.ControlCachePolicy.SetVaryByCustom(System.String)
@@ -209,19 +209,19 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "Sets a list of custom strings that the output cache will use to vary the user control."
-  remarks: "If you pass &quot;browser&quot; as the `varyByCustom` parameter, the user control will be varied by browser type and major version number. If another custom string is entered, you must override the <xref:System.Web.HttpApplication.GetVaryByCustomString%2A> method in your application&quot;s Global.asax file."
+  summary: "Angir en liste over egendefinerte strenger utdatabufferen vil bruke til å variere brukerkontrollen."
+  remarks: "Hvis du sender &quot;nettleseren&quot; som den `varyByCustom` parameteren brukerkontrollen vil varierer som nettlesertype og hovedversjonsnummer. Hvis en annen egendefinert streng er angitt, må du overstyre den <xref:System.Web.HttpApplication.GetVaryByCustomString%2A>metoden i filen Global.asax for programmets.</xref:System.Web.HttpApplication.GetVaryByCustomString%2A>"
   syntax:
     content: public void SetVaryByCustom (string varyByCustom);
     parameters:
     - id: varyByCustom
       type: System.String
-      description: "The list of custom strings."
+      description: "Listen over egendefinerte strenger."
   overload: System.Web.UI.ControlCachePolicy.SetVaryByCustom*
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "The user control is not associated with a <xref href=&quot;System.Web.UI.BasePartialCachingControl&quot;></xref> and is not cacheable."
+    description: "Brukeren er ikke knyttet et <xref href=&quot;System.Web.UI.BasePartialCachingControl&quot;> </xref> og er ikke cacheable."
   platform:
   - net462
 - uid: System.Web.UI.ControlCachePolicy.SupportsCaching
@@ -236,13 +236,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "Gets a value indicating whether the user control supports caching."
-  remarks: "A user control supports caching if it is associated with a <xref:System.Web.UI.BasePartialCachingControl> instance, which signals that either an  directive was parsed by the ASP.NET parser or the user control was decorated with a <xref:System.Web.UI.PartialCachingAttribute> attribute."
+  summary: "Henter en verdi som angir om brukerkontrollen støtter hurtigbufring."
+  remarks: "En brukerkontroll støtter hurtigbufring hvis den er knyttet til en <xref:System.Web.UI.BasePartialCachingControl>forekomsten som angir at en direktivet ble analysert av parseren ASP.NET, eller brukerkontrollen ble dekorert med en <xref:System.Web.UI.PartialCachingAttribute>attributtet.</xref:System.Web.UI.PartialCachingAttribute> </xref:System.Web.UI.BasePartialCachingControl>"
   syntax:
     content: public bool SupportsCaching { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the user control supports caching; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis brukerkontrollen støtter hurtigbufring; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.ControlCachePolicy.SupportsCaching*
   exceptions: []
   platform:
@@ -259,12 +259,12 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "Gets or sets a list of control identifiers to vary the cached output by."
+  summary: "Henter eller angir en liste over kontroll identifikatorer til å variere bufrede resultatet av."
   syntax:
     content: public string VaryByControl { get; set; }
     return:
       type: System.String
-      description: "A semicolon-separated list of strings used to vary a user control&quot;s output cache. These strings represent the <xref:System.Web.UI.Control.ID*> property values of ASP.NET server controls declared in the user control."
+      description: "Et semikolon-separert liste over strenger som brukes til å variere en kontroll utdatabufferen. Disse strengene representerer den <xref:System.Web.UI.Control.ID*>egenskapsverdiene for ASP.NET-serverkontroller deklarert i brukerkontroll.</xref:System.Web.UI.Control.ID*>"
   overload: System.Web.UI.ControlCachePolicy.VaryByControl*
   exceptions:
   - type: System.Web.HttpException
@@ -284,18 +284,18 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI
-  summary: "Gets or sets a list of <xref uid=&quot;langword_csharp_GET&quot; name=&quot;GET&quot; href=&quot;&quot;></xref> or <xref uid=&quot;langword_csharp_POST&quot; name=&quot;POST&quot; href=&quot;&quot;></xref> parameter names to vary the cached output by."
-  remarks: "By default, these strings correspond to a query string value sent with the GET method or to a parameter sent using the POST method. When the VaryByParams property is set to multiple parameters, the output cache contains a different version of the requested document for each specified parameter. Possible values include &quot;none&quot;, &quot;*&quot;, and any valid query string or POST parameter name."
+  summary: "Henter eller angir en liste over <xref uid=&quot;langword_csharp_GET&quot; name=&quot;GET&quot; href=&quot;&quot;> </xref> eller <xref uid=&quot;langword_csharp_POST&quot; name=&quot;POST&quot; href=&quot;&quot;> </xref> parameternavn til å variere bufrede resultatet av."
+  remarks: "Som standard svarer disse strengene til en spørring strengverdi sendt med GET-metoden eller en parameter som er sendt med POST-metoden. Når egenskapen VaryByParams er satt til flere parametere, inneholder en annen versjon av dokumentet for hver angitte parameter i utdatabufferen. Mulige verdier inkluderer &quot;none&quot;, &quot;*&quot;, og gyldig spørringsstrengen eller POST parameternavn."
   syntax:
     content: public System.Web.HttpCacheVaryByParams VaryByParams { get; }
     return:
       type: System.Web.HttpCacheVaryByParams
-      description: "A semicolon-separated list of strings used to vary the output cache."
+      description: "En atskilt med semikolon liste over strenger som brukes til å variere utdatabufferen."
   overload: System.Web.UI.ControlCachePolicy.VaryByParams*
   exceptions:
   - type: System.Web.HttpException
     commentId: T:System.Web.HttpException
-    description: "The user control is not associated with a <xref href=&quot;System.Web.UI.BasePartialCachingControl&quot;></xref> and is not cacheable."
+    description: "Brukeren er ikke knyttet et <xref href=&quot;System.Web.UI.BasePartialCachingControl&quot;> </xref> og er ikke cacheable."
   platform:
   - net462
 references:

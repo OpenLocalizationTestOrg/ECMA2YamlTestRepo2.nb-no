@@ -11,8 +11,8 @@ items:
   nameWithType: IHttpHandler
   fullName: System.Web.IHttpHandler
   type: Interface
-  summary: "Defines the contract that ASP.NET implements to synchronously process HTTP Web requests using custom HTTP handlers."
-  remarks: "You can write custom HTTP handlers to process specific, predefined types of HTTP requests in any Common Language Specification (CLS) compliant language. Executable code defined in the `HttpHandler` classes, rather than conventional ASP or ASP.NET Web pages, responds to these specific requests. HTTP handlers give you a means of interacting with the low-level request and response services of the IIS Web server and provide functionality much like ISAPI extensions but with a simpler programming model.       If your handler will access session state values, it must implement the <xref:System.Web.SessionState.IRequiresSessionState> interface (a marker interface with no methods)."
+  summary: "Definerer kontrakten som implementerer ASP.NET for å behandle synkront HTTP Web-forespørsler ved hjelp av egendefinert HTTP-behandlingsprogrammer."
+  remarks: "Du kan skrive egendefinert HTTP-behandlingsprogrammer for å behandle bestemt, forhåndsdefinerte typer HTTP-forespørsler i noe samsvar språk Common Language spesifikasjonen (CLS). Kjørbar kode som er definert i den `HttpHandler` klasser, i stedet for konvensjonelt ASP eller ASP.NET Web pages, svarer på disse bestemte forespørsler. HTTP-behandlingsprogrammer gir deg publikasjonens samhandling med lavt nivå forespørselen og svar-tjenester for IIS-nettserveren, og angi funksjonalitet mye som ISAPI-utvidelser, men med en enklere programming modell.       Hvis behandlingsprogrammet tilgang økten tilstand verdier, må den implementere den <xref:System.Web.SessionState.IRequiresSessionState>grensesnittet (et merke grensesnitt med ingen metoder).</xref:System.Web.SessionState.IRequiresSessionState>"
   syntax:
     content: public interface IHttpHandler
   implements: []
@@ -30,15 +30,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Gets a value indicating whether another request can use the <xref href=&quot;System.Web.IHttpHandler&quot;></xref> instance."
-  remarks: "You explicitly set the IsReusable property to `true` or `false` by code you provide that overrides the IsReusable property accessor (getter)."
+  summary: "Henter en verdi som angir om en ny forespørsel kan bruke den <xref href=&quot;System.Web.IHttpHandler&quot;> </xref> forekomsten."
+  remarks: "Du har angitt IsReusable-egenskapen `true` eller `false` av en kode du oppgi som overstyrer IsReusable Egenskapsaksessor (getter)."
   example:
   - "The following code example writes four lines of text to the HTTP output stream in response to a client request for a page named handler.aspx. All requests for handler.aspx are serviced by the `MyHttpHandler` class in the namespace `HandlerExample` contained in the assembly HandlerTest.dll.  \n  \n [!code-cs[Classic IHttpHandler.ProcessRequest Example#1](~/add/codesnippet/csharp/p-system.web.ihttphandle_1.cs)]\n [!code-vb[Classic IHttpHandler.ProcessRequest Example#1](~/add/codesnippet/visualbasic/p-system.web.ihttphandle_1.vb)]"
   syntax:
     content: public bool IsReusable { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref href=&quot;System.Web.IHttpHandler&quot;></xref> instance is reusable; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis den <xref href=&quot;System.Web.IHttpHandler&quot;> </xref> forekomsten er gjenbrukbart; ellers, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.IHttpHandler.IsReusable*
   exceptions: []
   platform:
@@ -55,8 +55,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web
-  summary: "Enables processing of HTTP Web requests by a custom <xref uid=&quot;langword_csharp_HttpHandler&quot; name=&quot;HttpHandler&quot; href=&quot;&quot;></xref> that implements the <xref href=&quot;System.Web.IHttpHandler&quot;></xref> interface."
-  remarks: "Place your custom `HttpHandler` code in the ProcessRequest virtual method, as shown in the following example."
+  summary: "Aktiverer behandling av HTTP-forespørsler med en egendefinert <xref uid=&quot;langword_csharp_HttpHandler&quot; name=&quot;HttpHandler&quot; href=&quot;&quot;> </xref> som implementerer den <xref href=&quot;System.Web.IHttpHandler&quot;> </xref> grensesnitt."
+  remarks: "Plasser egendefinert `HttpHandler` code i OneNote.ashx virtuelle metoden, som vist i eksemplet nedenfor."
   example:
   - "The following code example writes four lines of text to the HTTP output stream in response to a client request for a page named handler.aspx. All requests for handler.aspx are serviced by the `MyHttpHandler` class in the namespace `HandlerExample` contained in the assembly HandlerTest.dll.  \n  \n [!code-cs[Classic IHttpHandler.ProcessRequest Example#1](~/add/codesnippet/csharp/m-system.web.ihttphandle_1.cs)]\n [!code-vb[Classic IHttpHandler.ProcessRequest Example#1](~/add/codesnippet/visualbasic/m-system.web.ihttphandle_1.vb)]"
   syntax:
@@ -64,7 +64,7 @@ items:
     parameters:
     - id: context
       type: System.Web.HttpContext
-      description: "An <xref href=&quot;System.Web.HttpContext&quot;></xref> object that provides references to the intrinsic server objects (for example, <xref uid=&quot;langword_csharp_Request&quot; name=&quot;Request&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_Response&quot; name=&quot;Response&quot; href=&quot;&quot;></xref>, <xref uid=&quot;langword_csharp_Session&quot; name=&quot;Session&quot; href=&quot;&quot;></xref>, and <xref uid=&quot;langword_csharp_Server&quot; name=&quot;Server&quot; href=&quot;&quot;></xref>) used to service HTTP requests."
+      description: "En <xref href=&quot;System.Web.HttpContext&quot;> </xref> objekt som inneholder referanser til de innebygde serverobjektene (for eksempel <xref uid=&quot;langword_csharp_Request&quot; name=&quot;Request&quot; href=&quot;&quot;> </xref>, <xref uid=&quot;langword_csharp_Response&quot; name=&quot;Response&quot; href=&quot;&quot;> </xref>, <xref uid=&quot;langword_csharp_Session&quot; name=&quot;Session&quot; href=&quot;&quot;> </xref>, og <xref uid=&quot;langword_csharp_Server&quot; name=&quot;Server&quot; href=&quot;&quot;> </xref>) brukes til å behandle HTTP-forespørsler."
   overload: System.Web.IHttpHandler.ProcessRequest*
   exceptions: []
   platform:

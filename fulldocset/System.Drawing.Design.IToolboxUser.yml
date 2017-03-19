@@ -11,8 +11,8 @@ items:
   nameWithType: IToolboxUser
   fullName: System.Drawing.Design.IToolboxUser
   type: Interface
-  summary: "Defines an interface for setting the currently selected toolbox item and indicating whether a designer supports a particular toolbox item."
-  remarks: "This interface provides toolbox support functions to designers. The <xref:System.Drawing.Design.IToolboxUser.GetToolSupported%2A> method indicates whether the specified <xref:System.Drawing.Design.ToolboxItem> can be used when the current designer is active. The <xref:System.Drawing.Design.IToolboxUser.ToolPicked%2A> method selects the specified <xref:System.Drawing.Design.ToolboxItem>."
+  summary: "Definerer et grensesnitt for å angi merkede verktøykasseelementet og som angir om en designer støtter et bestemt verktøykassen-element."
+  remarks: "Dette grensesnittet inneholder verktøykassen støtte funksjoner for utviklere. Den <xref:System.Drawing.Design.IToolboxUser.GetToolSupported%2A>metoden angir om den angitte <xref:System.Drawing.Design.ToolboxItem>kan bare brukes når gjeldende designer er aktiv.</xref:System.Drawing.Design.ToolboxItem> </xref:System.Drawing.Design.IToolboxUser.GetToolSupported%2A> <xref:System.Drawing.Design.IToolboxUser.ToolPicked%2A>Metoden merker det angitte <xref:System.Drawing.Design.ToolboxItem>.</xref:System.Drawing.Design.ToolboxItem> </xref:System.Drawing.Design.IToolboxUser.ToolPicked%2A>"
   example:
   - "The following code example demonstrates an implementation of the IToolboxUser interface that can restrict support for specific types of <xref:System.Drawing.Design.ToolboxItem> objects.  \n  \n [!code-vb[IToolboxUserExample#1](~/add/codesnippet/visualbasic/t-system.drawing.design._6_1.vb)]\n [!code-cs[IToolboxUserExample#1](~/add/codesnippet/csharp/t-system.drawing.design._6_1.cs)]\n [!code-cpp[IToolboxUserExample#1](~/add/codesnippet/cpp/t-system.drawing.design._6_1.cpp)]"
   syntax:
@@ -32,8 +32,8 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing.Design
-  summary: "Gets a value indicating whether the specified tool is supported by the current designer."
-  remarks: "If the specified tool is supported by the designer implementing the <xref:System.Drawing.Design.IToolboxUser> interface, then the tool will be enabled in the toolbox when this designer has focus. Otherwise, it will be disabled. Once a tool is marked as enabled or disabled, it may not be tested for support with the same designer again."
+  summary: "Henter en verdi som angir om det angitte verktøyet som støttes av gjeldende designer."
+  remarks: "Hvis det angitte verktøyet som støttes av designer implementering av <xref:System.Drawing.Design.IToolboxUser>grensesnitt, og deretter verktøyet aktiveres i verktøykassen når utformeren har fokus.</xref:System.Drawing.Design.IToolboxUser> Hvis ikke, den vil bli deaktivert. Når et verktøy som er merket som aktivert eller deaktivert, den kan ikke testes for støtte med samme designer på nytt."
   example:
   - "The following code example demonstrates an implementation of the GetToolSupported method.  \n  \n [!code-vb[IToolboxUserExample#2](~/add/codesnippet/visualbasic/4da8de2f-7353-4e05-b88e-_1.vb)]\n [!code-cs[IToolboxUserExample#2](~/add/codesnippet/csharp/4da8de2f-7353-4e05-b88e-_1.cs)]\n [!code-cpp[IToolboxUserExample#2](~/add/codesnippet/cpp/4da8de2f-7353-4e05-b88e-_1.cpp)]"
   syntax:
@@ -41,10 +41,10 @@ items:
     parameters:
     - id: tool
       type: System.Drawing.Design.ToolboxItem
-      description: "The <xref href=&quot;System.Drawing.Design.ToolboxItem&quot;></xref> to be tested for toolbox support."
+      description: "Den <xref href=&quot;System.Drawing.Design.ToolboxItem&quot;> </xref> som skal testes for verktøykassen kundestøtte."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the tool is supported by the toolbox and can be enabled; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if the document designer does not know how to use the tool."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis verktøyet som støttes av verktøykassen og kan være aktivert. <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> Hvis dokumentet designer ikke vet hvordan du bruker verktøyet."
   overload: System.Drawing.Design.IToolboxUser.GetToolSupported*
   exceptions: []
   platform:
@@ -61,14 +61,14 @@ items:
   assemblies:
   - System.Drawing
   namespace: System.Drawing.Design
-  summary: "Selects the specified tool."
-  remarks: "ToolPicked is called when the user double-clicks on a toolbox item. The document designer should create a component for the specified tool. The Visual Studio integrated development environment will only call ToolPicked on tools that are enabled in the toolbox."
+  summary: "Velg verktøyet angitt."
+  remarks: "ToolPicked kalles når en bruker dobbeltklikker et verktøykassen-element. Dokumentet designer må opprette en komponent for det angitte verktøyet. Visual Studio integrert utviklingsmiljøet kan bare kalle ToolPicked verktøy som er aktivert i verktøykassen."
   syntax:
     content: public void ToolPicked (System.Drawing.Design.ToolboxItem tool);
     parameters:
     - id: tool
       type: System.Drawing.Design.ToolboxItem
-      description: "The <xref href=&quot;System.Drawing.Design.ToolboxItem&quot;></xref> to select."
+      description: "Den <xref href=&quot;System.Drawing.Design.ToolboxItem&quot;> </xref> du velger."
   overload: System.Drawing.Design.IToolboxUser.ToolPicked*
   exceptions: []
   platform:
