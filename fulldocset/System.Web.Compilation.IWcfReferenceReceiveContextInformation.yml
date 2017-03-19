@@ -10,8 +10,8 @@ items:
   nameWithType: IWcfReferenceReceiveContextInformation
   fullName: System.Web.Compilation.IWcfReferenceReceiveContextInformation
   type: Interface
-  summary: "Defines the interface to implement to obtain additional context information."
-  remarks: "This interface enables the WSDL importer mechanismto receive extra context information for better proxy generation and a better developer experience inside Visual Studio. If the WSDL importer implements the IWcfReferenceReceiveContextInformation interface, the `ReceiveImportContextInformation` method will be called by the WCF proxy generator before any methods of <xref:System.ServiceModel.Description.IWsdlImportExtension> and <xref:System.ServiceModel.Description.IPolicyImportExtension> are called.       The additional context information refers to the parameters passed to the `ReceiveImportContextInformation` method. The parameters include the content of any extension files and a reference to an object that implements the <xref:System.IServiceProvider> interface. Any extension files passed to the method are specific to the importer and are used to store any additional information they need. That is, Visual Studio does not control the content of these files and does not use them directly.      > [!NOTE] >  Importers refer to a WCF extensibility mechanism. This mechanism enables you to customize the way proxy code is generated from metadata (WSDL/XSD) documents that describe the service. For more information, see [Importing Custom Metadata for a WCF Extension](http://go.microsoft.com/fwlink/?LinkId=92310) on MSDN."
+  summary: "Definerer grensesnittet for å implementere for å få ytterligere kontekstinformasjon."
+  remarks: "Dette grensesnittet aktiverer WSDL importer mechanismto motta ekstra konteksten for generering av bedre og bedre utvikler oppleve i Visual Studio. Hvis WSDL-importer implementerer grensesnittet IWcfReferenceReceiveContextInformation den `ReceiveImportContextInformation` metoder kan kalles av WCF proxy generatoren før noen metoder på <xref:System.ServiceModel.Description.IWsdlImportExtension>og <xref:System.ServiceModel.Description.IPolicyImportExtension>kalles.</xref:System.ServiceModel.Description.IPolicyImportExtension> </xref:System.ServiceModel.Description.IWsdlImportExtension>       Den ekstra informasjon om sikkerhetskontekst som refererer til parameterne som sendes til den `ReceiveImportContextInformation` metoden. Parameterne inkluderer innholdet i alle filer med filtypen og en referanse til et objekt som implementerer den <xref:System.IServiceProvider>grensesnittet.</xref:System.IServiceProvider> Utvidelsesfiler sendt til metoden er spesifikke for import og brukes til å lagre de trenger mer informasjon. Det vil si Visual Studio kontrollerer ikke innholdet i filene og bruke dem ikke direkte.      > [!NOTE] > Import referere til en WCF extensibility mekanisme. Denne mekanisme kan du tilpasse slik proxy-koden er generert fra metadata (WSDL/XSD) dokumenter som beskriver tjenesten. Hvis du vil ha mer informasjon, se [import egendefinert metadataene for filtypen WCF](http://go.microsoft.com/fwlink/?LinkId=92310) på MSDN."
   syntax:
     content: public interface IWcfReferenceReceiveContextInformation
   implements: []
@@ -29,17 +29,17 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.Compilation
-  summary: "Gets additional context information."
-  remarks: "The `serviceReferenceExtensionFileContents` parameter provides the content of any extension files associated with the .svcmap file of a WCF service reference, such as Reference.config or custom extension files that have been added through extensibility.      > [!NOTE] >  Any interface received from the service provider that is specific to Visual Studio will not be available to an import extension when running in the context of an ASP.NET build provider. This is the case when a WCF service reference is compiled in an ASP.NET project."
+  summary: "Henter informasjon for ytterligere kontekst."
+  remarks: "Den `serviceReferenceExtensionFileContents` parameteren gir innholdet i Utvidelsesfiler som er forbundet med .svcmap-fil med en WCF-tjenesten-referanse, for eksempel Reference.config eller egendefinert Utvidelsesfiler som er lagt til utvidelsesevne.      > [!NOTE] > Alle grensesnitt som er mottatt fra tjenesteleverandøren som er spesifikk for Visual Studio blir ikke tilgjengelig for filtypen import når du kjører i konteksten for en leverandør for ASP.NET-kompilering. Dette er tilfellet når en referanse for WCF-tjenesten er kompilert i en ASP.NET-prosjekt."
   syntax:
     content: public void ReceiveImportContextInformation (System.Collections.Generic.IDictionary<string,byte[]> serviceReferenceExtensionFileContents, IServiceProvider serviceProvider);
     parameters:
     - id: serviceReferenceExtensionFileContents
       type: System.Collections.Generic.IDictionary{System.String,System.Byte[]}
-      description: "Provides the content of any extension files that are associated with the .svcmap file of a WCF service reference."
+      description: "Gir innholdet i Utvidelsesfiler som er knyttet til filen .svcmap for en referanse for WCF-tjenesten."
     - id: serviceProvider
       type: System.IServiceProvider
-      description: "A reference to a Visual Studio service provider to be queried for additional information."
+      description: "En referanse til Visual Studio tjenesteleverandører spørres for mer informasjon."
   overload: System.Web.Compilation.IWcfReferenceReceiveContextInformation.ReceiveImportContextInformation*
   exceptions: []
   platform:
