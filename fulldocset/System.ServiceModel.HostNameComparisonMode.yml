@@ -12,8 +12,8 @@ items:
   nameWithType: HostNameComparisonMode
   fullName: System.ServiceModel.HostNameComparisonMode
   type: Enum
-  summary: "Specifies how the host name should be used in URI comparisons when dispatching an incoming message to a service endpoint."
-  remarks: "The value is used to specify the URI matching rules used by transports such as HTTP, Net.Tcp, and Net.Pipe when dispatching incoming messages. Configure the value of the HostNameComparisonMode for a standard binding using one of the preceding transports, such as <xref:System.ServiceModel.BasicHttpBinding>, using the corresponding <xref:System.ServiceModel.BasicHttpBinding.HostNameComparisonMode%2A> property. Configure the value of the HostNameComparisonMode for a binding element using one of the preceding transports, such as <xref:System.ServiceModel.Channels.HttpTransportBindingElement>, using the corresponding <xref:System.ServiceModel.Channels.HttpTransportBindingElement.HostNameComparisonMode%2A> property.       Each value of the HostNameComparisonMode corresponds to a specific type of matching rule. The sequence of matching rules attempted is always ordered as follows:      1.  StrongWildcard      2.  Exact      3.  WeakWildcard       The first value, StrongWildcard, ignores the host name when matching and it takes the highest precedence of the three different matching modes. It is the default value for a [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] system-provided binding or binding element. This indicates that a service endpoint can be reached using any valid host name. For example, if MyService is hosted using http://localhost/MyService, it is still reachable using http://www.adatum.com/MyService because the (presumably valid) host name, &quot;adatum.com&quot;, is ignored. Note that the port is a wildcard here as well.       The second value, Exact, requires that an exact match is found with the URI specified, including the hostname, if no strong match is found. This mode, for example, does not perform equivalence between short hostnames and fully-qualified domain names. This allows hostnames to be used as match criteria in the scenarios where multiple hosts are assigned a single IP address and it enables different services to be hosted on the same machine with distinct endpoints. Note that the port is a wildcard here as well.       The third value, WeakWildcard, matches by ignoring the hostname if no strong or exact match was found. The behavior is the same as for StrongWildcard other than the order of matching: it runs after the strong and exact bindings have been tried.      > [!NOTE] >  These values have no effect when used inside of the Internet Information Services (IIS) or Windows Process Activation Service (WAS) hosting environment. In those cases, [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] uses whatever hostname comparison mode is provided by the IIS Web Site hosting the [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] services."
+  summary: "Angir hvordan vertsnavnet skal brukes i URI sammenligninger ved sending av en innkommende melding til endepunktet til en tjeneste."
+  remarks: "Verdien som brukes til å angi de samsvarende URI-reglene som brukes av transport som HTTP, Net.Tcp og Net.Pipe ved sending av innkommende meldinger. Konfigurere verdien for HostNameComparisonMode for en standard binding med én av det foregående transporter, for eksempel <xref:System.ServiceModel.BasicHttpBinding>, med den tilsvarende <xref:System.ServiceModel.BasicHttpBinding.HostNameComparisonMode%2A>egenskapen.</xref:System.ServiceModel.BasicHttpBinding.HostNameComparisonMode%2A> </xref:System.ServiceModel.BasicHttpBinding> Konfigurere verdien for HostNameComparisonMode for et bindingselement for den foregående transporter, for eksempel <xref:System.ServiceModel.Channels.HttpTransportBindingElement>, med den tilsvarende <xref:System.ServiceModel.Channels.HttpTransportBindingElement.HostNameComparisonMode%2A>egenskapen.</xref:System.ServiceModel.Channels.HttpTransportBindingElement.HostNameComparisonMode%2A> </xref:System.ServiceModel.Channels.HttpTransportBindingElement>       Hver verdi i HostNameComparisonMode svarer til en bestemt type søkeregel. Sekvens med samsvarende regler forsøkte er alltid i som følger: 1.  StrongWildcard 2.  Nøyaktige 3.  WeakWildcard den første verdien, StrongWildcard, ignorerer vertsnavnet når samsvarer, og det tar høyest prioritet for tre ulike samsvarende modi. Det er standardverdien for en [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] angitt system bindingen eller bindingselementet. Dette indikerer at endepunktet til en tjeneste kan nås ved hjelp av en gyldig vertsnavn. For eksempel hvis MyService er vert for å bruke http://localhost/MyService, er det fortsatt kan nås ved hjelp av http://www.adatum.com/MyService fordi (antakelig gyldig) vertsnavn, &quot;adatum.com&quot; ignoreres. Merk at porten er jokertegn her også.       Den andre verdien Exact, krever at nøyaktig samsvar ble funnet med URIEN som er angitt, inkludert vertsnavnet, hvis ingen sterkt treff. Klassisk modus, for eksempel utføre ikke likhet mellom kort vertsnavn og fullstendig kvalifisert domenenavn. Dette gjør at vertsnavn som skal brukes som samsvarskriterium i tilfeller der flere verter tilordnes én IP-adresse, og gjør det mulig for ulike services ligger på samme maskin med distinct endepunkt. Merk at porten er jokertegn her også.       Den tredje verdien, WeakWildcard, samsvarer med ved å ignorere vertsnavnet Hvis ingen sterkt eller nøyaktige treff. Virkemåten er den samme som StrongWildcard enn rekkefølgen på samsvarende: den kjører etter at bindinger sterkt og nøyaktige er forsøkt.      > [!NOTE] > Disse verdiene har ingen virkning hvis det brukes i vertsmiljøet Internet Information Services (IIS) eller Windows Process Activation Service (WAS). I slike tilfeller [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] bruker den vertsnavnet sammenligningen-modusen er angitt av IIS-webområde drifter den [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] services."
   example:
   - "The following is an example of how to set StrongWildcard value in a service side configuration file.  \n  \n [!code-cs[XpsCreate#XpsCreateAddPkgContent](~/add/codesnippet/csharp/XpsCreate/XpsCreate.cs#xpscreateaddpkgcontent)]  \n  \n Here is a basic service and client that use the preceding configuration file.  \n  \n [!code-cs[S_UEHostnameComparisonMode#2](~/add/codesnippet/csharp/t-system.servicemodel.ho_2.cs)]  \n  \n [!code-cs[S_UEHostnameComparisonMode#3](~/add/codesnippet/csharp/t-system.servicemodel.ho_3.cs)]"
   syntax:
@@ -34,12 +34,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Uses the hostname when dispatching incoming messages to this endpoint, if no strong match was found."
+  summary: "Bruker vertsnavnet under sending av innkommende meldinger til dette endepunktet, hvis ingen sterkt treff."
   syntax:
     content: Exact
     return:
       type: System.ServiceModel.HostNameComparisonMode
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -55,12 +55,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Ignores the hostname when dispatching incoming messages to this endpoint. This is the default value."
+  summary: "Ignorerer vertsnavnet ved sending av innkommende meldinger til dette endepunktet. Dette er standardverdien."
   syntax:
     content: StrongWildcard
     return:
       type: System.ServiceModel.HostNameComparisonMode
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
@@ -76,12 +76,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "If no strong or exact match was found, ignores the hostname when matching."
+  summary: "Hvis ingen sterkt eller nøyaktige treff, ignorerer vertsnavnet når samsvarer."
   syntax:
     content: WeakWildcard
     return:
       type: System.ServiceModel.HostNameComparisonMode
-      description: "To be added."
+      description: "Som skal legges til."
   exceptions: []
   platform:
   - net462
