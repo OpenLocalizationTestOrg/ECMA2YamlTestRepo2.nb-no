@@ -12,8 +12,8 @@ items:
   nameWithType: RootedPathValidator
   fullName: System.Xml.Serialization.Configuration.RootedPathValidator
   type: Class
-  summary: "Validates the rules governing the use of the `tempFilesLocation` configuration switch."
-  remarks: "When adding a `WebReference` object to a Web service in the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)], files are created by the Web service discovery process.       Web service clients learn where to find the Web service description (WSDL) document by adding a `WebReference` object. The Web service clients then save the discovered documents to the disk by using the `WriteAll` method. For example, the discovered documents may be .xsd schema files or service descriptions. At the end of the process, the client deletes the files. You can change the default location of the files in the temporary folder by using the `tempFilesLocation` switch in the `<xmlSerializer>` element, specified in the Machine.config configuration file, as in the following example.      ```   <configuration>     <system.web>     <system.xml.serialization>       <xmlSerializer tempFilesLocation=&quot;..&quot;/>     </system.xml.serialization>   </configuration>   ```       The value of `tempFilesLocation` must be an absolute path. If the path specified is not absolute, the [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] generates a <xref:System.Configuration.ConfigurationErrorsException> exception when the configuration section is referenced.       The value of the property is truncated to remove leading and trailing white spaces.       If value of the `tempFilesLocation` property is composed of white space, the default %TMP% location is used for the compilation. The same default behavior occurs when no `tempFilesLocation` switch is specified.       The <xref:System.Xml.Serialization.XmlSerializer> does not check to see whether the path exists. If it does not, a <xref:System.IO.DirectoryNotFoundException> is generated. This is identical to the default behavior of the `XmlSerializer` if the %TMP% path does not exist."
+  summary: "Validerer reglene som styrer bruken av den `tempFilesLocation` konfigurasjonen switch."
+  remarks: "Når du legger til en `WebReference` -objekt til en webtjeneste i den [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)], filene er opprettet av prosessen for oppdaging av Web-tjenesten.       Web service-klienter Lær hvor du finner Web service beskrivelse (WSDL)-dokumentet ved å legge til en `WebReference` objektet. Web service-klienter deretter lagrer du oppdages dokumenter til disken ved hjelp av den `WriteAll` metoden. Oppdaget dokumenter kan for eksempel være XSD-skjemafiler eller tjenestebeskrivelser av. Klienten sletter filer på slutten av prosessen. Du kan endre standardplasseringen til filene i den midlertidige mappen ved hjelp av `tempFilesLocation` bytte i den `<xmlSerializer>` elementet som er angitt i Machine.config-konfigurasjonsfilen eksemplet nedenfor.      ```   <configuration>     <system.web>     <system.xml.serialization>       <xmlSerializer tempFilesLocation=&quot;..&quot;/>     </system.xml.serialization>   </configuration>   ```Verdien for `tempFilesLocation` må være en absolutt bane. Hvis den angitte banen ikke er fullstendig, den [!INCLUDE[dnprdnshort](~/add/includes/dnprdnshort-md.md)] genererer en <xref:System.Configuration.ConfigurationErrorsException>unntak under konfigurasjonsdelen refereres.</xref:System.Configuration.ConfigurationErrorsException>       Verdien for egenskapen er avkortet for å fjerne foranstilte og etterfølgende mellomrom.       Hvis verdien for den `tempFilesLocation` egenskapen består av mellomrom, % TMP % standardplasseringen brukes for kompilering. Standardvirkemåten for samme oppstår når ingen `tempFilesLocation` bryteren er angitt.       Den <xref:System.Xml.Serialization.XmlSerializer>kontrollerer ikke om banen eksisterer.</xref:System.Xml.Serialization.XmlSerializer> Hvis ikke, en <xref:System.IO.DirectoryNotFoundException>genereres.</xref:System.IO.DirectoryNotFoundException> Dette er identisk med standard virkemåte for den `XmlSerializer` Hvis % TMP % banen ikke finnes."
   syntax:
     content: 'public class RootedPathValidator : System.Configuration.ConfigurationValidatorBase'
   inheritance:
@@ -35,7 +35,7 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml.Serialization.Configuration
-  summary: "Initializes a new instance of the <xref href=&quot;System.Xml.Serialization.Configuration.RootedPathValidator&quot;></xref> class."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Xml.Serialization.Configuration.RootedPathValidator&quot;> </xref> klasse."
   syntax:
     content: public RootedPathValidator ();
     parameters: []
@@ -55,16 +55,16 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml.Serialization.Configuration
-  summary: "Determines whether the type of the object can be validated."
+  summary: "Bestemmer om typen objekt kan valideres."
   syntax:
     content: public override bool CanValidate (Type type);
     parameters:
     - id: type
       type: System.Type
-      description: "The type of the object."
+      description: "Objekttypen."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <code>type</code> parameter matches a valid <xref uid=&quot;langword_csharp_XMLSerializer&quot; name=&quot;XMLSerializer&quot; href=&quot;&quot;></xref> object; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis den <code> type </code> parameteren samsvarer med en gyldig <xref uid=&quot;langword_csharp_XMLSerializer&quot; name=&quot;XMLSerializer&quot; href=&quot;&quot;> </xref> objekt; ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Xml.Serialization.Configuration.RootedPathValidator.CanValidate*
   exceptions: []
   platform:
@@ -81,14 +81,14 @@ items:
   assemblies:
   - System.Xml
   namespace: System.Xml.Serialization.Configuration
-  summary: "Determines whether the value of an object is valid."
-  remarks: "The `XmlSerializer` object to validate is passed as a parameter of the `Validate` method."
+  summary: "Bestemmer om verdien av et objekt er ugyldig."
+  remarks: "Den `XmlSerializer` objektet til å validere sendes som en parameter for den `Validate` metoden."
   syntax:
     content: public override void Validate (object value);
     parameters:
     - id: value
       type: System.Object
-      description: "The value of an object."
+      description: "Verdien for et objekt."
   overload: System.Xml.Serialization.Configuration.RootedPathValidator.Validate*
   exceptions: []
   platform:
