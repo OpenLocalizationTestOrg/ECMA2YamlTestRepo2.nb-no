@@ -53,8 +53,8 @@ items:
   nameWithType: TreeNode
   fullName: System.Web.UI.WebControls.TreeNode
   type: Class
-  summary: "Represents a node in the <xref href=&quot;System.Web.UI.WebControls.TreeView&quot;></xref> control."
-  remarks: "The <xref:System.Web.UI.WebControls.TreeView> control is made up of nodes. Each entry in the tree is called a node and is represented by a TreeNode object. A node that contains other nodes is called a *parent node*. A node that is contained by another node is called a *child node*. A node that has no child nodes is called a *leaf node*. A node that is not contained by any other node but is the ancestor to all the other nodes is the *root node*. A node can be both a parent and a child, but root, parent, and leaf nodes are mutually exclusive. Several visual and behavioral properties of nodes are determined by whether a node is a *root*, *parent*, or *leaf* node.       Although a typical tree has only one root node, the <xref:System.Web.UI.WebControls.TreeView> control allows you to add multiple root nodes to your tree structure. This is useful when you want to display item listings without displaying a single main root node, as in a list of product categories.       A node primarily stores data in two properties, the <xref:System.Web.UI.WebControls.TreeNode.Text%2A> property and the <xref:System.Web.UI.WebControls.TreeNode.Value%2A> property. The value of the <xref:System.Web.UI.WebControls.TreeNode.Text%2A> property is displayed in the <xref:System.Web.UI.WebControls.TreeView> control, and the <xref:System.Web.UI.WebControls.TreeNode.Value%2A> property is used to store any additional data about the node, such as data used for handling postback events. A node also stores the path from the node to its root node in the <xref:System.Web.UI.WebControls.TreeNode.ValuePath%2A> property. The <xref:System.Web.UI.WebControls.TreeNode.ValuePath%2A> property indicates the node&quot;s position relative to the root node.      > [!NOTE] >  Nodes at the same level must each have a unique value for the <xref:System.Web.UI.WebControls.TreeNode.Value%2A> property; the <xref:System.Web.UI.WebControls.TreeView> control cannot distinguish between different nodes at the same level that have the same value. In this scenario, if the user clicks a node that has a duplicate value, the node that appears first in the <xref:System.Web.UI.WebControls.TreeView> control is selected.       A TreeNode object is made up of the following four user interface (UI) elements, which can be customized or hidden:      -   An expansion node indicator icon used to show whether the node is expanded, collapsed, or non-expandable.      -   An optional check box associated with the node.      -   An optional node image.      -   The node text.       You can specify a custom image for the expandable, collapsible, and non-expandable node indicators by setting the <xref:System.Web.UI.WebControls.TreeView.ExpandImageUrl%2A>, <xref:System.Web.UI.WebControls.TreeView.CollapseImageUrl%2A>, and <xref:System.Web.UI.WebControls.TreeView.NoExpandImageUrl%2A> properties of the <xref:System.Web.UI.WebControls.TreeView> class. The expansion node indicator icons can even be hidden entirely by setting the <xref:System.Web.UI.WebControls.TreeView.ShowExpandCollapse%2A> property of the <xref:System.Web.UI.WebControls.TreeView> class to `false`.       To display a check box next to a node, set the <xref:System.Web.UI.WebControls.TreeView.ShowCheckBoxes%2A> property of the <xref:System.Web.UI.WebControls.TreeView> class. When the <xref:System.Web.UI.WebControls.TreeView.ShowCheckBoxes%2A> property is set to a value other than `TreeNodeType.Node`, check boxes are displayed next to the specified node type. You can selectively override the check box of an individual node by setting the node&quot;s <xref:System.Web.UI.WebControls.TreeNode.ShowCheckBox%2A> property. When a check box is displayed, use the <xref:System.Web.UI.WebControls.TreeNode.Checked%2A> property to determine whether the check box is selected.       You can display an image in a node by setting the <xref:System.Web.UI.WebControls.TreeNode.ImageUrl%2A> property. This image is displayed next to the node text.       The text of a node in the <xref:System.Web.UI.WebControls.TreeView> control can be in one of two modes: selection mode or navigation mode. By default, a node is in selection mode. To put a node into navigation mode, set the node&quot;s <xref:System.Web.UI.WebControls.TreeNode.NavigateUrl%2A> property to a value other than an empty string (&quot;&quot;). To put a node into selection mode, set the node&quot;s <xref:System.Web.UI.WebControls.TreeNode.NavigateUrl%2A> property to an empty string.      > [!NOTE] >  Some Internet browsers have a limitation that can affect the performance of the <xref:System.Web.UI.WebControls.TreeView> control. For example, Microsoft Internet Explorer 6.0 has a URL character limit of 2067 characters that it posts. If the number of characters in a URL of a node is larger than that number, expanding that node will fail and no exception is thrown.       By default, clicking a node that is in selection mode posts the page back to the server and raises the <xref:System.Web.UI.WebControls.TreeView.SelectedNodeChanged> event. You can optionally specify a different event to raise by setting the node&quot;s `SelectAction` property. For more information, see <xref:System.Web.UI.WebControls.TreeNode.SelectAction%2A>. To determine which node was clicked in selection mode, use the <xref:System.Web.UI.WebControls.TreeView.SelectedNode%2A> property of the <xref:System.Web.UI.WebControls.TreeView> control.       When a node is in navigation mode, all selection events are disabled for that node. Clicking the node in navigation mode directs the user to the specified URL. You can optionally set the <xref:System.Web.UI.WebControls.TreeNode.Target%2A> property to specify the window or frame in which to display the linked content.       The TreeNode class contains several properties that are used to store the state of the node. Use the <xref:System.Web.UI.WebControls.TreeNode.Selected%2A> property to determine whether a node is selected. To determine whether the node is expanded, use the <xref:System.Web.UI.WebControls.TreeNode.Expanded%2A> property. The <xref:System.Web.UI.WebControls.TreeNode.DataBound%2A> property is used to determine whether a node is bound to data. When a node is bound to data, you can access the underlying data item by using the <xref:System.Web.UI.WebControls.TreeNode.DataItem%2A> property.       The class provides several properties that help to determine the position of a node relative to other nodes in the tree. Use the <xref:System.Web.UI.WebControls.TreeNode.Depth%2A> property to determine the depth of the node. You can get the delimited list of nodes from the current node to its root node by using the <xref:System.Web.UI.WebControls.TreeNode.ValuePath%2A> property. To determine the node&quot;s parent node, use the <xref:System.Web.UI.WebControls.TreeNode.Parent%2A> property. Child nodes are accessed using the <xref:System.Web.UI.WebControls.TreeNode.ChildNodes%2A> collection.       Sometimes, it is not practical to statically predefine the tree structure due to data size or custom content that depends on user input. Because of this, the <xref:System.Web.UI.WebControls.TreeView> control supports dynamic node population. A node can be populated at run time when it is expanded. Note that you can get unexpected behavior if you persist asynchronously created nodes. For example, if you use a background worker thread to populate nodes asynchronously, the node tree might not be populated immediately though the control proceeds with the rest of the page life cycle. On postback, the delayed creation of the nodes can cause problems when the control&quot;s view state is loaded but the node tree is not fully populated.  For more information on dynamic node population, see the <xref:System.Web.UI.WebControls.TreeNode.PopulateOnDemand%2A> property.       For a list of initial property values for an instance of TreeNode, see the <xref:System.Web.UI.WebControls.TreeNode.%23ctor%2A> constructor."
+  summary: "Representerer en node i den <xref href=&quot;System.Web.UI.WebControls.TreeView&quot;> </xref> kontrollen."
+  remarks: "Den <xref:System.Web.UI.WebControls.TreeView>kontrollen består av noder.</xref:System.Web.UI.WebControls.TreeView> Hver oppføring i treet kalles en node og representeres av et TreeNode-objekt. En node som inneholder andre noder kalles en *overordnet node*. En node som finnes i en annen node kalles en *underordnet node*. En node som har ingen underordnede noder kalles en *bladnode*. En node som ikke finnes i en node, men er overordnet til alle andre noder er den *rotnode*. En node kan være både en overordnede og underordnede, men rot overordnet bladnoder utelukker hverandre. Flere visuelle og virkemåten egenskaper med noder henhold om en node er en *roten*, *overordnede*, eller *blad* noden.       Selv om et vanlig tre har bare én rotnode den <xref:System.Web.UI.WebControls.TreeView>kontrollen, kan du legge til flere rotnoder i trestrukturen til.</xref:System.Web.UI.WebControls.TreeView> Dette er nyttig når du vil vise elementet oppføringer uten å vise én primære rotnode, som i en liste over produktkategorier.       En node primært lagrer data i to egenskaper i <xref:System.Web.UI.WebControls.TreeNode.Text%2A>egenskapen og <xref:System.Web.UI.WebControls.TreeNode.Value%2A>egenskapen.</xref:System.Web.UI.WebControls.TreeNode.Value%2A> </xref:System.Web.UI.WebControls.TreeNode.Text%2A> Verdien for den <xref:System.Web.UI.WebControls.TreeNode.Text%2A>egenskapen skal vises i den <xref:System.Web.UI.WebControls.TreeView>kontrollen, og <xref:System.Web.UI.WebControls.TreeNode.Value%2A>egenskapen brukes til å lagre ytterligere data om noden, for eksempel data som brukes til å behandle sende tilbake hendelser.</xref:System.Web.UI.WebControls.TreeNode.Value%2A> </xref:System.Web.UI.WebControls.TreeView> </xref:System.Web.UI.WebControls.TreeNode.Text%2A> En node lagrer også banen fra noden til rotnode i den <xref:System.Web.UI.WebControls.TreeNode.ValuePath%2A>egenskapen.</xref:System.Web.UI.WebControls.TreeNode.ValuePath%2A> Den <xref:System.Web.UI.WebControls.TreeNode.ValuePath%2A>egenskapen angir nodens plassering i forhold til rotnoden.</xref:System.Web.UI.WebControls.TreeNode.ValuePath%2A>      > [!NOTE] > Noder på samme nivå må alle ha en unik verdi for den <xref:System.Web.UI.WebControls.TreeNode.Value%2A>egenskapen; <xref:System.Web.UI.WebControls.TreeView>kontrollen kan ikke skille mellom forskjellige noder på samme nivå som har samme verdi.</xref:System.Web.UI.WebControls.TreeView> </xref:System.Web.UI.WebControls.TreeNode.Value%2A> I dette tilfellet hvis brukeren klikker en node som har en duplisert verdi noden som vises først i den <xref:System.Web.UI.WebControls.TreeView>kontrollen velges.</xref:System.Web.UI.WebControls.TreeView>       En TreeNode-objektet består av følgende fire brukergrensesnittet (UI) elementer, som kan tilpasses eller skjules:-en utvidelse noden indikatorikonet som brukes til å vise om noden utvidede skjult eller ikke kan utvides.      – En valgfri merket som er tilknyttet noden.      – En valgfri node-bildet.      Tekst-noden.       Du kan angi en egendefinert avbildning for node utvides, skjules og ikke kan utvides indikatorer ved å angi den <xref:System.Web.UI.WebControls.TreeView.ExpandImageUrl%2A>, <xref:System.Web.UI.WebControls.TreeView.CollapseImageUrl%2A>, og <xref:System.Web.UI.WebControls.TreeView.NoExpandImageUrl%2A>Egenskaper for <xref:System.Web.UI.WebControls.TreeView>klassen.</xref:System.Web.UI.WebControls.TreeView> </xref:System.Web.UI.WebControls.TreeView.NoExpandImageUrl%2A> </xref:System.Web.UI.WebControls.TreeView.CollapseImageUrl%2A> </xref:System.Web.UI.WebControls.TreeView.ExpandImageUrl%2A> Utvidelse noden indikatoren ikonene kan også skjules helt ved å angi den <xref:System.Web.UI.WebControls.TreeView.ShowExpandCollapse%2A>for den <xref:System.Web.UI.WebControls.TreeView>klasse til `false`.</xref:System.Web.UI.WebControls.TreeView> </xref:System.Web.UI.WebControls.TreeView.ShowExpandCollapse%2A>       For å vise en avmerkingsboks Neste for å angi en node <xref:System.Web.UI.WebControls.TreeView.ShowCheckBoxes%2A>for <xref:System.Web.UI.WebControls.TreeView>klasse.</xref:System.Web.UI.WebControls.TreeView> </xref:System.Web.UI.WebControls.TreeView.ShowCheckBoxes%2A> Når den <xref:System.Web.UI.WebControls.TreeView.ShowCheckBoxes%2A>settes til en annen verdi enn `TreeNodeType.Node`, vises avmerkingsboksene ved siden av den angitte nodetypen.</xref:System.Web.UI.WebControls.TreeView.ShowCheckBoxes%2A> Du kan velge å overstyre merket for en enkelt node ved å angi nodens <xref:System.Web.UI.WebControls.TreeNode.ShowCheckBox%2A>egenskapen.</xref:System.Web.UI.WebControls.TreeNode.ShowCheckBox%2A> Når en avmerkingsboks vises, kan du bruke den <xref:System.Web.UI.WebControls.TreeNode.Checked%2A>til å fastslå om det er merket.</xref:System.Web.UI.WebControls.TreeNode.Checked%2A>       Du kan vise et bilde i en node ved å angi den <xref:System.Web.UI.WebControls.TreeNode.ImageUrl%2A>egenskapen.</xref:System.Web.UI.WebControls.TreeNode.ImageUrl%2A> Dette bildet vises ved siden av node-tekst.       Teksten i en node i den <xref:System.Web.UI.WebControls.TreeView>kontrollen kan være i ett av to måter: utvalg eller navigasjonsmodus.</xref:System.Web.UI.WebControls.TreeView> Som standard er en node i valgmodus. For å sette en node i navigasjonsmodus, angir du node <xref:System.Web.UI.WebControls.TreeNode.NavigateUrl%2A>til en annen verdi enn en tom streng (&quot;&quot;).</xref:System.Web.UI.WebControls.TreeNode.NavigateUrl%2A> For å sette en node i valgmodus, angir du node <xref:System.Web.UI.WebControls.TreeNode.NavigateUrl%2A>egenskapen til en tom streng.</xref:System.Web.UI.WebControls.TreeNode.NavigateUrl%2A>      > [!NOTE] > Noen Internett-leser har en begrensning som kan påvirke ytelsen til den <xref:System.Web.UI.WebControls.TreeView>kontroll.</xref:System.Web.UI.WebControls.TreeView> For eksempel har Microsoft Internet Explorer 6.0 en URL-adressen tegngrense 2067 tegn som den legger inn. Hvis antallet tegn i en URL-adresse til en node er større enn dette nummeret, utvide noden mislykkes, og unntak ingen.       Som standard å velge en node som er i valgmodus legger siden tilbake til serveren, og gir den <xref:System.Web.UI.WebControls.TreeView.SelectedNodeChanged>hendelsen.</xref:System.Web.UI.WebControls.TreeView.SelectedNodeChanged> Du kan eventuelt angi en ny hendelse opphøye ved å angi nodens `SelectAction` egenskapen. Hvis du vil ha mer informasjon, kan du se <xref:System.Web.UI.WebControls.TreeNode.SelectAction%2A>.</xref:System.Web.UI.WebControls.TreeNode.SelectAction%2A> Bruk til å fastslå hvilke noden ble klikket i valgmodus den <xref:System.Web.UI.WebControls.TreeView.SelectedNode%2A>for den <xref:System.Web.UI.WebControls.TreeView>kontroll.</xref:System.Web.UI.WebControls.TreeView> </xref:System.Web.UI.WebControls.TreeView.SelectedNode%2A>       Når en node er i navigasjonsmodus, deaktiveres alle utvalget hendelser for denne noden. Hvis du klikker noden i navigasjonsmodus for angir at brukeren til den angitte URL-adressen. Du kan eventuelt angi den <xref:System.Web.UI.WebControls.TreeNode.Target%2A>til å angi vinduet eller rammen der du vil vise koblet innhold.</xref:System.Web.UI.WebControls.TreeNode.Target%2A>       Klassen TreeNode inneholder flere egenskaper som brukes til å lagre tilstanden til noden. Bruk av <xref:System.Web.UI.WebControls.TreeNode.Selected%2A>til å fastslå om en node er valgt.</xref:System.Web.UI.WebControls.TreeNode.Selected%2A> Bruk til å fastslå om noden vises i <xref:System.Web.UI.WebControls.TreeNode.Expanded%2A>egenskapen.</xref:System.Web.UI.WebControls.TreeNode.Expanded%2A> Den <xref:System.Web.UI.WebControls.TreeNode.DataBound%2A>egenskapen brukes til å finne ut om en node er bundet til data.</xref:System.Web.UI.WebControls.TreeNode.DataBound%2A> Når en node er bundet til data, du har tilgang til det underliggende dataelementet via den <xref:System.Web.UI.WebControls.TreeNode.DataItem%2A>egenskapen.</xref:System.Web.UI.WebControls.TreeNode.DataItem%2A>       Klassen inneholder flere egenskaper som bidrar til å bestemme plasseringen av en node i forhold til andre noder i treet. Bruk av <xref:System.Web.UI.WebControls.TreeNode.Depth%2A>til å fastslå dybden på noden.</xref:System.Web.UI.WebControls.TreeNode.Depth%2A> Du får den delte listen med noder fra den gjeldende noden til rotnode ved hjelp av den <xref:System.Web.UI.WebControls.TreeNode.ValuePath%2A>egenskapen.</xref:System.Web.UI.WebControls.TreeNode.ValuePath%2A> Hvis du vil finne den noden overordnet node, kan du bruke den <xref:System.Web.UI.WebControls.TreeNode.Parent%2A>egenskapen.</xref:System.Web.UI.WebControls.TreeNode.Parent%2A> Underordnede noder tilgang til ved hjelp av <xref:System.Web.UI.WebControls.TreeNode.ChildNodes%2A>samlingen.</xref:System.Web.UI.WebControls.TreeNode.ChildNodes%2A>       Det er noen ganger praktisk å forhåndsdefinere statisk trestrukturen på grunn av datastørrelsen eller innhold som er avhenger av brukerinndata. Derfor den <xref:System.Web.UI.WebControls.TreeView>kontrollen støtter dynamiske noden populasjonen.</xref:System.Web.UI.WebControls.TreeView> En node kan være utfylt ved kjøretid når det er utvidet. Vær oppmerksom på at du får uventede resultater hvis du fortsetter asynkront opprettet noder. For eksempel hvis du bruker en arbeidstråd i bakgrunnen til å fylle ut noder asynkront, kan treet node ikke være utfylt umiddelbart om kontrollen fortsetter med resten av siden levetid. På tilbakesending, forsinket oppretting av nodene kan føre til problemer når visningsstatusen for kontrollens er lastet inn, men treet noden er ikke fullstendig.  For mer informasjon om dynamiske noden populasjon, kan du se den <xref:System.Web.UI.WebControls.TreeNode.PopulateOnDemand%2A>egenskapen.</xref:System.Web.UI.WebControls.TreeNode.PopulateOnDemand%2A>       En liste med opprinnelige verdier for en forekomst av TreeNode, kan du se den <xref:System.Web.UI.WebControls.TreeNode.%23ctor%2A>konstruktør.</xref:System.Web.UI.WebControls.TreeNode.%23ctor%2A>"
   example:
   - "The following code example demonstrates how to set up the frames for the next code example.  \n  \n [!code-vb[TreeViewFrameSet#1](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_106_1.aspx)]\n [!code-cs[TreeViewFrameSet#1](~/add/codesnippet/csharp/t-system.web.ui.webcontr_106_1.aspx)]  \n  \n The following code example demonstrates how to use declarative syntax to create TreeNode objects in the <xref:System.Web.UI.WebControls.TreeView> control. This example is used within the frameset of the previous example to display a table of contents.  \n  \n [!code-vb[TreeViewFrameExample#1](~/add/codesnippet/visualbasic/t-system.web.ui.webcontr_106_2.aspx)]\n [!code-cs[TreeViewFrameExample#1](~/add/codesnippet/csharp/t-system.web.ui.webcontr_106_2.aspx)]"
   syntax:
@@ -82,8 +82,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.UI.WebControls.TreeNode&quot;></xref> class without text or a value."
-  remarks: "Use this constructor to initialize a new instance of the <xref:System.Web.UI.WebControls.TreeNode> class using the default values.      > [!NOTE] >  When this constructor is used, all properties in the <xref:System.Web.UI.WebControls.TreeNode> object are set to their default values. Be sure to set the properties, as necessary, after creating the object."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Web.UI.WebControls.TreeNode&quot;> </xref> klasse uten tekst eller en verdi."
+  remarks: "Bruk denne konstruktøren til å initialisere en ny forekomst av den <xref:System.Web.UI.WebControls.TreeNode>klasse bruker standardverdiene.</xref:System.Web.UI.WebControls.TreeNode>      > [!NOTE] > Når denne konstruktøren brukes, og alle egenskapene i den <xref:System.Web.UI.WebControls.TreeNode>-objektet er satt til standardverdiene.</xref:System.Web.UI.WebControls.TreeNode> Kontroller at du angir egenskapene etter behov, når du har opprettet objektet."
   example:
   - "The following code example demonstrates how to use this constructor to dynamically add a node to the <xref:System.Web.UI.WebControls.TreeView> control.  \n  \n [!code-vb[TreeNodeCtor#1](~/add/codesnippet/visualbasic/m-system.web.ui.webcontr_241_1.aspx)]\n [!code-cs[TreeNodeCtor#1](~/add/codesnippet/csharp/m-system.web.ui.webcontr_241_1.aspx)]"
   syntax:
@@ -105,8 +105,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.UI.WebControls.TreeNode&quot;></xref> class using the specified text."
-  remarks: "Use this constructor to initialize a new instance of the <xref:System.Web.UI.WebControls.TreeNode> class using the text specified by the `text` parameter.       The following table shows the initial property value for an instance of <xref:System.Web.UI.WebControls.TreeNode>.      |Property|Initial value|   |--------------|-------------------|   |<xref:System.Web.UI.WebControls.TreeNode.Text%2A>|The value of the `text` parameter.|"
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Web.UI.WebControls.TreeNode&quot;> </xref> klasse ved hjelp av den angitte teksten."
+  remarks: "Bruk denne konstruktøren til å initialisere en ny forekomst av den <xref:System.Web.UI.WebControls.TreeNode>klasse tekst som er angitt av den `text` parameteren.</xref:System.Web.UI.WebControls.TreeNode>       Tabellen nedenfor viser første egenskapsverdien for en forekomst av <xref:System.Web.UI.WebControls.TreeNode>.</xref:System.Web.UI.WebControls.TreeNode>      | Egenskapen | Standardverdi |   |--------------|-------------------|   | <xref:System.Web.UI.WebControls.TreeNode.Text%2A>| Verdien for den `text` parameteren. |</xref:System.Web.UI.WebControls.TreeNode.Text%2A>"
   example:
   - "The following code example demonstrates how to use this constructor to dynamically add a node to the <xref:System.Web.UI.WebControls.TreeView> control.  \n  \n [!code-vb[TreeNodeCtor#1](~/add/codesnippet/visualbasic/m-system.web.ui.webcontr_234_1.aspx)]\n [!code-cs[TreeNodeCtor#1](~/add/codesnippet/csharp/m-system.web.ui.webcontr_234_1.aspx)]"
   syntax:
@@ -114,7 +114,7 @@ items:
     parameters:
     - id: text
       type: System.String
-      description: "The text that is displayed in the <xref href=&quot;System.Web.UI.WebControls.TreeView&quot;></xref> control for the node."
+      description: "Teksten som vises i den <xref href=&quot;System.Web.UI.WebControls.TreeView&quot;> </xref> kontroll for noden."
   overload: System.Web.UI.WebControls.TreeNode.#ctor*
   exceptions: []
   platform:
@@ -131,8 +131,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.UI.WebControls.TreeNode&quot;></xref> class using the specified text and value."
-  remarks: "Use this constructor to initialize a new instance of the <xref:System.Web.UI.WebControls.TreeNode> class using the text and value specified by the `text` and `value` parameters, respectively.       The following table shows initial property values for an instance of <xref:System.Web.UI.WebControls.TreeNode>.      |Property|Initial value|   |--------------|-------------------|   |<xref:System.Web.UI.WebControls.TreeNode.Text%2A>|The value of the `text` parameter.|   |<xref:System.Web.UI.WebControls.TreeNode.Value%2A>|The value of the `value` parameter.|"
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Web.UI.WebControls.TreeNode&quot;> </xref> klasse ved hjelp av den angitte teksten og verdien."
+  remarks: "Bruk denne konstruktøren til å initialisere en ny forekomst av den <xref:System.Web.UI.WebControls.TreeNode>klasse ved hjelp av tekst og verdien som er angitt av den `text` og `value` parametere, henholdsvis.</xref:System.Web.UI.WebControls.TreeNode>       Tabellen nedenfor viser første egenskapsverdier for en forekomst av <xref:System.Web.UI.WebControls.TreeNode>.</xref:System.Web.UI.WebControls.TreeNode>      | Egenskapen | Standardverdi |   |--------------|-------------------|   | <xref:System.Web.UI.WebControls.TreeNode.Text%2A>| Verdien for den `text` parameteren. |   | <xref:System.Web.UI.WebControls.TreeNode.Value%2A>| Verdien for den `value` parameteren. |</xref:System.Web.UI.WebControls.TreeNode.Value%2A> </xref:System.Web.UI.WebControls.TreeNode.Text%2A>"
   example:
   - "The following code example demonstrates how to use this constructor to dynamically add a node to the <xref:System.Web.UI.WebControls.TreeView> control.  \n  \n [!code-vb[TreeNodeCtor#1](~/add/codesnippet/visualbasic/m-system.web.ui.webcontr_51_1.aspx)]\n [!code-cs[TreeNodeCtor#1](~/add/codesnippet/csharp/m-system.web.ui.webcontr_51_1.aspx)]"
   syntax:
@@ -140,10 +140,10 @@ items:
     parameters:
     - id: text
       type: System.String
-      description: "The text that is displayed in the <xref href=&quot;System.Web.UI.WebControls.TreeView&quot;></xref> control for the node."
+      description: "Teksten som vises i den <xref href=&quot;System.Web.UI.WebControls.TreeView&quot;> </xref> kontroll for noden."
     - id: value
       type: System.String
-      description: "The supplemental data associated with the node, such as data used for handling postback events."
+      description: "Ekstra dataene som er forbundet med noden, for eksempel data som brukes til å behandle sende tilbake hendelser."
   overload: System.Web.UI.WebControls.TreeNode.#ctor*
   exceptions: []
   platform:
@@ -160,16 +160,16 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.UI.WebControls.TreeNode&quot;></xref> class using the specified owner."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Web.UI.WebControls.TreeNode&quot;> </xref> klasse ved hjelp av den angitte eieren."
   syntax:
     content: protected TreeNode (System.Web.UI.WebControls.TreeView owner, bool isRoot);
     parameters:
     - id: owner
       type: System.Web.UI.WebControls.TreeView
-      description: "The <xref href=&quot;System.Web.UI.WebControls.TreeView&quot;></xref> that will contain the new <xref href=&quot;System.Web.UI.WebControls.TreeNode&quot;></xref>."
+      description: "Den <xref href=&quot;System.Web.UI.WebControls.TreeView&quot;> </xref> som inneholder den nye <xref href=&quot;System.Web.UI.WebControls.TreeNode&quot;> </xref>."
     - id: isRoot
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <xref href=&quot;System.Web.UI.WebControls.TreeNode&quot;></xref> is a root node; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis den <xref href=&quot;System.Web.UI.WebControls.TreeNode&quot;> </xref> er en rotnode; ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.WebControls.TreeNode.#ctor*
   exceptions: []
   platform:
@@ -186,8 +186,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.UI.WebControls.TreeNode&quot;></xref> class using the specified text, value, and image URL."
-  remarks: "Use this constructor to initialize a new instance of the <xref:System.Web.UI.WebControls.TreeNode> class using the text, value, and image URL specified by the `text`, `value`, and `imageUrl` parameters, respectively.       The following table shows initial property values for an instance of <xref:System.Web.UI.WebControls.TreeNode>.      |Property|Initial value|   |--------------|-------------------|   |<xref:System.Web.UI.WebControls.TreeNode.Text%2A>|The value of the `text` parameter.|   |<xref:System.Web.UI.WebControls.TreeNode.Value%2A>|The value of the `value` parameter.|   |<xref:System.Web.UI.WebControls.TreeNode.ImageUrl%2A>|The value of the `imageUrl` parameter.|"
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Web.UI.WebControls.TreeNode&quot;> </xref> klasse ved hjelp av den angitte teksten, verdi, og bilde-URL."
+  remarks: "Bruk denne konstruktøren til å initialisere en ny forekomst av den <xref:System.Web.UI.WebControls.TreeNode>klasse tekst verdi, og bilde-URL som er angitt av den `text`, `value`, og `imageUrl` parametere, henholdsvis.</xref:System.Web.UI.WebControls.TreeNode>       Tabellen nedenfor viser første egenskapsverdier for en forekomst av <xref:System.Web.UI.WebControls.TreeNode>.</xref:System.Web.UI.WebControls.TreeNode>      | Egenskapen | Standardverdi |   |--------------|-------------------|   | <xref:System.Web.UI.WebControls.TreeNode.Text%2A>| Verdien for den `text` parameteren. |   | <xref:System.Web.UI.WebControls.TreeNode.Value%2A>| Verdien for den `value` parameteren. |   | <xref:System.Web.UI.WebControls.TreeNode.ImageUrl%2A>| Verdien for den `imageUrl` parameteren. |</xref:System.Web.UI.WebControls.TreeNode.ImageUrl%2A> </xref:System.Web.UI.WebControls.TreeNode.Value%2A> </xref:System.Web.UI.WebControls.TreeNode.Text%2A>"
   example:
   - "The following code example demonstrates how to use this constructor to dynamically add a node to the <xref:System.Web.UI.WebControls.TreeView> control.  \n  \n [!code-vb[TreeNodeCtor#1](~/add/codesnippet/visualbasic/3795fa87-8785-4a78-ab89-_1.aspx)]\n [!code-cs[TreeNodeCtor#1](~/add/codesnippet/csharp/3795fa87-8785-4a78-ab89-_1.aspx)]"
   syntax:
@@ -195,13 +195,13 @@ items:
     parameters:
     - id: text
       type: System.String
-      description: "The text that is displayed in the <xref href=&quot;System.Web.UI.WebControls.TreeView&quot;></xref> control for the node."
+      description: "Teksten som vises i den <xref href=&quot;System.Web.UI.WebControls.TreeView&quot;> </xref> kontroll for noden."
     - id: value
       type: System.String
-      description: "The supplemental data associated with the node, such as data used for handling postback events."
+      description: "Ekstra dataene som er forbundet med noden, for eksempel data som brukes til å behandle sende tilbake hendelser."
     - id: imageUrl
       type: System.String
-      description: "The URL to an image that is displayed next to the node."
+      description: "URL-adressen til et bilde som vises ved siden av noden."
   overload: System.Web.UI.WebControls.TreeNode.#ctor*
   exceptions: []
   platform:
@@ -218,8 +218,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.UI.WebControls.TreeNode&quot;></xref> class using the specified text, value, image URL, navigation URL, and target."
-  remarks: "Use this constructor to initialize a new instance of the <xref:System.Web.UI.WebControls.TreeNode> class using the text, value, image and navigation URLs, and display target specified by the `text`, `value`, `imageUrl`, `navigateUrl`, and `target` parameters, respectively.       The following table shows initial property values for an instance of <xref:System.Web.UI.WebControls.TreeNode>.      |Property|Initial value|   |--------------|-------------------|   |<xref:System.Web.UI.WebControls.TreeNode.Text%2A>|The value of the `text` parameter.|   |<xref:System.Web.UI.WebControls.TreeNode.Value%2A>|The value of the `value` parameter.|   |<xref:System.Web.UI.WebControls.TreeNode.ImageUrl%2A>|The value of the `imageUrl` parameter.|   |<xref:System.Web.UI.WebControls.TreeNode.NavigateUrl%2A>|The value of the `navigateUrl` parameter.|   |<xref:System.Web.UI.WebControls.TreeNode.Target%2A>|The value of the `target` parameter.|"
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Web.UI.WebControls.TreeNode&quot;> </xref> ved hjelp av angitte teksten, verdi, URL-adresse, URL-adressen for navigasjon og target-klasse."
+  remarks: "Bruk denne konstruktøren til å initialisere en ny forekomst av den <xref:System.Web.UI.WebControls.TreeNode>klasse ved hjelp av tekst, verdi, image og navigering URL, og Vis angitt av den `text`, `value`, `imageUrl`, `navigateUrl`, og `target` parametere, henholdsvis.</xref:System.Web.UI.WebControls.TreeNode>       Tabellen nedenfor viser første egenskapsverdier for en forekomst av <xref:System.Web.UI.WebControls.TreeNode>.</xref:System.Web.UI.WebControls.TreeNode>      | Egenskapen | Standardverdi |   |--------------|-------------------|   | <xref:System.Web.UI.WebControls.TreeNode.Text%2A>| Verdien for den `text` parameteren. |   | <xref:System.Web.UI.WebControls.TreeNode.Value%2A>| Verdien for den `value` parameteren. |   | <xref:System.Web.UI.WebControls.TreeNode.ImageUrl%2A>| Verdien for den `imageUrl` parameteren. |   | <xref:System.Web.UI.WebControls.TreeNode.NavigateUrl%2A>| Verdien for den `navigateUrl` parameteren. |   | <xref:System.Web.UI.WebControls.TreeNode.Target%2A>| Verdien for den `target` parameteren. |</xref:System.Web.UI.WebControls.TreeNode.Target%2A> </xref:System.Web.UI.WebControls.TreeNode.NavigateUrl%2A> </xref:System.Web.UI.WebControls.TreeNode.ImageUrl%2A> </xref:System.Web.UI.WebControls.TreeNode.Value%2A> </xref:System.Web.UI.WebControls.TreeNode.Text%2A>"
   example:
   - "The following code example demonstrates how to use this constructor to dynamically add a node to the <xref:System.Web.UI.WebControls.TreeView> control.  \n  \n [!code-vb[TreeNodeCtor#1](~/add/codesnippet/visualbasic/731d6a74-0b18-423b-841c-_1.aspx)]\n [!code-cs[TreeNodeCtor#1](~/add/codesnippet/csharp/731d6a74-0b18-423b-841c-_1.aspx)]"
   syntax:
@@ -227,19 +227,19 @@ items:
     parameters:
     - id: text
       type: System.String
-      description: "The text that is displayed in the <xref href=&quot;System.Web.UI.WebControls.TreeView&quot;></xref> control for the node."
+      description: "Teksten som vises i den <xref href=&quot;System.Web.UI.WebControls.TreeView&quot;> </xref> kontroll for noden."
     - id: value
       type: System.String
-      description: "The supplemental data associated with the node, such as data used for handling postback events."
+      description: "Ekstra dataene som er forbundet med noden, for eksempel data som brukes til å behandle sende tilbake hendelser."
     - id: imageUrl
       type: System.String
-      description: "The URL to an image that is displayed next to the node."
+      description: "URL-adressen til et bilde som vises ved siden av noden."
     - id: navigateUrl
       type: System.String
-      description: "The URL to link to when the node is clicked."
+      description: "URL-adressen til å koble til når noden klikkes."
     - id: target
       type: System.String
-      description: "The target window or frame in which to display the Web page content linked to when the node is clicked."
+      description: "Målvinduet eller rammen for visning av webinnhold kobles til når noden klikkes."
   overload: System.Web.UI.WebControls.TreeNode.#ctor*
   exceptions: []
   platform:
@@ -256,15 +256,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets a value that indicates whether the node&quot;s check box is selected."
-  remarks: "When a node displays a check box, the Checked property is commonly used to specify whether the check box is selected. When the check box associated with a node is selected, the node is automatically added to the <xref:System.Web.UI.WebControls.TreeView.CheckedNodes%2A> collection of the <xref:System.Web.UI.WebControls.TreeView> control. The Checked property can also be used to determine whether the check box is selected.      > [!NOTE] >  It is more common to determine which nodes in the <xref:System.Web.UI.WebControls.TreeView> control have their check boxes selected by iterating through the <xref:System.Web.UI.WebControls.TreeView.CheckedNodes%2A> collection.       The value of this property is stored in view state."
+  summary: "Henter eller angir en verdi som angir om den noden er merket."
+  remarks: "Når en node viser en avmerkingsboks, brukes vanligvis egenskapen avmerkede til å angi om den er merket. Når det knyttet til en node er merket, noden automatisk legges til i <xref:System.Web.UI.WebControls.TreeView.CheckedNodes%2A>samling av <xref:System.Web.UI.WebControls.TreeView>kontroll.</xref:System.Web.UI.WebControls.TreeView> </xref:System.Web.UI.WebControls.TreeView.CheckedNodes%2A> Egenskapen avmerkede kan også brukes til å fastsette om det er merket.      > [!NOTE] > Det er flere vanlig å finne ut hvilke noder i det <xref:System.Web.UI.WebControls.TreeView>kontrollen ha av i avmerkingsboksene valgte ved å veksle mellom den <xref:System.Web.UI.WebControls.TreeView.CheckedNodes%2A>samlingen.</xref:System.Web.UI.WebControls.TreeView.CheckedNodes%2A> </xref:System.Web.UI.WebControls.TreeView>       Verdien for denne egenskapen lagres i visningsstatusen."
   example:
   - "The following code example demonstrates how to use the Checked property to specify whether a node's check box is selected. It initializes the check boxes of nodes with a depth of one to a selected state. For this example to work correctly, you must copy the sample XML data below to a file named Newsgroup.xml.  \n  \n [!code-cs[TreeNodeChecked#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_280_1.aspx)]\n [!code-vb[TreeNodeChecked#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_280_1.aspx)]  \n  \n The following code is sample XML data for the previous example.  \n  \n```  \n<category name=\"news.microsoft.com\">  \n    <group name=\"microsoft.public.dotnet.framework.aspnet\"/>  \n    <group name=\"microsoft.public.dotnet.framework.aspnet.mobile\"/>  \n    <group name=\"microsoft.public.dotnet.framework.aspnet.webservices\"/>  \n</category>  \n```"
   syntax:
     content: public bool Checked { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the node&quot;s check box is selected; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis den noden er merket. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Standard <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.WebControls.TreeNode.Checked*
   exceptions: []
   platform:
@@ -281,15 +281,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets a <xref href=&quot;System.Web.UI.WebControls.TreeNodeCollection&quot;></xref> collection that contains the first-level child nodes of the current node."
-  remarks: "Use the ChildNodes property to get a <xref:System.Web.UI.WebControls.TreeNodeCollection> collection that contains the first-level child nodes of the current node. This collection is commonly used to iterate through all the first-level child nodes, or to access a specific first-level child node of the current node.       The ChildNodes property can also be used to programmatically manage the first-level child nodes in the current node. You can add, insert, remove, and retrieve <xref:System.Web.UI.WebControls.TreeNode> objects from the collection. Any updates to the collection will automatically be reflected in the <xref:System.Web.UI.WebControls.TreeView> control the next time the page is refreshed.       To access child nodes further down the tree, use the ChildNodes property of the next-level child node to navigate down the node levels."
+  summary: "Henter en <xref href=&quot;System.Web.UI.WebControls.TreeNodeCollection&quot;> </xref> samlingen som inneholder de første nivå underordnede nodene av den gjeldende noden."
+  remarks: "Bruk ChildNodes-egenskapen for å få en <xref:System.Web.UI.WebControls.TreeNodeCollection>samlingen som inneholder de første nivå underordnede nodene av den gjeldende noden.</xref:System.Web.UI.WebControls.TreeNodeCollection> Denne samlingen brukes vanligvis til å gå gjennom alle første nivå underordnede noder eller tilgang til en bestemt første nivå underordnet node i den gjeldende noden.       Egenskapen ChildNodes kan også brukes til å programmatisk administrere første nivå underordnede noder i den gjeldende noden. Du kan legge til, insert, Fjern og hente <xref:System.Web.UI.WebControls.TreeNode>objekter fra samlingen.</xref:System.Web.UI.WebControls.TreeNode> Alle oppdateringer i samlingen gjenspeiles automatisk i den <xref:System.Web.UI.WebControls.TreeView>kontrollere neste gang siden oppdateres.</xref:System.Web.UI.WebControls.TreeView>       For å få tilgang til underordnede noder mer ned i treet, kan du bruke egenskapen ChildNodes av den neste nivå underordnede noden du gå nedover node-nivåer."
   example:
   - "The following code example demonstrates how to use the ChildNodes property to traverse the tree.  \n  \n [!code-cs[TreeNodeCollectionCount#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_95_1.aspx)]\n [!code-vb[TreeNodeCollectionCount#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_95_1.aspx)]"
   syntax:
     content: public System.Web.UI.WebControls.TreeNodeCollection ChildNodes { get; }
     return:
       type: System.Web.UI.WebControls.TreeNodeCollection
-      description: "A <xref href=&quot;System.Web.UI.WebControls.TreeNodeCollection&quot;></xref> that contains the first-level child nodes of the current node."
+      description: "En <xref href=&quot;System.Web.UI.WebControls.TreeNodeCollection&quot;> </xref> som inneholder de første nivå underordnede nodene av den gjeldende noden."
   overload: System.Web.UI.WebControls.TreeNode.ChildNodes*
   exceptions: []
   platform:
@@ -306,14 +306,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Creates a new instance of the <xref href=&quot;System.Web.UI.WebControls.TreeNode&quot;></xref> class with the properties of the current <xref href=&quot;System.Web.UI.WebControls.TreeNode&quot;></xref> instance."
-  remarks: "This is a helper method that supports the <xref:System.ICloneable> interface implemented by <xref:System.Web.UI.WebControls.TreeNode>."
+  summary: "Oppretter en ny forekomst av den <xref href=&quot;System.Web.UI.WebControls.TreeNode&quot;> </xref> klassen med egenskaper for gjeldende <xref href=&quot;System.Web.UI.WebControls.TreeNode&quot;> </xref> forekomsten."
+  remarks: "Dette er en hjelper som støtter <xref:System.ICloneable>grensesnittet implementert av <xref:System.Web.UI.WebControls.TreeNode>.</xref:System.Web.UI.WebControls.TreeNode> </xref:System.ICloneable>"
   syntax:
     content: protected virtual object Clone ();
     parameters: []
     return:
       type: System.Object
-      description: "A new instance of <xref href=&quot;System.Web.UI.WebControls.TreeNode&quot;></xref> with the properties of the current <xref href=&quot;System.Web.UI.WebControls.TreeNode&quot;></xref> instance."
+      description: "En ny forekomst av <xref href=&quot;System.Web.UI.WebControls.TreeNode&quot;> </xref> med egenskaper for gjeldende <xref href=&quot;System.Web.UI.WebControls.TreeNode&quot;> </xref> forekomsten."
   overload: System.Web.UI.WebControls.TreeNode.Clone*
   exceptions: []
   platform:
@@ -330,8 +330,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Collapses the current tree node."
-  remarks: "Use the Collapse method to conveniently collapse the current node.      > [!NOTE] >  As an alternative, you can also set the <xref:System.Web.UI.WebControls.TreeNode.Expanded%2A> property to `false`.       To collapse the current node and all its child nodes, consider using the <xref:System.Web.UI.WebControls.TreeNode.CollapseAll%2A> method.       <xref:System.Web.UI.WebControls.TreeView.CollapseAll%2A> will collapse all the nodes in the entire tree."
+  summary: "Skjuler gjeldende trenode."
+  remarks: "Bruk Skjul-metoden til å skjule enkelt den gjeldende noden.      > [!NOTE] > Som et alternativ, kan du også angi den <xref:System.Web.UI.WebControls.TreeNode.Expanded%2A>egenskapen `false`.</xref:System.Web.UI.WebControls.TreeNode.Expanded%2A>       For å skjule den gjeldende noden og alle underordnede noder, bør du bruke den <xref:System.Web.UI.WebControls.TreeNode.CollapseAll%2A>metoden.</xref:System.Web.UI.WebControls.TreeNode.CollapseAll%2A>       <xref:System.Web.UI.WebControls.TreeView.CollapseAll%2A>vil skjule alle nodene i hele treet.</xref:System.Web.UI.WebControls.TreeView.CollapseAll%2A>"
   example:
   - "The following code example demonstrates how to use the Collapse method to programmatically collapse a node in the <xref:System.Web.UI.WebControls.TreeView> control. For this example to work correctly, you must copy the sample XML data below to a file named Book.xml.  \n  \n [!code-cs[TreeNodeExpand#1](~/add/codesnippet/csharp/m-system.web.ui.webcontr_20_1.aspx)]\n [!code-vb[TreeNodeExpand#1](~/add/codesnippet/visualbasic/m-system.web.ui.webcontr_20_1.aspx)]  \n  \n The following code is sample XML data for the previous example.  \n  \n```  \n<Book Title=\"Book Title\">  \n    <Chapter Heading=\"Chapter 1\">  \n        <Section Heading=\"Section 1\">  \n        </Section>  \n        <Section Heading=\"Section 2\">  \n        </Section>  \n    </Chapter>  \n    <Chapter Heading=\"Chapter 2\">  \n        <Section Heading=\"Section 1\">  \n        </Section>  \n    </Chapter>  \n</Book>  \n```"
   syntax:
@@ -353,8 +353,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Collapses the current node and all its child nodes."
-  remarks: "Use the CollapseAll method to conveniently collapse the current node and all its child nodes.      > [!NOTE] >  As an alternative, you can also set the <xref:System.Web.UI.WebControls.TreeNode.Expanded%2A> property of the current node and each of its child nodes to `false`.       To collapse only the current node, consider using the <xref:System.Web.UI.WebControls.TreeNode.Collapse%2A> method.       <xref:System.Web.UI.WebControls.TreeView.CollapseAll%2A> will collapse all the nodes in the entire tree."
+  summary: "Skjuler den gjeldende noden og alle underordnede noder."
+  remarks: "Bruke Skjul alle metode for å skjule enkelt den gjeldende noden og alle underordnede noder.      > [!NOTE] > Som et alternativ, kan du også angi den <xref:System.Web.UI.WebControls.TreeNode.Expanded%2A>for den gjeldende noden og hver av de underordnede nodene som skal `false`.</xref:System.Web.UI.WebControls.TreeNode.Expanded%2A>       For å skjule den gjeldende noden, bør du bruke den <xref:System.Web.UI.WebControls.TreeNode.Collapse%2A>metoden.</xref:System.Web.UI.WebControls.TreeNode.Collapse%2A>       <xref:System.Web.UI.WebControls.TreeView.CollapseAll%2A>vil skjule alle nodene i hele treet.</xref:System.Web.UI.WebControls.TreeView.CollapseAll%2A>"
   example:
   - "The following code example demonstrates how to use the CollapseAll method to programmatically collapse a node and all its child nodes in the <xref:System.Web.UI.WebControls.TreeView> control. For this example to work correctly, you must copy the sample XML data below to a file named Book.xml.  \n  \n [!code-cs[TreeNodeExpandAll#1](~/add/codesnippet/csharp/m-system.web.ui.webcontr_121_1.aspx)]\n [!code-vb[TreeNodeExpandAll#1](~/add/codesnippet/visualbasic/m-system.web.ui.webcontr_121_1.aspx)]  \n  \n The following code is sample XML data for the previous example.  \n  \n```  \n<Book Title=\"Book Title\">  \n    <Chapter Heading=\"Chapter 1\">  \n        <Section Heading=\"Section 1\">  \n        </Section>  \n        <Section Heading=\"Section 2\">  \n        </Section>  \n    </Chapter>  \n    <Chapter Heading=\"Chapter 2\">  \n        <Section Heading=\"Section 1\">  \n        </Section>  \n    </Chapter>  \n</Book>  \n```"
   syntax:
@@ -376,13 +376,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets a value that indicates whether the node was created through data binding."
-  remarks: "The DataBound property is used to programmatically determine whether the node was created through data binding. Because dynamic and static content cannot be mixed in the same node, this property is commonly used when populating a <xref:System.Web.UI.WebControls.TreeView> control dynamically to determine whether the node contains static content.       The value of this property is stored in view state."
+  summary: "Henter en verdi som angir om noden ble opprettet gjennom databinding."
+  remarks: "Egenskapen databundet brukes til å fastsette programmatisk om noden ble opprettet gjennom databinding. Fordi dynamiske og statisk innhold ikke kan blandes i samme node, denne egenskapen brukes vanligvis under utfylling en <xref:System.Web.UI.WebControls.TreeView>kontrollen dynamisk for å finne ut om noden inneholder statisk innhold.</xref:System.Web.UI.WebControls.TreeView>       Verdien for denne egenskapen lagres i visningsstatusen."
   syntax:
     content: public bool DataBound { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the node was created through data binding; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis noden ble opprettet gjennom databinding; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.WebControls.TreeNode.DataBound*
   exceptions: []
   platform:
@@ -399,13 +399,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets the data item that is bound to the control."
-  remarks: "When the <xref:System.Web.UI.WebControls.TreeView> control is bound to a data source, such as an <xref:System.Web.UI.WebControls.XmlDataSource> object, this property is set to the data item that is bound to this specific node. This property is commonly used to access the values of the data item.      > [!NOTE] >  This property is available only after data binding has occurred."
+  summary: "Henter dataelementet som er bundet til kontrollen."
+  remarks: "Når den <xref:System.Web.UI.WebControls.TreeView>kontrollen er bundet til en datakilde som en <xref:System.Web.UI.WebControls.XmlDataSource>objektet, denne egenskapen er satt til dataelementet som er bundet til denne bestemte noden.</xref:System.Web.UI.WebControls.XmlDataSource> </xref:System.Web.UI.WebControls.TreeView> Denne egenskapen brukes vanligvis til å få tilgang til verdiene i dataelementet.      > [!NOTE] > Denne egenskapen er bare tilgjengelig når databinding oppstod."
   syntax:
     content: public object DataItem { get; }
     return:
       type: System.Object
-      description: "A &lt;xref:System.Object?displayProperty=fullName&gt; that represents the data item that is bound to the control. The default value is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>, which indicates that the node is not bound to any data item."
+      description: "En &lt;xref:System.Object?displayProperty=fullName&gt; som representerer dataelementet som er bundet til kontrollen. Standardverdien er <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>, noe som angir at noden ikke er bundet til et dataelement."
   overload: System.Web.UI.WebControls.TreeNode.DataItem*
   exceptions: []
   platform:
@@ -422,13 +422,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets the path to the data bound to the node."
-  remarks: "The DataPath property value is commonly used when calling the <xref:System.Web.UI.IHierarchicalDataSource.GetHierarchicalView%2A?displayProperty=fullName> method to provide the path to the data bound to the current node. This method then returns a <xref:System.Web.UI.HierarchicalDataSourceView?displayProperty=fullName> object that contains the data at the specified path.       The value of this property is stored in view state."
+  summary: "Henter banen til dataene som er bundet til noden."
+  remarks: "Egenskapsverdien databanen brukes vanligvis under kall av <xref:System.Web.UI.IHierarchicalDataSource.GetHierarchicalView%2A?displayProperty=fullName>metode for å angi banen til dataene som er bundet til den gjeldende noden.</xref:System.Web.UI.IHierarchicalDataSource.GetHierarchicalView%2A?displayProperty=fullName> Denne metoden returnerer et <xref:System.Web.UI.HierarchicalDataSourceView?displayProperty=fullName>objekt som inneholder dataene i den angitte banen.</xref:System.Web.UI.HierarchicalDataSourceView?displayProperty=fullName>       Verdien for denne egenskapen lagres i visningsstatusen."
   syntax:
     content: public string DataPath { get; }
     return:
       type: System.String
-      description: "The path to the data bound to the node. This value comes from the hierarchical data source control to which the <xref href=&quot;System.Web.UI.WebControls.TreeView&quot;></xref> control is bound. The default value is an empty string (&quot;&quot;)."
+      description: "Banen til dataene som er bundet til noden. Denne verdien kommer fra kontroll av hierarkiske data som den <xref href=&quot;System.Web.UI.WebControls.TreeView&quot;> </xref> kontrollen er bundet. Standardverdien er en tom streng (&quot;&quot;)."
   overload: System.Web.UI.WebControls.TreeNode.DataPath*
   exceptions: []
   platform:
@@ -445,15 +445,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets the depth of the node."
-  remarks: "Use the Depth property to determine the depth of the node. The depth represents the number of levels of hierarchy between a node and the root node. For example, a root node has a depth of zero. A child of the root node has a depth of one, and so on."
+  summary: "Henter dybden på noden."
+  remarks: "Bruk egenskapen dybden til å fastsette noden. Dybden representerer antallet nivåer i hierarkiet mellom en node og rotnoden. For eksempel har en rotnode dybden null. En underordnet av rotnoden har dybden én og så videre."
   example:
   - "The following code example demonstrates how use the Depth property to determine the depth of a node. It initializes all nodes with a depth of one to a selected state. For this example to work correctly, you must copy the sample XML data below to a file named Newsgroup.xml.  \n  \n [!code-cs[TreeNodeChecked#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_1355_1.aspx)]\n [!code-vb[TreeNodeChecked#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_1355_1.aspx)]  \n  \n The following code is sample XML data for the previous example.  \n  \n```  \n<category name=\"news.microsoft.com\">  \n    <group name=\"microsoft.public.dotnet.framework.aspnet\"/>  \n    <group name=\"microsoft.public.dotnet.framework.aspnet.mobile\"/>  \n    <group name=\"microsoft.public.dotnet.framework.aspnet.webservices\"/>  \n</category>  \n```"
   syntax:
     content: public int Depth { get; }
     return:
       type: System.Int32
-      description: "The depth of the node."
+      description: "Dybden til noden."
   overload: System.Web.UI.WebControls.TreeNode.Depth*
   exceptions: []
   platform:
@@ -470,8 +470,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Expands the current tree node."
-  remarks: "Use the Expand method to conveniently expand the current node.      > [!NOTE] >  As an alternative, you can also set the <xref:System.Web.UI.WebControls.TreeNode.Expanded%2A> property to `true`.       To expand the current node and all its child nodes, consider using the <xref:System.Web.UI.WebControls.TreeNode.ExpandAll%2A> method.       <xref:System.Web.UI.WebControls.TreeView.ExpandAll%2A> will expand all the nodes in the entire tree.       The value of this property is stored in view state."
+  summary: "Utvider gjeldende trenode."
+  remarks: "Bruk metoden Utvid til å vise gjeldende node.      > [!NOTE] > Som et alternativ, kan du også angi den <xref:System.Web.UI.WebControls.TreeNode.Expanded%2A>egenskapen `true`.</xref:System.Web.UI.WebControls.TreeNode.Expanded%2A>       For å utvide den gjeldende noden og alle underordnede noder, bør du bruke den <xref:System.Web.UI.WebControls.TreeNode.ExpandAll%2A>metoden.</xref:System.Web.UI.WebControls.TreeNode.ExpandAll%2A>       <xref:System.Web.UI.WebControls.TreeView.ExpandAll%2A>Utvider alle nodene i hele treet.</xref:System.Web.UI.WebControls.TreeView.ExpandAll%2A>       Verdien for denne egenskapen lagres i visningsstatusen."
   example:
   - "The following code example demonstrates how to use the Expand method to programmatically expand a node in the <xref:System.Web.UI.WebControls.TreeView> control. For this example to work correctly, you must copy the sample XML data below to a file named Book.xml.  \n  \n [!code-cs[TreeNodeExpand#1](~/add/codesnippet/csharp/m-system.web.ui.webcontr_91_1.aspx)]\n [!code-vb[TreeNodeExpand#1](~/add/codesnippet/visualbasic/m-system.web.ui.webcontr_91_1.aspx)]  \n  \n The following code is sample XML data for the previous example.  \n  \n```  \n<Book Title=\"Book Title\">  \n    <Chapter Heading=\"Chapter 1\">  \n        <Section Heading=\"Section 1\">  \n        </Section>  \n        <Section Heading=\"Section 2\">  \n        </Section>  \n    </Chapter>  \n    <Chapter Heading=\"Chapter 2\">  \n        <Section Heading=\"Section 1\">  \n        </Section>  \n    </Chapter>  \n</Book>  \n```"
   syntax:
@@ -493,8 +493,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Expands the current node and all its child nodes."
-  remarks: "Use the ExpandAll method to conveniently expand the current node and all its child nodes.      > [!NOTE] >  As an alternative, you can also set the <xref:System.Web.UI.WebControls.TreeNode.Expanded%2A> property of the current node and each of its child nodes to `true`.       To expand only the current node, consider using the <xref:System.Web.UI.WebControls.TreeNode.Expand%2A> method.       <xref:System.Web.UI.WebControls.TreeView.ExpandAll%2A> will expand all the nodes in the entire tree."
+  summary: "Utvider den gjeldende noden og alle underordnede noder."
+  remarks: "Bruk metoden Vis alle skal utvides enkelt den gjeldende noden og alle underordnede noder.      > [!NOTE] > Som et alternativ, kan du også angi den <xref:System.Web.UI.WebControls.TreeNode.Expanded%2A>for den gjeldende noden og hver av de underordnede nodene som skal `true`.</xref:System.Web.UI.WebControls.TreeNode.Expanded%2A>       For å utvide den gjeldende noden, bør du bruke den <xref:System.Web.UI.WebControls.TreeNode.Expand%2A>metoden.</xref:System.Web.UI.WebControls.TreeNode.Expand%2A>       <xref:System.Web.UI.WebControls.TreeView.ExpandAll%2A>Utvider alle nodene i hele treet.</xref:System.Web.UI.WebControls.TreeView.ExpandAll%2A>"
   example:
   - "The following code example demonstrates how to use the ExpandAll method to programmatically expand a node and all its child nodes in the <xref:System.Web.UI.WebControls.TreeView> control. For this example to work correctly, you must copy the sample XML data below to a file named Book.xml.  \n  \n [!code-cs[TreeNodeExpandAll#1](~/add/codesnippet/csharp/m-system.web.ui.webcontr_213_1.aspx)]\n [!code-vb[TreeNodeExpandAll#1](~/add/codesnippet/visualbasic/m-system.web.ui.webcontr_213_1.aspx)]  \n  \n The following code is sample XML data for the previous example.  \n  \n```  \n<Book Title=\"Book Title\">  \n    <Chapter Heading=\"Chapter 1\">  \n        <Section Heading=\"Section 1\">  \n        </Section>  \n        <Section Heading=\"Section 2\">  \n        </Section>  \n    </Chapter>  \n    <Chapter Heading=\"Chapter 2\">  \n        <Section Heading=\"Section 1\">  \n        </Section>  \n    </Chapter>  \n</Book>  \n```"
   syntax:
@@ -516,15 +516,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets a value that indicates whether the node is expanded."
-  remarks: "Use the Expanded property to specify or determine whether the node is expanded.       You can expand and collapse a node by calling the <xref:System.Web.UI.WebControls.TreeNode.Expand%2A> and <xref:System.Web.UI.WebControls.TreeNode.Collapse%2A> methods, respectively. You can also expand and collapse a node and all its child nodes by calling the <xref:System.Web.UI.WebControls.TreeNode.ExpandAll%2A> and <xref:System.Web.UI.WebControls.TreeNode.CollapseAll%2A> methods, respectively.       Since the Expanded property is a tri-state property, the following C# code snippet causes a compile error:      ```   protected void TreeView1_SelectedNodeChanged(object sender, EventArgs e)   {   if (TreeView1.Nodes[0].Expanded)   {   // some work here    }   }   ```       While VB.Net implicitly casts the `Boolean` value to a `NullableBoolean`, C# does not. Therefore, it is a best practice to explicitly check the state of the property. For example, the following code examples in Visual Basic and C# explicitly test the value of the Expanded property.       The following Visual Basic code example explicitly tests the value of the Expanded property. This example tests if the Expanded property is set to `True`; therefore `Nothing` and `False` fall through the `If` statement.      ```   If TreeView1.Nodes(0).Expanded = True Then &quot;some work hereEnd IF   ```       This C# code example explicitly tests the value of the Expanded property. This example tests if the Expanded property is set to `True`; therefore `Null` and `False` fall through the `If` statement.      ```   if( TreeView1.Nodes[0].Expanded == true ) { //some work here}   ```"
+  summary: "Henter eller angir en verdi som angir om noden vises."
+  remarks: "Bruk utvidet-egenskapen til å angi eller fastslå om noden vises.       Du kan vise og skjule en node ved å ringe det <xref:System.Web.UI.WebControls.TreeNode.Expand%2A>og <xref:System.Web.UI.WebControls.TreeNode.Collapse%2A>metoder, henholdsvis.</xref:System.Web.UI.WebControls.TreeNode.Collapse%2A> </xref:System.Web.UI.WebControls.TreeNode.Expand%2A> Du kan også utvide og skjule en node og alle underordnede noder ved å ringe det <xref:System.Web.UI.WebControls.TreeNode.ExpandAll%2A>og <xref:System.Web.UI.WebControls.TreeNode.CollapseAll%2A>metoder, henholdsvis.</xref:System.Web.UI.WebControls.TreeNode.CollapseAll%2A> </xref:System.Web.UI.WebControls.TreeNode.ExpandAll%2A>       Siden egenskapen sperret er en tre state-egenskapen, følgende C# kodesnutt forårsaker en kompileringsfeil: ```   protected void TreeView1_SelectedNodeChanged(object sender, EventArgs e)   {   if (TreeView1.Nodes[0].Expanded)   {   // some work here    }   }   ``` mens VB.Net implisitt kaster den `Boolean` verdi til en `NullableBoolean`, C# ikke. Det er derfor det er lurt å kontrollere eksplisitt status for egenskapen. Følgende kodeeksempler i Visual Basic og C# test eksplisitt verdi for egenskapen utvidet.       Følgende Visual Basic kodeeksempel tester eksplisitt verdi for egenskapen utvidet. Dette eksemplet tester Hvis egenskapen sperret er satt til `True`; derfor `Nothing` og `False` overføres i `If` setningen.      ```   If TreeView1.Nodes(0).Expanded = True Then &quot;some work hereEnd IF   ```Denne C# kodeeksempel tester eksplisitt verdi for egenskapen utvidet. Dette eksemplet tester Hvis egenskapen sperret er satt til `True`; derfor `Null` og `False` overføres i `If` setningen.      ```   if( TreeView1.Nodes[0].Expanded == true ) { //some work here}   ```"
   example:
   - "The following code example demonstrates how to use the Expanded property to programmatically expand a node. It initializes all nodes with a depth of one to an expanded state. Notice that when the root node is expanded, its child nodes are already expanded. For this example to work correctly, you must copy the sample XML data below to a file named Book.xml.  \n  \n [!code-vb[TreeNodeExpanded#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_746_1.aspx)]\n [!code-cs[TreeNodeExpanded#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_746_1.aspx)]  \n  \n The following code is sample XML data for the previous example.  \n  \n```  \n<Book Title=\"Book Title\">  \n    <Chapter Heading=\"Chapter 1\">  \n        <Section Heading=\"Section 1\">  \n        </Section>  \n        <Section Heading=\"Section 2\">  \n        </Section>  \n    </Chapter>  \n    <Chapter Heading=\"Chapter 2\">  \n        <Section Heading=\"Section 1\">  \n        </Section>  \n    </Chapter>  \n</Book>  \n```"
   syntax:
     content: public Nullable<bool> Expanded { get; set; }
     return:
       type: System.Nullable{System.Boolean}
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the node is expanded, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> if the node is not expanded, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis noden er utvidet, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> Hvis noden ikke er utvidet, eller <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.WebControls.TreeNode.Expanded*
   exceptions: []
   platform:
@@ -541,15 +541,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the ToolTip text for the image displayed next to a node."
-  remarks: "When an image is displayed next to a node (when the <xref:System.Web.UI.WebControls.TreeNode.ImageUrl%2A> property is set), use the ImageToolTip property to specify the ToolTip displayed when the user positions the mouse pointer over the image. The text that you specify provides assistive technology devices with a description of the image that can be used to make the control more accessible.       The value of this property is stored in view state.       The value of this property, when set, can be saved automatically to a resource file by using a designer tool. For more information, see <xref:System.ComponentModel.LocalizableAttribute> and [Globalization and Localization](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Henter eller angir teksten for verktøytipset for bildet vises ved siden av en node."
+  remarks: "Når et bilde vises ved siden av en node (når det <xref:System.Web.UI.WebControls.TreeNode.ImageUrl%2A>egenskapen er angitt), bruke egenskapen ImageToolTip under til å angi verktøytipset som vises når brukeren plasserer pekeren over bildet.</xref:System.Web.UI.WebControls.TreeNode.ImageUrl%2A> Teksten du angir gir hjelpefunksjoner enheter med en beskrivelse som kan brukes til å gjøre kontrollen mer tilgjengelig.       Verdien for denne egenskapen lagres i visningsstatusen.       Verdien for denne egenskapen Hvis du velger, kan lagres automatisk på en ressursfil ved hjelp av en designer verktøyet. Hvis du vil ha mer informasjon, se <xref:System.ComponentModel.LocalizableAttribute>og [globalisering og lokalisering](~/add/includes/ajax-current-ext-md.md).</xref:System.ComponentModel.LocalizableAttribute>"
   example:
   - "The following code example demonstrates how to use the ImageToolTip property to specify the ToolTip text for an image displayed next to a node. For this example to work correctly, you must provide your own images.  \n  \n [!code-vb[TreeNodeImageToolTip#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_911_1.aspx)]\n [!code-cs[TreeNodeImageToolTip#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_911_1.aspx)]"
   syntax:
     content: public string ImageToolTip { get; set; }
     return:
       type: System.String
-      description: "The ToolTip text for the image displayed next to a node. The default is an empty string (&quot;&quot;), which indicates that this property is not set."
+      description: "Teksten for verktøytipset for bildet vises ved siden av en node. Standarden er en tom streng (&quot;&quot;), noe som angir at denne egenskapen ikke er angitt."
   overload: System.Web.UI.WebControls.TreeNode.ImageToolTip*
   exceptions: []
   platform:
@@ -566,15 +566,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the URL to an image that is displayed next to the node."
-  remarks: "Use the ImageUrl property to specify a custom image for the current node in the <xref:System.Web.UI.WebControls.TreeView> control. This image is displayed next to the node and can be in any file format (.jpg, .gif, .bmp, and so on), as long as the client&quot;s browser supports that format.       The value of this property is stored in view state."
+  summary: "Henter eller angir URL-adressen til et bilde som vises ved siden av noden."
+  remarks: "Bruk egenskapen ImageUrl til å angi en egendefinert bildet for den gjeldende noden i den <xref:System.Web.UI.WebControls.TreeView>kontroll.</xref:System.Web.UI.WebControls.TreeView> Dette bildet vises ved siden av noden, og kan være i alle filformater (JPG, GIF, BMP osv), så lenge klientens nettleser støtter dette formatet.       Verdien for denne egenskapen lagres i visningsstatusen."
   example:
   - "The following code example demonstrates how to use the ImageUrl property to provide a custom image for a node. For this example to work correctly, you must copy the sample XML data below to a file named Book.xml.  \n  \n [!code-cs[TreeViewTreeNodeDataBound#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_1020_1.aspx)]\n [!code-vb[TreeViewTreeNodeDataBound#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_1020_1.aspx)]  \n  \n The following code is sample XML data for the previous example.  \n  \n```  \n<Book Title=\"Book Title\">  \n    <Chapter Heading=\"Chapter 1\">  \n        <Section Heading=\"Section 1\">  \n        </Section>  \n        <Section Heading=\"Section 2\">  \n        </Section>  \n    </Chapter>  \n    <Chapter Heading=\"Chapter 2\">  \n        <Section Heading=\"Section 1\">  \n        </Section>  \n    </Chapter>  \n</Book>  \n```"
   syntax:
     content: public string ImageUrl { get; set; }
     return:
       type: System.String
-      description: "The URL to a custom image that is displayed next to the node. The default value is an empty string (&quot;&quot;), which indicates that this property is not set."
+      description: "URL-adressen til et egendefinert bilde som vises ved siden av noden. Standardverdien er en tom streng (&quot;&quot;), noe som angir at denne egenskapen ikke er angitt."
   overload: System.Web.UI.WebControls.TreeNode.ImageUrl*
   exceptions: []
   platform:
@@ -591,12 +591,12 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets a value that indicates whether the node is saving changes to its view state."
+  summary: "Henter en verdi som angir om noden lagrer endringer i visningsstatusen."
   syntax:
     content: protected bool IsTrackingViewState { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the control is marked to save its state; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis kontrollen er merket for å lagre tilstanden; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.WebControls.TreeNode.IsTrackingViewState*
   exceptions: []
   platform:
@@ -613,14 +613,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Loads the previously saved view state of the node."
-  remarks: "LoadViewState is a helper method used to load the previously saved view state of the node"
+  summary: "Laster inn tidligere lagret visningsstatusen for noden."
+  remarks: "LoadViewState er en helper brukes til å laste inn tidligere lagret visningsstatusen for noden"
   syntax:
     content: protected virtual void LoadViewState (object state);
     parameters:
     - id: state
       type: System.Object
-      description: "An <xref:System.Object> that represents the state of the node."
+      description: "En <xref:System.Object>som representerer statusen for noden.</xref:System.Object>"
   overload: System.Web.UI.WebControls.TreeNode.LoadViewState*
   exceptions: []
   platform:
@@ -637,15 +637,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the URL to navigate to when the node is clicked."
-  remarks: "The text of a node can be in one of two modes: selection mode or navigation mode. By default, a node is in selection mode. To put a node into navigation mode, set the node&quot;s NavigateUrl property to a value other than an empty string.       When a node is in navigation mode, all selection events are disabled for that node. Clicking the node in navigation mode links the user to the specified URL. You can optionally set the <xref:System.Web.UI.WebControls.TreeNode.Target%2A> property to specify the window or frame in which to display the linked content.       The value of this property is stored in view state."
+  summary: "Henter eller angir URL-adressen til å navigere til når noden klikkes."
+  remarks: "Teksten i en node kan være i ett av to måter: utvalget eller navigasjonsmodus. Som standard er en node i valgmodus. For å sette en node i navigasjonsmodus, nodens NavigateUrl egenskapen settes til en annen verdi enn en tom streng.       Når en node er i navigasjonsmodus, deaktiveres alle utvalget hendelser for denne noden. Hvis du klikker noden i navigasjonsmodus for kobler brukeren til den angitte URL-adressen. Du kan eventuelt angi den <xref:System.Web.UI.WebControls.TreeNode.Target%2A>til å angi vinduet eller rammen der du vil vise koblet innhold.</xref:System.Web.UI.WebControls.TreeNode.Target%2A>       Verdien for denne egenskapen lagres i visningsstatusen."
   example:
   - "The following code example demonstrates how to set up the frames for the next code example.  \n  \n [!code-vb[TreeViewFrameSet#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_1054_1.aspx)]\n [!code-cs[TreeViewFrameSet#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_1054_1.aspx)]  \n  \n The following code example demonstrates how to use the NavigateUrl property to specify the URL to link to when the node is clicked. This example is used within the frameset of the previous example to display a table of contents.  \n  \n [!code-vb[TreeViewFrameExample#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_1054_2.aspx)]\n [!code-cs[TreeViewFrameExample#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_1054_2.aspx)]"
   syntax:
     content: public string NavigateUrl { get; set; }
     return:
       type: System.String
-      description: "The URL to navigate to when the node is clicked. The default value is an empty string (&quot;&quot;), which indicates that this property is not set."
+      description: "URL-adressen til å navigere til når noden klikkes. Standardverdien er en tom streng (&quot;&quot;), noe som angir at denne egenskapen ikke er angitt."
   overload: System.Web.UI.WebControls.TreeNode.NavigateUrl*
   exceptions: []
   platform:
@@ -662,15 +662,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets the parent node of the current node."
-  remarks: "The Parent property returns a <xref:System.Web.UI.WebControls.TreeNode> object that represents the parent node of the current node. It is commonly used to determine the parent node or to access the properties of the parent node.      > [!NOTE] >  A root node does not have a parent node.       To access the child nodes of the current node, use the <xref:System.Web.UI.WebControls.TreeNode.ChildNodes%2A> property."
+  summary: "Henter den overordnede noden for den gjeldende noden."
+  remarks: "Returnerer de overordnede en <xref:System.Web.UI.WebControls.TreeNode>objektet som representerer den overordnede noden for den gjeldende noden.</xref:System.Web.UI.WebControls.TreeNode> Det brukes vanligvis til å bestemme den overordnede noden eller få tilgang til egenskapene for den overordnede noden.      > [!NOTE] > En rotnode har ikke en overordnet node.       Hvis du vil ha tilgang til underordnede noder av den gjeldende noden, kan du bruke den <xref:System.Web.UI.WebControls.TreeNode.ChildNodes%2A>egenskapen.</xref:System.Web.UI.WebControls.TreeNode.ChildNodes%2A>"
   example:
   - "The following code example demonstrates how to use the Parent property to access the <xref:System.Web.UI.WebControls.TreeNode.Text%2A> property of the current node's parent node.  \n  \n [!code-vb[TreeNodeParent#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_132_1.aspx)]\n [!code-cs[TreeNodeParent#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_132_1.aspx)]"
   syntax:
     content: public System.Web.UI.WebControls.TreeNode Parent { get; }
     return:
       type: System.Web.UI.WebControls.TreeNode
-      description: "A <xref href=&quot;System.Web.UI.WebControls.TreeNode&quot;></xref> that represents the parent node of the current node."
+      description: "En <xref href=&quot;System.Web.UI.WebControls.TreeNode&quot;> </xref> som representerer den overordnede noden for den gjeldende noden."
   overload: System.Web.UI.WebControls.TreeNode.Parent*
   exceptions: []
   platform:
@@ -687,15 +687,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets a value that indicates whether the node is populated dynamically."
-  remarks: "Sometimes, it is not practical to statically predefine the tree structure due to data size or custom content that depends on user input. Because of this, the <xref:System.Web.UI.WebControls.TreeView> control supports dynamic node population. When a node&quot;s PopulateOnDemand property is set to `true`, that node is populated at run time through a postback event when the node is expanded. To populate a node dynamically, an event-handling method that populates the node must be defined for the <xref:System.Web.UI.WebControls.TreeView.TreeNodePopulate> event.       Supported browsers can also take advantage of client-side node population. When enabled, this allows the <xref:System.Web.UI.WebControls.TreeView> control to dynamically populate a node on the client when that node is expanded, which prevents the need to post back to the server. For more information on client-side node population, see <xref:System.Web.UI.WebControls.TreeView.PopulateNodesFromClient%2A>.       The value of this property is stored in view state."
+  summary: "Henter eller angir en verdi som angir om noden er fylt ut dynamisk."
+  remarks: "Det er noen ganger praktisk å forhåndsdefinere statisk trestrukturen på grunn av datastørrelsen eller innhold som er avhenger av brukerinndata. Derfor den <xref:System.Web.UI.WebControls.TreeView>kontrollen støtter dynamiske noden populasjonen.</xref:System.Web.UI.WebControls.TreeView> Når en node PopulateOnDemand er satt til `true`, noden fylles på kjøretidspunktet gjennom en sende tilbake-hendelse når noden vises. En hendelseshåndtering metode som fyller ut noden for å fylle ut en node dynamisk, må angis for den <xref:System.Web.UI.WebControls.TreeView.TreeNodePopulate>hendelsen.</xref:System.Web.UI.WebControls.TreeView.TreeNodePopulate>       Støttede nettlesere kan også dra nytte av klientsiden noden populasjon. Når aktivert dette tillater at den <xref:System.Web.UI.WebControls.TreeView>kontrollen til å fylle en node på klienten dynamisk når den noden utvides, noe som hindrer at du må legge inn på serveren.</xref:System.Web.UI.WebControls.TreeView> Hvis du vil ha mer informasjon på klientsiden noden populasjonen, kan du se <xref:System.Web.UI.WebControls.TreeView.PopulateNodesFromClient%2A>.</xref:System.Web.UI.WebControls.TreeView.PopulateNodesFromClient%2A>       Verdien for denne egenskapen lagres i visningsstatusen."
   example:
   - "The following code example demonstrates how to use the PopulateOnDemand property to indicate that a node is populated dynamically.  \n  \n [!code-cs[TreeViewPopulateNodesFromClient#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_774_1.aspx)]\n [!code-vb[TreeViewPopulateNodesFromClient#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_774_1.aspx)]"
   syntax:
     content: public bool PopulateOnDemand { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to populate the node dynamically; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>til å fylle ut noden dynamisk; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Standard <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.WebControls.TreeNode.PopulateOnDemand*
   exceptions: []
   platform:
@@ -712,14 +712,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Allows control developers to add additional rendering to the node."
-  remarks: "This method can be overridden by control developers to add additional rendering after the node is rendered."
+  summary: "Gjør det mulig for kontrollutviklere å legge til flere gjengivelse i noden."
+  remarks: "Denne metoden kan overstyres av kontrollutviklere å legge til flere gjengivelse når noden gjengis."
   syntax:
     content: protected virtual void RenderPostText (System.Web.UI.HtmlTextWriter writer);
     parameters:
     - id: writer
       type: System.Web.UI.HtmlTextWriter
-      description: "The <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;></xref> that represents the output stream used to write content to a Web page."
+      description: "Den <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;> </xref> som representerer utdata dataflyten brukes til å skrive innholdet til en webside."
   overload: System.Web.UI.WebControls.TreeNode.RenderPostText*
   exceptions: []
   platform:
@@ -736,14 +736,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Allows control developers to add additional rendering to the node."
-  remarks: "This method can be overridden by control developers to add additional rendering before the node is rendered."
+  summary: "Gjør det mulig for kontrollutviklere å legge til flere gjengivelse i noden."
+  remarks: "Denne metoden kan overstyres av kontrollutviklere å legge til flere gjengivelse før noden gjengis."
   syntax:
     content: protected virtual void RenderPreText (System.Web.UI.HtmlTextWriter writer);
     parameters:
     - id: writer
       type: System.Web.UI.HtmlTextWriter
-      description: "The <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;></xref> that represents the output stream used to write content to a Web page."
+      description: "Den <xref href=&quot;System.Web.UI.HtmlTextWriter&quot;> </xref> som representerer utdata dataflyten brukes til å skrive innholdet til en webside."
   overload: System.Web.UI.WebControls.TreeNode.RenderPreText*
   exceptions: []
   platform:
@@ -760,14 +760,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Saves the current view state of the node."
-  remarks: "The SaveViewState method is a helper method called by the node to save its state."
+  summary: "Lagrer gjeldende visningsstatusen for noden."
+  remarks: "SaveViewState-metoden er en helper kalles av noden ikke lagre tilstanden."
   syntax:
     content: protected virtual object SaveViewState ();
     parameters: []
     return:
       type: System.Object
-      description: "An <xref:System.Object> that contains the saved state of the node."
+      description: "En <xref:System.Object>som inneholder den lagrede tilstanden for noden.</xref:System.Object>"
   overload: System.Web.UI.WebControls.TreeNode.SaveViewState*
   exceptions: []
   platform:
@@ -784,8 +784,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Selects the current node in the <xref href=&quot;System.Web.UI.WebControls.TreeView&quot;></xref> control."
-  remarks: "Use the Select method to select the current node in the <xref:System.Web.UI.WebControls.TreeView> control.       **Note** As an alternative, you can also select the current node by setting the <xref:System.Web.UI.WebControls.TreeNode.Selected%2A> property to `true`."
+  summary: "Velger den gjeldende noden i den <xref href=&quot;System.Web.UI.WebControls.TreeView&quot;> </xref> kontrollen."
+  remarks: "Bruk av Select-metoden til å velge den gjeldende noden i den <xref:System.Web.UI.WebControls.TreeView>kontroll.</xref:System.Web.UI.WebControls.TreeView>       **Obs** som et alternativ, kan du også velge den gjeldende noden ved å angi den <xref:System.Web.UI.WebControls.TreeNode.Selected%2A>egenskapen `true`.</xref:System.Web.UI.WebControls.TreeNode.Selected%2A>"
   example:
   - "The following code example demonstrates how to use the Select method to select a node in the <xref:System.Web.UI.WebControls.TreeView> control.  \n  \n [!code-vb[TreeNodeSelected2#1](~/add/codesnippet/visualbasic/m-system.web.ui.webcontr_189_1.aspx)]\n [!code-cs[TreeNodeSelected2#1](~/add/codesnippet/csharp/m-system.web.ui.webcontr_189_1.aspx)]"
   syntax:
@@ -807,15 +807,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the event or events to raise when a node is selected."
-  remarks: "The text of a node in the <xref:System.Web.UI.WebControls.TreeView> control can be in one of two modes: selection mode or navigation mode. By default, a node is in selection mode. To put a node into navigation mode, set the node&quot;s <xref:System.Web.UI.WebControls.TreeNode.NavigateUrl%2A> property to a value other than an empty string (&quot;&quot;). To put a node into selection mode, set the node&quot;s <xref:System.Web.UI.WebControls.TreeNode.NavigateUrl%2A> property to an empty string.      > [!NOTE] >  When a node is in navigation mode, selection events are disabled for that node. Clicking a node will direct the user to the specified URL, rather than posting the page back to the server and raising an event.       When a node is in selection mode, use the SelectAction property to specify which event or events are raised when a node is selected. The following table lists the available options.      |Selection action|Description|   |----------------------|-----------------|   |`TreeNodeSelectAction.Expand`|Toggles the node between expanded and collapsed. Raises the <xref:System.Web.UI.WebControls.TreeView.TreeNodeExpanded> event or the <xref:System.Web.UI.WebControls.TreeView.TreeNodeCollapsed> event as appropriate.|   |`TreeNodeSelectAction.None`|Raises no events when a node is selected.|   |`TreeNodeSelectAction.Select`|Raises the <xref:System.Web.UI.WebControls.TreeView.SelectedNodeChanged> event when a node is selected.|   |`TreeNodeSelectAction.SelectExpand`|Raises both the <xref:System.Web.UI.WebControls.TreeView.SelectedNodeChanged> and the <xref:System.Web.UI.WebControls.TreeView.TreeNodeExpanded> events when a node is selected. Nodes are only expanded, never collapsed.|      > [!NOTE] >  The <xref:System.Web.UI.WebControls.TreeView.HoverNodeStyle%2A> property is not rendered for a node with its SelectAction property set to `TreeNodeSelectAction.None`.       The value of this property is stored in view state."
+  summary: "Henter eller angir hendelsen eller hendelsene opphøye når en node er valgt."
+  remarks: "Teksten i en node i den <xref:System.Web.UI.WebControls.TreeView>kontrollen kan være i ett av to måter: utvalg eller navigasjonsmodus.</xref:System.Web.UI.WebControls.TreeView> Som standard er en node i valgmodus. For å sette en node i navigasjonsmodus, angir du node <xref:System.Web.UI.WebControls.TreeNode.NavigateUrl%2A>til en annen verdi enn en tom streng (&quot;&quot;).</xref:System.Web.UI.WebControls.TreeNode.NavigateUrl%2A> For å sette en node i valgmodus, angir du node <xref:System.Web.UI.WebControls.TreeNode.NavigateUrl%2A>egenskapen til en tom streng.</xref:System.Web.UI.WebControls.TreeNode.NavigateUrl%2A>      > [!NOTE] > Når en node er i navigasjonsmodus, utvalget hendelser er deaktivert for denne noden. Hvis du klikker en node vil sende brukeren til den angitte URL-adressen i stedet posting siden tilbake til serveren og opprettet en hendelse.       Når en node i valgmodus, bruke egenskapen SelectAction til å angi hvilken hendelse eller hendelser aktiveres når en node er valgt. Tabellen nedenfor viser tilgjengelige alternativer.      | Utvalget handlingen | Beskrivelse |   |----------------------|-----------------|   | `TreeNodeSelectAction.Expand`| Aktiverer/deaktiverer noden mellom utvidede og skjulte. Opphøyer <xref:System.Web.UI.WebControls.TreeView.TreeNodeExpanded>-hendelse eller <xref:System.Web.UI.WebControls.TreeView.TreeNodeCollapsed>-hendelse etter behov. |   | `TreeNodeSelectAction.None`| Opphøyer ingen hendelser når en node er valgt. |   | `TreeNodeSelectAction.Select`| Opphøyer <xref:System.Web.UI.WebControls.TreeView.SelectedNodeChanged>-hendelse når en node er valgt. |   | `TreeNodeSelectAction.SelectExpand`| Opphøyer begge av <xref:System.Web.UI.WebControls.TreeView.SelectedNodeChanged>og <xref:System.Web.UI.WebControls.TreeView.TreeNodeExpanded>hendelser når en node er valgt.</xref:System.Web.UI.WebControls.TreeView.TreeNodeExpanded> </xref:System.Web.UI.WebControls.TreeView.SelectedNodeChanged> </xref:System.Web.UI.WebControls.TreeView.SelectedNodeChanged> </xref:System.Web.UI.WebControls.TreeView.TreeNodeCollapsed> </xref:System.Web.UI.WebControls.TreeView.TreeNodeExpanded> Noder bare utvides, skjules aldri. |      > [!NOTE] > Den <xref:System.Web.UI.WebControls.TreeView.HoverNodeStyle%2A>egenskapen gjengis ikke for en node med egenskapen SelectAction satt til `TreeNodeSelectAction.None`.</xref:System.Web.UI.WebControls.TreeView.HoverNodeStyle%2A>       Verdien for denne egenskapen lagres i visningsstatusen."
   example:
   - "The following code example demonstrates how to use the SelectAction property to specify which event is raised when a node is clicked.  \n  \n [!code-cs[TreeViewPopulateNodesFromClient#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_1227_1.aspx)]\n [!code-vb[TreeViewPopulateNodesFromClient#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_1227_1.aspx)]"
   syntax:
     content: public System.Web.UI.WebControls.TreeNodeSelectAction SelectAction { get; set; }
     return:
       type: System.Web.UI.WebControls.TreeNodeSelectAction
-      description: "One of the <xref href=&quot;System.Web.UI.WebControls.TreeNodeSelectAction&quot;></xref> values. The default is <xref uid=&quot;langword_csharp_TreeNodeSelectAction.Select&quot; name=&quot;TreeNodeSelectAction.Select&quot; href=&quot;&quot;></xref>."
+      description: "Én av de <xref href=&quot;System.Web.UI.WebControls.TreeNodeSelectAction&quot;> </xref> verdier. Standard <xref uid=&quot;langword_csharp_TreeNodeSelectAction.Select&quot; name=&quot;TreeNodeSelectAction.Select&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.WebControls.TreeNode.SelectAction*
   exceptions: []
   platform:
@@ -832,15 +832,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets a value that indicates whether the node is selected."
-  remarks: "Use the Selected property to specify or determine whether the node is selected.      > [!NOTE] >  Although the property can be used to determine whether the node is selected, it is more common to use the <xref:System.Web.UI.WebControls.TreeView.SelectedNode%2A> property.       Only one node can be selected at a time in the <xref:System.Web.UI.WebControls.TreeView> control when using this property.      > [!NOTE] >  As an alternative, you can also select the node by using the <xref:System.Web.UI.WebControls.TreeNode.Select%2A> method.       The value of this property is stored in view state."
+  summary: "Henter eller angir en verdi som angir om noden er valgt."
+  remarks: "Bruk den valgte egenskapen til å angi eller fastslå om noden som er valgt.      > [!NOTE] > Selv om egenskapen kan brukes til å fastslå om noden som er valgt, er det vanlige å bruke den <xref:System.Web.UI.WebControls.TreeView.SelectedNode%2A>egenskapen.</xref:System.Web.UI.WebControls.TreeView.SelectedNode%2A>       Bare én node kan velges om gangen i den <xref:System.Web.UI.WebControls.TreeView>kontrollerer når du bruker denne egenskapen.</xref:System.Web.UI.WebControls.TreeView>      > [!NOTE] > Som et alternativ, kan du velge noden ved hjelp av <xref:System.Web.UI.WebControls.TreeNode.Select%2A>metode.</xref:System.Web.UI.WebControls.TreeNode.Select%2A>       Verdien for denne egenskapen lagres i visningsstatusen."
   example:
   - "The following code example demonstrates how to use the Selected property to select a node in the <xref:System.Web.UI.WebControls.TreeView> control.  \n  \n [!code-vb[TreeNodeSelected2#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_559_1.aspx)]\n [!code-cs[TreeNodeSelected2#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_559_1.aspx)]"
   syntax:
     content: public bool Selected { get; set; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the node is selected; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>. The default is <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis noden er merket. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>. Standard <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.WebControls.TreeNode.Selected*
   exceptions: []
   platform:
@@ -857,15 +857,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets a value that indicates whether a check box is displayed next to the node."
-  remarks: "The <xref:System.Web.UI.WebControls.TreeView> control allows you to display a check box next to a node&quot;s image. Use the ShowCheckBox property to show or hide the check box for the current node.       Although the ShowCheckBox property can be used to display check boxes, it is more common to use the <xref:System.Web.UI.WebControls.TreeView.ShowCheckBoxes%2A?displayProperty=fullName> property of the <xref:System.Web.UI.WebControls.TreeView> control. The <xref:System.Web.UI.WebControls.TreeView.ShowCheckBoxes%2A?displayProperty=fullName> property, however, affects every node type specified by the property; therefore, the ShowCheckBox property is often used to override that setting for an individual node.       Since the <xref:System.Web.UI.WebControls.TreeView.ShowCheckBoxes%2A?displayProperty=fullName> property is a tri-state property, the following C# code snippet causes a compile error:      ```   protected void TreeView1_SelectedNodeChanged(object sender, EventArgs e)   {   if (TreeView1.Nodes[0].Expanded)   {   // some work here    }   }   ```       While VB.Net implicitly casts the `Boolean` value to a `NullableBoolean`, C# does not. Therefore, it is a best practice to explicitly check the state of the property. For example, the following code examples in Visual Basic and C# explicitly test the value of the <xref:System.Web.UI.WebControls.TreeNode.Expanded%2A> property.       The following Visual Basic code example explicitly tests the value of the <xref:System.Web.UI.WebControls.TreeNode.Expanded%2A> property. This example tests if the <xref:System.Web.UI.WebControls.TreeNode.Expanded%2A> property is set to `True`; therefore `Nothing` and `False` fall through the `If` statement.      ```   If TreeView1.Nodes(0).Expanded = True Then &quot;some work hereEnd IF   ```       This C# code example explicitly tests the value of the <xref:System.Web.UI.WebControls.TreeNode.Expanded%2A> property. This example tests if the <xref:System.Web.UI.WebControls.TreeNode.Expanded%2A> property is set to `True`; therefore `Null` and `False` fall through the `If` statement.      ```   if( TreeView1.Nodes[0].Expanded == true ) { //some work here}   ```       The value of this property is stored in view state."
+  summary: "Henter eller angir en verdi som angir om en avmerkingsboks vises ved siden av noden."
+  remarks: "Den <xref:System.Web.UI.WebControls.TreeView>kontroll lar deg vise en merket for en node bilde.</xref:System.Web.UI.WebControls.TreeView> Bruk verdien for ShowCheckBox-egenskapen til å vise eller skjule merket for den gjeldende noden.       Selv om egenskapen verdien for ShowCheckBox kan brukes til å vise avmerkingsboksene, er det vanlige å bruke den <xref:System.Web.UI.WebControls.TreeView.ShowCheckBoxes%2A?displayProperty=fullName>for den <xref:System.Web.UI.WebControls.TreeView>kontroll.</xref:System.Web.UI.WebControls.TreeView> </xref:System.Web.UI.WebControls.TreeView.ShowCheckBoxes%2A?displayProperty=fullName> Den <xref:System.Web.UI.WebControls.TreeView.ShowCheckBoxes%2A?displayProperty=fullName>, men påvirker hver nodetypen som er angitt av egenskapen; derfor egenskapen verdien for ShowCheckBox ofte brukes til å overstyre innstillingen for en enkelt node.</xref:System.Web.UI.WebControls.TreeView.ShowCheckBoxes%2A?displayProperty=fullName>       Siden det <xref:System.Web.UI.WebControls.TreeView.ShowCheckBoxes%2A?displayProperty=fullName>er en tre state-egenskapen, følgende C# kodesnutt forårsaker en kompileringsfeil: ```   protected void TreeView1_SelectedNodeChanged(object sender, EventArgs e)   {   if (TreeView1.Nodes[0].Expanded)   {   // some work here    }   }   ``` mens VB.Net implisitt kaster den `Boolean` verdi til en `NullableBoolean`, C# ikke.</xref:System.Web.UI.WebControls.TreeView.ShowCheckBoxes%2A?displayProperty=fullName> Det er derfor det er lurt å kontrollere eksplisitt status for egenskapen. For eksempel følgende kodeeksempler i Visual Basic og C# eksplisitt teste verdien for den <xref:System.Web.UI.WebControls.TreeNode.Expanded%2A>egenskapen.</xref:System.Web.UI.WebControls.TreeNode.Expanded%2A>       Følgende Visual Basic kodeeksempel tester eksplisitt verdien for den <xref:System.Web.UI.WebControls.TreeNode.Expanded%2A>egenskapen.</xref:System.Web.UI.WebControls.TreeNode.Expanded%2A> Dette eksemplet tester hvis den <xref:System.Web.UI.WebControls.TreeNode.Expanded%2A>er satt til `True`; derfor `Nothing` og `False` overføres i `If` setningen.</xref:System.Web.UI.WebControls.TreeNode.Expanded%2A>      ```   If TreeView1.Nodes(0).Expanded = True Then &quot;some work hereEnd IF   ```Denne C# kodeeksempel tester eksplisitt verdien for den <xref:System.Web.UI.WebControls.TreeNode.Expanded%2A>egenskapen.</xref:System.Web.UI.WebControls.TreeNode.Expanded%2A> Dette eksemplet tester hvis den <xref:System.Web.UI.WebControls.TreeNode.Expanded%2A>er satt til `True`; derfor `Null` og `False` overføres i `If` setningen.</xref:System.Web.UI.WebControls.TreeNode.Expanded%2A>      ```   if( TreeView1.Nodes[0].Expanded == true ) { //some work here}   ```Verdien for denne egenskapen lagres i visningsstatusen."
   example:
   - "The following code example demonstrates how to use the ShowCheckBox property to programmatically show and hide the check box for a node in the <xref:System.Web.UI.WebControls.TreeView> control. For this example to work correctly, you must copy the sample XML data below to a file named Book.xml.  \n  \n [!code-vb[TreeNodeShowCheckBox#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_833_1.aspx)]\n [!code-cs[TreeNodeShowCheckBox#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_833_1.aspx)]  \n  \n The following code is sample XML data for the previous example.  \n  \n```  \n<Book Title=\"Book Title\">  \n    <Chapter Heading=\"Chapter 1\">  \n        <Section Heading=\"Section 1\">  \n        </Section>  \n        <Section Heading=\"Section 2\">  \n        </Section>  \n    </Chapter>  \n    <Chapter Heading=\"Chapter 2\">  \n        <Section Heading=\"Section 1\">  \n        </Section>  \n    </Chapter>  \n</Book>  \n```"
   syntax:
     content: public Nullable<bool> ShowCheckBox { get; set; }
     return:
       type: System.Nullable{System.Boolean}
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to display the check box; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>skal vises i avmerkingsboksen. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.WebControls.TreeNode.ShowCheckBox*
   exceptions: []
   platform:
@@ -883,14 +883,14 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Creates a copy of the <xref href=&quot;System.Web.UI.WebControls.TreeNode&quot;></xref> object."
-  remarks: "The ICloneable.Clone method is used by the <xref:System.Web.UI.WebControls.TreeNode> class to make a copy of itself."
+  summary: "Oppretter en kopi av det <xref href=&quot;System.Web.UI.WebControls.TreeNode&quot;> </xref> objektet."
+  remarks: "Metoden ICloneable.Clone brukes av den <xref:System.Web.UI.WebControls.TreeNode>klassen for å lage en kopi av seg selv.</xref:System.Web.UI.WebControls.TreeNode>"
   syntax:
     content: object ICloneable.Clone ();
     parameters: []
     return:
       type: System.Object
-      description: "An <xref:System.Object> that represents a copy of the <xref href=&quot;System.Web.UI.WebControls.TreeNode&quot;></xref> object."
+      description: "En <xref:System.Object>som representerer en kopi av det <xref href=&quot;System.Web.UI.WebControls.TreeNode&quot;> </xref> objektet.</xref:System.Object>"
   overload: System.Web.UI.WebControls.TreeNode.System#ICloneable#Clone*
   exceptions: []
   platform:
@@ -908,13 +908,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "For a description of this member, see <xref:System.Web.UI.IStateManager.IsTrackingViewState*>."
-  remarks: "This member is an explicit interface member implementation. It can be used only when the <xref:System.Web.UI.WebControls.TreeNode> instance is cast to the <xref:System.Web.UI.IStateManager> interface."
+  summary: "Hvis du vil ha en beskrivelse for dette medlemmet kan du se <xref:System.Web.UI.IStateManager.IsTrackingViewState*>.</xref:System.Web.UI.IStateManager.IsTrackingViewState*>"
+  remarks: "Dette medlemmet er implementering eksplisitt grensesnitt medlem. Den kan brukes bare når den <xref:System.Web.UI.WebControls.TreeNode>forekomsten endres til den <xref:System.Web.UI.IStateManager>grensesnittet.</xref:System.Web.UI.IStateManager> </xref:System.Web.UI.WebControls.TreeNode>"
   syntax:
     content: bool System.Web.UI.IStateManager.IsTrackingViewState { get; }
     return:
       type: System.Boolean
-      description: "A value that indicates whether the node is saving changes to its view state."
+      description: "En verdi som angir om noden lagrer endringer i visningsstatusen."
   overload: System.Web.UI.WebControls.TreeNode.System#Web#UI#IStateManager#IsTrackingViewState*
   exceptions: []
   platform:
@@ -932,13 +932,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Loads the node&quot;s previously saved view state."
+  summary: "Laster nodens tidligere lagret visningsstatusen."
   syntax:
     content: void IStateManager.LoadViewState (object state);
     parameters:
     - id: state
       type: System.Object
-      description: "A &lt;xref:System.Object?displayProperty=fullName&gt; that contains the saved view state values."
+      description: "En &lt;xref:System.Object?displayProperty=fullName&gt; som inneholder verdiene lagrede visningen."
   overload: System.Web.UI.WebControls.TreeNode.System#Web#UI#IStateManager#LoadViewState*
   exceptions: []
   platform:
@@ -956,13 +956,13 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Saves the view state changes to a &lt;xref:System.Object?displayProperty=fullName&gt;."
+  summary: "Lagrer visningen tilstandsendringer i en &lt;xref:System.Object?displayProperty=fullName&gt;."
   syntax:
     content: object IStateManager.SaveViewState ();
     parameters: []
     return:
       type: System.Object
-      description: "The &lt;xref:System.Object?displayProperty=fullName&gt; that contains the view state changes."
+      description: "Den &lt;xref:System.Object?displayProperty=fullName&gt; som inneholder visningen tilstandsendringer."
   overload: System.Web.UI.WebControls.TreeNode.System#Web#UI#IStateManager#SaveViewState*
   exceptions: []
   platform:
@@ -980,8 +980,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Instructs the <xref href=&quot;System.Web.UI.WebControls.TreeNode&quot;></xref> object to track changes to its view state."
-  remarks: "After this method has been called on a server control, the <xref:System.Web.UI.Control.IsTrackingViewState%2A> property returns `true`."
+  summary: "Angir at det <xref href=&quot;System.Web.UI.WebControls.TreeNode&quot;> </xref> objekt for å spore endringer i visningsstatusen."
+  remarks: "Når denne metoden er kalt på en serverkontroll av <xref:System.Web.UI.Control.IsTrackingViewState%2A>returnerer `true`.</xref:System.Web.UI.Control.IsTrackingViewState%2A>"
   syntax:
     content: void IStateManager.TrackViewState ();
     parameters: []
@@ -1001,15 +1001,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the target window or frame in which to display the Web page content associated with a node."
-  remarks: "Use the Target property to specify the window or frame in which to display the Web content linked to a node when that node is clicked.      > [!NOTE] >  Setting this property overrides the <xref:System.Web.UI.WebControls.TreeView.Target%2A> property of the <xref:System.Web.UI.WebControls.TreeView> control.      > [!NOTE] >  The Target property renders as a `target` attribute. The `target` attribute on `anchor` elements is not allowed in the XHTML 1.1 document type definition. Do not set the Target property if the rendered output for the <xref:System.Web.UI.WebControls.TreeNode> object must be XHTML 1.1-compliant. For more information, see [XHTML Standards in Visual Studio and ASP.NET](~/add/includes/ajax-current-ext-md.md).   >    >  When creating accessible Web pages, it is strongly recommended you avoid using the Target property to target another window. For more information, see [NIB: ASP.NET Accessibility](http://msdn.microsoft.com/en-us/9b5f3e05-e88d-4248-a5f4-9e64850fa0ae).       The value of this property is stored in view state."
+  summary: "Henter eller angir målvinduet eller rammen til å vise nettsiden innhold som er knyttet til en node."
+  remarks: "Bruk Target-egenskapen til å angi vinduet eller rammen som skal vises webinnholdet koblet til en node når noden klikkes.      > [!NOTE] > Denne egenskapen overstyrer innstillingen i <xref:System.Web.UI.WebControls.TreeView.Target%2A>-egenskapen for den <xref:System.Web.UI.WebControls.TreeView>kontroll.</xref:System.Web.UI.WebControls.TreeView> </xref:System.Web.UI.WebControls.TreeView.Target%2A>      > [!NOTE] > Target-egenskapen blir gjengitt som et `target` attributtet. Den `target` attributtet for `anchor` elementer er ikke tillatt i typedefinisjonen XHTML 1.1 dokumentet. Ikke angi egenskapen Target hvis den gjengitte utdata for den <xref:System.Web.UI.WebControls.TreeNode>objektet må være XHTML 1.1-kompatible.</xref:System.Web.UI.WebControls.TreeNode> Hvis du vil ha mer informasjon, se [XHTML standarder i Visual Studio og ASP.NET](~/add/includes/ajax-current-ext-md.md).   >> Når du oppretter tilgjengelig nettsider, anbefales det du ikke bruke Target-egenskapen til et nytt vindu som mål. Hvis du vil ha mer informasjon, se [NIB: ASP.NET tilgjengelighet](http://msdn.microsoft.com/en-us/9b5f3e05-e88d-4248-a5f4-9e64850fa0ae).       Verdien for denne egenskapen lagres i visningsstatusen."
   example:
   - "The following code example demonstrates how to set up the frames for the next example.  \n  \n [!code-vb[TreeViewFrameSet#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_971_1.aspx)]\n [!code-cs[TreeViewFrameSet#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_971_1.aspx)]  \n  \n The following code example demonstrates how to use the Target property to specify the frame in which to display the linked content. This example is used within the frameset of the previous example to display a table of contents.  \n  \n [!code-vb[TreeViewFrameExample#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_971_2.aspx)]\n [!code-cs[TreeViewFrameExample#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_971_2.aspx)]"
   syntax:
     content: public string Target { get; set; }
     return:
       type: System.String
-      description: "The target window or frame in which to display the linked Web page content. Values must begin with a letter in the range of A through Z (case-insensitive), except for certain special values that begin with an underscore, as shown in the following table.       <table><thead><tr><th> Target value       </th><th> Description       </th></tr></thead><tbody><tr><td><xref uid=&quot;langword_csharp__blank&quot; name=&quot;_blank&quot; href=&quot;&quot;></xref></td><td> Renders the content in a new window without frames.       </td></tr><tr><td><xref uid=&quot;langword_csharp__parent&quot; name=&quot;_parent&quot; href=&quot;&quot;></xref></td><td> Renders the content in the immediate frameset parent.       </td></tr><tr><td><xref uid=&quot;langword_csharp__search&quot; name=&quot;_search&quot; href=&quot;&quot;></xref></td><td> Renders the content in the search pane.       </td></tr><tr><td><xref uid=&quot;langword_csharp__self&quot; name=&quot;_self&quot; href=&quot;&quot;></xref></td><td> Renders the content in the frame with focus.       </td></tr><tr><td><xref uid=&quot;langword_csharp__top&quot; name=&quot;_top&quot; href=&quot;&quot;></xref></td><td> Renders the content in the full window without frames.       </td></tr></tbody></table><div class=&quot;alert NOTE&quot;>    Check your browser documentation to determine whether the <xref uid=&quot;langword_csharp__search&quot; name=&quot;_search&quot; href=&quot;&quot;></xref> value is supported. For example, Microsoft Internet Explorer 5.0 and later support the <xref uid=&quot;langword_csharp__search&quot; name=&quot;_search&quot; href=&quot;&quot;></xref> target value.      </div>       The default value is an empty string (&quot;&quot;), which refreshes the window or frame with focus."
+      description: "Målvinduet eller rammen der du vil vise innholdet koblede websiden. Verdier må begynne med en bokstav i området for A til Z (samlingstype), bortsett fra bestemte spesielle verdier som begynner med et understrekingstegn som vises i følgende tabell.       <table><thead><tr><th> Målverdien       </th><th> Beskrivelse       </th></tr></thead><tbody><tr><td><xref uid=&quot;langword_csharp__blank&quot; name=&quot;_blank&quot; href=&quot;&quot;></xref></td><td> Gjengir innholdet i et nytt vindu uten forhandleren.       </td></tr><tr><td><xref uid=&quot;langword_csharp__parent&quot; name=&quot;_parent&quot; href=&quot;&quot;></xref></td><td> Gjengir innholdet i overordnet umiddelbar rammesett.       </td></tr><tr><td><xref uid=&quot;langword_csharp__search&quot; name=&quot;_search&quot; href=&quot;&quot;></xref></td><td> Gjengir innholdet i ruten.       </td></tr><tr><td><xref uid=&quot;langword_csharp__self&quot; name=&quot;_self&quot; href=&quot;&quot;></xref></td><td> Gjengir innholdet i rammen med fokus.       </td></tr><tr><td><xref uid=&quot;langword_csharp__top&quot; name=&quot;_top&quot; href=&quot;&quot;></xref></td><td> Gjengir innholdet i hele vinduet uten forhandleren.       </td></tr></tbody></table><div class=&quot;alert NOTE&quot;>    Se i dokumentasjonen for nettleseren for å finne ut om den <xref uid=&quot;langword_csharp__search&quot; name=&quot;_search&quot; href=&quot;&quot;> </xref> verdien støttes. For eksempel Microsoft Internet Explorer 5.0 og senere støtter den <xref uid=&quot;langword_csharp__search&quot; name=&quot;_search&quot; href=&quot;&quot;> </xref> målverdi.      </div>       Standardverdien er en tom streng (&quot;&quot;), som oppdaterer vinduet eller ramme med fokus."
   overload: System.Web.UI.WebControls.TreeNode.Target*
   exceptions: []
   platform:
@@ -1026,15 +1026,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the text displayed for the node in the <xref href=&quot;System.Web.UI.WebControls.TreeView&quot;></xref> control."
-  remarks: "Use the Text property to specify or determine the text that is displayed for the node in the <xref:System.Web.UI.WebControls.TreeView> control.      > [!NOTE] >  If the Text property contains `null`, the `get` accessor returns the value of the <xref:System.Web.UI.WebControls.TreeNode.Value%2A> property. If the <xref:System.Web.UI.WebControls.TreeNode.Value%2A> property, in turn, contains `null`, <xref:System.String.Empty> is returned.       The value of this property is stored in view state.       The value of this property, when set, can be saved automatically to a resource file by using a designer tool. For more information, see <xref:System.ComponentModel.LocalizableAttribute> and [Globalization and Localization](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Henter eller angir teksten som vises for noden i den <xref href=&quot;System.Web.UI.WebControls.TreeView&quot;> </xref> kontrollen."
+  remarks: "Bruk Text-egenskapen til å angi eller fastslå teksten som vises for noden i den <xref:System.Web.UI.WebControls.TreeView>kontroll.</xref:System.Web.UI.WebControls.TreeView>      > [!NOTE] > Hvis egenskapen Text inneholder `null`, `get` aksessor returnerer verdien for den <xref:System.Web.UI.WebControls.TreeNode.Value%2A>egenskapen.</xref:System.Web.UI.WebControls.TreeNode.Value%2A> Hvis den <xref:System.Web.UI.WebControls.TreeNode.Value%2A>egenskapen i sin tur inneholder `null`, <xref:System.String.Empty>returneres.</xref:System.String.Empty> </xref:System.Web.UI.WebControls.TreeNode.Value%2A>       Verdien for denne egenskapen lagres i visningsstatusen.       Verdien for denne egenskapen Hvis du velger, kan lagres automatisk på en ressursfil ved hjelp av en designer verktøyet. Hvis du vil ha mer informasjon, se <xref:System.ComponentModel.LocalizableAttribute>og [globalisering og lokalisering](~/add/includes/ajax-current-ext-md.md).</xref:System.ComponentModel.LocalizableAttribute>"
   example:
   - "The following code example demonstrates how to use the Text property to specify the text for a node.  \n  \n [!code-vb[TreeViewFrameExample#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_843_1.aspx)]\n [!code-cs[TreeViewFrameExample#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_843_1.aspx)]"
   syntax:
     content: public string Text { get; set; }
     return:
       type: System.String
-      description: "The text displayed for the node in the <xref href=&quot;System.Web.UI.WebControls.TreeView&quot;></xref> control. The default is an empty string (&quot;&quot;)."
+      description: "Teksten som vises for noden i den <xref href=&quot;System.Web.UI.WebControls.TreeView&quot;> </xref> kontrollen. Standarden er en tom streng (&quot;&quot;)."
   overload: System.Web.UI.WebControls.TreeNode.Text*
   exceptions: []
   platform:
@@ -1051,8 +1051,8 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Alternates between the expanded and collapsed state of the node."
-  remarks: "Use the ToggleExpandState method to alternate between an expanded and a collapsed state for the node. For example, if the node is collapsed, calling the ToggleExpandState method expands the node, and vice versa.      > [!NOTE] >  As an alternative, you can set the <xref:System.Web.UI.WebControls.TreeNode.Expanded%2A> property directly."
+  summary: "Bytter mellom utvidede og skjulte tilstanden for noden."
+  remarks: "Bruk metoden ToggleExpandState å bytte mellom en utvidet og skjult tilstand for noden. For eksempel hvis noden er skjult, kaller metoden ToggleExpandState utvides noden, og omvendt.      > [!NOTE] > Som et alternativ, kan du angi den <xref:System.Web.UI.WebControls.TreeNode.Expanded%2A>egenskapen direkte.</xref:System.Web.UI.WebControls.TreeNode.Expanded%2A>"
   example:
   - "The following code example demonstrates how to use the ToggleExpandState method to alternate between an expanded and a collapsed state for the root node of a <xref:System.Web.UI.WebControls.TreeView> control.  \n  \n [!code-vb[TreeNodeToggleExpandState#1](~/add/codesnippet/visualbasic/m-system.web.ui.webcontr_18_1.aspx)]\n [!code-cs[TreeNodeToggleExpandState#1](~/add/codesnippet/csharp/m-system.web.ui.webcontr_18_1.aspx)]"
   syntax:
@@ -1074,15 +1074,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets the ToolTip text for the node."
-  remarks: "Use the ToolTip property to specify the ToolTip text for the node. The ToolTip text is displayed when the mouse pointer is positioned over the node.       The value of this property, when set, can be saved automatically to a resource file by using a designer tool. For more information, see <xref:System.ComponentModel.LocalizableAttribute> and [Globalization and Localization](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Henter eller angir teksten for verktøytipset for noden."
+  remarks: "Bruk ToolTip-egenskapen til å angi teksten for verktøytipset for noden. Teksten for verktøytipset vises når musepekeren er plassert over noden.       Verdien for denne egenskapen Hvis du velger, kan lagres automatisk på en ressursfil ved hjelp av en designer verktøyet. Hvis du vil ha mer informasjon, se <xref:System.ComponentModel.LocalizableAttribute>og [globalisering og lokalisering](~/add/includes/ajax-current-ext-md.md).</xref:System.ComponentModel.LocalizableAttribute>"
   example:
   - "The following code example demonstrates how to use the ToolTip property to provide ToolTips for the nodes in the <xref:System.Web.UI.WebControls.TreeView> control.  \n  \n [!code-cs[TreeNodeToolTip#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_69_1.aspx)]\n [!code-vb[TreeNodeToolTip#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_69_1.aspx)]"
   syntax:
     content: public string ToolTip { get; set; }
     return:
       type: System.String
-      description: "The ToolTip text for the node. The default is an empty string (&quot;&quot;)."
+      description: "Teksten for verktøytipset for noden. Standarden er en tom streng (&quot;&quot;)."
   overload: System.Web.UI.WebControls.TreeNode.ToolTip*
   exceptions: []
   platform:
@@ -1099,7 +1099,7 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Marks the starting point at which to begin tracking and saving view state changes to the node."
+  summary: "Merker startpunktet vil begynne å spore og lagre visningsstatus endringer i noden."
   syntax:
     content: protected void TrackViewState ();
     parameters: []
@@ -1119,15 +1119,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets or sets a non-displayed value used to store any additional data about the node, such as data used for handling postback events."
-  remarks: "The Value property is used to supplement the <xref:System.Web.UI.WebControls.TreeNode.Text%2A> property by storing any additional data associated with the node. This value is not displayed in the control and is commonly used to store data for handling postback events.      > [!NOTE] >  If the Value property contains `null`, the `get` accessor returns the value of the <xref:System.Web.UI.WebControls.TreeNode.Text%2A> property. If the <xref:System.Web.UI.WebControls.TreeNode.Text%2A> property, in turn, contains `null`, <xref:System.String.Empty> is returned.      > [!NOTE] >  Nodes at the same level must each have a unique value for the Value property; the <xref:System.Web.UI.WebControls.TreeView> control cannot distinguish between different nodes at the same level that have the same value. In this scenario, if the user clicks a node that has a duplicate value, the node that appears first in the <xref:System.Web.UI.WebControls.TreeView> control is selected.       The value of this property is stored in view state.       The value of this property, when set, can be saved automatically to a resource file by using a designer tool. For more information, see <xref:System.ComponentModel.LocalizableAttribute> and [Globalization and Localization](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Henter eller angir en verdi for ikke vises som brukes til å lagre ytterligere data om noden, for eksempel data som brukes til å behandle sende tilbake hendelser."
+  remarks: "Egenskapen Value er brukt i tillegg av <xref:System.Web.UI.WebControls.TreeNode.Text%2A>ved lagring ytterligere data tilknyttet noden.</xref:System.Web.UI.WebControls.TreeNode.Text%2A> Denne verdien vises ikke i kontrollen, og brukes vanligvis til å lagre data for håndtering av sende tilbake hendelser.      > [!NOTE] > Hvis egenskapen Value inneholder `null`, `get` aksessor returnerer verdien for den <xref:System.Web.UI.WebControls.TreeNode.Text%2A>egenskapen.</xref:System.Web.UI.WebControls.TreeNode.Text%2A> Hvis den <xref:System.Web.UI.WebControls.TreeNode.Text%2A>egenskapen i sin tur inneholder `null`, <xref:System.String.Empty>returneres.</xref:System.String.Empty> </xref:System.Web.UI.WebControls.TreeNode.Text%2A>      > [!NOTE] > Noder på samme nivå må alle ha en unik verdi for egenskapen Value; den <xref:System.Web.UI.WebControls.TreeView>kontrollen kan ikke skille mellom forskjellige noder på samme nivå som har samme verdi.</xref:System.Web.UI.WebControls.TreeView> I dette tilfellet hvis brukeren klikker en node som har en duplisert verdi noden som vises først i den <xref:System.Web.UI.WebControls.TreeView>kontrollen velges.</xref:System.Web.UI.WebControls.TreeView>       Verdien for denne egenskapen lagres i visningsstatusen.       Verdien for denne egenskapen Hvis du velger, kan lagres automatisk på en ressursfil ved hjelp av en designer verktøyet. Hvis du vil ha mer informasjon, se <xref:System.ComponentModel.LocalizableAttribute>og [globalisering og lokalisering](~/add/includes/ajax-current-ext-md.md).</xref:System.ComponentModel.LocalizableAttribute>"
   example:
   - "The following code example demonstrates how to use the Value property to store the key field.  \n  \n [!code-cs[TreeViewPopulateNodesFromClient#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_1316_1.aspx)]\n [!code-vb[TreeViewPopulateNodesFromClient#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_1316_1.aspx)]"
   syntax:
     content: public string Value { get; set; }
     return:
       type: System.String
-      description: "Supplemental data about the node that is not displayed. The default value is an empty string (&quot;&quot;)."
+      description: "Ekstra data om noden som ikke vises. Standardverdien er en tom streng (&quot;&quot;)."
   overload: System.Web.UI.WebControls.TreeNode.Value*
   exceptions: []
   platform:
@@ -1144,15 +1144,15 @@ items:
   assemblies:
   - System.Web
   namespace: System.Web.UI.WebControls
-  summary: "Gets the path from the root node to the current node."
-  remarks: "The ValuePath property contains a delimiter-separated list of node values that form a path from the root node to the current node. Use the <xref:System.Web.UI.WebControls.TreeView.PathSeparator%2A> property to specify the delimiter character used to separate the node values. This value is commonly used when parsing the list for the individual values, or to pass as an argument to the <xref:System.Web.UI.WebControls.TreeView.FindNode%2A> method of the <xref:System.Web.UI.WebControls.TreeView> class.       Depending on the value displayed in the <xref:System.Web.UI.WebControls.TreeView> control, the delimiter character might need to be changed to prevent any conflicts. For example, if you set the delimiter character to a comma, the displayed value should not contain any commas; otherwise, you cannot accurately parse the ValuePath property.      > [!NOTE] >  Nodes at the same level must each have a unique value for the <xref:System.Web.UI.WebControls.TreeNode.Value%2A> property; the <xref:System.Web.UI.WebControls.TreeView> control cannot distinguish between different nodes at the same level that have the same value. In this scenario, if the user clicks a node that has a duplicate value, the node that appears first in the <xref:System.Web.UI.WebControls.TreeView> control is selected."
+  summary: "Henter banen fra rotnoden til den gjeldende noden."
+  remarks: "Egenskapen ValuePath inneholder en skilletegn kommadelte verdiliste noden som utgjør en bane fra rotnoden til den gjeldende noden. Bruk av <xref:System.Web.UI.WebControls.TreeView.PathSeparator%2A>til å angi skilletegnet brukes til å skille node-verdier.</xref:System.Web.UI.WebControls.TreeView.PathSeparator%2A> Denne verdien brukes vanligvis under analysering av listen for individuelle verdier, eller skal sendes som et argument til <xref:System.Web.UI.WebControls.TreeView.FindNode%2A>metode for <xref:System.Web.UI.WebControls.TreeView>klasse.</xref:System.Web.UI.WebControls.TreeView> </xref:System.Web.UI.WebControls.TreeView.FindNode%2A>       Avhengig av verdien som vises i den <xref:System.Web.UI.WebControls.TreeView>kontroll, skilletegnet kan må endres for å hindre at noen er i konflikt.</xref:System.Web.UI.WebControls.TreeView> For eksempel hvis du angir skilletegnet til et komma, vises verdien skal ikke inneholde noen komma; Du kan ikke ellers nøyaktig analysere ValuePath-egenskapen.      > [!NOTE] > Noder på samme nivå må alle ha en unik verdi for den <xref:System.Web.UI.WebControls.TreeNode.Value%2A>egenskapen; <xref:System.Web.UI.WebControls.TreeView>kontrollen kan ikke skille mellom forskjellige noder på samme nivå som har samme verdi.</xref:System.Web.UI.WebControls.TreeView> </xref:System.Web.UI.WebControls.TreeNode.Value%2A> I dette tilfellet hvis brukeren klikker en node som har en duplisert verdi noden som vises først i den <xref:System.Web.UI.WebControls.TreeView>kontrollen velges.</xref:System.Web.UI.WebControls.TreeView>"
   example:
   - "The following code example demonstrates how to parse the ValuePath property.  \n  \n [!code-cs[TreeViewPathSeparator2#1](~/add/codesnippet/csharp/p-system.web.ui.webcontr_230_1.aspx)]\n [!code-vb[TreeViewPathSeparator2#1](~/add/codesnippet/visualbasic/p-system.web.ui.webcontr_230_1.aspx)]"
   syntax:
     content: public string ValuePath { get; }
     return:
       type: System.String
-      description: "A delimiter-separated list of node values that form a path from the root node to the current node."
+      description: "Et skilletegn kommadelte verdiliste noden som utgjør en bane fra rotnoden til den gjeldende noden."
   overload: System.Web.UI.WebControls.TreeNode.ValuePath*
   exceptions: []
   platform:

@@ -16,8 +16,8 @@ items:
   nameWithType: LinqDataSourceValidationException
   fullName: System.Web.UI.WebControls.LinqDataSourceValidationException
   type: Class
-  summary: "Describes an exception that occurred during validation of new or modified values before values are inserted, updated, or deleted by a <xref href=&quot;System.Web.UI.WebControls.LinqDataSource&quot;></xref> control."
-  remarks: "The LinqDataSourceValidationException class contains type conversion and property setter exceptions. All of the exceptions that are thrown during validation are contained in the <xref:System.Web.UI.WebControls.LinqDataSourceValidationException.InnerExceptions%2A> collection. You can retrieve each validation exception by iterating through the <xref:System.Web.UI.WebControls.LinqDataSourceValidationException.InnerExceptions%2A> collection.       You typically handle exceptions in the <xref:System.Web.UI.WebControls.LinqDataSource.Updating>, <xref:System.Web.UI.WebControls.LinqDataSource.Deleting>, and <xref:System.Web.UI.WebControls.LinqDataSource.Inserting> events. If a validation exception is thrown, the `Exception` property of the <xref:System.Web.UI.WebControls.LinqDataSourceUpdateEventArgs>, <xref:System.Web.UI.WebControls.LinqDataSourceDeleteEventArgs>, or <xref:System.Web.UI.WebControls.LinqDataSourceInsertEventArgs> object contains a LinqDataSourceValidationException object. If no exception is thrown, the `Exception` property contains `null`.       To handle validation exceptions, create a handler for the <xref:System.Web.UI.WebControls.LinqDataSource.Updating>, <xref:System.Web.UI.WebControls.LinqDataSource.Deleting>, or <xref:System.Web.UI.WebControls.LinqDataSource.Inserting> event. In the event handler, check whether the `Exception` property of the event argument class contains a value other than `null`. If the `Exception` property is not null, one or more validation exceptions were thrown and you can retrieve each validation exception in the <xref:System.Web.UI.WebControls.LinqDataSourceValidationException.InnerExceptions%2A> property.       A validation exception can occur if a value does not match the type of the property. For example, trying to update an integer property by using non-numeric characters causes a validation exception. A LINQ to SQL class can also contain customized validation criteria that make sure that the property contains a value that is within an expected range or pattern."
+  summary: "Beskriver et unntak som oppstod under validering av nye eller endrede verdier før verdier er satt inn oppdatert eller slettet av en <xref href=&quot;System.Web.UI.WebControls.LinqDataSource&quot;> </xref> kontrollen."
+  remarks: "Klassen LinqDataSourceValidationException inneholder typekonvertering og egenskapen setter unntak. Alle unntak oppstod under validering finnes i den <xref:System.Web.UI.WebControls.LinqDataSourceValidationException.InnerExceptions%2A>samlingen.</xref:System.Web.UI.WebControls.LinqDataSourceValidationException.InnerExceptions%2A> Du kan hente hvert validering unntak ved å veksle mellom den <xref:System.Web.UI.WebControls.LinqDataSourceValidationException.InnerExceptions%2A>samlingen.</xref:System.Web.UI.WebControls.LinqDataSourceValidationException.InnerExceptions%2A>       Du vanligvis håndtere unntak i den <xref:System.Web.UI.WebControls.LinqDataSource.Updating>, <xref:System.Web.UI.WebControls.LinqDataSource.Deleting>, og <xref:System.Web.UI.WebControls.LinqDataSource.Inserting>hendelser.</xref:System.Web.UI.WebControls.LinqDataSource.Inserting> </xref:System.Web.UI.WebControls.LinqDataSource.Deleting> </xref:System.Web.UI.WebControls.LinqDataSource.Updating> Hvis en validering unntak, den `Exception` -egenskapen for den <xref:System.Web.UI.WebControls.LinqDataSourceUpdateEventArgs>, <xref:System.Web.UI.WebControls.LinqDataSourceDeleteEventArgs>, eller <xref:System.Web.UI.WebControls.LinqDataSourceInsertEventArgs>objektet inneholder et LinqDataSourceValidationException-objekt.</xref:System.Web.UI.WebControls.LinqDataSourceInsertEventArgs> </xref:System.Web.UI.WebControls.LinqDataSourceDeleteEventArgs> </xref:System.Web.UI.WebControls.LinqDataSourceUpdateEventArgs> Hvis ingen unntak, den `Exception` egenskapen inneholder `null`.       Hvis du vil behandle validering unntak, kan du opprette et behandlingsprogram for den <xref:System.Web.UI.WebControls.LinqDataSource.Updating>, <xref:System.Web.UI.WebControls.LinqDataSource.Deleting>, eller <xref:System.Web.UI.WebControls.LinqDataSource.Inserting>hendelsen.</xref:System.Web.UI.WebControls.LinqDataSource.Inserting> </xref:System.Web.UI.WebControls.LinqDataSource.Deleting> </xref:System.Web.UI.WebControls.LinqDataSource.Updating> I hendelsesbehandlingen, kan du se om den `Exception` for argumentet Hendelsesklassen inneholder en verdi enn `null`. Hvis den `Exception` egenskapen er null, ett eller flere validering unntak oppstod og du kan hente hver validering unntak i den <xref:System.Web.UI.WebControls.LinqDataSourceValidationException.InnerExceptions%2A>egenskapen.</xref:System.Web.UI.WebControls.LinqDataSourceValidationException.InnerExceptions%2A>       Et unntak for validering kan oppstå hvis en verdi ikke samsvarer med typen for egenskapen. For eksempel forsøk på å oppdatere en heltallsegenskapen ved hjelp av ikke-numeriske tegn fører til at et unntak for validering. Et LINQ to SQL klassen kan også inneholde tilpassede validering kriteriene som Kontroller at egenskapen inneholder en verdi som er i det forventede området eller mønsteret."
   example:
   - "The following example shows an event handler for the <xref:System.Web.UI.WebControls.LinqDataSource.Updating> event. It displays any validation exception messages by using a <xref:System.Web.UI.WebControls.Label> control.  \n  \n```vb#  \nProtected Sub LinqDataSource_Updating(ByVal sender As Object, _  \n        ByVal e As LinqDataSourceUpdateEventArgs)  \n    If (e.Exception IsNot Nothing) Then  \n        For Each innerException As KeyValuePair(Of String, Exception) _  \n               In e.Exception.InnerExceptions  \n            Label1.Text &= innerException.Key & \": \" & _  \n                innerException.Value.Message & \"<br />\"  \n        Next  \n        e.ExceptionHandled = True  \n    End If  \nEnd Sub  \n```  \n  \n [C#]  \n  \n```  \nprotected void LinqDataSource_Updating(object sender,   \n        LinqDataSourceUpdateEventArgs e)  \n{  \n    if (e.Exception != null)  \n    {  \n        foreach (KeyValuePair<string, Exception> innerException in   \n             e.Exception.InnerExceptions)  \n        {  \n        Label1.Text += innerException.Key + \": \" +   \n            innerException.Value.Message + \"<br />\";  \n        }  \n        e.ExceptionHandled = true;  \n    }  \n}  \n```"
   syntax:
@@ -41,8 +41,8 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI.WebControls
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.UI.WebControls.LinqDataSourceValidationException&quot;></xref> class with a system-supplied message that describes the error."
-  remarks: "The system-supplied message that describes the error takes into account the current system culture.       The following table shows the initial property values for an instance of the <xref:System.Web.UI.WebControls.LinqDataSourceValidationException> class.      |Property|Value|   |--------------|-----------|   |<xref:System.Exception.InnerException%2A>|`null`.|   |<xref:System.Exception.Message%2A>|A system-supplied localized description.|"
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Web.UI.WebControls.LinqDataSourceValidationException&quot;> </xref> klassen med en system-angitt melding som beskriver problemet."
+  remarks: "Systemet angitt meldingen som beskriver problemet tar hensyn til den gjeldende kulturen i systemet.       Tabellen nedenfor viser første egenskapsverdiene for en forekomst av <xref:System.Web.UI.WebControls.LinqDataSourceValidationException>klassen.</xref:System.Web.UI.WebControls.LinqDataSourceValidationException>      | Egenskapen | Verdien |   |--------------|-----------|   | <xref:System.Exception.InnerException%2A>| `null`.|   | <xref:System.Exception.Message%2A>| En system-angitt lokalisert beskrivelse. |</xref:System.Exception.Message%2A> </xref:System.Exception.InnerException%2A>"
   syntax:
     content: public LinqDataSourceValidationException ();
     parameters: []
@@ -62,14 +62,14 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI.WebControls
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.UI.WebControls.LinqDataSourceValidationException&quot;></xref> class with a specified message that describes the error."
-  remarks: "The following table shows the initial property values for an instance of the <xref:System.Web.UI.WebControls.LinqDataSourceValidationException> class.      |Property|Value|   |--------------|-----------|   |<xref:System.Exception.InnerException%2A>|`null`.|   |<xref:System.Exception.Message%2A>|The error message string specified in `message`.|"
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Web.UI.WebControls.LinqDataSourceValidationException&quot;> </xref> klassen med en angitt melding som beskriver problemet."
+  remarks: "Tabellen nedenfor viser første egenskapsverdiene for en forekomst av <xref:System.Web.UI.WebControls.LinqDataSourceValidationException>klassen.</xref:System.Web.UI.WebControls.LinqDataSourceValidationException>      | Egenskapen | Verdien |   |--------------|-----------|   | <xref:System.Exception.InnerException%2A>| `null`.|   | <xref:System.Exception.Message%2A>| Feil melding strengen som er angitt i `message`. |</xref:System.Exception.Message%2A> </xref:System.Exception.InnerException%2A>"
   syntax:
     content: public LinqDataSourceValidationException (string message);
     parameters:
     - id: message
       type: System.String
-      description: "The message that describes the error."
+      description: "Meldingen som beskriver problemet."
   overload: System.Web.UI.WebControls.LinqDataSourceValidationException.#ctor*
   exceptions: []
   platform:
@@ -86,17 +86,17 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI.WebControls
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.UI.WebControls.LinqDataSourceValidationException&quot;></xref> class with serialized data."
-  remarks: "This constructor is called during deserialization to reconstitute the exception object that is transmitted over a stream."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Web.UI.WebControls.LinqDataSourceValidationException&quot;> </xref> klasse serialiserte dataene."
+  remarks: "Denne konstruktøren kalles under deserialisering til reconstitute unntak-objektet som overføres via en dataflyt."
   syntax:
     content: protected LinqDataSourceValidationException (System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
     parameters:
     - id: info
       type: System.Runtime.Serialization.SerializationInfo
-      description: "The object that holds the serialized object data."
+      description: "Objektet som har datatypen serialiserte objektet."
     - id: context
       type: System.Runtime.Serialization.StreamingContext
-      description: "Context information about the source or destination."
+      description: "Kontekstinformasjon om kilden eller målet."
   overload: System.Web.UI.WebControls.LinqDataSourceValidationException.#ctor*
   exceptions: []
   platform:
@@ -113,16 +113,16 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI.WebControls
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.UI.WebControls.LinqDataSourceValidationException&quot;></xref> class with a specified message that describes the error, and a collection of references to inner exceptions."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Web.UI.WebControls.LinqDataSourceValidationException&quot;> </xref> klassen med en angitt melding som beskriver problemet og en samling med referanser til indre unntak."
   syntax:
     content: public LinqDataSourceValidationException (string message, System.Collections.Generic.IDictionary<string,Exception> innerExceptions);
     parameters:
     - id: message
       type: System.String
-      description: "The message that describes the error."
+      description: "Meldingen som beskriver problemet."
     - id: innerExceptions
       type: System.Collections.Generic.IDictionary{System.String,System.Exception}
-      description: "The collection of validation exceptions."
+      description: "Samling av validering unntak."
   overload: System.Web.UI.WebControls.LinqDataSourceValidationException.#ctor*
   exceptions: []
   platform:
@@ -139,17 +139,17 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI.WebControls
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.UI.WebControls.LinqDataSourceValidationException&quot;></xref> class with a specified error message and a reference to the inner exception."
-  remarks: "You typically will not use this constructor because validation exceptions are stored in the <xref:System.Web.UI.WebControls.LinqDataSourceValidationException.InnerExceptions%2A> property, not the <xref:System.Exception.InnerException%2A> property."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Web.UI.WebControls.LinqDataSourceValidationException&quot;> </xref> klassen med en angitt feilmelding og en referanse til det interne unntaket."
+  remarks: "Vanligvis ikke bruker denne konstruktøren fordi validering unntak som er lagret i den <xref:System.Web.UI.WebControls.LinqDataSourceValidationException.InnerExceptions%2A>egenskapen ikke den <xref:System.Exception.InnerException%2A>egenskapen.</xref:System.Exception.InnerException%2A> </xref:System.Web.UI.WebControls.LinqDataSourceValidationException.InnerExceptions%2A>"
   syntax:
     content: public LinqDataSourceValidationException (string message, Exception innerException);
     parameters:
     - id: message
       type: System.String
-      description: "The message that describes the error."
+      description: "Meldingen som beskriver problemet."
     - id: innerException
       type: System.Exception
-      description: "The exception that is the cause of the current exception."
+      description: "Unntaket er årsaken til den gjeldende unntaket."
   overload: System.Web.UI.WebControls.LinqDataSourceValidationException.#ctor*
   exceptions: []
   platform:
@@ -166,17 +166,17 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI.WebControls
-  summary: "Gets information about the exception and adds it to the <xref href=&quot;System.Runtime.Serialization.SerializationInfo&quot;></xref> object."
-  remarks: "The GetObjectData method adds information about the exception to the <xref:System.Runtime.Serialization.SerializationInfo> object that is targeted for serialization. During deserialization, the exception is reconstituted from the <xref:System.Runtime.Serialization.SerializationInfo> that is transmitted over the stream."
+  summary: "Henter informasjon om unntaket og legger det til i <xref href=&quot;System.Runtime.Serialization.SerializationInfo&quot;> </xref> objektet."
+  remarks: "Metoden GetObjectData legger til informasjon om unntaket til den <xref:System.Runtime.Serialization.SerializationInfo>objekt som er angitt for serialisering.</xref:System.Runtime.Serialization.SerializationInfo> Under deserialisering, reconstituted unntaket fra den <xref:System.Runtime.Serialization.SerializationInfo>som overføres via dataflyten.</xref:System.Runtime.Serialization.SerializationInfo>"
   syntax:
     content: public override void GetObjectData (System.Runtime.Serialization.SerializationInfo info, System.Runtime.Serialization.StreamingContext context);
     parameters:
     - id: info
       type: System.Runtime.Serialization.SerializationInfo
-      description: "The object that holds the serialized object data for the exception that is being thrown."
+      description: "Objektet som holder serialiserte objektet-data for unntak som er i et."
     - id: context
       type: System.Runtime.Serialization.StreamingContext
-      description: "Context information about the source or destination."
+      description: "Kontekstinformasjon om kilden eller målet."
   overload: System.Web.UI.WebControls.LinqDataSourceValidationException.GetObjectData*
   exceptions: []
   platform:
@@ -193,15 +193,15 @@ items:
   assemblies:
   - System.Web.Extensions
   namespace: System.Web.UI.WebControls
-  summary: "Gets one or more exceptions that occurred when new or modified data was being validated."
-  remarks: "The InnerExceptions collection contains all the validation exceptions that were thrown during data validation before an update, insert, or delete operation. A validation exception can occur if a value does not match the type of the property. For example, if you try to update an integer property by using non-numeric characters, a validation exception is thrown. A LINQ to SQL class can also contain customized validation criteria that make sure that the property contains a value that is within an expected range or pattern."
+  summary: "Henter ett eller flere unntak som oppstod under nye eller endrede data ble valideres."
+  remarks: "InnerExceptions samlingen inneholder alle validering unntak som ble registrert under datavalidering før en oppdatering, innsetting eller sletteoperasjonen. Et unntak for validering kan oppstå hvis en verdi ikke samsvarer med typen for egenskapen. For eksempel hvis du prøver å oppdatere en heltallsegenskapen ved hjelp av ikke-numeriske tegn, unntak en validering. Et LINQ to SQL klassen kan også inneholde tilpassede validering kriteriene som Kontroller at egenskapen inneholder en verdi som er i det forventede området eller mønsteret."
   example:
   - "The following example shows an event handler for the <xref:System.Web.UI.WebControls.LinqDataSource.Updating> event. It displays any validation exception messages by using a <xref:System.Web.UI.WebControls.Label> control.  \n  \n```vb#  \nProtected Sub LinqDataSource_Updating(ByVal sender As Object, _  \n        ByVal e As LinqDataSourceUpdateEventArgs)  \n    If (e.Exception IsNot Nothing) Then  \n        For Each innerException As KeyValuePair(Of String, Exception) _  \n                In e.Exception.InnerExceptions  \n          Label1.Text &= innerException.Key & \": \" & _   \n                  innerException.Value.Message & \"<br />\"  \n        Next  \n        e.ExceptionHandled = True  \n    End If  \nEnd Sub  \n```  \n  \n [C#]  \n  \n```  \nprotected void LinqDataSource_Updating(object sender,   \n        LinqDataSourceUpdateEventArgs e)   \n{  \n    if (e.Exception != null)  \n    {  \n        foreach (KeyValuePair<string, Exception> innerException in   \n            e.Exception.InnerExceptions)  \n        {  \n            Label1.Text += innerException.Key + \": \" +   \n                innerException.Message + \"<br />\";  \n        }  \n        e.ExceptionHandled = true;  \n    }  \n}  \n```"
   syntax:
     content: public System.Collections.Generic.IDictionary<string,Exception> InnerExceptions { get; }
     return:
       type: System.Collections.Generic.IDictionary{System.String,System.Exception}
-      description: "A collection that contains the exceptions."
+      description: "En samling som inneholder unntakene."
   overload: System.Web.UI.WebControls.LinqDataSourceValidationException.InnerExceptions*
   exceptions: []
   platform:
