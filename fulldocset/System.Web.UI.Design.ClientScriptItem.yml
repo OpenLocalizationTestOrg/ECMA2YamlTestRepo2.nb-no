@@ -15,8 +15,8 @@ items:
   nameWithType: ClientScriptItem
   fullName: System.Web.UI.Design.ClientScriptItem
   type: Class
-  summary: "Represents a client script element in a Web Form or user control at design time. This class cannot be inherited."
-  remarks: "The ClientScriptItem class represents a `script` element that is contained in a Web document at design time. A custom control designer implementation can use a ClientScriptItem object to add client script elements to a Web Form or user control.       At design time, use the <xref:System.Web.UI.Design.WebFormsRootDesigner> class to set or examine client script elements that are contained in a document, such as a Web form, a Web server control, a content page, or a master page, on the design surface. Retrieve the collection of client script elements that are contained within the Web document by using the <xref:System.Web.UI.Design.WebFormsRootDesigner.GetClientScriptsInDocument%2A> method. Add a client script element to the Web document by using the <xref:System.Web.UI.Design.WebFormsRootDesigner.AddClientScriptToDocument%2A> method.       Typically, a `script` element either contains script statements or specifies an external location for script statements. The `script` element can optionally define the language of the script statements. Use the <xref:System.Web.UI.Design.ClientScriptItem.%23ctor%2A> constructor to initialize the properties for a new script object. Use the ClientScriptItem properties to examine the `script` object attributes and contents. The <xref:System.Web.UI.Design.ClientScriptItem.Language%2A> property represents the `language` attribute of the `script` element. The <xref:System.Web.UI.Design.ClientScriptItem.Source%2A> property represents the `src` attribute. The <xref:System.Web.UI.Design.ClientScriptItem.Text%2A> property represents the script statements to be executed on the client that are contained in the `script` element.       Use the ClientScriptItem class to manage scripts that are to be executed at design-time.       To manage client script elements at run time, use the <xref:System.Web.UI.ClientScriptManager> class. For more information about using client scripts at run time, see [Client Script in ASP.NET Web Pages](~/add/includes/ajax-current-ext-md.md).      > [!NOTE] >  The ClientScriptItem class represents `script` elements at design time that are ultimately parsed and run in the client browser. Because the `script` elements that are generated for the ClientScriptItem objects are not run on the server, the elements do not contain the `runat=&quot;server&quot;` attribute."
+  summary: "Representerer en klient skriptet element i webskjema eller bruker kontroller under utformingen. Denne klassen kan arves."
+  remarks: "ClientScriptItem klassen representerer en `script` som befinner seg i et Web-dokument under utformingen. En egendefinert kontroll designer implementering kan bruke en ClientScriptItem-objektet til å legge til klienten skriptelementer i en webskjema eller bruker.       Under utformingen, kan du bruke den <xref:System.Web.UI.Design.WebFormsRootDesigner>klassen for å angi eller undersøke klienten skriptelementer som finnes i et dokument, for eksempel et webskjema, server formålet, innhold-siden eller hoveddokumentet på utformingsoverflaten.</xref:System.Web.UI.Design.WebFormsRootDesigner> Hente samlingen av klienten skriptelementer som finnes i Web-dokumentet ved hjelp av den <xref:System.Web.UI.Design.WebFormsRootDesigner.GetClientScriptsInDocument%2A>metoden.</xref:System.Web.UI.Design.WebFormsRootDesigner.GetClientScriptsInDocument%2A> Legg til en klient skriptet elementet Web-dokumentet ved hjelp av den <xref:System.Web.UI.Design.WebFormsRootDesigner.AddClientScriptToDocument%2A>metoden.</xref:System.Web.UI.Design.WebFormsRootDesigner.AddClientScriptToDocument%2A>       Vanligvis en `script` elementet inneholder skriptsetninger eller angir en ekstern plassering for skriptsetninger. Den `script` elementet kan eventuelt angi språket for skriptsetninger. Bruk av <xref:System.Web.UI.Design.ClientScriptItem.%23ctor%2A>konstruktøren initialisere egenskaper for en ny skriptobjektet.</xref:System.Web.UI.Design.ClientScriptItem.%23ctor%2A> Bruk egenskapene ClientScriptItem til å undersøke den `script` objekt attributter for og innholdet. Den <xref:System.Web.UI.Design.ClientScriptItem.Language%2A>egenskapen representerer den `language` for den `script` element.</xref:System.Web.UI.Design.ClientScriptItem.Language%2A> Den <xref:System.Web.UI.Design.ClientScriptItem.Source%2A>egenskapen representerer den `src` attributtet.</xref:System.Web.UI.Design.ClientScriptItem.Source%2A> Den <xref:System.Web.UI.Design.ClientScriptItem.Text%2A>egenskapen representerer skriptsetninger som skal kjøres på klienten som finnes i den `script` element.</xref:System.Web.UI.Design.ClientScriptItem.Text%2A>       Bruk klassen ClientScriptItem for å administrere skript som skal utføres under utformingen.       Hvis du vil administrere klienten skriptelementer ved kjøretid, kan du bruke <xref:System.Web.UI.ClientScriptManager>klasse.</xref:System.Web.UI.ClientScriptManager> Hvis du vil ha mer informasjon om hvordan du bruker klientskript ved kjøretid, se [klienten skriptet i ASP.NET Web Pages](~/add/includes/ajax-current-ext-md.md).      > [!NOTE] > For ClientScriptItem representerer `script` elementer på utformingstidspunktet til slutt analysere og kjøres i klientleseren. Fordi den `script` elementer som genereres for ClientScriptItem-objekter ikke er kjøres på serveren, elementene inneholder ikke den `runat=&quot;server&quot;` attributtet."
   syntax:
     content: public sealed class ClientScriptItem
   inheritance:
@@ -37,31 +37,31 @@ items:
   assemblies:
   - System.Design
   namespace: System.Web.UI.Design
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.UI.Design.ClientScriptItem&quot;></xref> class using the provided parameters."
-  remarks: "Initialize the statements for the <xref:System.Web.UI.Design.ClientScriptItem> object by using either the `text` or `source` parameter (not both). Use `text` to initialize the script using an input string that contains the statements. Alternately, use `source` to initialize a script using a path that contains the script statements.       You can specify any of the input parameters as `null` or an empty string (&quot;&quot;); the corresponding property is set using the input value, and the `script` element is generated without that property. Using `null` or an empty string (&quot;&quot;) generates the following results:      -   For `text`, the corresponding `script` element does not contain script statements.      -   For `source`, the `src` attribute is not set in the `script` element.      -   For `language`, the `language` attribute is not set in the `script` element.           When a client script block does not specify the script language, the client browser determines the language.      -   For `type`, the `type` attribute is not set in the script element.           When a client script block does not specify the script type, the client browser determines the type.      -   For `id`, the design host (for example, [!INCLUDE[vsprvslong](~/add/includes/ajax-current-ext-md.md)]) will throw an <xref:System.ArgumentNullException>."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Web.UI.Design.ClientScriptItem&quot;> </xref> klasse med de angitte parameterne."
+  remarks: "Initialisere uttrykk for den <xref:System.Web.UI.Design.ClientScriptItem>objektet ved hjelp av enten den `text` eller `source` parameteren (ikke begge).</xref:System.Web.UI.Design.ClientScriptItem> Bruk `text` initialisere skriptet ved hjelp av en inndata strengen som inneholder setningene. Bruk alternativt `source` å initialisere en skriptet ved hjelp av en bane som inneholder skriptsetninger.       Du kan angi inndataparameterne som `null` eller en tom streng (&quot;&quot;); den tilsvarende egenskapen angis ved hjelp av inndataverdien, og `script` elementet genereres uten denne egenskapen. Ved hjelp av `null` eller en tom streng (&quot;&quot;) genererer følgende resultat: – For `text`, den tilsvarende `script` elementet ikke inneholder skriptsetninger.      -For `source`, `src` attributtet er ikke angitt i den `script` elementet.      -For `language`, `language` attributtet er ikke angitt i den `script` elementet.           Når en klient skriptblokk ikke angir skriptspråket, bestemmer klientleseren språket.      -For `type`, `type` attributtet ikke er angitt i elementet skript.           Når en klient skriptblokk ikke angir Skripttype, bestemmer klientleseren.      -For `id`, utformingen verten (for eksempel [!INCLUDE[vsprvslong](~/add/includes/ajax-current-ext-md.md)]) vil throw <xref:System.ArgumentNullException>.</xref:System.ArgumentNullException>"
   syntax:
     content: public ClientScriptItem (string text, string source, string language, string type, string id);
     parameters:
     - id: text
       type: System.String
-      description: "The contents for the <xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;></xref> element; a string of script statements to run on the client."
+      description: "Innholdet for den <xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;> </xref> elementet; en streng med skriptet uttrykk til å kjøre på klienten."
     - id: source
       type: System.String
-      description: "The <xref uid=&quot;langword_csharp_src&quot; name=&quot;src&quot; href=&quot;&quot;></xref> attribute value for the <xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;></xref> element, specifying an external source location for the client script contents."
+      description: "Den <xref uid=&quot;langword_csharp_src&quot; name=&quot;src&quot; href=&quot;&quot;> </xref> attributtverdien for den <xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;> </xref> elementet ved å angi en ekstern kildeplassering for klienten skriptets innhold."
     - id: language
       type: System.String
-      description: "The <xref uid=&quot;langword_csharp_language&quot; name=&quot;language&quot; href=&quot;&quot;></xref> attribute value for the <xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;></xref> element, specifying the language of the script statements."
+      description: "Den <xref uid=&quot;langword_csharp_language&quot; name=&quot;language&quot; href=&quot;&quot;> </xref> attributtverdien for den <xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;> </xref> elementet angir språket for skriptsetninger."
     - id: type
       type: System.String
-      description: "The type attribute value for the <xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;></xref> element, indicating the MIME type for the associated scripting engine."
+      description: "Attributtverdien typen for den <xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;> </xref> element, som angir MIME-type for den tilknyttede skriptmotoren."
     - id: id
       type: System.String
-      description: "The ID for the <xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;></xref> element. This argument is required by the design host (for example, [!INCLUDE[vsprvslong](~/add/includes/ajax-current-ext-md.md)])."
+      description: "IDen for den <xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;> </xref> elementet. Dette argumentet kreves av utformingen verten (for eksempel [!INCLUDE[vsprvslong](~/add/includes/ajax-current-ext-md.md)])."
   overload: System.Web.UI.Design.ClientScriptItem.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>id</code> is null (thrown by the design host)."
+    description: "<code>id</code>er null (et ved utformingen verten)."
   platform:
   - net462
 - uid: System.Web.UI.Design.ClientScriptItem.Id
@@ -76,12 +76,12 @@ items:
   assemblies:
   - System.Design
   namespace: System.Web.UI.Design
-  summary: "Gets the <xref uid=&quot;langword_csharp_ID&quot; name=&quot;ID&quot; href=&quot;&quot;></xref> attribute value for the client script element."
+  summary: "Henter den <xref uid=&quot;langword_csharp_ID&quot; name=&quot;ID&quot; href=&quot;&quot;> </xref> attributtverdien for klienten skriptet elementet."
   syntax:
     content: public string Id { get; }
     return:
       type: System.String
-      description: "The <xref uid=&quot;langword_csharp_ID&quot; name=&quot;ID&quot; href=&quot;&quot;></xref> value of the <xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;></xref> element."
+      description: "Den <xref uid=&quot;langword_csharp_ID&quot; name=&quot;ID&quot; href=&quot;&quot;> </xref> verdien for den <xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;> </xref> elementet."
   overload: System.Web.UI.Design.ClientScriptItem.Id*
   exceptions: []
   platform:
@@ -98,13 +98,13 @@ items:
   assemblies:
   - System.Design
   namespace: System.Web.UI.Design
-  summary: "Gets the <xref uid=&quot;langword_csharp_language&quot; name=&quot;language&quot; href=&quot;&quot;></xref> attribute value for the client script element."
-  remarks: "The Language property represents the language in which the script statements are written. If the Language property is `null` or an empty string (&quot;&quot;), the `language` attribute is not set in the `script` element. When a client script block does not specify the script language, the client browser determines the language.       The Language property is initialized by the <xref:System.Web.UI.Design.ClientScriptItem.%23ctor%2A> constructor."
+  summary: "Henter den <xref uid=&quot;langword_csharp_language&quot; name=&quot;language&quot; href=&quot;&quot;> </xref> attributtverdien for klienten skriptet elementet."
+  remarks: "Egenskapen språket representerer språket som er skrevet skriptsetninger. Hvis egenskapen språk er `null` eller en tom streng (&quot;&quot;), `language` attributtet er ikke angitt i den `script` elementet. Når en klient skriptblokk ikke angir skriptspråket, bestemmer klientleseren språket.       Egenskapen språk er initialisert av den <xref:System.Web.UI.Design.ClientScriptItem.%23ctor%2A>konstruktør.</xref:System.Web.UI.Design.ClientScriptItem.%23ctor%2A>"
   syntax:
     content: public string Language { get; }
     return:
       type: System.String
-      description: "The language name specified for the <xref uid=&quot;langword_csharp_language&quot; name=&quot;language&quot; href=&quot;&quot;></xref> attribute in the <xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;></xref> element."
+      description: "Navnet på språket som er angitt for den <xref uid=&quot;langword_csharp_language&quot; name=&quot;language&quot; href=&quot;&quot;> </xref> attributt i den <xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;> </xref> elementet."
   overload: System.Web.UI.Design.ClientScriptItem.Language*
   exceptions: []
   platform:
@@ -121,13 +121,13 @@ items:
   assemblies:
   - System.Design
   namespace: System.Web.UI.Design
-  summary: "Gets the <xref uid=&quot;langword_csharp_src&quot; name=&quot;src&quot; href=&quot;&quot;></xref> attribute value for the client script element."
-  remarks: "The Source property specifies an external source location for the client script contents. Typically, the script statements for a `script` element are specified using either the <xref:System.Web.UI.Design.ClientScriptItem.Text%2A> or Source property.       If the Source property is `null` or an empty string (&quot;&quot;), the `src` attribute is not set in the `script` element.       The Source property is initialized by the <xref:System.Web.UI.Design.ClientScriptItem.%23ctor%2A>."
+  summary: "Henter den <xref uid=&quot;langword_csharp_src&quot; name=&quot;src&quot; href=&quot;&quot;> </xref> attributtverdien for klienten skriptet elementet."
+  remarks: "Egenskapen Source angir en ekstern kildeplassering for klienten skriptets innhold. Vanligvis skriptsetninger for en `script` elementet angis ved hjelp av den <xref:System.Web.UI.Design.ClientScriptItem.Text%2A>eller Source-egenskap.</xref:System.Web.UI.Design.ClientScriptItem.Text%2A>       Hvis egenskapen Source er `null` eller en tom streng (&quot;&quot;), `src` attributtet er ikke angitt i den `script` elementet.       Egenskapen Source er initialisert av <xref:System.Web.UI.Design.ClientScriptItem.%23ctor%2A>.</xref:System.Web.UI.Design.ClientScriptItem.%23ctor%2A>"
   syntax:
     content: public string Source { get; }
     return:
       type: System.String
-      description: "The path to the source file specified for the <xref uid=&quot;langword_csharp_src&quot; name=&quot;src&quot; href=&quot;&quot;></xref> attribute in the <xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;></xref> element."
+      description: "Banen til kildefilen som er angitt for den <xref uid=&quot;langword_csharp_src&quot; name=&quot;src&quot; href=&quot;&quot;> </xref> attributt i den <xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;> </xref> elementet."
   overload: System.Web.UI.Design.ClientScriptItem.Source*
   exceptions: []
   platform:
@@ -144,13 +144,13 @@ items:
   assemblies:
   - System.Design
   namespace: System.Web.UI.Design
-  summary: "Gets the script statements contained in the client script element."
-  remarks: "The Text property represents the statements that are contained in the `script` element. Typically, the script statements for a `script` element are specified using either the Text or <xref:System.Web.UI.Design.ClientScriptItem.Source%2A> property.       If the Text property is `null` or an empty string (&quot;&quot;), the `script` element does not contain any script statements.       The <xref:System.Web.UI.Design.ClientScriptItem.Source%2A> property is initialized by the <xref:System.Web.UI.Design.ClientScriptItem.%23ctor%2A> constructor."
+  summary: "Henter skriptsetninger i elementet klienten skript."
+  remarks: "Egenskapen Text representerer setningene som finnes i den `script` elementet. Vanligvis skriptsetninger for en `script` elementet er angitt med teksten eller <xref:System.Web.UI.Design.ClientScriptItem.Source%2A>egenskapen.</xref:System.Web.UI.Design.ClientScriptItem.Source%2A>       Hvis egenskapen Text `null` eller en tom streng (&quot;&quot;), `script` elementet inneholder ikke noen skriptsetninger.       Den <xref:System.Web.UI.Design.ClientScriptItem.Source%2A>egenskapen initialiseres av den <xref:System.Web.UI.Design.ClientScriptItem.%23ctor%2A>konstruktør.</xref:System.Web.UI.Design.ClientScriptItem.%23ctor%2A> </xref:System.Web.UI.Design.ClientScriptItem.Source%2A>"
   syntax:
     content: public string Text { get; }
     return:
       type: System.String
-      description: "The script statements contained in the <xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;></xref> element."
+      description: "Skriptsetninger i den <xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;> </xref> elementet."
   overload: System.Web.UI.Design.ClientScriptItem.Text*
   exceptions: []
   platform:
@@ -167,12 +167,12 @@ items:
   assemblies:
   - System.Design
   namespace: System.Web.UI.Design
-  summary: "Gets the <xref uid=&quot;langword_csharp_type&quot; name=&quot;type&quot; href=&quot;&quot;></xref> attribute value for the client script element."
+  summary: "Henter den <xref uid=&quot;langword_csharp_type&quot; name=&quot;type&quot; href=&quot;&quot;> </xref> attributtverdien for klienten skriptet elementet."
   syntax:
     content: public string Type { get; }
     return:
       type: System.String
-      description: "The name of the MIME type associated with the <xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;></xref> element."
+      description: "Navnet på MIME-type som er tilknyttet den <xref uid=&quot;langword_csharp_script&quot; name=&quot;script&quot; href=&quot;&quot;> </xref> elementet."
   overload: System.Web.UI.Design.ClientScriptItem.Type*
   exceptions: []
   platform:

@@ -17,8 +17,8 @@ items:
   nameWithType: BinaryMessageFormatter
   fullName: System.Messaging.BinaryMessageFormatter
   type: Class
-  summary: "Serializes or deserializes an object, or an entire graph of connected objects, to or from the body of a Message Queuing message, using a binary format."
-  remarks: "The BinaryMessageFormatter is very efficient and can be used to serialize most objects. The result is very compact and fast to parse, but does not allow for loosely coupled messaging as the <xref:System.Messaging.XmlMessageFormatter> does. Loosely coupled means that the client and the server can independently version the type that is sent and received.       When the application sends a message to the queue using an instance of the <xref:System.Messaging.MessageQueue> class, the formatter serializes the object into a stream and inserts it into the message body. When reading from a queue using a <xref:System.Messaging.MessageQueue>, the formatter deserializes the message data into the <xref:System.Messaging.Message.Body%2A> property of a <xref:System.Messaging.Message>.       BinaryMessageFormatter provides faster throughput than the <xref:System.Messaging.XmlMessageFormatter>. Use the BinaryMessageFormatter when pure speed rather than loosely coupled messaging is desired."
+  summary: "Serializes eller deserializes et objekt eller en hele diagrammet av koblede objektene til eller fra meldingsteksten i en Message Queuing-melding, ved hjelp av et binært format."
+  remarks: "BinaryMessageFormatter er svært effektiv, og kan brukes til å serialisere de fleste objekter. Resultatet er svært kompakt og raskt og analysere, men tillater ikke for løst koblede meldingstjeneste som den <xref:System.Messaging.XmlMessageFormatter>samsvarer.</xref:System.Messaging.XmlMessageFormatter> Løst koblet betyr at klienten og serveren kan uavhengig versjon typen som er sendt og mottatt.       Når programmet sender meldingen til køen med en forekomst av den <xref:System.Messaging.MessageQueue>, formateringen serializes objektet til en dataflyt og setter den inn meldingsteksten.</xref:System.Messaging.MessageQueue> Ved lesing fra en kø ved hjelp av en <xref:System.Messaging.MessageQueue>formateringen deserializes meldingsdataene i <xref:System.Messaging.Message.Body%2A>egenskapen for <xref:System.Messaging.Message>.</xref:System.Messaging.Message> </xref:System.Messaging.Message.Body%2A> </xref:System.Messaging.MessageQueue>       BinaryMessageFormatter gir raskere ytelse enn <xref:System.Messaging.XmlMessageFormatter>.</xref:System.Messaging.XmlMessageFormatter> Bruk av BinaryMessageFormatter når ren raskere i stedet for å løst koblede meldingstjeneste ønskes."
   example:
   - >-
     [!code-cpp[MessagingBinaryFormatter#1](~/add/codesnippet/cpp/t-system.messaging.binar_1.cpp)]
@@ -46,8 +46,8 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Initializes a new instance of the <xref href=&quot;System.Messaging.BinaryMessageFormatter&quot;></xref> class without specifying a type style or top object assembly style."
-  remarks: "You must specify values for the <xref:System.Messaging.BinaryMessageFormatter.TopObjectFormat%2A> property (which defines how the root object in a graph is laid out) and the <xref:System.Messaging.BinaryMessageFormatter.TypeFormat%2A> property (which defines how object type descriptions are laid out) before using an instance of the <xref:System.Messaging.BinaryMessageFormatter> class to serialize and send a message."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Messaging.BinaryMessageFormatter&quot;> </xref> klasse uten å angi en skriftstil eller øverste objektmal for samlingen."
+  remarks: "Du må angi verdier for den <xref:System.Messaging.BinaryMessageFormatter.TopObjectFormat%2A>(som definerer hvordan rotobjekt i et diagram er ordnet) og <xref:System.Messaging.BinaryMessageFormatter.TypeFormat%2A>(som definerer hvordan objektet typen beskrivelser plasseres) før du bruker en forekomst av den <xref:System.Messaging.BinaryMessageFormatter>klassen for å serialisere og sende en melding.</xref:System.Messaging.BinaryMessageFormatter> </xref:System.Messaging.BinaryMessageFormatter.TypeFormat%2A> </xref:System.Messaging.BinaryMessageFormatter.TopObjectFormat%2A>"
   syntax:
     content: public BinaryMessageFormatter ();
     parameters: []
@@ -67,16 +67,16 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Initializes a new instance of the <xref href=&quot;System.Messaging.BinaryMessageFormatter&quot;></xref> class, specifying the formats of the root object and the type descriptions."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Messaging.BinaryMessageFormatter&quot;> </xref> klasse, angi formatene for root-objektet og beskrivelser av typen."
   syntax:
     content: public BinaryMessageFormatter (System.Runtime.Serialization.Formatters.FormatterAssemblyStyle topObjectFormat, System.Runtime.Serialization.Formatters.FormatterTypeStyle typeFormat);
     parameters:
     - id: topObjectFormat
       type: System.Runtime.Serialization.Formatters.FormatterAssemblyStyle
-      description: "Determines how the top (root) object of a graph is laid out in the serialized stream."
+      description: "Bestemmer hvordan det øverste (rot)-objektet for et diagram er ordnet i serialisert dataflyt."
     - id: typeFormat
       type: System.Runtime.Serialization.Formatters.FormatterTypeStyle
-      description: "Determines how type descriptions are laid out in the serialized stream."
+      description: "Bestemmer hvordan beskrivelser av typen plasseres i serialisert dataflyt."
   overload: System.Messaging.BinaryMessageFormatter.#ctor*
   exceptions: []
   platform:
@@ -93,17 +93,17 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Determines whether the formatter can deserialize the contents of the message."
-  remarks: "CanRead returns `false` if the message body is not a binary object.       On the receiving computer, CanRead returns `true` if the assembly for the class to be deserialized exists locally. The assembly must be found in the global assembly cache, or be linked to the application (for example, if the object represents a custom class)."
+  summary: "Bestemmer om formateringen kan deserialisere innholdet i meldingen."
+  remarks: "Returnerer CanRead `false` Hvis meldingsteksten ikke er en binær objekt.       På Mottakerdatamaskinen, CanRead returnerer `true` hvis samlingen for klassen deserialiseres finnes lokalt. Samlingen må finnes i den globale samlingsbufferen eller knyttes til programmet (for eksempel hvis objektet som representerer en egendefinert klasse)."
   syntax:
     content: public bool CanRead (System.Messaging.Message message);
     parameters:
     - id: message
       type: System.Messaging.Message
-      description: "The <xref href=&quot;System.Messaging.Message&quot;></xref> to inspect."
+      description: "Den <xref href=&quot;System.Messaging.Message&quot;> </xref> skal undersøkes."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the binary message formatter can deserialize the message; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis den binære meldingsformateringen kan deserialisere meldingen. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Messaging.BinaryMessageFormatter.CanRead*
   exceptions:
   - type: System.ArgumentNullException
@@ -123,14 +123,14 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Creates an instance of the <xref href=&quot;System.Messaging.BinaryMessageFormatter&quot;></xref> class whose read/write properties (the root object and type description formats) are the same as the current <xref href=&quot;System.Messaging.BinaryMessageFormatter&quot;></xref>."
-  remarks: "This method creates a copy of the formatter and initializes all its properties to the values of this <xref:System.Messaging.BinaryMessageFormatter>. It is used for scalability, but does not guarantee read or write thread safety."
+  summary: "Oppretter en forekomst av den <xref href=&quot;System.Messaging.BinaryMessageFormatter&quot;> </xref> klasse med lese-og skrivetilgang (roten objekt, og Skriv beskrivelse formatene) er den samme som gjeldende <xref href=&quot;System.Messaging.BinaryMessageFormatter&quot;> </xref>."
+  remarks: "Denne metoden, oppretter du en kopi av formateringen og initialiserer alle egenskapene til verdiene for <xref:System.Messaging.BinaryMessageFormatter>.</xref:System.Messaging.BinaryMessageFormatter> Den brukes til skalerbarhet, har men ikke garantere lese eller skrive tråd sikkerhet."
   syntax:
     content: public object Clone ();
     parameters: []
     return:
       type: System.Object
-      description: "An object whose properties are identical to those of this <xref href=&quot;System.Messaging.BinaryMessageFormatter&quot;></xref>, but whose metadata does not specify it to be a formatter class instance."
+      description: "Et objekt som er identisk med i dette <xref href=&quot;System.Messaging.BinaryMessageFormatter&quot;> </xref>, men metadataene som angir det er en forekomst av klassen formatering."
   overload: System.Messaging.BinaryMessageFormatter.Clone*
   exceptions: []
   platform:
@@ -147,22 +147,22 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Reads the contents from the given message and creates an object that contains the deserialized message."
-  remarks: "> [!IMPORTANT] >  Calling this method with untrusted data is a security risk. Call this method only with trusted data. For more information, see [Untrusted Data Security Risks](http://go.microsoft.com/fwlink/?LinkId=330378).       The body of the message must be in binary format, and the same serializer must be used to deserialize the message as that which initially serialized it. If the body represents a custom class, the assembly for that class must exist locally."
+  summary: "Viser innholdet fra den gitte meldingen, og oppretter et objekt som inneholder deserialisert meldingen."
+  remarks: "> [!IMPORTANT]> Kalle denne metoden med uklarerte data er en sikkerhetsrisiko. Kalle denne metoden bare med klarert data. Hvis du vil ha mer informasjon, se [uklarerte Data sikkerhetsrisiko](http://go.microsoft.com/fwlink/?LinkId=330378).       Meldingsteksten må være i binært format, og samme Serialiseringen må brukes til å deserialisere meldingen som som i utgangspunktet serialisert den. Hvis meldingsteksten representerer en egendefinert klasse, samlingen for denne klassen, eksisterer lokalt."
   syntax:
     content: public object Read (System.Messaging.Message message);
     parameters:
     - id: message
       type: System.Messaging.Message
-      description: "The <xref href=&quot;System.Messaging.Message&quot;></xref>, in binary format, to deserialize."
+      description: "Den <xref href=&quot;System.Messaging.Message&quot;> </xref>, i binært format deserialisering."
     return:
       type: System.Object
-      description: "The deserialized message."
+      description: "Deserialisert meldingen."
   overload: System.Messaging.BinaryMessageFormatter.Read*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The message&quot;s <xref:System.Messaging.Message.BodyType*> property does not indicate a binary object."
+    description: "Meldingens <xref:System.Messaging.Message.BodyType*>egenskapen angir ikke en binær objektet.</xref:System.Messaging.Message.BodyType*>"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
     description: "The <code>message</code> parameter is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
@@ -180,13 +180,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets a value that defines how the top (root) object of a graph is deserialized with regards to finding and loading its assembly."
-  remarks: "Currently, you should accept the default value, `AssemblyStyle`."
+  summary: "Henter eller angir en verdi som definerer hvordan det øverste (rot)-objektet for et diagram deserialiseres med hensyn til å finne og laste inn samlingen."
+  remarks: "For øyeblikket, bør du bruke standardverdien `AssemblyStyle`."
   syntax:
     content: public System.Runtime.Serialization.Formatters.FormatterAssemblyStyle TopObjectFormat { get; set; }
     return:
       type: System.Runtime.Serialization.Formatters.FormatterAssemblyStyle
-      description: "One of the <xref href=&quot;System.Runtime.Serialization.Formatters.FormatterAssemblyStyle&quot;></xref> values that defines the deserialization behavior."
+      description: "Én av de <xref href=&quot;System.Runtime.Serialization.Formatters.FormatterAssemblyStyle&quot;> </xref> verdier som definerer virkemåten deserialisering."
   overload: System.Messaging.BinaryMessageFormatter.TopObjectFormat*
   exceptions: []
   platform:
@@ -203,13 +203,13 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Gets or sets a value that defines how type descriptions are laid out in the serialized stream."
-  remarks: "Currently, you should accept the default value, `TypesWhenNeeded`."
+  summary: "Henter eller angir en verdi som definerer hvordan beskrivelser av typen plasseres i serialisert dataflyt."
+  remarks: "For øyeblikket, bør du bruke standardverdien `TypesWhenNeeded`."
   syntax:
     content: public System.Runtime.Serialization.Formatters.FormatterTypeStyle TypeFormat { get; set; }
     return:
       type: System.Runtime.Serialization.Formatters.FormatterTypeStyle
-      description: "A <xref href=&quot;System.Runtime.Serialization.Formatters.FormatterTypeStyle&quot;></xref> that defines the type description format."
+      description: "En <xref href=&quot;System.Runtime.Serialization.Formatters.FormatterTypeStyle&quot;> </xref> som definerer beskrivelse typeformatet."
   overload: System.Messaging.BinaryMessageFormatter.TypeFormat*
   exceptions: []
   platform:
@@ -226,17 +226,17 @@ items:
   assemblies:
   - System.Messaging
   namespace: System.Messaging
-  summary: "Serializes an object into the body of the message."
-  remarks: "The top object format and type format need not be specified to write to the queue as they must be when reading. The <xref:System.Messaging.BinaryMessageFormatter.TopObjectFormat%2A> and <xref:System.Messaging.BinaryMessageFormatter.TypeFormat%2A> properties are used by the formatter only when deserializing a message.       The <xref:System.Messaging.BinaryMessageFormatter> can serialize most objects, but the result is not loosely coupled. However, it is compact, so the formatter is efficient for large objects."
+  summary: "Serializes et objekt i meldingsteksten i meldingen."
+  remarks: "Øverste objektformat og typeformatet må ikke angis til å skrive til køen som de må være under lesing av. Den <xref:System.Messaging.BinaryMessageFormatter.TopObjectFormat%2A>og <xref:System.Messaging.BinaryMessageFormatter.TypeFormat%2A>Egenskaper som brukes av formateringen under deserialisering av en melding.</xref:System.Messaging.BinaryMessageFormatter.TypeFormat%2A> </xref:System.Messaging.BinaryMessageFormatter.TopObjectFormat%2A>       Den <xref:System.Messaging.BinaryMessageFormatter>kan serialisere de fleste objekter, men resultatet er ikke løst koblede.</xref:System.Messaging.BinaryMessageFormatter> Det er imidlertid kompakt, slik at formateringen er effektivt for store objekter."
   syntax:
     content: public void Write (System.Messaging.Message message, object obj);
     parameters:
     - id: message
       type: System.Messaging.Message
-      description: "The <xref href=&quot;System.Messaging.Message&quot;></xref> whose <xref:System.Messaging.Message.Body*> property will contain the serialized object."
+      description: "Den <xref href=&quot;System.Messaging.Message&quot;> </xref> der <xref:System.Messaging.Message.Body*>egenskapen skal inneholde serialiserte objektet.</xref:System.Messaging.Message.Body*>"
     - id: obj
       type: System.Object
-      description: "The object to be serialized into the message body."
+      description: "Objektet som skal serialiseres i meldingsteksten."
   overload: System.Messaging.BinaryMessageFormatter.Write*
   exceptions:
   - type: System.ArgumentNullException

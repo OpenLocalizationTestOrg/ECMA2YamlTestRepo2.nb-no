@@ -23,8 +23,8 @@ items:
   nameWithType: Saml2Assertion
   fullName: System.IdentityModel.Tokens.Saml2Assertion
   type: Class
-  summary: "Represents the Assertion element specified in [Saml2Core, 2.3.3]."
-  remarks: "For more information about the element that this class represents, see the SAML V2.0 Core specification."
+  summary: "Representerer deklarasjon-element som er angitt i [Saml2Core 2.3.3]."
+  remarks: "For mer informasjon om elementet som denne klassen representerer, kan du se spesifikasjonen SAML V2.0 kjerner."
   syntax:
     content: public class Saml2Assertion
   inheritance:
@@ -45,19 +45,19 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Initializes a new instance of the <xref href=&quot;System.IdentityModel.Tokens.Saml2Assertion&quot;></xref> class with the specified issuer."
-  remarks: "The <xref:System.IdentityModel.Tokens.Saml2Assertion.IssueInstant%2A> property is set to the value of the <xref:System.DateTime.UtcNow%2A?displayProperty=fullName> property."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.IdentityModel.Tokens.Saml2Assertion&quot;> </xref> klassen med den angitte utstederen."
+  remarks: "Den <xref:System.IdentityModel.Tokens.Saml2Assertion.IssueInstant%2A>egenskapen er satt til verdien for den <xref:System.DateTime.UtcNow%2A?displayProperty=fullName>egenskapen.</xref:System.DateTime.UtcNow%2A?displayProperty=fullName> </xref:System.IdentityModel.Tokens.Saml2Assertion.IssueInstant%2A>"
   syntax:
     content: public Saml2Assertion (System.IdentityModel.Tokens.Saml2NameIdentifier issuer);
     parameters:
     - id: issuer
       type: System.IdentityModel.Tokens.Saml2NameIdentifier
-      description: "A <xref href=&quot;System.IdentityModel.Tokens.Saml2NameIdentifier&quot;></xref> that specifies the SAML authority that is making the claim(s) in the assertion. [Saml2Core, 2.3.3]."
+      description: "En <xref href=&quot;System.IdentityModel.Tokens.Saml2NameIdentifier&quot;> </xref> som angir godkjenning av SAML som gjør claim(s) i deklarasjonen. [Saml2Core, 2.3.3]."
   overload: System.IdentityModel.Tokens.Saml2Assertion.#ctor*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>issuer</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>issuer</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.IdentityModel.Tokens.Saml2Assertion.Advice
@@ -72,13 +72,13 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Gets or sets additional information related to the assertion that assists processing in certain situations but which may be ignored by applications that do not understand the advice or do not wish to make use of it. [Saml2Core, 2.3.3]"
-  remarks: "The Advice element."
+  summary: "Henter eller angir tilleggsinformasjon som er relatert til deklarasjon hjelper behandling i enkelte situasjoner, men som kan bli ignorert av programmer som ikke forstår råd eller ikke ønsker å gjøre bruk av den. [Saml2Core 2.3.3]"
+  remarks: "Elementet råd."
   syntax:
     content: public System.IdentityModel.Tokens.Saml2Advice Advice { get; set; }
     return:
       type: System.IdentityModel.Tokens.Saml2Advice
-      description: "A <xref href=&quot;System.IdentityModel.Tokens.Saml2Advice&quot;></xref> that contains additional information related to the assertion."
+      description: "En <xref href=&quot;System.IdentityModel.Tokens.Saml2Advice&quot;> </xref> som inneholder tilleggsinformasjon om deklarasjonen."
   overload: System.IdentityModel.Tokens.Saml2Assertion.Advice*
   exceptions: []
   platform:
@@ -95,13 +95,13 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Gets a value that indicates whether this assertion was deserialized from XML source and can re-emit the XML data unchanged."
-  remarks: "The default implementation preserves the source data when read using the <xref:System.IdentityModel.Tokens.Saml2SecurityTokenHandler.ReadAssertion%2A> method and can re-emit the original data as long as the <xref:System.IdentityModel.Tokens.Saml2Assertion.Id%2A> property has not changed from the time that assertion was read.      > [!IMPORTANT] >  It is very important that SAML assertions with different data have different IDs. If implementing a scheme whereby an assertion &quot;template&quot; is loaded and certain bits of data are filled in, the Id must be changed."
+  summary: "Henter en verdi som angir om denne deklarasjon ble deserialisert fra XML-kilde og kan sende XML-dataene uendret på nytt."
+  remarks: "Standard implementering beholder kildedataene leses når ved hjelp av den <xref:System.IdentityModel.Tokens.Saml2SecurityTokenHandler.ReadAssertion%2A>metoden og på nytt kan sende de opprinnelige dataene så lenge det <xref:System.IdentityModel.Tokens.Saml2Assertion.Id%2A>-egenskapen er ikke endret etter deklarasjon ble lest.</xref:System.IdentityModel.Tokens.Saml2Assertion.Id%2A> </xref:System.IdentityModel.Tokens.Saml2SecurityTokenHandler.ReadAssertion%2A>      > [!IMPORTANT] > Er det svært viktig SAML deklarasjoner med ulike data har forskjellige IDer. Hvis implementering et skjema der en deklarasjon &quot;mal&quot; er lastet inn, og enkelte biter med data som er fylt ut, må du endre IDen."
   syntax:
     content: public virtual bool CanWriteSourceData { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if this assertion can re-emit the XML source data unchanged; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis denne deklarasjon på nytt kan sende XML-kildedataene uendret; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.IdentityModel.Tokens.Saml2Assertion.CanWriteSourceData*
   exceptions: []
   platform:
@@ -118,13 +118,13 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Gets or sets the conditions that must be evaluated when assessing the validity of and/or when using the assertion. [Saml2Core 2.3.3]"
-  remarks: "The Conditions element."
+  summary: "Henter eller angir betingelser som må evalueres når du vurderer gyldigheten av og/eller når du bruker deklarasjonen. [Saml2Core 2.3.3]"
+  remarks: "Elementet betingelser."
   syntax:
     content: public System.IdentityModel.Tokens.Saml2Conditions Conditions { get; set; }
     return:
       type: System.IdentityModel.Tokens.Saml2Conditions
-      description: "A <xref href=&quot;System.IdentityModel.Tokens.Saml2Conditions&quot;></xref> that contains the conditions."
+      description: "En <xref href=&quot;System.IdentityModel.Tokens.Saml2Conditions&quot;> </xref> som inneholder vilkårene."
   overload: System.IdentityModel.Tokens.Saml2Assertion.Conditions*
   exceptions: []
   platform:
@@ -141,12 +141,12 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Gets or sets the credentials used for encrypting the assertion. The key identifier in the encrypting credentials is used for the embedded <xref uid=&quot;langword_csharp_EncryptedKey&quot; name=&quot;EncryptedKey&quot; href=&quot;&quot;></xref> in the <xref uid=&quot;langword_csharp_EncryptedData&quot; name=&quot;EncryptedData&quot; href=&quot;&quot;></xref> element."
+  summary: "Henter eller angir legitimasjonen som brukes til å kryptere deklarasjonen. Nøkkel-ID i kryptering legitimasjonen brukes for den innebygde <xref uid=&quot;langword_csharp_EncryptedKey&quot; name=&quot;EncryptedKey&quot; href=&quot;&quot;> </xref> i den <xref uid=&quot;langword_csharp_EncryptedData&quot; name=&quot;EncryptedData&quot; href=&quot;&quot;> </xref> elementet."
   syntax:
     content: public System.IdentityModel.Tokens.EncryptingCredentials EncryptingCredentials { get; set; }
     return:
       type: System.IdentityModel.Tokens.EncryptingCredentials
-      description: "Returns <xref:Microsoft.IdentityModel.Tokens.EncryptingCredentials> that represents the credentials."
+      description: "Returnerer <xref:Microsoft.IdentityModel.Tokens.EncryptingCredentials>som representerer legitimasjonen.</xref:Microsoft.IdentityModel.Tokens.EncryptingCredentials>"
   overload: System.IdentityModel.Tokens.Saml2Assertion.EncryptingCredentials*
   exceptions: []
   platform:
@@ -163,12 +163,12 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Gets or sets a collection that contains any additional encrypted keys that are specified external to the EncryptedData element, as children of the EncryptedAssertion element."
+  summary: "Henter eller angir en samling som inneholder flere krypterte nøkler som er angitt eksterne til EncryptedData-element som underordnede av elementet EncryptedAssertion."
   syntax:
     content: public System.Collections.ObjectModel.Collection<System.IdentityModel.Tokens.EncryptedKeyIdentifierClause> ExternalEncryptedKeys { get; }
     return:
       type: System.Collections.ObjectModel.Collection{System.IdentityModel.Tokens.EncryptedKeyIdentifierClause}
-      description: "A collection of type <xref href=&quot;System.IdentityModel.Tokens.EncryptedKeyIdentifierClause&quot;></xref> that contains the keys."
+      description: "En samling av typen <xref href=&quot;System.IdentityModel.Tokens.EncryptedKeyIdentifierClause&quot;> </xref> som inneholder nøklene."
   overload: System.IdentityModel.Tokens.Saml2Assertion.ExternalEncryptedKeys*
   exceptions: []
   platform:
@@ -185,18 +185,18 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Gets or sets the identifier for this assertion. [Saml2Core, 2.3.3]"
-  remarks: "The ID attribute. This attribute is required."
+  summary: "Henter eller angir identifikatoren for denne deklarasjon. [Saml2Core 2.3.3]"
+  remarks: "ID-attributt. Dette attributtet er nødvendig."
   syntax:
     content: public System.IdentityModel.Tokens.Saml2Id Id { get; set; }
     return:
       type: System.IdentityModel.Tokens.Saml2Id
-      description: "A <xref href=&quot;System.IdentityModel.Tokens.Saml2Id&quot;></xref> that represents the identifier."
+      description: "En <xref href=&quot;System.IdentityModel.Tokens.Saml2Id&quot;> </xref> som representerer-IDen."
   overload: System.IdentityModel.Tokens.Saml2Assertion.Id*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "An attempt to set the property to <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> occurs."
+    description: "Et forsøk på å angi egenskapen <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> forekommer."
   platform:
   - net462
 - uid: System.IdentityModel.Tokens.Saml2Assertion.IssueInstant
@@ -211,13 +211,13 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Gets or sets the time instant of issue in UTC. [Saml2Core, 2.3.3]"
-  remarks: "The IssueInstant attribute. This attribute is required."
+  summary: "Henter eller angir tiden instant problem i UTC. [Saml2Core 2.3.3]"
+  remarks: "Attributtet IssueInstant. Dette attributtet er nødvendig."
   syntax:
     content: public DateTime IssueInstant { get; set; }
     return:
       type: System.DateTime
-      description: "A <xref:System.DateTime> that represents the time at which this assertion was issued in UTC. The default is &lt;xref:System.DateTime.UtcNow%2A?displayProperty=fullName&gt;."
+      description: "En <xref:System.DateTime>som angir når denne deklarasjon ble utstedt i UTC.</xref:System.DateTime> Standard &lt;xref:System.DateTime.UtcNow%2A?displayProperty=fullName&gt;."
   overload: System.IdentityModel.Tokens.Saml2Assertion.IssueInstant*
   exceptions: []
   platform:
@@ -234,18 +234,18 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Gets or sets the identifier for the SAML authority that is making the claim(s) in the assertion. [Saml2Core, 2.3.3]"
-  remarks: "The Issuer element. This element is required."
+  summary: "Henter eller angir identifikatoren for godkjenning av SAML som gjør claim(s) i deklarasjonen. [Saml2Core 2.3.3]"
+  remarks: "Utsteder-element. Dette elementet er obligatorisk."
   syntax:
     content: public System.IdentityModel.Tokens.Saml2NameIdentifier Issuer { get; set; }
     return:
       type: System.IdentityModel.Tokens.Saml2NameIdentifier
-      description: "A <xref href=&quot;System.IdentityModel.Tokens.Saml2NameIdentifier&quot;></xref> that specifies the issuer."
+      description: "En <xref href=&quot;System.IdentityModel.Tokens.Saml2NameIdentifier&quot;> </xref> som angir utstederen."
   overload: System.IdentityModel.Tokens.Saml2Assertion.Issuer*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "An attempt to set the property to <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> occurs."
+    description: "Et forsøk på å angi egenskapen <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> forekommer."
   platform:
   - net462
 - uid: System.IdentityModel.Tokens.Saml2Assertion.SigningCredentials
@@ -260,12 +260,12 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "The credentials used by the issuer to protect the integrity of the assertion."
+  summary: "Legitimasjonen som brukes av utstederen for å beskytte deklarasjonen."
   syntax:
     content: public System.IdentityModel.Tokens.SigningCredentials SigningCredentials { get; set; }
     return:
       type: System.IdentityModel.Tokens.SigningCredentials
-      description: "A <xref href=&quot;System.IdentityModel.Tokens.SigningCredentials&quot;></xref> that represents the credentials."
+      description: "En <xref href=&quot;System.IdentityModel.Tokens.SigningCredentials&quot;> </xref> som representerer legitimasjonen."
   overload: System.IdentityModel.Tokens.Saml2Assertion.SigningCredentials*
   exceptions: []
   platform:
@@ -282,13 +282,13 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Gets a collection that contains the statements regarding the subject made in this assertion."
-  remarks: 'Elements in this collection can be of type <xref:System.IdentityModel.Tokens.Saml2AttributeStatement>, <xref:System.IdentityModel.Tokens.Saml2AuthenticationStatement>, and/or <xref:System.IdentityModel.Tokens.Saml2AuthorizationDecisionStatement> to represent each of the following SAML elements: AttributeStatement, AuthnStatement, and AuthzDecisionStatement.'
+  summary: "Henter en samling som inneholder setningene angående emnet gjort i denne deklarasjon."
+  remarks: 'Elementene i denne samlingen kan være av typen <xref:System.IdentityModel.Tokens.Saml2AttributeStatement>, <xref:System.IdentityModel.Tokens.Saml2AuthenticationStatement>, og/eller <xref:System.IdentityModel.Tokens.Saml2AuthorizationDecisionStatement>til å representere hver av følgende SAML elementer: AttributeStatement, AuthnStatement og AuthzDecisionStatement.</xref:System.IdentityModel.Tokens.Saml2AuthorizationDecisionStatement> </xref:System.IdentityModel.Tokens.Saml2AuthenticationStatement> </xref:System.IdentityModel.Tokens.Saml2AttributeStatement>'
   syntax:
     content: public System.Collections.ObjectModel.Collection<System.IdentityModel.Tokens.Saml2Statement> Statements { get; }
     return:
       type: System.Collections.ObjectModel.Collection{System.IdentityModel.Tokens.Saml2Statement}
-      description: "A collection of type <xref href=&quot;System.IdentityModel.Tokens.Saml2Statement&quot;></xref> that contains the statements for this assertion."
+      description: "En samling av typen <xref href=&quot;System.IdentityModel.Tokens.Saml2Statement&quot;> </xref> som inneholder setninger for denne deklarasjon."
   overload: System.IdentityModel.Tokens.Saml2Assertion.Statements*
   exceptions: []
   platform:
@@ -305,13 +305,13 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Gets or sets the subject of the statement(s) in the assertion. [Saml2Core, 2.3.3]"
-  remarks: "The Subject element."
+  summary: "Henter eller angir emnet for den uttrykket/uttrykkene i deklarasjonen. [Saml2Core 2.3.3]"
+  remarks: "Elementet emne."
   syntax:
     content: public System.IdentityModel.Tokens.Saml2Subject Subject { get; set; }
     return:
       type: System.IdentityModel.Tokens.Saml2Subject
-      description: "A <xref href=&quot;System.IdentityModel.Tokens.Saml2Subject&quot;></xref> that specifies the subject."
+      description: "En <xref href=&quot;System.IdentityModel.Tokens.Saml2Subject&quot;> </xref> som angir emnet."
   overload: System.IdentityModel.Tokens.Saml2Assertion.Subject*
   exceptions: []
   platform:
@@ -328,13 +328,13 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Gets the SAML version of this assertion. [Saml2Core, 2.3.3]"
-  remarks: "The Version attribute; only version &quot;2.0&quot; is supported."
+  summary: "Henter SAML-versjonen av denne deklarasjon. [Saml2Core 2.3.3]"
+  remarks: "Versjonen-attributtet. bare versjon &quot;2.0&quot; støttes."
   syntax:
     content: public string Version { get; }
     return:
       type: System.String
-      description: "A string that contains the version."
+      description: "En streng som inneholder versjonen."
   overload: System.IdentityModel.Tokens.Saml2Assertion.Version*
   exceptions: []
   platform:
@@ -351,18 +351,18 @@ items:
   assemblies:
   - System.IdentityModel
   namespace: System.IdentityModel.Tokens
-  summary: "Writes the source data, if available."
+  summary: "Skriver kildedataene, hvis den er tilgjengelig."
   syntax:
     content: public virtual void WriteSourceData (System.Xml.XmlWriter writer);
     parameters:
     - id: writer
       type: System.Xml.XmlWriter
-      description: "The <xref:System.Xml.XmlWriter> with which to write the source data."
+      description: "Den <xref:System.Xml.XmlWriter>som du kan skrive kildedataene.</xref:System.Xml.XmlWriter>"
   overload: System.IdentityModel.Tokens.Saml2Assertion.WriteSourceData*
   exceptions:
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "No source data is available"
+    description: "Ingen datakilden er tilgjengelig"
   platform:
   - net462
 references:

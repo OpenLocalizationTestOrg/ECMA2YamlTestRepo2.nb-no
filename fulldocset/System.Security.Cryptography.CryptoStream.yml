@@ -27,8 +27,8 @@ items:
   nameWithType: CryptoStream
   fullName: System.Security.Cryptography.CryptoStream
   type: Class
-  summary: "Defines a stream that links data streams to cryptographic transformations."
-  remarks: "The common language runtime uses a stream-oriented design for cryptography. The core of this design is CryptoStream. Any cryptographic objects that implement CryptoStream can be chained together with any objects that implement <xref:System.IO.Stream>, so the streamed output from one object can be fed into the input of another object. The intermediate result (the output from the first object) does not need to be stored separately.      > [!IMPORTANT] >  This type implements the <xref:System.IDisposable> interface. When you have finished using the type, you should dispose of it either directly or indirectly by calling its <xref:System.Security.Cryptography.CryptoStream.Clear%2A> method, which in turn calls its <xref:System.IDisposable> implementation. To dispose of the type directly, call its <xref:System.Security.Cryptography.CryptoStream.Clear%2A> method in a `try`/`catch` block. To dispose of it indirectly, use a language construct such as `using` (in C#) or `Using` (in Visual Basic). For more information, see the “Using an Object that Implements IDisposable” section in the <xref:System.IDisposable> interface topic.       You should always explicitly close your CryptoStream object after you are done using it by calling the <xref:System.Security.Cryptography.CryptoStream.Clear%2A> method.  Doing so flushes the underlying stream and causes all remaining blocks of data to be processed by the CryptoStream object.  However, if an exception occurs before you call the <xref:System.IO.Stream.Close%2A> method, the CryptoStream object might not be closed.  To ensure that the <xref:System.IO.Stream.Close%2A> method always gets called, place your call to the <xref:System.Security.Cryptography.CryptoStream.Clear%2A> method within the `finally` block of a `try`/`catch` statement."
+  summary: "Definerer en dataflyt som kobler dataflyter til kryptografisk transformasjoner."
+  remarks: "Common language runtime bruker en dataflyt orientert for kryptografi. Hoveddelen i denne utformingen er CryptoStream. Kryptografisk objekter som implementerer CryptoStream kan sammen sammen med alle objekter som implementerer <xref:System.IO.Stream>, så flyt utdataene fra ett objekt kan få i inndataene på et annet objekt.</xref:System.IO.Stream> Mellomliggende resultatet (utdataene fra det første objektet) trenger ikke kan lagres separat.      > [!IMPORTANT] > Denne typen implementerer den <xref:System.IDisposable>grensesnittet.</xref:System.IDisposable> Når du er ferdig ved hjelp av typen, du må fjerne den direkte eller indirekte ved å kalle den <xref:System.Security.Cryptography.CryptoStream.Clear%2A>metoden som kaller den <xref:System.IDisposable>implementeringen.</xref:System.IDisposable> </xref:System.Security.Cryptography.CryptoStream.Clear%2A> Hvis du vil fjerne av typen direkte, kan du kalle den <xref:System.Security.Cryptography.CryptoStream.Clear%2A>metoden i en `try` / `catch` block.</xref:System.Security.Cryptography.CryptoStream.Clear%2A> Hvis du vil fjerne den indirekte, bruke et språk som `using` (i C#) eller `Using` (i Visual Basic). For mer informasjon, se &quot;Ved hjelp av et objekt som implementerer IDisposable&quot; i den <xref:System.IDisposable>grensesnittet emnet.</xref:System.IDisposable>       Du må alltid eksplisitt lukke CryptoStream objektet etter at du er ferdig med den ved å kalle den <xref:System.Security.Cryptography.CryptoStream.Clear%2A>metoden.</xref:System.Security.Cryptography.CryptoStream.Clear%2A>  Gjøre Hurtigbuffertømminger underliggende dataflyt og fører til at alle gjenværende blokker med dataene som skal behandles av CryptoStream-objektet.  Men hvis det oppstår et unntak før du kaller den <xref:System.IO.Stream.Close%2A>metoden, CryptoStream objektet ikke kan lukkes.</xref:System.IO.Stream.Close%2A>  Forsikre deg om at den <xref:System.IO.Stream.Close%2A>alltid henter-metoden, kan du plassere kallet til den <xref:System.Security.Cryptography.CryptoStream.Clear%2A>metoden i den `finally` blokker av en `try` / `catch` setningen.</xref:System.Security.Cryptography.CryptoStream.Clear%2A> </xref:System.IO.Stream.Close%2A>"
   example:
   - "The following example demonstrates how to use a CryptoStream to encrypt a string. This method uses <xref:System.Security.Cryptography.RijndaelManaged> class with the specified <xref:System.Security.Cryptography.SymmetricAlgorithm.Key%2A> and initialization vector (<xref:System.Security.Cryptography.SymmetricAlgorithm.IV%2A>).  \n  \n [!code-cs[Cryptography.Rijndael.Create.File#1](~/add/codesnippet/csharp/t-system.security.crypto_78_1.cs)]\n [!code-vb[Cryptography.Rijndael.Create.File#1](~/add/codesnippet/visualbasic/t-system.security.crypto_78_1.vb)]"
   syntax:
@@ -54,25 +54,25 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Cryptography
-  summary: "Initializes a new instance of the <xref href=&quot;System.Security.Cryptography.CryptoStream&quot;></xref> class with a target data stream, the transformation to use, and the mode of the stream."
-  remarks: "Any object that derives from <xref:System.IO.Stream> can be passed into the `stream` parameter. Any object that implements <xref:System.Security.Cryptography.ICryptoTransform> (such as <xref:System.Security.Cryptography.HashAlgorithm>) can be passed into the `transform` parameter."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Security.Cryptography.CryptoStream&quot;> </xref> klassen med en dataflyt mål, transformation å bruke og modusen til dataflyten."
+  remarks: "Et objekt som er avledet fra <xref:System.IO.Stream>kan sendes til den `stream` parameteren.</xref:System.IO.Stream> Et objekt som implementerer <xref:System.Security.Cryptography.ICryptoTransform>(eksempel <xref:System.Security.Cryptography.HashAlgorithm>) kan sendes til den `transform` parameteren.</xref:System.Security.Cryptography.HashAlgorithm> </xref:System.Security.Cryptography.ICryptoTransform>"
   syntax:
     content: public CryptoStream (System.IO.Stream stream, System.Security.Cryptography.ICryptoTransform transform, System.Security.Cryptography.CryptoStreamMode mode);
     parameters:
     - id: stream
       type: System.IO.Stream
-      description: "The stream on which to perform the cryptographic transformation."
+      description: "Dataflyten som skal utføres kryptografiske transformasjonen."
     - id: transform
       type: System.Security.Cryptography.ICryptoTransform
-      description: "The cryptographic transformation that is to be performed on the stream."
+      description: "Kryptografiske transformasjonen som skal utføres på dataflyten."
     - id: mode
       type: System.Security.Cryptography.CryptoStreamMode
-      description: "One of the <xref href=&quot;System.Security.Cryptography.CryptoStreamMode&quot;></xref> values."
+      description: "Én av de <xref href=&quot;System.Security.Cryptography.CryptoStreamMode&quot;> </xref> verdier."
   overload: System.Security.Cryptography.CryptoStream.#ctor*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "<code>stream</code> is invalid."
+    description: "<code>stream</code>er ugyldig."
   platform:
   - net462
 - uid: System.Security.Cryptography.CryptoStream.CanRead
@@ -87,12 +87,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Cryptography
-  summary: "Gets a value indicating whether the current <xref href=&quot;System.Security.Cryptography.CryptoStream&quot;></xref> is readable."
+  summary: "Henter en verdi som angir om gjeldende <xref href=&quot;System.Security.Cryptography.CryptoStream&quot;> </xref> kan leses."
   syntax:
     content: public override bool CanRead { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the current stream is readable; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis den gjeldende er lesbar; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Security.Cryptography.CryptoStream.CanRead*
   exceptions: []
   platform:
@@ -109,8 +109,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Cryptography
-  summary: "Gets a value indicating whether you can seek within the current <xref href=&quot;System.Security.Cryptography.CryptoStream&quot;></xref>."
-  remarks: "Seeking is not enabled in a <xref:System.Security.Cryptography.CryptoStream>, so this method always returns `false`."
+  summary: "Henter en verdi som angir om du kan søke i gjeldende <xref href=&quot;System.Security.Cryptography.CryptoStream&quot;> </xref>."
+  remarks: "Søking er ikke aktivert i en <xref:System.Security.Cryptography.CryptoStream>, slik at denne metoden returnerer alltid `false`.</xref:System.Security.Cryptography.CryptoStream>"
   syntax:
     content: public override bool CanSeek { get; }
     return:
@@ -132,12 +132,12 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Cryptography
-  summary: "Gets a value indicating whether the current <xref href=&quot;System.Security.Cryptography.CryptoStream&quot;></xref> is writable."
+  summary: "Henter en verdi som angir om gjeldende <xref href=&quot;System.Security.Cryptography.CryptoStream&quot;> </xref> skrives."
   syntax:
     content: public override bool CanWrite { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the current stream is writable; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis den gjeldende er skrivbar; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Security.Cryptography.CryptoStream.CanWrite*
   exceptions: []
   platform:
@@ -154,8 +154,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Cryptography
-  summary: "Releases all resources used by the <xref href=&quot;System.Security.Cryptography.CryptoStream&quot;></xref>."
-  remarks: "This method wraps a call to the type&quot;s <xref:System.IDisposable.Dispose%2A?displayProperty=fullName> implementation.       Calling `Dispose` allows the resources used by the <xref:System.Security.Cryptography.CryptoStream> to be reallocated for other purposes. For more information about `Dispose`, see [Cleaning Up Unmanaged Resources](~/add/includes/ajax-current-ext-md.md)"
+  summary: "Frigir alle ressursene som brukes av den <xref href=&quot;System.Security.Cryptography.CryptoStream&quot;> </xref>."
+  remarks: "Denne metoden bryter et kall til typen <xref:System.IDisposable.Dispose%2A?displayProperty=fullName>implementering.</xref:System.IDisposable.Dispose%2A?displayProperty=fullName>       Kaller `Dispose` tillater ressursene som brukes av den <xref:System.Security.Cryptography.CryptoStream>til tildeles på nytt til andre formål.</xref:System.Security.Cryptography.CryptoStream> For mer informasjon om `Dispose`, se [Rydder opp uforvaltede ressurser](~/add/includes/ajax-current-ext-md.md)"
   syntax:
     content: public void Clear ();
     parameters: []
@@ -175,14 +175,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Cryptography
-  summary: "Releases the unmanaged resources used by the <xref href=&quot;System.Security.Cryptography.CryptoStream&quot;></xref> and optionally releases the managed resources."
-  remarks: "This method is called by the public `Dispose()` method and the `Finalize` method. `Dispose()` invokes the protected `Dispose(Boolean)` method with the disposing parameter set to `true`. `Finalize` invokes `Dispose` with disposing set to `false`.       When the `disposing` parameter is `true`, this method releases all resources held by any managed objects that this <xref:System.Security.Cryptography.CryptoStream> references. This method invokes the `Dispose()` method of each referenced object."
+  summary: "Frigir uforvaltede ressursene som brukes av den <xref href=&quot;System.Security.Cryptography.CryptoStream&quot;> </xref> og eventuelt frigir administrerte ressurser."
+  remarks: "Denne metoden kalles av offentlig `Dispose()` metoden og `Finalize` metoden. `Dispose()`Aktiverer den beskyttede `Dispose(Boolean)` metode med disposing-parameteren som er angitt til `true`. `Finalize`aktiverer `Dispose` med vinningsberegninger satt til `false`.       Når den `disposing` parameteren er `true`, denne metoden Frigjør alle ressurser holdes av administrerte objekter som denne <xref:System.Security.Cryptography.CryptoStream>referanser.</xref:System.Security.Cryptography.CryptoStream> Denne metoden starter den `Dispose()` metode for hver referert objekt."
   syntax:
     content: protected override void Dispose (bool disposing);
     parameters:
     - id: disposing
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to release both managed and unmanaged resources; <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref> to release only unmanaged resources."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>å frigjøre både administrerte og uforvaltede ressurser. <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref> frigi bare uforvaltede ressurser."
   overload: System.Security.Cryptography.CryptoStream.Dispose*
   exceptions: []
   platform:
@@ -199,8 +199,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Cryptography
-  summary: "Clears all buffers for the current stream and causes any buffered data to be written to the underlying device."
-  remarks: "Flushing the stream will not flush its underlying encoder unless you explicitly call Flush or <xref:System.IO.Stream.Close%2A>. Setting <xref:System.IO.StreamWriter.AutoFlush%2A> to `true` means that data will be flushed from the buffer to the stream, but the encoder state will not be flushed. This allows the encoder to keep its state (partial characters) so that it can encode the next block of characters correctly. This scenario affects UTF8 and UTF7 where certain characters can only be encoded after the encoder receives the adjacent character or characters.      > [!NOTE] >  You should call either the <xref:System.IO.Stream.Close%2A> method or the <xref:System.Security.Cryptography.CryptoStream.FlushFinalBlock%2A> method to complete flushing the buffer."
+  summary: "Fjerner alle bufferne for gjeldende strøm og fører til bufrede data skrives til den underliggende enheten."
+  remarks: "Sletter dataflyten tømme ikke den underliggende koderen med mindre du eksplisitt ringe tømming eller <xref:System.IO.Stream.Close%2A>.</xref:System.IO.Stream.Close%2A> Angi <xref:System.IO.StreamWriter.AutoFlush%2A>til `true` betyr at data fjernes fra bufferen til dataflyten, men tilstanden koder ikke tømmes.</xref:System.IO.StreamWriter.AutoFlush%2A> Dette gjør at koder ikke beholde tilstanden (delvis tegn) slik at den kan kode neste blokken tegn på riktig måte. Dette scenarioet påvirker UTF8 og UTF7 der bestemte tegn kan bare være kodet når koderen mottar tilstøtende tegn eller tegn.      > [!NOTE] > Må du først kalle enten den <xref:System.IO.Stream.Close%2A>metoden eller <xref:System.Security.Cryptography.CryptoStream.FlushFinalBlock%2A>metode for å fullføre tømming av bufferen.</xref:System.Security.Cryptography.CryptoStream.FlushFinalBlock%2A> </xref:System.IO.Stream.Close%2A>"
   syntax:
     content: public override void Flush ();
     parameters: []
@@ -220,22 +220,22 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Cryptography
-  summary: "Clears all buffers for the current stream asynchronously, causes any buffered data to be written to the underlying device, and monitors cancellation requests."
-  remarks: "You must preface your call to FlushAsync with the `await` (C#) or `Await` (Visual Basic) operator to suspend execution of the method until the task is complete. For more information, see [Asynchronous Programming with Async and Await](~/add/includes/ajax-current-ext-md.md).       If the operation is canceled before it completes, the returned task contains the <xref:System.Threading.Tasks.TaskStatus> value for the <xref:System.Threading.Tasks.Task.Status%2A> property."
+  summary: "Fjerner alle bufferne for gjeldende strøm asynkront, fører til at bufrede data skrives til den underliggende enheten og overvåker avbryte forespørsler."
+  remarks: "Du må sette foran kallet til FlushAsync med den `await` (C#) eller `Await` (Visual Basic) brukes til å deaktivere kjøring av metoden før oppgaven er fullført. Hvis du vil ha mer informasjon, se [asynkront Programming med asynkron og Await](~/add/includes/ajax-current-ext-md.md).       Hvis operasjonen er avbrutt før den er fullført, returnerte oppgaven inneholder den <xref:System.Threading.Tasks.TaskStatus>verdien den <xref:System.Threading.Tasks.Task.Status%2A>egenskapen.</xref:System.Threading.Tasks.Task.Status%2A> </xref:System.Threading.Tasks.TaskStatus>"
   syntax:
     content: public override System.Threading.Tasks.Task FlushAsync (System.Threading.CancellationToken cancellationToken);
     parameters:
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: "The token to monitor for cancellation requests. The default value is <xref:System.Threading.CancellationToken.None*>."
+      description: "Tokenet, for å overvåke for å avbryte forespørsler. Standardverdien er <xref:System.Threading.CancellationToken.None*>.</xref:System.Threading.CancellationToken.None*>"
     return:
       type: System.Threading.Tasks.Task
-      description: "A task that represents the asynchronous flush operation."
+      description: "En oppgave som representerer den asynkrone skriveoperasjon."
   overload: System.Security.Cryptography.CryptoStream.FlushAsync*
   exceptions:
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The stream has been disposed."
+    description: "Dataflyten har blitt fjernet."
   platform:
   - net462
 - uid: System.Security.Cryptography.CryptoStream.FlushFinalBlock
@@ -250,8 +250,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Cryptography
-  summary: "Updates the underlying data source or repository with the current state of the buffer, then clears the buffer."
-  remarks: "Calling the <xref:System.IO.Stream.Close%2A> method will call FlushFinalBlock. If you do not call <xref:System.IO.Stream.Close%2A>, call FlushFinalBlock to complete flushing the buffer. Call FlushFinalBlock only when all stream activity is complete."
+  summary: "Oppdaterer underliggende datakilden eller -repositorium med gjeldende status for bufferen, og fjerner bufferen."
+  remarks: "Kaller den <xref:System.IO.Stream.Close%2A>metodekall FlushFinalBlock.</xref:System.IO.Stream.Close%2A> Hvis du ikke kaller <xref:System.IO.Stream.Close%2A>, kalle FlushFinalBlock for å fullføre tømming av bufferen.</xref:System.IO.Stream.Close%2A> Kall FlushFinalBlock bare når alle dataflyten aktivitet er fullført."
   syntax:
     content: public void FlushFinalBlock ();
     parameters: []
@@ -259,10 +259,10 @@ items:
   exceptions:
   - type: System.Security.Cryptography.CryptographicException
     commentId: T:System.Security.Cryptography.CryptographicException
-    description: "The key is corrupt which can cause invalid padding to the stream."
+    description: "Nøkkelen er skadet som kan føre til ugyldig utfylling til dataflyten."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The current stream is not writable.       -or-       The final block has already been transformed."
+    description: "Gjeldende strøm er ikke skrivbar.       - eller - har allerede transformert den siste blokken."
   platform:
   - net462
 - uid: System.Security.Cryptography.CryptoStream.HasFlushedFinalBlock
@@ -277,13 +277,13 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Cryptography
-  summary: "Gets a value indicating whether the final buffer block has been written to the underlying stream."
-  remarks: "This property is set `true` when the <xref:System.Security.Cryptography.CryptoStream.FlushFinalBlock%2A> method is called."
+  summary: "Henter en verdi som angir om endelig buffer blokken er skrevet til underliggende dataflyt."
+  remarks: "Denne egenskapen er angitt `true` når den <xref:System.Security.Cryptography.CryptoStream.FlushFinalBlock%2A>-metoden.</xref:System.Security.Cryptography.CryptoStream.FlushFinalBlock%2A>"
   syntax:
     content: public bool HasFlushedFinalBlock { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the final block has been flushed; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis den siste blokken har blitt tømt; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Security.Cryptography.CryptoStream.HasFlushedFinalBlock*
   exceptions: []
   platform:
@@ -300,18 +300,18 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Cryptography
-  summary: "Gets the length in bytes of the stream."
-  remarks: "This property exists only to support inheritance from <xref:System.IO.Stream>, and cannot be used."
+  summary: "Henter lengden i byte for dataflyten."
+  remarks: "Denne egenskapen finnes bare for å støtte arving av <xref:System.IO.Stream>, og kan ikke brukes.</xref:System.IO.Stream>"
   syntax:
     content: public override long Length { get; }
     return:
       type: System.Int64
-      description: "This property is not supported."
+      description: "Denne egenskapen støttes ikke."
   overload: System.Security.Cryptography.CryptoStream.Length*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "This property is not supported."
+    description: "Denne egenskapen støttes ikke."
   platform:
   - net462
 - uid: System.Security.Cryptography.CryptoStream.Position
@@ -326,18 +326,18 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Cryptography
-  summary: "Gets or sets the position within the current stream."
-  remarks: "This property exists only to support inheritance from <xref:System.IO.Stream>, and cannot be used."
+  summary: "Henter eller angir posisjonen i gjeldende dataflyten."
+  remarks: "Denne egenskapen finnes bare for å støtte arving av <xref:System.IO.Stream>, og kan ikke brukes.</xref:System.IO.Stream>"
   syntax:
     content: public override long Position { get; set; }
     return:
       type: System.Int64
-      description: "This property is not supported."
+      description: "Denne egenskapen støttes ikke."
   overload: System.Security.Cryptography.CryptoStream.Position*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "This property is not supported."
+    description: "Denne egenskapen støttes ikke."
   platform:
   - net462
 - uid: System.Security.Cryptography.CryptoStream.Read(System.Byte[],System.Int32,System.Int32)
@@ -352,33 +352,33 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Cryptography
-  summary: "Reads a sequence of bytes from the current stream and advances the position within the stream by the number of bytes read."
+  summary: "Leser en sekvens med byte fra gjeldende strøm og flytter posisjonen i dataflyten på antall byte som leses."
   syntax:
     content: public override int Read (byte[] buffer, int offset, int count);
     parameters:
     - id: buffer
       type: System.Byte[]
-      description: "An array of bytes. A maximum of `count` bytes are read from the current stream and stored in `buffer`."
+      description: "En bytematrise. Maksimalt `count` byte er lest fra gjeldende strøm og lagret i `buffer`."
     - id: offset
       type: System.Int32
-      description: "The byte offset in `buffer` at which to begin storing the data read from the current stream."
+      description: "Forskyvningen i byte i `buffer` vil begynne å lagre dataene lese fra gjeldende dataflyten."
     - id: count
       type: System.Int32
-      description: "The maximum number of bytes to be read from the current stream."
+      description: "Maksimalt antall byte som leses fra den gjeldende dataflyten."
     return:
       type: System.Int32
-      description: "The total number of bytes read into the buffer. This can be less than the number of bytes requested if that many bytes are not currently available, or zero if the end of the stream has been reached."
+      description: "Totalt antall byte som leses, til bufferen. Dette kan være mindre enn antall byte som ble forespurt hvis mange byte er ikke tilgjengelig for øyeblikket, eller null hvis slutten på dataflyten er nådd."
   overload: System.Security.Cryptography.CryptoStream.Read*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The <xref href=&quot;System.Security.Cryptography.CryptoStreamMode&quot;></xref> associated with current <xref href=&quot;System.Security.Cryptography.CryptoStream&quot;></xref> object does not match the underlying stream.  For example, this exception is thrown when using <xref href=&quot;System.Security.Cryptography.CryptoStreamMode&quot;></xref> with an underlying stream that is write only."
+    description: "Den <xref href=&quot;System.Security.Cryptography.CryptoStreamMode&quot;> </xref> knyttet til gjeldende <xref href=&quot;System.Security.Cryptography.CryptoStream&quot;> </xref> objektet samsvarer ikke med underliggende dataflyten.  For eksempel denne unntak ved <xref href=&quot;System.Security.Cryptography.CryptoStreamMode&quot;> </xref> med en underliggende dataflyten er lesebeskyttet."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The <code>offset</code> parameter is less than zero.       -or-       The <code>count</code> parameter is less than zero."
+    description: "Den <code> offset </code> parameteren er mindre enn null.       - eller - <code> count </code> parameteren er mindre enn null."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "Thesum of the <code>count</code> and <code>offset</code> parameters is longer than the length of the buffer."
+    description: "Thesum av den <code> count </code> og <code> offset </code> parametere er lengre enn lengden på bufferen."
   platform:
   - net462
 - uid: System.Security.Cryptography.CryptoStream.ReadAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)
@@ -393,46 +393,46 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Cryptography
-  summary: "Reads a sequence of bytes from the current stream asynchronously, advances the position within the stream by the number of bytes read, and monitors cancellation requests."
-  remarks: "You must preface your call to ReadAsync with the `await` (C#) or `Await` (Visual Basic) operator to suspend execution of the method until the task is complete. For more information, see [Asynchronous Programming with Async and Await](~/add/includes/ajax-current-ext-md.md).       If the operation is canceled before it completes, the returned task contains the <xref:System.Threading.Tasks.TaskStatus> value for the <xref:System.Threading.Tasks.Task.Status%2A> property."
+  summary: "Leser asynkron en sekvens med byte fra gjeldende strøm, flytter posisjonen i dataflyten på antall byte som leses, og overvåker avbryte forespørsler."
+  remarks: "Du må sette foran kallet til ReadAsync med den `await` (C#) eller `Await` (Visual Basic) brukes til å deaktivere kjøring av metoden før oppgaven er fullført. Hvis du vil ha mer informasjon, se [asynkront Programming med asynkron og Await](~/add/includes/ajax-current-ext-md.md).       Hvis operasjonen er avbrutt før den er fullført, returnerte oppgaven inneholder den <xref:System.Threading.Tasks.TaskStatus>verdien den <xref:System.Threading.Tasks.Task.Status%2A>egenskapen.</xref:System.Threading.Tasks.Task.Status%2A> </xref:System.Threading.Tasks.TaskStatus>"
   syntax:
     content: public override System.Threading.Tasks.Task<int> ReadAsync (byte[] buffer, int offset, int count, System.Threading.CancellationToken cancellationToken);
     parameters:
     - id: buffer
       type: System.Byte[]
-      description: "The buffer to write the data into."
+      description: "Buffer til å skrive inn dataene."
     - id: offset
       type: System.Int32
-      description: "The byte offset in `buffer` at which to begin writing data from the stream."
+      description: "Forskyvningen i byte i `buffer` som til å skrive data fra dataflyten."
     - id: count
       type: System.Int32
-      description: "The maximum number of bytes to read."
+      description: "Maksimalt antall byte som skal leses."
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: "The token to monitor for cancellation requests. The default value is <xref:System.Threading.CancellationToken.None*>."
+      description: "Tokenet, for å overvåke for å avbryte forespørsler. Standardverdien er <xref:System.Threading.CancellationToken.None*>.</xref:System.Threading.CancellationToken.None*>"
     return:
       type: System.Threading.Tasks.Task{System.Int32}
-      description: "A task that represents the asynchronous read operation. The value of the task object&quot;s <code>TResult</code> parameter contains the total number of bytes read into the buffer. The result can be less than the number of bytes requested if the number of bytes currently available is less than the requested number, or it can be 0 (zero) if the end of the stream has been reached."
+      description: "En oppgave som representerer den asynkrone leseoperasjon. Verdien for oppgaven objektets <code> TResult </code> parameteren inneholder totalt antall byte som leses, til bufferen. Resultatet kan være mindre enn antall byte som ble forespurt om antall byte som er tilgjengelig for øyeblikket er mindre enn det forespurte antallet eller det kan være 0 (null) Hvis slutten på dataflyten er nådd."
   overload: System.Security.Cryptography.CryptoStream.ReadAsync*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>buffer</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>buffer</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>offset</code> or <code>count</code> is negative."
+    description: "<code>offset</code>eller <code>count</code> er negativt."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The sum of <code>offset</code> and <code>count</code> is larger than the buffer length."
+    description: "Summen av <code> offset </code> og <code> count </code> er større enn bufferlengden."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The stream does not support reading."
+    description: "Dataflyten støtter ikke lesing."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The stream has been disposed."
+    description: "Dataflyten har blitt fjernet."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The stream is currently in use by a previous read operation."
+    description: "Dataflyten er i bruk av en tidligere leseoperasjon."
   platform:
   - net462
 - uid: System.Security.Cryptography.CryptoStream.Seek(System.Int64,System.IO.SeekOrigin)
@@ -447,25 +447,25 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Cryptography
-  summary: "Sets the position within the current stream."
-  remarks: "This method exists only to support inheritance from <xref:System.IO.Stream>, and cannot be used."
+  summary: "Angir posisjonen i gjeldende dataflyten."
+  remarks: "Denne metoden finnes bare for å støtte arving av <xref:System.IO.Stream>, og kan ikke brukes.</xref:System.IO.Stream>"
   syntax:
     content: public override long Seek (long offset, System.IO.SeekOrigin origin);
     parameters:
     - id: offset
       type: System.Int64
-      description: "A byte offset relative to the `origin` parameter."
+      description: "Byte offset forhold til den `origin` parameteren."
     - id: origin
       type: System.IO.SeekOrigin
-      description: "A <xref:System.IO.SeekOrigin> object indicating the reference point used to obtain the new position."
+      description: "En <xref:System.IO.SeekOrigin>objektet angir referanse brukes til å få ny posisjon.</xref:System.IO.SeekOrigin>"
     return:
       type: System.Int64
-      description: "This method is not supported."
+      description: "Denne metoden støttes ikke."
   overload: System.Security.Cryptography.CryptoStream.Seek*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "This method is not supported."
+    description: "Denne metoden støttes ikke."
   platform:
   - net462
 - uid: System.Security.Cryptography.CryptoStream.SetLength(System.Int64)
@@ -480,19 +480,19 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Cryptography
-  summary: "Sets the length of the current stream."
-  remarks: "This property exists only to support inheritance from <xref:System.IO.Stream>, and cannot be used."
+  summary: "Angir hvor lang gjeldende dataflyten."
+  remarks: "Denne egenskapen finnes bare for å støtte arving av <xref:System.IO.Stream>, og kan ikke brukes.</xref:System.IO.Stream>"
   syntax:
     content: public override void SetLength (long value);
     parameters:
     - id: value
       type: System.Int64
-      description: "The desired length of the current stream in bytes."
+      description: "Den ønskede lengden på gjeldende strøm i byte."
   overload: System.Security.Cryptography.CryptoStream.SetLength*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "This property exists only to support inheritance from <xref:System.IO.Stream>, and cannot be used."
+    description: "Denne egenskapen finnes bare for å støtte arving av <xref:System.IO.Stream>, og kan ikke brukes.</xref:System.IO.Stream>"
   platform:
   - net462
 - uid: System.Security.Cryptography.CryptoStream.Write(System.Byte[],System.Int32,System.Int32)
@@ -507,30 +507,30 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Cryptography
-  summary: "Writes a sequence of bytes to the current <xref href=&quot;System.Security.Cryptography.CryptoStream&quot;></xref> and advances the current position within the stream by the number of bytes written."
+  summary: "Skriver en sekvens med byte til gjeldende <xref href=&quot;System.Security.Cryptography.CryptoStream&quot;> </xref> og flytter gjeldende plassering i dataflyten på antall byte skrevet."
   syntax:
     content: public override void Write (byte[] buffer, int offset, int count);
     parameters:
     - id: buffer
       type: System.Byte[]
-      description: "An array of bytes. This method copies `count` bytes from `buffer` to the current stream."
+      description: "En bytematrise. Denne metoden kopierer `count` byte fra `buffer` til gjeldende dataflyten."
     - id: offset
       type: System.Int32
-      description: "The byte offset in `buffer` at which to begin copying bytes to the current stream."
+      description: "Forskyvningen i byte i `buffer` som du vil kopiere byte til gjeldende dataflyten."
     - id: count
       type: System.Int32
-      description: "The number of bytes to be written to the current stream."
+      description: "Antall byte som skrives til gjeldende dataflyten."
   overload: System.Security.Cryptography.CryptoStream.Write*
   exceptions:
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The <xref href=&quot;System.Security.Cryptography.CryptoStreamMode&quot;></xref> associated with current <xref href=&quot;System.Security.Cryptography.CryptoStream&quot;></xref> object does not match the underlying stream.  For example, this exception is thrown when using <xref href=&quot;System.Security.Cryptography.CryptoStreamMode&quot;></xref> with an underlying stream that is read only."
+    description: "Den <xref href=&quot;System.Security.Cryptography.CryptoStreamMode&quot;> </xref> knyttet til gjeldende <xref href=&quot;System.Security.Cryptography.CryptoStream&quot;> </xref> objektet samsvarer ikke med underliggende dataflyten.  For eksempel denne unntak ved <xref href=&quot;System.Security.Cryptography.CryptoStreamMode&quot;> </xref> med en underliggende dataflyten er skrivebeskyttet."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "The <code>offset</code> parameter is less than zero.       -or-       The <code>count</code> parameter is less than zero."
+    description: "Den <code> offset </code> parameteren er mindre enn null.       - eller - <code> count </code> parameteren er mindre enn null."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The sum of the <code>count</code> and <code>offset</code> parameters is longer than the length of the buffer."
+    description: "Summen av den <code> count </code> og <code> offset </code> parametere er lengre enn lengden på bufferen."
   platform:
   - net462
 - uid: System.Security.Cryptography.CryptoStream.WriteAsync(System.Byte[],System.Int32,System.Int32,System.Threading.CancellationToken)
@@ -545,46 +545,46 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Security.Cryptography
-  summary: "Writes a sequence of bytes to the current stream asynchronously, advances the current position within the stream by the number of bytes written, and monitors cancellation requests."
-  remarks: "You must preface your call to WriteAsync with the `await` (C#) or `Await` (Visual Basic) operator to suspend execution of the method until the task is complete. For more information, see [Asynchronous Programming with Async and Await](~/add/includes/ajax-current-ext-md.md).       If the operation is canceled before it completes, the returned task contains the <xref:System.Threading.Tasks.TaskStatus> value for the <xref:System.Threading.Tasks.Task.Status%2A> property."
+  summary: "Skriver en sekvens med byte til gjeldende strøm asynkront og flytter gjeldende plassering i dataflyten på antall byte skrevet overvåker avbryte forespørsler."
+  remarks: "Du må sette foran kallet til WriteAsync med den `await` (C#) eller `Await` (Visual Basic) brukes til å deaktivere kjøring av metoden før oppgaven er fullført. Hvis du vil ha mer informasjon, se [asynkront Programming med asynkron og Await](~/add/includes/ajax-current-ext-md.md).       Hvis operasjonen er avbrutt før den er fullført, returnerte oppgaven inneholder den <xref:System.Threading.Tasks.TaskStatus>verdien den <xref:System.Threading.Tasks.Task.Status%2A>egenskapen.</xref:System.Threading.Tasks.Task.Status%2A> </xref:System.Threading.Tasks.TaskStatus>"
   syntax:
     content: public override System.Threading.Tasks.Task WriteAsync (byte[] buffer, int offset, int count, System.Threading.CancellationToken cancellationToken);
     parameters:
     - id: buffer
       type: System.Byte[]
-      description: "The buffer to write data from."
+      description: "Buffer til å skrive data fra."
     - id: offset
       type: System.Int32
-      description: "The zero-based byte offset in `buffer` from which to begin writing bytes to the stream."
+      description: "Forskyvning nullbasert byte i `buffer` som til å skrive byte til dataflyten."
     - id: count
       type: System.Int32
-      description: "The maximum number of bytes to write."
+      description: "Maksimalt antall byte som skal skrive."
     - id: cancellationToken
       type: System.Threading.CancellationToken
-      description: "The token to monitor for cancellation requests. The default value is <xref:System.Threading.CancellationToken.None*>."
+      description: "Tokenet, for å overvåke for å avbryte forespørsler. Standardverdien er <xref:System.Threading.CancellationToken.None*>.</xref:System.Threading.CancellationToken.None*>"
     return:
       type: System.Threading.Tasks.Task
-      description: "A task that represents the asynchronous write operation."
+      description: "En oppgave som representerer den asynkrone Skriveoperasjonen."
   overload: System.Security.Cryptography.CryptoStream.WriteAsync*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>buffer</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>buffer</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   - type: System.ArgumentOutOfRangeException
     commentId: T:System.ArgumentOutOfRangeException
-    description: "<code>offset</code> or <code>count</code> is negative."
+    description: "<code>offset</code>eller <code>count</code> er negativt."
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The sum of <code>offset</code> and <code>count</code> is larger than the buffer length."
+    description: "Summen av <code> offset </code> og <code> count </code> er større enn bufferlengden."
   - type: System.NotSupportedException
     commentId: T:System.NotSupportedException
-    description: "The stream does not support writing."
+    description: "Dataflyten støtter ikke skriving."
   - type: System.ObjectDisposedException
     commentId: T:System.ObjectDisposedException
-    description: "The stream has been disposed."
+    description: "Dataflyten har blitt fjernet."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The stream is currently in use by a previous write operation."
+    description: "Dataflyten er i bruk av en tidligere skriveoperasjon."
   platform:
   - net462
 references:

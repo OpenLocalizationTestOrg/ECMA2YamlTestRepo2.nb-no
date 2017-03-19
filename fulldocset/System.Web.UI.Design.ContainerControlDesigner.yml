@@ -20,8 +20,8 @@ items:
   nameWithType: ContainerControlDesigner
   fullName: System.Web.UI.Design.ContainerControlDesigner
   type: Class
-  summary: "Provides designer functionality for controls that contain child controls or properties that can be modified at design time."
-  remarks: "The ContainerControlDesigner class provides a base designer class for controls that can be modified on the design surface. This includes controls that contain child controls or editable inner properties. The ContainerControlDesigner provides a single framed region to represent the control, and automatically handles rendering the control at design time.       Apply the <xref:System.Web.UI.ParseChildrenAttribute> attribute on the associated control to determine the design-time behavior of the ContainerControlDesigner. Apply the <xref:System.Web.UI.ParseChildrenAttribute> settings on the associated control as follows:      -   `false` to indicate that the ContainerControlDesigner represents the contents of the editable design region as child controls.      -   `true` to indicate that the ContainerControlDesigner represents the contents of the editable design region as editable inner properties of the control.       Control developers can derive and extend a custom designer from one of several base designers depending on the kind of control that is being developed, as defined in the following list:      -   Controls that allow child controls to be added to it at design time can derive from the ContainerControlDesigner class. For example, the <xref:System.Web.UI.Design.WebControls.PanelContainerDesigner> class is derived from the ContainerControlDesigner class and represents a <xref:System.Web.UI.WebControls.Panel> control on the design surface.      -   Controls that have one or more child controls, and might also have an editable designer region where controls can be added at design time, can derive from the <xref:System.Web.UI.Design.WebControls.CompositeControlDesigner> class.      -   Controls that require custom design-time processing can derive from the base <xref:System.Web.UI.Design.ControlDesigner> class.      > [!NOTE] >  The ContainerControlDesigner class replaces the obsolete <xref:System.Web.UI.Design.ReadWriteControlDesigner> class.       Use the <xref:System.ComponentModel.DesignerAttribute> attribute to associate a custom designer class together with a custom control implementation. For detailed information about how to use control designers with custom controls, see [Walkthrough: Creating a Basic Control Designer for a Web Server Control](~/add/includes/ajax-current-ext-md.md)."
+  summary: "Gir designer funksjonalitet for kolonner som inneholder underordnede kontroller eller egenskaper som kan endres under utformingen."
+  remarks: "Klassen ContainerControlDesigner gir en basisklasse Spørringsutformer for kolonner som kan endres på utformingsoverflaten. Dette omfatter kontroller som inneholder underordnede kontroller eller redigerbare indre egenskaper. ContainerControlDesigner inneholder ett enkelt innrammet område for å representere kontrollen, og behandler automatisk gjengivelse av kontrollen under utformingen.       Bruk av <xref:System.Web.UI.ParseChildrenAttribute>attributtet for den tilknyttede kontrollen til å bestemme utformingen-virkemåten for ContainerControlDesigner.</xref:System.Web.UI.ParseChildrenAttribute> Bruk av <xref:System.Web.UI.ParseChildrenAttribute>Innstillinger for den tilknyttede kontrollen som følger:- `false` til å angi ContainerControlDesigner representerer innholdet i det redigerbare utforming området som underordnede kontroller.</xref:System.Web.UI.ParseChildrenAttribute>      - `true` til å angi at ContainerControlDesigner representerer innholdet i det redigerbare utforming området som redigerbare indre egenskaper for kontrollen.       Kontrollutviklere kan avledes og utvide en egendefinert utformer blant flere base utviklere avhengig av hvilken type kontroll som er under utvikling, som er definert i følgende liste:-Kontroller som tillater underordnede kontroller legges til den under utformingen kan være avledet fra klassen ContainerControlDesigner. For eksempel den <xref:System.Web.UI.Design.WebControls.PanelContainerDesigner>klassen er avledet fra klassen ContainerControlDesigner og representerer en <xref:System.Web.UI.WebControls.Panel>kontrollen i utformingsoverflaten.</xref:System.Web.UI.WebControls.Panel> </xref:System.Web.UI.Design.WebControls.PanelContainerDesigner>      -Kontroller som har én eller flere underordnede kontroller, og kan også ha en redigerbare designer området der kontroller kan legges ved utformingen, kan være avledet fra <xref:System.Web.UI.Design.WebControls.CompositeControlDesigner>klassen.</xref:System.Web.UI.Design.WebControls.CompositeControlDesigner>      -Kontroller som krever tilpasset utformingen-behandling kan utledes fra base <xref:System.Web.UI.Design.ControlDesigner>klasse.</xref:System.Web.UI.Design.ControlDesigner>      > [!NOTE] > For ContainerControlDesigner klassen erstatter foreldet <xref:System.Web.UI.Design.ReadWriteControlDesigner>klasse.</xref:System.Web.UI.Design.ReadWriteControlDesigner>       Bruk av <xref:System.ComponentModel.DesignerAttribute>attributtet knytte en egendefinert designer klasse sammen med en egendefinert kontroll-implementering.</xref:System.ComponentModel.DesignerAttribute> Du finner mer detaljert informasjon om hvordan du bruker kontrollen utviklere med egendefinerte kontroller [gjennomgang: opprette en grunnleggende kontrollen utformer for Server formålet](~/add/includes/ajax-current-ext-md.md)."
   example:
   - "The following code example demonstrates how to derive a designer class from the ContainerControlDesigner class. The example defines a simple control that is derived from the <xref:System.Web.UI.WebControls.CompositeControl> class, and then defines an associated designer, which is derived from the ContainerControlDesigner class. The derived designer class overrides the <xref:System.Web.UI.Design.ContainerControlDesigner.FrameCaption%2A> and <xref:System.Web.UI.Design.ContainerControlDesigner.FrameStyle%2A> properties to customize the frame that is around the editable region of the control on the design surface.  \n  \n [!code-vb[SimpleContainerControlDesigner#1](~/add/codesnippet/visualbasic/t-system.web.ui.design.c_2_1.vb)]\n [!code-cs[SimpleContainerControlDesigner#1](~/add/codesnippet/csharp/t-system.web.ui.design.c_2_1.cs)]"
   syntax:
@@ -139,7 +139,7 @@ items:
   assemblies:
   - System.Design
   namespace: System.Web.UI.Design
-  summary: "Initializes a new instance of the <xref href=&quot;System.Web.UI.Design.ContainerControlDesigner&quot;></xref> class."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.Web.UI.Design.ContainerControlDesigner&quot;> </xref> klasse."
   syntax:
     content: public ContainerControlDesigner ();
     parameters: []
@@ -159,14 +159,14 @@ items:
   assemblies:
   - System.Design
   namespace: System.Web.UI.Design
-  summary: "Adds the style attributes for the control at design time."
-  remarks: "The AddDesignTimeCssAttributes method adds a set of style attributes for the design-time representation of the control. The style attribute values are added to the `styleAttributes` collection, keyed by the style attribute name. For example, you can access the height value in the collection as `styleAttributes[&quot;height&quot;]` for C# or `styleAttributes(&quot;height&quot;)` for Microsoft Visual Basic.       If the associated control is not derived from the <xref:System.Web.UI.WebControls.WebControl> class, the AddDesignTimeCssAttributes method does not add attribute values to the `styleAttributes` collection."
+  summary: "Legger til stilen attributtene for kontrollen under utformingen."
+  remarks: "Metoden AddDesignTimeCssAttributes legger til et sett med Stilattributter for utforming-representasjon av kontrollen. Stilen attributtverdier er lagt til i `styleAttributes` samling, rettet av navnet på attributtet. For eksempel du har tilgang til høydeverdien i samlingen som `styleAttributes[&quot;height&quot;]` for C# eller `styleAttributes(&quot;height&quot;)` for Microsoft Visual Basic.       Hvis den tilknyttede kontrollen ikke er utledet fra den <xref:System.Web.UI.WebControls.WebControl>klassen metoden AddDesignTimeCssAttributes legges ikke attributtverdier til den `styleAttributes` samlingen.</xref:System.Web.UI.WebControls.WebControl>"
   syntax:
     content: protected virtual void AddDesignTimeCssAttributes (System.Collections.IDictionary styleAttributes);
     parameters:
     - id: styleAttributes
       type: System.Collections.IDictionary
-      description: "A keyed collection of style attributes."
+      description: "En kodede samling Stilattributter."
   overload: System.Web.UI.Design.ContainerControlDesigner.AddDesignTimeCssAttributes*
   exceptions: []
   platform:
@@ -183,13 +183,13 @@ items:
   assemblies:
   - System.Design
   namespace: System.Web.UI.Design
-  summary: "Gets a value indicating if the control can be resized at design time."
-  remarks: "The base implementation for the AllowResize property returns `true`. This indicates that the designer supports resizing of the control on the design surface."
+  summary: "Henter en verdi som angir om kontrollen kan endres under utformingen."
+  remarks: "Returnerer base implementeringen for egenskapen AllowResize `true`. Dette indikerer at utformeren støtter endring av kontrollen i utformingsoverflaten."
   syntax:
     content: public override bool AllowResize { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>, if the control can be resized; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>, hvis kontrollen kan endres; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.Design.ContainerControlDesigner.AllowResize*
   exceptions: []
   platform:
@@ -206,13 +206,13 @@ items:
   assemblies:
   - System.Design
   namespace: System.Web.UI.Design
-  summary: "Gets the caption that is displayed for a control at design time."
-  remarks: "The FrameCaption string is the caption that is displayed in the frame around the editable region of the control on the design surface.       The default caption for a <xref:System.Web.UI.Design.ContainerControlDesigner> frame is the <xref:System.Web.UI.Design.ControlDesigner.ID%2A> property of the designer instance. This is typically the same as the run-time <xref:System.Web.UI.Control.ID%2A> property of the control."
+  summary: "Henter teksten som vises for en kontroll under utformingen."
+  remarks: "Strengen som FrameCaption er teksten som vises i rammen rundt det redigerbare området for kontrollen i utformingsoverflaten.       Standard-overskrift for en <xref:System.Web.UI.Design.ContainerControlDesigner>rammen er den <xref:System.Web.UI.Design.ControlDesigner.ID%2A>for designer-forekomsten.</xref:System.Web.UI.Design.ControlDesigner.ID%2A> </xref:System.Web.UI.Design.ContainerControlDesigner> Dette er vanligvis det samme som kjøretid <xref:System.Web.UI.Control.ID%2A>-egenskapen for kontrollen.</xref:System.Web.UI.Control.ID%2A>"
   syntax:
     content: public virtual string FrameCaption { get; }
     return:
       type: System.String
-      description: "The string used for the control frame caption at design time, if the control has a design-time caption; otherwise, an empty string (&quot;&quot;)."
+      description: "Strengen som brukes for kontrollen for teksten på utformingstidspunktet, hvis kontrollen har en tittel for utforming; Hvis ikke returneres en tom streng (&quot;&quot;)."
   overload: System.Web.UI.Design.ContainerControlDesigner.FrameCaption*
   exceptions: []
   platform:
@@ -229,13 +229,13 @@ items:
   assemblies:
   - System.Design
   namespace: System.Web.UI.Design
-  summary: "Gets the style that is applied to the control frame at design time."
-  remarks: "The FrameStyle property indicates the style properties of the frame around the editable region of the control on the design surface."
+  summary: "Henter stilen som skal brukes til kontroll rammens under utformingen."
+  remarks: "Egenskapen FrameStyle angir stilegenskaper rammens rundt det redigerbare området for kontrollen i utformingsoverflaten."
   syntax:
     content: public virtual System.Web.UI.WebControls.Style FrameStyle { get; }
     return:
       type: System.Web.UI.WebControls.Style
-      description: "A <xref href=&quot;System.Web.UI.WebControls.Style&quot;></xref> for the control frame at design time."
+      description: "En <xref href=&quot;System.Web.UI.WebControls.Style&quot;> </xref> for kontrollen rammen under utformingen."
   overload: System.Web.UI.Design.ContainerControlDesigner.FrameStyle*
   exceptions: []
   platform:
@@ -252,14 +252,14 @@ items:
   assemblies:
   - System.Design
   namespace: System.Web.UI.Design
-  summary: "Returns the collection of style attributes for the control at design time."
-  remarks: "The GetDesignTimeCssAttributes method returns a collection of style attributes for the design-time representation of the control.       To examine a style attribute value at design time for a control, use the style attribute name as a key to the returned collection. Style attribute values are stored as strings in the collection. For example, you can access the height value in the collection as `styleAttributes[&quot;height&quot;]` for C# or `styleAttributes(&quot;height&quot;)` for Microsoft Visual Basic.       If the associated control is not derived from the <xref:System.Web.UI.WebControls.WebControl> class, the GetDesignTimeCssAttributes method returns an empty collection."
+  summary: "Returnerer samling av stilen attributtene for kontrollen under utformingen."
+  remarks: "Metoden GetDesignTimeCssAttributes returnerer en samling av Stilattributter for utforming-representasjon av kontrollen.       Hvis du vil se en attributtverdi stilen på utformingstidspunktet for en kontroll, brukes navnet på attributtet som en nøkkel i samlingen returnerte. Stilen attributtverdier lagres som strenger i samlingen. For eksempel du har tilgang til høydeverdien i samlingen som `styleAttributes[&quot;height&quot;]` for C# eller `styleAttributes(&quot;height&quot;)` for Microsoft Visual Basic.       Hvis den tilknyttede kontrollen ikke er utledet fra den <xref:System.Web.UI.WebControls.WebControl>klassen GetDesignTimeCssAttributes returneres en tom samling.</xref:System.Web.UI.WebControls.WebControl>"
   syntax:
     content: public virtual System.Collections.IDictionary GetDesignTimeCssAttributes ();
     parameters: []
     return:
       type: System.Collections.IDictionary
-      description: "A collection of style attributes applied to the control on the design surface. The style attribute names are keys used to access the style attribute values in the <xref:System.Collections.IDictionary>."
+      description: "En samling av Stilattributter som brukes til kontroll i utformingsoverflaten. Stilen attributtnavn er brukes til å få tilgang til stilen attributtverdiene i <xref:System.Collections.IDictionary>.</xref:System.Collections.IDictionary>"
   overload: System.Web.UI.Design.ContainerControlDesigner.GetDesignTimeCssAttributes*
   exceptions: []
   platform:
@@ -276,17 +276,17 @@ items:
   assemblies:
   - System.Design
   namespace: System.Web.UI.Design
-  summary: "Returns the HTML markup that is used to represent the control at design time."
-  remarks: "Use the GetDesignTimeHtml method to get the HTML for the control. Child controls that are contained in the editable design region are rendered using their associated control designers.       The GetDesignTimeHtml method initializes a new <xref:System.Web.UI.Design.EditableDesignerRegion> object for the editable region of associated control, and then returns the region through the `regions` collection."
+  summary: "Returnerer HTML-koden som brukes til å representere kontrollen under utformingen."
+  remarks: "Bruk GetDesignTimeHtml-metoden til å hente HTML for kontrollen. Underordnede kontroller som finnes i det redigerbare utforming området gjengis ved hjelp av de tilknyttede kontrollen utviklere.       Metoden GetDesignTimeHtml initialiserer en ny <xref:System.Web.UI.Design.EditableDesignerRegion>objekt for det redigerbare området med tilknyttede kontrollen, og returnerer område via den `regions` samlingen.</xref:System.Web.UI.Design.EditableDesignerRegion>"
   syntax:
     content: public override string GetDesignTimeHtml (System.Web.UI.Design.DesignerRegionCollection regions);
     parameters:
     - id: regions
       type: System.Web.UI.Design.DesignerRegionCollection
-      description: "A collection of designer regions."
+      description: "En samling av designer områder."
     return:
       type: System.String
-      description: "An HTML markup string that represents the control."
+      description: "En HTML markup streng som representerer kontrollen."
   overload: System.Web.UI.Design.ContainerControlDesigner.GetDesignTimeHtml*
   exceptions: []
   platform:
@@ -303,17 +303,17 @@ items:
   assemblies:
   - System.Design
   namespace: System.Web.UI.Design
-  summary: "Returns the content for the editable region of the control at design time."
-  remarks: "The <xref:System.Web.UI.Design.ContainerControlDesigner> class implements a single designer region instead of a collection of designer regions. Therefore, the `region` parameter is ignored, and the GetEditableDesignerRegionContent method returns the content for the single designer region that is contained in the control designer."
+  summary: "Returnerer innholdet for det redigerbare området kontrollens under utformingen."
+  remarks: "Den <xref:System.Web.UI.Design.ContainerControlDesigner>klassen implementerer ett enkelt designer område i stedet for en samling av designer dataområder.</xref:System.Web.UI.Design.ContainerControlDesigner> Derfor den `region` parameteren ignoreres, og metoden GetEditableDesignerRegionContent returnerer innholdet for enkelt designer dataområde som ligger i designer kontrollen."
   syntax:
     content: public override string GetEditableDesignerRegionContent (System.Web.UI.Design.EditableDesignerRegion region);
     parameters:
     - id: region
       type: System.Web.UI.Design.EditableDesignerRegion
-      description: "An editable design region contained within the control."
+      description: "En redigerbare utformingen område i kontrollen."
     return:
       type: System.String
-      description: "The persisted content of the region contained within the <xref href=&quot;System.Web.UI.Design.ContainerControlDesigner&quot;></xref>."
+      description: "Fast innhold i området finnes i den <xref href=&quot;System.Web.UI.Design.ContainerControlDesigner&quot;> </xref>."
   overload: System.Web.UI.Design.ContainerControlDesigner.GetEditableDesignerRegionContent*
   exceptions: []
   platform:
@@ -330,8 +330,8 @@ items:
   assemblies:
   - System.Design
   namespace: System.Web.UI.Design
-  summary: "Returns the persistable content of the control at design time."
-  remarks: "The GetPersistenceContent method returns `null` to indicate that the <xref:System.Web.UI.Design.ContainerControlDesigner> class does not have persisted inner content."
+  summary: "Returnerer fast innholdet i kontrollen under utformingen."
+  remarks: "Metoden GetPersistenceContent returnerer `null` å angi at den <xref:System.Web.UI.Design.ContainerControlDesigner>klassen har ikke faste indre innhold.</xref:System.Web.UI.Design.ContainerControlDesigner>"
   syntax:
     content: public override string GetPersistenceContent ();
     parameters: []
@@ -354,12 +354,12 @@ items:
   assemblies:
   - System.Design
   namespace: System.Web.UI.Design
-  summary: "Gets a value that specifies whether to use the HTML <xref uid=&quot;langword_csharp_nowrap&quot; name=&quot;nowrap&quot; href=&quot;&quot;></xref> attribute on tables."
+  summary: "Henter en verdi som angir om du vil bruke HTML <xref uid=&quot;langword_csharp_nowrap&quot; name=&quot;nowrap&quot; href=&quot;&quot;> </xref> attributtet i tabeller."
   syntax:
     content: protected virtual bool NoWrap { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to use the HTML <xref uid=&quot;langword_csharp_nowrap&quot; name=&quot;nowrap&quot; href=&quot;&quot;></xref> attribute on tables; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>skal bruke HTML <xref uid=&quot;langword_csharp_nowrap&quot; name=&quot;nowrap&quot; href=&quot;&quot;> </xref> attributtet i tabeller; ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Web.UI.Design.ContainerControlDesigner.NoWrap*
   exceptions: []
   platform:
@@ -376,17 +376,17 @@ items:
   assemblies:
   - System.Design
   namespace: System.Web.UI.Design
-  summary: "Sets the content for the editable region of the control at design time."
-  remarks: "The <xref:System.Web.UI.Design.ContainerControlDesigner> class implements a single designer region instead of a collection of designer regions. Therefore, the `region` parameter is ignored, and the SetEditableDesignerRegionContent method sets the content for the single designer region that is contained in the control designer."
+  summary: "Angir innholdet for det redigerbare området kontrollens under utformingen."
+  remarks: "Den <xref:System.Web.UI.Design.ContainerControlDesigner>klassen implementerer ett enkelt designer område i stedet for en samling av designer dataområder.</xref:System.Web.UI.Design.ContainerControlDesigner> Derfor den `region` parameteren ignoreres, og metoden SetEditableDesignerRegionContent angir innholdet for enkelt designer dataområde som ligger i designer kontrollen."
   syntax:
     content: public override void SetEditableDesignerRegionContent (System.Web.UI.Design.EditableDesignerRegion region, string content);
     parameters:
     - id: region
       type: System.Web.UI.Design.EditableDesignerRegion
-      description: "An editable design region contained within the control."
+      description: "En redigerbare utformingen område i kontrollen."
     - id: content
       type: System.String
-      description: "Content to assign for the editable design region."
+      description: "Innhold tilordne for redigerbare utformingen-område."
   overload: System.Web.UI.Design.ContainerControlDesigner.SetEditableDesignerRegionContent*
   exceptions: []
   platform:

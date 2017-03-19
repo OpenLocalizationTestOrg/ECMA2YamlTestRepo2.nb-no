@@ -16,8 +16,8 @@ items:
   nameWithType: PeerResolver
   fullName: System.ServiceModel.PeerResolver
   type: Class
-  summary: "Specifies a base type used to define the contract for the registration and resolution of a peer mesh ID to the endpoint addresses of nodes participating in the mesh."
-  remarks: "This class is the base class for the implementation of custom peer name resolvers. A peer name resolver is a discovery service used by peer channels to find peer nodes participating in a peer mesh. It is also used to &quot;register&quot; a node with a peer mesh, the mechanism by which the peer node becomes known and available from the peer mesh."
+  summary: "Angir en basistype brukes til å definere kontrakten for registreringen og løsing av en node nett ID til endepunktsadresser med noder som deltar i nettet."
+  remarks: "Denne klassen er basisklasse for implementering av egendefinerte peer name omgjørere. En node navnet løsningen er en søketjeneste brukes av node kanaler for å finne node noder deltar i et node nett. Den brukes også &quot;Registrer&quot; en node i en node er nett mekanisme som noden node blir kjent og tilgjengelig fra node-nett."
   syntax:
     content: public abstract class PeerResolver
   inheritance:
@@ -38,7 +38,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.PeerResolver&quot;></xref> class."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.ServiceModel.PeerResolver&quot;> </xref> klasse."
   syntax:
     content: protected PeerResolver ();
     parameters: []
@@ -58,12 +58,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Gets whether the peer name resolver can share referrals."
+  summary: "Henter om node navnet på artikkelløseren kan dele referanser."
   syntax:
     content: public abstract bool CanShareReferrals { get; }
     return:
       type: System.Boolean
-      description: "If true, the peer name resolver can share referrals; if false, it cannot."
+      description: "Hvis SANN, kan node navnet på artikkelløseren dele referanser; Hvis false, kan ikke."
   overload: System.ServiceModel.PeerResolver.CanShareReferrals*
   exceptions: []
   platform:
@@ -80,23 +80,23 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Initializes the current peer resolver instance with the new supplied endpoint address and settings."
-  remarks: "This method simply initializes the existing peer resolver instance; it does not create a new one. To create a new peer resolver, call the CreatePeerResolver method on the corresponding binding element (for example, <xref:System.ServiceModel.Channels.PnrpPeerResolverBindingElement>)."
+  summary: "Initialiserer gjeldende node Løsningsprogrammet forekomst med nye angitte Endepunktadressen og innstillinger."
+  remarks: "Denne metoden initialiserer ganske enkelt eksisterende node Løsningsprogrammet forekomsten; Det opprettes en ny. Hvis du vil opprette en ny node Løsningsprogrammet kalle metoden CreatePeerResolver i det tilsvarende bindingselementet (for eksempel <xref:System.ServiceModel.Channels.PnrpPeerResolverBindingElement>).</xref:System.ServiceModel.Channels.PnrpPeerResolverBindingElement>"
   syntax:
     content: public virtual void Initialize (System.ServiceModel.EndpointAddress address, System.ServiceModel.Channels.Binding binding, System.ServiceModel.Description.ClientCredentials credentials, System.ServiceModel.PeerResolvers.PeerReferralPolicy referralPolicy);
     parameters:
     - id: address
       type: System.ServiceModel.EndpointAddress
-      description: "<xref:System.ServiceModel.EndpointAddress> that contains the new endpoint address of this peer resolver instance."
+      description: "<xref:System.ServiceModel.EndpointAddress>som inneholder nye Endepunktsadressen for denne forekomsten av Løsningsprogrammet node.</xref:System.ServiceModel.EndpointAddress>"
     - id: binding
       type: System.ServiceModel.Channels.Binding
-      description: "<xref:System.ServiceModel.Channels.Binding> that specifies the new network binding for this peer resolver."
+      description: "<xref:System.ServiceModel.Channels.Binding>som angir den nye nettverksbindingen for dette node-Løsningsprogram.</xref:System.ServiceModel.Channels.Binding>"
     - id: credentials
       type: System.ServiceModel.Description.ClientCredentials
-      description: "<xref:System.ServiceModel.Description.ClientCredentials> that specifies the new client credentials for this peer resolver."
+      description: "<xref:System.ServiceModel.Description.ClientCredentials>som angir den nye legitimasjonen for klienten for denne node-Løsningsprogram.</xref:System.ServiceModel.Description.ClientCredentials>"
     - id: referralPolicy
       type: System.ServiceModel.PeerResolvers.PeerReferralPolicy
-      description: "<xref href=&quot;System.ServiceModel.PeerResolvers.PeerReferralPolicy&quot;></xref> that specifies the new referral policy for this peer resolver."
+      description: "<xref href=&quot;System.ServiceModel.PeerResolvers.PeerReferralPolicy&quot;></xref>som angir den nye henvisning-policyen for denne node-Løsningsprogram."
   overload: System.ServiceModel.PeerResolver.Initialize*
   exceptions: []
   platform:
@@ -113,22 +113,22 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Registers a <xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;></xref> for a specific peer mesh."
+  summary: "Registrerer en <xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;> </xref> for et bestemt node nett."
   syntax:
     content: public abstract object Register (string meshId, System.ServiceModel.PeerNodeAddress nodeAddress, TimeSpan timeout);
     parameters:
     - id: meshId
       type: System.String
-      description: "The ID of the peer mesh in which the peer node is to be registered."
+      description: "IDen for node-nettet der noden node er registrert."
     - id: nodeAddress
       type: System.ServiceModel.PeerNodeAddress
-      description: "The <xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;></xref> to be registered with the peer mesh."
+      description: "Den <xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;> </xref> er registrert i node-nettet."
     - id: timeout
       type: System.TimeSpan
-      description: "The length of time to wait for success before aborting the attempt to register with the peer mesh. If the attempt fails, <xref:System.TimeoutException> is raised on the peer."
+      description: "Hvor lenge man skal vente på vellykket før forsøket registrere med node nettet. Hvis forsøket mislykkes, <xref:System.TimeoutException>oppstår på motparten.</xref:System.TimeoutException>"
     return:
       type: System.Object
-      description: "An <xref:System.Object> that represents the registration ID. This registration ID object is passed to the <xref:System.ServiceModel.PeerResolver.Update*> and <xref:System.ServiceModel.PeerResolver.Unregister*> methods."
+      description: "En <xref:System.Object>som representerer registreringen ID.</xref:System.Object> Dette registrering ID-objektet er sendt til den <> </> *> og <> </> *> metoder."
   overload: System.ServiceModel.PeerResolver.Register*
   exceptions: []
   platform:
@@ -145,22 +145,22 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Resolves the supplied mesh ID to zero or more endpoint addresses of nodes participating in the peer mesh."
+  summary: "Løser angitte nett-IDen til null eller flere endepunktsadresser med noder som deltar i node-nettet."
   syntax:
     content: public abstract System.Collections.ObjectModel.ReadOnlyCollection<System.ServiceModel.PeerNodeAddress> Resolve (string meshId, int maxAddresses, TimeSpan timeout);
     parameters:
     - id: meshId
       type: System.String
-      description: "The mesh ID of the peer mesh within which the <xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;></xref> objects representing participating nodes are to be obtained."
+      description: "Nett ID motparten nett som den <xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;> </xref> objekter som representerer deltakende noder som hentes."
     - id: maxAddresses
       type: System.Int32
-      description: "The number of endpoint addresses to return."
+      description: "Antall endepunktsadresser skal returneres."
     - id: timeout
       type: System.TimeSpan
-      description: "The length of time to wait for success before aborting the attempt to resolve endpoint addresses within the peer mesh. If the attempt fails, <xref:System.TimeoutException> is raised on the peer."
+      description: "Hvor lenge man skal vente på vellykket før forsøket å løse endepunktsadresser i node-nettet. Hvis forsøket mislykkes, <xref:System.TimeoutException>oppstår på motparten.</xref:System.TimeoutException>"
     return:
       type: System.Collections.ObjectModel.ReadOnlyCollection{System.ServiceModel.PeerNodeAddress}
-      description: "A &lt;xref:System.Collections.ObjectModel.ReadOnlyCollection%601&gt; that contains <xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;></xref> objects representing nodes participating in the peer mesh."
+      description: "En &lt;xref:System.Collections.ObjectModel.ReadOnlyCollection%601&gt; som inneholder <xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;> </xref> objekter som representerer noder som deltar i node-nettet."
   overload: System.ServiceModel.PeerResolver.Resolve*
   exceptions: []
   platform:
@@ -177,17 +177,17 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Removes the registration entry for a node from a peer mesh."
-  remarks: "A registration ID is a peer resolver token, that, at the very minimum, represents the tuple of a peer node ID and the mesh ID. This ID value must have been obtained in a previous call to <xref:System.ServiceModel.PeerResolver.Register%2A>.       Unregister is called in two specific cases:      -   When the <xref:System.ServiceModel.PeerNode> is leaving the peer mesh (usually as the result of closing the last peer channel or service host that is associated with it).      -   When the <xref:System.ServiceModel.PeerNode> can find no available endpoint addresses of other nodes participating in the peer mesh. As a result, the <xref:System.ServiceModel.PeerNode> is no longer reachable, and it will attempt to call Unregister to unregister itself from the <xref:System.ServiceModel.PeerResolver>. If other peer nodes within the mesh become available subsequent to unregistration, the node can re-register itself by calling <xref:System.ServiceModel.PeerResolver.Register%2A> and obtaining a new registration ID."
+  summary: "Fjerner registreringen posten for en node fra en node-nett."
+  remarks: "En registrerings-ID er en node Løsningsprogrammet token, som i det svært minimums representerer tuppelen av en node node-ID og nett-ID. Denne ID-verdien må ha fått i et tidligere kall til <xref:System.ServiceModel.PeerResolver.Register%2A>.</xref:System.ServiceModel.PeerResolver.Register%2A>       Avregistrer kalles i to spesifikke tilfeller: – når den <xref:System.ServiceModel.PeerNode>er avslutter motparten nett (vanligvis som et resultat av avslutning av det siste node kanal eller tjenesteverten som er knyttet til).</xref:System.ServiceModel.PeerNode>      -Når den <xref:System.ServiceModel.PeerNode>Finner ingen tilgjengelige endepunktsadresser med andre noder deltar i node-nett.</xref:System.ServiceModel.PeerNode> Resultatet av <xref:System.ServiceModel.PeerNode>er ikke lenger tilgjengelig, og den vil forsøke å kalle Avregistrer for å avregistrere seg selv fra <xref:System.ServiceModel.PeerResolver>.</xref:System.ServiceModel.PeerResolver> </xref:System.ServiceModel.PeerNode> Hvis andre node noder i nettet blir tilgjengelige etter fjerning, kan noden registrere seg på nytt ved å kalle <xref:System.ServiceModel.PeerResolver.Register%2A>og få en ny registrering ID.</xref:System.ServiceModel.PeerResolver.Register%2A>"
   syntax:
     content: public abstract void Unregister (object registrationId, TimeSpan timeout);
     parameters:
     - id: registrationId
       type: System.Object
-      description: "A registration ID for the node obtained by a previous call to <xref:System.ServiceModel.PeerResolver.Register*>."
+      description: "En registrerings-ID for noden som er hentet av en tidligere kall til <xref:System.ServiceModel.PeerResolver.Register*>.</xref:System.ServiceModel.PeerResolver.Register*>"
     - id: timeout
       type: System.TimeSpan
-      description: "The length of time to wait for a successful removal of the registration from the peer mesh. If the attempt fails, <xref:System.TimeoutException> is raised on the peer."
+      description: "Hvor lenge man skal vente på en vellykket fjerning av registrering fra node-nett. Hvis forsøket mislykkes, <xref:System.TimeoutException>oppstår på motparten.</xref:System.TimeoutException>"
   overload: System.ServiceModel.PeerResolver.Unregister*
   exceptions: []
   platform:
@@ -204,20 +204,20 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel
-  summary: "Updates the <xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;></xref> for a node registered with a specific peer mesh."
-  remarks: "Update is called when the address of the <xref:System.ServiceModel.PeerNode> changes on the local machine."
+  summary: "Oppdateringer av <xref href=&quot;System.ServiceModel.PeerNodeAddress&quot;> </xref> for en node som er registrert i et bestemt node nett."
+  remarks: "Oppdateringen kalles når adressen til den <xref:System.ServiceModel.PeerNode>endringer i den lokale maskinen.</xref:System.ServiceModel.PeerNode>"
   syntax:
     content: public abstract void Update (object registrationId, System.ServiceModel.PeerNodeAddress updatedNodeAddress, TimeSpan timeout);
     parameters:
     - id: registrationId
       type: System.Object
-      description: "A registration ID token for the node, obtained by a previous call to <xref:System.ServiceModel.PeerResolver.Register*>"
+      description: "Et token for registrering av ID for noden hentet av en tidligere kall til<xref:System.ServiceModel.PeerResolver.Register*></xref:System.ServiceModel.PeerResolver.Register*>"
     - id: updatedNodeAddress
       type: System.ServiceModel.PeerNodeAddress
-      description: "The updated endpoint address (and other multihoming IP addresses)."
+      description: "Oppdaterte Endepunktsadressen (og andre multihoming IP-adresser)."
     - id: timeout
       type: System.TimeSpan
-      description: "The length of time to wait for success before aborting the attempt to update the node&quot;s registration within the peer mesh. If the attempt fails, <xref:System.TimeoutException> is raised on the peer."
+      description: "Hvor lenge man skal vente på vellykket før forsøket å oppdatere nodens registrering i node-nettet. Hvis forsøket mislykkes, <xref:System.TimeoutException>oppstår på motparten.</xref:System.TimeoutException>"
   overload: System.ServiceModel.PeerResolver.Update*
   exceptions: []
   platform:
