@@ -13,8 +13,8 @@ items:
   nameWithType: BaseAddressPrefixFilterElement
   fullName: System.ServiceModel.Configuration.BaseAddressPrefixFilterElement
   type: Class
-  summary: "Represents a configuration element that specifies a pass through filter, which provides a mechanism to pick the appropriate IIS bindings when hosting a [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] application in IIS. This class cannot be inherited."
-  remarks: "A prefix filter provider a mechanism for a service to bind to a specific URI .It enables you to host multiple applications with different base addresses for the same scheme on the same site.       IIS websites are containers for virtual applications which contain virtual directories. The application in a site can be accessed through one or more IIS binding. IIS bindings provide two pieces of information: binding protocol and binding information. Binding protocol (e.g., HTTP) defines the scheme over which communication occurs, and binding information (e.g., IPAddress, Port, Hostheader) contains data used to access the site.       IIS supports specifying multiple IIS bindings per site, which results in multiple base addresses per scheme. Since a [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] service hosted under a site allows binding to only one base address per scheme, you can use the prefix filter feature to pick the required base address of the hosted service.  The incoming base addresses, supplied by IIS, are filtered based on the optional prefix list filter.       For example, your site can contain the following base addresses      ```   http://testl.fabrikam.com/Service.svc   http://test2.fabrikam.com/Service.svc   ```       You can use the following configuration file to specify a prefix filter at the appdomain level.      ```   <system.serviceModel>     <serviceHostingEnvironment>        <baseAddressPrefixFilters>           <add prefix=”net.tcp://test1.fabrikam.com:8000”/>           <add prefix=”http://test2.fabrikam.com:9000”/>       </baseAddressPrefixFilters>     </serviceHostingEnvironment>   </system.serviceModel>   ```       In this example, `net.tcp://test1.fabrikam.com:8000` and `http://test2.fabrikam.com:9000` are the only base addresses for their respective schemes which are allowed to be passed through.       By default, when prefix is not specified, all addresses are passed through. Specifying the prefix will result in only the matching base address for that scheme to be passed through.      > [!NOTE] >  The filter does not support any wildcards. In addition, the baseAddresses supplied by IIS may have addresses bound to other schemes not present in the `baseAddressPrefixFilters` list. These addresses are not filtered out."
+  summary: "Representerer en konfigurasjonselementet som angir en gjennom filter, som gir en metode for å velge riktig IIS bindingene når vert for en [!INCLUDE[indigo1](~/add/includes/ajax-current-ext-md.md)] programmet i IIS. Denne klassen kan ikke arves."
+  remarks: "En prefikset filter leverandør en mekanisme for en tjeneste skal bindes til en bestemt URI. Det mulig å være vert for flere programmer med forskjellige base adresser for den samme planen i samme område.       IIS-nettsteder er beholdere for virtuelle programmer som inneholder virtuelle mapper. Programmet i et område får gjennom én eller flere IIS-binding. IIS-bindinger gir to informasjonselementer: Bindingsprotokollen og bindingsinformasjonen. Bindingen protocol (for eksempel HTTP) definerer skjemaet der kommunikasjon skjer, og bindingsinformasjonen (for eksempel IP-adresse, Port, vertshodeadministrerte) inneholder data som brukes til å få tilgang til området.       IIS støtter angir flere IIS-bindinger per område, som fører til at flere base adresser per skjema. Etter en [!INCLUDE[indigo2](~/add/includes/ajax-current-ext-md.md)] vertsbaserte under et område-tjenesten kan bare én basisadressen per skjema-bindingen, kan du bruke funksjonen prefikset filter for å velge Obligatorisk basisadressen til vertsbaserte tjenesten.  Innkommende base adressene, angitt av IIS, er filtrert på grunnlag valgfritt prefiks listefilteret.       For eksempel området ditt kan inneholde følgende base adressene ```   http://testl.fabrikam.com/Service.svc   http://test2.fabrikam.com/Service.svc   ``` du kan bruke følgende konfigurasjonsfil til å angi et prefiks filter på appdomain-nivå.      ```   <system.serviceModel>     <serviceHostingEnvironment>        <baseAddressPrefixFilters>           <add prefix=”net.tcp://test1.fabrikam.com:8000”/>           <add prefix=”http://test2.fabrikam.com:9000”/>       </baseAddressPrefixFilters>     </serviceHostingEnvironment>   </system.serviceModel>   ```I dette eksemplet `net.tcp://test1.fabrikam.com:8000` og `http://test2.fabrikam.com:9000` er bare base-adresser for de respektive skjemaene som er tillatt som skal sendes via.       Som standard når prefiks ikke er angitt, skal alle adresser sendes. Angir prefikset fører bare samsvarende basisadressen for fargevalg som skal sendes via.      > [!NOTE] > Filteret støtter ikke noen jokertegn. I tillegg baseAddresses angitt av IIS kan ha adresser som er bundet til andre skjemaene finnes ikke i den `baseAddressPrefixFilters` listen. Disse adressene blir ikke filtrert ut."
   syntax:
     content: 'public sealed class BaseAddressPrefixFilterElement : System.Configuration.ConfigurationElement'
   inheritance:
@@ -70,7 +70,7 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Configuration
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Configuration.BaseAddressPrefixFilterElement&quot;></xref> class."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.ServiceModel.Configuration.BaseAddressPrefixFilterElement&quot;> </xref> klasse."
   syntax:
     content: public BaseAddressPrefixFilterElement ();
     parameters: []
@@ -90,13 +90,13 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Configuration
-  summary: "Initializes a new instance of the <xref href=&quot;System.ServiceModel.Configuration.BaseAddressPrefixFilterElement&quot;></xref> class with a specific URI."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;System.ServiceModel.Configuration.BaseAddressPrefixFilterElement&quot;> </xref> klassen med en bestemt URI."
   syntax:
     content: public BaseAddressPrefixFilterElement (Uri prefix);
     parameters:
     - id: prefix
       type: System.Uri
-      description: "A filter that causes the service to listen on all URIs that start with this specific prefix."
+      description: "Et filter som fører til at tjenesten ikke lytte på alle URI-adresser som begynner med denne bestemte prefiks."
   overload: System.ServiceModel.Configuration.BaseAddressPrefixFilterElement.#ctor*
   exceptions: []
   platform:
@@ -113,12 +113,12 @@ items:
   assemblies:
   - System.ServiceModel
   namespace: System.ServiceModel.Configuration
-  summary: "Gets or sets a prefix that is used to match a part of a base address."
+  summary: "Henter eller angir en prefikset som skal brukes til å samsvare med en del av en basisadressen."
   syntax:
     content: public Uri Prefix { get; set; }
     return:
       type: System.Uri
-      description: "A URI that is used to match a part of a base address."
+      description: "URIEN som brukes til å samsvare med en del av en basisadressen."
   overload: System.ServiceModel.Configuration.BaseAddressPrefixFilterElement.Prefix*
   exceptions: []
   platform:
@@ -139,7 +139,7 @@ items:
     content: protected override System.Configuration.ConfigurationPropertyCollection Properties { get; }
     return:
       type: System.Configuration.ConfigurationPropertyCollection
-      description: "To be added."
+      description: "Som skal legges til."
   overload: System.ServiceModel.Configuration.BaseAddressPrefixFilterElement.Properties*
   exceptions: []
   platform:
