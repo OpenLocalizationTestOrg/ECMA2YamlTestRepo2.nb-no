@@ -53,7 +53,7 @@ items:
   nameWithType: TaskLoggingHelper
   fullName: Microsoft.Build.Utilities.TaskLoggingHelper
   type: Class
-  summary: "Provides helper logging methods used by tasks."
+  summary: "Inneholder helper logging metoder som brukes av oppgaver."
   remarks: ''
   example:
   - "The following example shows the code for a task that creates one or more directories.  \n  \n [!code-cs[msbuild_MakeDirTask#1](~/add/codesnippet/csharp/msbuild_MakeDirTask/msbuild_MakeDirTask.cs#1)]"
@@ -81,13 +81,13 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Initializes a new instance of the <xref href=&quot;Microsoft.Build.Utilities.TaskLoggingHelper&quot;></xref> class and associates it with the specified task instance."
+  summary: "Initialiserer en ny forekomst av den <xref href=&quot;Microsoft.Build.Utilities.TaskLoggingHelper&quot;> </xref> klasse og knyttes til den angitte oppgave-forekomsten."
   syntax:
     content: public TaskLoggingHelper (Microsoft.Build.Framework.ITask taskInstance);
     parameters:
     - id: taskInstance
       type: Microsoft.Build.Framework.ITask
-      description: "The task containing an instance of this task."
+      description: "Oppgaven som inneholder en forekomst av denne oppgaven."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.#ctor*
   exceptions: []
   platform:
@@ -104,16 +104,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Public constructor which can be used by task factories to assist them in logging messages."
+  summary: "Offentlig konstruktør som kan brukes av oppgaven fabrikker til å hjelpe dem med loggføring av meldinger."
   syntax:
     content: public TaskLoggingHelper (Microsoft.Build.Framework.IBuildEngine buildEngine, string taskName);
     parameters:
     - id: buildEngine
       type: Microsoft.Build.Framework.IBuildEngine
-      description: "The build engine."
+      description: "Build-motoren."
     - id: taskName
       type: System.String
-      description: "The task name."
+      description: "Oppgavenavn."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.#ctor*
   exceptions: []
   platform:
@@ -130,12 +130,12 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets the build engine that is associated with the task."
+  summary: "Henter build-motoren som er knyttet til aktiviteten."
   syntax:
     content: protected Microsoft.Build.Framework.IBuildEngine BuildEngine { get; }
     return:
       type: Microsoft.Build.Framework.IBuildEngine
-      description: "An <xref href=&quot;Microsoft.Build.Framework.IBuildEngine&quot;></xref> that represents the instance of the build engine that is associated with the task."
+      description: "En <xref href=&quot;Microsoft.Build.Framework.IBuildEngine&quot;> </xref> som representerer forekomsten av build-motoren som er knyttet til aktiviteten."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.BuildEngine*
   exceptions: []
   platform:
@@ -152,8 +152,8 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Extracts the message code prefix from the given full message string."
-  remarks: 'Message code prefixes must match the following .NET regular expressions in order to be recognized: `^\s*[A-Za-z]+\d+:\s*`.'
+  summary: "Trekker ut meldingen kodeprefikset fra den angitte hele melding strengen."
+  remarks: 'Meldingen kode prefikser må samsvare med følgende .NET vanlig uttrykk for å kunne gjenkjennes: `^\s*[A-Za-z]+\d+:\s*`.'
   example:
   - 'If this method is given the full message string `MYTASK1001: This is an error message.` and it accepts `This is an error message.` as the value for the `messageWithoutCodePrefix` parameter, then it returns `MYTASK1001`.'
   syntax:
@@ -161,18 +161,18 @@ items:
     parameters:
     - id: message
       type: System.String
-      description: "The full message to parse that includes code prefix."
+      description: "Full meldingen for å analysere som inneholder prefiks."
     - id: messageWithoutCodePrefix
       type: System.String
-      description: "The message with the code prefix removed."
+      description: "Meldingen med koden prefikset fjernet."
     return:
       type: System.String
-      description: "The message code prefix that is extracted from the full message string, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if there is no message code."
+      description: "Meldingen kodeprefikset som trekkes fra hele meldingen-streng eller <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Hvis det er ingen Meldingskode."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.ExtractMessageCode*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>message</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>message</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.FormatResourceString(System.String,System.Object[])
@@ -187,31 +187,31 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Loads the specified resource string and optionally formats it using the given arguments."
-  remarks: "The culture of the current thread is used for formatting.       This method requires the owner task to have registered its resources with either the <xref:Microsoft.Build.Utilities.Task> base class constructor, or the <xref:Microsoft.Build.Utilities.Task.TaskResources%2A> property."
+  summary: "Laster inn den angitte ressursstrengen og formaterer eventuelt det med de angitte argumentene."
+  remarks: "Kulturen av gjeldende tråd brukes til formatering.       Denne metoden krever at du har registrert ressursene med enten oppgaven eieren av <xref:Microsoft.Build.Utilities.Task>basisklassen konstruktøren, eller <xref:Microsoft.Build.Utilities.Task.TaskResources%2A>egenskapen.</xref:Microsoft.Build.Utilities.Task.TaskResources%2A> </xref:Microsoft.Build.Utilities.Task>"
   syntax:
     content: public virtual string FormatResourceString (string resourceName, object[] args);
     parameters:
     - id: resourceName
       type: System.String
-      description: "The name of the string resource to load."
+      description: "Navnet på tilkoblingsstrengen ressursen ikke laste inn."
     - id: args
       type: System.Object[]
-      description: "Optional arguments for formatting the loaded string."
+      description: "Valgfrie argumenter for formatering strengen som lastes inn."
     return:
       type: System.String
-      description: "The formatted string."
+      description: "Strengen som er formatert."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.FormatResourceString*
   exceptions:
   - type: System.ArgumentException
     commentId: T:System.ArgumentException
-    description: "The string resource indicated by <code>resourceName</code> does not exist."
+    description: "Streng-ressursen som er angitt av <code> resourceName </code> finnes ikke."
   - type: System.InvalidOperationException
     commentId: T:System.InvalidOperationException
-    description: "The <xref:Microsoft.Build.Utilities.Task.TaskResources*> property of the owner task is not set."
+    description: "Den <xref:Microsoft.Build.Utilities.Task.TaskResources*>for aktiviteten eieren er ikke angitt.</xref:Microsoft.Build.Utilities.Task.TaskResources*>"
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>resourceName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>resourceName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.FormatString(System.String,System.Object[])
@@ -226,25 +226,25 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Formats the given string using the given arguments."
-  remarks: "The culture of the current thread is used for formatting."
+  summary: "Formaterer den angitte strengen ved hjelp av de angitte argumentene."
+  remarks: "Kulturen av gjeldende tråd brukes til formatering."
   syntax:
     content: public virtual string FormatString (string unformatted, object[] args);
     parameters:
     - id: unformatted
       type: System.String
-      description: "The string to format."
+      description: "Strengen som brukes til å formatere."
     - id: args
       type: System.Object[]
-      description: "Arguments for formatting."
+      description: "Argumenter for formatering."
     return:
       type: System.String
-      description: "The formatted string."
+      description: "Strengen som er formatert."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.FormatString*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>unformatted</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>unformatted</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.GetResourceMessage(System.String)
@@ -259,16 +259,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets the message from resource in task library."
+  summary: "Henter meldingen fra en ressurs i oppgaven biblioteket."
   syntax:
     content: public virtual string GetResourceMessage (string resourceName);
     parameters:
     - id: resourceName
       type: System.String
-      description: "The resource name."
+      description: "Ressursnavn."
     return:
       type: System.String
-      description: "Returns the message from resource in task library."
+      description: "Returnerer meldingen fra ressurs i oppgaven biblioteket."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.GetResourceMessage*
   exceptions: []
   platform:
@@ -285,7 +285,7 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets a value that indicates whether the task has logged any errors through this logging helper object."
+  summary: "Henter en verdi som angir om oppgaven er logget feil via logging helper objektet."
   remarks: ''
   example:
   - "The following example shows the code for a task that creates one or more directories.  \n  \n [!code-cs[msbuild_MakeDirTask#1](~/add/codesnippet/csharp/msbuild_MakeDirTask/msbuild_MakeDirTask.cs#1)]"
@@ -293,7 +293,7 @@ items:
     content: public bool HasLoggedErrors { get; }
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the task has logged any errors through this logging helper object; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis oppgaven er logget feil gjennom denne logging helper objektet. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.HasLoggedErrors*
   exceptions: []
   platform:
@@ -310,13 +310,13 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets or sets the prefix used to compose Help keywords from resource names."
-  remarks: "If a task does not have Help keywords associated with its messages, it can ignore this property or set it to `null`. If this property is set to an empty <xref:System.String>, resource names will be used verbatim as Help keywords."
+  summary: "Henter eller angir prefikset som brukes til å skrive hjelp nøkkelord fra ressursnavn."
+  remarks: "Hvis en oppgave som ikke har hjelp nøkkelord som er tilknyttet meldingene, kan det ignorere denne egenskapen, eller sett den til `null`. Hvis denne egenskapen settes til en tom <xref:System.String>, brukes ressursnavn verbatim som hjelp nøkkelord.</xref:System.String>"
   syntax:
     content: public string HelpKeywordPrefix { get; set; }
     return:
       type: System.String
-      description: "The prefix used to compose Help keywords from resource names."
+      description: "Prefikset som brukes til å skrive hjelp nøkkelord fra ressursnavn."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.HelpKeywordPrefix*
   exceptions: []
   platform:
@@ -333,13 +333,13 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "InitializeLifetimeService is called when the remote object is activated.       This method will determine how long the lifetime for the object will be.       Thread safe. However, InitializeLifetimeService and MarkAsInactive should only be called in that order, together or not at all, and no more than once."
+  summary: "InitializeLifetimeService kalles når det eksterne objektet er aktivert.       Denne metoden fastslår hvor lenge levetiden for objektet vil være.       Tråden trygt. Imidlertid kan InitializeLifetimeService og MarkAsInactive bare kalles i denne rekkefølgen sammen eller ikke helt og ikke mer enn én gang."
   syntax:
     content: public override object InitializeLifetimeService ();
     parameters: []
     return:
       type: System.Object
-      description: "The lease object to control this object&quot;s lifetime."
+      description: "Leasingavtalen-objektet til å kontrollere levetiden for dette objektet."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.InitializeLifetimeService*
   exceptions: []
   platform:
@@ -356,14 +356,14 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs the command line for an underlying tool, executable file, or shell command of a task."
-  remarks: "This method is not thread-safe."
+  summary: "Logger kommandolinjen for en underliggende verktøyet kjørbar fil eller grensesnittet kommando for en oppgave."
+  remarks: "Denne metoden er ikke sikker."
   syntax:
     content: public void LogCommandLine (string commandLine);
     parameters:
     - id: commandLine
       type: System.String
-      description: "The command line string."
+      description: "Kommandolinjen-streng."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogCommandLine*
   exceptions: []
   platform:
@@ -380,17 +380,17 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs the command line for an underlying tool, executable file, or shell command of a task using the specified importance level."
-  remarks: "This method is not thread-safe."
+  summary: "Logger kommandolinjen for en underliggende verktøyet kjørbar fil eller grensesnittet kommando for en oppgave med det angitte viktighetsnivået."
+  remarks: "Denne metoden er ikke sikker."
   syntax:
     content: public void LogCommandLine (Microsoft.Build.Framework.MessageImportance importance, string commandLine);
     parameters:
     - id: importance
       type: Microsoft.Build.Framework.MessageImportance
-      description: "One of the values of <xref href=&quot;Microsoft.Build.Framework.MessageImportance&quot;></xref> that indicates the importance level of the command line."
+      description: "En av verdiene i <xref href=&quot;Microsoft.Build.Framework.MessageImportance&quot;> </xref> som angir det viktighet kommandolinjen."
     - id: commandLine
       type: System.String
-      description: "The command line string."
+      description: "Kommandolinjen-streng."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogCommandLine*
   exceptions: []
   platform:
@@ -407,45 +407,45 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs a critical message using the specified string and other message details.       Thread safe."
+  summary: "Logger en kritisk meldingen ved hjelp av den angitte strengen og andre meldingsdetaljer.       Tråden trygt."
   syntax:
     content: public void LogCriticalMessage (string subcategory, string code, string helpKeyword, string file, int lineNumber, int columnNumber, int endLineNumber, int endColumnNumber, string message, object[] messageArgs);
     parameters:
     - id: subcategory
       type: System.String
-      description: "Description of the warning type (can be null)."
+      description: "Beskrivelse av advarselstypen (kan være null)."
     - id: code
       type: System.String
-      description: "Message code (can be null)."
+      description: "Meldingskode (kan være null)."
     - id: helpKeyword
       type: System.String
-      description: "The help keyword for the host IDE (can be null)."
+      description: "Nøkkelordet hjelp for verts-IDE (kan være null)."
     - id: file
       type: System.String
-      description: "The path to the file causing the message (can be null)."
+      description: "Banen til filen og meldingen (kan være null)."
     - id: lineNumber
       type: System.Int32
-      description: "The line in the file causing the message (set to zero if not available)."
+      description: "Linje i filen og meldingen (satt til null hvis det er ikke tilgjengelig)."
     - id: columnNumber
       type: System.Int32
-      description: "The column in the file causing the message (set to zero if not available)."
+      description: "Kolonnen i filen og meldingen (satt til null hvis det er ikke tilgjengelig)."
     - id: endLineNumber
       type: System.Int32
-      description: "The last line of a range of lines in the file causing the message (set to zero if not available)."
+      description: "Den siste linjen for en rekke linjer i filen og meldingen (satt til null hvis det er ikke tilgjengelig)."
     - id: endColumnNumber
       type: System.Int32
-      description: "The last column of a range of columns in the file causing the message (set to zero if not available)."
+      description: "Den siste kolonnen i en serie med kolonner i filen og meldingen (satt til null hvis det er ikke tilgjengelig)."
     - id: message
       type: System.String
-      description: "The message string."
+      description: "Strengen for meldingen."
     - id: messageArgs
       type: System.Object[]
-      description: "Optional arguments for formatting the message string."
+      description: "Valgfrie argumenter for formatering av meldingen-streng."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogCriticalMessage*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "Thrown when `message` is null."
+    description: "Et når `message` er null."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogError(System.String,System.Object[])
@@ -460,8 +460,8 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs an error with the specified message."
-  remarks: "This method is not thread-safe."
+  summary: "Logger en feil med den angitte meldingen."
+  remarks: "Denne metoden er ikke sikker."
   example:
   - "The following example shows the code for a task that creates one or more directories.  \n  \n [!code-cs[msbuild_MakeDirTask#1](~/add/codesnippet/csharp/msbuild_MakeDirTask/msbuild_MakeDirTask.cs#1)]"
   syntax:
@@ -469,15 +469,15 @@ items:
     parameters:
     - id: message
       type: System.String
-      description: "The message."
+      description: "Meldingen."
     - id: messageArgs
       type: System.Object[]
-      description: "Optional arguments for formatting the message string."
+      description: "Valgfrie argumenter for formatering av meldingen-streng."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogError*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>message</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>message</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogError(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Object[])
@@ -492,46 +492,46 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs an error using the specified message and other error details."
-  remarks: "The parameters `subCategory`, `errorCode`, `helpKeyword`, and `file` can be `null`.       The parameters `lineNumber`, `columnNumber`, `endLineNumber`, and `endColumnNumber` should be set to 0 if they are not available."
+  summary: "Logger en feil ved hjelp av den angitte meldingen og andre feildetaljer."
+  remarks: "Parameterne `subCategory`, `errorCode`, `helpKeyword`, og `file` kan være `null`.       Parameterne `lineNumber`, `columnNumber`, `endLineNumber`, og `endColumnNumber` må være satt til 0, hvis de ikke er tilgjengelig."
   syntax:
     content: public void LogError (string subcategory, string errorCode, string helpKeyword, string file, int lineNumber, int columnNumber, int endLineNumber, int endColumnNumber, string message, object[] messageArgs);
     parameters:
     - id: subcategory
       type: System.String
-      description: "The description of the error type."
+      description: "Beskrivelsen av feiltype."
     - id: errorCode
       type: System.String
-      description: "The error code."
+      description: "Feilkode."
     - id: helpKeyword
       type: System.String
-      description: "The Help keyword to associate with the error."
+      description: "Nøkkelordet hjelp til å knytte til feilen."
     - id: file
       type: System.String
-      description: "The path to the file containing the error."
+      description: "Banen til filen som inneholder feilen."
     - id: lineNumber
       type: System.Int32
-      description: "The line in the file where the error occurs."
+      description: "Linje i filen der feilen forekommer."
     - id: columnNumber
       type: System.Int32
-      description: "The column in the file where the error occurs."
+      description: "Kolonnen i filen der feilen forekommer."
     - id: endLineNumber
       type: System.Int32
-      description: "The end line in the file where the error occurs."
+      description: "End-linje i filen der feilen forekommer."
     - id: endColumnNumber
       type: System.Int32
-      description: "The end column in the file where the error occurs."
+      description: "End-kolonnen i filen der feilen forekommer."
     - id: message
       type: System.String
-      description: "The message."
+      description: "Meldingen."
     - id: messageArgs
       type: System.Object[]
-      description: "Optional arguments for formatting the message string."
+      description: "Valgfrie argumenter for formatering av meldingen-streng."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogError*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>message</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>message</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogErrorFromException(System.Exception)
@@ -546,19 +546,19 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs an error using the message from the given exception."
-  remarks: "No call stack will be shown."
+  summary: "Logger en feil ved hjelp av meldingen fra det angitte unntaket."
+  remarks: "Ingen kallstakk vises."
   syntax:
     content: public void LogErrorFromException (Exception exception);
     parameters:
     - id: exception
       type: System.Exception
-      description: "The exception to log."
+      description: "Unntak ved pålogging."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogErrorFromException*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>e</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>e</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogErrorFromException(System.Exception,System.Boolean)
@@ -573,22 +573,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs an error using the message, and optionally the stack trace, from the given exception."
-  remarks: "This method is not thread-safe."
+  summary: "Logger en feil ved hjelp av meldingen, og eventuelt stakksporing fra det angitte unntaket."
+  remarks: "Denne metoden er ikke sikker."
   syntax:
     content: public void LogErrorFromException (Exception exception, bool showStackTrace);
     parameters:
     - id: exception
       type: System.Exception
-      description: "The exception to log"
+      description: "Unntak ved pålogging"
     - id: showStackTrace
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to include the stack trace in the log; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>inkludere i stakksporing i loggen; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogErrorFromException*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>e</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>e</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogErrorFromException(System.Exception,System.Boolean,System.Boolean,System.String)
@@ -603,27 +603,27 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs an error using the message, and optionally the stack-trace from the given exception and any inner exceptions."
+  summary: "Logger en feil ved hjelp av meldingen, og eventuelt stakksporing fra det angitte unntaket og eventuelle indre unntak."
   syntax:
     content: public void LogErrorFromException (Exception exception, bool showStackTrace, bool showDetail, string file);
     parameters:
     - id: exception
       type: System.Exception
-      description: "The exception to log."
+      description: "Unntak ved pålogging."
     - id: showStackTrace
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to include the stack trace in the log; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>inkludere i stakksporing i loggen; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     - id: showDetail
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to log exception types and any inner exceptions; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>loggen unntak typer og indre unntak; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
     - id: file
       type: System.String
-      description: "The name of the file related to the exception, or <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref> if the project file should be logged."
+      description: "Navnet på filen som er knyttet til unntaket, eller <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref> Hvis prosjektfilen skal registreres."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogErrorFromException*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>e</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>e</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogErrorFromResources(System.String,System.Object[])
@@ -638,22 +638,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs an error using the specified resource string."
-  remarks: "This method is not thread-safe."
+  summary: "Logger en feil ved hjelp av den angitte ressursstrengen."
+  remarks: "Denne metoden er ikke sikker."
   syntax:
     content: public void LogErrorFromResources (string messageResourceName, object[] messageArgs);
     parameters:
     - id: messageResourceName
       type: System.String
-      description: "The name of the string resource to load."
+      description: "Navnet på tilkoblingsstrengen ressursen ikke laste inn."
     - id: messageArgs
       type: System.Object[]
-      description: "The arguments for formatting the loaded string."
+      description: "Argumenter for formatering strengen som lastes inn."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogErrorFromResources*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>messageResourceName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>messageResourceName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogErrorFromResources(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Object[])
@@ -668,46 +668,46 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs an error using the specified resource string and other error details."
-  remarks: "The parameters `subCategoryResourceName`, `errorCode`, `helpKeyword`, and `file` can be `null`.       The parameters `lineNumber`, `columnNumber`, `endLineNumber`, and `endColumnNumber` should be set to 0 if they are not available."
+  summary: "Logger en feil ved hjelp av den angitte ressursstrengen og andre feildetaljer."
+  remarks: "Parameterne `subCategoryResourceName`, `errorCode`, `helpKeyword`, og `file` kan være `null`.       Parameterne `lineNumber`, `columnNumber`, `endLineNumber`, og `endColumnNumber` må være satt til 0, hvis de ikke er tilgjengelig."
   syntax:
     content: public void LogErrorFromResources (string subcategoryResourceName, string errorCode, string helpKeyword, string file, int lineNumber, int columnNumber, int endLineNumber, int endColumnNumber, string messageResourceName, object[] messageArgs);
     parameters:
     - id: subcategoryResourceName
       type: System.String
-      description: "The name of the string resource that describes the error type."
+      description: "Navnet på tilkoblingsstrengen ressursen som beskriver feiltypen."
     - id: errorCode
       type: System.String
-      description: "The error code."
+      description: "Feilkode."
     - id: helpKeyword
       type: System.String
-      description: "The Help keyword to associate with the error."
+      description: "Nøkkelordet hjelp til å knytte til feilen."
     - id: file
       type: System.String
-      description: "The path to the file containing the error."
+      description: "Banen til filen som inneholder feilen."
     - id: lineNumber
       type: System.Int32
-      description: "The line in the file where the error occurs."
+      description: "Linje i filen der feilen forekommer."
     - id: columnNumber
       type: System.Int32
-      description: "The column in the file where the error occurs."
+      description: "Kolonnen i filen der feilen forekommer."
     - id: endLineNumber
       type: System.Int32
-      description: "The end line in the file where the error occurs."
+      description: "End-linje i filen der feilen forekommer."
     - id: endColumnNumber
       type: System.Int32
-      description: "The end column in the file where the error occurs."
+      description: "End-kolonnen i filen der feilen forekommer."
     - id: messageResourceName
       type: System.String
-      description: "The name of the string resource to load."
+      description: "Navnet på tilkoblingsstrengen ressursen ikke laste inn."
     - id: messageArgs
       type: System.Object[]
-      description: "The arguments for formatting the loaded string."
+      description: "Argumenter for formatering strengen som lastes inn."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogErrorFromResources*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>messageResourceName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>messageResourceName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogErrorWithCodeFromResources(System.String,System.Object[])
@@ -722,22 +722,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs an error with an error code using the specified resource string."
-  remarks: "If the message begins with an error code, the code is extracted and logged with the message.       If a Help keyword prefix has been provided, it is also logged with the message. The Help keyword is composed by appending the string resource name to the Help keyword prefix. A task can provide a Help keyword prefix with either the <xref:Microsoft.Build.Utilities.Task> base class constructor, or the <xref:Microsoft.Build.Utilities.Task.HelpKeywordPrefix%2A> property."
+  summary: "Logger en feil med en feilkode med angitt ressurs-streng."
+  remarks: "Hvis meldingen begynner med en feilkode, koden ut og logget med meldingen.       Hvis Hjelp nøkkelordet prefiks er angitt, er det også logget med meldingen. Hjelp-nøkkelordet består ved å tilføye ressursnavnet streng til Hjelp nøkkelordet prefiks. En oppgave kan gi hjelp nøkkelordet prefiks med enten den <xref:Microsoft.Build.Utilities.Task>basisklassen konstruktøren, eller <xref:Microsoft.Build.Utilities.Task.HelpKeywordPrefix%2A>egenskapen.</xref:Microsoft.Build.Utilities.Task.HelpKeywordPrefix%2A> </xref:Microsoft.Build.Utilities.Task>"
   syntax:
     content: public void LogErrorWithCodeFromResources (string messageResourceName, object[] messageArgs);
     parameters:
     - id: messageResourceName
       type: System.String
-      description: "The name of the string resource to load."
+      description: "Navnet på tilkoblingsstrengen ressursen ikke laste inn."
     - id: messageArgs
       type: System.Object[]
-      description: "The arguments for formatting the loaded string."
+      description: "Argumenter for formatering strengen som lastes inn."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogErrorWithCodeFromResources*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>messageResourceName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>messageResourceName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogErrorWithCodeFromResources(System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Object[])
@@ -752,40 +752,40 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs an error using the specified resource string and other error details."
-  remarks: "If the message begins with an error code, the code is extracted and logged with the message.       If a Help keyword prefix has been provided, it is also logged with the message. The Help keyword is composed by appending the string resource name to the Help keyword prefix. A task can provide a Help keyword prefix with either the <xref:Microsoft.Build.Utilities.Task> base class constructor, or the <xref:Microsoft.Build.Utilities.Task.HelpKeywordPrefix%2A> property.       The parameters `subCategoryResourceName`, and `file` can be `null`.       The parameters `lineNumber`, `columnNumber`, `endLineNumber`, and `endColumnNumber` should be set to 0 if they are not available."
+  summary: "Logger en feil ved hjelp av den angitte ressursstrengen og andre feildetaljer."
+  remarks: "Hvis meldingen begynner med en feilkode, koden ut og logget med meldingen.       Hvis Hjelp nøkkelordet prefiks er angitt, er det også logget med meldingen. Hjelp-nøkkelordet består ved å tilføye ressursnavnet streng til Hjelp nøkkelordet prefiks. En oppgave kan gi hjelp nøkkelordet prefiks med enten den <xref:Microsoft.Build.Utilities.Task>basisklassen konstruktøren, eller <xref:Microsoft.Build.Utilities.Task.HelpKeywordPrefix%2A>egenskapen.</xref:Microsoft.Build.Utilities.Task.HelpKeywordPrefix%2A> </xref:Microsoft.Build.Utilities.Task>       Parameterne `subCategoryResourceName`, og `file` kan være `null`.       Parameterne `lineNumber`, `columnNumber`, `endLineNumber`, og `endColumnNumber` må være satt til 0, hvis de ikke er tilgjengelig."
   syntax:
     content: public void LogErrorWithCodeFromResources (string subcategoryResourceName, string file, int lineNumber, int columnNumber, int endLineNumber, int endColumnNumber, string messageResourceName, object[] messageArgs);
     parameters:
     - id: subcategoryResourceName
       type: System.String
-      description: "The name of the string resource that describes the error type."
+      description: "Navnet på tilkoblingsstrengen ressursen som beskriver feiltypen."
     - id: file
       type: System.String
-      description: "The path to the file containing the error."
+      description: "Banen til filen som inneholder feilen."
     - id: lineNumber
       type: System.Int32
-      description: "The line in the file where the error occurs."
+      description: "Linje i filen der feilen forekommer."
     - id: columnNumber
       type: System.Int32
-      description: "The column in the file where the error occurs."
+      description: "Kolonnen i filen der feilen forekommer."
     - id: endLineNumber
       type: System.Int32
-      description: "The end line in the file where the error occurs."
+      description: "End-linje i filen der feilen forekommer."
     - id: endColumnNumber
       type: System.Int32
-      description: "The end column in the file where the error occurs."
+      description: "End-kolonnen i filen der feilen forekommer."
     - id: messageResourceName
       type: System.String
-      description: "The name of the string resource to load."
+      description: "Navnet på tilkoblingsstrengen ressursen ikke laste inn."
     - id: messageArgs
       type: System.Object[]
-      description: "The arguments for formatting the loaded string."
+      description: "Argumenter for formatering strengen som lastes inn."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogErrorWithCodeFromResources*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>messageResourceName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>messageResourceName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogExternalProjectFinished(System.String,System.String,System.String,System.Boolean)
@@ -800,22 +800,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Helps log the custom <xref href=&quot;Microsoft.Build.Framework.ExternalProjectFinishedEventArgs&quot;></xref> build event."
+  summary: "Bidrar til å logge av egendefinerte <xref href=&quot;Microsoft.Build.Framework.ExternalProjectFinishedEventArgs&quot;> </xref> bygge hendelsen."
   syntax:
     content: public void LogExternalProjectFinished (string message, string helpKeyword, string projectFile, bool succeeded);
     parameters:
     - id: message
       type: System.String
-      description: "The text message."
+      description: "Tekstmeldingen."
     - id: helpKeyword
       type: System.String
-      description: "The help keyword."
+      description: "Hjelp-nøkkelordet."
     - id: projectFile
       type: System.String
-      description: "The name of the project."
+      description: "Navnet på prosjektet."
     - id: succeeded
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to indicate that project was built successfully; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>for å angi dette prosjektet ble bygd feil. Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogExternalProjectFinished*
   exceptions: []
   platform:
@@ -832,22 +832,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Helps log the custom <xref href=&quot;Microsoft.Build.Framework.ExternalProjectStartedEventArgs&quot;></xref> build event."
+  summary: "Bidrar til å logge av egendefinerte <xref href=&quot;Microsoft.Build.Framework.ExternalProjectStartedEventArgs&quot;> </xref> bygge hendelsen."
   syntax:
     content: public void LogExternalProjectStarted (string message, string helpKeyword, string projectFile, string targetNames);
     parameters:
     - id: message
       type: System.String
-      description: "The text message."
+      description: "Tekstmeldingen."
     - id: helpKeyword
       type: System.String
-      description: "The help keyword."
+      description: "Hjelp-nøkkelordet."
     - id: projectFile
       type: System.String
-      description: "The name of the project."
+      description: "Navnet på prosjektet."
     - id: targetNames
       type: System.String
-      description: "The targets to build. An empty string indicates default targets."
+      description: "Mål for å bygge. En tom streng angir standardmål."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogExternalProjectStarted*
   exceptions: []
   platform:
@@ -864,8 +864,8 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs a message with the specified string."
-  remarks: "The <xref:Microsoft.Build.Framework.MessageImportance> value of a message is `Normal` by default."
+  summary: "Logger en melding med den angitte strengen."
+  remarks: "Den <xref:Microsoft.Build.Framework.MessageImportance>verdien for en melding er `Normal` som standard.</xref:Microsoft.Build.Framework.MessageImportance>"
   example:
   - "The following example shows the code for a task that creates one or more directories.  \n  \n [!code-cs[msbuild_MakeDirTask#1](~/add/codesnippet/csharp/msbuild_MakeDirTask/msbuild_MakeDirTask.cs#1)]"
   syntax:
@@ -873,15 +873,15 @@ items:
     parameters:
     - id: message
       type: System.String
-      description: "The message."
+      description: "Meldingen."
     - id: messageArgs
       type: System.Object[]
-      description: "The arguments for formatting the message."
+      description: "Argumenter for formatering av meldingen."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessage*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>message</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>message</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessage(Microsoft.Build.Framework.MessageImportance,System.String,System.Object[])
@@ -896,25 +896,25 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs a message with the specified string and importance."
-  remarks: "Take care to order the parameters correctly or the other overload will be called inadvertently."
+  summary: "Logger en melding med den angitte strengen og viktighet."
+  remarks: "Pass på at du sortere parameterne riktig eller kalles andre overlasten utilsiktet."
   syntax:
     content: public void LogMessage (Microsoft.Build.Framework.MessageImportance importance, string message, object[] messageArgs);
     parameters:
     - id: importance
       type: Microsoft.Build.Framework.MessageImportance
-      description: "One of the enumeration values that specifies the importance of the message."
+      description: "En av opplistingsverdiene som som angir viktigheten for meldingen."
     - id: message
       type: System.String
-      description: "The message."
+      description: "Meldingen."
     - id: messageArgs
       type: System.Object[]
-      description: "The arguments for formatting the message."
+      description: "Argumenter for formatering av meldingen."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessage*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>message</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>message</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessage(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,Microsoft.Build.Framework.MessageImportance,System.String,System.Object[])
@@ -929,48 +929,48 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs a message using the specified string and other message details.       Thread safe."
+  summary: "Logger en melding med den angitte strengen og andre meldingsdetaljer.       Tråden trygt."
   syntax:
     content: public void LogMessage (string subcategory, string code, string helpKeyword, string file, int lineNumber, int columnNumber, int endLineNumber, int endColumnNumber, Microsoft.Build.Framework.MessageImportance importance, string message, object[] messageArgs);
     parameters:
     - id: subcategory
       type: System.String
-      description: "Description of the warning type (can be null)."
+      description: "Beskrivelse av advarselstypen (kan være null)."
     - id: code
       type: System.String
-      description: "Message code (can be null)"
+      description: "Meldingskode (kan være null)"
     - id: helpKeyword
       type: System.String
-      description: "The help keyword for the host IDE (can be null)."
+      description: "Nøkkelordet hjelp for verts-IDE (kan være null)."
     - id: file
       type: System.String
-      description: "The path to the file causing the message (can be null)."
+      description: "Banen til filen og meldingen (kan være null)."
     - id: lineNumber
       type: System.Int32
-      description: "The line in the file causing the message (set to zero if not available)."
+      description: "Linje i filen og meldingen (satt til null hvis det er ikke tilgjengelig)."
     - id: columnNumber
       type: System.Int32
-      description: "The column in the file causing the message (set to zero if not available)."
+      description: "Kolonnen i filen og meldingen (satt til null hvis det er ikke tilgjengelig)."
     - id: endLineNumber
       type: System.Int32
-      description: "The last line of a range of lines in the file causing the message (set to zero if not available)."
+      description: "Den siste linjen for en rekke linjer i filen og meldingen (satt til null hvis det er ikke tilgjengelig)."
     - id: endColumnNumber
       type: System.Int32
-      description: "The last column of a range of columns in the file causing the message (set to zero if not available)."
+      description: "Den siste kolonnen i en serie med kolonner i filen og meldingen (satt til null hvis det er ikke tilgjengelig)."
     - id: importance
       type: Microsoft.Build.Framework.MessageImportance
-      description: "Importance of the message."
+      description: "Viktighet for meldingen."
     - id: message
       type: System.String
-      description: "The message string."
+      description: "Strengen for meldingen."
     - id: messageArgs
       type: System.Object[]
-      description: "Optional arguments for formatting the message string."
+      description: "Valgfrie argumenter for formatering av meldingen-streng."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessage*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "Thrown when `message` is null."
+    description: "Et når `message` er null."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessageFromResources(System.String,System.Object[])
@@ -985,22 +985,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs a message with the specified resource string."
-  remarks: "The <xref:Microsoft.Build.Framework.MessageImportance> value of a message is `Normal` by default."
+  summary: "Logger en melding med den angitte ressursstrengen."
+  remarks: "Den <xref:Microsoft.Build.Framework.MessageImportance>verdien for en melding er `Normal` som standard.</xref:Microsoft.Build.Framework.MessageImportance>"
   syntax:
     content: public void LogMessageFromResources (string messageResourceName, object[] messageArgs);
     parameters:
     - id: messageResourceName
       type: System.String
-      description: "The name of the string resource to load."
+      description: "Navnet på tilkoblingsstrengen ressursen ikke laste inn."
     - id: messageArgs
       type: System.Object[]
-      description: "The arguments for formatting the loaded string."
+      description: "Argumenter for formatering strengen som lastes inn."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessageFromResources*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>messageResourceName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>messageResourceName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessageFromResources(Microsoft.Build.Framework.MessageImportance,System.String,System.Object[])
@@ -1015,25 +1015,25 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs a message with the specified resource string and importance."
-  remarks: "Take care to order the parameters correctly or the other overload will be called inadvertently."
+  summary: "Logger en melding med den angitte ressursstrengen og viktighet."
+  remarks: "Pass på at du sortere parameterne riktig eller kalles andre overlasten utilsiktet."
   syntax:
     content: public void LogMessageFromResources (Microsoft.Build.Framework.MessageImportance importance, string messageResourceName, object[] messageArgs);
     parameters:
     - id: importance
       type: Microsoft.Build.Framework.MessageImportance
-      description: "One of the enumeration values that specifies the importance of the message."
+      description: "En av opplistingsverdiene som som angir viktigheten for meldingen."
     - id: messageResourceName
       type: System.String
-      description: "The name of the string resource to load."
+      description: "Navnet på tilkoblingsstrengen ressursen ikke laste inn."
     - id: messageArgs
       type: System.Object[]
-      description: "The arguments for formatting the loaded string."
+      description: "Argumenter for formatering strengen som lastes inn."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessageFromResources*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>message</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>message</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessageFromText(System.String,Microsoft.Build.Framework.MessageImportance)
@@ -1048,25 +1048,25 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs an error message or warning from the given line of text."
-  remarks: "Errors messages and warnings are only logged for lines that fit the canonical format. All other lines are treated as messages."
+  summary: "Logger en feilmelding eller advarsel fra den angitte tekstlinjen."
+  remarks: "Feilmeldingene og advarsler logges bare for linjer som passer godkjent format. Alle linjer behandles som meldinger."
   syntax:
     content: public bool LogMessageFromText (string lineOfText, Microsoft.Build.Framework.MessageImportance messageImportance);
     parameters:
     - id: lineOfText
       type: System.String
-      description: "The line of text to log from."
+      description: "Tekstlinje logge fra."
     - id: messageImportance
       type: Microsoft.Build.Framework.MessageImportance
-      description: "One of the values of <xref href=&quot;Microsoft.Build.Framework.MessageImportance&quot;></xref> that indicates the importance level of the command line."
+      description: "En av verdiene i <xref href=&quot;Microsoft.Build.Framework.MessageImportance&quot;> </xref> som angir det viktighet kommandolinjen."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if an error was logged; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis en feil ble logget; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessageFromText*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>lineOfText</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>lineOfText</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessagesFromFile(System.String)
@@ -1081,22 +1081,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs errors, warnings, and messages for each line of text in the given file."
-  remarks: "Errors and warnings are logged for lines that fit a particular canonical format. All other lines are logged as messages."
+  summary: "Logger feil, advarsler og meldinger for hver tekstlinje i den angitte filen."
+  remarks: "Feil og advarsler logges for linjer som passer til et bestemt kanoniske format. Alle linjer logges som meldinger."
   syntax:
     content: public bool LogMessagesFromFile (string fileName);
     parameters:
     - id: fileName
       type: System.String
-      description: "The name of the file to log messages from."
+      description: "Navnet på filen til å logge meldinger fra."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to indicate at least one error was logged; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>for å angi minst én feilen som ble logget; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessagesFromFile*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>message</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>message</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessagesFromFile(System.String,Microsoft.Build.Framework.MessageImportance)
@@ -1111,25 +1111,25 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs errors, warnings, and messages for each line of text in the given file. Also logs the importance of messages."
-  remarks: "Errors and warnings are logged for lines that fit a particular canonical format. All other lines are logged as messages."
+  summary: "Logger feil, advarsler og meldinger for hver tekstlinje i den angitte filen. Også logger viktigheten av meldinger."
+  remarks: "Feil og advarsler logges for linjer som passer til et bestemt kanoniske format. Alle linjer logges som meldinger."
   syntax:
     content: public bool LogMessagesFromFile (string fileName, Microsoft.Build.Framework.MessageImportance messageImportance);
     parameters:
     - id: fileName
       type: System.String
-      description: "The name of the file to log messages from."
+      description: "Navnet på filen til å logge meldinger fra."
     - id: messageImportance
       type: Microsoft.Build.Framework.MessageImportance
-      description: "One of the enumeration values that specifies the importance of logged messages."
+      description: "En av verdiene for enumeration som angir viktigheten av logget meldinger."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to indicate at least one error was logged; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>for å angi minst én feilen som ble logget; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessagesFromFile*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "Thrown when `filename` is null."
+    description: "Et når `filename` er null."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessagesFromStream(System.IO.TextReader,Microsoft.Build.Framework.MessageImportance)
@@ -1144,25 +1144,25 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs an error message or warning from the given stream."
-  remarks: "This method is not thread-safe."
+  summary: "Logger en feilmelding eller advarsel fra den angitte dataflyten."
+  remarks: "Denne metoden er ikke sikker."
   syntax:
     content: public bool LogMessagesFromStream (System.IO.TextReader stream, Microsoft.Build.Framework.MessageImportance messageImportance);
     parameters:
     - id: stream
       type: System.IO.TextReader
-      description: "A <xref:System.IO.TextReader> that reads the stream to log from."
+      description: "En <xref:System.IO.TextReader>som leser dataflyten logge fra.</xref:System.IO.TextReader>"
     - id: messageImportance
       type: Microsoft.Build.Framework.MessageImportance
-      description: "One of the values of <xref href=&quot;Microsoft.Build.Framework.MessageImportance&quot;></xref> that indicates the importance level of the command line."
+      description: "En av verdiene i <xref href=&quot;Microsoft.Build.Framework.MessageImportance&quot;> </xref> som angir det viktighet kommandolinjen."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if an error was logged; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis en feil ble logget; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogMessagesFromStream*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>stream</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>stream</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogWarning(System.String,System.Object[])
@@ -1177,22 +1177,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs a warning with the specified message."
-  remarks: "This method is not thread-safe."
+  summary: "Logger en advarsel med den angitte meldingen."
+  remarks: "Denne metoden er ikke sikker."
   syntax:
     content: public void LogWarning (string message, object[] messageArgs);
     parameters:
     - id: message
       type: System.String
-      description: "The message."
+      description: "Meldingen."
     - id: messageArgs
       type: System.Object[]
-      description: "Optional arguments for formatting the message string."
+      description: "Valgfrie argumenter for formatering av meldingen-streng."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogWarning*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>message</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>message</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogWarning(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Object[])
@@ -1207,46 +1207,46 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs a warning using the specified message and other warning details."
-  remarks: "The parameters `subCategory`, `warningCode`, `helpKeyword`, and `file` can be `null`.       The parameters `lineNumber`, `columnNumber`, `endLineNumber`, and `endColumnNumber` should be set to 0 if they are not available."
+  summary: "Logger en advarsel ved hjelp av den angitte meldingen og andre advarsel detaljer."
+  remarks: "Parameterne `subCategory`, `warningCode`, `helpKeyword`, og `file` kan være `null`.       Parameterne `lineNumber`, `columnNumber`, `endLineNumber`, og `endColumnNumber` må være satt til 0, hvis de ikke er tilgjengelig."
   syntax:
     content: public void LogWarning (string subcategory, string warningCode, string helpKeyword, string file, int lineNumber, int columnNumber, int endLineNumber, int endColumnNumber, string message, object[] messageArgs);
     parameters:
     - id: subcategory
       type: System.String
-      description: "The description of the warning type."
+      description: "Beskrivelsen av advarselstypen."
     - id: warningCode
       type: System.String
-      description: "The warning code."
+      description: "Advarsel-koden."
     - id: helpKeyword
       type: System.String
-      description: "The Help keyword to associate with the warning."
+      description: "Nøkkelordet hjelp til å knytte til advarselen."
     - id: file
       type: System.String
-      description: "The path to the file containing the warning."
+      description: "Banen til filen med advarselen."
     - id: lineNumber
       type: System.Int32
-      description: "The line in the file where the warning occurs."
+      description: "Linje i filen der advarselen forekommer."
     - id: columnNumber
       type: System.Int32
-      description: "The column in the file where the warning occurs."
+      description: "Kolonnen i filen der advarselen forekommer."
     - id: endLineNumber
       type: System.Int32
-      description: "The end line in the file where the warning occurs."
+      description: "End-linje i filen der advarselen forekommer."
     - id: endColumnNumber
       type: System.Int32
-      description: "The end column in the file where the warning occurs."
+      description: "End-kolonnen i filen der advarselen forekommer."
     - id: message
       type: System.String
-      description: "The message."
+      description: "Meldingen."
     - id: messageArgs
       type: System.Object[]
-      description: "Optional arguments for formatting the message string."
+      description: "Valgfrie argumenter for formatering av meldingen-streng."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogWarning*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>message</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>message</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogWarningFromException(System.Exception)
@@ -1261,19 +1261,19 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs a warning using the message from the specified exception."
-  remarks: "This method is not thread-safe."
+  summary: "Logger en advarsel med meldingen fra det angitte unntaket."
+  remarks: "Denne metoden er ikke sikker."
   syntax:
     content: public void LogWarningFromException (Exception exception);
     parameters:
     - id: exception
       type: System.Exception
-      description: "The exception to log."
+      description: "Unntak ved pålogging."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogWarningFromException*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>e</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>e</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogWarningFromException(System.Exception,System.Boolean)
@@ -1288,22 +1288,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs a warning using the message, and optionally the stack trace, from the given exception."
-  remarks: "This method is not thread-safe."
+  summary: "Logger en advarsel med meldingen, og eventuelt stakksporing fra det angitte unntaket."
+  remarks: "Denne metoden er ikke sikker."
   syntax:
     content: public void LogWarningFromException (Exception exception, bool showStackTrace);
     parameters:
     - id: exception
       type: System.Exception
-      description: "The exception to log"
+      description: "Unntak ved pålogging"
     - id: showStackTrace
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> to include the stack trace in the log; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>inkludere i stakksporing i loggen; Ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogWarningFromException*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>e</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>e</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogWarningFromResources(System.String,System.Object[])
@@ -1318,22 +1318,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs a warning using the specified resource string."
-  remarks: "This method is not thread-safe."
+  summary: "Logger en advarsel med angitt ressurs-streng."
+  remarks: "Denne metoden er ikke sikker."
   syntax:
     content: public void LogWarningFromResources (string messageResourceName, object[] messageArgs);
     parameters:
     - id: messageResourceName
       type: System.String
-      description: "The name of the string resource to load."
+      description: "Navnet på tilkoblingsstrengen ressursen ikke laste inn."
     - id: messageArgs
       type: System.Object[]
-      description: "The arguments for formatting the loaded string."
+      description: "Argumenter for formatering strengen som lastes inn."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogWarningFromResources*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>messageResourceName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>messageResourceName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogWarningFromResources(System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Object[])
@@ -1348,46 +1348,46 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs a warning using the specified resource string and other warning details."
-  remarks: "The parameters `subCategoryResourceName`, `warningCode`, `helpKeyword`, and `file` can be `null`.       The parameters `lineNumber`, `columnNumber`, `endLineNumber`, and `endColumnNumber` should be set to 0 if they are not available."
+  summary: "Logger en advarsel ved hjelp av den angitte ressursstrengen og andre advarsel detaljer."
+  remarks: "Parameterne `subCategoryResourceName`, `warningCode`, `helpKeyword`, og `file` kan være `null`.       Parameterne `lineNumber`, `columnNumber`, `endLineNumber`, og `endColumnNumber` må være satt til 0, hvis de ikke er tilgjengelig."
   syntax:
     content: public void LogWarningFromResources (string subcategoryResourceName, string warningCode, string helpKeyword, string file, int lineNumber, int columnNumber, int endLineNumber, int endColumnNumber, string messageResourceName, object[] messageArgs);
     parameters:
     - id: subcategoryResourceName
       type: System.String
-      description: "The name of the string resource that describes the warning type."
+      description: "Navnet på tilkoblingsstrengen ressursen som beskriver advarsel."
     - id: warningCode
       type: System.String
-      description: "The warning code."
+      description: "Advarsel-koden."
     - id: helpKeyword
       type: System.String
-      description: "The Help keyword to associate with the warning."
+      description: "Nøkkelordet hjelp til å knytte til advarselen."
     - id: file
       type: System.String
-      description: "The path to the file containing the warning."
+      description: "Banen til filen med advarselen."
     - id: lineNumber
       type: System.Int32
-      description: "The line in the file where the warning occurs."
+      description: "Linje i filen der advarselen forekommer."
     - id: columnNumber
       type: System.Int32
-      description: "The column in the file where the warning occurs."
+      description: "Kolonnen i filen der advarselen forekommer."
     - id: endLineNumber
       type: System.Int32
-      description: "The end line in the file where the warning occurs."
+      description: "End-linje i filen der advarselen forekommer."
     - id: endColumnNumber
       type: System.Int32
-      description: "The end column in the file where the warning occurs."
+      description: "End-kolonnen i filen der advarselen forekommer."
     - id: messageResourceName
       type: System.String
-      description: "The name of the string resource to load."
+      description: "Navnet på tilkoblingsstrengen ressursen ikke laste inn."
     - id: messageArgs
       type: System.Object[]
-      description: "The arguments for formatting the loaded string."
+      description: "Argumenter for formatering strengen som lastes inn."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogWarningFromResources*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>messageResourceName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>messageResourceName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogWarningWithCodeFromResources(System.String,System.Object[])
@@ -1402,22 +1402,22 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs a warning with a warning code using the specified resource string."
-  remarks: "If the message begins with a warning code, the code is extracted and logged with the message.       If a Help keyword prefix has been provided, it is also logged with the message. The Help keyword is composed by appending the string resource name to the Help keyword prefix. A task can provide a Help keyword prefix with either the <xref:Microsoft.Build.Utilities.Task> base class constructor, or the <xref:Microsoft.Build.Utilities.Task.HelpKeywordPrefix%2A> property."
+  summary: "Logger en advarsel med en advarsel med angitt ressurs-streng."
+  remarks: "Hvis meldingen begynner med en advarsel-kode, koden ut og logget med meldingen.       Hvis Hjelp nøkkelordet prefiks er angitt, er det også logget med meldingen. Hjelp-nøkkelordet består ved å tilføye ressursnavnet streng til Hjelp nøkkelordet prefiks. En oppgave kan gi hjelp nøkkelordet prefiks med enten den <xref:Microsoft.Build.Utilities.Task>basisklassen konstruktøren, eller <xref:Microsoft.Build.Utilities.Task.HelpKeywordPrefix%2A>egenskapen.</xref:Microsoft.Build.Utilities.Task.HelpKeywordPrefix%2A> </xref:Microsoft.Build.Utilities.Task>"
   syntax:
     content: public void LogWarningWithCodeFromResources (string messageResourceName, object[] messageArgs);
     parameters:
     - id: messageResourceName
       type: System.String
-      description: "The name of the string resource to load."
+      description: "Navnet på tilkoblingsstrengen ressursen ikke laste inn."
     - id: messageArgs
       type: System.Object[]
-      description: "The arguments for formatting the loaded string."
+      description: "Argumenter for formatering strengen som lastes inn."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogWarningWithCodeFromResources*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>messageResourceName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>messageResourceName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.LogWarningWithCodeFromResources(System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.String,System.Object[])
@@ -1432,40 +1432,40 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Logs a warning with a warning code using the specified resource string and other warning details."
-  remarks: "If the message begins with a warning code, the code is extracted and logged with the message.       If a Help keyword prefix has been provided, it is also logged with the message. The Help keyword is composed by appending the string resource name to the Help keyword prefix. A task can provide a Help keyword prefix with either the <xref:Microsoft.Build.Utilities.Task> base class constructor, or the <xref:Microsoft.Build.Utilities.Task.HelpKeywordPrefix%2A> property.       The parameters `subCategoryResourceName`, and `file` can be `null`.       The parameters `lineNumber`, `columnNumber`, `endLineNumber`, and `endColumnNumber` should be set to 0 if they are not available."
+  summary: "Logger en advarsel med en advarsel ved hjelp av den angitte ressursstrengen og andre advarsel detaljer."
+  remarks: "Hvis meldingen begynner med en advarsel-kode, koden ut og logget med meldingen.       Hvis Hjelp nøkkelordet prefiks er angitt, er det også logget med meldingen. Hjelp-nøkkelordet består ved å tilføye ressursnavnet streng til Hjelp nøkkelordet prefiks. En oppgave kan gi hjelp nøkkelordet prefiks med enten den <xref:Microsoft.Build.Utilities.Task>basisklassen konstruktøren, eller <xref:Microsoft.Build.Utilities.Task.HelpKeywordPrefix%2A>egenskapen.</xref:Microsoft.Build.Utilities.Task.HelpKeywordPrefix%2A> </xref:Microsoft.Build.Utilities.Task>       Parameterne `subCategoryResourceName`, og `file` kan være `null`.       Parameterne `lineNumber`, `columnNumber`, `endLineNumber`, og `endColumnNumber` må være satt til 0, hvis de ikke er tilgjengelig."
   syntax:
     content: public void LogWarningWithCodeFromResources (string subcategoryResourceName, string file, int lineNumber, int columnNumber, int endLineNumber, int endColumnNumber, string messageResourceName, object[] messageArgs);
     parameters:
     - id: subcategoryResourceName
       type: System.String
-      description: "The name of the string resource that describes the warning type."
+      description: "Navnet på tilkoblingsstrengen ressursen som beskriver advarsel."
     - id: file
       type: System.String
-      description: "The path to the file containing the warning."
+      description: "Banen til filen med advarselen."
     - id: lineNumber
       type: System.Int32
-      description: "The line in the file where the warning occurs."
+      description: "Linje i filen der advarselen forekommer."
     - id: columnNumber
       type: System.Int32
-      description: "The column in the file where the warning occurs."
+      description: "Kolonnen i filen der advarselen forekommer."
     - id: endLineNumber
       type: System.Int32
-      description: "The end line in the file where the warning occurs."
+      description: "End-linje i filen der advarselen forekommer."
     - id: endColumnNumber
       type: System.Int32
-      description: "The end column in the file where the warning occurs."
+      description: "End-kolonnen i filen der advarselen forekommer."
     - id: messageResourceName
       type: System.String
-      description: "The name of the string resource to load."
+      description: "Navnet på tilkoblingsstrengen ressursen ikke laste inn."
     - id: messageArgs
       type: System.Object[]
-      description: "The arguments for formatting the loaded string."
+      description: "Argumenter for formatering strengen som lastes inn."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.LogWarningWithCodeFromResources*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>messageResourceName</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>messageResourceName</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: Microsoft.Build.Utilities.TaskLoggingHelper.MarkAsInactive
@@ -1480,8 +1480,8 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Notifies this <xref uid=&quot;langword_csharp_TaskLoggingHelper&quot; name=&quot;TaskLoggingHelper&quot; href=&quot;&quot;></xref> that it is no longer needed."
-  remarks: "This method is thread safe, however, you must call both InitializeLifetimeService and MarkAsInactive, in that order, or you must call neither method, and you must call neither method than once."
+  summary: "Varsler dette <xref uid=&quot;langword_csharp_TaskLoggingHelper&quot; name=&quot;TaskLoggingHelper&quot; href=&quot;&quot;> </xref> det ikke lenger er nødvendig."
+  remarks: "Denne metoden er tråd trygt, imidlertid du må kalle både InitializeLifetimeService og MarkAsInactive, i denne rekkefølgen eller du må kalle verken metoden og du må kalle verken metode enn én gang."
   syntax:
     content: public void MarkAsInactive ();
     parameters: []
@@ -1501,12 +1501,12 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets the name of the parent task."
+  summary: "Henter navnet på den overordnede aktiviteten."
   syntax:
     content: protected string TaskName { get; }
     return:
       type: System.String
-      description: "The name of the parent task."
+      description: "Navnet på den overordnede aktiviteten."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.TaskName*
   exceptions: []
   platform:
@@ -1523,13 +1523,13 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets or sets the culture-specific resources used by the logging methods."
-  remarks: "If derived classes have localized strings, then they should register their resources with this property."
+  summary: "Henter eller angir kulturen bestemte ressursene som brukes av metodene logging."
+  remarks: "Hvis avledede klasser er lokalisert strenger, skal de registrere ressursene med denne egenskapen."
   syntax:
     content: public System.Resources.ResourceManager TaskResources { get; set; }
     return:
       type: System.Resources.ResourceManager
-      description: "A <xref:System.Resources.ResourceManager> that represents the culture-specific resources used by the logging methods. This value can be <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+      description: "En <xref:System.Resources.ResourceManager>som representerer kultur-spesifikke ressursene som brukes av metodene logging.</xref:System.Resources.ResourceManager> Denne verdien kan være <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;> </xref>."
   overload: Microsoft.Build.Utilities.TaskLoggingHelper.TaskResources*
   exceptions: []
   platform:
