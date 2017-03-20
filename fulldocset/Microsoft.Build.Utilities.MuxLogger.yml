@@ -17,8 +17,8 @@ items:
   nameWithType: MuxLogger
   fullName: Microsoft.Build.Utilities.MuxLogger
   type: Class
-  summary: "Represents a multiplexing logger. The purpose of this logger is to register and unregister multiple loggers during the build. Supports the [!INCLUDE[vs_current_short](~/add/includes/ajax-current-ext-md.md)] IDE scenario in which loggers are registered and unregistered for each project system’s build request. One physical build can have multiple logical builds, each with its own set of loggers.       The <xref uid=&quot;langword_csharp_MuxLogger&quot; name=&quot;MuxLogger&quot; href=&quot;&quot;></xref>registers itself with the build manager as a regular central /l style logger. It receives messages from the build manager and routes them to the correct logger, based on the logical build that the message came from."
-  remarks: "The `MuxLogger`generally functions as follows:      -   The `MuxLogger` is registered at the beginning of the build manager’s Begin build.           Any loggers registered before the build manager starts the build get the build-started event at the same time as the `MuxLogger`.           Any loggers registered after the build manager starts the build get a synthesized build-started event. The event cannot be cached because the timestamp of the build-started event is determined when the event is created, and caching the event would give incorrect build times in the loggers registered to the `MuxLogger`.      -   The `MuxLogger` is initialized by the build manager           The `MuxLogger` listens to all events on the event source from the build manager and routes events correctly to the registered loggers.      -   The `MuxLogger` is shutdown when the build is finished in end build. At this time, it unregisters any loggers attached to it.      -   The `MuxLogger` logs the build-finished event when the project-finished event for the first project-started event is seen for each logger.       The `MuxLogger` registers loggers in the following way:      1.  The logger is passed to the `MuxLogger.RegisterLogger` method with a submission ID that is used to route a message to that logger.      2.  The `MuxLogger` registers the logger to the `MuxLogger` event source.      3.  If the build-started event has already been logged, the `MuxLogger` creates a new build-started event and sends it to the logger’s event source.       The `MuxLogger` unregisters loggers in the following way:      1.  When a build submission is completed, the `MuxLogger.UnregisterLogger` method is called with the submission ID for the logger.      2.  The `MuxLogger` looks up the success state of the project-finished event for the submission ID and logs a build-finished event to the logger.      3.  The `MuxLogger`cleans up the event source.           Note that the unregister comes from a thread other than the logging thread and a synchronization issue could occur if unregister is called while events are being logged."
+  summary: "Representerer en multiplexing meldingslogging. Formålet med denne transaksjonslogging er å registrere og avregistrere flere tastetrykkregistratorer under byggingen. Støtter det [!INCLUDE[vs_current_short](~/add/includes/ajax-current-ext-md.md)] IDE scenario der tastetrykkregistratorer er registrert og avregistreres for hvert prosjekt system kompilering forespørselen. En fysisk kompilering kan ha flere logiske delversjoner, hver med et eget sett med tastetrykkregistratorer.       Den <xref uid=&quot;langword_csharp_MuxLogger&quot; name=&quot;MuxLogger&quot; href=&quot;&quot;> </xref>registrerer seg selv med build-manager som en vanlig sentrale l stil meldingslogging. Den mottar meldinger fra build-behandling og ruter dem riktig transaksjonslogging, basert på den logiske bygge som meldingen kommer fra."
+  remarks: "Den `MuxLogger`fungerer vanligvis som følger: - `MuxLogger` er registrert i begynnelsen av transportbehandling kompilering Begin kompilering.           Tastetrykkregistratorer registrert før build-manager starter byggingen få hendelsen bygging startet samtidig som den `MuxLogger`.           Tastetrykkregistratorer registrert etter build-manager starter byggingen få en syntetisert bygging startet hendelse. Hendelsen kan ikke hurtigbufres fordi tidsstempelet for hendelsen bygging startet bestemmes når hendelsen er opprettet, og hurtigbufring hendelsen vil gi feil kompilering ganger i tastetrykkregistratorer som er registrert i `MuxLogger`.      - `MuxLogger` Er initialisert av manager kompilering av `MuxLogger` lytter på alle hendelser i hendelseskilden fra build-behandlingen og ruter hendelser riktig til registrerte tastetrykkregistratorer.      - `MuxLogger` Avsluttes når byggingen er fullført i end build. På dette tidspunktet Avregistrerer den noen tastetrykkregistratorer knyttet til den.      - `MuxLogger` Logger ferdig med build-hendelse når hendelsen project fullført for første gang prosjektet hendelsen er registrert for hver meldingslogging.       Den `MuxLogger` registrerer tastetrykkregistratorer på følgende måte: 1.  Transaksjonslogging er sendt til den `MuxLogger.RegisterLogger` metode med en innsending-ID som brukes til å distribuere en melding til denne meldingslogging.      2.  Den `MuxLogger` registrerer transaksjonslogging til den `MuxLogger` hendelseskilden.      3.  Hvis kompilering startet hendelsen er allerede logget, den `MuxLogger` oppretter en ny bygging startet hendelse, og sender den til den transaksjonslogging hendelseskilden.       Den `MuxLogger` Avregistrerer tastetrykkregistratorer på følgende måte: 1.  Når en build-sending er fullført, den `MuxLogger.UnregisterLogger` metoden kalles med innsending av IDen for meldingslogging.      2.  Den `MuxLogger` søker etter vellykket status for hendelsen project fullført for IDen innsending av og logger en build-fullført hendelse til loggen.      3.  Den `MuxLogger`Rydder opp hendelseskilden.           Merk at Avregistrer kommer fra en annen tråd enn loggingstråden og en synkronisering kan skje hvis Avregistrer kalles under hendelser logges."
   syntax:
     content: 'public class MuxLogger : Microsoft.Build.Framework.INodeLogger'
   inheritance:
@@ -40,7 +40,7 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Creates a new instance of the multiplexing logger."
+  summary: "Oppretter en ny forekomst av multiplexing meldingslogging."
   syntax:
     content: public MuxLogger ();
     parameters: []
@@ -60,13 +60,13 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Initialize the <xref uid=&quot;langword_csharp_MuxLogger&quot; name=&quot;MuxLogger&quot; href=&quot;&quot;></xref> instance with the specified event source."
+  summary: "Initialisere den <xref uid=&quot;langword_csharp_MuxLogger&quot; name=&quot;MuxLogger&quot; href=&quot;&quot;> </xref> forekomst med angitt hendelseskilden."
   syntax:
     content: public void Initialize (Microsoft.Build.Framework.IEventSource eventSource);
     parameters:
     - id: eventSource
       type: Microsoft.Build.Framework.IEventSource
-      description: "The event source."
+      description: "Hendelseskilden."
   overload: Microsoft.Build.Utilities.MuxLogger.Initialize*
   exceptions: []
   platform:
@@ -83,16 +83,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Initialize the <xref uid=&quot;langword_csharp_MuxLogger&quot; name=&quot;MuxLogger&quot; href=&quot;&quot;></xref> instance with the specified event source and specified maximum number of nodes."
+  summary: "Initialisere den <xref uid=&quot;langword_csharp_MuxLogger&quot; name=&quot;MuxLogger&quot; href=&quot;&quot;> </xref> forekomst med angitt hendelseskilden og angitte maksimum antall noder."
   syntax:
     content: public void Initialize (Microsoft.Build.Framework.IEventSource eventSource, int maxNodeCount);
     parameters:
     - id: eventSource
       type: Microsoft.Build.Framework.IEventSource
-      description: "The event source."
+      description: "Hendelseskilden."
     - id: maxNodeCount
       type: System.Int32
-      description: "The maximum number of nodes."
+      description: "Maksimalt antall noder."
   overload: Microsoft.Build.Utilities.MuxLogger.Initialize*
   exceptions: []
   platform:
@@ -109,12 +109,12 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets and sets the Parameters attribute, required by the <xref uid=&quot;langword_csharp_ILogger&quot; name=&quot;ILogger&quot; href=&quot;&quot;></xref> interface."
+  summary: "Får eller angir attributtet parametere som kreves av den <xref uid=&quot;langword_csharp_ILogger&quot; name=&quot;ILogger&quot; href=&quot;&quot;> </xref> grensesnitt."
   syntax:
     content: public string Parameters { get; set; }
     return:
       type: System.String
-      description: "Returns the Parameters attribute."
+      description: "Returnerer attributtet parametere."
   overload: Microsoft.Build.Utilities.MuxLogger.Parameters*
   exceptions: []
   platform:
@@ -131,16 +131,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Registers a logger on the <xref uid=&quot;langword_csharp_MuxLogger&quot; name=&quot;MuxLogger&quot; href=&quot;&quot;></xref> and raises a build-started event if the build-started event has already been logged."
+  summary: "Registrerer en logger på den <xref uid=&quot;langword_csharp_MuxLogger&quot; name=&quot;MuxLogger&quot; href=&quot;&quot;> </xref> og oppretter en bygging startet-hendelse hvis er allerede logget hendelsen bygging startet."
   syntax:
     content: public void RegisterLogger (int submissionId, Microsoft.Build.Framework.ILogger logger);
     parameters:
     - id: submissionId
       type: System.Int32
-      description: "The submission ID of the logger being registered."
+      description: "Innsending av IDen for meldingslogging registreres."
     - id: logger
       type: Microsoft.Build.Framework.ILogger
-      description: "The logger to register."
+      description: "Transaksjonslogging til å registrere."
   overload: Microsoft.Build.Utilities.MuxLogger.RegisterLogger*
   exceptions: []
   platform:
@@ -157,7 +157,7 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Shuts down the <xref uid=&quot;langword_csharp_MuxLogger&quot; name=&quot;MuxLogger&quot; href=&quot;&quot;></xref> and clears out any state."
+  summary: "Avsluttes den <xref uid=&quot;langword_csharp_MuxLogger&quot; name=&quot;MuxLogger&quot; href=&quot;&quot;> </xref> og av noen tilstand."
   syntax:
     content: public void Shutdown ();
     parameters: []
@@ -177,16 +177,16 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Removes the specified logger from the MuxLogger."
+  summary: "Fjerner det angitte transaksjonslogging fra MuxLogger."
   syntax:
     content: public bool UnregisterLoggers (int submissionId);
     parameters:
     - id: submissionId
       type: System.Int32
-      description: "The submission ID of the logger to be removed."
+      description: "Innsending av IDen for meldingslogging som skal fjernes."
     return:
       type: System.Boolean
-      description: "Returns <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the method is successful in removing the logger, otherwise, returns <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "Returnerer <xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;> </xref> hvis metoden lykkes i å fjerne transaksjonslogging, ellers returneres <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: Microsoft.Build.Utilities.MuxLogger.UnregisterLoggers*
   exceptions: []
   platform:
@@ -203,12 +203,12 @@ items:
   assemblies:
   - Microsoft.Build.Utilities.v4.0
   namespace: Microsoft.Build.Utilities
-  summary: "Gets and sets the Verbosity attribute, required by the <xref uid=&quot;langword_csharp_ILogger&quot; name=&quot;ILogger&quot; href=&quot;&quot;></xref> interface."
+  summary: "Får og angir detaljnivået-attributt kreves av den <xref uid=&quot;langword_csharp_ILogger&quot; name=&quot;ILogger&quot; href=&quot;&quot;> </xref> grensesnitt."
   syntax:
     content: public Microsoft.Build.Framework.LoggerVerbosity Verbosity { get; set; }
     return:
       type: Microsoft.Build.Framework.LoggerVerbosity
-      description: "Returns the Verbosity attribute."
+      description: "Returnerer detaljnivået-attributtet."
   overload: Microsoft.Build.Utilities.MuxLogger.Verbosity*
   exceptions: []
   platform:
