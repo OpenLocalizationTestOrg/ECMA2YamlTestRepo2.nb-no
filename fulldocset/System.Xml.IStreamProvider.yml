@@ -11,8 +11,8 @@ items:
   nameWithType: IStreamProvider
   fullName: System.Xml.IStreamProvider
   type: Interface
-  summary: "Represents an interface that can be implemented by classes providing streams."
-  remarks: "When writing an outgoing message containing a streamed body to an XML writer, the <xref:System.ServiceModel.Channels.Message> will use a sequence of calls similar to the following in its <xref:System.ServiceModel.Channels.Message.OnWriteBodyContents%28System.Xml.XmlDictionaryWriter%29> implementation:      -   Write any necessary information preceding the stream (For example, the opening XML tag).      -   Write the stream.      -   Write any information following the stream (For example, the closing XML tag).       This works well with encodings that are similar to the textual XML encoding. However, there are some encodings that do not place XML infoset information (For example, tags for starting and ending XML elements) together with the data contained within elements. For example, in the MTOM encoding, the message is split into multiple parts. One part contains the XML infoset, which may contain references to other parts for actual element contents. Since the XML infoset will normally be small compared to the streamed contents, it makes sense to buffer the infoset, write it out, and then write the contents in a streamed way. This means that by the time the closing element tag is written, we should not have written out the stream yet.       For this purpose, the IStreamProvider interface is used. The interface has a <xref:System.Xml.IStreamProvider.GetStream> method that returns the stream to be written. The correct way to write out a streamed message body in <xref:System.ServiceModel.Channels.Message.OnWriteBodyContents%28System.Xml.XmlDictionaryWriter%29> is as follows:      -   Write any necessary information preceding the stream (For example, the opening XML tag)      -   Call the `WriteValue` overload on the <xref:System.Xml.XmlDictionaryWriter> that takes an IStreamProvider, with an `IStreamProvider` implementation that returns the stream to be written.      -   Write any information following the stream (For example, the closing XML tag)       With this approach, the XML writer has a choice of when to call <xref:System.Xml.IStreamProvider.GetStream> and write out the streamed data. For example, the textual and binary XML writers will call it immediately and write out the streamed contents in between the start and end tags. The MTOM writer may decide to call <xref:System.Xml.IStreamProvider.GetStream> later, when it is ready to write the appropriate part of the message."
+  summary: "Representerer et grensesnitt som kan implementeres av klasser gir dataflyter."
+  remarks: "Under skriving av en utgående melding som inneholder en flyt brødtekst til en XML-writer den <xref:System.ServiceModel.Channels.Message>bruker en sekvens av anrop som er lik følgende i den <xref:System.ServiceModel.Channels.Message.OnWriteBodyContents%28System.Xml.XmlDictionaryWriter%29>implementering:-skrive nødvendig informasjon foregående dataflyten (For eksempel åpner XML-kode).</xref:System.ServiceModel.Channels.Message.OnWriteBodyContents%28System.Xml.XmlDictionaryWriter%29> </xref:System.ServiceModel.Channels.Message>      -Skrive til dataflyten.      -Skrive informasjon følgende dataflyten (For eksempel avsluttende XML-kode).       Dette fungerer bra koder som er lik den tekstbaserte XML-koding. Det er imidlertid enkelte koding som ikke setter XML-infoset informasjon (For eksempel koder for første og siste XML-elementer) sammen med dataene i elementer. Med MTOM-koding, er for eksempel meldingen delt i flere deler. Én del inneholder XML-infoset, som kan inneholde referanser til andre deler for faktiske elementet innholdet. Fordi XML-infoset vanligvis blir lavt sammenlignet flyt innholdet, gjør meningsløst buffer i infoset, skrive det ut og skrive til innholdet i en flyt måte. Dette betyr at når avsluttende objektkode er skrevet, vi skal har ennå ikke er skrevet av dataflyten.       Grensesnittet IStreamProvider brukes for dette formålet. Grensesnittet er en <xref:System.Xml.IStreamProvider.GetStream>metode som returnerer dataflyten skrives.</xref:System.Xml.IStreamProvider.GetStream> Den riktige måten å skrive ut en flyt meldingsteksten i <xref:System.ServiceModel.Channels.Message.OnWriteBodyContents%28System.Xml.XmlDictionaryWriter%29>som følger: - skrive nødvendig informasjon foregående dataflyten (For eksempel åpner XML-kode) - kall i `WriteValue` overbelaste på den <xref:System.Xml.XmlDictionaryWriter>som tar en IStreamProvider med en `IStreamProvider` implementering som returnerer dataflyten skrives.</xref:System.Xml.XmlDictionaryWriter> </xref:System.ServiceModel.Channels.Message.OnWriteBodyContents%28System.Xml.XmlDictionaryWriter%29>      -Skrive informasjon følgende dataflyten (For eksempel avsluttende XML-kode) med denne tilnærmingen, XML-skriveren har mulighet til å angi når å kalle <xref:System.Xml.IStreamProvider.GetStream>og skrive ut flyt dataene.</xref:System.Xml.IStreamProvider.GetStream> De tekstbaserte og binære XML-forfatterne vil for eksempel kalle den umiddelbart og skrive ut flyt innholdet mellom start og end-koder. MTOM-skriveren kan velge å kalle <xref:System.Xml.IStreamProvider.GetStream>senere, når den er klar til å skrive den riktige delen av meldingen.</xref:System.Xml.IStreamProvider.GetStream>"
   syntax:
     content: public interface IStreamProvider
   implements: []
@@ -30,14 +30,14 @@ items:
   assemblies:
   - System.Runtime.Serialization
   namespace: System.Xml
-  summary: "Gets a stream."
-  remarks: "This method can be used to return the stream to be written."
+  summary: "Henter en dataflyt."
+  remarks: "Denne metoden kan brukes til å returnere dataflyten skrives."
   syntax:
     content: public System.IO.Stream GetStream ();
     parameters: []
     return:
       type: System.IO.Stream
-      description: "A <xref:System.IO.Stream> object."
+      description: "En <xref:System.IO.Stream>objektet.</xref:System.IO.Stream>"
   overload: System.Xml.IStreamProvider.GetStream*
   exceptions: []
   platform:
@@ -54,13 +54,13 @@ items:
   assemblies:
   - System.Runtime.Serialization
   namespace: System.Xml
-  summary: "Releases a stream to output."
+  summary: "Frigir en dataflyt i utdata."
   syntax:
     content: public void ReleaseStream (System.IO.Stream stream);
     parameters:
     - id: stream
       type: System.IO.Stream
-      description: "The stream being released."
+      description: "Dataflyten frigis."
   overload: System.Xml.IStreamProvider.ReleaseStream*
   exceptions: []
   platform:
