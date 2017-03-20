@@ -15,8 +15,8 @@ items:
   nameWithType: SortKey
   fullName: System.Globalization.SortKey
   type: Class
-  summary: "Represents the result of mapping a string to its sort key."
-  remarks: "A culture-sensitive comparison of two strings depends on each character in the strings having several categories of sort weights, including script, alphabetic, case, and diacritic weights. A sort key serves as the repository of these weights for a particular string.       The <xref:System.Globalization.CompareInfo.GetSortKey%2A?displayProperty=fullName> method returns an instance of the SortKey class that reflects the culture-sensitive mapping of characters in a specified string. The value of a SortKey object is its key data, which is returned by the <xref:System.Globalization.SortKey.KeyData%2A> property. This key data consists of a series of bytes that encode the string, culture-specific sorting rules, and user-specified comparison options. A comparison using sort keys consists of a bitwise comparison of the corresponding key data in each sort key.  For example, if you create a sort key by calling the <xref:System.Globalization.CompareInfo.GetSortKey%28System.String%2CSystem.Globalization.CompareOptions%29> method with a value of <xref:System.Globalization.CompareOptions?displayProperty=fullName>, a string comparison operation that uses the sort key is case-insensitive.       After you create a sort key for a string, you compare sort keys by calling the static <xref:System.Globalization.SortKey.Compare%2A?displayProperty=fullName> method. This method performs a simple byte-by-byte comparison, so it is much faster than the <xref:System.String.Compare%2A?displayProperty=fullName> or <xref:System.Globalization.CompareInfo.Compare%2A?displayProperty=fullName> method.      ## Performance considerations    When performing a string comparison, the <xref:System.Globalization.SortKey.Compare%2A> and <xref:System.Globalization.CompareInfo.Compare%2A?displayProperty=fullName> methods yield the same results, but they target different scenarios.       At a high level, the <xref:System.Globalization.CompareInfo.Compare%2A?displayProperty=fullName> method generates the sort key for each string, performs the comparison, and then discards the sort key and returns the result of the comparison. However, the <xref:System.Globalization.CompareInfo.Compare%2A?displayProperty=fullName> method actually doesn&quot;t generate an entire sort key to perform the comparison. Instead, the method generates the key data for each text element (that is, base character, surrogate pair, or combining character sequence) in each string. The method then compares the key data for the corresponding text elements. The operation terminates as soon as the ultimate result of the comparison is determined. Sort key information is computed, but no SortKey object is created. This strategy is economical in terms of performance if both strings are compared once, but becomes expensive if the same strings are compared many times.       The <xref:System.Globalization.SortKey.Compare%2A> method requires generation of a SortKey object for each string before performing the comparison. This strategy is expensive in terms of performance for the first comparison because of the time and memory invested to generate the SortKey objects. However, it becomes economical if the same sort keys are compared many times.       For example, suppose you write an application that searches a database table for the row in which the string-based index column matches a specified search string. The table contains thousands of rows, and comparing the search string to the index in each row will take a long time. Therefore, when the application stores a row and its index column, it also generates and stores the sort key for the index in a column dedicated to improving search performance. When the application searches for a target row, it compares the sort key for the search string to the sort key for the index string, instead of comparing the search string to the index string.      ## Security considerations    The <xref:System.Globalization.CompareInfo.GetSortKey%28System.String%2CSystem.Globalization.CompareOptions%29?displayProperty=fullName> method returns a SortKey object with the value based on a specified string and <xref:System.Globalization.CompareOptions> value, and the culture associated with the underlying <xref:System.Globalization.CompareInfo> object. If a security decision depends on a string comparison or case change, you should use the <xref:System.Globalization.CompareInfo.GetSortKey%28System.String%2CSystem.Globalization.CompareOptions%29?displayProperty=fullName> method of the invariant culture to ensure that the behavior of the operation is consistent, regardless of the culture settings of the operating system.       Use the following steps to obtain a sort key:      1.  Retrieve the invariant culture from the <xref:System.Globalization.CultureInfo.InvariantCulture?displayProperty=fullName> property.      2.  Retrieve a <xref:System.Globalization.CompareInfo> object for the invariant culture from the <xref:System.Globalization.CultureInfo.CompareInfo%2A?displayProperty=fullName> property.      3.  Call the <xref:System.Globalization.CompareInfo.GetSortKey%28System.String%2CSystem.Globalization.CompareOptions%29?displayProperty=fullName> method.       Working with the value of a SortKey object is equivalent to calling the Windows `LCMapString` method with the LCMAP_SORTKEY value specified. However, for the SortKey object, the sort keys for English characters precede the sort keys for Korean characters.       SortKey objects can be serialized, but only so that they can cross <xref:System.AppDomain> objects. If an application serializes a SortKey object, the application must regenerate all the sort keys when there is a new version of the .NET Framework.       For more information about sort keys, see Unicode Technical Standard #10, &quot;Unicode Collation Algorithm&quot; on the [Unicode Consortium website](http://go.microsoft.com/fwlink/?linkid=37123)."
+  summary: "Representerer resultatet av å tilordne en streng til sorteringsnøkkelen."
+  remarks: "Kulturen sikkerhetsfølsom sammenligning av to strenger avhenger av hvert tegn i strenger har flere kategorier av sortering vekt og inkludert skript, bokstaver, små og diakritisk vekten. En sorteringsnøkkel fungerer som lager for disse vekten for en bestemt streng.       Den <xref:System.Globalization.CompareInfo.GetSortKey%2A?displayProperty=fullName>metoden returnerer en forekomst av klassen SortKey som gjenspeiler kultur sikkerhetsfølsom tilordning av tegn i en angitt streng.</xref:System.Globalization.CompareInfo.GetSortKey%2A?displayProperty=fullName> Verdien for et objekt for SortKey er de viktige dataene, som er returnert av den <xref:System.Globalization.SortKey.KeyData%2A>egenskapen.</xref:System.Globalization.SortKey.KeyData%2A> Denne nøkkelen data består av en rekke byte som kode streng, kultur sortering regler og brukerangitte sammenligningen alternativer. En sammenligning med sorteringsnøkler består av en bitvis sammenligning av de tilsvarende nøkkel dataene i hver enkelt sorteringsnøkkel.  Hvis for eksempel, du opprette en sorteringsnøkkel ved å kalle den <xref:System.Globalization.CompareInfo.GetSortKey%28System.String%2CSystem.Globalization.CompareOptions%29>metoden med verdien <xref:System.Globalization.CompareOptions?displayProperty=fullName>, operasjonen for sammenligning en streng som bruker sorteringsnøkkelen skiller ikke mellom.</xref:System.Globalization.CompareOptions?displayProperty=fullName> </xref:System.Globalization.CompareInfo.GetSortKey%28System.String%2CSystem.Globalization.CompareOptions%29>       Når du oppretter en sorteringsnøkkel for en streng, du sammenligne sorteringsnøkler ved å kalle statiske <xref:System.Globalization.SortKey.Compare%2A?displayProperty=fullName>metode.</xref:System.Globalization.SortKey.Compare%2A?displayProperty=fullName> Denne metoden utfører en enkel byte for byte sammenligning, slik det er mye raskere enn den <xref:System.String.Compare%2A?displayProperty=fullName>eller <xref:System.Globalization.CompareInfo.Compare%2A?displayProperty=fullName>metode.</xref:System.Globalization.CompareInfo.Compare%2A?displayProperty=fullName> </xref:System.String.Compare%2A?displayProperty=fullName>      ## Av sikkerhetshensyn ved utføring av en strengsammenligning den <xref:System.Globalization.SortKey.Compare%2A>og <xref:System.Globalization.CompareInfo.Compare%2A?displayProperty=fullName>metoder gi samme resultat, men de target forskjellige scenarier.</xref:System.Globalization.CompareInfo.Compare%2A?displayProperty=fullName> </xref:System.Globalization.SortKey.Compare%2A>       Fra et høyere nivå av <xref:System.Globalization.CompareInfo.Compare%2A?displayProperty=fullName>metoden genererer sorteringsnøkkel for hver streng, utfører sammenligning av sorteringsnøkkel, forkastes, og returnerer resultatet av sammenligningen.</xref:System.Globalization.CompareInfo.Compare%2A?displayProperty=fullName> Imidlertid den <xref:System.Globalization.CompareInfo.Compare%2A?displayProperty=fullName>metoden faktisk ikke generere en hele sorteringsnøkkel for å utføre sammenligningen.</xref:System.Globalization.CompareInfo.Compare%2A?displayProperty=fullName> Metoden genererer i stedet viktige dataene for hvert element i teksten (det vil si base tegn, erstatningspar eller å kombinere tegnsekvensen) i hver streng. Metoden sammenligner viktige dataene for de tilhørende teksten-elementene. Operasjonen avslutter som ultimate resultatet av sammenligningen, bestemmes. Sorter nøkkelinformasjon er beregnet, men ingen SortKey-objektet er opprettet. Denne fremgangsmåten er økonomisk når det gjelder hvis begge strenger sammenlignes én gang, men blir kostbar hvis de samme strengene sammenlignes mange ganger.       Den <xref:System.Globalization.SortKey.Compare%2A>metoden krever generering av et SortKey-objekt for hver streng før du utfører sammenligningen.</xref:System.Globalization.SortKey.Compare%2A> Denne fremgangsmåten er kostbar når det gjelder for den første sammenligningen på grunn av tid og minne brukt for å generere SortKey-objekter. Det blir imidlertid økonomisk Hvis samme sorteringsnøkler sammenlignes mange ganger.       Anta at du skriver et program som søker i en tabell for rad der strengen-basert indekskolonne samsvarer med en angitte søkestrengen. Tabellen inneholder tusenvis av rader, og sammenligne søkestrengen i indeksen i hver rad tar lang tid. Derfor når programmet inneholder en rad- og tilhørende indeksen, i tillegg genererer og lagrer sorteringsnøkkel for indeksen i en kolonne som er reservert for å forbedre ytelsen på søket. Når programmet søker etter en målrad, sammenlignes sorteringsnøkkel for søkestrengen til sorteringsnøkkel for strengen indeks i stedet for sammenligning av søkestrengen til indeksen-streng.      ## Sikkerhetshensyn den <xref:System.Globalization.CompareInfo.GetSortKey%28System.String%2CSystem.Globalization.CompareOptions%29?displayProperty=fullName>metoden returnerer et SortKey-objekt med verdien som er basert på en angitt streng og <xref:System.Globalization.CompareOptions>verdien og kulturen som er knyttet til den underliggende <xref:System.Globalization.CompareInfo>objektet.</xref:System.Globalization.CompareInfo> </xref:System.Globalization.CompareOptions> </xref:System.Globalization.CompareInfo.GetSortKey%28System.String%2CSystem.Globalization.CompareOptions%29?displayProperty=fullName> Hvis en beslutningen sikkerhet, avhengig av en strengsammenligning eller små endring, bør du bruke den <xref:System.Globalization.CompareInfo.GetSortKey%28System.String%2CSystem.Globalization.CompareOptions%29?displayProperty=fullName>metoden for den konstante kulturen å sikre at virkemåten til operasjonen er konsekvent, uavhengig av kulturen innstillingene for operativsystemet.</xref:System.Globalization.CompareInfo.GetSortKey%28System.String%2CSystem.Globalization.CompareOptions%29?displayProperty=fullName>       Bruk følgende til å hente en sorteringsnøkkel: 1.  Henter den konstante kulturen fra den <xref:System.Globalization.CultureInfo.InvariantCulture?displayProperty=fullName>egenskapen.</xref:System.Globalization.CultureInfo.InvariantCulture?displayProperty=fullName>      2.  Hente en <xref:System.Globalization.CompareInfo>objekt for den konstante kulturen fra den <xref:System.Globalization.CultureInfo.CompareInfo%2A?displayProperty=fullName>egenskapen.</xref:System.Globalization.CultureInfo.CompareInfo%2A?displayProperty=fullName> </xref:System.Globalization.CompareInfo>      3.  Kall den <xref:System.Globalization.CompareInfo.GetSortKey%28System.String%2CSystem.Globalization.CompareOptions%29?displayProperty=fullName>metoden.</xref:System.Globalization.CompareInfo.GetSortKey%28System.String%2CSystem.Globalization.CompareOptions%29?displayProperty=fullName>       Arbeide med verdien for en SortKey objektet tilsvarer kaller Windows `LCMapString` metode med LCMAP_SORTKEY-verdien som er angitt. For SortKey-objektet foran sorteringsnøkler for engelske tegn sorteringsnøkler for koreansk tegn.       SortKey objekter kan være serialiserte, men bare slik at de kan cross <xref:System.AppDomain>objekter.</xref:System.AppDomain> Hvis et program serializes et SortKey-objekt, må programmet generere alle sorteringsnøkler når det er en ny versjon av .NET Framework.       Du finner mer informasjon om sorteringsnøkler se Unicode teknisk Standard 10, &quot;Unicode sortering algoritmen&quot; på den [Unicode Consortium webområdet](http://go.microsoft.com/fwlink/?linkid=37123)."
   example:
   - "The following example compares the string \"llama\" using the \"en-US\" and \"es-ES\" cultures, and the \"en-US\" and \"es-ES\" traditional cultures.  \n  \n [!code-cpp[System.Globalization.SortKey.Compare#1](~/add/codesnippet/cpp/t-system.globalization.s_1_1.cpp)]\n [!code-cs[System.Globalization.SortKey.Compare#1](~/add/codesnippet/csharp/t-system.globalization.s_1_1.cs)]\n [!code-vb[System.Globalization.SortKey.Compare#1](~/add/codesnippet/visualbasic/t-system.globalization.s_1_1.vb)]  \n  \n The following example shows how you can use the SortKey class to improve performance in an application that relies extensively on sorting and searching a large array. The example creates an unordered array of names, which in this case has 13 elements. It then stores the sort key of each name in a parallel array, which it passes to the <xref:System.Array.Sort%28System.Array%2CSystem.Array%29?displayProperty=fullName> method. The result is a sorted array. The example then searches the array for three strings. For each search string, it calls the <xref:System.Globalization.CompareInfo.GetSortKey%28System.String%2CSystem.Globalization.CompareOptions%29?displayProperty=fullName> method to retrieve the string's sort key, and then calls the <xref:System.Array.FindIndex%2A?displayProperty=fullName> method to retrieve the index of that sort key in the array of sort keys. Because the name and sort key arrays are parallel, the returned index is also the index of the name in the `names` array.  \n  \n [!code-vb[System.Globalization.SortKey.Class#1](~/add/codesnippet/visualbasic/t-system.globalization.s_1_2.vb)]\n [!code-cs[System.Globalization.SortKey.Class#1](~/add/codesnippet/csharp/t-system.globalization.s_1_2.cs)]"
   syntax:
@@ -42,8 +42,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Globalization
-  summary: "Compares two sort keys."
-  remarks: "The Compare method compares the <xref:System.Globalization.SortKey.KeyData%2A> properties of the `sortkey1` and `sortkey2` parameters. The method yields the same results as the <xref:System.Globalization.CompareInfo.Compare%2A?displayProperty=fullName> method.       For more information about the Compare method and the comparison of sort keys, see the <xref:System.Globalization.SortKey> class topic."
+  summary: "Sammenligner to sorteringsnøkler."
+  remarks: "Metoden sammenligne sammenligner den <xref:System.Globalization.SortKey.KeyData%2A>egenskapene for den `sortkey1` og `sortkey2` parametere.</xref:System.Globalization.SortKey.KeyData%2A> Metoden gir samme resultat som den <xref:System.Globalization.CompareInfo.Compare%2A?displayProperty=fullName>metoden.</xref:System.Globalization.CompareInfo.Compare%2A?displayProperty=fullName>       Du finner mer informasjon om metoden sammenligne og sammenligning av sorteringsnøkler av <xref:System.Globalization.SortKey>klassen emnet.</xref:System.Globalization.SortKey>"
   example:
   - "The following code example compares two strings using the Compare method and the equivalent <xref:System.Globalization.CompareInfo.Compare%28System.String%2CSystem.String%2CSystem.Globalization.CompareOptions%29?displayProperty=fullName> method.  \n  \n [!code-cs[sys.glob.sortkey.compare#1](~/add/codesnippet/csharp/4647647d-ce80-4fb7-82b7-_1.cs)]\n [!code-vb[sys.glob.sortkey.compare#1](~/add/codesnippet/visualbasic/4647647d-ce80-4fb7-82b7-_1.vb)]"
   syntax:
@@ -51,18 +51,18 @@ items:
     parameters:
     - id: sortkey1
       type: System.Globalization.SortKey
-      description: "The first sort key to compare."
+      description: "Den første sorteringsnøkkelen skal sammenlignes."
     - id: sortkey2
       type: System.Globalization.SortKey
-      description: "The second sort key to compare."
+      description: "Andre sorteringsnøkkel skal sammenlignes."
     return:
       type: System.Int32
-      description: "A signed integer that indicates the relationship between <code>sortkey1</code> and <code>sortkey2</code>.       <table><thead><tr><th> Value       </th><th> Condition       </th></tr></thead><tbody><tr><td> Less than zero       </td><td><code>sortkey1</code> is less than <code>sortkey2</code>.       </td></tr><tr><td> Zero       </td><td><code>sortkey1</code> is equal to <code>sortkey2</code>.       </td></tr><tr><td> Greater than zero       </td><td><code>sortkey1</code> is greater than <code>sortkey2</code>.       </td></tr></tbody></table>"
+      description: "Et heltall med fortegn som angir relasjonen mellom <code> sortkey1 </code> og <code> sortkey2 </code>.       <table><thead><tr><th> Verdi       </th><th> Betingelse       </th></tr></thead><tbody><tr><td> Er mindre enn null       </td><td><code>sortkey1</code>is less than <code>sortkey2</code>.       </td></tr><tr><td> Null       </td><td><code>sortkey1</code>is equal to <code>sortkey2</code>.       </td></tr><tr><td> Større enn null       </td><td><code>sortkey1</code>er større enn <code> sortkey2 </code>.       </td></tr></tbody></table>"
   overload: System.Globalization.SortKey.Compare*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>sortkey1</code> or <code>sortkey2</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>sortkey1</code>or <code>sortkey2</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Globalization.SortKey.Equals(System.Object)
@@ -77,8 +77,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Globalization
-  summary: "Determines whether the specified object is equal to the current <xref href=&quot;System.Globalization.SortKey&quot;></xref> object."
-  remarks: "Two <xref:System.Globalization.SortKey> objects are considered equal if their <xref:System.Globalization.SortKey.KeyData%2A> properties are equal.       This method overrides <xref:System.Object.Equals%2A?displayProperty=fullName>."
+  summary: "Bestemmer om det angitte objektet er lik gjeldende <xref href=&quot;System.Globalization.SortKey&quot;> </xref> objektet."
+  remarks: "To <xref:System.Globalization.SortKey>objekter regnes lik hvis de <xref:System.Globalization.SortKey.KeyData%2A>Egenskaper er like.</xref:System.Globalization.SortKey.KeyData%2A> </xref:System.Globalization.SortKey>       Denne metoden overstyrer <xref:System.Object.Equals%2A?displayProperty=fullName>.</xref:System.Object.Equals%2A?displayProperty=fullName>"
   example:
   - "The following code example shows the results of Equals when compared with different <xref:System.Globalization.SortKey> objects.  \n  \n [!code-vb[System.Globalization.SortKey.Equals#1](~/add/codesnippet/visualbasic/m-system.globalization.s_0_1.vb)]\n [!code-cpp[System.Globalization.SortKey.Equals#1](~/add/codesnippet/cpp/m-system.globalization.s_0_1.cpp)]\n [!code-cs[System.Globalization.SortKey.Equals#1](~/add/codesnippet/csharp/m-system.globalization.s_0_1.cs)]"
   syntax:
@@ -86,15 +86,15 @@ items:
     parameters:
     - id: value
       type: System.Object
-      description: "The object to compare with the current <xref href=&quot;System.Globalization.SortKey&quot;></xref> object."
+      description: "Objektet som skal sammenlignes med gjeldende <xref href=&quot;System.Globalization.SortKey&quot;> </xref> objektet."
     return:
       type: System.Boolean
-      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref> if the <code>value</code> parameter is equal to the current <xref href=&quot;System.Globalization.SortKey&quot;></xref> object; otherwise, <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;></xref>."
+      description: "<xref uid=&quot;langword_csharp_true&quot; name=&quot;true&quot; href=&quot;&quot;></xref>Hvis den <code> value </code> parameteren er lik gjeldende <xref href=&quot;System.Globalization.SortKey&quot;> </xref> objekt; ellers <xref uid=&quot;langword_csharp_false&quot; name=&quot;false&quot; href=&quot;&quot;> </xref>."
   overload: System.Globalization.SortKey.Equals*
   exceptions:
   - type: System.ArgumentNullException
     commentId: T:System.ArgumentNullException
-    description: "<code>value</code> is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
+    description: "<code>value</code>is <xref uid=&quot;langword_csharp_null&quot; name=&quot;null&quot; href=&quot;&quot;></xref>."
   platform:
   - net462
 - uid: System.Globalization.SortKey.GetHashCode
@@ -109,14 +109,14 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Globalization
-  summary: "Serves as a hash function for the current <xref href=&quot;System.Globalization.SortKey&quot;></xref> object that is suitable for hashing algorithms and data structures such as a hash table."
-  remarks: "This method generates the same hash code for two objects that are equal according to the <xref:System.Globalization.SortKey.Equals%2A> method.       This method overrides <xref:System.Object.GetHashCode%2A?displayProperty=fullName>."
+  summary: "Fungerer som en hash-funksjonen for gjeldende <xref href=&quot;System.Globalization.SortKey&quot;> </xref> objektet som passer for nummer algoritmer og data strukturer som en hash-tabell."
+  remarks: "Denne metoden, samme hash-kode for de to objektene som er lik i henhold til den <xref:System.Globalization.SortKey.Equals%2A>metoden.</xref:System.Globalization.SortKey.Equals%2A>       Denne metoden overstyrer <xref:System.Object.GetHashCode%2A?displayProperty=fullName>.</xref:System.Object.GetHashCode%2A?displayProperty=fullName>"
   syntax:
     content: public override int GetHashCode ();
     parameters: []
     return:
       type: System.Int32
-      description: "A hash code for the current <xref href=&quot;System.Globalization.SortKey&quot;></xref> object."
+      description: "En hash-kode for gjeldende <xref href=&quot;System.Globalization.SortKey&quot;> </xref> objektet."
   overload: System.Globalization.SortKey.GetHashCode*
   exceptions: []
   platform:
@@ -133,15 +133,15 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Globalization
-  summary: "Gets the byte array representing the current <xref href=&quot;System.Globalization.SortKey&quot;></xref> object."
-  remarks: "For more information about the use of the data returned by the KeyData property in comparing strings, see the <xref:System.Globalization.SortKey> class topic."
+  summary: "Henter bytematrise som representerer gjeldende <xref href=&quot;System.Globalization.SortKey&quot;> </xref> objektet."
+  remarks: "Du finner mer informasjon om bruk av dataene som ble returnert av egenskapen KeyData i sammenligning av strenger i <xref:System.Globalization.SortKey>klassen emnet.</xref:System.Globalization.SortKey>"
   example:
   - "The following code example displays an original string and the equivalent string and key data for a case-sensitive sort key and a case-insensitive sort key.  \n  \n [!code-vb[sys.glob.sortkey.tostring#1](~/add/codesnippet/visualbasic/p-system.globalization.s_0_1.vb)]\n [!code-cs[sys.glob.sortkey.tostring#1](~/add/codesnippet/csharp/p-system.globalization.s_0_1.cs)]"
   syntax:
     content: public virtual byte[] KeyData { get; }
     return:
       type: System.Byte[]
-      description: "A byte array representing the current <xref href=&quot;System.Globalization.SortKey&quot;></xref> object."
+      description: "En bytematrise som representerer gjeldende <xref href=&quot;System.Globalization.SortKey&quot;> </xref> objektet."
   overload: System.Globalization.SortKey.KeyData*
   exceptions: []
   platform:
@@ -158,7 +158,7 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Globalization
-  summary: "Gets the original string used to create the current <xref href=&quot;System.Globalization.SortKey&quot;></xref> object."
+  summary: "Henter den opprinnelige strengen som brukes til å opprette gjeldende <xref href=&quot;System.Globalization.SortKey&quot;> </xref> objektet."
   remarks: ''
   example:
   - "The following code example displays an original string and the equivalent string and key data for a case-sensitive sort key and a case-insensitive sort key.  \n  \n [!code-vb[sys.glob.sortkey.tostring#1](~/add/codesnippet/visualbasic/p-system.globalization.s_1_1.vb)]\n [!code-cs[sys.glob.sortkey.tostring#1](~/add/codesnippet/csharp/p-system.globalization.s_1_1.cs)]"
@@ -166,7 +166,7 @@ items:
     content: public virtual string OriginalString { get; }
     return:
       type: System.String
-      description: "The original string used to create the current <xref href=&quot;System.Globalization.SortKey&quot;></xref> object."
+      description: "Den opprinnelige strengen som brukes til å opprette gjeldende <xref href=&quot;System.Globalization.SortKey&quot;> </xref> objektet."
   overload: System.Globalization.SortKey.OriginalString*
   exceptions: []
   platform:
@@ -183,8 +183,8 @@ items:
   assemblies:
   - mscorlib
   namespace: System.Globalization
-  summary: "Returns a string that represents the current <xref href=&quot;System.Globalization.SortKey&quot;></xref> object."
-  remarks: "The return value is the concatenation of the string &quot;SortKey - &quot;, the culture identifier and compare options of the current <xref:System.Globalization.SortKey> object, and the value of the <xref:System.Globalization.SortKey.OriginalString%2A> property.       This method overrides <xref:System.Object.ToString%2A?displayProperty=fullName>."
+  summary: "Returnerer en streng som representerer gjeldende <xref href=&quot;System.Globalization.SortKey&quot;> </xref> objektet."
+  remarks: "Returverdien er sammenkoblingen av strengen &quot;SortKey -&quot;, Kultur-IDen og sammenligningsalternativer for gjeldende <xref:System.Globalization.SortKey>objektet, og verdien for den <xref:System.Globalization.SortKey.OriginalString%2A>egenskapen.</xref:System.Globalization.SortKey.OriginalString%2A> </xref:System.Globalization.SortKey>       Denne metoden overstyrer <xref:System.Object.ToString%2A?displayProperty=fullName>.</xref:System.Object.ToString%2A?displayProperty=fullName>"
   example:
   - "The following code example displays an original string, the strings yielded by the ToString method for case-sensitive and case-insensitive sort keys, and the key data for case-sensitive and case-insensitive sort keys.  \n  \n [!code-vb[sys.glob.sortkey.tostring#1](~/add/codesnippet/visualbasic/m-system.globalization.s_1_1.vb)]\n [!code-cs[sys.glob.sortkey.tostring#1](~/add/codesnippet/csharp/m-system.globalization.s_1_1.cs)]"
   syntax:
@@ -192,7 +192,7 @@ items:
     parameters: []
     return:
       type: System.String
-      description: "A string that represents the current <xref href=&quot;System.Globalization.SortKey&quot;></xref> object."
+      description: "En streng som representerer gjeldende <xref href=&quot;System.Globalization.SortKey&quot;> </xref> objektet."
   overload: System.Globalization.SortKey.ToString*
   exceptions: []
   platform:
